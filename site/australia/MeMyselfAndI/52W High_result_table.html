@@ -1,0 +1,1310 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.datatables.net/v/bm/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/sc-2.0.5/datatables.min.css" />
+
+</head >
+
+
+<body>
+    <section class="hero is-small is-dark">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <!-- <a class="navbar-item">
+                        
+                        <img src="data:image/svg+xml;base64,"
+                            alt="Logo">
+                       
+                    </a> -->
+                    <span class="navbar-burger" data-target="navbarMenuHeroB">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </div>
+                <div id="navbarMenuHeroB" class="navbar-menu">
+                    <div class="navbar-start">
+                        
+                        <a class="navbar-item" href="../../australia/market_monitor.html">
+                            
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-home"></i>
+                                    </span>
+                                    <span>Home</span>
+                                </span>
+                            </a>
+
+                            <div class="navbar-item has-dropdown is-hoverable has-background-dark">
+                                <a class="navbar-link">
+                                    <span>Choose Market</span>
+                                </a>
+
+                                <div class="navbar-dropdown has-background-dark">
+                                    
+                                    <a class="navbar-item" href="../../australia/market_monitor.html">
+                                        <span>Australia</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../canada/market_monitor.html">
+                                        <span>Canada</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../germany/market_monitor.html">
+                                        <span>Germany</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../hong_kong/market_monitor.html">
+                                        <span>Hong Kong</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../japan/market_monitor.html">
+                                        <span>Japan</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../nordic_markets/market_monitor.html">
+                                        <span>Nordic Markets</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_kingdom/market_monitor.html">
+                                        <span>United Kingdom</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_states/market_monitor.html">
+                                        <span>United States</span>
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                    </div>
+                    <div class="navbar-end"></div>
+                    <span class="navbar-item">
+                        <a class="button is-info is-light" href="https://twitter.com/LignoL23">
+                            <span class="icon">
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                            <span>Twitter</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <a class="button  is-success is-light" href="https://www.paypal.com/paypalme/volkerlorrmann/5">
+                            <span class="icon">
+                                <i class="fab fa-paypal"></i>
+                            </span>
+                            <span>paypal.me</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+                        <script
+                            type='text/javascript'>kofiwidget2.init('Support me', '#d6d6d6', 'W7W0ACJPB'); kofiwidget2.draw();</script>
+                    </span>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="columns is-multiline is-mobile is-centered">
+                <div class="column is-1">
+                    <img src="data:image/svg+xml;base64," alt="Logo">
+                </div>
+                <div class="column is-4">
+                    <p class="title">
+                        EOD Stockmarket Scans
+                    </p>
+                    <p class="subtitle">
+                        Fintwits most popular stockmarket scans
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+            <div class="container">
+                <ul>
+                    
+                    <li class="is-active">
+                        <a href="../MeMyselfAndI/52W High_result_table.html"> Results </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../MeMyselfAndI/52W High_minicharts.html"> Minicharts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../MeMyselfAndI/52W High_charts.html"> Charts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../MeMyselfAndI/52W High_criteria.html"> Criteria </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+</section>
+    <div class="columns is-centered">
+        <div class="column is-2">
+            <div class="box has-background-light my-0 mx-2 p-auto">
+    <aside class="menu">
+        <p class="menu-label has-text-dark">
+            Market Monitor
+        </p>
+        <ul class="menu-list">
+            <li><a class="has-text-grey-light">New Highs/Lows</a></li>
+            <li><a class="has-text-grey-light">Breadth</a></li>
+            <li><a class="has-text-grey-light">Above/Below SMA</a></li>
+            <li><a class="has-text-grey-light">Sectors</a></li>
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Kristjan Kullamägi
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Kristjan Kullamägi/Biggest Gainers 1M_minicharts.html">
+                        Biggest Gainers 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Kristjan Kullamägi/Biggest Gainers 3M_minicharts.html">
+                        Biggest Gainers 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Kristjan Kullamägi/Biggest Gainers 6M_minicharts.html">
+                        Biggest Gainers 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Kristjan Kullamägi/Biggest Gainers 12M_minicharts.html">
+                        Biggest Gainers 12M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Kristjan Kullamägi/EP with Growth_minicharts.html">
+                        EP with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Kristjan Kullamägi/EP_minicharts.html">
+                        EP
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Kristjan Kullamägi/High Trend Intensity_minicharts.html">
+                        High Trend Intensity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Kristjan Kullamägi/Small Stock Momo_minicharts.html">
+                        Small Stock Momo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Kristjan Kullamägi/Momentum_minicharts.html">
+                        Momentum
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Brad Schulz
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Brad Schulz/Pocket Pivot_minicharts.html">
+                        Pocket Pivot
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Stockbee
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Stockbee/4% Gainers_minicharts.html">
+                        4% Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Stockbee/Combo_minicharts.html">
+                        Combo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Stockbee/Ants_minicharts.html">
+                        Ants
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Stockbee/Breakout 1M Base_minicharts.html">
+                        Breakout 1M Base
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Stockbee/Breakout 3M Base_minicharts.html">
+                        Breakout 3M Base
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Leif Soreide
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Leif Soreide/HTF_minicharts.html">
+                        HTF
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Blake Davis
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Blake Davis/Strength_minicharts.html">
+                        Strength
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ben
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Ben/Power of 3_minicharts.html">
+                        Power of 3
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Ben/Velocity_minicharts.html">
+                        Velocity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Ben/Focus_minicharts.html">
+                        Focus
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ray
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Ray/RSNHBP 5D_minicharts.html">
+                        RSNHBP 5D
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Ray/RSNHBP 1M_minicharts.html">
+                        RSNHBP 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Ray/RSNHBP 3M_minicharts.html">
+                        RSNHBP 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Ray/RSNHBP 6M_minicharts.html">
+                        RSNHBP 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Ray/RSNHBP 12M_minicharts.html">
+                        RSNHBP 12M
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Mark Minvervini
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Mark Minvervini/Trend Template_minicharts.html">
+                        Trend Template
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            MeMyselfAndI
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/MeMyselfAndI/Top Gainers From Open_minicharts.html">
+                        Top Gainers From Open
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/MeMyselfAndI/Top Gainers_minicharts.html">
+                        Top Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/MeMyselfAndI/Volume Gainers_minicharts.html">
+                        Volume Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/MeMyselfAndI/Insiders_minicharts.html">
+                        Insiders
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/MeMyselfAndI/Darvas Scan_minicharts.html">
+                        Darvas Scan
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/MeMyselfAndI/Darvas Scan with Growth_minicharts.html">
+                        Darvas Scan with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="is-active"
+                        href="../../australia/MeMyselfAndI/52W High_minicharts.html">
+                        52W High
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/MeMyselfAndI/Quite and Tight_minicharts.html">
+                        Quite and Tight
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+    </aside>
+</div>
+        </div>
+        <div class="column is-10">
+            <section class="block my-6">
+                <div class="columns ">
+                    <div class="column is-5 has-text-left">
+                        <h1 class="title is-4">52W High @ Australia</h1>
+                        <h2 class="subtitle is-6">2022-04-20</h2>
+                    </div>
+                    <div class="column has-text-right mx-5">
+                        <div class="media">
+                           
+                            <div class="media-content">
+                                <p class="title is-5">MeMyselfAndI</p>
+                                <p class="subtitle is-6"><a class="has-text-grey-light" href="https://twitter.com/LignoL23">@LignoL23</a></p>
+                            </div>
+                            <div class="media-right">
+                                <figure class="image is-48x48">
+                                    <img src="https://unavatar.io/twitter/LignoL23" alt="Placeholder image">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="my-auto mr-6">
+                
+    <div class="table-container">
+        <table border="1" class="dataframe table is-striped no-wrap" id="data" style="width:100%; font-size:85%">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>symbol_id</th>
+      <th>symbol</th>
+      <th>name</th>
+      <th>exchange</th>
+      <th>sector</th>
+      <th>industry</th>
+      <th>country</th>
+      <th>yahoo_symbol</th>
+      <th>forexpros_symbol</th>
+      <th>IPO Date</th>
+      <th>EPS Growth Q</th>
+      <th>EPS Growth Y</th>
+      <th>EPS Growth FQ</th>
+      <th>EPS Growth FY</th>
+      <th>EPS Growth FQ1</th>
+      <th>EPS Growth FY1</th>
+      <th>Rev Growth Q</th>
+      <th>Rev Growth FQ</th>
+      <th>Rev Growth FY</th>
+      <th>Rev Growth FQ1</th>
+      <th>Rev Growth FY1</th>
+      <th>Insiders %</th>
+      <th>Institutions %</th>
+      <th>Institutions No.</th>
+      <th>Market Cap</th>
+      <th>Shares Outstanding</th>
+      <th>Shares Float</th>
+      <th>Shares Short</th>
+      <th>Short Ratio</th>
+      <th>Net Insider Trading %</th>
+      <th>close</th>
+      <th>volume</th>
+      <th>1m RS</th>
+      <th>3m RS</th>
+      <th>RS</th>
+      <th>Industry 1m RS</th>
+      <th>Industry 3m RS</th>
+      <th>Industry RS</th>
+      <th>UD Ratio</th>
+      <th>50d avg Volume</th>
+      <th>rel Volume</th>
+      <th>Pocket Pivot</th>
+      <th>1w Pocket Pivots</th>
+      <th>1m Pocket Pivots</th>
+      <th>Rocket Ratio</th>
+      <th>52w High</th>
+      <th>% below 52w High</th>
+      <th>52w Low</th>
+      <th>% above 52w Low</th>
+      <th>adr(20)</th>
+      <th>atr(14)</th>
+      <th>roc</th>
+      <th>roc(5)</th>
+      <th>roc(21)</th>
+      <th>roc(63)</th>
+      <th>roc(126)</th>
+      <th>roc(252)</th>
+      <th>ema(9)</th>
+      <th>% from 9d ema</th>
+      <th>ema(21)</th>
+      <th>% from 21d ema</th>
+      <th>sma(50)</th>
+      <th>% from 50d sma</th>
+      <th>market</th>
+      <th>date</th>
+      <th>group_name</th>
+      <th>scan_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>8604</td>
+      <td>RHC</td>
+      <td>Ramsay Health Care Ltd</td>
+      <td>Sydney</td>
+      <td>Healthcare</td>
+      <td>Medical Care Facilities</td>
+      <td>Australia</td>
+      <td>RHC.AX</td>
+      <td>Sydney:RHC</td>
+      <td>1997-10-01 00:00:00</td>
+      <td>-0.30</td>
+      <td>-0.30</td>
+      <td>NaN</td>
+      <td>-0.18</td>
+      <td>NaN</td>
+      <td>0.50</td>
+      <td>0.02</td>
+      <td>0.07</td>
+      <td>0.08</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>21.19</td>
+      <td>19.19</td>
+      <td>237.0</td>
+      <td>1.478578e+10</td>
+      <td>2.288820e+08</td>
+      <td>1.803766e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>80.00</td>
+      <td>4208576.0</td>
+      <td>89</td>
+      <td>85</td>
+      <td>78</td>
+      <td>10</td>
+      <td>30</td>
+      <td>43</td>
+      <td>1.30</td>
+      <td>511249.54</td>
+      <td>8.23</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>352.82</td>
+      <td>83.55</td>
+      <td>-4.25</td>
+      <td>59.66</td>
+      <td>34.09</td>
+      <td>1.81</td>
+      <td>2.24</td>
+      <td>24.24</td>
+      <td>23.70</td>
+      <td>26.22</td>
+      <td>19.47</td>
+      <td>19.89</td>
+      <td>17.65</td>
+      <td>67.55</td>
+      <td>18.43</td>
+      <td>65.61</td>
+      <td>21.93</td>
+      <td>64.02</td>
+      <td>24.95</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>52W High</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1174297</td>
+      <td>DGL</td>
+      <td>DGL Group Ltd</td>
+      <td>Sydney</td>
+      <td>Industrials</td>
+      <td>Conglomerates</td>
+      <td>Australia</td>
+      <td>DGL.AX</td>
+      <td>Sydney:DGL</td>
+      <td>2021-05-24 00:00:00</td>
+      <td>1.85</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.82</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>59.25</td>
+      <td>4.90</td>
+      <td>7.0</td>
+      <td>9.769130e+08</td>
+      <td>2.698440e+08</td>
+      <td>1.111693e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>4.15</td>
+      <td>1217448.0</td>
+      <td>94</td>
+      <td>94</td>
+      <td>96</td>
+      <td>62</td>
+      <td>48</td>
+      <td>54</td>
+      <td>2.09</td>
+      <td>453263.94</td>
+      <td>2.69</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>245.26</td>
+      <td>4.15</td>
+      <td>0.00</td>
+      <td>0.94</td>
+      <td>343.85</td>
+      <td>6.38</td>
+      <td>0.22</td>
+      <td>9.50</td>
+      <td>29.69</td>
+      <td>39.73</td>
+      <td>46.64</td>
+      <td>44.10</td>
+      <td>286.05</td>
+      <td>3.53</td>
+      <td>17.57</td>
+      <td>3.31</td>
+      <td>25.29</td>
+      <td>3.01</td>
+      <td>38.01</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>52W High</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7471</td>
+      <td>GNC</td>
+      <td>Graincorp Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Defensive</td>
+      <td>Farm Products</td>
+      <td>Australia</td>
+      <td>GNC.AX</td>
+      <td>Sydney:GNC</td>
+      <td>1998-04-01 00:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.56</td>
+      <td>NaN</td>
+      <td>-0.52</td>
+      <td>0.72</td>
+      <td>0.21</td>
+      <td>0.21</td>
+      <td>NaN</td>
+      <td>-0.19</td>
+      <td>3.97</td>
+      <td>38.73</td>
+      <td>87.0</td>
+      <td>2.231346e+09</td>
+      <td>2.288560e+08</td>
+      <td>2.254555e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>9.81</td>
+      <td>2093525.0</td>
+      <td>79</td>
+      <td>85</td>
+      <td>90</td>
+      <td>50</td>
+      <td>93</td>
+      <td>56</td>
+      <td>1.71</td>
+      <td>1680989.50</td>
+      <td>1.25</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>134.12</td>
+      <td>10.06</td>
+      <td>-2.49</td>
+      <td>4.76</td>
+      <td>106.09</td>
+      <td>3.01</td>
+      <td>0.34</td>
+      <td>2.83</td>
+      <td>0.00</td>
+      <td>13.94</td>
+      <td>20.96</td>
+      <td>53.04</td>
+      <td>93.87</td>
+      <td>9.43</td>
+      <td>4.01</td>
+      <td>9.07</td>
+      <td>8.14</td>
+      <td>8.56</td>
+      <td>14.59</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>52W High</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7596</td>
+      <td>APA</td>
+      <td>APA Group</td>
+      <td>Sydney</td>
+      <td>Utilities</td>
+      <td>Utilities—Regulated Gas</td>
+      <td>Australia</td>
+      <td>APA.AX</td>
+      <td>Sydney:APA</td>
+      <td>2000-06-12 00:00:00</td>
+      <td>-0.89</td>
+      <td>-0.89</td>
+      <td>NaN</td>
+      <td>0.12</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>0.07</td>
+      <td>-0.02</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>0.05</td>
+      <td>48.74</td>
+      <td>262.0</td>
+      <td>1.297879e+10</td>
+      <td>1.179890e+09</td>
+      <td>1.179540e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>11.27</td>
+      <td>2624224.0</td>
+      <td>78</td>
+      <td>80</td>
+      <td>76</td>
+      <td>63</td>
+      <td>92</td>
+      <td>57</td>
+      <td>1.31</td>
+      <td>2181580.00</td>
+      <td>1.20</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>540.68</td>
+      <td>11.27</td>
+      <td>0.00</td>
+      <td>8.20</td>
+      <td>37.44</td>
+      <td>1.97</td>
+      <td>0.22</td>
+      <td>1.53</td>
+      <td>4.35</td>
+      <td>13.15</td>
+      <td>12.70</td>
+      <td>32.43</td>
+      <td>10.71</td>
+      <td>10.90</td>
+      <td>3.39</td>
+      <td>10.65</td>
+      <td>5.85</td>
+      <td>10.24</td>
+      <td>10.05</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>52W High</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1123046</td>
+      <td>UWL</td>
+      <td>Uniti Wireless Ltd</td>
+      <td>Sydney</td>
+      <td>Communication Services</td>
+      <td>Telecom Services</td>
+      <td>Australia</td>
+      <td>UWL.AX</td>
+      <td>Sydney:UWL</td>
+      <td>2019-02-12 23:00:00</td>
+      <td>6.50</td>
+      <td>4.86</td>
+      <td>NaN</td>
+      <td>0.38</td>
+      <td>NaN</td>
+      <td>0.18</td>
+      <td>0.98</td>
+      <td>0.49</td>
+      <td>0.43</td>
+      <td>NaN</td>
+      <td>0.13</td>
+      <td>15.54</td>
+      <td>12.98</td>
+      <td>50.0</td>
+      <td>3.371992e+09</td>
+      <td>6.798370e+08</td>
+      <td>5.822434e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>4.98</td>
+      <td>6609060.0</td>
+      <td>87</td>
+      <td>84</td>
+      <td>86</td>
+      <td>48</td>
+      <td>29</td>
+      <td>48</td>
+      <td>1.24</td>
+      <td>6123132.32</td>
+      <td>1.08</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>95.09</td>
+      <td>5.01</td>
+      <td>-0.60</td>
+      <td>2.59</td>
+      <td>92.65</td>
+      <td>2.35</td>
+      <td>0.07</td>
+      <td>0.20</td>
+      <td>6.41</td>
+      <td>21.46</td>
+      <td>18.01</td>
+      <td>27.04</td>
+      <td>89.35</td>
+      <td>4.84</td>
+      <td>2.94</td>
+      <td>4.61</td>
+      <td>7.92</td>
+      <td>4.05</td>
+      <td>23.10</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>52W High</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>10547</td>
+      <td>WHC</td>
+      <td>Whitehaven Coal Ltd</td>
+      <td>Sydney</td>
+      <td>Energy</td>
+      <td>Thermal Coal</td>
+      <td>Australia</td>
+      <td>WHC.AX</td>
+      <td>Sydney:WHC</td>
+      <td>2007-06-01 00:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>14.22</td>
+      <td>NaN</td>
+      <td>-0.13</td>
+      <td>1.06</td>
+      <td>NaN</td>
+      <td>1.56</td>
+      <td>NaN</td>
+      <td>-0.02</td>
+      <td>14.07</td>
+      <td>25.95</td>
+      <td>91.0</td>
+      <td>4.642526e+09</td>
+      <td>1.015870e+09</td>
+      <td>8.945643e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>4.80</td>
+      <td>14282620.0</td>
+      <td>86</td>
+      <td>96</td>
+      <td>95</td>
+      <td>58</td>
+      <td>96</td>
+      <td>95</td>
+      <td>1.83</td>
+      <td>13677320.40</td>
+      <td>1.04</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>65.40</td>
+      <td>4.94</td>
+      <td>-2.83</td>
+      <td>1.15</td>
+      <td>316.49</td>
+      <td>3.26</td>
+      <td>0.17</td>
+      <td>3.00</td>
+      <td>6.90</td>
+      <td>20.30</td>
+      <td>67.25</td>
+      <td>44.58</td>
+      <td>258.21</td>
+      <td>4.54</td>
+      <td>5.83</td>
+      <td>4.34</td>
+      <td>10.58</td>
+      <td>3.85</td>
+      <td>24.53</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>52W High</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>8718</td>
+      <td>WOR</td>
+      <td>Worley Ltd</td>
+      <td>Sydney</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas Equipment &amp; Services</td>
+      <td>Australia</td>
+      <td>WOR.AX</td>
+      <td>Sydney:WOR</td>
+      <td>2002-11-27 23:00:00</td>
+      <td>2.59</td>
+      <td>2.58</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>NaN</td>
+      <td>0.26</td>
+      <td>-0.04</td>
+      <td>NaN</td>
+      <td>-0.00</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>29.72</td>
+      <td>23.46</td>
+      <td>117.0</td>
+      <td>7.313537e+09</td>
+      <td>5.246440e+08</td>
+      <td>3.679991e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>14.16</td>
+      <td>2067249.0</td>
+      <td>76</td>
+      <td>85</td>
+      <td>82</td>
+      <td>46</td>
+      <td>55</td>
+      <td>49</td>
+      <td>1.72</td>
+      <td>2044772.60</td>
+      <td>1.01</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>179.97</td>
+      <td>14.19</td>
+      <td>-0.21</td>
+      <td>8.92</td>
+      <td>58.74</td>
+      <td>2.13</td>
+      <td>0.29</td>
+      <td>0.93</td>
+      <td>1.58</td>
+      <td>11.58</td>
+      <td>18.99</td>
+      <td>32.71</td>
+      <td>38.15</td>
+      <td>13.83</td>
+      <td>2.37</td>
+      <td>13.43</td>
+      <td>5.40</td>
+      <td>12.65</td>
+      <td>11.98</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>52W High</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1089246</td>
+      <td>CXL</td>
+      <td>Calix Ltd</td>
+      <td>Sydney</td>
+      <td>Basic Materials</td>
+      <td>Specialty Chemicals</td>
+      <td>Australia</td>
+      <td>CXL.AX</td>
+      <td>Sydney:CXL</td>
+      <td>2018-07-20 00:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-2.00</td>
+      <td>NaN</td>
+      <td>0.17</td>
+      <td>0.07</td>
+      <td>0.29</td>
+      <td>0.22</td>
+      <td>NaN</td>
+      <td>0.31</td>
+      <td>26.70</td>
+      <td>25.59</td>
+      <td>19.0</td>
+      <td>1.443434e+09</td>
+      <td>1.614580e+08</td>
+      <td>1.103870e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>9.23</td>
+      <td>636012.0</td>
+      <td>89</td>
+      <td>90</td>
+      <td>96</td>
+      <td>62</td>
+      <td>48</td>
+      <td>54</td>
+      <td>2.85</td>
+      <td>635905.10</td>
+      <td>1.00</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>173.59</td>
+      <td>9.65</td>
+      <td>-4.35</td>
+      <td>2.27</td>
+      <td>306.61</td>
+      <td>6.16</td>
+      <td>0.48</td>
+      <td>0.76</td>
+      <td>8.59</td>
+      <td>26.44</td>
+      <td>31.86</td>
+      <td>75.81</td>
+      <td>313.90</td>
+      <td>8.59</td>
+      <td>7.41</td>
+      <td>8.02</td>
+      <td>15.11</td>
+      <td>6.82</td>
+      <td>35.27</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>52W High</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+            </section>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+    </div>
+</footer>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bm/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+<script>
+        $(document).ready(function () {
+            $('#data').DataTable(
+                {
+                    "scrollX": true,
+                    "dom": 'Bfrtip',
+                    "buttons": [
+                        'copy', 'csv', 'excel', 'print'
+                    ]
+
+                }
+            );
+        });
+    </script>
+    
+</body>
+
+</html>

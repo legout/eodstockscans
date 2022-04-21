@@ -1,0 +1,25 @@
+{% if tab %}
+<section class="block my-6">
+    <div class="columns ">
+        <div class="column is-5 has-text-left">
+            <h1 class="title is-4">{{ scan_name}} @ {{ market_org }}</h1>
+            <h2 class="subtitle is-6">{{ date }}</h2>
+        </div>
+        <div class="column has-text-right mr-5">
+            <div class="media">
+
+                <div class="media-content">
+                    <p class="title is-5">{{ group_name }}</p>
+                    <p class="subtitle is-6"><a class="has-text-grey-light" href="{{ twitter_link }}">@{{
+                            twitter_name }}</a></p>
+                </div>
+                <div class="media-right">
+                    <figure class="image is-48x48">
+                        <img src="https://unavatar.io/twitter/{{ twitter_name }}" alt="Placeholder image">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}

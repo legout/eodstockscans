@@ -1,0 +1,4674 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.datatables.net/v/bm/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/sc-2.0.5/datatables.min.css" />
+
+</head >
+
+
+<body>
+    <section class="hero is-small is-dark">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <!-- <a class="navbar-item">
+                        
+                        <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDEwMCAxMDA7IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOm5vbmU7fQoJLnN0MXtmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO30KPC9zdHlsZT48dGl0bGUvPjxnPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MS44LDg0YzAuMSwwLjIsMC4xLDAuMywwLjEsMC41YzAsMy4zLDAuMiw2LjcsMC41LDEwYzIuNi0wLjEsNC45LTAuMSw3LjItMC4ydjBjMC4zLDAsMC43LDAsMSwwICAgYy0wLjMtNS0wLjQtMTAtMC41LTE1QzQ4LjQsODAuNCw0NS41LDgyLjEsNDEuOCw4NHoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTYuMyw5NGMtMC4yLDAuMS0wLjQsMC4xLTAuNSwwLjJjMS43LDAuMSw0LjMsMC4yLDcuNywwLjNjMS40LDAsMi43LDAuMSw0LDAuMWMtMC4xLTEuNC0wLjMtMi44LTAuNC00LjEgICBDMjIuNiw5Mi4xLDE4LjgsOTMuMiwxNi4zLDk0eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02Ni45LDQ3LjVjMy4xLTMuMyw2LjgtNy41LDEwLjgtMTIuN2MwLDAsMCwwLDAtMC4xYzAuNS0wLjYsMS40LTAuNywyLTAuMmMxLjcsMS41LDMuNiwyLjksNS42LDQuNCAgIGMxLDAuOCwyLjEsMS41LDMuMSwyLjJjMC4zLDAuMiwwLjYsMC4zLDEsMC4zYzAuNCwwLDAuOC0wLjIsMS4yLTAuNGMwLjMtMC4zLDAuNS0wLjcsMC41LTEuMWMwLjItNC45LDAuMy05LjksMC4zLTE1di0wLjcgICBjMC01LjYtMC4xLTExLTAuMy0xNi4zYzAtMC4yLDAtMC4zLTAuMS0wLjVjLTAuMy0xLjQtMS43LTIuMy0zLjItMkM3Ni42LDgsNjUuNSwxMC43LDU0LjUsMTMuN2MtMC4zLDAuMS0wLjYsMC4zLTAuOCwwLjUgICBjLTAuMiwwLjMtMC4zLDAuNi0wLjMsMC45YzAsMC41LDAuMywxLDAuNywxLjJjMC45LDAuNiwxLjgsMS4xLDIuNywxLjdjMi4yLDEuMyw0LjMsMi41LDYuMywzLjVjMC43LDAuNCwxLDEuMiwwLjYsMS45ICAgYy0zLjEsNi02LjYsMTEuNy0xMC42LDE3LjFjLTguNSwxMS40LTE4LDIwLTMwLDMwLjhDMTYuNyw3NywxMiw4MSw5LjQsODMuNWMtMC42LDAuNi0xLjIsMS4yLTEuNywxLjhjMC43LTAuMSwxLjQtMC4yLDIuMS0wLjQgICBjMS4xLTAuMywyLjQtMC43LDMuNi0xLjFjMi41LTAuOSw0LjktMS45LDYuMS0yLjRDMjguOSw3Ny42LDQ3LjEsNjguNiw2Ni45LDQ3LjV6Ii8+PHBhdGggY2xhc3M9InN0MCIgZD0iTTMxLjUsODguN2MtMC42LDAuMi0xLjIsMC41LTEuNywwLjdjMC4yLDEuNywwLjQsMy41LDAuNSw1LjJjMC43LDAsMS4zLDAsMS45LDBjMi42LDAsNSwwLDcuMy0wLjEgICBjLTAuMy0zLjEtMC40LTYuMS0wLjUtOS4yQzM2LjgsODYuNSwzNC4yLDg3LjYsMzEuNSw4OC43eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik01Mi45LDc3LjVjMCwwLjEsMCwwLjEsMCwwLjJjMC4xLDUuNSwwLjMsMTEuMSwwLjYsMTYuNmMzLjQtMC4xLDYuOS0wLjIsMTAuNC0wLjNjLTAuMy04LjEtMC41LTE2LjMtMC44LTI0LjQgICBDNTkuOCw3Mi40LDU2LjQsNzUsNTIuOSw3Ny41eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik05MS4yLDU1LjNjLTAuMS0wLjEtMC4xLTAuMS0wLjItMC4xYy0wLjEsMC0wLjItMC4xLTAuNS0wLjJjLTAuNi0wLjMtMS42LTAuNy0zLjUtMS42ICAgYy0xLjItMC42LTIuMy0xLjEtMy40LTEuNmMtMC41LTAuMi0xLTAuNC0xLjYtMC40Yy0xLjEsMC0yLjEsMC41LTIuOCwxLjRsMCwwYy0wLjIsMC4zLTAuNCwwLjUtMC42LDAuOGwyLjMsNDAuM2gwLjYgICBjMi4yLDAsMy45LDAsNS4yLTAuMmMxLTAuMSwxLjktMC4zLDIuOC0wLjdjMC41LTAuMiwwLjktMC41LDEuMi0wLjljMC41LTAuNCwwLjgtMSwxLTEuNmMwLjItMC45LDAuMy0xLjgsMC4zLTIuNyAgIGMwLTEuNy0wLjEtNC4xLTAuMS03LjVjMC0yLjEsMC4xLTQuNywwLjMtNy43bDAsMGMwLjMtNC45LDAuOC04LjgsMC44LTExLjhjMC0xLjItMC4xLTIuNC0wLjQtMy41QzkyLjIsNTYuNSw5MS44LDU1LjgsOTEuMiw1NS4zeiAgICIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02NS44LDY3LjFjMCwwLjEsMC4xLDAuMywwLjEsMC40YzAuMyw4LjgsMC42LDE3LjYsMC45LDI2LjRjMy4yLTAuMSw2LjQtMC4xLDkuNi0wLjF2MGgwLjNoMS4xICAgYzAtMC4xLDAuMS0wLjIsMC4xLTAuNGMtMC43LTEyLjItMS40LTI0LjUtMi4xLTM2LjdDNzIuNyw2MC40LDY5LjMsNjMuOCw2NS44LDY3LjF6Ii8+PHBhdGggZD0iTTIwLjYsODQuMWM5LjYtMy45LDI4LjMtMTMuMSw0OC40LTM0LjZjMi45LTMuMSw2LjMtNywxMC4xLTExLjhjMS40LDEuMiwzLDIuNCw0LjYsMy42YzEuMSwwLjgsMi4xLDEuNSwzLjIsMi4zICAgYzEuOCwxLjIsNC4xLDEuMSw1LjctMC40YzAuOS0wLjgsMS40LTIsMS41LTMuMmMwLjItNC45LDAuMy05LjksMC4zLTE1LjF2LTAuN2MwLTUuNi0wLjEtMTEuMS0wLjMtMTYuNGMtMC4xLTMtMi43LTUuNC01LjctNS4zICAgYy0wLjMsMC0wLjcsMC4xLTEsMC4xQzc2LDUuMiw2NC44LDcuOSw1My43LDEwLjljLTEsMC4zLTEuOCwwLjgtMi40LDEuNmMtMC41LDAuOC0wLjgsMS43LTAuOCwyLjZjMCwxLjUsMC44LDIuOSwyLDMuNyAgIGMwLjksMC42LDEuOCwxLjEsMi44LDEuN2MxLjgsMS4xLDMuNSwyLDUuMiwyLjljLTIuOCw1LjQtNi4xLDEwLjYtOS43LDE1LjVDNDIuNiw1MCwzMy4yLDU4LjQsMjEuMiw2OS4yQzE2LDczLjksMTEuOSw3Ny40LDksNzkuOSAgIGMtMS4yLDEtMi4zLDIuMS0zLjMsMy4zYy0wLjQsMC40LTAuNywwLjgtMSwxLjNjLTAuMywwLjUtMC41LDEtMC41LDEuNWMwLDAuNywwLjMsMS4zLDAuOSwxLjdjMC4zLDAuMiwwLjYsMC40LDEsMC40ICAgYzAuMywwLjEsMC42LDAuMSwxLDAuMWMxLjEsMCwyLjMtMC4yLDMuNC0wLjVjMi0wLjUsMy45LTEuMiw1LjgtMS45QzE4LjEsODUuMSwxOS43LDg0LjQsMjAuNiw4NC4xeiBNOS43LDg0LjkgICBjLTAuNywwLjItMS40LDAuMy0yLjEsMC40YzAuNS0wLjYsMS4xLTEuMiwxLjctMS44QzEyLDgxLDE2LjcsNzcsMjMuMSw3MS40YzEyLTEwLjgsMjEuNi0xOS40LDMwLTMwLjhjNC01LjQsNy42LTExLjEsMTAuNi0xNy4xICAgYzAuNC0wLjcsMC4xLTEuNi0wLjYtMS45Yy0yLjEtMS4xLTQuMi0yLjMtNi4zLTMuNWMtMC45LTAuNi0xLjgtMS4xLTIuNy0xLjdjLTAuNC0wLjMtMC43LTAuNy0wLjctMS4yYzAtMC4zLDAuMS0wLjYsMC4zLTAuOSAgIGMwLjItMC4zLDAuNS0wLjUsMC44LTAuNUM2NS41LDEwLjcsNzYuNiw4LDg3LjgsNS40YzEuNC0wLjMsMi44LDAuNiwzLjIsMkM5MSw3LjYsOTEsNy44LDkxLDcuOWMwLjIsNS4yLDAuMywxMC43LDAuMywxNi4zdjAuNyAgIGMwLDUuMi0wLjEsMTAuMi0wLjMsMTVjMCwwLjQtMC4yLDAuOS0wLjUsMS4xYy0wLjMsMC4zLTAuNywwLjQtMS4yLDAuNGMtMC4zLDAtMC43LTAuMS0xLTAuM2MtMS0wLjctMi0xLjQtMy4xLTIuMiAgIGMtMi0xLjUtMy45LTMtNS42LTQuNGMtMC42LTAuNS0xLjUtMC40LTIsMC4yYzAsMCwwLDAsMCwwLjFjLTQsNS4yLTcuNyw5LjUtMTAuOCwxMi43Yy0xOS43LDIxLjEtMzgsMzAuMS00Ny40LDMzLjkgICBjLTEuMiwwLjUtMy42LDEuNS02LjEsMi40QzEyLjEsODQuMiwxMC44LDg0LjYsOS43LDg0Ljl6Ii8+PGxpbmUgY2xhc3M9InN0MSIgeDE9IjQuNSIgeDI9IjQuNSIgeTE9Ijg3LjEiIHkyPSI4Ny4xIi8+PHBhdGggZD0iTTk1LjcsNjAuN2MwLTEuNS0wLjEtMy0wLjUtNC40Qzk0LjgsNTUsOTQsNTMuOSw5Mi45LDUzYy0wLjItMC4xLTAuNC0wLjMtMC42LTAuNGMtMC4zLTAuMi0wLjYtMC4zLTEuMi0wLjYgICBjLTAuNi0wLjMtMS41LTAuNy0yLjktMS4zYy0xLjItMC42LTIuMy0xLjEtMy4zLTEuNmMtMi43LTEuNC02LTAuNi03LjksMS44bDAsMGMtNy44LDkuOS0xNywxOC40LTI3LjUsMjUuNCAgIGMtNiwzLjgtMTIuNCw3LjEtMTksOS44Yy01LjMsMi4yLTEwLDMuNi0xMy40LDQuN2MtMS43LDAuNS0zLjEsMS00LjEsMS40Yy0wLjUsMC4yLTAuOSwwLjQtMS40LDAuN2MtMC4yLDAuMi0wLjQsMC40LTAuNiwwLjYgICBjLTAuMiwwLjMtMC40LDAuNy0wLjQsMS4xYzAsMC4xLDAsMC4yLDAsMC4ydjB2MGMwLDAuMiwwLjEsMC41LDAuMywwLjdjMC4yLDAuMywwLjUsMC42LDAuOCwwLjdjMC41LDAuMiwxLjEsMC40LDEuNiwwLjUgICBjMS4zLDAuMiwyLjUsMC4zLDMuOCwwLjRjMS42LDAuMSwzLjcsMC4yLDYuMiwwLjJjMy4yLDAuMSw2LjIsMC4xLDguOSwwLjFjNywwLDEyLjUtMC4yLDE3LjQtMC4zYzguOS0wLjIsMTcuOC0wLjYsMjYuNy0wLjZoMC4zICAgYzEuOCwwLDMuNCwwLDQuOCwwYzIuMywwLjEsNC42LDAsNi45LTAuNGMwLjgtMC4xLDEuNi0wLjQsMi40LTAuOGMwLjctMC40LDEuNC0wLjgsMi0xLjRjMC44LTAuOCwxLjQtMS44LDEuOC0yLjkgICBjMC4zLTEuMSwwLjQtMi4zLDAuNC0zLjVjMC0xLjktMC4xLTQuMi0wLjEtNy41YzAtMi4xLDAuMS00LjYsMC4yLTcuNUM5NS4yLDY3LjksOTUuNyw2NCw5NS43LDYwLjd6IE0yMy40LDk0LjUgICBjLTMuNC0wLjEtNi0wLjItNy43LTAuM2MwLjItMC4xLDAuNC0wLjEsMC41LTAuMmMyLjUtMC44LDYuMy0yLDEwLjctMy42YzAuMSwxLjQsMC4zLDIuOCwwLjQsNC4xQzI2LjEsOTQuNiwyNC44LDk0LjYsMjMuNCw5NC41eiAgICBNMzIuMiw5NC42Yy0wLjYsMC0xLjMsMC0xLjksMGMtMC4yLTEuNy0wLjQtMy41LTAuNS01LjJjMC42LTAuMiwxLjEtMC40LDEuNy0wLjdjMi43LTEuMSw1LjMtMi4zLDcuNS0zLjQgICBjMC4xLDMuMSwwLjIsNi4xLDAuNSw5LjJDMzcuMyw5NC42LDM0LjksOTQuNiwzMi4yLDk0LjZ6IE00OS42LDk0LjNMNDkuNiw5NC4zYy0yLjMsMC00LjcsMC4xLTcuMiwwLjJjLTAuMy0zLjMtMC41LTYuNy0wLjUtMTAgICBjMC0wLjIsMC0wLjMtMC4xLTAuNWMzLjctMS45LDYuNi0zLjYsOC4zLTQuN2MwLjEsNSwwLjMsMTAsMC41LDE1QzUwLjMsOTQuMyw0OS45LDk0LjMsNDkuNiw5NC4zeiBNNTMuNSw5NC4yICAgYy0wLjMtNS41LTAuNS0xMS0wLjYtMTYuNmMwLTAuMSwwLTAuMSwwLTAuMmMzLjUtMi40LDYuOS01LjEsMTAuMi03LjljMC4zLDguMSwwLjUsMTYuMywwLjgsMjQuNEM2MC40LDk0LDU2LjksOTQuMSw1My41LDk0LjJ6ICAgIE03Ny44LDkzLjhoLTEuMWgtMC4zdjBjLTMuMiwwLTYuNCwwLjEtOS42LDAuMWMtMC4zLTguOC0wLjYtMTcuNi0wLjktMjYuNGMwLTAuMSwwLTAuMy0wLjEtMC40YzMuNi0zLjMsNi45LTYuOCwxMC4xLTEwLjQgICBjMC43LDEyLjIsMS40LDI0LjUsMi4xLDM2LjdDNzcuOSw5My41LDc3LjgsOTMuNiw3Ny44LDkzLjh6IE05Miw3Mi41TDkyLDcyLjVjLTAuMiwzLTAuMiw1LjYtMC4yLDcuN2MwLDMuNCwwLjEsNS44LDAuMSw3LjUgICBjMCwwLjktMC4xLDEuOC0wLjMsMi43Yy0wLjIsMC42LTAuNSwxLjItMSwxLjZjLTAuNCwwLjQtMC44LDAuNy0xLjIsMC45Yy0wLjksMC40LTEuOCwwLjYtMi44LDAuN2MtMS4zLDAuMS0zLDAuMi01LjIsMC4yaC0wLjYgICBsLTIuMy00MC4zYzAuMi0wLjMsMC40LTAuNSwwLjYtMC44bDAsMGMwLjctMC45LDEuNy0xLjQsMi44LTEuNGMwLjUsMCwxLjEsMC4xLDEuNiwwLjRjMSwwLjUsMi4xLDEuMSwzLjQsMS42ICAgYzEuOSwwLjksMi45LDEuMywzLjUsMS42YzAuMywwLjEsMC40LDAuMiwwLjUsMC4yYzAuMSwwLDAuMSwwLjEsMC4yLDAuMWMwLjYsMC41LDEuMSwxLjIsMS4zLDEuOWMwLjMsMS4xLDAuNCwyLjMsMC40LDMuNSAgIEM5Mi45LDYzLjYsOTIuMyw2Ny42LDkyLDcyLjV6Ii8+PC9nPjwvc3ZnPg=="
+                            alt="Logo">
+                       
+                    </a> -->
+                    <span class="navbar-burger" data-target="navbarMenuHeroB">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </div>
+                <div id="navbarMenuHeroB" class="navbar-menu">
+                    <div class="navbar-start">
+                        
+                        <a class="navbar-item" href="../../japan/market_monitor.html">
+                            
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-home"></i>
+                                    </span>
+                                    <span>Home</span>
+                                </span>
+                            </a>
+
+                            <div class="navbar-item has-dropdown is-hoverable has-background-dark">
+                                <a class="navbar-link">
+                                    <span>Choose Market</span>
+                                </a>
+
+                                <div class="navbar-dropdown has-background-dark">
+                                    
+                                    <a class="navbar-item" href="../../australia/market_monitor.html">
+                                        <span>Australia</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../canada/market_monitor.html">
+                                        <span>Canada</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../germany/market_monitor.html">
+                                        <span>Germany</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../hong_kong/market_monitor.html">
+                                        <span>Hong Kong</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../japan/market_monitor.html">
+                                        <span>Japan</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../nordic_markets/market_monitor.html">
+                                        <span>Nordic Markets</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_kingdom/market_monitor.html">
+                                        <span>United Kingdom</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_states/market_monitor.html">
+                                        <span>United States</span>
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                    </div>
+                    <div class="navbar-end"></div>
+                    <span class="navbar-item">
+                        <a class="button is-info is-light" href="https://twitter.com/LignoL23">
+                            <span class="icon">
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                            <span>Twitter</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <a class="button  is-success is-light" href="https://www.paypal.com/paypalme/volkerlorrmann/5">
+                            <span class="icon">
+                                <i class="fab fa-paypal"></i>
+                            </span>
+                            <span>paypal.me</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+                        <script
+                            type='text/javascript'>kofiwidget2.init('Support me', '#d6d6d6', 'W7W0ACJPB'); kofiwidget2.draw();</script>
+                    </span>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="columns is-multiline is-mobile is-centered">
+                <div class="column is-1">
+                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDEwMCAxMDA7IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOm5vbmU7fQoJLnN0MXtmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO30KPC9zdHlsZT48dGl0bGUvPjxnPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MS44LDg0YzAuMSwwLjIsMC4xLDAuMywwLjEsMC41YzAsMy4zLDAuMiw2LjcsMC41LDEwYzIuNi0wLjEsNC45LTAuMSw3LjItMC4ydjBjMC4zLDAsMC43LDAsMSwwICAgYy0wLjMtNS0wLjQtMTAtMC41LTE1QzQ4LjQsODAuNCw0NS41LDgyLjEsNDEuOCw4NHoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTYuMyw5NGMtMC4yLDAuMS0wLjQsMC4xLTAuNSwwLjJjMS43LDAuMSw0LjMsMC4yLDcuNywwLjNjMS40LDAsMi43LDAuMSw0LDAuMWMtMC4xLTEuNC0wLjMtMi44LTAuNC00LjEgICBDMjIuNiw5Mi4xLDE4LjgsOTMuMiwxNi4zLDk0eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02Ni45LDQ3LjVjMy4xLTMuMyw2LjgtNy41LDEwLjgtMTIuN2MwLDAsMCwwLDAtMC4xYzAuNS0wLjYsMS40LTAuNywyLTAuMmMxLjcsMS41LDMuNiwyLjksNS42LDQuNCAgIGMxLDAuOCwyLjEsMS41LDMuMSwyLjJjMC4zLDAuMiwwLjYsMC4zLDEsMC4zYzAuNCwwLDAuOC0wLjIsMS4yLTAuNGMwLjMtMC4zLDAuNS0wLjcsMC41LTEuMWMwLjItNC45LDAuMy05LjksMC4zLTE1di0wLjcgICBjMC01LjYtMC4xLTExLTAuMy0xNi4zYzAtMC4yLDAtMC4zLTAuMS0wLjVjLTAuMy0xLjQtMS43LTIuMy0zLjItMkM3Ni42LDgsNjUuNSwxMC43LDU0LjUsMTMuN2MtMC4zLDAuMS0wLjYsMC4zLTAuOCwwLjUgICBjLTAuMiwwLjMtMC4zLDAuNi0wLjMsMC45YzAsMC41LDAuMywxLDAuNywxLjJjMC45LDAuNiwxLjgsMS4xLDIuNywxLjdjMi4yLDEuMyw0LjMsMi41LDYuMywzLjVjMC43LDAuNCwxLDEuMiwwLjYsMS45ICAgYy0zLjEsNi02LjYsMTEuNy0xMC42LDE3LjFjLTguNSwxMS40LTE4LDIwLTMwLDMwLjhDMTYuNyw3NywxMiw4MSw5LjQsODMuNWMtMC42LDAuNi0xLjIsMS4yLTEuNywxLjhjMC43LTAuMSwxLjQtMC4yLDIuMS0wLjQgICBjMS4xLTAuMywyLjQtMC43LDMuNi0xLjFjMi41LTAuOSw0LjktMS45LDYuMS0yLjRDMjguOSw3Ny42LDQ3LjEsNjguNiw2Ni45LDQ3LjV6Ii8+PHBhdGggY2xhc3M9InN0MCIgZD0iTTMxLjUsODguN2MtMC42LDAuMi0xLjIsMC41LTEuNywwLjdjMC4yLDEuNywwLjQsMy41LDAuNSw1LjJjMC43LDAsMS4zLDAsMS45LDBjMi42LDAsNSwwLDcuMy0wLjEgICBjLTAuMy0zLjEtMC40LTYuMS0wLjUtOS4yQzM2LjgsODYuNSwzNC4yLDg3LjYsMzEuNSw4OC43eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik01Mi45LDc3LjVjMCwwLjEsMCwwLjEsMCwwLjJjMC4xLDUuNSwwLjMsMTEuMSwwLjYsMTYuNmMzLjQtMC4xLDYuOS0wLjIsMTAuNC0wLjNjLTAuMy04LjEtMC41LTE2LjMtMC44LTI0LjQgICBDNTkuOCw3Mi40LDU2LjQsNzUsNTIuOSw3Ny41eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik05MS4yLDU1LjNjLTAuMS0wLjEtMC4xLTAuMS0wLjItMC4xYy0wLjEsMC0wLjItMC4xLTAuNS0wLjJjLTAuNi0wLjMtMS42LTAuNy0zLjUtMS42ICAgYy0xLjItMC42LTIuMy0xLjEtMy40LTEuNmMtMC41LTAuMi0xLTAuNC0xLjYtMC40Yy0xLjEsMC0yLjEsMC41LTIuOCwxLjRsMCwwYy0wLjIsMC4zLTAuNCwwLjUtMC42LDAuOGwyLjMsNDAuM2gwLjYgICBjMi4yLDAsMy45LDAsNS4yLTAuMmMxLTAuMSwxLjktMC4zLDIuOC0wLjdjMC41LTAuMiwwLjktMC41LDEuMi0wLjljMC41LTAuNCwwLjgtMSwxLTEuNmMwLjItMC45LDAuMy0xLjgsMC4zLTIuNyAgIGMwLTEuNy0wLjEtNC4xLTAuMS03LjVjMC0yLjEsMC4xLTQuNywwLjMtNy43bDAsMGMwLjMtNC45LDAuOC04LjgsMC44LTExLjhjMC0xLjItMC4xLTIuNC0wLjQtMy41QzkyLjIsNTYuNSw5MS44LDU1LjgsOTEuMiw1NS4zeiAgICIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02NS44LDY3LjFjMCwwLjEsMC4xLDAuMywwLjEsMC40YzAuMyw4LjgsMC42LDE3LjYsMC45LDI2LjRjMy4yLTAuMSw2LjQtMC4xLDkuNi0wLjF2MGgwLjNoMS4xICAgYzAtMC4xLDAuMS0wLjIsMC4xLTAuNGMtMC43LTEyLjItMS40LTI0LjUtMi4xLTM2LjdDNzIuNyw2MC40LDY5LjMsNjMuOCw2NS44LDY3LjF6Ii8+PHBhdGggZD0iTTIwLjYsODQuMWM5LjYtMy45LDI4LjMtMTMuMSw0OC40LTM0LjZjMi45LTMuMSw2LjMtNywxMC4xLTExLjhjMS40LDEuMiwzLDIuNCw0LjYsMy42YzEuMSwwLjgsMi4xLDEuNSwzLjIsMi4zICAgYzEuOCwxLjIsNC4xLDEuMSw1LjctMC40YzAuOS0wLjgsMS40LTIsMS41LTMuMmMwLjItNC45LDAuMy05LjksMC4zLTE1LjF2LTAuN2MwLTUuNi0wLjEtMTEuMS0wLjMtMTYuNGMtMC4xLTMtMi43LTUuNC01LjctNS4zICAgYy0wLjMsMC0wLjcsMC4xLTEsMC4xQzc2LDUuMiw2NC44LDcuOSw1My43LDEwLjljLTEsMC4zLTEuOCwwLjgtMi40LDEuNmMtMC41LDAuOC0wLjgsMS43LTAuOCwyLjZjMCwxLjUsMC44LDIuOSwyLDMuNyAgIGMwLjksMC42LDEuOCwxLjEsMi44LDEuN2MxLjgsMS4xLDMuNSwyLDUuMiwyLjljLTIuOCw1LjQtNi4xLDEwLjYtOS43LDE1LjVDNDIuNiw1MCwzMy4yLDU4LjQsMjEuMiw2OS4yQzE2LDczLjksMTEuOSw3Ny40LDksNzkuOSAgIGMtMS4yLDEtMi4zLDIuMS0zLjMsMy4zYy0wLjQsMC40LTAuNywwLjgtMSwxLjNjLTAuMywwLjUtMC41LDEtMC41LDEuNWMwLDAuNywwLjMsMS4zLDAuOSwxLjdjMC4zLDAuMiwwLjYsMC40LDEsMC40ICAgYzAuMywwLjEsMC42LDAuMSwxLDAuMWMxLjEsMCwyLjMtMC4yLDMuNC0wLjVjMi0wLjUsMy45LTEuMiw1LjgtMS45QzE4LjEsODUuMSwxOS43LDg0LjQsMjAuNiw4NC4xeiBNOS43LDg0LjkgICBjLTAuNywwLjItMS40LDAuMy0yLjEsMC40YzAuNS0wLjYsMS4xLTEuMiwxLjctMS44QzEyLDgxLDE2LjcsNzcsMjMuMSw3MS40YzEyLTEwLjgsMjEuNi0xOS40LDMwLTMwLjhjNC01LjQsNy42LTExLjEsMTAuNi0xNy4xICAgYzAuNC0wLjcsMC4xLTEuNi0wLjYtMS45Yy0yLjEtMS4xLTQuMi0yLjMtNi4zLTMuNWMtMC45LTAuNi0xLjgtMS4xLTIuNy0xLjdjLTAuNC0wLjMtMC43LTAuNy0wLjctMS4yYzAtMC4zLDAuMS0wLjYsMC4zLTAuOSAgIGMwLjItMC4zLDAuNS0wLjUsMC44LTAuNUM2NS41LDEwLjcsNzYuNiw4LDg3LjgsNS40YzEuNC0wLjMsMi44LDAuNiwzLjIsMkM5MSw3LjYsOTEsNy44LDkxLDcuOWMwLjIsNS4yLDAuMywxMC43LDAuMywxNi4zdjAuNyAgIGMwLDUuMi0wLjEsMTAuMi0wLjMsMTVjMCwwLjQtMC4yLDAuOS0wLjUsMS4xYy0wLjMsMC4zLTAuNywwLjQtMS4yLDAuNGMtMC4zLDAtMC43LTAuMS0xLTAuM2MtMS0wLjctMi0xLjQtMy4xLTIuMiAgIGMtMi0xLjUtMy45LTMtNS42LTQuNGMtMC42LTAuNS0xLjUtMC40LTIsMC4yYzAsMCwwLDAsMCwwLjFjLTQsNS4yLTcuNyw5LjUtMTAuOCwxMi43Yy0xOS43LDIxLjEtMzgsMzAuMS00Ny40LDMzLjkgICBjLTEuMiwwLjUtMy42LDEuNS02LjEsMi40QzEyLjEsODQuMiwxMC44LDg0LjYsOS43LDg0Ljl6Ii8+PGxpbmUgY2xhc3M9InN0MSIgeDE9IjQuNSIgeDI9IjQuNSIgeTE9Ijg3LjEiIHkyPSI4Ny4xIi8+PHBhdGggZD0iTTk1LjcsNjAuN2MwLTEuNS0wLjEtMy0wLjUtNC40Qzk0LjgsNTUsOTQsNTMuOSw5Mi45LDUzYy0wLjItMC4xLTAuNC0wLjMtMC42LTAuNGMtMC4zLTAuMi0wLjYtMC4zLTEuMi0wLjYgICBjLTAuNi0wLjMtMS41LTAuNy0yLjktMS4zYy0xLjItMC42LTIuMy0xLjEtMy4zLTEuNmMtMi43LTEuNC02LTAuNi03LjksMS44bDAsMGMtNy44LDkuOS0xNywxOC40LTI3LjUsMjUuNCAgIGMtNiwzLjgtMTIuNCw3LjEtMTksOS44Yy01LjMsMi4yLTEwLDMuNi0xMy40LDQuN2MtMS43LDAuNS0zLjEsMS00LjEsMS40Yy0wLjUsMC4yLTAuOSwwLjQtMS40LDAuN2MtMC4yLDAuMi0wLjQsMC40LTAuNiwwLjYgICBjLTAuMiwwLjMtMC40LDAuNy0wLjQsMS4xYzAsMC4xLDAsMC4yLDAsMC4ydjB2MGMwLDAuMiwwLjEsMC41LDAuMywwLjdjMC4yLDAuMywwLjUsMC42LDAuOCwwLjdjMC41LDAuMiwxLjEsMC40LDEuNiwwLjUgICBjMS4zLDAuMiwyLjUsMC4zLDMuOCwwLjRjMS42LDAuMSwzLjcsMC4yLDYuMiwwLjJjMy4yLDAuMSw2LjIsMC4xLDguOSwwLjFjNywwLDEyLjUtMC4yLDE3LjQtMC4zYzguOS0wLjIsMTcuOC0wLjYsMjYuNy0wLjZoMC4zICAgYzEuOCwwLDMuNCwwLDQuOCwwYzIuMywwLjEsNC42LDAsNi45LTAuNGMwLjgtMC4xLDEuNi0wLjQsMi40LTAuOGMwLjctMC40LDEuNC0wLjgsMi0xLjRjMC44LTAuOCwxLjQtMS44LDEuOC0yLjkgICBjMC4zLTEuMSwwLjQtMi4zLDAuNC0zLjVjMC0xLjktMC4xLTQuMi0wLjEtNy41YzAtMi4xLDAuMS00LjYsMC4yLTcuNUM5NS4yLDY3LjksOTUuNyw2NCw5NS43LDYwLjd6IE0yMy40LDk0LjUgICBjLTMuNC0wLjEtNi0wLjItNy43LTAuM2MwLjItMC4xLDAuNC0wLjEsMC41LTAuMmMyLjUtMC44LDYuMy0yLDEwLjctMy42YzAuMSwxLjQsMC4zLDIuOCwwLjQsNC4xQzI2LjEsOTQuNiwyNC44LDk0LjYsMjMuNCw5NC41eiAgICBNMzIuMiw5NC42Yy0wLjYsMC0xLjMsMC0xLjksMGMtMC4yLTEuNy0wLjQtMy41LTAuNS01LjJjMC42LTAuMiwxLjEtMC40LDEuNy0wLjdjMi43LTEuMSw1LjMtMi4zLDcuNS0zLjQgICBjMC4xLDMuMSwwLjIsNi4xLDAuNSw5LjJDMzcuMyw5NC42LDM0LjksOTQuNiwzMi4yLDk0LjZ6IE00OS42LDk0LjNMNDkuNiw5NC4zYy0yLjMsMC00LjcsMC4xLTcuMiwwLjJjLTAuMy0zLjMtMC41LTYuNy0wLjUtMTAgICBjMC0wLjIsMC0wLjMtMC4xLTAuNWMzLjctMS45LDYuNi0zLjYsOC4zLTQuN2MwLjEsNSwwLjMsMTAsMC41LDE1QzUwLjMsOTQuMyw0OS45LDk0LjMsNDkuNiw5NC4zeiBNNTMuNSw5NC4yICAgYy0wLjMtNS41LTAuNS0xMS0wLjYtMTYuNmMwLTAuMSwwLTAuMSwwLTAuMmMzLjUtMi40LDYuOS01LjEsMTAuMi03LjljMC4zLDguMSwwLjUsMTYuMywwLjgsMjQuNEM2MC40LDk0LDU2LjksOTQuMSw1My41LDk0LjJ6ICAgIE03Ny44LDkzLjhoLTEuMWgtMC4zdjBjLTMuMiwwLTYuNCwwLjEtOS42LDAuMWMtMC4zLTguOC0wLjYtMTcuNi0wLjktMjYuNGMwLTAuMSwwLTAuMy0wLjEtMC40YzMuNi0zLjMsNi45LTYuOCwxMC4xLTEwLjQgICBjMC43LDEyLjIsMS40LDI0LjUsMi4xLDM2LjdDNzcuOSw5My41LDc3LjgsOTMuNiw3Ny44LDkzLjh6IE05Miw3Mi41TDkyLDcyLjVjLTAuMiwzLTAuMiw1LjYtMC4yLDcuN2MwLDMuNCwwLjEsNS44LDAuMSw3LjUgICBjMCwwLjktMC4xLDEuOC0wLjMsMi43Yy0wLjIsMC42LTAuNSwxLjItMSwxLjZjLTAuNCwwLjQtMC44LDAuNy0xLjIsMC45Yy0wLjksMC40LTEuOCwwLjYtMi44LDAuN2MtMS4zLDAuMS0zLDAuMi01LjIsMC4yaC0wLjYgICBsLTIuMy00MC4zYzAuMi0wLjMsMC40LTAuNSwwLjYtMC44bDAsMGMwLjctMC45LDEuNy0xLjQsMi44LTEuNGMwLjUsMCwxLjEsMC4xLDEuNiwwLjRjMSwwLjUsMi4xLDEuMSwzLjQsMS42ICAgYzEuOSwwLjksMi45LDEuMywzLjUsMS42YzAuMywwLjEsMC40LDAuMiwwLjUsMC4yYzAuMSwwLDAuMSwwLjEsMC4yLDAuMWMwLjYsMC41LDEuMSwxLjIsMS4zLDEuOWMwLjMsMS4xLDAuNCwyLjMsMC40LDMuNSAgIEM5Mi45LDYzLjYsOTIuMyw2Ny42LDkyLDcyLjV6Ii8+PC9nPjwvc3ZnPg==" alt="Logo">
+                </div>
+                <div class="column is-4">
+                    <p class="title">
+                        EOD Stockmarket Scans
+                    </p>
+                    <p class="subtitle">
+                        Fintwits most popular stockmarket scans
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+            <div class="container">
+                <ul>
+                    
+                    <li class="is-active">
+                        <a href="../Ray/RSNHBP 1M_result_table.html"> Results </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Ray/RSNHBP 1M_minicharts.html"> Minicharts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Ray/RSNHBP 1M_charts.html"> Charts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Ray/RSNHBP 1M_criteria.html"> Criteria </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+</section>
+    <div class="columns is-centered">
+        <div class="column is-2">
+            <div class="box has-background-light my-0 mx-2 p-auto">
+    <aside class="menu">
+        <p class="menu-label has-text-dark">
+            Market Monitor
+        </p>
+        <ul class="menu-list">
+            <li><a class="has-text-grey-light">New Highs/Lows</a></li>
+            <li><a class="has-text-grey-light">Breadth</a></li>
+            <li><a class="has-text-grey-light">Above/Below SMA</a></li>
+            <li><a class="has-text-grey-light">Sectors</a></li>
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Kristjan Kullamägi
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Kristjan Kullamägi/Biggest Gainers 1M_minicharts.html">
+                        Biggest Gainers 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Kristjan Kullamägi/Biggest Gainers 3M_minicharts.html">
+                        Biggest Gainers 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Kristjan Kullamägi/Biggest Gainers 6M_minicharts.html">
+                        Biggest Gainers 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Kristjan Kullamägi/Biggest Gainers 12M_minicharts.html">
+                        Biggest Gainers 12M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Kristjan Kullamägi/EP with Growth_minicharts.html">
+                        EP with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Kristjan Kullamägi/EP_minicharts.html">
+                        EP
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Kristjan Kullamägi/High Trend Intensity_minicharts.html">
+                        High Trend Intensity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Kristjan Kullamägi/Small Stock Momo_minicharts.html">
+                        Small Stock Momo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Kristjan Kullamägi/Momentum_minicharts.html">
+                        Momentum
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Brad Schulz
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Brad Schulz/Pocket Pivot_minicharts.html">
+                        Pocket Pivot
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Stockbee
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Stockbee/4% Gainers_minicharts.html">
+                        4% Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Stockbee/Combo_minicharts.html">
+                        Combo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Stockbee/Ants_minicharts.html">
+                        Ants
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Stockbee/Breakout 1M Base_minicharts.html">
+                        Breakout 1M Base
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Stockbee/Breakout 3M Base_minicharts.html">
+                        Breakout 3M Base
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Leif Soreide
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Leif Soreide/HTF_minicharts.html">
+                        HTF
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Blake Davis
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Blake Davis/Strength_minicharts.html">
+                        Strength
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ben
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Ben/Power of 3_minicharts.html">
+                        Power of 3
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Ben/Velocity_minicharts.html">
+                        Velocity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Ben/Focus_minicharts.html">
+                        Focus
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ray
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Ray/RSNHBP 5D_minicharts.html">
+                        RSNHBP 5D
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="is-active"
+                        href="../../japan/Ray/RSNHBP 1M_minicharts.html">
+                        RSNHBP 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Ray/RSNHBP 3M_minicharts.html">
+                        RSNHBP 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Ray/RSNHBP 6M_minicharts.html">
+                        RSNHBP 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Ray/RSNHBP 12M_minicharts.html">
+                        RSNHBP 12M
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Mark Minvervini
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Mark Minvervini/Trend Template_minicharts.html">
+                        Trend Template
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Vo
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Vo/Top Gainers From Open_minicharts.html">
+                        Top Gainers From Open
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Vo/Top Gainers_minicharts.html">
+                        Top Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Vo/Volume Gainers_minicharts.html">
+                        Volume Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Vo/Insiders_minicharts.html">
+                        Insiders
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Vo/Darvas Scan_minicharts.html">
+                        Darvas Scan
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Vo/Darvas Scan with Growth_minicharts.html">
+                        Darvas Scan with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Vo/52W High_minicharts.html">
+                        52W High
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Vo/Quite and Tight_minicharts.html">
+                        Quite and Tight
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+    </aside>
+</div>
+        </div>
+        <div class="column is-10">
+            
+            
+<section class="block my-6">
+    <div class="columns ">
+        <div class="column is-5 has-text-left">
+            <h1 class="title is-4">RSNHBP 1M @ Japan</h1>
+            <h2 class="subtitle is-6">2022-04-20</h2>
+        </div>
+        <div class="column has-text-right mr-5">
+            <div class="media">
+
+                <div class="media-content">
+                    <p class="title is-5">Ray</p>
+                    <p class="subtitle is-6"><a class="has-text-grey-light" href="https://twitter.com/RayTL_">@RayTL_</a></p>
+                </div>
+                <div class="media-right">
+                    <figure class="image is-48x48">
+                        <img src="https://unavatar.io/twitter/RayTL_" alt="Placeholder image">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  
+            <section class="my-auto mr-5">
+                
+    <div class="table-container">
+        <table border="1" class="dataframe table is-striped no-wrap" id="data" style="width:100%; font-size:85%">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>symbol_id</th>
+      <th>symbol</th>
+      <th>name</th>
+      <th>exchange</th>
+      <th>sector</th>
+      <th>industry</th>
+      <th>country</th>
+      <th>yahoo_symbol</th>
+      <th>forexpros_symbol</th>
+      <th>IPO Date</th>
+      <th>EPS Growth Q</th>
+      <th>EPS Growth Y</th>
+      <th>EPS Growth FQ</th>
+      <th>EPS Growth FY</th>
+      <th>EPS Growth FQ1</th>
+      <th>EPS Growth FY1</th>
+      <th>Rev Growth Q</th>
+      <th>Rev Growth FQ</th>
+      <th>Rev Growth FY</th>
+      <th>Rev Growth FQ1</th>
+      <th>Rev Growth FY1</th>
+      <th>Insiders %</th>
+      <th>Institutions %</th>
+      <th>Institutions No.</th>
+      <th>Market Cap</th>
+      <th>Shares Outstanding</th>
+      <th>Shares Float</th>
+      <th>Shares Short</th>
+      <th>Short Ratio</th>
+      <th>Net Insider Trading %</th>
+      <th>close</th>
+      <th>volume</th>
+      <th>1m RS</th>
+      <th>3m RS</th>
+      <th>RS</th>
+      <th>Industry 1m RS</th>
+      <th>Industry 3m RS</th>
+      <th>Industry RS</th>
+      <th>UD Ratio</th>
+      <th>50d avg Volume</th>
+      <th>rel Volume</th>
+      <th>Pocket Pivot</th>
+      <th>1w Pocket Pivots</th>
+      <th>1m Pocket Pivots</th>
+      <th>Rocket Ratio</th>
+      <th>52w High</th>
+      <th>% below 52w High</th>
+      <th>52w Low</th>
+      <th>% above 52w Low</th>
+      <th>adr(20)</th>
+      <th>atr(14)</th>
+      <th>roc</th>
+      <th>roc(5)</th>
+      <th>roc(21)</th>
+      <th>roc(63)</th>
+      <th>roc(126)</th>
+      <th>roc(252)</th>
+      <th>ema(9)</th>
+      <th>% from 9d ema</th>
+      <th>ema(21)</th>
+      <th>% from 21d ema</th>
+      <th>sma(50)</th>
+      <th>% from 50d sma</th>
+      <th>market</th>
+      <th>date</th>
+      <th>group_name</th>
+      <th>scan_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1131559</td>
+      <td>7066</td>
+      <td>Peers Co Ltd</td>
+      <td>Tokyo</td>
+      <td>Industrials</td>
+      <td>Conglomerates</td>
+      <td>Japan</td>
+      <td>7066.T</td>
+      <td>Tokyo:7066</td>
+      <td>2019-06-20</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>66.14</td>
+      <td>1.60</td>
+      <td>1.0</td>
+      <td>5.581427e+09</td>
+      <td>4.639590e+06</td>
+      <td>1.292590e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1426.0</td>
+      <td>642600.0</td>
+      <td>100</td>
+      <td>100</td>
+      <td>99</td>
+      <td>95</td>
+      <td>74</td>
+      <td>51</td>
+      <td>3.23</td>
+      <td>467258.0</td>
+      <td>1.38</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>2.77</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>208.36</td>
+      <td>6.98</td>
+      <td>3.63</td>
+      <td>247.80</td>
+      <td>202.76</td>
+      <td>73.90</td>
+      <td>NaN</td>
+      <td>1211.24</td>
+      <td>17.73</td>
+      <td>941.69</td>
+      <td>51.43</td>
+      <td>574.28</td>
+      <td>148.31</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>991514</td>
+      <td>2776</td>
+      <td>Shinto Holdings Inc</td>
+      <td>Tokyo</td>
+      <td>Consumer Cyclical</td>
+      <td>Apparel Manufacturing</td>
+      <td>Japan</td>
+      <td>2776.T</td>
+      <td>Tokyo:2776</td>
+      <td>2003-07-17</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>19.08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>47.40</td>
+      <td>1.13</td>
+      <td>1.0</td>
+      <td>4.458223e+09</td>
+      <td>2.591990e+07</td>
+      <td>9.938726e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>175.0</td>
+      <td>1365200.0</td>
+      <td>99</td>
+      <td>99</td>
+      <td>99</td>
+      <td>64</td>
+      <td>98</td>
+      <td>90</td>
+      <td>1.97</td>
+      <td>1081074.0</td>
+      <td>1.26</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>9.19</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.89</td>
+      <td>15.21</td>
+      <td>8.02</td>
+      <td>10.06</td>
+      <td>48.31</td>
+      <td>191.67</td>
+      <td>165.15</td>
+      <td>NaN</td>
+      <td>160.47</td>
+      <td>9.05</td>
+      <td>141.54</td>
+      <td>23.64</td>
+      <td>104.56</td>
+      <td>67.37</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>998061</td>
+      <td>3479</td>
+      <td>TKP Corp</td>
+      <td>Tokyo</td>
+      <td>Real Estate</td>
+      <td>Real Estate Services</td>
+      <td>Japan</td>
+      <td>3479.T</td>
+      <td>Tokyo:3479</td>
+      <td>2017-03-28</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.27</td>
+      <td>NaN</td>
+      <td>1.68</td>
+      <td>-0.06</td>
+      <td>0.13</td>
+      <td>0.13</td>
+      <td>0.27</td>
+      <td>0.14</td>
+      <td>60.39</td>
+      <td>19.21</td>
+      <td>51.0</td>
+      <td>7.105169e+10</td>
+      <td>4.169700e+07</td>
+      <td>1.617216e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1844.0</td>
+      <td>731900.0</td>
+      <td>99</td>
+      <td>96</td>
+      <td>91</td>
+      <td>81</td>
+      <td>84</td>
+      <td>87</td>
+      <td>2.25</td>
+      <td>319688.0</td>
+      <td>2.29</td>
+      <td>True</td>
+      <td>5.0</td>
+      <td>9.0</td>
+      <td>50.59</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.12</td>
+      <td>87.86</td>
+      <td>1.77</td>
+      <td>19.51</td>
+      <td>49.55</td>
+      <td>29.04</td>
+      <td>-1.23</td>
+      <td>NaN</td>
+      <td>1635.82</td>
+      <td>12.73</td>
+      <td>1489.14</td>
+      <td>23.83</td>
+      <td>1363.56</td>
+      <td>35.23</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>976149</td>
+      <td>6192</td>
+      <td>HyAS&amp;Co. Inc</td>
+      <td>Tokyo</td>
+      <td>Real Estate</td>
+      <td>Real Estate Services</td>
+      <td>Japan</td>
+      <td>6192.T</td>
+      <td>Tokyo:6192</td>
+      <td>2016-04-06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.19</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>66.83</td>
+      <td>1.85</td>
+      <td>3.0</td>
+      <td>4.255886e+09</td>
+      <td>3.700770e+07</td>
+      <td>9.708811e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>159.0</td>
+      <td>6802300.0</td>
+      <td>99</td>
+      <td>87</td>
+      <td>77</td>
+      <td>95</td>
+      <td>74</td>
+      <td>51</td>
+      <td>5.70</td>
+      <td>262862.0</td>
+      <td>25.88</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>36.94</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7.22</td>
+      <td>8.07</td>
+      <td>32.50</td>
+      <td>38.26</td>
+      <td>50.00</td>
+      <td>11.97</td>
+      <td>-20.90</td>
+      <td>NaN</td>
+      <td>124.84</td>
+      <td>27.36</td>
+      <td>119.92</td>
+      <td>32.59</td>
+      <td>116.90</td>
+      <td>36.01</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>992048</td>
+      <td>6334</td>
+      <td>Meiji Machine Co Ltd</td>
+      <td>Tokyo</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>Japan</td>
+      <td>6334.T</td>
+      <td>Tokyo:6334</td>
+      <td>2005-09-29</td>
+      <td>1.95</td>
+      <td>1.95</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.40</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>49.99</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>2.346010e+09</td>
+      <td>1.138840e+07</td>
+      <td>5.055775e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>282.0</td>
+      <td>7846100.0</td>
+      <td>99</td>
+      <td>94</td>
+      <td>92</td>
+      <td>38</td>
+      <td>25</td>
+      <td>41</td>
+      <td>9.32</td>
+      <td>527588.0</td>
+      <td>14.87</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>9.58</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>17.79</td>
+      <td>0.71</td>
+      <td>36.23</td>
+      <td>38.92</td>
+      <td>21.55</td>
+      <td>16.05</td>
+      <td>NaN</td>
+      <td>233.81</td>
+      <td>20.61</td>
+      <td>219.56</td>
+      <td>28.44</td>
+      <td>211.64</td>
+      <td>33.25</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1138466</td>
+      <td>7803</td>
+      <td>Bushiroad Inc</td>
+      <td>Tokyo</td>
+      <td>Communication Services</td>
+      <td>Electronic Gaming &amp; Multimedia</td>
+      <td>Japan</td>
+      <td>7803.T</td>
+      <td>Tokyo:7803</td>
+      <td>2019-07-29</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.22</td>
+      <td>NaN</td>
+      <td>0.03</td>
+      <td>NaN</td>
+      <td>-0.00</td>
+      <td>0.21</td>
+      <td>0.82</td>
+      <td>0.06</td>
+      <td>69.56</td>
+      <td>14.71</td>
+      <td>31.0</td>
+      <td>5.069763e+10</td>
+      <td>3.160700e+07</td>
+      <td>1.025301e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1642.0</td>
+      <td>225800.0</td>
+      <td>98</td>
+      <td>75</td>
+      <td>88</td>
+      <td>97</td>
+      <td>100</td>
+      <td>89</td>
+      <td>1.19</td>
+      <td>217208.0</td>
+      <td>1.04</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>47.20</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.20</td>
+      <td>67.14</td>
+      <td>0.43</td>
+      <td>6.55</td>
+      <td>26.21</td>
+      <td>4.25</td>
+      <td>2.69</td>
+      <td>NaN</td>
+      <td>1571.21</td>
+      <td>4.51</td>
+      <td>1481.67</td>
+      <td>10.82</td>
+      <td>1340.00</td>
+      <td>22.54</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>44255</td>
+      <td>5232</td>
+      <td>Sumitomo Osaka Cement Co., Ltd., Japan</td>
+      <td>Tokyo</td>
+      <td>Basic Materials</td>
+      <td>Building Materials</td>
+      <td>NaN</td>
+      <td>5232.T</td>
+      <td>Tokyo:5232</td>
+      <td>2000-01-04</td>
+      <td>-0.38</td>
+      <td>-0.36</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.25</td>
+      <td>0.02</td>
+      <td>0.63</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>5.92</td>
+      <td>59.66</td>
+      <td>99.0</td>
+      <td>1.120904e+11</td>
+      <td>3.575450e+07</td>
+      <td>3.628511e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>4045.0</td>
+      <td>3025500.0</td>
+      <td>96</td>
+      <td>89</td>
+      <td>94</td>
+      <td>19</td>
+      <td>31</td>
+      <td>67</td>
+      <td>1.13</td>
+      <td>365064.0</td>
+      <td>8.29</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>99.39</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.87</td>
+      <td>138.93</td>
+      <td>18.45</td>
+      <td>27.80</td>
+      <td>17.76</td>
+      <td>14.10</td>
+      <td>21.11</td>
+      <td>NaN</td>
+      <td>3420.21</td>
+      <td>18.27</td>
+      <td>3363.11</td>
+      <td>20.28</td>
+      <td>3391.90</td>
+      <td>19.25</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>952376</td>
+      <td>6440</td>
+      <td>Juki Corp</td>
+      <td>Tokyo</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>Japan</td>
+      <td>6440.T</td>
+      <td>Tokyo:6440</td>
+      <td>2001-01-01</td>
+      <td>1.40</td>
+      <td>1.40</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.19</td>
+      <td>0.04</td>
+      <td>0.09</td>
+      <td>0.09</td>
+      <td>0.03</td>
+      <td>2.02</td>
+      <td>35.61</td>
+      <td>48.0</td>
+      <td>2.372871e+10</td>
+      <td>2.929470e+07</td>
+      <td>2.851157e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>903.0</td>
+      <td>1861700.0</td>
+      <td>98</td>
+      <td>86</td>
+      <td>89</td>
+      <td>38</td>
+      <td>25</td>
+      <td>41</td>
+      <td>1.24</td>
+      <td>542440.0</td>
+      <td>3.43</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>52.56</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.85</td>
+      <td>30.29</td>
+      <td>7.24</td>
+      <td>13.02</td>
+      <td>25.07</td>
+      <td>10.12</td>
+      <td>11.48</td>
+      <td>NaN</td>
+      <td>836.81</td>
+      <td>7.91</td>
+      <td>810.75</td>
+      <td>11.38</td>
+      <td>739.74</td>
+      <td>22.07</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>991936</td>
+      <td>5724</td>
+      <td>Asaka Riken Co Ltd</td>
+      <td>Tokyo</td>
+      <td>Basic Materials</td>
+      <td>Other Industrial Metals &amp; Mining</td>
+      <td>Japan</td>
+      <td>5724.T</td>
+      <td>Tokyo:5724</td>
+      <td>2008-11-06</td>
+      <td>1.86</td>
+      <td>1.85</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.21</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>47.49</td>
+      <td>11.80</td>
+      <td>5.0</td>
+      <td>7.826041e+09</td>
+      <td>5.058850e+06</td>
+      <td>2.440720e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1628.0</td>
+      <td>111800.0</td>
+      <td>95</td>
+      <td>97</td>
+      <td>95</td>
+      <td>56</td>
+      <td>79</td>
+      <td>75</td>
+      <td>1.73</td>
+      <td>125678.0</td>
+      <td>0.89</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>6.0</td>
+      <td>19.42</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.78</td>
+      <td>73.71</td>
+      <td>4.16</td>
+      <td>10.22</td>
+      <td>16.29</td>
+      <td>37.50</td>
+      <td>6.06</td>
+      <td>NaN</td>
+      <td>1538.52</td>
+      <td>5.82</td>
+      <td>1481.85</td>
+      <td>9.86</td>
+      <td>1328.48</td>
+      <td>22.55</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>991453</td>
+      <td>2437</td>
+      <td>Shinwa Art Auction Co Ltd</td>
+      <td>Tokyo</td>
+      <td>Consumer Cyclical</td>
+      <td>Personal Services</td>
+      <td>Japan</td>
+      <td>2437.T</td>
+      <td>Tokyo:2437</td>
+      <td>2005-04-05</td>
+      <td>3.67</td>
+      <td>2.52</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.52</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>40.46</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>4.478305e+09</td>
+      <td>9.651520e+06</td>
+      <td>4.138185e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>504.0</td>
+      <td>943400.0</td>
+      <td>97</td>
+      <td>99</td>
+      <td>99</td>
+      <td>77</td>
+      <td>54</td>
+      <td>27</td>
+      <td>1.44</td>
+      <td>384134.0</td>
+      <td>2.46</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>10.77</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.03</td>
+      <td>25.14</td>
+      <td>3.28</td>
+      <td>13.77</td>
+      <td>20.29</td>
+      <td>57.50</td>
+      <td>45.24</td>
+      <td>NaN</td>
+      <td>467.41</td>
+      <td>7.83</td>
+      <td>452.26</td>
+      <td>11.44</td>
+      <td>422.86</td>
+      <td>19.19</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>44172</td>
+      <td>7731</td>
+      <td>Nikon Corp.</td>
+      <td>Tokyo</td>
+      <td>Consumer Cyclical</td>
+      <td>Leisure</td>
+      <td>Japan</td>
+      <td>7731.T</td>
+      <td>Tokyo:7731</td>
+      <td>2000-01-04</td>
+      <td>0.56</td>
+      <td>0.56</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.40</td>
+      <td>0.01</td>
+      <td>-0.12</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.01</td>
+      <td>0.04</td>
+      <td>4.02</td>
+      <td>52.63</td>
+      <td>215.0</td>
+      <td>5.232443e+11</td>
+      <td>3.671890e+08</td>
+      <td>3.622889e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1480.0</td>
+      <td>4976300.0</td>
+      <td>96</td>
+      <td>92</td>
+      <td>95</td>
+      <td>21</td>
+      <td>18</td>
+      <td>32</td>
+      <td>1.32</td>
+      <td>2994186.0</td>
+      <td>1.66</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>121.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.57</td>
+      <td>44.86</td>
+      <td>2.42</td>
+      <td>8.27</td>
+      <td>17.09</td>
+      <td>17.55</td>
+      <td>18.78</td>
+      <td>NaN</td>
+      <td>1406.66</td>
+      <td>5.21</td>
+      <td>1351.57</td>
+      <td>9.50</td>
+      <td>1276.14</td>
+      <td>15.97</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>44117</td>
+      <td>7012</td>
+      <td>Kawasaki Heavy Industries, Ltd., Japan</td>
+      <td>Tokyo</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>NaN</td>
+      <td>7012.T</td>
+      <td>Tokyo:7012</td>
+      <td>2004-11-05</td>
+      <td>-0.79</td>
+      <td>-0.79</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.81</td>
+      <td>-0.05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.05</td>
+      <td>0.03</td>
+      <td>8.47</td>
+      <td>42.72</td>
+      <td>154.0</td>
+      <td>3.940190e+11</td>
+      <td>1.678820e+08</td>
+      <td>1.551949e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>2391.0</td>
+      <td>2153000.0</td>
+      <td>92</td>
+      <td>69</td>
+      <td>67</td>
+      <td>38</td>
+      <td>25</td>
+      <td>41</td>
+      <td>1.25</td>
+      <td>1404662.0</td>
+      <td>1.53</td>
+      <td>True</td>
+      <td>4.0</td>
+      <td>6.0</td>
+      <td>110.49</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.04</td>
+      <td>75.14</td>
+      <td>0.38</td>
+      <td>9.48</td>
+      <td>10.59</td>
+      <td>2.53</td>
+      <td>-9.77</td>
+      <td>NaN</td>
+      <td>2294.24</td>
+      <td>4.22</td>
+      <td>2231.67</td>
+      <td>7.14</td>
+      <td>2156.32</td>
+      <td>10.88</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>992296</td>
+      <td>7747</td>
+      <td>Asahi Intecc Co Ltd</td>
+      <td>Tokyo</td>
+      <td>Healthcare</td>
+      <td>Medical Instruments &amp; Supplies</td>
+      <td>Japan</td>
+      <td>7747.T</td>
+      <td>Tokyo:7747</td>
+      <td>2005-06-17</td>
+      <td>0.64</td>
+      <td>0.58</td>
+      <td>NaN</td>
+      <td>0.15</td>
+      <td>0.04</td>
+      <td>0.17</td>
+      <td>0.41</td>
+      <td>NaN</td>
+      <td>0.25</td>
+      <td>0.18</td>
+      <td>0.12</td>
+      <td>19.67</td>
+      <td>40.34</td>
+      <td>257.0</td>
+      <td>6.883002e+11</td>
+      <td>2.716260e+08</td>
+      <td>2.212962e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>2699.0</td>
+      <td>2232200.0</td>
+      <td>97</td>
+      <td>96</td>
+      <td>90</td>
+      <td>69</td>
+      <td>20</td>
+      <td>6</td>
+      <td>1.30</td>
+      <td>1382846.0</td>
+      <td>1.61</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>160.03</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.24</td>
+      <td>100.64</td>
+      <td>5.14</td>
+      <td>2.82</td>
+      <td>19.48</td>
+      <td>29.39</td>
+      <td>-7.60</td>
+      <td>NaN</td>
+      <td>2570.72</td>
+      <td>4.99</td>
+      <td>2495.43</td>
+      <td>8.16</td>
+      <td>2346.28</td>
+      <td>15.03</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1185606</td>
+      <td>7793</td>
+      <td>Image Magic Inc</td>
+      <td>Tokyo</td>
+      <td>Industrials</td>
+      <td>Specialty Business Services</td>
+      <td>Japan</td>
+      <td>7793.T</td>
+      <td>Tokyo:7793</td>
+      <td>2022-03-03</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69.17</td>
+      <td>7.30</td>
+      <td>1.0</td>
+      <td>4.182338e+09</td>
+      <td>1.978400e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2285.0</td>
+      <td>80300.0</td>
+      <td>94</td>
+      <td>57</td>
+      <td>68</td>
+      <td>56</td>
+      <td>79</td>
+      <td>75</td>
+      <td>0.40</td>
+      <td>759132.0</td>
+      <td>0.11</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.27</td>
+      <td>107.07</td>
+      <td>8.81</td>
+      <td>10.28</td>
+      <td>13.57</td>
+      <td>-0.65</td>
+      <td>-0.65</td>
+      <td>NaN</td>
+      <td>2131.55</td>
+      <td>7.20</td>
+      <td>2122.14</td>
+      <td>7.67</td>
+      <td>2170.12</td>
+      <td>5.29</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>946102</td>
+      <td>2670</td>
+      <td>ABC-Mart Inc</td>
+      <td>Tokyo</td>
+      <td>Consumer Cyclical</td>
+      <td>Apparel Retail</td>
+      <td>Japan</td>
+      <td>2670.T</td>
+      <td>Tokyo:2670</td>
+      <td>2002-11-22</td>
+      <td>-0.17</td>
+      <td>-0.17</td>
+      <td>0.02</td>
+      <td>0.42</td>
+      <td>0.28</td>
+      <td>0.12</td>
+      <td>0.02</td>
+      <td>0.08</td>
+      <td>0.12</td>
+      <td>0.11</td>
+      <td>0.07</td>
+      <td>63.43</td>
+      <td>11.17</td>
+      <td>161.0</td>
+      <td>4.098071e+11</td>
+      <td>8.253920e+07</td>
+      <td>3.091010e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>5300.0</td>
+      <td>534700.0</td>
+      <td>94</td>
+      <td>58</td>
+      <td>43</td>
+      <td>66</td>
+      <td>44</td>
+      <td>54</td>
+      <td>1.12</td>
+      <td>270600.0</td>
+      <td>1.98</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>114.23</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.49</td>
+      <td>139.29</td>
+      <td>2.32</td>
+      <td>9.28</td>
+      <td>12.65</td>
+      <td>-0.38</td>
+      <td>-11.37</td>
+      <td>NaN</td>
+      <td>5025.16</td>
+      <td>5.47</td>
+      <td>4913.62</td>
+      <td>7.86</td>
+      <td>4902.50</td>
+      <td>8.11</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>952609</td>
+      <td>7732</td>
+      <td>Topcon Corp</td>
+      <td>Tokyo</td>
+      <td>Technology</td>
+      <td>Scientific &amp; Technical Instruments</td>
+      <td>Japan</td>
+      <td>7732.T</td>
+      <td>Tokyo:7732</td>
+      <td>2001-01-01</td>
+      <td>1.61</td>
+      <td>1.61</td>
+      <td>-0.88</td>
+      <td>1.75</td>
+      <td>NaN</td>
+      <td>0.23</td>
+      <td>0.26</td>
+      <td>-0.20</td>
+      <td>0.08</td>
+      <td>0.04</td>
+      <td>0.06</td>
+      <td>1.00</td>
+      <td>60.05</td>
+      <td>121.0</td>
+      <td>1.594999e+11</td>
+      <td>1.052110e+08</td>
+      <td>9.957203e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1699.0</td>
+      <td>1491500.0</td>
+      <td>94</td>
+      <td>86</td>
+      <td>80</td>
+      <td>46</td>
+      <td>8</td>
+      <td>47</td>
+      <td>1.27</td>
+      <td>488602.0</td>
+      <td>3.05</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>203.79</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.36</td>
+      <td>66.64</td>
+      <td>8.22</td>
+      <td>13.80</td>
+      <td>13.42</td>
+      <td>10.61</td>
+      <td>-8.66</td>
+      <td>NaN</td>
+      <td>1569.87</td>
+      <td>8.23</td>
+      <td>1544.34</td>
+      <td>10.01</td>
+      <td>1495.38</td>
+      <td>13.62</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>952722</td>
+      <td>8129</td>
+      <td>Toho Holdings Co Ltd</td>
+      <td>Tokyo</td>
+      <td>Healthcare</td>
+      <td>Drug Manufacturers—Specialty &amp; Generic</td>
+      <td>Japan</td>
+      <td>8129.T</td>
+      <td>Tokyo:8129</td>
+      <td>2002-12-11</td>
+      <td>0.69</td>
+      <td>0.69</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.03</td>
+      <td>-0.01</td>
+      <td>-0.01</td>
+      <td>-0.02</td>
+      <td>-0.01</td>
+      <td>20.30</td>
+      <td>20.73</td>
+      <td>88.0</td>
+      <td>1.437016e+11</td>
+      <td>7.051110e+07</td>
+      <td>6.023218e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>2088.0</td>
+      <td>160700.0</td>
+      <td>92</td>
+      <td>93</td>
+      <td>93</td>
+      <td>79</td>
+      <td>76</td>
+      <td>58</td>
+      <td>1.24</td>
+      <td>156244.0</td>
+      <td>1.03</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>385.50</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.80</td>
+      <td>38.43</td>
+      <td>1.56</td>
+      <td>4.40</td>
+      <td>11.00</td>
+      <td>20.14</td>
+      <td>14.47</td>
+      <td>NaN</td>
+      <td>2015.59</td>
+      <td>3.59</td>
+      <td>1964.01</td>
+      <td>6.31</td>
+      <td>1907.80</td>
+      <td>9.45</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>949830</td>
+      <td>1514</td>
+      <td>Sumiseki Holdings Inc</td>
+      <td>Tokyo</td>
+      <td>Energy</td>
+      <td>Thermal Coal</td>
+      <td>Japan</td>
+      <td>1514.T</td>
+      <td>Tokyo:1514</td>
+      <td>2001-01-01</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.66</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>18.27</td>
+      <td>16.95</td>
+      <td>21.0</td>
+      <td>9.849582e+09</td>
+      <td>5.471990e+07</td>
+      <td>4.525736e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>183.0</td>
+      <td>2077700.0</td>
+      <td>49</td>
+      <td>96</td>
+      <td>97</td>
+      <td>2</td>
+      <td>47</td>
+      <td>93</td>
+      <td>1.87</td>
+      <td>2592646.0</td>
+      <td>0.80</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>17.46</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.50</td>
+      <td>7.71</td>
+      <td>0.00</td>
+      <td>5.17</td>
+      <td>-1.61</td>
+      <td>27.97</td>
+      <td>27.97</td>
+      <td>NaN</td>
+      <td>177.30</td>
+      <td>3.21</td>
+      <td>173.60</td>
+      <td>5.42</td>
+      <td>163.16</td>
+      <td>12.16</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>946178</td>
+      <td>5481</td>
+      <td>Sanyo Special Steel Co Ltd</td>
+      <td>Tokyo</td>
+      <td>Basic Materials</td>
+      <td>Steel</td>
+      <td>Japan</td>
+      <td>5481.T</td>
+      <td>Tokyo:5481</td>
+      <td>2001-01-01</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.51</td>
+      <td>0.10</td>
+      <td>0.67</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>62.65</td>
+      <td>18.34</td>
+      <td>65.0</td>
+      <td>1.102359e+11</td>
+      <td>5.449130e+07</td>
+      <td>2.076978e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>2115.0</td>
+      <td>122000.0</td>
+      <td>83</td>
+      <td>62</td>
+      <td>91</td>
+      <td>22</td>
+      <td>93</td>
+      <td>98</td>
+      <td>1.17</td>
+      <td>125266.0</td>
+      <td>0.97</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>5.0</td>
+      <td>165.81</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.82</td>
+      <td>64.29</td>
+      <td>1.05</td>
+      <td>7.20</td>
+      <td>5.38</td>
+      <td>0.48</td>
+      <td>22.25</td>
+      <td>NaN</td>
+      <td>2029.02</td>
+      <td>4.24</td>
+      <td>2014.00</td>
+      <td>5.01</td>
+      <td>2040.98</td>
+      <td>3.63</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>976107</td>
+      <td>3031</td>
+      <td>Raccoon Co Ltd</td>
+      <td>Tokyo</td>
+      <td>Consumer Cyclical</td>
+      <td>Internet Retail</td>
+      <td>Japan</td>
+      <td>3031.T</td>
+      <td>Tokyo:3031</td>
+      <td>2006-04-06</td>
+      <td>0.48</td>
+      <td>0.48</td>
+      <td>NaN</td>
+      <td>1.69</td>
+      <td>NaN</td>
+      <td>0.79</td>
+      <td>0.12</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.19</td>
+      <td>25.71</td>
+      <td>63.89</td>
+      <td>51.0</td>
+      <td>2.649743e+10</td>
+      <td>2.236070e+07</td>
+      <td>1.438786e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1310.0</td>
+      <td>416000.0</td>
+      <td>95</td>
+      <td>77</td>
+      <td>29</td>
+      <td>60</td>
+      <td>61</td>
+      <td>8</td>
+      <td>0.90</td>
+      <td>233470.0</td>
+      <td>1.78</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>8.0</td>
+      <td>61.63</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.50</td>
+      <td>47.29</td>
+      <td>3.15</td>
+      <td>12.83</td>
+      <td>14.51</td>
+      <td>5.22</td>
+      <td>-13.59</td>
+      <td>NaN</td>
+      <td>1238.93</td>
+      <td>5.74</td>
+      <td>1213.72</td>
+      <td>7.93</td>
+      <td>1161.80</td>
+      <td>12.76</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>969276</td>
+      <td>8515</td>
+      <td>Aiful Corp</td>
+      <td>Tokyo</td>
+      <td>Financial Services</td>
+      <td>Credit Services</td>
+      <td>Japan</td>
+      <td>8515.T</td>
+      <td>Tokyo:8515</td>
+      <td>2001-01-01</td>
+      <td>0.28</td>
+      <td>0.28</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>0.12</td>
+      <td>0.12</td>
+      <td>0.12</td>
+      <td>0.11</td>
+      <td>37.46</td>
+      <td>16.82</td>
+      <td>67.0</td>
+      <td>1.809049e+11</td>
+      <td>4.837030e+08</td>
+      <td>2.981592e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>388.0</td>
+      <td>3809100.0</td>
+      <td>94</td>
+      <td>81</td>
+      <td>83</td>
+      <td>99</td>
+      <td>82</td>
+      <td>78</td>
+      <td>1.19</td>
+      <td>3291572.0</td>
+      <td>1.16</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>90.58</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.37</td>
+      <td>8.86</td>
+      <td>2.11</td>
+      <td>6.01</td>
+      <td>13.45</td>
+      <td>7.18</td>
+      <td>3.74</td>
+      <td>NaN</td>
+      <td>373.88</td>
+      <td>3.78</td>
+      <td>365.09</td>
+      <td>6.27</td>
+      <td>354.30</td>
+      <td>9.51</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>44152</td>
+      <td>7261</td>
+      <td>Mazda Motor Corp</td>
+      <td>Tokyo</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Manufacturers</td>
+      <td>Japan</td>
+      <td>7261.T</td>
+      <td>Tokyo:7261</td>
+      <td>2000-01-04</td>
+      <td>-0.62</td>
+      <td>-0.62</td>
+      <td>-0.66</td>
+      <td>2.48</td>
+      <td>-0.20</td>
+      <td>0.42</td>
+      <td>-0.21</td>
+      <td>-0.10</td>
+      <td>-0.06</td>
+      <td>0.09</td>
+      <td>0.18</td>
+      <td>7.51</td>
+      <td>38.99</td>
+      <td>259.0</td>
+      <td>5.529521e+11</td>
+      <td>6.297860e+08</td>
+      <td>5.978680e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>954.0</td>
+      <td>7395200.0</td>
+      <td>92</td>
+      <td>57</td>
+      <td>54</td>
+      <td>93</td>
+      <td>6</td>
+      <td>31</td>
+      <td>1.30</td>
+      <td>5704346.0</td>
+      <td>1.30</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>104.81</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.50</td>
+      <td>23.71</td>
+      <td>3.70</td>
+      <td>8.41</td>
+      <td>10.67</td>
+      <td>-0.73</td>
+      <td>-6.74</td>
+      <td>NaN</td>
+      <td>900.78</td>
+      <td>5.91</td>
+      <td>887.01</td>
+      <td>7.55</td>
+      <td>868.56</td>
+      <td>9.84</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>946291</td>
+      <td>8382</td>
+      <td>The Chugoku Bank Ltd</td>
+      <td>Tokyo</td>
+      <td>Financial Services</td>
+      <td>Banks—Regional</td>
+      <td>Japan</td>
+      <td>8382.T</td>
+      <td>Tokyo:8382</td>
+      <td>2001-01-01</td>
+      <td>0.50</td>
+      <td>0.51</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>-0.02</td>
+      <td>14.69</td>
+      <td>21.30</td>
+      <td>76.0</td>
+      <td>1.736772e+11</td>
+      <td>1.857510e+08</td>
+      <td>1.668716e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>971.0</td>
+      <td>319700.0</td>
+      <td>79</td>
+      <td>69</td>
+      <td>86</td>
+      <td>7</td>
+      <td>49</td>
+      <td>100</td>
+      <td>1.34</td>
+      <td>309264.0</td>
+      <td>1.03</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>539.58</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.91</td>
+      <td>17.07</td>
+      <td>2.21</td>
+      <td>5.89</td>
+      <td>3.96</td>
+      <td>2.53</td>
+      <td>16.15</td>
+      <td>NaN</td>
+      <td>935.10</td>
+      <td>3.84</td>
+      <td>921.77</td>
+      <td>5.34</td>
+      <td>915.02</td>
+      <td>6.12</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>998066</td>
+      <td>3978</td>
+      <td>Macromill Inc</td>
+      <td>Tokyo</td>
+      <td>Communication Services</td>
+      <td>Advertising Agencies</td>
+      <td>Japan</td>
+      <td>3978.T</td>
+      <td>Tokyo:3978</td>
+      <td>2004-01-28</td>
+      <td>0.30</td>
+      <td>0.33</td>
+      <td>NaN</td>
+      <td>0.17</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>0.13</td>
+      <td>NaN</td>
+      <td>0.15</td>
+      <td>0.15</td>
+      <td>0.10</td>
+      <td>18.17</td>
+      <td>56.84</td>
+      <td>33.0</td>
+      <td>4.569781e+10</td>
+      <td>3.946270e+07</td>
+      <td>3.116880e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1230.0</td>
+      <td>162000.0</td>
+      <td>78</td>
+      <td>90</td>
+      <td>97</td>
+      <td>91</td>
+      <td>96</td>
+      <td>80</td>
+      <td>1.31</td>
+      <td>209132.0</td>
+      <td>0.77</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>5.0</td>
+      <td>149.04</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.09</td>
+      <td>41.29</td>
+      <td>1.07</td>
+      <td>7.24</td>
+      <td>3.62</td>
+      <td>14.95</td>
+      <td>51.85</td>
+      <td>NaN</td>
+      <td>1181.10</td>
+      <td>4.14</td>
+      <td>1166.95</td>
+      <td>5.40</td>
+      <td>1144.28</td>
+      <td>7.49</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>44222</td>
+      <td>8002</td>
+      <td>Marubeni Corp.</td>
+      <td>Tokyo</td>
+      <td>Industrials</td>
+      <td>Conglomerates</td>
+      <td>Japan</td>
+      <td>8002.T</td>
+      <td>Tokyo:8002</td>
+      <td>2000-01-04</td>
+      <td>1.02</td>
+      <td>1.04</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.06</td>
+      <td>-0.04</td>
+      <td>0.38</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.08</td>
+      <td>-0.03</td>
+      <td>2.76</td>
+      <td>55.56</td>
+      <td>323.0</td>
+      <td>2.493890e+12</td>
+      <td>1.722300e+09</td>
+      <td>1.647899e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1480.5</td>
+      <td>7292800.0</td>
+      <td>78</td>
+      <td>95</td>
+      <td>98</td>
+      <td>2</td>
+      <td>47</td>
+      <td>93</td>
+      <td>1.84</td>
+      <td>9506288.0</td>
+      <td>0.77</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>173.35</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.58</td>
+      <td>37.43</td>
+      <td>1.16</td>
+      <td>5.19</td>
+      <td>3.68</td>
+      <td>25.95</td>
+      <td>56.73</td>
+      <td>NaN</td>
+      <td>1438.58</td>
+      <td>2.91</td>
+      <td>1411.34</td>
+      <td>4.90</td>
+      <td>1331.21</td>
+      <td>11.21</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>44111</td>
+      <td>5714</td>
+      <td>DOWA Holdings Co., Ltd., Japan</td>
+      <td>Tokyo</td>
+      <td>Basic Materials</td>
+      <td>Other Industrial Metals &amp; Mining</td>
+      <td>NaN</td>
+      <td>5714.T</td>
+      <td>Tokyo:5714</td>
+      <td>2000-01-04</td>
+      <td>0.68</td>
+      <td>0.67</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.17</td>
+      <td>0.25</td>
+      <td>-0.04</td>
+      <td>-0.02</td>
+      <td>-0.02</td>
+      <td>-0.00</td>
+      <td>4.78</td>
+      <td>53.56</td>
+      <td>150.0</td>
+      <td>3.546343e+11</td>
+      <td>5.950240e+07</td>
+      <td>5.760686e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>6130.0</td>
+      <td>244400.0</td>
+      <td>84</td>
+      <td>94</td>
+      <td>97</td>
+      <td>22</td>
+      <td>93</td>
+      <td>98</td>
+      <td>1.57</td>
+      <td>358140.0</td>
+      <td>0.68</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>160.85</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.50</td>
+      <td>153.57</td>
+      <td>0.49</td>
+      <td>6.42</td>
+      <td>5.69</td>
+      <td>20.43</td>
+      <td>35.77</td>
+      <td>NaN</td>
+      <td>5921.62</td>
+      <td>3.52</td>
+      <td>5791.12</td>
+      <td>5.85</td>
+      <td>5519.60</td>
+      <td>11.06</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>44127</td>
+      <td>7201</td>
+      <td>Nissan Motor Co., Ltd., Japan</td>
+      <td>Tokyo</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Manufacturers</td>
+      <td>NaN</td>
+      <td>7201.T</td>
+      <td>Tokyo:7201</td>
+      <td>2000-01-04</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.48</td>
+      <td>0.22</td>
+      <td>-0.01</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.16</td>
+      <td>0.16</td>
+      <td>47.03</td>
+      <td>13.45</td>
+      <td>274.0</td>
+      <td>1.998519e+12</td>
+      <td>3.914060e+09</td>
+      <td>2.082174e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>550.8</td>
+      <td>30839800.0</td>
+      <td>87</td>
+      <td>16</td>
+      <td>37</td>
+      <td>93</td>
+      <td>6</td>
+      <td>31</td>
+      <td>0.90</td>
+      <td>20448592.0</td>
+      <td>1.51</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>101.82</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.48</td>
+      <td>14.24</td>
+      <td>4.66</td>
+      <td>9.29</td>
+      <td>6.91</td>
+      <td>-12.96</td>
+      <td>-5.10</td>
+      <td>NaN</td>
+      <td>521.31</td>
+      <td>5.66</td>
+      <td>520.70</td>
+      <td>5.78</td>
+      <td>534.53</td>
+      <td>3.04</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>44147</td>
+      <td>7211</td>
+      <td>Mitsubishi Motors Corp.</td>
+      <td>Tokyo</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Manufacturers</td>
+      <td>Japan</td>
+      <td>7211.T</td>
+      <td>Tokyo:7211</td>
+      <td>2000-01-04</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-1.35</td>
+      <td>0.10</td>
+      <td>0.39</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.11</td>
+      <td>55.58</td>
+      <td>9.54</td>
+      <td>127.0</td>
+      <td>4.581592e+11</td>
+      <td>1.487530e+09</td>
+      <td>6.341375e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>335.0</td>
+      <td>21853600.0</td>
+      <td>94</td>
+      <td>61</td>
+      <td>73</td>
+      <td>93</td>
+      <td>6</td>
+      <td>31</td>
+      <td>1.21</td>
+      <td>14584856.0</td>
+      <td>1.50</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>43.48</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.91</td>
+      <td>9.14</td>
+      <td>4.69</td>
+      <td>9.12</td>
+      <td>13.56</td>
+      <td>0.30</td>
+      <td>-4.83</td>
+      <td>NaN</td>
+      <td>317.01</td>
+      <td>5.67</td>
+      <td>312.83</td>
+      <td>7.09</td>
+      <td>306.22</td>
+      <td>9.40</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>44122</td>
+      <td>7013</td>
+      <td>IHI Corp.</td>
+      <td>Tokyo</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>Japan</td>
+      <td>7013.T</td>
+      <td>Tokyo:7013</td>
+      <td>2000-01-04</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.10</td>
+      <td>0.06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>0.05</td>
+      <td>5.88</td>
+      <td>32.87</td>
+      <td>148.0</td>
+      <td>4.382678e+11</td>
+      <td>1.485150e+08</td>
+      <td>1.459676e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>3090.0</td>
+      <td>1902600.0</td>
+      <td>89</td>
+      <td>96</td>
+      <td>95</td>
+      <td>38</td>
+      <td>25</td>
+      <td>41</td>
+      <td>1.79</td>
+      <td>1537026.0</td>
+      <td>1.24</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>94.97</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.49</td>
+      <td>75.71</td>
+      <td>1.81</td>
+      <td>8.00</td>
+      <td>8.65</td>
+      <td>27.58</td>
+      <td>11.59</td>
+      <td>NaN</td>
+      <td>2961.47</td>
+      <td>4.34</td>
+      <td>2903.15</td>
+      <td>6.44</td>
+      <td>2772.12</td>
+      <td>11.47</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>962386</td>
+      <td>9416</td>
+      <td>Vision Inc</td>
+      <td>Tokyo</td>
+      <td>Communication Services</td>
+      <td>Telecom Services</td>
+      <td>Japan</td>
+      <td>9416.T</td>
+      <td>Tokyo:9416</td>
+      <td>2015-12-21</td>
+      <td>-0.37</td>
+      <td>-0.39</td>
+      <td>NaN</td>
+      <td>0.65</td>
+      <td>NaN</td>
+      <td>0.86</td>
+      <td>0.33</td>
+      <td>0.26</td>
+      <td>0.26</td>
+      <td>0.22</td>
+      <td>0.35</td>
+      <td>28.87</td>
+      <td>37.91</td>
+      <td>55.0</td>
+      <td>5.728048e+10</td>
+      <td>4.761470e+07</td>
+      <td>3.325983e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1240.0</td>
+      <td>241500.0</td>
+      <td>84</td>
+      <td>94</td>
+      <td>89</td>
+      <td>86</td>
+      <td>32</td>
+      <td>9</td>
+      <td>1.13</td>
+      <td>273434.0</td>
+      <td>0.88</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>121.64</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.35</td>
+      <td>41.79</td>
+      <td>2.06</td>
+      <td>5.17</td>
+      <td>5.80</td>
+      <td>20.39</td>
+      <td>-11.62</td>
+      <td>NaN</td>
+      <td>1205.22</td>
+      <td>2.89</td>
+      <td>1186.88</td>
+      <td>4.48</td>
+      <td>1152.80</td>
+      <td>7.56</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>44292</td>
+      <td>8308</td>
+      <td>Resona Holdings, Inc., Japan</td>
+      <td>Tokyo</td>
+      <td>Financial Services</td>
+      <td>Banks—Regional</td>
+      <td>NaN</td>
+      <td>8308.T</td>
+      <td>Tokyo:8308</td>
+      <td>2000-01-04</td>
+      <td>0.12</td>
+      <td>0.07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>-0.12</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>3.07</td>
+      <td>48.63</td>
+      <td>315.0</td>
+      <td>1.309241e+12</td>
+      <td>2.376980e+09</td>
+      <td>2.341621e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>571.7</td>
+      <td>17278700.0</td>
+      <td>75</td>
+      <td>88</td>
+      <td>95</td>
+      <td>7</td>
+      <td>49</td>
+      <td>100</td>
+      <td>1.22</td>
+      <td>13590752.0</td>
+      <td>1.27</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>172.30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.74</td>
+      <td>10.83</td>
+      <td>2.58</td>
+      <td>5.23</td>
+      <td>2.81</td>
+      <td>12.98</td>
+      <td>30.73</td>
+      <td>NaN</td>
+      <td>551.21</td>
+      <td>3.72</td>
+      <td>542.09</td>
+      <td>5.46</td>
+      <td>532.29</td>
+      <td>7.40</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>985819</td>
+      <td>3543</td>
+      <td>Komeda Holdings Co Ltd</td>
+      <td>Tokyo</td>
+      <td>Consumer Cyclical</td>
+      <td>Restaurants</td>
+      <td>Japan</td>
+      <td>3543.T</td>
+      <td>Tokyo:3543</td>
+      <td>2016-06-29</td>
+      <td>0.10</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>0.11</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>0.06</td>
+      <td>0.08</td>
+      <td>0.08</td>
+      <td>0.05</td>
+      <td>0.07</td>
+      <td>0.21</td>
+      <td>38.34</td>
+      <td>77.0</td>
+      <td>9.834880e+10</td>
+      <td>4.608660e+07</td>
+      <td>4.589349e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>2213.0</td>
+      <td>556700.0</td>
+      <td>88</td>
+      <td>82</td>
+      <td>84</td>
+      <td>50</td>
+      <td>87</td>
+      <td>83</td>
+      <td>1.02</td>
+      <td>262472.0</td>
+      <td>2.12</td>
+      <td>True</td>
+      <td>5.0</td>
+      <td>8.0</td>
+      <td>174.85</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.31</td>
+      <td>36.64</td>
+      <td>2.26</td>
+      <td>9.66</td>
+      <td>7.69</td>
+      <td>8.06</td>
+      <td>5.03</td>
+      <td>NaN</td>
+      <td>2120.27</td>
+      <td>4.37</td>
+      <td>2086.23</td>
+      <td>6.08</td>
+      <td>2083.42</td>
+      <td>6.22</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>44307</td>
+      <td>8331</td>
+      <td>Chiba Bank Ltd</td>
+      <td>Tokyo</td>
+      <td>Financial Services</td>
+      <td>Banks—Regional</td>
+      <td>Japan</td>
+      <td>8331.T</td>
+      <td>Tokyo:8331</td>
+      <td>2000-01-04</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.12</td>
+      <td>-0.07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.03</td>
+      <td>10.67</td>
+      <td>41.92</td>
+      <td>225.0</td>
+      <td>5.624500e+11</td>
+      <td>7.371560e+08</td>
+      <td>7.369348e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>786.0</td>
+      <td>2500000.0</td>
+      <td>69</td>
+      <td>77</td>
+      <td>88</td>
+      <td>7</td>
+      <td>49</td>
+      <td>100</td>
+      <td>1.05</td>
+      <td>2676966.0</td>
+      <td>0.93</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>275.29</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.37</td>
+      <td>19.71</td>
+      <td>1.81</td>
+      <td>3.42</td>
+      <td>1.42</td>
+      <td>5.50</td>
+      <td>7.52</td>
+      <td>NaN</td>
+      <td>764.03</td>
+      <td>2.88</td>
+      <td>754.00</td>
+      <td>4.24</td>
+      <td>746.68</td>
+      <td>5.27</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>44230</td>
+      <td>5101</td>
+      <td>Yokohama Rubber Co Ltd</td>
+      <td>Tokyo</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Parts</td>
+      <td>Japan</td>
+      <td>5101.T</td>
+      <td>Tokyo:5101</td>
+      <td>2000-01-04</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>-0.47</td>
+      <td>-0.42</td>
+      <td>0.13</td>
+      <td>0.19</td>
+      <td>0.17</td>
+      <td>0.05</td>
+      <td>0.08</td>
+      <td>0.08</td>
+      <td>0.08</td>
+      <td>15.86</td>
+      <td>46.26</td>
+      <td>174.0</td>
+      <td>2.746517e+11</td>
+      <td>1.606150e+08</td>
+      <td>1.305898e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1744.0</td>
+      <td>615600.0</td>
+      <td>89</td>
+      <td>35</td>
+      <td>28</td>
+      <td>25</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1.20</td>
+      <td>770854.0</td>
+      <td>0.80</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>169.41</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.11</td>
+      <td>40.07</td>
+      <td>2.11</td>
+      <td>3.75</td>
+      <td>8.19</td>
+      <td>-5.83</td>
+      <td>-13.71</td>
+      <td>NaN</td>
+      <td>1699.33</td>
+      <td>2.63</td>
+      <td>1675.99</td>
+      <td>4.06</td>
+      <td>1639.62</td>
+      <td>6.37</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>946298</td>
+      <td>8572</td>
+      <td>Acom Co Ltd</td>
+      <td>Tokyo</td>
+      <td>Financial Services</td>
+      <td>Credit Services</td>
+      <td>Japan</td>
+      <td>8572.T</td>
+      <td>Tokyo:8572</td>
+      <td>2001-01-01</td>
+      <td>-0.67</td>
+      <td>-0.67</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.01</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>0.07</td>
+      <td>0.04</td>
+      <td>73.89</td>
+      <td>5.97</td>
+      <td>125.0</td>
+      <td>4.918240e+11</td>
+      <td>1.536950e+09</td>
+      <td>3.150618e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>341.0</td>
+      <td>3286700.0</td>
+      <td>89</td>
+      <td>67</td>
+      <td>37</td>
+      <td>99</td>
+      <td>82</td>
+      <td>78</td>
+      <td>0.94</td>
+      <td>1979660.0</td>
+      <td>1.66</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>159.15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.35</td>
+      <td>8.50</td>
+      <td>4.60</td>
+      <td>4.60</td>
+      <td>8.60</td>
+      <td>1.79</td>
+      <td>-12.56</td>
+      <td>NaN</td>
+      <td>325.59</td>
+      <td>4.73</td>
+      <td>321.32</td>
+      <td>6.12</td>
+      <td>315.46</td>
+      <td>8.10</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>952444</td>
+      <td>6804</td>
+      <td>Hosiden Corp</td>
+      <td>Tokyo</td>
+      <td>Industrials</td>
+      <td>Electrical Equipment &amp; Parts</td>
+      <td>Japan</td>
+      <td>6804.T</td>
+      <td>Tokyo:6804</td>
+      <td>2001-01-05</td>
+      <td>-0.16</td>
+      <td>-0.14</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.18</td>
+      <td>0.10</td>
+      <td>-0.05</td>
+      <td>-0.12</td>
+      <td>-0.06</td>
+      <td>13.08</td>
+      <td>32.01</td>
+      <td>95.0</td>
+      <td>6.559964e+10</td>
+      <td>5.540510e+07</td>
+      <td>4.980646e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1225.0</td>
+      <td>269400.0</td>
+      <td>79</td>
+      <td>80</td>
+      <td>92</td>
+      <td>46</td>
+      <td>8</td>
+      <td>47</td>
+      <td>1.26</td>
+      <td>294500.0</td>
+      <td>0.91</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>169.12</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.93</td>
+      <td>23.43</td>
+      <td>1.16</td>
+      <td>5.42</td>
+      <td>3.81</td>
+      <td>6.99</td>
+      <td>30.32</td>
+      <td>NaN</td>
+      <td>1187.45</td>
+      <td>3.16</td>
+      <td>1176.16</td>
+      <td>4.15</td>
+      <td>1173.44</td>
+      <td>4.39</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>985692</td>
+      <td>7203</td>
+      <td>Toyota Motor Corp</td>
+      <td>Tokyo</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Manufacturers</td>
+      <td>Japan</td>
+      <td>7203.T</td>
+      <td>Tokyo:7203</td>
+      <td>1999-05-06</td>
+      <td>-0.06</td>
+      <td>-0.04</td>
+      <td>-0.35</td>
+      <td>0.73</td>
+      <td>0.00</td>
+      <td>0.09</td>
+      <td>-0.04</td>
+      <td>-0.06</td>
+      <td>1.62</td>
+      <td>0.02</td>
+      <td>0.12</td>
+      <td>14.48</td>
+      <td>23.82</td>
+      <td>576.0</td>
+      <td>2.976113e+13</td>
+      <td>1.377830e+10</td>
+      <td>1.214736e+10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>2258.5</td>
+      <td>42430500.0</td>
+      <td>91</td>
+      <td>32</td>
+      <td>79</td>
+      <td>93</td>
+      <td>6</td>
+      <td>31</td>
+      <td>1.00</td>
+      <td>31308204.0</td>
+      <td>1.36</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>387.99</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.21</td>
+      <td>51.61</td>
+      <td>3.74</td>
+      <td>6.56</td>
+      <td>9.90</td>
+      <td>-6.81</td>
+      <td>13.75</td>
+      <td>NaN</td>
+      <td>2170.83</td>
+      <td>4.04</td>
+      <td>2149.40</td>
+      <td>5.08</td>
+      <td>2116.13</td>
+      <td>6.73</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>946092</td>
+      <td>2212</td>
+      <td>Yamazaki Baking Co Ltd</td>
+      <td>Tokyo</td>
+      <td>Consumer Defensive</td>
+      <td>Packaged Foods</td>
+      <td>Japan</td>
+      <td>2212.T</td>
+      <td>Tokyo:2212</td>
+      <td>2001-01-01</td>
+      <td>-0.03</td>
+      <td>-0.01</td>
+      <td>NaN</td>
+      <td>0.15</td>
+      <td>-0.16</td>
+      <td>0.16</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>-0.00</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>35.23</td>
+      <td>20.81</td>
+      <td>127.0</td>
+      <td>3.106575e+11</td>
+      <td>2.086350e+08</td>
+      <td>1.164895e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1575.0</td>
+      <td>1509900.0</td>
+      <td>88</td>
+      <td>78</td>
+      <td>68</td>
+      <td>18</td>
+      <td>52</td>
+      <td>69</td>
+      <td>0.84</td>
+      <td>917392.0</td>
+      <td>1.65</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>126.98</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.25</td>
+      <td>36.21</td>
+      <td>4.03</td>
+      <td>4.03</td>
+      <td>7.44</td>
+      <td>5.99</td>
+      <td>-17.06</td>
+      <td>NaN</td>
+      <td>1521.23</td>
+      <td>3.53</td>
+      <td>1518.84</td>
+      <td>3.70</td>
+      <td>1529.04</td>
+      <td>3.01</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>946248</td>
+      <td>7272</td>
+      <td>Yamaha Motor Co Ltd</td>
+      <td>Tokyo</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Manufacturers</td>
+      <td>Japan</td>
+      <td>7272.T</td>
+      <td>Tokyo:7272</td>
+      <td>2001-01-01</td>
+      <td>0.43</td>
+      <td>0.43</td>
+      <td>-0.19</td>
+      <td>-0.14</td>
+      <td>-0.26</td>
+      <td>0.06</td>
+      <td>0.11</td>
+      <td>NaN</td>
+      <td>0.11</td>
+      <td>0.08</td>
+      <td>0.04</td>
+      <td>10.25</td>
+      <td>59.79</td>
+      <td>350.0</td>
+      <td>9.052150e+11</td>
+      <td>3.458980e+08</td>
+      <td>3.050732e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>2733.0</td>
+      <td>2224600.0</td>
+      <td>86</td>
+      <td>38</td>
+      <td>44</td>
+      <td>93</td>
+      <td>6</td>
+      <td>31</td>
+      <td>1.02</td>
+      <td>2181724.0</td>
+      <td>1.02</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>139.83</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.34</td>
+      <td>68.71</td>
+      <td>2.78</td>
+      <td>5.16</td>
+      <td>6.67</td>
+      <td>-5.01</td>
+      <td>-13.79</td>
+      <td>NaN</td>
+      <td>2640.09</td>
+      <td>3.52</td>
+      <td>2620.52</td>
+      <td>4.29</td>
+      <td>2586.72</td>
+      <td>5.66</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>44293</td>
+      <td>9531</td>
+      <td>Tokyo Gas Co., Ltd., Japan</td>
+      <td>Tokyo</td>
+      <td>Utilities</td>
+      <td>Utilities—Regulated Gas</td>
+      <td>NaN</td>
+      <td>9531.T</td>
+      <td>Tokyo:9531</td>
+      <td>2000-01-04</td>
+      <td>-0.88</td>
+      <td>-0.88</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.24</td>
+      <td>0.27</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>5.26</td>
+      <td>46.08</td>
+      <td>328.0</td>
+      <td>9.951480e+11</td>
+      <td>4.395530e+08</td>
+      <td>4.306538e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>2320.0</td>
+      <td>973300.0</td>
+      <td>74</td>
+      <td>78</td>
+      <td>89</td>
+      <td>13</td>
+      <td>31</td>
+      <td>50</td>
+      <td>1.32</td>
+      <td>1356064.0</td>
+      <td>0.72</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>317.58</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.28</td>
+      <td>49.71</td>
+      <td>1.53</td>
+      <td>3.16</td>
+      <td>2.38</td>
+      <td>5.69</td>
+      <td>20.80</td>
+      <td>NaN</td>
+      <td>2263.75</td>
+      <td>2.48</td>
+      <td>2260.38</td>
+      <td>2.64</td>
+      <td>2295.16</td>
+      <td>1.08</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>44161</td>
+      <td>6305</td>
+      <td>Hitachi Construction Machinery Co</td>
+      <td>Tokyo</td>
+      <td>Industrials</td>
+      <td>Farm &amp; Heavy Construction Machinery</td>
+      <td>Japan</td>
+      <td>6305.T</td>
+      <td>Tokyo:6305</td>
+      <td>2001-01-01</td>
+      <td>4.00</td>
+      <td>4.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>0.25</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>76.79</td>
+      <td>23.20</td>
+      <td>198.0</td>
+      <td>6.783599e+11</td>
+      <td>2.126520e+08</td>
+      <td>4.791880e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>3250.0</td>
+      <td>536700.0</td>
+      <td>82</td>
+      <td>83</td>
+      <td>80</td>
+      <td>38</td>
+      <td>25</td>
+      <td>41</td>
+      <td>1.30</td>
+      <td>634920.0</td>
+      <td>0.85</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>75.47</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.18</td>
+      <td>82.50</td>
+      <td>1.56</td>
+      <td>7.08</td>
+      <td>4.67</td>
+      <td>8.48</td>
+      <td>1.40</td>
+      <td>NaN</td>
+      <td>3159.44</td>
+      <td>2.87</td>
+      <td>3121.28</td>
+      <td>4.12</td>
+      <td>3005.58</td>
+      <td>8.13</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>44151</td>
+      <td>6301</td>
+      <td>Komatsu Ltd.</td>
+      <td>Tokyo</td>
+      <td>Industrials</td>
+      <td>Farm &amp; Heavy Construction Machinery</td>
+      <td>Japan</td>
+      <td>6301.T</td>
+      <td>Tokyo:6301</td>
+      <td>2000-01-04</td>
+      <td>1.17</td>
+      <td>1.17</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.16</td>
+      <td>0.30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>0.37</td>
+      <td>45.22</td>
+      <td>396.0</td>
+      <td>2.803264e+12</td>
+      <td>9.452920e+08</td>
+      <td>9.447720e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>3029.0</td>
+      <td>3733700.0</td>
+      <td>78</td>
+      <td>62</td>
+      <td>83</td>
+      <td>38</td>
+      <td>25</td>
+      <td>41</td>
+      <td>1.21</td>
+      <td>3221758.0</td>
+      <td>1.16</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>293.25</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.05</td>
+      <td>73.96</td>
+      <td>2.07</td>
+      <td>5.37</td>
+      <td>3.54</td>
+      <td>0.50</td>
+      <td>12.06</td>
+      <td>NaN</td>
+      <td>2942.04</td>
+      <td>2.96</td>
+      <td>2909.31</td>
+      <td>4.11</td>
+      <td>2822.97</td>
+      <td>7.30</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>952511</td>
+      <td>7238</td>
+      <td>Akebono Brake Industry Co Ltd</td>
+      <td>Tokyo</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Parts</td>
+      <td>Japan</td>
+      <td>7238.T</td>
+      <td>Tokyo:7238</td>
+      <td>2001-01-01</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.10</td>
+      <td>-0.06</td>
+      <td>-0.06</td>
+      <td>-0.06</td>
+      <td>0.02</td>
+      <td>31.41</td>
+      <td>8.70</td>
+      <td>27.0</td>
+      <td>1.950253e+10</td>
+      <td>1.335790e+08</td>
+      <td>9.228805e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>156.0</td>
+      <td>1127000.0</td>
+      <td>77</td>
+      <td>11</td>
+      <td>16</td>
+      <td>25</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0.56</td>
+      <td>765328.0</td>
+      <td>1.47</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>120.59</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.29</td>
+      <td>3.36</td>
+      <td>3.31</td>
+      <td>6.12</td>
+      <td>3.31</td>
+      <td>-16.13</td>
+      <td>-28.77</td>
+      <td>NaN</td>
+      <td>149.92</td>
+      <td>4.05</td>
+      <td>151.19</td>
+      <td>3.18</td>
+      <td>156.58</td>
+      <td>-0.37</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>952401</td>
+      <td>6584</td>
+      <td>Sanoh Industrial Co Ltd</td>
+      <td>Tokyo</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Parts</td>
+      <td>Japan</td>
+      <td>6584.T</td>
+      <td>Tokyo:6584</td>
+      <td>2001-01-01</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.17</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>24.18</td>
+      <td>16.68</td>
+      <td>40.0</td>
+      <td>2.474754e+10</td>
+      <td>3.612780e+07</td>
+      <td>2.591052e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>719.0</td>
+      <td>250700.0</td>
+      <td>82</td>
+      <td>5</td>
+      <td>4</td>
+      <td>25</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1.03</td>
+      <td>334642.0</td>
+      <td>0.75</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>77.43</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.82</td>
+      <td>15.50</td>
+      <td>1.84</td>
+      <td>4.66</td>
+      <td>4.66</td>
+      <td>-22.02</td>
+      <td>-29.51</td>
+      <td>NaN</td>
+      <td>695.98</td>
+      <td>3.31</td>
+      <td>693.39</td>
+      <td>3.69</td>
+      <td>700.14</td>
+      <td>2.69</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>44298</td>
+      <td>9532</td>
+      <td>Osaka Gas Co., Ltd., Japan</td>
+      <td>Tokyo</td>
+      <td>Utilities</td>
+      <td>Utilities—Regulated Gas</td>
+      <td>NaN</td>
+      <td>9532.T</td>
+      <td>Tokyo:9532</td>
+      <td>2000-01-04</td>
+      <td>-0.62</td>
+      <td>-0.62</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.25</td>
+      <td>0.21</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.12</td>
+      <td>3.33</td>
+      <td>39.92</td>
+      <td>285.0</td>
+      <td>8.656123e+11</td>
+      <td>4.157600e+08</td>
+      <td>4.156353e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>2142.0</td>
+      <td>1184000.0</td>
+      <td>68</td>
+      <td>86</td>
+      <td>88</td>
+      <td>13</td>
+      <td>31</td>
+      <td>50</td>
+      <td>1.73</td>
+      <td>1318328.0</td>
+      <td>0.90</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>315.27</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.11</td>
+      <td>47.00</td>
+      <td>1.47</td>
+      <td>2.68</td>
+      <td>1.23</td>
+      <td>10.98</td>
+      <td>11.45</td>
+      <td>NaN</td>
+      <td>2094.08</td>
+      <td>2.29</td>
+      <td>2095.29</td>
+      <td>2.23</td>
+      <td>2116.32</td>
+      <td>1.21</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>952697</td>
+      <td>8068</td>
+      <td>Ryoyo Electro Corp</td>
+      <td>Tokyo</td>
+      <td>Technology</td>
+      <td>Electronics &amp; Computer Distribution</td>
+      <td>Japan</td>
+      <td>8068.T</td>
+      <td>Tokyo:8068</td>
+      <td>2001-01-01</td>
+      <td>0.39</td>
+      <td>0.33</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.14</td>
+      <td>0.06</td>
+      <td>0.06</td>
+      <td>0.06</td>
+      <td>0.02</td>
+      <td>17.57</td>
+      <td>8.53</td>
+      <td>54.0</td>
+      <td>3.394506e+10</td>
+      <td>1.733660e+07</td>
+      <td>1.721479e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>2031.0</td>
+      <td>85900.0</td>
+      <td>89</td>
+      <td>14</td>
+      <td>20</td>
+      <td>46</td>
+      <td>8</td>
+      <td>47</td>
+      <td>0.79</td>
+      <td>184290.0</td>
+      <td>0.47</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>93.41</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.64</td>
+      <td>36.43</td>
+      <td>0.15</td>
+      <td>3.25</td>
+      <td>8.49</td>
+      <td>-14.45</td>
+      <td>-11.39</td>
+      <td>NaN</td>
+      <td>1990.75</td>
+      <td>2.02</td>
+      <td>1981.84</td>
+      <td>2.48</td>
+      <td>2018.76</td>
+      <td>0.61</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>44198</td>
+      <td>9008</td>
+      <td>Keio Corp.</td>
+      <td>Tokyo</td>
+      <td>Industrials</td>
+      <td>Conglomerates</td>
+      <td>Japan</td>
+      <td>9008.T</td>
+      <td>Tokyo:9008</td>
+      <td>2000-01-04</td>
+      <td>10.34</td>
+      <td>10.34</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.89</td>
+      <td>-0.13</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.18</td>
+      <td>5.10</td>
+      <td>43.16</td>
+      <td>214.0</td>
+      <td>5.860800e+11</td>
+      <td>1.221000e+08</td>
+      <td>1.219987e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>5020.0</td>
+      <td>381000.0</td>
+      <td>84</td>
+      <td>57</td>
+      <td>38</td>
+      <td>12</td>
+      <td>77</td>
+      <td>73</td>
+      <td>0.93</td>
+      <td>401990.0</td>
+      <td>0.95</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>303.49</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.36</td>
+      <td>117.50</td>
+      <td>2.14</td>
+      <td>5.46</td>
+      <td>5.91</td>
+      <td>-0.59</td>
+      <td>-10.99</td>
+      <td>NaN</td>
+      <td>4888.91</td>
+      <td>2.68</td>
+      <td>4869.53</td>
+      <td>3.09</td>
+      <td>4927.40</td>
+      <td>1.88</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>951778</td>
+      <td>2154</td>
+      <td>BeNextYumeshin Group Co</td>
+      <td>Tokyo</td>
+      <td>Industrials</td>
+      <td>Staffing &amp; Employment Services</td>
+      <td>Japan</td>
+      <td>2154.T</td>
+      <td>Tokyo:2154</td>
+      <td>2007-06-06</td>
+      <td>0.28</td>
+      <td>-0.39</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>0.91</td>
+      <td>NaN</td>
+      <td>119.48</td>
+      <td>0.08</td>
+      <td>0.04</td>
+      <td>36.34</td>
+      <td>17.39</td>
+      <td>70.0</td>
+      <td>1.485351e+11</td>
+      <td>8.857190e+07</td>
+      <td>5.059346e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1728.0</td>
+      <td>481200.0</td>
+      <td>77</td>
+      <td>86</td>
+      <td>93</td>
+      <td>95</td>
+      <td>74</td>
+      <td>51</td>
+      <td>0.88</td>
+      <td>352854.0</td>
+      <td>1.36</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>143.38</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.24</td>
+      <td>55.79</td>
+      <td>1.47</td>
+      <td>2.61</td>
+      <td>3.16</td>
+      <td>10.20</td>
+      <td>22.03</td>
+      <td>NaN</td>
+      <td>1685.99</td>
+      <td>2.49</td>
+      <td>1670.86</td>
+      <td>3.42</td>
+      <td>1635.64</td>
+      <td>5.65</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>976126</td>
+      <td>3765</td>
+      <td>GungHo Online Entertainment Inc</td>
+      <td>Tokyo</td>
+      <td>Communication Services</td>
+      <td>Electronic Gaming &amp; Multimedia</td>
+      <td>Japan</td>
+      <td>3765.T</td>
+      <td>Tokyo:3765</td>
+      <td>2005-03-09</td>
+      <td>-0.10</td>
+      <td>-0.07</td>
+      <td>NaN</td>
+      <td>-0.12</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>-0.18</td>
+      <td>-0.10</td>
+      <td>-0.06</td>
+      <td>0.05</td>
+      <td>-0.00</td>
+      <td>20.28</td>
+      <td>21.77</td>
+      <td>129.0</td>
+      <td>1.609293e+11</td>
+      <td>6.189590e+07</td>
+      <td>4.669332e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>2710.0</td>
+      <td>580300.0</td>
+      <td>88</td>
+      <td>86</td>
+      <td>94</td>
+      <td>97</td>
+      <td>100</td>
+      <td>89</td>
+      <td>1.18</td>
+      <td>449266.0</td>
+      <td>1.29</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>103.93</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.29</td>
+      <td>65.71</td>
+      <td>3.59</td>
+      <td>4.63</td>
+      <td>7.67</td>
+      <td>10.93</td>
+      <td>31.81</td>
+      <td>NaN</td>
+      <td>2624.24</td>
+      <td>3.27</td>
+      <td>2609.98</td>
+      <td>3.83</td>
+      <td>2590.48</td>
+      <td>4.61</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>44235</td>
+      <td>5108</td>
+      <td>Bridgestone Corp.</td>
+      <td>Tokyo</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Parts</td>
+      <td>Japan</td>
+      <td>5108.T</td>
+      <td>Tokyo:5108</td>
+      <td>2000-01-04</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.26</td>
+      <td>0.20</td>
+      <td>0.15</td>
+      <td>-0.00</td>
+      <td>0.09</td>
+      <td>0.12</td>
+      <td>0.08</td>
+      <td>0.04</td>
+      <td>18.72</td>
+      <td>42.47</td>
+      <td>433.0</td>
+      <td>3.269890e+12</td>
+      <td>7.030510e+08</td>
+      <td>6.657163e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>4739.0</td>
+      <td>2262000.0</td>
+      <td>80</td>
+      <td>32</td>
+      <td>45</td>
+      <td>25</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1.11</td>
+      <td>2457030.0</td>
+      <td>0.92</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>270.94</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.88</td>
+      <td>94.43</td>
+      <td>2.16</td>
+      <td>3.54</td>
+      <td>4.22</td>
+      <td>-6.57</td>
+      <td>-9.68</td>
+      <td>NaN</td>
+      <td>4627.77</td>
+      <td>2.40</td>
+      <td>4608.60</td>
+      <td>2.83</td>
+      <td>4665.38</td>
+      <td>1.58</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>946344</td>
+      <td>9987</td>
+      <td>Suzuken Co Ltd</td>
+      <td>Tokyo</td>
+      <td>Healthcare</td>
+      <td>Medical Distribution</td>
+      <td>Japan</td>
+      <td>9987.T</td>
+      <td>Tokyo:9987</td>
+      <td>2001-01-01</td>
+      <td>1.35</td>
+      <td>1.39</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>-0.01</td>
+      <td>-0.00</td>
+      <td>-0.02</td>
+      <td>-0.01</td>
+      <td>21.06</td>
+      <td>24.17</td>
+      <td>140.0</td>
+      <td>3.306623e+11</td>
+      <td>8.794210e+07</td>
+      <td>6.567864e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>3835.0</td>
+      <td>120900.0</td>
+      <td>75</td>
+      <td>91</td>
+      <td>92</td>
+      <td>79</td>
+      <td>76</td>
+      <td>58</td>
+      <td>1.09</td>
+      <td>190246.0</td>
+      <td>0.64</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>345.23</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.23</td>
+      <td>78.57</td>
+      <td>1.72</td>
+      <td>1.05</td>
+      <td>2.82</td>
+      <td>15.69</td>
+      <td>17.46</td>
+      <td>NaN</td>
+      <td>3765.19</td>
+      <td>1.85</td>
+      <td>3739.41</td>
+      <td>2.56</td>
+      <td>3692.50</td>
+      <td>3.86</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>946171</td>
+      <td>5110</td>
+      <td>Sumitomo Rubber Ind Ltd</td>
+      <td>Tokyo</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Parts</td>
+      <td>Japan</td>
+      <td>5110.T</td>
+      <td>Tokyo:5110</td>
+      <td>2001-01-01</td>
+      <td>-0.70</td>
+      <td>-0.70</td>
+      <td>NaN</td>
+      <td>-0.07</td>
+      <td>-0.48</td>
+      <td>0.26</td>
+      <td>0.11</td>
+      <td>0.10</td>
+      <td>0.08</td>
+      <td>0.06</td>
+      <td>0.04</td>
+      <td>32.50</td>
+      <td>37.98</td>
+      <td>181.0</td>
+      <td>2.935024e+11</td>
+      <td>2.629950e+08</td>
+      <td>1.819898e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1139.0</td>
+      <td>919900.0</td>
+      <td>79</td>
+      <td>37</td>
+      <td>24</td>
+      <td>25</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1.07</td>
+      <td>1357662.0</td>
+      <td>0.68</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>134.05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.90</td>
+      <td>23.50</td>
+      <td>1.33</td>
+      <td>4.11</td>
+      <td>3.73</td>
+      <td>-5.16</td>
+      <td>-21.45</td>
+      <td>NaN</td>
+      <td>1113.06</td>
+      <td>2.33</td>
+      <td>1107.26</td>
+      <td>2.87</td>
+      <td>1108.98</td>
+      <td>2.71</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>44254</td>
+      <td>3382</td>
+      <td>Seven &amp; i Holdings Co., Ltd., Japan</td>
+      <td>Tokyo</td>
+      <td>Consumer Defensive</td>
+      <td>Grocery Stores</td>
+      <td>NaN</td>
+      <td>3382.T</td>
+      <td>Tokyo:3382</td>
+      <td>2000-01-04</td>
+      <td>0.17</td>
+      <td>0.17</td>
+      <td>0.35</td>
+      <td>0.24</td>
+      <td>0.11</td>
+      <td>0.12</td>
+      <td>0.68</td>
+      <td>0.59</td>
+      <td>0.17</td>
+      <td>0.29</td>
+      <td>0.01</td>
+      <td>15.70</td>
+      <td>45.67</td>
+      <td>417.0</td>
+      <td>4.920775e+12</td>
+      <td>8.829670e+08</td>
+      <td>7.761631e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>5810.0</td>
+      <td>2503700.0</td>
+      <td>79</td>
+      <td>87</td>
+      <td>92</td>
+      <td>4</td>
+      <td>57</td>
+      <td>61</td>
+      <td>0.91</td>
+      <td>2666190.0</td>
+      <td>0.94</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>291.11</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.27</td>
+      <td>138.21</td>
+      <td>4.63</td>
+      <td>2.92</td>
+      <td>3.81</td>
+      <td>11.95</td>
+      <td>22.08</td>
+      <td>NaN</td>
+      <td>5658.46</td>
+      <td>2.68</td>
+      <td>5645.78</td>
+      <td>2.91</td>
+      <td>5619.32</td>
+      <td>3.39</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>44219</td>
+      <td>2914</td>
+      <td>Japan Tobacco Inc</td>
+      <td>Tokyo</td>
+      <td>Consumer Defensive</td>
+      <td>Tobacco</td>
+      <td>Japan</td>
+      <td>2914.T</td>
+      <td>Tokyo:2914</td>
+      <td>2000-01-04</td>
+      <td>0.33</td>
+      <td>0.38</td>
+      <td>NaN</td>
+      <td>-0.02</td>
+      <td>-0.22</td>
+      <td>0.05</td>
+      <td>0.12</td>
+      <td>0.00</td>
+      <td>-0.05</td>
+      <td>-0.06</td>
+      <td>0.00</td>
+      <td>34.37</td>
+      <td>16.83</td>
+      <td>302.0</td>
+      <td>3.828549e+12</td>
+      <td>1.774530e+09</td>
+      <td>1.107374e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>2202.0</td>
+      <td>7020200.0</td>
+      <td>86</td>
+      <td>33</td>
+      <td>60</td>
+      <td>99</td>
+      <td>6</td>
+      <td>72</td>
+      <td>0.87</td>
+      <td>6895454.0</td>
+      <td>1.02</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>160.59</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.27</td>
+      <td>27.96</td>
+      <td>1.90</td>
+      <td>2.95</td>
+      <td>6.69</td>
+      <td>-6.34</td>
+      <td>-3.17</td>
+      <td>NaN</td>
+      <td>2159.91</td>
+      <td>1.95</td>
+      <td>2142.07</td>
+      <td>2.80</td>
+      <td>2158.08</td>
+      <td>2.04</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>991379</td>
+      <td>2121</td>
+      <td>Mixi Inc</td>
+      <td>Tokyo</td>
+      <td>Communication Services</td>
+      <td>Electronic Gaming &amp; Multimedia</td>
+      <td>Japan</td>
+      <td>2121.T</td>
+      <td>Tokyo:2121</td>
+      <td>2006-09-14</td>
+      <td>0.15</td>
+      <td>0.18</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>-0.13</td>
+      <td>-0.18</td>
+      <td>-0.15</td>
+      <td>-0.09</td>
+      <td>43.72</td>
+      <td>23.34</td>
+      <td>103.0</td>
+      <td>1.625201e+11</td>
+      <td>7.255360e+07</td>
+      <td>3.729834e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>2283.0</td>
+      <td>225800.0</td>
+      <td>80</td>
+      <td>84</td>
+      <td>60</td>
+      <td>84</td>
+      <td>34</td>
+      <td>4</td>
+      <td>1.12</td>
+      <td>274380.0</td>
+      <td>0.82</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>135.94</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.05</td>
+      <td>48.14</td>
+      <td>1.38</td>
+      <td>2.47</td>
+      <td>4.01</td>
+      <td>8.87</td>
+      <td>-10.33</td>
+      <td>NaN</td>
+      <td>2242.97</td>
+      <td>1.78</td>
+      <td>2233.47</td>
+      <td>2.22</td>
+      <td>2230.44</td>
+      <td>2.36</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>946176</td>
+      <td>5463</td>
+      <td>Maruichi Steel Tube Ltd</td>
+      <td>Tokyo</td>
+      <td>Basic Materials</td>
+      <td>Steel</td>
+      <td>Japan</td>
+      <td>5463.T</td>
+      <td>Tokyo:5463</td>
+      <td>2001-01-01</td>
+      <td>1.03</td>
+      <td>1.06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.49</td>
+      <td>0.78</td>
+      <td>0.78</td>
+      <td>0.78</td>
+      <td>-0.02</td>
+      <td>22.18</td>
+      <td>31.39</td>
+      <td>97.0</td>
+      <td>2.231016e+11</td>
+      <td>8.005080e+07</td>
+      <td>6.962042e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>2835.0</td>
+      <td>164900.0</td>
+      <td>65</td>
+      <td>86</td>
+      <td>87</td>
+      <td>22</td>
+      <td>93</td>
+      <td>98</td>
+      <td>1.60</td>
+      <td>281518.0</td>
+      <td>0.59</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>247.30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.66</td>
+      <td>51.79</td>
+      <td>1.29</td>
+      <td>2.05</td>
+      <td>0.75</td>
+      <td>10.31</td>
+      <td>10.74</td>
+      <td>NaN</td>
+      <td>2794.52</td>
+      <td>1.45</td>
+      <td>2788.95</td>
+      <td>1.65</td>
+      <td>2812.56</td>
+      <td>0.80</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+            </section>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+    </div>
+</footer>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bm/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+<script>
+        $(document).ready(function () {
+            $('#data').DataTable(
+                {
+                    "scrollX": true,
+                    "dom": 'Bfrtip',
+                    "buttons": [
+                        'copy', 'csv', 'excel', 'print'
+                    ]
+
+                }
+            );
+        });
+    </script>
+    
+</body>
+
+</html>

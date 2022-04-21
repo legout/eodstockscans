@@ -1,0 +1,1590 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.datatables.net/v/bm/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/sc-2.0.5/datatables.min.css" />
+
+</head >
+
+
+<body>
+    <section class="hero is-small is-dark">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <!-- <a class="navbar-item">
+                        
+                        <img src="data:image/svg+xml;base64,"
+                            alt="Logo">
+                       
+                    </a> -->
+                    <span class="navbar-burger" data-target="navbarMenuHeroB">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </div>
+                <div id="navbarMenuHeroB" class="navbar-menu">
+                    <div class="navbar-start">
+                        
+                        <a class="navbar-item" href="../../germany/market_monitor.html">
+                            
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-home"></i>
+                                    </span>
+                                    <span>Home</span>
+                                </span>
+                            </a>
+
+                            <div class="navbar-item has-dropdown is-hoverable has-background-dark">
+                                <a class="navbar-link">
+                                    <span>Choose Market</span>
+                                </a>
+
+                                <div class="navbar-dropdown has-background-dark">
+                                    
+                                    <a class="navbar-item" href="../../australia/market_monitor.html">
+                                        <span>Australia</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../canada/market_monitor.html">
+                                        <span>Canada</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../germany/market_monitor.html">
+                                        <span>Germany</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../hong_kong/market_monitor.html">
+                                        <span>Hong Kong</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../japan/market_monitor.html">
+                                        <span>Japan</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../nordic_markets/market_monitor.html">
+                                        <span>Nordic Markets</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_kingdom/market_monitor.html">
+                                        <span>United Kingdom</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_states/market_monitor.html">
+                                        <span>United States</span>
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                    </div>
+                    <div class="navbar-end"></div>
+                    <span class="navbar-item">
+                        <a class="button is-info is-light" href="https://twitter.com/LignoL23">
+                            <span class="icon">
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                            <span>Twitter</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <a class="button  is-success is-light" href="https://www.paypal.com/paypalme/volkerlorrmann/5">
+                            <span class="icon">
+                                <i class="fab fa-paypal"></i>
+                            </span>
+                            <span>paypal.me</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+                        <script
+                            type='text/javascript'>kofiwidget2.init('Support me', '#d6d6d6', 'W7W0ACJPB'); kofiwidget2.draw();</script>
+                    </span>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="columns is-multiline is-mobile is-centered">
+                <div class="column is-1">
+                    <img src="data:image/svg+xml;base64," alt="Logo">
+                </div>
+                <div class="column is-4">
+                    <p class="title">
+                        EOD Stockmarket Scans
+                    </p>
+                    <p class="subtitle">
+                        Fintwits most popular stockmarket scans
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+            <div class="container">
+                <ul>
+                    
+                    <li class="is-active">
+                        <a href="../MeMyselfAndI/Top Gainers_result_table.html"> Results </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../MeMyselfAndI/Top Gainers_minicharts.html"> Minicharts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../MeMyselfAndI/Top Gainers_charts.html"> Charts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../MeMyselfAndI/Top Gainers_criteria.html"> Criteria </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+</section>
+    <div class="columns is-centered">
+        <div class="column is-2">
+            <div class="box has-background-light my-0 mx-2 p-auto">
+    <aside class="menu">
+        <p class="menu-label has-text-dark">
+            Market Monitor
+        </p>
+        <ul class="menu-list">
+            <li><a class="has-text-grey-light">New Highs/Lows</a></li>
+            <li><a class="has-text-grey-light">Breadth</a></li>
+            <li><a class="has-text-grey-light">Above/Below SMA</a></li>
+            <li><a class="has-text-grey-light">Sectors</a></li>
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Kristjan Kullamägi
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Biggest Gainers 1M_minicharts.html">
+                        Biggest Gainers 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Biggest Gainers 3M_minicharts.html">
+                        Biggest Gainers 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Biggest Gainers 6M_minicharts.html">
+                        Biggest Gainers 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Biggest Gainers 12M_minicharts.html">
+                        Biggest Gainers 12M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/EP with Growth_minicharts.html">
+                        EP with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/EP_minicharts.html">
+                        EP
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/High Trend Intensity_minicharts.html">
+                        High Trend Intensity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Small Stock Momo_minicharts.html">
+                        Small Stock Momo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Momentum_minicharts.html">
+                        Momentum
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Brad Schulz
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Brad Schulz/Pocket Pivot_minicharts.html">
+                        Pocket Pivot
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Stockbee
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Stockbee/4% Gainers_minicharts.html">
+                        4% Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Stockbee/Combo_minicharts.html">
+                        Combo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Stockbee/Ants_minicharts.html">
+                        Ants
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Stockbee/Breakout 1M Base_minicharts.html">
+                        Breakout 1M Base
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Stockbee/Breakout 3M Base_minicharts.html">
+                        Breakout 3M Base
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Leif Soreide
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Leif Soreide/HTF_minicharts.html">
+                        HTF
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Blake Davis
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Blake Davis/Strength_minicharts.html">
+                        Strength
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ben
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ben/Power of 3_minicharts.html">
+                        Power of 3
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ben/Velocity_minicharts.html">
+                        Velocity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ben/Focus_minicharts.html">
+                        Focus
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ray
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ray/RSNHBP 5D_minicharts.html">
+                        RSNHBP 5D
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ray/RSNHBP 1M_minicharts.html">
+                        RSNHBP 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ray/RSNHBP 3M_minicharts.html">
+                        RSNHBP 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ray/RSNHBP 6M_minicharts.html">
+                        RSNHBP 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ray/RSNHBP 12M_minicharts.html">
+                        RSNHBP 12M
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Mark Minvervini
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Mark Minvervini/Trend Template_minicharts.html">
+                        Trend Template
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            MeMyselfAndI
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/MeMyselfAndI/Top Gainers From Open_minicharts.html">
+                        Top Gainers From Open
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="is-active"
+                        href="../../germany/MeMyselfAndI/Top Gainers_minicharts.html">
+                        Top Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/MeMyselfAndI/Volume Gainers_minicharts.html">
+                        Volume Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/MeMyselfAndI/Insiders_minicharts.html">
+                        Insiders
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/MeMyselfAndI/Darvas Scan_minicharts.html">
+                        Darvas Scan
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/MeMyselfAndI/Darvas Scan with Growth_minicharts.html">
+                        Darvas Scan with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/MeMyselfAndI/52W High_minicharts.html">
+                        52W High
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/MeMyselfAndI/Quite and Tight_minicharts.html">
+                        Quite and Tight
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+    </aside>
+</div>
+        </div>
+        <div class="column is-10">
+            <section class="block my-6">
+                <div class="columns ">
+                    <div class="column is-5 has-text-left">
+                        <h1 class="title is-4">Top Gainers @ Germany</h1>
+                        <h2 class="subtitle is-6">2022-04-20</h2>
+                    </div>
+                    <div class="column has-text-right mx-5">
+                        <div class="media">
+                           
+                            <div class="media-content">
+                                <p class="title is-5">MeMyselfAndI</p>
+                                <p class="subtitle is-6"><a class="has-text-grey-light" href="https://twitter.com/LignoL23">@LignoL23</a></p>
+                            </div>
+                            <div class="media-right">
+                                <figure class="image is-48x48">
+                                    <img src="https://unavatar.io/twitter/LignoL23" alt="Placeholder image">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="my-auto mr-6">
+                
+    <div class="table-container">
+        <table border="1" class="dataframe table is-striped no-wrap" id="data" style="width:100%; font-size:85%">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>symbol_id</th>
+      <th>symbol</th>
+      <th>name</th>
+      <th>exchange</th>
+      <th>sector</th>
+      <th>industry</th>
+      <th>country</th>
+      <th>yahoo_symbol</th>
+      <th>forexpros_symbol</th>
+      <th>IPO Date</th>
+      <th>EPS Growth Q</th>
+      <th>EPS Growth Y</th>
+      <th>EPS Growth FQ</th>
+      <th>EPS Growth FY</th>
+      <th>EPS Growth FQ1</th>
+      <th>EPS Growth FY1</th>
+      <th>Rev Growth Q</th>
+      <th>Rev Growth FQ</th>
+      <th>Rev Growth FY</th>
+      <th>Rev Growth FQ1</th>
+      <th>Rev Growth FY1</th>
+      <th>Insiders %</th>
+      <th>Institutions %</th>
+      <th>Institutions No.</th>
+      <th>Market Cap</th>
+      <th>Shares Outstanding</th>
+      <th>Shares Float</th>
+      <th>Shares Short</th>
+      <th>Short Ratio</th>
+      <th>Net Insider Trading %</th>
+      <th>close</th>
+      <th>volume</th>
+      <th>1m RS</th>
+      <th>3m RS</th>
+      <th>RS</th>
+      <th>Industry 1m RS</th>
+      <th>Industry 3m RS</th>
+      <th>Industry RS</th>
+      <th>UD Ratio</th>
+      <th>50d avg Volume</th>
+      <th>rel Volume</th>
+      <th>Pocket Pivot</th>
+      <th>1w Pocket Pivots</th>
+      <th>1m Pocket Pivots</th>
+      <th>Rocket Ratio</th>
+      <th>52w High</th>
+      <th>% below 52w High</th>
+      <th>52w Low</th>
+      <th>% above 52w Low</th>
+      <th>adr(20)</th>
+      <th>atr(14)</th>
+      <th>roc</th>
+      <th>roc(5)</th>
+      <th>roc(21)</th>
+      <th>roc(63)</th>
+      <th>roc(126)</th>
+      <th>roc(252)</th>
+      <th>ema(9)</th>
+      <th>% from 9d ema</th>
+      <th>ema(21)</th>
+      <th>% from 21d ema</th>
+      <th>sma(50)</th>
+      <th>% from 50d sma</th>
+      <th>market</th>
+      <th>date</th>
+      <th>group_name</th>
+      <th>scan_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>19794</td>
+      <td>CE2G</td>
+      <td>Cropenergies AG</td>
+      <td>Xetra</td>
+      <td>Basic Materials</td>
+      <td>Specialty Chemicals</td>
+      <td>Germany</td>
+      <td>CE2.DE</td>
+      <td>Xetra:CE2G</td>
+      <td>2006-09-29 07:00:00</td>
+      <td>0.60</td>
+      <td>0.60</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.41</td>
+      <td>-0.12</td>
+      <td>-0.12</td>
+      <td>-0.12</td>
+      <td>0.11</td>
+      <td>74.02</td>
+      <td>7.68</td>
+      <td>78.0</td>
+      <td>1.123780e+09</td>
+      <td>87250000.0</td>
+      <td>22669295.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>14.34</td>
+      <td>289604.0</td>
+      <td>98</td>
+      <td>82</td>
+      <td>88</td>
+      <td>97</td>
+      <td>97</td>
+      <td>96</td>
+      <td>1.18</td>
+      <td>122208.62</td>
+      <td>2.37</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>185.50</td>
+      <td>14.46</td>
+      <td>-0.83</td>
+      <td>9.64</td>
+      <td>48.76</td>
+      <td>4.09</td>
+      <td>0.52</td>
+      <td>8.80</td>
+      <td>16.78</td>
+      <td>23.83</td>
+      <td>9.30</td>
+      <td>29.89</td>
+      <td>31.80</td>
+      <td>12.83</td>
+      <td>11.76</td>
+      <td>12.40</td>
+      <td>15.65</td>
+      <td>11.99</td>
+      <td>19.64</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>19890</td>
+      <td>TPEG</td>
+      <td>PVA Tepla AG O.N.</td>
+      <td>Xetra</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>Germany</td>
+      <td>TPE.DE</td>
+      <td>Xetra:TPEG</td>
+      <td>1999-06-22 07:00:00</td>
+      <td>-0.36</td>
+      <td>-0.39</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.35</td>
+      <td>0.01</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.18</td>
+      <td>14.00</td>
+      <td>41.40</td>
+      <td>81.0</td>
+      <td>5.193900e+08</td>
+      <td>21750000.0</td>
+      <td>18015950.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>25.50</td>
+      <td>74475.0</td>
+      <td>73</td>
+      <td>12</td>
+      <td>31</td>
+      <td>21</td>
+      <td>32</td>
+      <td>54</td>
+      <td>0.81</td>
+      <td>117440.52</td>
+      <td>0.63</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>153.40</td>
+      <td>50.60</td>
+      <td>-49.60</td>
+      <td>19.14</td>
+      <td>33.23</td>
+      <td>6.53</td>
+      <td>1.28</td>
+      <td>6.07</td>
+      <td>9.72</td>
+      <td>5.37</td>
+      <td>-25.76</td>
+      <td>-30.04</td>
+      <td>-4.14</td>
+      <td>24.59</td>
+      <td>3.69</td>
+      <td>24.85</td>
+      <td>2.63</td>
+      <td>24.71</td>
+      <td>3.20</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>23470</td>
+      <td>LXSG</td>
+      <td>Lanxess AG</td>
+      <td>Xetra</td>
+      <td>Basic Materials</td>
+      <td>Specialty Chemicals</td>
+      <td>Germany</td>
+      <td>LXS.DE</td>
+      <td>Xetra:LXSG</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>1.85</td>
+      <td>1.85</td>
+      <td>NaN</td>
+      <td>-0.02</td>
+      <td>-0.25</td>
+      <td>0.16</td>
+      <td>0.38</td>
+      <td>0.34</td>
+      <td>0.15</td>
+      <td>0.28</td>
+      <td>0.04</td>
+      <td>5.32</td>
+      <td>60.91</td>
+      <td>299.0</td>
+      <td>3.045434e+09</td>
+      <td>86346304.0</td>
+      <td>83792341.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>37.72</td>
+      <td>947928.0</td>
+      <td>13</td>
+      <td>6</td>
+      <td>8</td>
+      <td>50</td>
+      <td>43</td>
+      <td>63</td>
+      <td>0.70</td>
+      <td>484116.60</td>
+      <td>1.96</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>173.08</td>
+      <td>65.88</td>
+      <td>-42.74</td>
+      <td>33.47</td>
+      <td>12.70</td>
+      <td>4.39</td>
+      <td>1.71</td>
+      <td>5.63</td>
+      <td>6.22</td>
+      <td>-11.46</td>
+      <td>-33.03</td>
+      <td>-35.28</td>
+      <td>-40.09</td>
+      <td>36.68</td>
+      <td>2.84</td>
+      <td>38.38</td>
+      <td>-1.73</td>
+      <td>42.78</td>
+      <td>-11.83</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>25375</td>
+      <td>JENGn</td>
+      <td>Jenoptik AG</td>
+      <td>Xetra</td>
+      <td>Technology</td>
+      <td>Electronic Components</td>
+      <td>Germany</td>
+      <td>JEN.DE</td>
+      <td>Xetra:JENGn</td>
+      <td>1998-11-09 08:00:00</td>
+      <td>0.96</td>
+      <td>0.96</td>
+      <td>NaN</td>
+      <td>-0.10</td>
+      <td>-0.50</td>
+      <td>0.12</td>
+      <td>0.25</td>
+      <td>0.14</td>
+      <td>0.28</td>
+      <td>-0.02</td>
+      <td>0.07</td>
+      <td>11.00</td>
+      <td>50.55</td>
+      <td>136.0</td>
+      <td>1.392031e+09</td>
+      <td>57238100.0</td>
+      <td>50941922.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>25.70</td>
+      <td>497068.0</td>
+      <td>2</td>
+      <td>15</td>
+      <td>31</td>
+      <td>24</td>
+      <td>20</td>
+      <td>13</td>
+      <td>0.59</td>
+      <td>182620.56</td>
+      <td>2.72</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>278.95</td>
+      <td>37.80</td>
+      <td>-32.01</td>
+      <td>21.62</td>
+      <td>18.87</td>
+      <td>4.50</td>
+      <td>1.14</td>
+      <td>5.41</td>
+      <td>9.55</td>
+      <td>-19.94</td>
+      <td>-24.05</td>
+      <td>-20.38</td>
+      <td>-5.17</td>
+      <td>24.90</td>
+      <td>3.21</td>
+      <td>26.37</td>
+      <td>-2.52</td>
+      <td>29.14</td>
+      <td>-11.80</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>964775</td>
+      <td>M4NG</td>
+      <td>Muehlhan AG</td>
+      <td>Xetra</td>
+      <td>Industrials</td>
+      <td>Engineering &amp; Construction</td>
+      <td>Germany</td>
+      <td>M4N.DE</td>
+      <td>Xetra:M4NG</td>
+      <td>2006-10-26 07:00:00</td>
+      <td>9.43</td>
+      <td>8.19</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.42</td>
+      <td>0.25</td>
+      <td>-0.16</td>
+      <td>-0.16</td>
+      <td>0.02</td>
+      <td>0.04</td>
+      <td>54.96</td>
+      <td>7.77</td>
+      <td>5.0</td>
+      <td>8.064160e+07</td>
+      <td>19385000.0</td>
+      <td>9197025.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>4.86</td>
+      <td>52271.0</td>
+      <td>99</td>
+      <td>96</td>
+      <td>96</td>
+      <td>96</td>
+      <td>73</td>
+      <td>67</td>
+      <td>2.97</td>
+      <td>30230.36</td>
+      <td>1.73</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>304.23</td>
+      <td>4.86</td>
+      <td>0.00</td>
+      <td>2.60</td>
+      <td>86.92</td>
+      <td>NaN</td>
+      <td>0.29</td>
+      <td>5.19</td>
+      <td>15.71</td>
+      <td>43.79</td>
+      <td>30.65</td>
+      <td>30.65</td>
+      <td>81.34</td>
+      <td>4.25</td>
+      <td>14.24</td>
+      <td>3.94</td>
+      <td>23.25</td>
+      <td>3.59</td>
+      <td>35.51</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>989449</td>
+      <td>UN01</td>
+      <td>Uniper SE</td>
+      <td>Xetra</td>
+      <td>Utilities</td>
+      <td>Utilities—Independent Power Producers</td>
+      <td>Germany</td>
+      <td>UN01.DE</td>
+      <td>Xetra:UN01</td>
+      <td>2016-09-12 07:00:00</td>
+      <td>65.00</td>
+      <td>65.40</td>
+      <td>NaN</td>
+      <td>-0.14</td>
+      <td>0.10</td>
+      <td>-0.12</td>
+      <td>3.24</td>
+      <td>NaN</td>
+      <td>-0.56</td>
+      <td>NaN</td>
+      <td>-0.17</td>
+      <td>75.01</td>
+      <td>5.85</td>
+      <td>268.0</td>
+      <td>8.563244e+09</td>
+      <td>365960000.0</td>
+      <td>87621803.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>24.34</td>
+      <td>380922.0</td>
+      <td>36</td>
+      <td>2</td>
+      <td>11</td>
+      <td>84</td>
+      <td>83</td>
+      <td>77</td>
+      <td>0.57</td>
+      <td>736408.76</td>
+      <td>0.52</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>118.99</td>
+      <td>42.45</td>
+      <td>-42.66</td>
+      <td>16.05</td>
+      <td>51.65</td>
+      <td>4.56</td>
+      <td>1.10</td>
+      <td>4.91</td>
+      <td>4.11</td>
+      <td>-3.53</td>
+      <td>-39.92</td>
+      <td>-36.25</td>
+      <td>-19.46</td>
+      <td>23.68</td>
+      <td>2.80</td>
+      <td>24.04</td>
+      <td>1.26</td>
+      <td>27.10</td>
+      <td>-10.17</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1073874</td>
+      <td>UN01</td>
+      <td>Uniper SE</td>
+      <td>Xetra</td>
+      <td>Utilities</td>
+      <td>Utilities—Independent Power Producers</td>
+      <td>Germany</td>
+      <td>UN01.DE</td>
+      <td>Xetra:UN01</td>
+      <td>2016-09-12 07:00:00</td>
+      <td>65.00</td>
+      <td>65.40</td>
+      <td>NaN</td>
+      <td>-0.14</td>
+      <td>0.10</td>
+      <td>-0.12</td>
+      <td>3.24</td>
+      <td>NaN</td>
+      <td>-0.56</td>
+      <td>NaN</td>
+      <td>-0.17</td>
+      <td>75.01</td>
+      <td>5.85</td>
+      <td>268.0</td>
+      <td>8.563244e+09</td>
+      <td>365960000.0</td>
+      <td>87621803.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>24.34</td>
+      <td>380922.0</td>
+      <td>36</td>
+      <td>2</td>
+      <td>6</td>
+      <td>84</td>
+      <td>83</td>
+      <td>77</td>
+      <td>0.60</td>
+      <td>746634.52</td>
+      <td>0.51</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>117.36</td>
+      <td>41.78</td>
+      <td>-41.74</td>
+      <td>16.05</td>
+      <td>51.65</td>
+      <td>NaN</td>
+      <td>1.05</td>
+      <td>4.91</td>
+      <td>4.11</td>
+      <td>-3.53</td>
+      <td>-39.92</td>
+      <td>-40.69</td>
+      <td>-40.69</td>
+      <td>23.62</td>
+      <td>3.04</td>
+      <td>23.97</td>
+      <td>1.54</td>
+      <td>26.94</td>
+      <td>-9.66</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1168311</td>
+      <td>NA9n</td>
+      <td>Nagarro SE</td>
+      <td>Xetra</td>
+      <td>Technology</td>
+      <td>Information Technology Services</td>
+      <td>Germany</td>
+      <td>NA9.F</td>
+      <td>Xetra:NA9n</td>
+      <td>2020-12-17 07:00:00</td>
+      <td>0.50</td>
+      <td>0.25</td>
+      <td>NaN</td>
+      <td>0.38</td>
+      <td>NaN</td>
+      <td>0.29</td>
+      <td>0.34</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.33</td>
+      <td>44.52</td>
+      <td>24.98</td>
+      <td>98.0</td>
+      <td>1.918536e+09</td>
+      <td>13776000.0</td>
+      <td>7019553.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>141.60</td>
+      <td>43328.0</td>
+      <td>34</td>
+      <td>42</td>
+      <td>73</td>
+      <td>31</td>
+      <td>63</td>
+      <td>69</td>
+      <td>0.76</td>
+      <td>27700.74</td>
+      <td>1.56</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>253.41</td>
+      <td>212.00</td>
+      <td>-33.21</td>
+      <td>82.00</td>
+      <td>72.68</td>
+      <td>3.95</td>
+      <td>5.21</td>
+      <td>4.58</td>
+      <td>5.67</td>
+      <td>-4.00</td>
+      <td>-10.38</td>
+      <td>-17.67</td>
+      <td>53.58</td>
+      <td>138.23</td>
+      <td>2.44</td>
+      <td>139.25</td>
+      <td>1.69</td>
+      <td>135.82</td>
+      <td>4.25</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>19220</td>
+      <td>JUNG_p</td>
+      <td>Jungheinrich AG O.N.VZO</td>
+      <td>Xetra</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>Germany</td>
+      <td>JUN3.DE</td>
+      <td>Xetra:JUNG_p</td>
+      <td>2000-01-03 07:00:00</td>
+      <td>0.71</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.20</td>
+      <td>-0.41</td>
+      <td>0.16</td>
+      <td>0.12</td>
+      <td>0.07</td>
+      <td>0.09</td>
+      <td>0.07</td>
+      <td>0.06</td>
+      <td>0.00</td>
+      <td>40.96</td>
+      <td>153.0</td>
+      <td>2.360289e+09</td>
+      <td>48000000.0</td>
+      <td>48000180.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>25.22</td>
+      <td>341017.0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>5</td>
+      <td>13</td>
+      <td>14</td>
+      <td>20</td>
+      <td>0.53</td>
+      <td>223921.84</td>
+      <td>1.52</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>214.36</td>
+      <td>48.04</td>
+      <td>-47.50</td>
+      <td>22.52</td>
+      <td>11.99</td>
+      <td>5.80</td>
+      <td>1.19</td>
+      <td>4.39</td>
+      <td>8.89</td>
+      <td>-24.04</td>
+      <td>-39.29</td>
+      <td>-37.64</td>
+      <td>-45.62</td>
+      <td>24.27</td>
+      <td>3.91</td>
+      <td>25.82</td>
+      <td>-2.32</td>
+      <td>30.04</td>
+      <td>-16.05</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>960689</td>
+      <td>HLAG</td>
+      <td>Hapag Lloyd AG</td>
+      <td>Xetra</td>
+      <td>Industrials</td>
+      <td>Marine Shipping</td>
+      <td>Germany</td>
+      <td>HLAG.DE</td>
+      <td>Xetra:HLAG</td>
+      <td>2015-11-06 08:00:00</td>
+      <td>7.86</td>
+      <td>7.86</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>-0.73</td>
+      <td>1.13</td>
+      <td>NaN</td>
+      <td>0.17</td>
+      <td>0.88</td>
+      <td>-0.26</td>
+      <td>73.90</td>
+      <td>23.05</td>
+      <td>80.0</td>
+      <td>5.529410e+10</td>
+      <td>175760000.0</td>
+      <td>6327371.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>348.40</td>
+      <td>42596.0</td>
+      <td>51</td>
+      <td>97</td>
+      <td>98</td>
+      <td>52</td>
+      <td>100</td>
+      <td>100</td>
+      <td>1.55</td>
+      <td>37227.20</td>
+      <td>1.14</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>169.97</td>
+      <td>366.60</td>
+      <td>-4.96</td>
+      <td>131.50</td>
+      <td>164.94</td>
+      <td>5.40</td>
+      <td>15.51</td>
+      <td>4.37</td>
+      <td>16.68</td>
+      <td>-0.40</td>
+      <td>31.27</td>
+      <td>99.66</td>
+      <td>132.42</td>
+      <td>321.27</td>
+      <td>8.45</td>
+      <td>315.32</td>
+      <td>10.49</td>
+      <td>292.10</td>
+      <td>19.28</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>954894</td>
+      <td>WAFGn</td>
+      <td>Siltronic AG</td>
+      <td>Xetra</td>
+      <td>Technology</td>
+      <td>Semiconductors</td>
+      <td>Germany</td>
+      <td>WAF.DE</td>
+      <td>Xetra:WAFGn</td>
+      <td>2015-06-11 07:00:00</td>
+      <td>1.39</td>
+      <td>1.79</td>
+      <td>NaN</td>
+      <td>0.22</td>
+      <td>0.09</td>
+      <td>0.09</td>
+      <td>0.32</td>
+      <td>0.20</td>
+      <td>0.18</td>
+      <td>0.12</td>
+      <td>0.08</td>
+      <td>50.43</td>
+      <td>37.88</td>
+      <td>117.0</td>
+      <td>2.661000e+09</td>
+      <td>30000000.0</td>
+      <td>14849100.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>93.50</td>
+      <td>128894.0</td>
+      <td>34</td>
+      <td>14</td>
+      <td>12</td>
+      <td>21</td>
+      <td>32</td>
+      <td>54</td>
+      <td>0.86</td>
+      <td>100644.64</td>
+      <td>1.28</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>147.54</td>
+      <td>147.00</td>
+      <td>-36.39</td>
+      <td>85.10</td>
+      <td>9.87</td>
+      <td>3.53</td>
+      <td>3.25</td>
+      <td>4.35</td>
+      <td>8.97</td>
+      <td>-3.96</td>
+      <td>-24.66</td>
+      <td>-30.53</td>
+      <td>-34.84</td>
+      <td>89.93</td>
+      <td>3.98</td>
+      <td>91.61</td>
+      <td>2.06</td>
+      <td>97.20</td>
+      <td>-3.81</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1181372</td>
+      <td>DTGGe</td>
+      <td>Daimler Truck Holding AG</td>
+      <td>Xetra</td>
+      <td>Industrials</td>
+      <td>Farm &amp; Heavy Construction Machinery</td>
+      <td>Germany</td>
+      <td>DTG.DE</td>
+      <td>Xetra:DTGGe</td>
+      <td>2021-12-10 07:00:00</td>
+      <td>-0.71</td>
+      <td>-0.71</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.12</td>
+      <td>48.13</td>
+      <td>22.98</td>
+      <td>400.0</td>
+      <td>1.956038e+10</td>
+      <td>822902016.0</td>
+      <td>470753165.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>25.53</td>
+      <td>1859782.0</td>
+      <td>70</td>
+      <td>17</td>
+      <td>31</td>
+      <td>13</td>
+      <td>14</td>
+      <td>20</td>
+      <td>0.55</td>
+      <td>2745334.60</td>
+      <td>0.68</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>171.47</td>
+      <td>35.76</td>
+      <td>-28.58</td>
+      <td>20.28</td>
+      <td>25.88</td>
+      <td>4.29</td>
+      <td>0.94</td>
+      <td>4.14</td>
+      <td>7.15</td>
+      <td>4.18</td>
+      <td>-22.16</td>
+      <td>-14.24</td>
+      <td>-14.24</td>
+      <td>24.33</td>
+      <td>4.94</td>
+      <td>24.60</td>
+      <td>3.82</td>
+      <td>26.25</td>
+      <td>-2.74</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+            </section>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+    </div>
+</footer>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bm/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+<script>
+        $(document).ready(function () {
+            $('#data').DataTable(
+                {
+                    "scrollX": true,
+                    "dom": 'Bfrtip',
+                    "buttons": [
+                        'copy', 'csv', 'excel', 'print'
+                    ]
+
+                }
+            );
+        });
+    </script>
+    
+</body>
+
+</html>

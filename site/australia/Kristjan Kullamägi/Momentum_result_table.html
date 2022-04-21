@@ -1,0 +1,2924 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.datatables.net/v/bm/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/sc-2.0.5/datatables.min.css" />
+
+</head >
+
+
+<body>
+    <section class="hero is-small is-dark">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <!-- <a class="navbar-item">
+                        
+                        <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDEwMCAxMDA7IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOm5vbmU7fQoJLnN0MXtmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO30KPC9zdHlsZT48dGl0bGUvPjxnPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MS44LDg0YzAuMSwwLjIsMC4xLDAuMywwLjEsMC41YzAsMy4zLDAuMiw2LjcsMC41LDEwYzIuNi0wLjEsNC45LTAuMSw3LjItMC4ydjBjMC4zLDAsMC43LDAsMSwwICAgYy0wLjMtNS0wLjQtMTAtMC41LTE1QzQ4LjQsODAuNCw0NS41LDgyLjEsNDEuOCw4NHoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTYuMyw5NGMtMC4yLDAuMS0wLjQsMC4xLTAuNSwwLjJjMS43LDAuMSw0LjMsMC4yLDcuNywwLjNjMS40LDAsMi43LDAuMSw0LDAuMWMtMC4xLTEuNC0wLjMtMi44LTAuNC00LjEgICBDMjIuNiw5Mi4xLDE4LjgsOTMuMiwxNi4zLDk0eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02Ni45LDQ3LjVjMy4xLTMuMyw2LjgtNy41LDEwLjgtMTIuN2MwLDAsMCwwLDAtMC4xYzAuNS0wLjYsMS40LTAuNywyLTAuMmMxLjcsMS41LDMuNiwyLjksNS42LDQuNCAgIGMxLDAuOCwyLjEsMS41LDMuMSwyLjJjMC4zLDAuMiwwLjYsMC4zLDEsMC4zYzAuNCwwLDAuOC0wLjIsMS4yLTAuNGMwLjMtMC4zLDAuNS0wLjcsMC41LTEuMWMwLjItNC45LDAuMy05LjksMC4zLTE1di0wLjcgICBjMC01LjYtMC4xLTExLTAuMy0xNi4zYzAtMC4yLDAtMC4zLTAuMS0wLjVjLTAuMy0xLjQtMS43LTIuMy0zLjItMkM3Ni42LDgsNjUuNSwxMC43LDU0LjUsMTMuN2MtMC4zLDAuMS0wLjYsMC4zLTAuOCwwLjUgICBjLTAuMiwwLjMtMC4zLDAuNi0wLjMsMC45YzAsMC41LDAuMywxLDAuNywxLjJjMC45LDAuNiwxLjgsMS4xLDIuNywxLjdjMi4yLDEuMyw0LjMsMi41LDYuMywzLjVjMC43LDAuNCwxLDEuMiwwLjYsMS45ICAgYy0zLjEsNi02LjYsMTEuNy0xMC42LDE3LjFjLTguNSwxMS40LTE4LDIwLTMwLDMwLjhDMTYuNyw3NywxMiw4MSw5LjQsODMuNWMtMC42LDAuNi0xLjIsMS4yLTEuNywxLjhjMC43LTAuMSwxLjQtMC4yLDIuMS0wLjQgICBjMS4xLTAuMywyLjQtMC43LDMuNi0xLjFjMi41LTAuOSw0LjktMS45LDYuMS0yLjRDMjguOSw3Ny42LDQ3LjEsNjguNiw2Ni45LDQ3LjV6Ii8+PHBhdGggY2xhc3M9InN0MCIgZD0iTTMxLjUsODguN2MtMC42LDAuMi0xLjIsMC41LTEuNywwLjdjMC4yLDEuNywwLjQsMy41LDAuNSw1LjJjMC43LDAsMS4zLDAsMS45LDBjMi42LDAsNSwwLDcuMy0wLjEgICBjLTAuMy0zLjEtMC40LTYuMS0wLjUtOS4yQzM2LjgsODYuNSwzNC4yLDg3LjYsMzEuNSw4OC43eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik01Mi45LDc3LjVjMCwwLjEsMCwwLjEsMCwwLjJjMC4xLDUuNSwwLjMsMTEuMSwwLjYsMTYuNmMzLjQtMC4xLDYuOS0wLjIsMTAuNC0wLjNjLTAuMy04LjEtMC41LTE2LjMtMC44LTI0LjQgICBDNTkuOCw3Mi40LDU2LjQsNzUsNTIuOSw3Ny41eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik05MS4yLDU1LjNjLTAuMS0wLjEtMC4xLTAuMS0wLjItMC4xYy0wLjEsMC0wLjItMC4xLTAuNS0wLjJjLTAuNi0wLjMtMS42LTAuNy0zLjUtMS42ICAgYy0xLjItMC42LTIuMy0xLjEtMy40LTEuNmMtMC41LTAuMi0xLTAuNC0xLjYtMC40Yy0xLjEsMC0yLjEsMC41LTIuOCwxLjRsMCwwYy0wLjIsMC4zLTAuNCwwLjUtMC42LDAuOGwyLjMsNDAuM2gwLjYgICBjMi4yLDAsMy45LDAsNS4yLTAuMmMxLTAuMSwxLjktMC4zLDIuOC0wLjdjMC41LTAuMiwwLjktMC41LDEuMi0wLjljMC41LTAuNCwwLjgtMSwxLTEuNmMwLjItMC45LDAuMy0xLjgsMC4zLTIuNyAgIGMwLTEuNy0wLjEtNC4xLTAuMS03LjVjMC0yLjEsMC4xLTQuNywwLjMtNy43bDAsMGMwLjMtNC45LDAuOC04LjgsMC44LTExLjhjMC0xLjItMC4xLTIuNC0wLjQtMy41QzkyLjIsNTYuNSw5MS44LDU1LjgsOTEuMiw1NS4zeiAgICIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02NS44LDY3LjFjMCwwLjEsMC4xLDAuMywwLjEsMC40YzAuMyw4LjgsMC42LDE3LjYsMC45LDI2LjRjMy4yLTAuMSw2LjQtMC4xLDkuNi0wLjF2MGgwLjNoMS4xICAgYzAtMC4xLDAuMS0wLjIsMC4xLTAuNGMtMC43LTEyLjItMS40LTI0LjUtMi4xLTM2LjdDNzIuNyw2MC40LDY5LjMsNjMuOCw2NS44LDY3LjF6Ii8+PHBhdGggZD0iTTIwLjYsODQuMWM5LjYtMy45LDI4LjMtMTMuMSw0OC40LTM0LjZjMi45LTMuMSw2LjMtNywxMC4xLTExLjhjMS40LDEuMiwzLDIuNCw0LjYsMy42YzEuMSwwLjgsMi4xLDEuNSwzLjIsMi4zICAgYzEuOCwxLjIsNC4xLDEuMSw1LjctMC40YzAuOS0wLjgsMS40LTIsMS41LTMuMmMwLjItNC45LDAuMy05LjksMC4zLTE1LjF2LTAuN2MwLTUuNi0wLjEtMTEuMS0wLjMtMTYuNGMtMC4xLTMtMi43LTUuNC01LjctNS4zICAgYy0wLjMsMC0wLjcsMC4xLTEsMC4xQzc2LDUuMiw2NC44LDcuOSw1My43LDEwLjljLTEsMC4zLTEuOCwwLjgtMi40LDEuNmMtMC41LDAuOC0wLjgsMS43LTAuOCwyLjZjMCwxLjUsMC44LDIuOSwyLDMuNyAgIGMwLjksMC42LDEuOCwxLjEsMi44LDEuN2MxLjgsMS4xLDMuNSwyLDUuMiwyLjljLTIuOCw1LjQtNi4xLDEwLjYtOS43LDE1LjVDNDIuNiw1MCwzMy4yLDU4LjQsMjEuMiw2OS4yQzE2LDczLjksMTEuOSw3Ny40LDksNzkuOSAgIGMtMS4yLDEtMi4zLDIuMS0zLjMsMy4zYy0wLjQsMC40LTAuNywwLjgtMSwxLjNjLTAuMywwLjUtMC41LDEtMC41LDEuNWMwLDAuNywwLjMsMS4zLDAuOSwxLjdjMC4zLDAuMiwwLjYsMC40LDEsMC40ICAgYzAuMywwLjEsMC42LDAuMSwxLDAuMWMxLjEsMCwyLjMtMC4yLDMuNC0wLjVjMi0wLjUsMy45LTEuMiw1LjgtMS45QzE4LjEsODUuMSwxOS43LDg0LjQsMjAuNiw4NC4xeiBNOS43LDg0LjkgICBjLTAuNywwLjItMS40LDAuMy0yLjEsMC40YzAuNS0wLjYsMS4xLTEuMiwxLjctMS44QzEyLDgxLDE2LjcsNzcsMjMuMSw3MS40YzEyLTEwLjgsMjEuNi0xOS40LDMwLTMwLjhjNC01LjQsNy42LTExLjEsMTAuNi0xNy4xICAgYzAuNC0wLjcsMC4xLTEuNi0wLjYtMS45Yy0yLjEtMS4xLTQuMi0yLjMtNi4zLTMuNWMtMC45LTAuNi0xLjgtMS4xLTIuNy0xLjdjLTAuNC0wLjMtMC43LTAuNy0wLjctMS4yYzAtMC4zLDAuMS0wLjYsMC4zLTAuOSAgIGMwLjItMC4zLDAuNS0wLjUsMC44LTAuNUM2NS41LDEwLjcsNzYuNiw4LDg3LjgsNS40YzEuNC0wLjMsMi44LDAuNiwzLjIsMkM5MSw3LjYsOTEsNy44LDkxLDcuOWMwLjIsNS4yLDAuMywxMC43LDAuMywxNi4zdjAuNyAgIGMwLDUuMi0wLjEsMTAuMi0wLjMsMTVjMCwwLjQtMC4yLDAuOS0wLjUsMS4xYy0wLjMsMC4zLTAuNywwLjQtMS4yLDAuNGMtMC4zLDAtMC43LTAuMS0xLTAuM2MtMS0wLjctMi0xLjQtMy4xLTIuMiAgIGMtMi0xLjUtMy45LTMtNS42LTQuNGMtMC42LTAuNS0xLjUtMC40LTIsMC4yYzAsMCwwLDAsMCwwLjFjLTQsNS4yLTcuNyw5LjUtMTAuOCwxMi43Yy0xOS43LDIxLjEtMzgsMzAuMS00Ny40LDMzLjkgICBjLTEuMiwwLjUtMy42LDEuNS02LjEsMi40QzEyLjEsODQuMiwxMC44LDg0LjYsOS43LDg0Ljl6Ii8+PGxpbmUgY2xhc3M9InN0MSIgeDE9IjQuNSIgeDI9IjQuNSIgeTE9Ijg3LjEiIHkyPSI4Ny4xIi8+PHBhdGggZD0iTTk1LjcsNjAuN2MwLTEuNS0wLjEtMy0wLjUtNC40Qzk0LjgsNTUsOTQsNTMuOSw5Mi45LDUzYy0wLjItMC4xLTAuNC0wLjMtMC42LTAuNGMtMC4zLTAuMi0wLjYtMC4zLTEuMi0wLjYgICBjLTAuNi0wLjMtMS41LTAuNy0yLjktMS4zYy0xLjItMC42LTIuMy0xLjEtMy4zLTEuNmMtMi43LTEuNC02LTAuNi03LjksMS44bDAsMGMtNy44LDkuOS0xNywxOC40LTI3LjUsMjUuNCAgIGMtNiwzLjgtMTIuNCw3LjEtMTksOS44Yy01LjMsMi4yLTEwLDMuNi0xMy40LDQuN2MtMS43LDAuNS0zLjEsMS00LjEsMS40Yy0wLjUsMC4yLTAuOSwwLjQtMS40LDAuN2MtMC4yLDAuMi0wLjQsMC40LTAuNiwwLjYgICBjLTAuMiwwLjMtMC40LDAuNy0wLjQsMS4xYzAsMC4xLDAsMC4yLDAsMC4ydjB2MGMwLDAuMiwwLjEsMC41LDAuMywwLjdjMC4yLDAuMywwLjUsMC42LDAuOCwwLjdjMC41LDAuMiwxLjEsMC40LDEuNiwwLjUgICBjMS4zLDAuMiwyLjUsMC4zLDMuOCwwLjRjMS42LDAuMSwzLjcsMC4yLDYuMiwwLjJjMy4yLDAuMSw2LjIsMC4xLDguOSwwLjFjNywwLDEyLjUtMC4yLDE3LjQtMC4zYzguOS0wLjIsMTcuOC0wLjYsMjYuNy0wLjZoMC4zICAgYzEuOCwwLDMuNCwwLDQuOCwwYzIuMywwLjEsNC42LDAsNi45LTAuNGMwLjgtMC4xLDEuNi0wLjQsMi40LTAuOGMwLjctMC40LDEuNC0wLjgsMi0xLjRjMC44LTAuOCwxLjQtMS44LDEuOC0yLjkgICBjMC4zLTEuMSwwLjQtMi4zLDAuNC0zLjVjMC0xLjktMC4xLTQuMi0wLjEtNy41YzAtMi4xLDAuMS00LjYsMC4yLTcuNUM5NS4yLDY3LjksOTUuNyw2NCw5NS43LDYwLjd6IE0yMy40LDk0LjUgICBjLTMuNC0wLjEtNi0wLjItNy43LTAuM2MwLjItMC4xLDAuNC0wLjEsMC41LTAuMmMyLjUtMC44LDYuMy0yLDEwLjctMy42YzAuMSwxLjQsMC4zLDIuOCwwLjQsNC4xQzI2LjEsOTQuNiwyNC44LDk0LjYsMjMuNCw5NC41eiAgICBNMzIuMiw5NC42Yy0wLjYsMC0xLjMsMC0xLjksMGMtMC4yLTEuNy0wLjQtMy41LTAuNS01LjJjMC42LTAuMiwxLjEtMC40LDEuNy0wLjdjMi43LTEuMSw1LjMtMi4zLDcuNS0zLjQgICBjMC4xLDMuMSwwLjIsNi4xLDAuNSw5LjJDMzcuMyw5NC42LDM0LjksOTQuNiwzMi4yLDk0LjZ6IE00OS42LDk0LjNMNDkuNiw5NC4zYy0yLjMsMC00LjcsMC4xLTcuMiwwLjJjLTAuMy0zLjMtMC41LTYuNy0wLjUtMTAgICBjMC0wLjIsMC0wLjMtMC4xLTAuNWMzLjctMS45LDYuNi0zLjYsOC4zLTQuN2MwLjEsNSwwLjMsMTAsMC41LDE1QzUwLjMsOTQuMyw0OS45LDk0LjMsNDkuNiw5NC4zeiBNNTMuNSw5NC4yICAgYy0wLjMtNS41LTAuNS0xMS0wLjYtMTYuNmMwLTAuMSwwLTAuMSwwLTAuMmMzLjUtMi40LDYuOS01LjEsMTAuMi03LjljMC4zLDguMSwwLjUsMTYuMywwLjgsMjQuNEM2MC40LDk0LDU2LjksOTQuMSw1My41LDk0LjJ6ICAgIE03Ny44LDkzLjhoLTEuMWgtMC4zdjBjLTMuMiwwLTYuNCwwLjEtOS42LDAuMWMtMC4zLTguOC0wLjYtMTcuNi0wLjktMjYuNGMwLTAuMSwwLTAuMy0wLjEtMC40YzMuNi0zLjMsNi45LTYuOCwxMC4xLTEwLjQgICBjMC43LDEyLjIsMS40LDI0LjUsMi4xLDM2LjdDNzcuOSw5My41LDc3LjgsOTMuNiw3Ny44LDkzLjh6IE05Miw3Mi41TDkyLDcyLjVjLTAuMiwzLTAuMiw1LjYtMC4yLDcuN2MwLDMuNCwwLjEsNS44LDAuMSw3LjUgICBjMCwwLjktMC4xLDEuOC0wLjMsMi43Yy0wLjIsMC42LTAuNSwxLjItMSwxLjZjLTAuNCwwLjQtMC44LDAuNy0xLjIsMC45Yy0wLjksMC40LTEuOCwwLjYtMi44LDAuN2MtMS4zLDAuMS0zLDAuMi01LjIsMC4yaC0wLjYgICBsLTIuMy00MC4zYzAuMi0wLjMsMC40LTAuNSwwLjYtMC44bDAsMGMwLjctMC45LDEuNy0xLjQsMi44LTEuNGMwLjUsMCwxLjEsMC4xLDEuNiwwLjRjMSwwLjUsMi4xLDEuMSwzLjQsMS42ICAgYzEuOSwwLjksMi45LDEuMywzLjUsMS42YzAuMywwLjEsMC40LDAuMiwwLjUsMC4yYzAuMSwwLDAuMSwwLjEsMC4yLDAuMWMwLjYsMC41LDEuMSwxLjIsMS4zLDEuOWMwLjMsMS4xLDAuNCwyLjMsMC40LDMuNSAgIEM5Mi45LDYzLjYsOTIuMyw2Ny42LDkyLDcyLjV6Ii8+PC9nPjwvc3ZnPg=="
+                            alt="Logo">
+                       
+                    </a> -->
+                    <span class="navbar-burger" data-target="navbarMenuHeroB">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </div>
+                <div id="navbarMenuHeroB" class="navbar-menu">
+                    <div class="navbar-start">
+                        
+                        <a class="navbar-item" href="../../australia/market_monitor.html">
+                            
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-home"></i>
+                                    </span>
+                                    <span>Home</span>
+                                </span>
+                            </a>
+
+                            <div class="navbar-item has-dropdown is-hoverable has-background-dark">
+                                <a class="navbar-link">
+                                    <span>Choose Market</span>
+                                </a>
+
+                                <div class="navbar-dropdown has-background-dark">
+                                    
+                                    <a class="navbar-item" href="../../australia/market_monitor.html">
+                                        <span>Australia</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../canada/market_monitor.html">
+                                        <span>Canada</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../germany/market_monitor.html">
+                                        <span>Germany</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../hong_kong/market_monitor.html">
+                                        <span>Hong Kong</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../japan/market_monitor.html">
+                                        <span>Japan</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../nordic_markets/market_monitor.html">
+                                        <span>Nordic Markets</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_kingdom/market_monitor.html">
+                                        <span>United Kingdom</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_states/market_monitor.html">
+                                        <span>United States</span>
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                    </div>
+                    <div class="navbar-end"></div>
+                    <span class="navbar-item">
+                        <a class="button is-info is-light" href="https://twitter.com/LignoL23">
+                            <span class="icon">
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                            <span>Twitter</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <a class="button  is-success is-light" href="https://www.paypal.com/paypalme/volkerlorrmann/5">
+                            <span class="icon">
+                                <i class="fab fa-paypal"></i>
+                            </span>
+                            <span>paypal.me</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+                        <script
+                            type='text/javascript'>kofiwidget2.init('Support me', '#d6d6d6', 'W7W0ACJPB'); kofiwidget2.draw();</script>
+                    </span>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="columns is-multiline is-mobile is-centered">
+                <div class="column is-1">
+                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDEwMCAxMDA7IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOm5vbmU7fQoJLnN0MXtmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO30KPC9zdHlsZT48dGl0bGUvPjxnPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MS44LDg0YzAuMSwwLjIsMC4xLDAuMywwLjEsMC41YzAsMy4zLDAuMiw2LjcsMC41LDEwYzIuNi0wLjEsNC45LTAuMSw3LjItMC4ydjBjMC4zLDAsMC43LDAsMSwwICAgYy0wLjMtNS0wLjQtMTAtMC41LTE1QzQ4LjQsODAuNCw0NS41LDgyLjEsNDEuOCw4NHoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTYuMyw5NGMtMC4yLDAuMS0wLjQsMC4xLTAuNSwwLjJjMS43LDAuMSw0LjMsMC4yLDcuNywwLjNjMS40LDAsMi43LDAuMSw0LDAuMWMtMC4xLTEuNC0wLjMtMi44LTAuNC00LjEgICBDMjIuNiw5Mi4xLDE4LjgsOTMuMiwxNi4zLDk0eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02Ni45LDQ3LjVjMy4xLTMuMyw2LjgtNy41LDEwLjgtMTIuN2MwLDAsMCwwLDAtMC4xYzAuNS0wLjYsMS40LTAuNywyLTAuMmMxLjcsMS41LDMuNiwyLjksNS42LDQuNCAgIGMxLDAuOCwyLjEsMS41LDMuMSwyLjJjMC4zLDAuMiwwLjYsMC4zLDEsMC4zYzAuNCwwLDAuOC0wLjIsMS4yLTAuNGMwLjMtMC4zLDAuNS0wLjcsMC41LTEuMWMwLjItNC45LDAuMy05LjksMC4zLTE1di0wLjcgICBjMC01LjYtMC4xLTExLTAuMy0xNi4zYzAtMC4yLDAtMC4zLTAuMS0wLjVjLTAuMy0xLjQtMS43LTIuMy0zLjItMkM3Ni42LDgsNjUuNSwxMC43LDU0LjUsMTMuN2MtMC4zLDAuMS0wLjYsMC4zLTAuOCwwLjUgICBjLTAuMiwwLjMtMC4zLDAuNi0wLjMsMC45YzAsMC41LDAuMywxLDAuNywxLjJjMC45LDAuNiwxLjgsMS4xLDIuNywxLjdjMi4yLDEuMyw0LjMsMi41LDYuMywzLjVjMC43LDAuNCwxLDEuMiwwLjYsMS45ICAgYy0zLjEsNi02LjYsMTEuNy0xMC42LDE3LjFjLTguNSwxMS40LTE4LDIwLTMwLDMwLjhDMTYuNyw3NywxMiw4MSw5LjQsODMuNWMtMC42LDAuNi0xLjIsMS4yLTEuNywxLjhjMC43LTAuMSwxLjQtMC4yLDIuMS0wLjQgICBjMS4xLTAuMywyLjQtMC43LDMuNi0xLjFjMi41LTAuOSw0LjktMS45LDYuMS0yLjRDMjguOSw3Ny42LDQ3LjEsNjguNiw2Ni45LDQ3LjV6Ii8+PHBhdGggY2xhc3M9InN0MCIgZD0iTTMxLjUsODguN2MtMC42LDAuMi0xLjIsMC41LTEuNywwLjdjMC4yLDEuNywwLjQsMy41LDAuNSw1LjJjMC43LDAsMS4zLDAsMS45LDBjMi42LDAsNSwwLDcuMy0wLjEgICBjLTAuMy0zLjEtMC40LTYuMS0wLjUtOS4yQzM2LjgsODYuNSwzNC4yLDg3LjYsMzEuNSw4OC43eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik01Mi45LDc3LjVjMCwwLjEsMCwwLjEsMCwwLjJjMC4xLDUuNSwwLjMsMTEuMSwwLjYsMTYuNmMzLjQtMC4xLDYuOS0wLjIsMTAuNC0wLjNjLTAuMy04LjEtMC41LTE2LjMtMC44LTI0LjQgICBDNTkuOCw3Mi40LDU2LjQsNzUsNTIuOSw3Ny41eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik05MS4yLDU1LjNjLTAuMS0wLjEtMC4xLTAuMS0wLjItMC4xYy0wLjEsMC0wLjItMC4xLTAuNS0wLjJjLTAuNi0wLjMtMS42LTAuNy0zLjUtMS42ICAgYy0xLjItMC42LTIuMy0xLjEtMy40LTEuNmMtMC41LTAuMi0xLTAuNC0xLjYtMC40Yy0xLjEsMC0yLjEsMC41LTIuOCwxLjRsMCwwYy0wLjIsMC4zLTAuNCwwLjUtMC42LDAuOGwyLjMsNDAuM2gwLjYgICBjMi4yLDAsMy45LDAsNS4yLTAuMmMxLTAuMSwxLjktMC4zLDIuOC0wLjdjMC41LTAuMiwwLjktMC41LDEuMi0wLjljMC41LTAuNCwwLjgtMSwxLTEuNmMwLjItMC45LDAuMy0xLjgsMC4zLTIuNyAgIGMwLTEuNy0wLjEtNC4xLTAuMS03LjVjMC0yLjEsMC4xLTQuNywwLjMtNy43bDAsMGMwLjMtNC45LDAuOC04LjgsMC44LTExLjhjMC0xLjItMC4xLTIuNC0wLjQtMy41QzkyLjIsNTYuNSw5MS44LDU1LjgsOTEuMiw1NS4zeiAgICIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02NS44LDY3LjFjMCwwLjEsMC4xLDAuMywwLjEsMC40YzAuMyw4LjgsMC42LDE3LjYsMC45LDI2LjRjMy4yLTAuMSw2LjQtMC4xLDkuNi0wLjF2MGgwLjNoMS4xICAgYzAtMC4xLDAuMS0wLjIsMC4xLTAuNGMtMC43LTEyLjItMS40LTI0LjUtMi4xLTM2LjdDNzIuNyw2MC40LDY5LjMsNjMuOCw2NS44LDY3LjF6Ii8+PHBhdGggZD0iTTIwLjYsODQuMWM5LjYtMy45LDI4LjMtMTMuMSw0OC40LTM0LjZjMi45LTMuMSw2LjMtNywxMC4xLTExLjhjMS40LDEuMiwzLDIuNCw0LjYsMy42YzEuMSwwLjgsMi4xLDEuNSwzLjIsMi4zICAgYzEuOCwxLjIsNC4xLDEuMSw1LjctMC40YzAuOS0wLjgsMS40LTIsMS41LTMuMmMwLjItNC45LDAuMy05LjksMC4zLTE1LjF2LTAuN2MwLTUuNi0wLjEtMTEuMS0wLjMtMTYuNGMtMC4xLTMtMi43LTUuNC01LjctNS4zICAgYy0wLjMsMC0wLjcsMC4xLTEsMC4xQzc2LDUuMiw2NC44LDcuOSw1My43LDEwLjljLTEsMC4zLTEuOCwwLjgtMi40LDEuNmMtMC41LDAuOC0wLjgsMS43LTAuOCwyLjZjMCwxLjUsMC44LDIuOSwyLDMuNyAgIGMwLjksMC42LDEuOCwxLjEsMi44LDEuN2MxLjgsMS4xLDMuNSwyLDUuMiwyLjljLTIuOCw1LjQtNi4xLDEwLjYtOS43LDE1LjVDNDIuNiw1MCwzMy4yLDU4LjQsMjEuMiw2OS4yQzE2LDczLjksMTEuOSw3Ny40LDksNzkuOSAgIGMtMS4yLDEtMi4zLDIuMS0zLjMsMy4zYy0wLjQsMC40LTAuNywwLjgtMSwxLjNjLTAuMywwLjUtMC41LDEtMC41LDEuNWMwLDAuNywwLjMsMS4zLDAuOSwxLjdjMC4zLDAuMiwwLjYsMC40LDEsMC40ICAgYzAuMywwLjEsMC42LDAuMSwxLDAuMWMxLjEsMCwyLjMtMC4yLDMuNC0wLjVjMi0wLjUsMy45LTEuMiw1LjgtMS45QzE4LjEsODUuMSwxOS43LDg0LjQsMjAuNiw4NC4xeiBNOS43LDg0LjkgICBjLTAuNywwLjItMS40LDAuMy0yLjEsMC40YzAuNS0wLjYsMS4xLTEuMiwxLjctMS44QzEyLDgxLDE2LjcsNzcsMjMuMSw3MS40YzEyLTEwLjgsMjEuNi0xOS40LDMwLTMwLjhjNC01LjQsNy42LTExLjEsMTAuNi0xNy4xICAgYzAuNC0wLjcsMC4xLTEuNi0wLjYtMS45Yy0yLjEtMS4xLTQuMi0yLjMtNi4zLTMuNWMtMC45LTAuNi0xLjgtMS4xLTIuNy0xLjdjLTAuNC0wLjMtMC43LTAuNy0wLjctMS4yYzAtMC4zLDAuMS0wLjYsMC4zLTAuOSAgIGMwLjItMC4zLDAuNS0wLjUsMC44LTAuNUM2NS41LDEwLjcsNzYuNiw4LDg3LjgsNS40YzEuNC0wLjMsMi44LDAuNiwzLjIsMkM5MSw3LjYsOTEsNy44LDkxLDcuOWMwLjIsNS4yLDAuMywxMC43LDAuMywxNi4zdjAuNyAgIGMwLDUuMi0wLjEsMTAuMi0wLjMsMTVjMCwwLjQtMC4yLDAuOS0wLjUsMS4xYy0wLjMsMC4zLTAuNywwLjQtMS4yLDAuNGMtMC4zLDAtMC43LTAuMS0xLTAuM2MtMS0wLjctMi0xLjQtMy4xLTIuMiAgIGMtMi0xLjUtMy45LTMtNS42LTQuNGMtMC42LTAuNS0xLjUtMC40LTIsMC4yYzAsMCwwLDAsMCwwLjFjLTQsNS4yLTcuNyw5LjUtMTAuOCwxMi43Yy0xOS43LDIxLjEtMzgsMzAuMS00Ny40LDMzLjkgICBjLTEuMiwwLjUtMy42LDEuNS02LjEsMi40QzEyLjEsODQuMiwxMC44LDg0LjYsOS43LDg0Ljl6Ii8+PGxpbmUgY2xhc3M9InN0MSIgeDE9IjQuNSIgeDI9IjQuNSIgeTE9Ijg3LjEiIHkyPSI4Ny4xIi8+PHBhdGggZD0iTTk1LjcsNjAuN2MwLTEuNS0wLjEtMy0wLjUtNC40Qzk0LjgsNTUsOTQsNTMuOSw5Mi45LDUzYy0wLjItMC4xLTAuNC0wLjMtMC42LTAuNGMtMC4zLTAuMi0wLjYtMC4zLTEuMi0wLjYgICBjLTAuNi0wLjMtMS41LTAuNy0yLjktMS4zYy0xLjItMC42LTIuMy0xLjEtMy4zLTEuNmMtMi43LTEuNC02LTAuNi03LjksMS44bDAsMGMtNy44LDkuOS0xNywxOC40LTI3LjUsMjUuNCAgIGMtNiwzLjgtMTIuNCw3LjEtMTksOS44Yy01LjMsMi4yLTEwLDMuNi0xMy40LDQuN2MtMS43LDAuNS0zLjEsMS00LjEsMS40Yy0wLjUsMC4yLTAuOSwwLjQtMS40LDAuN2MtMC4yLDAuMi0wLjQsMC40LTAuNiwwLjYgICBjLTAuMiwwLjMtMC40LDAuNy0wLjQsMS4xYzAsMC4xLDAsMC4yLDAsMC4ydjB2MGMwLDAuMiwwLjEsMC41LDAuMywwLjdjMC4yLDAuMywwLjUsMC42LDAuOCwwLjdjMC41LDAuMiwxLjEsMC40LDEuNiwwLjUgICBjMS4zLDAuMiwyLjUsMC4zLDMuOCwwLjRjMS42LDAuMSwzLjcsMC4yLDYuMiwwLjJjMy4yLDAuMSw2LjIsMC4xLDguOSwwLjFjNywwLDEyLjUtMC4yLDE3LjQtMC4zYzguOS0wLjIsMTcuOC0wLjYsMjYuNy0wLjZoMC4zICAgYzEuOCwwLDMuNCwwLDQuOCwwYzIuMywwLjEsNC42LDAsNi45LTAuNGMwLjgtMC4xLDEuNi0wLjQsMi40LTAuOGMwLjctMC40LDEuNC0wLjgsMi0xLjRjMC44LTAuOCwxLjQtMS44LDEuOC0yLjkgICBjMC4zLTEuMSwwLjQtMi4zLDAuNC0zLjVjMC0xLjktMC4xLTQuMi0wLjEtNy41YzAtMi4xLDAuMS00LjYsMC4yLTcuNUM5NS4yLDY3LjksOTUuNyw2NCw5NS43LDYwLjd6IE0yMy40LDk0LjUgICBjLTMuNC0wLjEtNi0wLjItNy43LTAuM2MwLjItMC4xLDAuNC0wLjEsMC41LTAuMmMyLjUtMC44LDYuMy0yLDEwLjctMy42YzAuMSwxLjQsMC4zLDIuOCwwLjQsNC4xQzI2LjEsOTQuNiwyNC44LDk0LjYsMjMuNCw5NC41eiAgICBNMzIuMiw5NC42Yy0wLjYsMC0xLjMsMC0xLjksMGMtMC4yLTEuNy0wLjQtMy41LTAuNS01LjJjMC42LTAuMiwxLjEtMC40LDEuNy0wLjdjMi43LTEuMSw1LjMtMi4zLDcuNS0zLjQgICBjMC4xLDMuMSwwLjIsNi4xLDAuNSw5LjJDMzcuMyw5NC42LDM0LjksOTQuNiwzMi4yLDk0LjZ6IE00OS42LDk0LjNMNDkuNiw5NC4zYy0yLjMsMC00LjcsMC4xLTcuMiwwLjJjLTAuMy0zLjMtMC41LTYuNy0wLjUtMTAgICBjMC0wLjIsMC0wLjMtMC4xLTAuNWMzLjctMS45LDYuNi0zLjYsOC4zLTQuN2MwLjEsNSwwLjMsMTAsMC41LDE1QzUwLjMsOTQuMyw0OS45LDk0LjMsNDkuNiw5NC4zeiBNNTMuNSw5NC4yICAgYy0wLjMtNS41LTAuNS0xMS0wLjYtMTYuNmMwLTAuMSwwLTAuMSwwLTAuMmMzLjUtMi40LDYuOS01LjEsMTAuMi03LjljMC4zLDguMSwwLjUsMTYuMywwLjgsMjQuNEM2MC40LDk0LDU2LjksOTQuMSw1My41LDk0LjJ6ICAgIE03Ny44LDkzLjhoLTEuMWgtMC4zdjBjLTMuMiwwLTYuNCwwLjEtOS42LDAuMWMtMC4zLTguOC0wLjYtMTcuNi0wLjktMjYuNGMwLTAuMSwwLTAuMy0wLjEtMC40YzMuNi0zLjMsNi45LTYuOCwxMC4xLTEwLjQgICBjMC43LDEyLjIsMS40LDI0LjUsMi4xLDM2LjdDNzcuOSw5My41LDc3LjgsOTMuNiw3Ny44LDkzLjh6IE05Miw3Mi41TDkyLDcyLjVjLTAuMiwzLTAuMiw1LjYtMC4yLDcuN2MwLDMuNCwwLjEsNS44LDAuMSw3LjUgICBjMCwwLjktMC4xLDEuOC0wLjMsMi43Yy0wLjIsMC42LTAuNSwxLjItMSwxLjZjLTAuNCwwLjQtMC44LDAuNy0xLjIsMC45Yy0wLjksMC40LTEuOCwwLjYtMi44LDAuN2MtMS4zLDAuMS0zLDAuMi01LjIsMC4yaC0wLjYgICBsLTIuMy00MC4zYzAuMi0wLjMsMC40LTAuNSwwLjYtMC44bDAsMGMwLjctMC45LDEuNy0xLjQsMi44LTEuNGMwLjUsMCwxLjEsMC4xLDEuNiwwLjRjMSwwLjUsMi4xLDEuMSwzLjQsMS42ICAgYzEuOSwwLjksMi45LDEuMywzLjUsMS42YzAuMywwLjEsMC40LDAuMiwwLjUsMC4yYzAuMSwwLDAuMSwwLjEsMC4yLDAuMWMwLjYsMC41LDEuMSwxLjIsMS4zLDEuOWMwLjMsMS4xLDAuNCwyLjMsMC40LDMuNSAgIEM5Mi45LDYzLjYsOTIuMyw2Ny42LDkyLDcyLjV6Ii8+PC9nPjwvc3ZnPg==" alt="Logo">
+                </div>
+                <div class="column is-4">
+                    <p class="title">
+                        EOD Stockmarket Scans
+                    </p>
+                    <p class="subtitle">
+                        Fintwits most popular stockmarket scans
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+            <div class="container">
+                <ul>
+                    
+                    <li class="is-active">
+                        <a href="../Kristjan Kullamägi/Momentum_result_table.html"> Results </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Kristjan Kullamägi/Momentum_minicharts.html"> Minicharts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Kristjan Kullamägi/Momentum_charts.html"> Charts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Kristjan Kullamägi/Momentum_criteria.html"> Criteria </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+</section>
+    <div class="columns is-centered">
+        <div class="column is-2">
+            <div class="box has-background-light my-0 mx-2 p-auto">
+    <aside class="menu">
+        <p class="menu-label has-text-dark">
+            Market Monitor
+        </p>
+        <ul class="menu-list">
+            <li><a class="has-text-grey-light">New Highs/Lows</a></li>
+            <li><a class="has-text-grey-light">Breadth</a></li>
+            <li><a class="has-text-grey-light">Above/Below SMA</a></li>
+            <li><a class="has-text-grey-light">Sectors</a></li>
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Kristjan Kullamägi
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Kristjan Kullamägi/Biggest Gainers 1M_minicharts.html">
+                        Biggest Gainers 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Kristjan Kullamägi/Biggest Gainers 3M_minicharts.html">
+                        Biggest Gainers 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Kristjan Kullamägi/Biggest Gainers 6M_minicharts.html">
+                        Biggest Gainers 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Kristjan Kullamägi/Biggest Gainers 12M_minicharts.html">
+                        Biggest Gainers 12M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Kristjan Kullamägi/EP with Growth_minicharts.html">
+                        EP with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Kristjan Kullamägi/EP_minicharts.html">
+                        EP
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Kristjan Kullamägi/High Trend Intensity_minicharts.html">
+                        High Trend Intensity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Kristjan Kullamägi/Small Stock Momo_minicharts.html">
+                        Small Stock Momo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="is-active"
+                        href="../../australia/Kristjan Kullamägi/Momentum_minicharts.html">
+                        Momentum
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Brad Schulz
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Brad Schulz/Pocket Pivot_minicharts.html">
+                        Pocket Pivot
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Stockbee
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Stockbee/4% Gainers_minicharts.html">
+                        4% Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Stockbee/Combo_minicharts.html">
+                        Combo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Stockbee/Ants_minicharts.html">
+                        Ants
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Stockbee/Breakout 1M Base_minicharts.html">
+                        Breakout 1M Base
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Stockbee/Breakout 3M Base_minicharts.html">
+                        Breakout 3M Base
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Leif Soreide
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Leif Soreide/HTF_minicharts.html">
+                        HTF
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Blake Davis
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Blake Davis/Strength_minicharts.html">
+                        Strength
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ben
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Ben/Power of 3_minicharts.html">
+                        Power of 3
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Ben/Velocity_minicharts.html">
+                        Velocity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Ben/Focus_minicharts.html">
+                        Focus
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ray
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Ray/RSNHBP 5D_minicharts.html">
+                        RSNHBP 5D
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Ray/RSNHBP 1M_minicharts.html">
+                        RSNHBP 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Ray/RSNHBP 3M_minicharts.html">
+                        RSNHBP 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Ray/RSNHBP 6M_minicharts.html">
+                        RSNHBP 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Ray/RSNHBP 12M_minicharts.html">
+                        RSNHBP 12M
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Mark Minvervini
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Mark Minvervini/Trend Template_minicharts.html">
+                        Trend Template
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Vo
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Vo/Top Gainers From Open_minicharts.html">
+                        Top Gainers From Open
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Vo/Top Gainers_minicharts.html">
+                        Top Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Vo/Volume Gainers_minicharts.html">
+                        Volume Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Vo/Insiders_minicharts.html">
+                        Insiders
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Vo/Darvas Scan_minicharts.html">
+                        Darvas Scan
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Vo/Darvas Scan with Growth_minicharts.html">
+                        Darvas Scan with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Vo/52W High_minicharts.html">
+                        52W High
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Vo/Quite and Tight_minicharts.html">
+                        Quite and Tight
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+    </aside>
+</div>
+        </div>
+        <div class="column is-10">
+            
+            
+<section class="block my-6">
+    <div class="columns ">
+        <div class="column is-5 has-text-left">
+            <h1 class="title is-4">Momentum @ Australia</h1>
+            <h2 class="subtitle is-6">2022-04-20</h2>
+        </div>
+        <div class="column has-text-right mr-5">
+            <div class="media">
+
+                <div class="media-content">
+                    <p class="title is-5">Kristjan Kullamägi</p>
+                    <p class="subtitle is-6"><a class="has-text-grey-light" href="https://twitter.com/Qullamaggie">@Qullamaggie</a></p>
+                </div>
+                <div class="media-right">
+                    <figure class="image is-48x48">
+                        <img src="https://unavatar.io/twitter/Qullamaggie" alt="Placeholder image">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  
+            <section class="my-auto mr-5">
+                
+    <div class="table-container">
+        <table border="1" class="dataframe table is-striped no-wrap" id="data" style="width:100%; font-size:85%">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>symbol_id</th>
+      <th>symbol</th>
+      <th>name</th>
+      <th>exchange</th>
+      <th>sector</th>
+      <th>industry</th>
+      <th>country</th>
+      <th>yahoo_symbol</th>
+      <th>forexpros_symbol</th>
+      <th>IPO Date</th>
+      <th>EPS Growth Q</th>
+      <th>EPS Growth Y</th>
+      <th>EPS Growth FQ</th>
+      <th>EPS Growth FY</th>
+      <th>EPS Growth FQ1</th>
+      <th>EPS Growth FY1</th>
+      <th>Rev Growth Q</th>
+      <th>Rev Growth FQ</th>
+      <th>Rev Growth FY</th>
+      <th>Rev Growth FQ1</th>
+      <th>Rev Growth FY1</th>
+      <th>Insiders %</th>
+      <th>Institutions %</th>
+      <th>Institutions No.</th>
+      <th>Market Cap</th>
+      <th>Shares Outstanding</th>
+      <th>Shares Float</th>
+      <th>Shares Short</th>
+      <th>Short Ratio</th>
+      <th>Net Insider Trading %</th>
+      <th>close</th>
+      <th>volume</th>
+      <th>1m RS</th>
+      <th>3m RS</th>
+      <th>RS</th>
+      <th>Industry 1m RS</th>
+      <th>Industry 3m RS</th>
+      <th>Industry RS</th>
+      <th>UD Ratio</th>
+      <th>50d avg Volume</th>
+      <th>rel Volume</th>
+      <th>Pocket Pivot</th>
+      <th>1w Pocket Pivots</th>
+      <th>1m Pocket Pivots</th>
+      <th>Rocket Ratio</th>
+      <th>52w High</th>
+      <th>% below 52w High</th>
+      <th>52w Low</th>
+      <th>% above 52w Low</th>
+      <th>adr(20)</th>
+      <th>atr(14)</th>
+      <th>roc</th>
+      <th>roc(5)</th>
+      <th>roc(21)</th>
+      <th>roc(63)</th>
+      <th>roc(126)</th>
+      <th>roc(252)</th>
+      <th>ema(9)</th>
+      <th>% from 9d ema</th>
+      <th>ema(21)</th>
+      <th>% from 21d ema</th>
+      <th>sma(50)</th>
+      <th>% from 50d sma</th>
+      <th>market</th>
+      <th>date</th>
+      <th>group_name</th>
+      <th>scan_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>8604</td>
+      <td>RHC</td>
+      <td>Ramsay Health Care Ltd</td>
+      <td>Sydney</td>
+      <td>Healthcare</td>
+      <td>Medical Care Facilities</td>
+      <td>Australia</td>
+      <td>RHC.AX</td>
+      <td>Sydney:RHC</td>
+      <td>1997-10-01 00:00:00</td>
+      <td>-0.30</td>
+      <td>-0.30</td>
+      <td>NaN</td>
+      <td>-0.18</td>
+      <td>NaN</td>
+      <td>0.50</td>
+      <td>0.02</td>
+      <td>0.07</td>
+      <td>0.08</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>21.19</td>
+      <td>19.19</td>
+      <td>237.0</td>
+      <td>1.478578e+10</td>
+      <td>2.288820e+08</td>
+      <td>1.803766e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>80.00</td>
+      <td>4208576.0</td>
+      <td>89</td>
+      <td>85</td>
+      <td>78</td>
+      <td>10</td>
+      <td>30</td>
+      <td>43</td>
+      <td>1.30</td>
+      <td>511249.54</td>
+      <td>8.23</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>352.82</td>
+      <td>83.55</td>
+      <td>-4.25</td>
+      <td>59.66</td>
+      <td>34.09</td>
+      <td>1.81</td>
+      <td>2.24</td>
+      <td>24.24</td>
+      <td>23.70</td>
+      <td>26.22</td>
+      <td>19.47</td>
+      <td>19.89</td>
+      <td>17.65</td>
+      <td>67.55</td>
+      <td>18.43</td>
+      <td>65.61</td>
+      <td>21.93</td>
+      <td>64.02</td>
+      <td>24.95</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1174297</td>
+      <td>DGL</td>
+      <td>DGL Group Ltd</td>
+      <td>Sydney</td>
+      <td>Industrials</td>
+      <td>Conglomerates</td>
+      <td>Australia</td>
+      <td>DGL.AX</td>
+      <td>Sydney:DGL</td>
+      <td>2021-05-24 00:00:00</td>
+      <td>1.85</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.82</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>59.25</td>
+      <td>4.90</td>
+      <td>7.0</td>
+      <td>9.769130e+08</td>
+      <td>2.698440e+08</td>
+      <td>1.111693e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>4.15</td>
+      <td>1217448.0</td>
+      <td>94</td>
+      <td>94</td>
+      <td>96</td>
+      <td>62</td>
+      <td>48</td>
+      <td>54</td>
+      <td>2.09</td>
+      <td>453263.94</td>
+      <td>2.69</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>245.26</td>
+      <td>4.15</td>
+      <td>0.00</td>
+      <td>0.94</td>
+      <td>343.85</td>
+      <td>6.38</td>
+      <td>0.22</td>
+      <td>9.50</td>
+      <td>29.69</td>
+      <td>39.73</td>
+      <td>46.64</td>
+      <td>44.10</td>
+      <td>286.05</td>
+      <td>3.53</td>
+      <td>17.57</td>
+      <td>3.31</td>
+      <td>25.29</td>
+      <td>3.01</td>
+      <td>38.01</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1179445</td>
+      <td>GT1</td>
+      <td>Green Technology Metals Ltd</td>
+      <td>Sydney</td>
+      <td>Basic Materials</td>
+      <td>Other Industrial Metals &amp; Mining</td>
+      <td>Australia</td>
+      <td>GT1.AX</td>
+      <td>Sydney:GT1</td>
+      <td>2021-11-09 23:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>52.57</td>
+      <td>4.89</td>
+      <td>1.0</td>
+      <td>1.934880e+08</td>
+      <td>2.015500e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.15</td>
+      <td>1541479.0</td>
+      <td>96</td>
+      <td>84</td>
+      <td>96</td>
+      <td>81</td>
+      <td>74</td>
+      <td>75</td>
+      <td>1.85</td>
+      <td>925406.74</td>
+      <td>1.67</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>1.18</td>
+      <td>-2.12</td>
+      <td>0.33</td>
+      <td>250.00</td>
+      <td>9.70</td>
+      <td>0.10</td>
+      <td>6.94</td>
+      <td>20.94</td>
+      <td>50.00</td>
+      <td>18.46</td>
+      <td>203.95</td>
+      <td>203.95</td>
+      <td>1.01</td>
+      <td>14.84</td>
+      <td>0.94</td>
+      <td>23.37</td>
+      <td>0.84</td>
+      <td>37.48</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>948097</td>
+      <td>PME</td>
+      <td>Pro Medicus Ltd</td>
+      <td>Sydney</td>
+      <td>Healthcare</td>
+      <td>Health Information Services</td>
+      <td>Australia</td>
+      <td>PME.AX</td>
+      <td>Sydney:PME</td>
+      <td>2000-10-09 23:00:00</td>
+      <td>0.53</td>
+      <td>0.53</td>
+      <td>NaN</td>
+      <td>0.45</td>
+      <td>NaN</td>
+      <td>0.29</td>
+      <td>0.40</td>
+      <td>0.37</td>
+      <td>0.37</td>
+      <td>NaN</td>
+      <td>0.25</td>
+      <td>56.14</td>
+      <td>11.64</td>
+      <td>103.0</td>
+      <td>5.075659e+09</td>
+      <td>1.043730e+08</td>
+      <td>4.540166e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>51.61</td>
+      <td>228135.0</td>
+      <td>76</td>
+      <td>78</td>
+      <td>62</td>
+      <td>49</td>
+      <td>19</td>
+      <td>7</td>
+      <td>1.33</td>
+      <td>218200.56</td>
+      <td>1.05</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>6.0</td>
+      <td>208.07</td>
+      <td>70.00</td>
+      <td>-26.27</td>
+      <td>39.25</td>
+      <td>31.49</td>
+      <td>2.97</td>
+      <td>1.65</td>
+      <td>5.20</td>
+      <td>6.41</td>
+      <td>11.59</td>
+      <td>10.16</td>
+      <td>-0.90</td>
+      <td>8.04</td>
+      <td>48.85</td>
+      <td>5.64</td>
+      <td>47.95</td>
+      <td>7.63</td>
+      <td>46.50</td>
+      <td>10.98</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1174804</td>
+      <td>29M</td>
+      <td>29Metals Ltd</td>
+      <td>Sydney</td>
+      <td>Basic Materials</td>
+      <td>Other Precious Metals &amp; Mining</td>
+      <td>Australia</td>
+      <td>29M.AX</td>
+      <td>Sydney:29M</td>
+      <td>2021-07-02 00:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.99</td>
+      <td>73.85</td>
+      <td>30.0</td>
+      <td>1.443957e+09</td>
+      <td>4.813190e+08</td>
+      <td>2.640773e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>3.25</td>
+      <td>2300719.0</td>
+      <td>77</td>
+      <td>75</td>
+      <td>82</td>
+      <td>81</td>
+      <td>74</td>
+      <td>75</td>
+      <td>1.18</td>
+      <td>1692344.18</td>
+      <td>1.36</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>156.04</td>
+      <td>3.30</td>
+      <td>-1.52</td>
+      <td>1.90</td>
+      <td>71.05</td>
+      <td>3.95</td>
+      <td>0.12</td>
+      <td>4.50</td>
+      <td>12.85</td>
+      <td>12.46</td>
+      <td>7.62</td>
+      <td>13.64</td>
+      <td>59.31</td>
+      <td>3.00</td>
+      <td>8.30</td>
+      <td>2.92</td>
+      <td>11.18</td>
+      <td>2.81</td>
+      <td>15.73</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1159126</td>
+      <td>UMG</td>
+      <td>United Malt Group Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Defensive</td>
+      <td>Beverages—Brewers</td>
+      <td>Australia</td>
+      <td>UMG.AX</td>
+      <td>Sydney:UMG</td>
+      <td>2020-03-23 23:00:00</td>
+      <td>-0.98</td>
+      <td>-0.98</td>
+      <td>NaN</td>
+      <td>0.73</td>
+      <td>NaN</td>
+      <td>0.37</td>
+      <td>0.03</td>
+      <td>0.10</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>14.80</td>
+      <td>41.29</td>
+      <td>53.0</td>
+      <td>1.196716e+09</td>
+      <td>2.991790e+08</td>
+      <td>2.491354e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>4.20</td>
+      <td>1986761.0</td>
+      <td>62</td>
+      <td>55</td>
+      <td>52</td>
+      <td>22</td>
+      <td>24</td>
+      <td>16</td>
+      <td>1.00</td>
+      <td>1337082.78</td>
+      <td>1.49</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>186.33</td>
+      <td>4.76</td>
+      <td>-11.76</td>
+      <td>3.74</td>
+      <td>12.30</td>
+      <td>2.27</td>
+      <td>0.09</td>
+      <td>4.48</td>
+      <td>8.25</td>
+      <td>6.06</td>
+      <td>-2.78</td>
+      <td>2.94</td>
+      <td>0.96</td>
+      <td>3.98</td>
+      <td>5.52</td>
+      <td>3.94</td>
+      <td>6.62</td>
+      <td>4.03</td>
+      <td>4.11</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1014093</td>
+      <td>AD8</td>
+      <td>Audinate Group Ltd</td>
+      <td>Sydney</td>
+      <td>Technology</td>
+      <td>Electronic Components</td>
+      <td>Australia</td>
+      <td>AD8.AX</td>
+      <td>Sydney:AD8</td>
+      <td>2017-06-30 00:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.80</td>
+      <td>NaN</td>
+      <td>0.33</td>
+      <td>0.32</td>
+      <td>0.11</td>
+      <td>0.12</td>
+      <td>NaN</td>
+      <td>0.40</td>
+      <td>14.66</td>
+      <td>16.64</td>
+      <td>17.0</td>
+      <td>4.609905e+08</td>
+      <td>7.708870e+07</td>
+      <td>6.398002e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>6.32</td>
+      <td>277063.0</td>
+      <td>11</td>
+      <td>23</td>
+      <td>21</td>
+      <td>7</td>
+      <td>15</td>
+      <td>18</td>
+      <td>0.52</td>
+      <td>173746.18</td>
+      <td>1.59</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>368.24</td>
+      <td>11.01</td>
+      <td>-42.60</td>
+      <td>5.86</td>
+      <td>7.85</td>
+      <td>3.40</td>
+      <td>0.23</td>
+      <td>3.95</td>
+      <td>4.81</td>
+      <td>-10.99</td>
+      <td>-21.78</td>
+      <td>-29.39</td>
+      <td>-21.49</td>
+      <td>6.17</td>
+      <td>2.42</td>
+      <td>6.41</td>
+      <td>-1.38</td>
+      <td>7.02</td>
+      <td>-9.91</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8583</td>
+      <td>HLS</td>
+      <td>Healius Ltd</td>
+      <td>Sydney</td>
+      <td>Healthcare</td>
+      <td>Diagnostics &amp; Research</td>
+      <td>Australia</td>
+      <td>HLS.AX</td>
+      <td>Sydney:HLS</td>
+      <td>1998-08-03 00:00:00</td>
+      <td>2.71</td>
+      <td>2.86</td>
+      <td>NaN</td>
+      <td>1.54</td>
+      <td>NaN</td>
+      <td>-0.54</td>
+      <td>0.43</td>
+      <td>0.33</td>
+      <td>0.28</td>
+      <td>NaN</td>
+      <td>-0.17</td>
+      <td>0.99</td>
+      <td>33.96</td>
+      <td>84.0</td>
+      <td>2.558584e+09</td>
+      <td>5.788650e+08</td>
+      <td>5.676181e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>4.56</td>
+      <td>2195910.0</td>
+      <td>56</td>
+      <td>55</td>
+      <td>57</td>
+      <td>10</td>
+      <td>30</td>
+      <td>43</td>
+      <td>0.85</td>
+      <td>2068405.74</td>
+      <td>1.06</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>274.42</td>
+      <td>5.54</td>
+      <td>-17.69</td>
+      <td>3.89</td>
+      <td>17.22</td>
+      <td>1.95</td>
+      <td>0.09</td>
+      <td>3.64</td>
+      <td>4.11</td>
+      <td>4.11</td>
+      <td>-2.77</td>
+      <td>-1.08</td>
+      <td>10.95</td>
+      <td>4.42</td>
+      <td>3.14</td>
+      <td>4.39</td>
+      <td>3.83</td>
+      <td>4.37</td>
+      <td>4.45</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>102005</td>
+      <td>MYX</td>
+      <td>Mayne Pharma Group Ltd</td>
+      <td>Sydney</td>
+      <td>Healthcare</td>
+      <td>Drug Manufacturers—General</td>
+      <td>Australia</td>
+      <td>MYX.AX</td>
+      <td>Sydney:MYX</td>
+      <td>2007-06-29 00:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-2.00</td>
+      <td>NaN</td>
+      <td>1.00</td>
+      <td>-0.06</td>
+      <td>0.15</td>
+      <td>0.08</td>
+      <td>NaN</td>
+      <td>0.17</td>
+      <td>22.68</td>
+      <td>23.90</td>
+      <td>44.0</td>
+      <td>5.029794e+08</td>
+      <td>1.764840e+09</td>
+      <td>1.364575e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.30</td>
+      <td>5953698.0</td>
+      <td>87</td>
+      <td>77</td>
+      <td>44</td>
+      <td>52</td>
+      <td>17</td>
+      <td>26</td>
+      <td>0.94</td>
+      <td>3655628.64</td>
+      <td>1.63</td>
+      <td>True</td>
+      <td>4.0</td>
+      <td>9.0</td>
+      <td>373.28</td>
+      <td>0.46</td>
+      <td>-34.07</td>
+      <td>0.20</td>
+      <td>50.00</td>
+      <td>4.70</td>
+      <td>0.01</td>
+      <td>3.45</td>
+      <td>13.21</td>
+      <td>22.45</td>
+      <td>9.09</td>
+      <td>-14.29</td>
+      <td>-33.33</td>
+      <td>0.27</td>
+      <td>9.42</td>
+      <td>0.26</td>
+      <td>15.28</td>
+      <td>0.25</td>
+      <td>20.29</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>7689</td>
+      <td>ANN</td>
+      <td>Ansell Ltd</td>
+      <td>Sydney</td>
+      <td>Healthcare</td>
+      <td>Medical Instruments &amp; Supplies</td>
+      <td>Australia</td>
+      <td>ANN.AX</td>
+      <td>Sydney:ANN</td>
+      <td>1988-01-31 23:00:00</td>
+      <td>-0.27</td>
+      <td>-0.26</td>
+      <td>NaN</td>
+      <td>-0.32</td>
+      <td>NaN</td>
+      <td>0.07</td>
+      <td>0.08</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>NaN</td>
+      <td>-0.02</td>
+      <td>0.36</td>
+      <td>57.02</td>
+      <td>162.0</td>
+      <td>3.218910e+09</td>
+      <td>1.278360e+08</td>
+      <td>1.247035e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>26.14</td>
+      <td>600511.0</td>
+      <td>55</td>
+      <td>23</td>
+      <td>21</td>
+      <td>15</td>
+      <td>7</td>
+      <td>20</td>
+      <td>1.20</td>
+      <td>695454.70</td>
+      <td>0.86</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>179.31</td>
+      <td>44.07</td>
+      <td>-40.69</td>
+      <td>23.76</td>
+      <td>10.02</td>
+      <td>1.73</td>
+      <td>0.47</td>
+      <td>3.44</td>
+      <td>2.39</td>
+      <td>3.69</td>
+      <td>-21.90</td>
+      <td>-18.03</td>
+      <td>-32.66</td>
+      <td>25.54</td>
+      <td>2.34</td>
+      <td>25.52</td>
+      <td>2.42</td>
+      <td>25.55</td>
+      <td>2.30</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>10547</td>
+      <td>WHC</td>
+      <td>Whitehaven Coal Ltd</td>
+      <td>Sydney</td>
+      <td>Energy</td>
+      <td>Thermal Coal</td>
+      <td>Australia</td>
+      <td>WHC.AX</td>
+      <td>Sydney:WHC</td>
+      <td>2007-06-01 00:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>14.22</td>
+      <td>NaN</td>
+      <td>-0.13</td>
+      <td>1.06</td>
+      <td>NaN</td>
+      <td>1.56</td>
+      <td>NaN</td>
+      <td>-0.02</td>
+      <td>14.07</td>
+      <td>25.95</td>
+      <td>91.0</td>
+      <td>4.642526e+09</td>
+      <td>1.015870e+09</td>
+      <td>8.945643e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>4.80</td>
+      <td>14282620.0</td>
+      <td>86</td>
+      <td>96</td>
+      <td>95</td>
+      <td>58</td>
+      <td>96</td>
+      <td>95</td>
+      <td>1.83</td>
+      <td>13677320.40</td>
+      <td>1.04</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>65.40</td>
+      <td>4.94</td>
+      <td>-2.83</td>
+      <td>1.15</td>
+      <td>316.49</td>
+      <td>3.26</td>
+      <td>0.17</td>
+      <td>3.00</td>
+      <td>6.90</td>
+      <td>20.30</td>
+      <td>67.25</td>
+      <td>44.58</td>
+      <td>258.21</td>
+      <td>4.54</td>
+      <td>5.83</td>
+      <td>4.34</td>
+      <td>10.58</td>
+      <td>3.85</td>
+      <td>24.53</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>947573</td>
+      <td>BAP</td>
+      <td>Bapcor Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Cyclical</td>
+      <td>Specialty Retail</td>
+      <td>Australia</td>
+      <td>BAP.AX</td>
+      <td>Sydney:BAP</td>
+      <td>2014-04-24 00:00:00</td>
+      <td>-0.15</td>
+      <td>-0.15</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>0.02</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>3.33</td>
+      <td>52.49</td>
+      <td>85.0</td>
+      <td>2.219761e+09</td>
+      <td>3.394130e+08</td>
+      <td>3.296171e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>6.78</td>
+      <td>1502507.0</td>
+      <td>69</td>
+      <td>50</td>
+      <td>38</td>
+      <td>35</td>
+      <td>20</td>
+      <td>41</td>
+      <td>0.99</td>
+      <td>1442793.98</td>
+      <td>1.04</td>
+      <td>True</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>228.46</td>
+      <td>8.60</td>
+      <td>-21.16</td>
+      <td>5.97</td>
+      <td>13.57</td>
+      <td>1.96</td>
+      <td>0.15</td>
+      <td>2.73</td>
+      <td>6.94</td>
+      <td>8.48</td>
+      <td>-5.44</td>
+      <td>-9.96</td>
+      <td>-18.02</td>
+      <td>6.50</td>
+      <td>4.31</td>
+      <td>6.43</td>
+      <td>5.51</td>
+      <td>6.49</td>
+      <td>4.53</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>7597</td>
+      <td>AAC</td>
+      <td>Australian Agricultural Company Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Defensive</td>
+      <td>Farm Products</td>
+      <td>Australia</td>
+      <td>AAC.AX</td>
+      <td>Sydney:AAC</td>
+      <td>2001-08-10 00:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.00</td>
+      <td>-0.36</td>
+      <td>-0.36</td>
+      <td>-0.36</td>
+      <td>-0.33</td>
+      <td>67.78</td>
+      <td>6.90</td>
+      <td>32.0</td>
+      <td>1.012649e+09</td>
+      <td>6.027670e+08</td>
+      <td>1.983740e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1.74</td>
+      <td>917380.0</td>
+      <td>66</td>
+      <td>82</td>
+      <td>80</td>
+      <td>22</td>
+      <td>24</td>
+      <td>16</td>
+      <td>1.87</td>
+      <td>460733.40</td>
+      <td>1.99</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>430.56</td>
+      <td>1.81</td>
+      <td>-3.87</td>
+      <td>1.12</td>
+      <td>54.67</td>
+      <td>2.21</td>
+      <td>0.04</td>
+      <td>2.65</td>
+      <td>2.96</td>
+      <td>7.08</td>
+      <td>15.23</td>
+      <td>19.59</td>
+      <td>47.46</td>
+      <td>1.68</td>
+      <td>3.57</td>
+      <td>1.66</td>
+      <td>4.65</td>
+      <td>1.65</td>
+      <td>5.51</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>949806</td>
+      <td>A2M</td>
+      <td>A2 Milk Company Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Defensive</td>
+      <td>Farm Products</td>
+      <td>Australia</td>
+      <td>ATM.NZ</td>
+      <td>Sydney:A2M</td>
+      <td>2004-01-05 21:00:00</td>
+      <td>-0.50</td>
+      <td>-0.50</td>
+      <td>NaN</td>
+      <td>0.46</td>
+      <td>NaN</td>
+      <td>0.31</td>
+      <td>-0.02</td>
+      <td>0.08</td>
+      <td>0.16</td>
+      <td>NaN</td>
+      <td>0.15</td>
+      <td>10.16</td>
+      <td>33.88</td>
+      <td>157.0</td>
+      <td>3.829834e+09</td>
+      <td>7.436570e+08</td>
+      <td>7.395739e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>4.72</td>
+      <td>4277081.0</td>
+      <td>9</td>
+      <td>36</td>
+      <td>22</td>
+      <td>22</td>
+      <td>24</td>
+      <td>16</td>
+      <td>0.76</td>
+      <td>3785996.60</td>
+      <td>1.13</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>195.34</td>
+      <td>7.54</td>
+      <td>-37.40</td>
+      <td>4.57</td>
+      <td>3.28</td>
+      <td>2.51</td>
+      <td>0.14</td>
+      <td>2.61</td>
+      <td>-1.05</td>
+      <td>-12.59</td>
+      <td>-12.59</td>
+      <td>-28.70</td>
+      <td>-38.22</td>
+      <td>4.79</td>
+      <td>-1.44</td>
+      <td>4.99</td>
+      <td>-5.34</td>
+      <td>5.26</td>
+      <td>-10.26</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>32565</td>
+      <td>JHG</td>
+      <td>Janus Henderson Group PLC DRC</td>
+      <td>Sydney</td>
+      <td>Financial Services</td>
+      <td>Asset Management</td>
+      <td>Australia</td>
+      <td>JHG.AX</td>
+      <td>Sydney:JHG</td>
+      <td>2003-12-22 23:00:00</td>
+      <td>-0.29</td>
+      <td>-0.24</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>5.07</td>
+      <td>13.0</td>
+      <td>7.635808e+09</td>
+      <td>1.690460e+08</td>
+      <td>1.347294e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>46.06</td>
+      <td>55400.0</td>
+      <td>24</td>
+      <td>27</td>
+      <td>36</td>
+      <td>27</td>
+      <td>36</td>
+      <td>35</td>
+      <td>0.99</td>
+      <td>129526.80</td>
+      <td>0.43</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1040.17</td>
+      <td>66.31</td>
+      <td>-30.54</td>
+      <td>39.20</td>
+      <td>17.50</td>
+      <td>1.53</td>
+      <td>1.07</td>
+      <td>2.61</td>
+      <td>0.81</td>
+      <td>-4.46</td>
+      <td>-18.39</td>
+      <td>-23.87</td>
+      <td>6.92</td>
+      <td>45.66</td>
+      <td>0.89</td>
+      <td>45.97</td>
+      <td>0.20</td>
+      <td>46.23</td>
+      <td>-0.37</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>8670</td>
+      <td>SPK</td>
+      <td>Spark New Zealand Ltd</td>
+      <td>Sydney</td>
+      <td>Communication Services</td>
+      <td>Telecom Services</td>
+      <td>Australia</td>
+      <td>SPK.NZ</td>
+      <td>Sydney:SPK</td>
+      <td>2000-01-01 21:00:00</td>
+      <td>0.22</td>
+      <td>0.21</td>
+      <td>NaN</td>
+      <td>0.05</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>0.05</td>
+      <td>0.01</td>
+      <td>0.03</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>1.09</td>
+      <td>28.69</td>
+      <td>281.0</td>
+      <td>9.122770e+09</td>
+      <td>1.869420e+09</td>
+      <td>1.868059e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>4.54</td>
+      <td>1679073.0</td>
+      <td>52</td>
+      <td>72</td>
+      <td>64</td>
+      <td>48</td>
+      <td>29</td>
+      <td>48</td>
+      <td>1.24</td>
+      <td>1536246.70</td>
+      <td>1.09</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1215.99</td>
+      <td>4.78</td>
+      <td>-5.02</td>
+      <td>4.01</td>
+      <td>13.22</td>
+      <td>1.46</td>
+      <td>0.07</td>
+      <td>2.48</td>
+      <td>2.48</td>
+      <td>2.71</td>
+      <td>4.85</td>
+      <td>3.42</td>
+      <td>10.19</td>
+      <td>4.43</td>
+      <td>2.47</td>
+      <td>4.39</td>
+      <td>3.51</td>
+      <td>4.32</td>
+      <td>5.07</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>8635</td>
+      <td>SHL</td>
+      <td>Sonic Healthcare Ltd</td>
+      <td>Sydney</td>
+      <td>Healthcare</td>
+      <td>Diagnostics &amp; Research</td>
+      <td>Australia</td>
+      <td>SHL.AX</td>
+      <td>Sydney:SHL</td>
+      <td>1999-01-03 23:00:00</td>
+      <td>0.22</td>
+      <td>0.21</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>NaN</td>
+      <td>-0.40</td>
+      <td>0.07</td>
+      <td>0.04</td>
+      <td>0.05</td>
+      <td>NaN</td>
+      <td>-0.11</td>
+      <td>4.59</td>
+      <td>40.71</td>
+      <td>348.0</td>
+      <td>1.705074e+10</td>
+      <td>4.800320e+08</td>
+      <td>4.557811e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>36.37</td>
+      <td>1403587.0</td>
+      <td>55</td>
+      <td>43</td>
+      <td>45</td>
+      <td>10</td>
+      <td>30</td>
+      <td>43</td>
+      <td>0.81</td>
+      <td>1525917.30</td>
+      <td>0.92</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>298.69</td>
+      <td>46.95</td>
+      <td>-22.53</td>
+      <td>32.12</td>
+      <td>13.23</td>
+      <td>1.69</td>
+      <td>0.64</td>
+      <td>2.45</td>
+      <td>3.24</td>
+      <td>3.53</td>
+      <td>-9.28</td>
+      <td>-6.48</td>
+      <td>-0.30</td>
+      <td>35.51</td>
+      <td>2.42</td>
+      <td>35.30</td>
+      <td>3.04</td>
+      <td>35.34</td>
+      <td>2.92</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>14268</td>
+      <td>FPH</td>
+      <td>Fisher &amp; Paykel Healthcare Ltd</td>
+      <td>Sydney</td>
+      <td>Healthcare</td>
+      <td>Medical Instruments &amp; Supplies</td>
+      <td>Australia</td>
+      <td>FPH.NZ</td>
+      <td>Sydney:FPH</td>
+      <td>2000-01-01 21:00:00</td>
+      <td>-0.02</td>
+      <td>-0.02</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.01</td>
+      <td>0.10</td>
+      <td>0.10</td>
+      <td>0.10</td>
+      <td>0.12</td>
+      <td>6.45</td>
+      <td>29.58</td>
+      <td>296.0</td>
+      <td>1.315859e+10</td>
+      <td>5.770510e+08</td>
+      <td>5.745689e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>20.94</td>
+      <td>770173.0</td>
+      <td>4</td>
+      <td>13</td>
+      <td>17</td>
+      <td>15</td>
+      <td>7</td>
+      <td>20</td>
+      <td>0.64</td>
+      <td>719750.30</td>
+      <td>1.07</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>798.29</td>
+      <td>34.29</td>
+      <td>-38.93</td>
+      <td>20.28</td>
+      <td>3.25</td>
+      <td>2.71</td>
+      <td>0.57</td>
+      <td>2.45</td>
+      <td>-2.74</td>
+      <td>-18.87</td>
+      <td>-28.90</td>
+      <td>-26.42</td>
+      <td>-34.77</td>
+      <td>21.31</td>
+      <td>-1.76</td>
+      <td>22.34</td>
+      <td>-6.29</td>
+      <td>24.55</td>
+      <td>-14.70</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>993193</td>
+      <td>ING</td>
+      <td>Inghams Group Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Defensive</td>
+      <td>Farm Products</td>
+      <td>Australia</td>
+      <td>ING.AX</td>
+      <td>Sydney:ING</td>
+      <td>2016-11-06 23:00:00</td>
+      <td>0.09</td>
+      <td>0.08</td>
+      <td>NaN</td>
+      <td>-0.30</td>
+      <td>NaN</td>
+      <td>0.62</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>-0.00</td>
+      <td>NaN</td>
+      <td>0.05</td>
+      <td>0.79</td>
+      <td>62.22</td>
+      <td>79.0</td>
+      <td>1.129907e+09</td>
+      <td>3.716800e+08</td>
+      <td>3.682341e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>3.11</td>
+      <td>1931663.0</td>
+      <td>54</td>
+      <td>49</td>
+      <td>38</td>
+      <td>22</td>
+      <td>24</td>
+      <td>16</td>
+      <td>0.74</td>
+      <td>2019983.64</td>
+      <td>0.96</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>182.30</td>
+      <td>4.26</td>
+      <td>-27.00</td>
+      <td>2.94</td>
+      <td>5.78</td>
+      <td>1.61</td>
+      <td>0.05</td>
+      <td>2.30</td>
+      <td>4.01</td>
+      <td>3.32</td>
+      <td>-5.76</td>
+      <td>-19.01</td>
+      <td>-7.16</td>
+      <td>3.04</td>
+      <td>2.29</td>
+      <td>3.05</td>
+      <td>2.00</td>
+      <td>3.17</td>
+      <td>-1.93</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>993246</td>
+      <td>BVS</td>
+      <td>Bravura Solutions Ltd</td>
+      <td>Sydney</td>
+      <td>Technology</td>
+      <td>Software—Application</td>
+      <td>Australia</td>
+      <td>BVS.AX</td>
+      <td>Sydney:BVS</td>
+      <td>2016-11-15 23:00:00</td>
+      <td>0.69</td>
+      <td>0.69</td>
+      <td>NaN</td>
+      <td>-0.15</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>0.14</td>
+      <td>0.09</td>
+      <td>0.11</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>1.93</td>
+      <td>72.88</td>
+      <td>59.0</td>
+      <td>4.495207e+08</td>
+      <td>2.483540e+08</td>
+      <td>2.440823e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1.83</td>
+      <td>1205176.0</td>
+      <td>72</td>
+      <td>22</td>
+      <td>16</td>
+      <td>38</td>
+      <td>11</td>
+      <td>11</td>
+      <td>0.77</td>
+      <td>1055979.62</td>
+      <td>1.14</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>231.14</td>
+      <td>3.98</td>
+      <td>-54.15</td>
+      <td>1.50</td>
+      <td>22.07</td>
+      <td>4.08</td>
+      <td>0.08</td>
+      <td>1.96</td>
+      <td>11.28</td>
+      <td>9.61</td>
+      <td>-22.67</td>
+      <td>-34.82</td>
+      <td>-29.54</td>
+      <td>1.75</td>
+      <td>4.35</td>
+      <td>1.73</td>
+      <td>5.61</td>
+      <td>1.78</td>
+      <td>2.79</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>101989</td>
+      <td>HSN</td>
+      <td>Hansen Technologies Ltd</td>
+      <td>Sydney</td>
+      <td>Technology</td>
+      <td>Software—Application</td>
+      <td>Australia</td>
+      <td>HSN.AX</td>
+      <td>Sydney:HSN</td>
+      <td>2000-06-01 00:00:00</td>
+      <td>0.15</td>
+      <td>0.14</td>
+      <td>NaN</td>
+      <td>-0.25</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>0.05</td>
+      <td>-0.03</td>
+      <td>-0.03</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>19.26</td>
+      <td>26.87</td>
+      <td>62.0</td>
+      <td>1.146602e+09</td>
+      <td>2.008060e+08</td>
+      <td>1.614805e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>5.94</td>
+      <td>2157209.0</td>
+      <td>78</td>
+      <td>82</td>
+      <td>66</td>
+      <td>38</td>
+      <td>11</td>
+      <td>11</td>
+      <td>2.25</td>
+      <td>320986.36</td>
+      <td>6.72</td>
+      <td>True</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>503.08</td>
+      <td>6.69</td>
+      <td>-11.21</td>
+      <td>4.68</td>
+      <td>26.92</td>
+      <td>2.35</td>
+      <td>0.13</td>
+      <td>1.71</td>
+      <td>6.26</td>
+      <td>13.14</td>
+      <td>15.34</td>
+      <td>-4.35</td>
+      <td>6.26</td>
+      <td>5.71</td>
+      <td>4.04</td>
+      <td>5.57</td>
+      <td>6.65</td>
+      <td>5.29</td>
+      <td>12.37</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>14232</td>
+      <td>AIA</td>
+      <td>Auckland International Airport Ltd</td>
+      <td>Sydney</td>
+      <td>Industrials</td>
+      <td>Airports &amp; Air Services</td>
+      <td>Australia</td>
+      <td>AIA.NZ</td>
+      <td>Sydney:AIA</td>
+      <td>2000-01-01 21:00:00</td>
+      <td>2.74</td>
+      <td>2.74</td>
+      <td>NaN</td>
+      <td>0.33</td>
+      <td>NaN</td>
+      <td>5.50</td>
+      <td>-0.02</td>
+      <td>0.23</td>
+      <td>0.03</td>
+      <td>NaN</td>
+      <td>0.97</td>
+      <td>18.11</td>
+      <td>20.83</td>
+      <td>244.0</td>
+      <td>1.128081e+10</td>
+      <td>1.472690e+09</td>
+      <td>1.205511e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>7.17</td>
+      <td>734023.0</td>
+      <td>35</td>
+      <td>62</td>
+      <td>58</td>
+      <td>13</td>
+      <td>55</td>
+      <td>40</td>
+      <td>1.52</td>
+      <td>824225.72</td>
+      <td>0.89</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1462.60</td>
+      <td>8.00</td>
+      <td>-10.37</td>
+      <td>6.42</td>
+      <td>11.68</td>
+      <td>1.73</td>
+      <td>0.13</td>
+      <td>1.70</td>
+      <td>2.58</td>
+      <td>-1.10</td>
+      <td>0.00</td>
+      <td>-3.37</td>
+      <td>1.85</td>
+      <td>7.06</td>
+      <td>1.51</td>
+      <td>7.04</td>
+      <td>1.86</td>
+      <td>6.88</td>
+      <td>4.21</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>8712</td>
+      <td>WES</td>
+      <td>Wesfarmers Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Cyclical</td>
+      <td>Home Improvement Retail</td>
+      <td>Australia</td>
+      <td>WES.AX</td>
+      <td>Sydney:WES</td>
+      <td>1988-01-31 23:00:00</td>
+      <td>-0.13</td>
+      <td>-0.13</td>
+      <td>NaN</td>
+      <td>-0.10</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>-0.00</td>
+      <td>-0.01</td>
+      <td>0.01</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>0.99</td>
+      <td>29.84</td>
+      <td>334.0</td>
+      <td>5.481299e+10</td>
+      <td>1.134140e+09</td>
+      <td>1.123245e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>49.33</td>
+      <td>2340692.0</td>
+      <td>32</td>
+      <td>40</td>
+      <td>37</td>
+      <td>4</td>
+      <td>55</td>
+      <td>42</td>
+      <td>0.92</td>
+      <td>2253834.66</td>
+      <td>1.04</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>498.37</td>
+      <td>67.20</td>
+      <td>-26.59</td>
+      <td>47.44</td>
+      <td>3.97</td>
+      <td>1.50</td>
+      <td>0.84</td>
+      <td>1.69</td>
+      <td>1.82</td>
+      <td>-1.99</td>
+      <td>-10.60</td>
+      <td>-9.98</td>
+      <td>-12.13</td>
+      <td>48.86</td>
+      <td>0.96</td>
+      <td>49.29</td>
+      <td>0.09</td>
+      <td>50.00</td>
+      <td>-1.34</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>7596</td>
+      <td>APA</td>
+      <td>APA Group</td>
+      <td>Sydney</td>
+      <td>Utilities</td>
+      <td>Utilities—Regulated Gas</td>
+      <td>Australia</td>
+      <td>APA.AX</td>
+      <td>Sydney:APA</td>
+      <td>2000-06-12 00:00:00</td>
+      <td>-0.89</td>
+      <td>-0.89</td>
+      <td>NaN</td>
+      <td>0.12</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>0.07</td>
+      <td>-0.02</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>0.05</td>
+      <td>48.74</td>
+      <td>262.0</td>
+      <td>1.297879e+10</td>
+      <td>1.179890e+09</td>
+      <td>1.179540e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>11.27</td>
+      <td>2624224.0</td>
+      <td>78</td>
+      <td>80</td>
+      <td>76</td>
+      <td>63</td>
+      <td>92</td>
+      <td>57</td>
+      <td>1.31</td>
+      <td>2181580.00</td>
+      <td>1.20</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>540.68</td>
+      <td>11.27</td>
+      <td>0.00</td>
+      <td>8.20</td>
+      <td>37.44</td>
+      <td>1.97</td>
+      <td>0.22</td>
+      <td>1.53</td>
+      <td>4.35</td>
+      <td>13.15</td>
+      <td>12.70</td>
+      <td>32.43</td>
+      <td>10.71</td>
+      <td>10.90</td>
+      <td>3.39</td>
+      <td>10.65</td>
+      <td>5.85</td>
+      <td>10.24</td>
+      <td>10.05</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>32563</td>
+      <td>TWE</td>
+      <td>Treasury Wine Estates Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Defensive</td>
+      <td>Beverages—Wineries &amp; Distilleries</td>
+      <td>Australia</td>
+      <td>TWE.AX</td>
+      <td>Sydney:TWE</td>
+      <td>2011-05-09 00:00:00</td>
+      <td>-0.08</td>
+      <td>-0.08</td>
+      <td>NaN</td>
+      <td>0.07</td>
+      <td>NaN</td>
+      <td>0.22</td>
+      <td>-0.09</td>
+      <td>-0.07</td>
+      <td>-0.06</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>0.10</td>
+      <td>42.10</td>
+      <td>230.0</td>
+      <td>8.012513e+09</td>
+      <td>7.218480e+08</td>
+      <td>7.211047e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>11.25</td>
+      <td>994667.0</td>
+      <td>23</td>
+      <td>54</td>
+      <td>54</td>
+      <td>43</td>
+      <td>20</td>
+      <td>19</td>
+      <td>0.95</td>
+      <td>2084203.56</td>
+      <td>0.48</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>345.99</td>
+      <td>13.34</td>
+      <td>-15.67</td>
+      <td>9.83</td>
+      <td>14.45</td>
+      <td>1.65</td>
+      <td>0.21</td>
+      <td>1.35</td>
+      <td>-0.35</td>
+      <td>-4.98</td>
+      <td>-3.18</td>
+      <td>-2.68</td>
+      <td>10.51</td>
+      <td>11.28</td>
+      <td>-0.28</td>
+      <td>11.42</td>
+      <td>-1.50</td>
+      <td>11.49</td>
+      <td>-2.06</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>1099590</td>
+      <td>COL</td>
+      <td>Coles Group Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Defensive</td>
+      <td>Grocery Stores</td>
+      <td>Australia</td>
+      <td>COL.AX</td>
+      <td>Sydney:COL</td>
+      <td>2018-11-20 23:00:00</td>
+      <td>-0.02</td>
+      <td>-0.02</td>
+      <td>NaN</td>
+      <td>0.01</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>0.01</td>
+      <td>0.15</td>
+      <td>0.02</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>5.18</td>
+      <td>27.77</td>
+      <td>277.0</td>
+      <td>2.445191e+10</td>
+      <td>1.336170e+09</td>
+      <td>1.263671e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>18.58</td>
+      <td>2790604.0</td>
+      <td>59</td>
+      <td>80</td>
+      <td>71</td>
+      <td>50</td>
+      <td>93</td>
+      <td>56</td>
+      <td>1.31</td>
+      <td>3106593.40</td>
+      <td>0.90</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>406.77</td>
+      <td>18.94</td>
+      <td>-1.90</td>
+      <td>15.37</td>
+      <td>20.88</td>
+      <td>1.23</td>
+      <td>0.24</td>
+      <td>1.31</td>
+      <td>0.76</td>
+      <td>4.74</td>
+      <td>12.67</td>
+      <td>4.91</td>
+      <td>17.30</td>
+      <td>18.30</td>
+      <td>1.52</td>
+      <td>18.07</td>
+      <td>2.81</td>
+      <td>17.52</td>
+      <td>6.03</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>1184136</td>
+      <td>NC1</td>
+      <td>NICO Resources Ltd</td>
+      <td>Sydney</td>
+      <td>Basic Materials</td>
+      <td>Other Industrial Metals &amp; Mining</td>
+      <td>Australia</td>
+      <td>NC1.AX</td>
+      <td>Sydney:NC1</td>
+      <td>2022-01-18 23:00:00</td>
+      <td>-0.31</td>
+      <td>-0.35</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.23</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>68.92</td>
+      <td>9.63</td>
+      <td>4.0</td>
+      <td>1.087450e+08</td>
+      <td>9.100000e+07</td>
+      <td>1.520821e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1.69</td>
+      <td>2750413.0</td>
+      <td>99</td>
+      <td>99</td>
+      <td>99</td>
+      <td>81</td>
+      <td>74</td>
+      <td>75</td>
+      <td>1.67</td>
+      <td>1537168.74</td>
+      <td>1.79</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>0.99</td>
+      <td>1.87</td>
+      <td>-9.63</td>
+      <td>0.31</td>
+      <td>445.16</td>
+      <td>13.02</td>
+      <td>0.15</td>
+      <td>1.20</td>
+      <td>64.88</td>
+      <td>129.93</td>
+      <td>369.44</td>
+      <td>369.44</td>
+      <td>369.44</td>
+      <td>1.28</td>
+      <td>31.71</td>
+      <td>1.09</td>
+      <td>55.14</td>
+      <td>0.81</td>
+      <td>107.90</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>8720</td>
+      <td>WOW</td>
+      <td>Woolworths Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Defensive</td>
+      <td>Grocery Stores</td>
+      <td>Australia</td>
+      <td>WOW.AX</td>
+      <td>Sydney:WOW</td>
+      <td>1993-08-02 00:00:00</td>
+      <td>5.22</td>
+      <td>5.30</td>
+      <td>NaN</td>
+      <td>-0.24</td>
+      <td>NaN</td>
+      <td>0.17</td>
+      <td>0.08</td>
+      <td>-0.12</td>
+      <td>-0.11</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>0.28</td>
+      <td>28.18</td>
+      <td>316.0</td>
+      <td>4.671087e+10</td>
+      <td>1.213900e+09</td>
+      <td>1.206007e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>39.05</td>
+      <td>2859159.0</td>
+      <td>69</td>
+      <td>78</td>
+      <td>64</td>
+      <td>50</td>
+      <td>93</td>
+      <td>56</td>
+      <td>1.29</td>
+      <td>2687499.56</td>
+      <td>1.06</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>448.75</td>
+      <td>42.66</td>
+      <td>-8.46</td>
+      <td>33.45</td>
+      <td>16.74</td>
+      <td>1.13</td>
+      <td>0.44</td>
+      <td>1.14</td>
+      <td>2.17</td>
+      <td>8.29</td>
+      <td>10.69</td>
+      <td>-3.39</td>
+      <td>4.36</td>
+      <td>38.21</td>
+      <td>2.19</td>
+      <td>37.47</td>
+      <td>4.22</td>
+      <td>35.99</td>
+      <td>8.51</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>636</td>
+      <td>ANZ</td>
+      <td>Australia and New Zealand Banking Group Ltd</td>
+      <td>Sydney</td>
+      <td>Financial Services</td>
+      <td>Banks—Diversified</td>
+      <td>Australia</td>
+      <td>ANZ.AX</td>
+      <td>Sydney:ANZ</td>
+      <td>1988-01-31 23:00:00</td>
+      <td>0.58</td>
+      <td>0.60</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>0.19</td>
+      <td>0.04</td>
+      <td>0.02</td>
+      <td>NaN</td>
+      <td>0.05</td>
+      <td>0.25</td>
+      <td>22.03</td>
+      <td>370.0</td>
+      <td>7.729835e+10</td>
+      <td>2.819050e+09</td>
+      <td>2.808258e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>27.91</td>
+      <td>5554678.0</td>
+      <td>47</td>
+      <td>54</td>
+      <td>53</td>
+      <td>31</td>
+      <td>53</td>
+      <td>46</td>
+      <td>1.32</td>
+      <td>6207519.78</td>
+      <td>0.89</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>452.40</td>
+      <td>29.64</td>
+      <td>-5.84</td>
+      <td>24.65</td>
+      <td>13.23</td>
+      <td>1.14</td>
+      <td>0.36</td>
+      <td>0.58</td>
+      <td>0.76</td>
+      <td>1.20</td>
+      <td>-2.92</td>
+      <td>-1.17</td>
+      <td>-2.34</td>
+      <td>27.59</td>
+      <td>1.17</td>
+      <td>27.43</td>
+      <td>1.76</td>
+      <td>27.13</td>
+      <td>2.88</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>621</td>
+      <td>AMC</td>
+      <td>Amcor PLC</td>
+      <td>Sydney</td>
+      <td>Consumer Cyclical</td>
+      <td>Packaging &amp; Containers</td>
+      <td>Australia</td>
+      <td>AMC.AX</td>
+      <td>Sydney:AMC</td>
+      <td>1988-01-31 23:00:00</td>
+      <td>0.03</td>
+      <td>0.06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.13</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>21.25</td>
+      <td>108.0</td>
+      <td>2.390180e+10</td>
+      <td>1.513730e+09</td>
+      <td>3.010879e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>15.83</td>
+      <td>2495235.0</td>
+      <td>48</td>
+      <td>46</td>
+      <td>52</td>
+      <td>50</td>
+      <td>45</td>
+      <td>29</td>
+      <td>1.12</td>
+      <td>2780704.36</td>
+      <td>0.90</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>1082.78</td>
+      <td>17.90</td>
+      <td>-11.56</td>
+      <td>14.63</td>
+      <td>8.20</td>
+      <td>1.19</td>
+      <td>0.20</td>
+      <td>0.57</td>
+      <td>1.15</td>
+      <td>1.47</td>
+      <td>-7.37</td>
+      <td>-1.62</td>
+      <td>3.94</td>
+      <td>15.63</td>
+      <td>1.25</td>
+      <td>15.51</td>
+      <td>2.09</td>
+      <td>15.61</td>
+      <td>1.44</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>7786</td>
+      <td>AUB</td>
+      <td>AUB Group Ltd</td>
+      <td>Sydney</td>
+      <td>Financial Services</td>
+      <td>Insurance Brokers</td>
+      <td>Australia</td>
+      <td>AUB.AX</td>
+      <td>Sydney:AUB</td>
+      <td>2005-11-15 23:00:00</td>
+      <td>0.28</td>
+      <td>0.27</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>0.04</td>
+      <td>0.36</td>
+      <td>0.74</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>1.41</td>
+      <td>57.90</td>
+      <td>73.0</td>
+      <td>1.664161e+09</td>
+      <td>7.445910e+07</td>
+      <td>7.293488e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>22.57</td>
+      <td>158865.0</td>
+      <td>49</td>
+      <td>42</td>
+      <td>54</td>
+      <td>43</td>
+      <td>49</td>
+      <td>49</td>
+      <td>0.99</td>
+      <td>251638.10</td>
+      <td>0.63</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>289.84</td>
+      <td>26.99</td>
+      <td>-16.38</td>
+      <td>18.01</td>
+      <td>25.32</td>
+      <td>2.80</td>
+      <td>0.68</td>
+      <td>0.09</td>
+      <td>-1.40</td>
+      <td>1.62</td>
+      <td>-9.36</td>
+      <td>-1.83</td>
+      <td>13.42</td>
+      <td>22.59</td>
+      <td>-0.08</td>
+      <td>22.53</td>
+      <td>0.19</td>
+      <td>22.44</td>
+      <td>0.56</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Momentum</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+            </section>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+    </div>
+</footer>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bm/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+<script>
+        $(document).ready(function () {
+            $('#data').DataTable(
+                {
+                    "scrollX": true,
+                    "dom": 'Bfrtip',
+                    "buttons": [
+                        'copy', 'csv', 'excel', 'print'
+                    ]
+
+                }
+            );
+        });
+    </script>
+    
+</body>
+
+</html>

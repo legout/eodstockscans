@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="columns is-mobile is-variable is-multiline">
+        {% for symbol in charts %}
+        <!-- <div class="column"> -->
+        <div class="card mx-auto my-1">
+            <figure class="image">
+                <a><img src="data:image/svg+xml;base64,{{ charts[symbol] }}" alt="MISSING"></a>
+            </figure>
+        </div>
+        <!-- </div> -->
+        {% endfor %}
+    </div>
+{% endblock %}

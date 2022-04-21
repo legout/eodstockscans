@@ -1,0 +1,3974 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.datatables.net/v/bm/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/sc-2.0.5/datatables.min.css" />
+
+</head >
+
+
+<body>
+    <section class="hero is-small is-dark">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <!-- <a class="navbar-item">
+                        
+                        <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDEwMCAxMDA7IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOm5vbmU7fQoJLnN0MXtmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO30KPC9zdHlsZT48dGl0bGUvPjxnPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MS44LDg0YzAuMSwwLjIsMC4xLDAuMywwLjEsMC41YzAsMy4zLDAuMiw2LjcsMC41LDEwYzIuNi0wLjEsNC45LTAuMSw3LjItMC4ydjBjMC4zLDAsMC43LDAsMSwwICAgYy0wLjMtNS0wLjQtMTAtMC41LTE1QzQ4LjQsODAuNCw0NS41LDgyLjEsNDEuOCw4NHoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTYuMyw5NGMtMC4yLDAuMS0wLjQsMC4xLTAuNSwwLjJjMS43LDAuMSw0LjMsMC4yLDcuNywwLjNjMS40LDAsMi43LDAuMSw0LDAuMWMtMC4xLTEuNC0wLjMtMi44LTAuNC00LjEgICBDMjIuNiw5Mi4xLDE4LjgsOTMuMiwxNi4zLDk0eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02Ni45LDQ3LjVjMy4xLTMuMyw2LjgtNy41LDEwLjgtMTIuN2MwLDAsMCwwLDAtMC4xYzAuNS0wLjYsMS40LTAuNywyLTAuMmMxLjcsMS41LDMuNiwyLjksNS42LDQuNCAgIGMxLDAuOCwyLjEsMS41LDMuMSwyLjJjMC4zLDAuMiwwLjYsMC4zLDEsMC4zYzAuNCwwLDAuOC0wLjIsMS4yLTAuNGMwLjMtMC4zLDAuNS0wLjcsMC41LTEuMWMwLjItNC45LDAuMy05LjksMC4zLTE1di0wLjcgICBjMC01LjYtMC4xLTExLTAuMy0xNi4zYzAtMC4yLDAtMC4zLTAuMS0wLjVjLTAuMy0xLjQtMS43LTIuMy0zLjItMkM3Ni42LDgsNjUuNSwxMC43LDU0LjUsMTMuN2MtMC4zLDAuMS0wLjYsMC4zLTAuOCwwLjUgICBjLTAuMiwwLjMtMC4zLDAuNi0wLjMsMC45YzAsMC41LDAuMywxLDAuNywxLjJjMC45LDAuNiwxLjgsMS4xLDIuNywxLjdjMi4yLDEuMyw0LjMsMi41LDYuMywzLjVjMC43LDAuNCwxLDEuMiwwLjYsMS45ICAgYy0zLjEsNi02LjYsMTEuNy0xMC42LDE3LjFjLTguNSwxMS40LTE4LDIwLTMwLDMwLjhDMTYuNyw3NywxMiw4MSw5LjQsODMuNWMtMC42LDAuNi0xLjIsMS4yLTEuNywxLjhjMC43LTAuMSwxLjQtMC4yLDIuMS0wLjQgICBjMS4xLTAuMywyLjQtMC43LDMuNi0xLjFjMi41LTAuOSw0LjktMS45LDYuMS0yLjRDMjguOSw3Ny42LDQ3LjEsNjguNiw2Ni45LDQ3LjV6Ii8+PHBhdGggY2xhc3M9InN0MCIgZD0iTTMxLjUsODguN2MtMC42LDAuMi0xLjIsMC41LTEuNywwLjdjMC4yLDEuNywwLjQsMy41LDAuNSw1LjJjMC43LDAsMS4zLDAsMS45LDBjMi42LDAsNSwwLDcuMy0wLjEgICBjLTAuMy0zLjEtMC40LTYuMS0wLjUtOS4yQzM2LjgsODYuNSwzNC4yLDg3LjYsMzEuNSw4OC43eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik01Mi45LDc3LjVjMCwwLjEsMCwwLjEsMCwwLjJjMC4xLDUuNSwwLjMsMTEuMSwwLjYsMTYuNmMzLjQtMC4xLDYuOS0wLjIsMTAuNC0wLjNjLTAuMy04LjEtMC41LTE2LjMtMC44LTI0LjQgICBDNTkuOCw3Mi40LDU2LjQsNzUsNTIuOSw3Ny41eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik05MS4yLDU1LjNjLTAuMS0wLjEtMC4xLTAuMS0wLjItMC4xYy0wLjEsMC0wLjItMC4xLTAuNS0wLjJjLTAuNi0wLjMtMS42LTAuNy0zLjUtMS42ICAgYy0xLjItMC42LTIuMy0xLjEtMy40LTEuNmMtMC41LTAuMi0xLTAuNC0xLjYtMC40Yy0xLjEsMC0yLjEsMC41LTIuOCwxLjRsMCwwYy0wLjIsMC4zLTAuNCwwLjUtMC42LDAuOGwyLjMsNDAuM2gwLjYgICBjMi4yLDAsMy45LDAsNS4yLTAuMmMxLTAuMSwxLjktMC4zLDIuOC0wLjdjMC41LTAuMiwwLjktMC41LDEuMi0wLjljMC41LTAuNCwwLjgtMSwxLTEuNmMwLjItMC45LDAuMy0xLjgsMC4zLTIuNyAgIGMwLTEuNy0wLjEtNC4xLTAuMS03LjVjMC0yLjEsMC4xLTQuNywwLjMtNy43bDAsMGMwLjMtNC45LDAuOC04LjgsMC44LTExLjhjMC0xLjItMC4xLTIuNC0wLjQtMy41QzkyLjIsNTYuNSw5MS44LDU1LjgsOTEuMiw1NS4zeiAgICIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02NS44LDY3LjFjMCwwLjEsMC4xLDAuMywwLjEsMC40YzAuMyw4LjgsMC42LDE3LjYsMC45LDI2LjRjMy4yLTAuMSw2LjQtMC4xLDkuNi0wLjF2MGgwLjNoMS4xICAgYzAtMC4xLDAuMS0wLjIsMC4xLTAuNGMtMC43LTEyLjItMS40LTI0LjUtMi4xLTM2LjdDNzIuNyw2MC40LDY5LjMsNjMuOCw2NS44LDY3LjF6Ii8+PHBhdGggZD0iTTIwLjYsODQuMWM5LjYtMy45LDI4LjMtMTMuMSw0OC40LTM0LjZjMi45LTMuMSw2LjMtNywxMC4xLTExLjhjMS40LDEuMiwzLDIuNCw0LjYsMy42YzEuMSwwLjgsMi4xLDEuNSwzLjIsMi4zICAgYzEuOCwxLjIsNC4xLDEuMSw1LjctMC40YzAuOS0wLjgsMS40LTIsMS41LTMuMmMwLjItNC45LDAuMy05LjksMC4zLTE1LjF2LTAuN2MwLTUuNi0wLjEtMTEuMS0wLjMtMTYuNGMtMC4xLTMtMi43LTUuNC01LjctNS4zICAgYy0wLjMsMC0wLjcsMC4xLTEsMC4xQzc2LDUuMiw2NC44LDcuOSw1My43LDEwLjljLTEsMC4zLTEuOCwwLjgtMi40LDEuNmMtMC41LDAuOC0wLjgsMS43LTAuOCwyLjZjMCwxLjUsMC44LDIuOSwyLDMuNyAgIGMwLjksMC42LDEuOCwxLjEsMi44LDEuN2MxLjgsMS4xLDMuNSwyLDUuMiwyLjljLTIuOCw1LjQtNi4xLDEwLjYtOS43LDE1LjVDNDIuNiw1MCwzMy4yLDU4LjQsMjEuMiw2OS4yQzE2LDczLjksMTEuOSw3Ny40LDksNzkuOSAgIGMtMS4yLDEtMi4zLDIuMS0zLjMsMy4zYy0wLjQsMC40LTAuNywwLjgtMSwxLjNjLTAuMywwLjUtMC41LDEtMC41LDEuNWMwLDAuNywwLjMsMS4zLDAuOSwxLjdjMC4zLDAuMiwwLjYsMC40LDEsMC40ICAgYzAuMywwLjEsMC42LDAuMSwxLDAuMWMxLjEsMCwyLjMtMC4yLDMuNC0wLjVjMi0wLjUsMy45LTEuMiw1LjgtMS45QzE4LjEsODUuMSwxOS43LDg0LjQsMjAuNiw4NC4xeiBNOS43LDg0LjkgICBjLTAuNywwLjItMS40LDAuMy0yLjEsMC40YzAuNS0wLjYsMS4xLTEuMiwxLjctMS44QzEyLDgxLDE2LjcsNzcsMjMuMSw3MS40YzEyLTEwLjgsMjEuNi0xOS40LDMwLTMwLjhjNC01LjQsNy42LTExLjEsMTAuNi0xNy4xICAgYzAuNC0wLjcsMC4xLTEuNi0wLjYtMS45Yy0yLjEtMS4xLTQuMi0yLjMtNi4zLTMuNWMtMC45LTAuNi0xLjgtMS4xLTIuNy0xLjdjLTAuNC0wLjMtMC43LTAuNy0wLjctMS4yYzAtMC4zLDAuMS0wLjYsMC4zLTAuOSAgIGMwLjItMC4zLDAuNS0wLjUsMC44LTAuNUM2NS41LDEwLjcsNzYuNiw4LDg3LjgsNS40YzEuNC0wLjMsMi44LDAuNiwzLjIsMkM5MSw3LjYsOTEsNy44LDkxLDcuOWMwLjIsNS4yLDAuMywxMC43LDAuMywxNi4zdjAuNyAgIGMwLDUuMi0wLjEsMTAuMi0wLjMsMTVjMCwwLjQtMC4yLDAuOS0wLjUsMS4xYy0wLjMsMC4zLTAuNywwLjQtMS4yLDAuNGMtMC4zLDAtMC43LTAuMS0xLTAuM2MtMS0wLjctMi0xLjQtMy4xLTIuMiAgIGMtMi0xLjUtMy45LTMtNS42LTQuNGMtMC42LTAuNS0xLjUtMC40LTIsMC4yYzAsMCwwLDAsMCwwLjFjLTQsNS4yLTcuNyw5LjUtMTAuOCwxMi43Yy0xOS43LDIxLjEtMzgsMzAuMS00Ny40LDMzLjkgICBjLTEuMiwwLjUtMy42LDEuNS02LjEsMi40QzEyLjEsODQuMiwxMC44LDg0LjYsOS43LDg0Ljl6Ii8+PGxpbmUgY2xhc3M9InN0MSIgeDE9IjQuNSIgeDI9IjQuNSIgeTE9Ijg3LjEiIHkyPSI4Ny4xIi8+PHBhdGggZD0iTTk1LjcsNjAuN2MwLTEuNS0wLjEtMy0wLjUtNC40Qzk0LjgsNTUsOTQsNTMuOSw5Mi45LDUzYy0wLjItMC4xLTAuNC0wLjMtMC42LTAuNGMtMC4zLTAuMi0wLjYtMC4zLTEuMi0wLjYgICBjLTAuNi0wLjMtMS41LTAuNy0yLjktMS4zYy0xLjItMC42LTIuMy0xLjEtMy4zLTEuNmMtMi43LTEuNC02LTAuNi03LjksMS44bDAsMGMtNy44LDkuOS0xNywxOC40LTI3LjUsMjUuNCAgIGMtNiwzLjgtMTIuNCw3LjEtMTksOS44Yy01LjMsMi4yLTEwLDMuNi0xMy40LDQuN2MtMS43LDAuNS0zLjEsMS00LjEsMS40Yy0wLjUsMC4yLTAuOSwwLjQtMS40LDAuN2MtMC4yLDAuMi0wLjQsMC40LTAuNiwwLjYgICBjLTAuMiwwLjMtMC40LDAuNy0wLjQsMS4xYzAsMC4xLDAsMC4yLDAsMC4ydjB2MGMwLDAuMiwwLjEsMC41LDAuMywwLjdjMC4yLDAuMywwLjUsMC42LDAuOCwwLjdjMC41LDAuMiwxLjEsMC40LDEuNiwwLjUgICBjMS4zLDAuMiwyLjUsMC4zLDMuOCwwLjRjMS42LDAuMSwzLjcsMC4yLDYuMiwwLjJjMy4yLDAuMSw2LjIsMC4xLDguOSwwLjFjNywwLDEyLjUtMC4yLDE3LjQtMC4zYzguOS0wLjIsMTcuOC0wLjYsMjYuNy0wLjZoMC4zICAgYzEuOCwwLDMuNCwwLDQuOCwwYzIuMywwLjEsNC42LDAsNi45LTAuNGMwLjgtMC4xLDEuNi0wLjQsMi40LTAuOGMwLjctMC40LDEuNC0wLjgsMi0xLjRjMC44LTAuOCwxLjQtMS44LDEuOC0yLjkgICBjMC4zLTEuMSwwLjQtMi4zLDAuNC0zLjVjMC0xLjktMC4xLTQuMi0wLjEtNy41YzAtMi4xLDAuMS00LjYsMC4yLTcuNUM5NS4yLDY3LjksOTUuNyw2NCw5NS43LDYwLjd6IE0yMy40LDk0LjUgICBjLTMuNC0wLjEtNi0wLjItNy43LTAuM2MwLjItMC4xLDAuNC0wLjEsMC41LTAuMmMyLjUtMC44LDYuMy0yLDEwLjctMy42YzAuMSwxLjQsMC4zLDIuOCwwLjQsNC4xQzI2LjEsOTQuNiwyNC44LDk0LjYsMjMuNCw5NC41eiAgICBNMzIuMiw5NC42Yy0wLjYsMC0xLjMsMC0xLjksMGMtMC4yLTEuNy0wLjQtMy41LTAuNS01LjJjMC42LTAuMiwxLjEtMC40LDEuNy0wLjdjMi43LTEuMSw1LjMtMi4zLDcuNS0zLjQgICBjMC4xLDMuMSwwLjIsNi4xLDAuNSw5LjJDMzcuMyw5NC42LDM0LjksOTQuNiwzMi4yLDk0LjZ6IE00OS42LDk0LjNMNDkuNiw5NC4zYy0yLjMsMC00LjcsMC4xLTcuMiwwLjJjLTAuMy0zLjMtMC41LTYuNy0wLjUtMTAgICBjMC0wLjIsMC0wLjMtMC4xLTAuNWMzLjctMS45LDYuNi0zLjYsOC4zLTQuN2MwLjEsNSwwLjMsMTAsMC41LDE1QzUwLjMsOTQuMyw0OS45LDk0LjMsNDkuNiw5NC4zeiBNNTMuNSw5NC4yICAgYy0wLjMtNS41LTAuNS0xMS0wLjYtMTYuNmMwLTAuMSwwLTAuMSwwLTAuMmMzLjUtMi40LDYuOS01LjEsMTAuMi03LjljMC4zLDguMSwwLjUsMTYuMywwLjgsMjQuNEM2MC40LDk0LDU2LjksOTQuMSw1My41LDk0LjJ6ICAgIE03Ny44LDkzLjhoLTEuMWgtMC4zdjBjLTMuMiwwLTYuNCwwLjEtOS42LDAuMWMtMC4zLTguOC0wLjYtMTcuNi0wLjktMjYuNGMwLTAuMSwwLTAuMy0wLjEtMC40YzMuNi0zLjMsNi45LTYuOCwxMC4xLTEwLjQgICBjMC43LDEyLjIsMS40LDI0LjUsMi4xLDM2LjdDNzcuOSw5My41LDc3LjgsOTMuNiw3Ny44LDkzLjh6IE05Miw3Mi41TDkyLDcyLjVjLTAuMiwzLTAuMiw1LjYtMC4yLDcuN2MwLDMuNCwwLjEsNS44LDAuMSw3LjUgICBjMCwwLjktMC4xLDEuOC0wLjMsMi43Yy0wLjIsMC42LTAuNSwxLjItMSwxLjZjLTAuNCwwLjQtMC44LDAuNy0xLjIsMC45Yy0wLjksMC40LTEuOCwwLjYtMi44LDAuN2MtMS4zLDAuMS0zLDAuMi01LjIsMC4yaC0wLjYgICBsLTIuMy00MC4zYzAuMi0wLjMsMC40LTAuNSwwLjYtMC44bDAsMGMwLjctMC45LDEuNy0xLjQsMi44LTEuNGMwLjUsMCwxLjEsMC4xLDEuNiwwLjRjMSwwLjUsMi4xLDEuMSwzLjQsMS42ICAgYzEuOSwwLjksMi45LDEuMywzLjUsMS42YzAuMywwLjEsMC40LDAuMiwwLjUsMC4yYzAuMSwwLDAuMSwwLjEsMC4yLDAuMWMwLjYsMC41LDEuMSwxLjIsMS4zLDEuOWMwLjMsMS4xLDAuNCwyLjMsMC40LDMuNSAgIEM5Mi45LDYzLjYsOTIuMyw2Ny42LDkyLDcyLjV6Ii8+PC9nPjwvc3ZnPg=="
+                            alt="Logo">
+                       
+                    </a> -->
+                    <span class="navbar-burger" data-target="navbarMenuHeroB">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </div>
+                <div id="navbarMenuHeroB" class="navbar-menu">
+                    <div class="navbar-start">
+                        
+                        <a class="navbar-item" href="../../canada/market_monitor.html">
+                            
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-home"></i>
+                                    </span>
+                                    <span>Home</span>
+                                </span>
+                            </a>
+
+                            <div class="navbar-item has-dropdown is-hoverable has-background-dark">
+                                <a class="navbar-link">
+                                    <span>Choose Market</span>
+                                </a>
+
+                                <div class="navbar-dropdown has-background-dark">
+                                    
+                                    <a class="navbar-item" href="../../australia/market_monitor.html">
+                                        <span>Australia</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../canada/market_monitor.html">
+                                        <span>Canada</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../germany/market_monitor.html">
+                                        <span>Germany</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../hong_kong/market_monitor.html">
+                                        <span>Hong Kong</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../japan/market_monitor.html">
+                                        <span>Japan</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../nordic_markets/market_monitor.html">
+                                        <span>Nordic Markets</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_kingdom/market_monitor.html">
+                                        <span>United Kingdom</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_states/market_monitor.html">
+                                        <span>United States</span>
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                    </div>
+                    <div class="navbar-end"></div>
+                    <span class="navbar-item">
+                        <a class="button is-info is-light" href="https://twitter.com/LignoL23">
+                            <span class="icon">
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                            <span>Twitter</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <a class="button  is-success is-light" href="https://www.paypal.com/paypalme/volkerlorrmann/5">
+                            <span class="icon">
+                                <i class="fab fa-paypal"></i>
+                            </span>
+                            <span>paypal.me</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+                        <script
+                            type='text/javascript'>kofiwidget2.init('Support me', '#d6d6d6', 'W7W0ACJPB'); kofiwidget2.draw();</script>
+                    </span>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="columns is-multiline is-mobile is-centered">
+                <div class="column is-1">
+                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDEwMCAxMDA7IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOm5vbmU7fQoJLnN0MXtmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO30KPC9zdHlsZT48dGl0bGUvPjxnPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MS44LDg0YzAuMSwwLjIsMC4xLDAuMywwLjEsMC41YzAsMy4zLDAuMiw2LjcsMC41LDEwYzIuNi0wLjEsNC45LTAuMSw3LjItMC4ydjBjMC4zLDAsMC43LDAsMSwwICAgYy0wLjMtNS0wLjQtMTAtMC41LTE1QzQ4LjQsODAuNCw0NS41LDgyLjEsNDEuOCw4NHoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTYuMyw5NGMtMC4yLDAuMS0wLjQsMC4xLTAuNSwwLjJjMS43LDAuMSw0LjMsMC4yLDcuNywwLjNjMS40LDAsMi43LDAuMSw0LDAuMWMtMC4xLTEuNC0wLjMtMi44LTAuNC00LjEgICBDMjIuNiw5Mi4xLDE4LjgsOTMuMiwxNi4zLDk0eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02Ni45LDQ3LjVjMy4xLTMuMyw2LjgtNy41LDEwLjgtMTIuN2MwLDAsMCwwLDAtMC4xYzAuNS0wLjYsMS40LTAuNywyLTAuMmMxLjcsMS41LDMuNiwyLjksNS42LDQuNCAgIGMxLDAuOCwyLjEsMS41LDMuMSwyLjJjMC4zLDAuMiwwLjYsMC4zLDEsMC4zYzAuNCwwLDAuOC0wLjIsMS4yLTAuNGMwLjMtMC4zLDAuNS0wLjcsMC41LTEuMWMwLjItNC45LDAuMy05LjksMC4zLTE1di0wLjcgICBjMC01LjYtMC4xLTExLTAuMy0xNi4zYzAtMC4yLDAtMC4zLTAuMS0wLjVjLTAuMy0xLjQtMS43LTIuMy0zLjItMkM3Ni42LDgsNjUuNSwxMC43LDU0LjUsMTMuN2MtMC4zLDAuMS0wLjYsMC4zLTAuOCwwLjUgICBjLTAuMiwwLjMtMC4zLDAuNi0wLjMsMC45YzAsMC41LDAuMywxLDAuNywxLjJjMC45LDAuNiwxLjgsMS4xLDIuNywxLjdjMi4yLDEuMyw0LjMsMi41LDYuMywzLjVjMC43LDAuNCwxLDEuMiwwLjYsMS45ICAgYy0zLjEsNi02LjYsMTEuNy0xMC42LDE3LjFjLTguNSwxMS40LTE4LDIwLTMwLDMwLjhDMTYuNyw3NywxMiw4MSw5LjQsODMuNWMtMC42LDAuNi0xLjIsMS4yLTEuNywxLjhjMC43LTAuMSwxLjQtMC4yLDIuMS0wLjQgICBjMS4xLTAuMywyLjQtMC43LDMuNi0xLjFjMi41LTAuOSw0LjktMS45LDYuMS0yLjRDMjguOSw3Ny42LDQ3LjEsNjguNiw2Ni45LDQ3LjV6Ii8+PHBhdGggY2xhc3M9InN0MCIgZD0iTTMxLjUsODguN2MtMC42LDAuMi0xLjIsMC41LTEuNywwLjdjMC4yLDEuNywwLjQsMy41LDAuNSw1LjJjMC43LDAsMS4zLDAsMS45LDBjMi42LDAsNSwwLDcuMy0wLjEgICBjLTAuMy0zLjEtMC40LTYuMS0wLjUtOS4yQzM2LjgsODYuNSwzNC4yLDg3LjYsMzEuNSw4OC43eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik01Mi45LDc3LjVjMCwwLjEsMCwwLjEsMCwwLjJjMC4xLDUuNSwwLjMsMTEuMSwwLjYsMTYuNmMzLjQtMC4xLDYuOS0wLjIsMTAuNC0wLjNjLTAuMy04LjEtMC41LTE2LjMtMC44LTI0LjQgICBDNTkuOCw3Mi40LDU2LjQsNzUsNTIuOSw3Ny41eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik05MS4yLDU1LjNjLTAuMS0wLjEtMC4xLTAuMS0wLjItMC4xYy0wLjEsMC0wLjItMC4xLTAuNS0wLjJjLTAuNi0wLjMtMS42LTAuNy0zLjUtMS42ICAgYy0xLjItMC42LTIuMy0xLjEtMy40LTEuNmMtMC41LTAuMi0xLTAuNC0xLjYtMC40Yy0xLjEsMC0yLjEsMC41LTIuOCwxLjRsMCwwYy0wLjIsMC4zLTAuNCwwLjUtMC42LDAuOGwyLjMsNDAuM2gwLjYgICBjMi4yLDAsMy45LDAsNS4yLTAuMmMxLTAuMSwxLjktMC4zLDIuOC0wLjdjMC41LTAuMiwwLjktMC41LDEuMi0wLjljMC41LTAuNCwwLjgtMSwxLTEuNmMwLjItMC45LDAuMy0xLjgsMC4zLTIuNyAgIGMwLTEuNy0wLjEtNC4xLTAuMS03LjVjMC0yLjEsMC4xLTQuNywwLjMtNy43bDAsMGMwLjMtNC45LDAuOC04LjgsMC44LTExLjhjMC0xLjItMC4xLTIuNC0wLjQtMy41QzkyLjIsNTYuNSw5MS44LDU1LjgsOTEuMiw1NS4zeiAgICIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02NS44LDY3LjFjMCwwLjEsMC4xLDAuMywwLjEsMC40YzAuMyw4LjgsMC42LDE3LjYsMC45LDI2LjRjMy4yLTAuMSw2LjQtMC4xLDkuNi0wLjF2MGgwLjNoMS4xICAgYzAtMC4xLDAuMS0wLjIsMC4xLTAuNGMtMC43LTEyLjItMS40LTI0LjUtMi4xLTM2LjdDNzIuNyw2MC40LDY5LjMsNjMuOCw2NS44LDY3LjF6Ii8+PHBhdGggZD0iTTIwLjYsODQuMWM5LjYtMy45LDI4LjMtMTMuMSw0OC40LTM0LjZjMi45LTMuMSw2LjMtNywxMC4xLTExLjhjMS40LDEuMiwzLDIuNCw0LjYsMy42YzEuMSwwLjgsMi4xLDEuNSwzLjIsMi4zICAgYzEuOCwxLjIsNC4xLDEuMSw1LjctMC40YzAuOS0wLjgsMS40LTIsMS41LTMuMmMwLjItNC45LDAuMy05LjksMC4zLTE1LjF2LTAuN2MwLTUuNi0wLjEtMTEuMS0wLjMtMTYuNGMtMC4xLTMtMi43LTUuNC01LjctNS4zICAgYy0wLjMsMC0wLjcsMC4xLTEsMC4xQzc2LDUuMiw2NC44LDcuOSw1My43LDEwLjljLTEsMC4zLTEuOCwwLjgtMi40LDEuNmMtMC41LDAuOC0wLjgsMS43LTAuOCwyLjZjMCwxLjUsMC44LDIuOSwyLDMuNyAgIGMwLjksMC42LDEuOCwxLjEsMi44LDEuN2MxLjgsMS4xLDMuNSwyLDUuMiwyLjljLTIuOCw1LjQtNi4xLDEwLjYtOS43LDE1LjVDNDIuNiw1MCwzMy4yLDU4LjQsMjEuMiw2OS4yQzE2LDczLjksMTEuOSw3Ny40LDksNzkuOSAgIGMtMS4yLDEtMi4zLDIuMS0zLjMsMy4zYy0wLjQsMC40LTAuNywwLjgtMSwxLjNjLTAuMywwLjUtMC41LDEtMC41LDEuNWMwLDAuNywwLjMsMS4zLDAuOSwxLjdjMC4zLDAuMiwwLjYsMC40LDEsMC40ICAgYzAuMywwLjEsMC42LDAuMSwxLDAuMWMxLjEsMCwyLjMtMC4yLDMuNC0wLjVjMi0wLjUsMy45LTEuMiw1LjgtMS45QzE4LjEsODUuMSwxOS43LDg0LjQsMjAuNiw4NC4xeiBNOS43LDg0LjkgICBjLTAuNywwLjItMS40LDAuMy0yLjEsMC40YzAuNS0wLjYsMS4xLTEuMiwxLjctMS44QzEyLDgxLDE2LjcsNzcsMjMuMSw3MS40YzEyLTEwLjgsMjEuNi0xOS40LDMwLTMwLjhjNC01LjQsNy42LTExLjEsMTAuNi0xNy4xICAgYzAuNC0wLjcsMC4xLTEuNi0wLjYtMS45Yy0yLjEtMS4xLTQuMi0yLjMtNi4zLTMuNWMtMC45LTAuNi0xLjgtMS4xLTIuNy0xLjdjLTAuNC0wLjMtMC43LTAuNy0wLjctMS4yYzAtMC4zLDAuMS0wLjYsMC4zLTAuOSAgIGMwLjItMC4zLDAuNS0wLjUsMC44LTAuNUM2NS41LDEwLjcsNzYuNiw4LDg3LjgsNS40YzEuNC0wLjMsMi44LDAuNiwzLjIsMkM5MSw3LjYsOTEsNy44LDkxLDcuOWMwLjIsNS4yLDAuMywxMC43LDAuMywxNi4zdjAuNyAgIGMwLDUuMi0wLjEsMTAuMi0wLjMsMTVjMCwwLjQtMC4yLDAuOS0wLjUsMS4xYy0wLjMsMC4zLTAuNywwLjQtMS4yLDAuNGMtMC4zLDAtMC43LTAuMS0xLTAuM2MtMS0wLjctMi0xLjQtMy4xLTIuMiAgIGMtMi0xLjUtMy45LTMtNS42LTQuNGMtMC42LTAuNS0xLjUtMC40LTIsMC4yYzAsMCwwLDAsMCwwLjFjLTQsNS4yLTcuNyw5LjUtMTAuOCwxMi43Yy0xOS43LDIxLjEtMzgsMzAuMS00Ny40LDMzLjkgICBjLTEuMiwwLjUtMy42LDEuNS02LjEsMi40QzEyLjEsODQuMiwxMC44LDg0LjYsOS43LDg0Ljl6Ii8+PGxpbmUgY2xhc3M9InN0MSIgeDE9IjQuNSIgeDI9IjQuNSIgeTE9Ijg3LjEiIHkyPSI4Ny4xIi8+PHBhdGggZD0iTTk1LjcsNjAuN2MwLTEuNS0wLjEtMy0wLjUtNC40Qzk0LjgsNTUsOTQsNTMuOSw5Mi45LDUzYy0wLjItMC4xLTAuNC0wLjMtMC42LTAuNGMtMC4zLTAuMi0wLjYtMC4zLTEuMi0wLjYgICBjLTAuNi0wLjMtMS41LTAuNy0yLjktMS4zYy0xLjItMC42LTIuMy0xLjEtMy4zLTEuNmMtMi43LTEuNC02LTAuNi03LjksMS44bDAsMGMtNy44LDkuOS0xNywxOC40LTI3LjUsMjUuNCAgIGMtNiwzLjgtMTIuNCw3LjEtMTksOS44Yy01LjMsMi4yLTEwLDMuNi0xMy40LDQuN2MtMS43LDAuNS0zLjEsMS00LjEsMS40Yy0wLjUsMC4yLTAuOSwwLjQtMS40LDAuN2MtMC4yLDAuMi0wLjQsMC40LTAuNiwwLjYgICBjLTAuMiwwLjMtMC40LDAuNy0wLjQsMS4xYzAsMC4xLDAsMC4yLDAsMC4ydjB2MGMwLDAuMiwwLjEsMC41LDAuMywwLjdjMC4yLDAuMywwLjUsMC42LDAuOCwwLjdjMC41LDAuMiwxLjEsMC40LDEuNiwwLjUgICBjMS4zLDAuMiwyLjUsMC4zLDMuOCwwLjRjMS42LDAuMSwzLjcsMC4yLDYuMiwwLjJjMy4yLDAuMSw2LjIsMC4xLDguOSwwLjFjNywwLDEyLjUtMC4yLDE3LjQtMC4zYzguOS0wLjIsMTcuOC0wLjYsMjYuNy0wLjZoMC4zICAgYzEuOCwwLDMuNCwwLDQuOCwwYzIuMywwLjEsNC42LDAsNi45LTAuNGMwLjgtMC4xLDEuNi0wLjQsMi40LTAuOGMwLjctMC40LDEuNC0wLjgsMi0xLjRjMC44LTAuOCwxLjQtMS44LDEuOC0yLjkgICBjMC4zLTEuMSwwLjQtMi4zLDAuNC0zLjVjMC0xLjktMC4xLTQuMi0wLjEtNy41YzAtMi4xLDAuMS00LjYsMC4yLTcuNUM5NS4yLDY3LjksOTUuNyw2NCw5NS43LDYwLjd6IE0yMy40LDk0LjUgICBjLTMuNC0wLjEtNi0wLjItNy43LTAuM2MwLjItMC4xLDAuNC0wLjEsMC41LTAuMmMyLjUtMC44LDYuMy0yLDEwLjctMy42YzAuMSwxLjQsMC4zLDIuOCwwLjQsNC4xQzI2LjEsOTQuNiwyNC44LDk0LjYsMjMuNCw5NC41eiAgICBNMzIuMiw5NC42Yy0wLjYsMC0xLjMsMC0xLjksMGMtMC4yLTEuNy0wLjQtMy41LTAuNS01LjJjMC42LTAuMiwxLjEtMC40LDEuNy0wLjdjMi43LTEuMSw1LjMtMi4zLDcuNS0zLjQgICBjMC4xLDMuMSwwLjIsNi4xLDAuNSw5LjJDMzcuMyw5NC42LDM0LjksOTQuNiwzMi4yLDk0LjZ6IE00OS42LDk0LjNMNDkuNiw5NC4zYy0yLjMsMC00LjcsMC4xLTcuMiwwLjJjLTAuMy0zLjMtMC41LTYuNy0wLjUtMTAgICBjMC0wLjIsMC0wLjMtMC4xLTAuNWMzLjctMS45LDYuNi0zLjYsOC4zLTQuN2MwLjEsNSwwLjMsMTAsMC41LDE1QzUwLjMsOTQuMyw0OS45LDk0LjMsNDkuNiw5NC4zeiBNNTMuNSw5NC4yICAgYy0wLjMtNS41LTAuNS0xMS0wLjYtMTYuNmMwLTAuMSwwLTAuMSwwLTAuMmMzLjUtMi40LDYuOS01LjEsMTAuMi03LjljMC4zLDguMSwwLjUsMTYuMywwLjgsMjQuNEM2MC40LDk0LDU2LjksOTQuMSw1My41LDk0LjJ6ICAgIE03Ny44LDkzLjhoLTEuMWgtMC4zdjBjLTMuMiwwLTYuNCwwLjEtOS42LDAuMWMtMC4zLTguOC0wLjYtMTcuNi0wLjktMjYuNGMwLTAuMSwwLTAuMy0wLjEtMC40YzMuNi0zLjMsNi45LTYuOCwxMC4xLTEwLjQgICBjMC43LDEyLjIsMS40LDI0LjUsMi4xLDM2LjdDNzcuOSw5My41LDc3LjgsOTMuNiw3Ny44LDkzLjh6IE05Miw3Mi41TDkyLDcyLjVjLTAuMiwzLTAuMiw1LjYtMC4yLDcuN2MwLDMuNCwwLjEsNS44LDAuMSw3LjUgICBjMCwwLjktMC4xLDEuOC0wLjMsMi43Yy0wLjIsMC42LTAuNSwxLjItMSwxLjZjLTAuNCwwLjQtMC44LDAuNy0xLjIsMC45Yy0wLjksMC40LTEuOCwwLjYtMi44LDAuN2MtMS4zLDAuMS0zLDAuMi01LjIsMC4yaC0wLjYgICBsLTIuMy00MC4zYzAuMi0wLjMsMC40LTAuNSwwLjYtMC44bDAsMGMwLjctMC45LDEuNy0xLjQsMi44LTEuNGMwLjUsMCwxLjEsMC4xLDEuNiwwLjRjMSwwLjUsMi4xLDEuMSwzLjQsMS42ICAgYzEuOSwwLjksMi45LDEuMywzLjUsMS42YzAuMywwLjEsMC40LDAuMiwwLjUsMC4yYzAuMSwwLDAuMSwwLjEsMC4yLDAuMWMwLjYsMC41LDEuMSwxLjIsMS4zLDEuOWMwLjMsMS4xLDAuNCwyLjMsMC40LDMuNSAgIEM5Mi45LDYzLjYsOTIuMyw2Ny42LDkyLDcyLjV6Ii8+PC9nPjwvc3ZnPg==" alt="Logo">
+                </div>
+                <div class="column is-4">
+                    <p class="title">
+                        EOD Stockmarket Scans
+                    </p>
+                    <p class="subtitle">
+                        Fintwits most popular stockmarket scans
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+            <div class="container">
+                <ul>
+                    
+                    <li class="is-active">
+                        <a href="../Kristjan Kullamägi/Biggest Gainers 12M_result_table.html"> Results </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Kristjan Kullamägi/Biggest Gainers 12M_minicharts.html"> Minicharts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Kristjan Kullamägi/Biggest Gainers 12M_charts.html"> Charts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Kristjan Kullamägi/Biggest Gainers 12M_criteria.html"> Criteria </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+</section>
+    <div class="columns is-centered">
+        <div class="column is-2">
+            <div class="box has-background-light my-0 mx-2 p-auto">
+    <aside class="menu">
+        <p class="menu-label has-text-dark">
+            Market Monitor
+        </p>
+        <ul class="menu-list">
+            <li><a class="has-text-grey-light">New Highs/Lows</a></li>
+            <li><a class="has-text-grey-light">Breadth</a></li>
+            <li><a class="has-text-grey-light">Above/Below SMA</a></li>
+            <li><a class="has-text-grey-light">Sectors</a></li>
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Kristjan Kullamägi
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Kristjan Kullamägi/Biggest Gainers 1M_minicharts.html">
+                        Biggest Gainers 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Kristjan Kullamägi/Biggest Gainers 3M_minicharts.html">
+                        Biggest Gainers 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Kristjan Kullamägi/Biggest Gainers 6M_minicharts.html">
+                        Biggest Gainers 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="is-active"
+                        href="../../canada/Kristjan Kullamägi/Biggest Gainers 12M_minicharts.html">
+                        Biggest Gainers 12M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Kristjan Kullamägi/EP with Growth_minicharts.html">
+                        EP with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Kristjan Kullamägi/EP_minicharts.html">
+                        EP
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Kristjan Kullamägi/High Trend Intensity_minicharts.html">
+                        High Trend Intensity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Kristjan Kullamägi/Small Stock Momo_minicharts.html">
+                        Small Stock Momo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Kristjan Kullamägi/Momentum_minicharts.html">
+                        Momentum
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Brad Schulz
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Brad Schulz/Pocket Pivot_minicharts.html">
+                        Pocket Pivot
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Stockbee
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Stockbee/4% Gainers_minicharts.html">
+                        4% Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Stockbee/Combo_minicharts.html">
+                        Combo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Stockbee/Ants_minicharts.html">
+                        Ants
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Stockbee/Breakout 1M Base_minicharts.html">
+                        Breakout 1M Base
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Stockbee/Breakout 3M Base_minicharts.html">
+                        Breakout 3M Base
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Leif Soreide
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Leif Soreide/HTF_minicharts.html">
+                        HTF
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Blake Davis
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Blake Davis/Strength_minicharts.html">
+                        Strength
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ben
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Ben/Power of 3_minicharts.html">
+                        Power of 3
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Ben/Velocity_minicharts.html">
+                        Velocity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Ben/Focus_minicharts.html">
+                        Focus
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ray
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Ray/RSNHBP 5D_minicharts.html">
+                        RSNHBP 5D
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Ray/RSNHBP 1M_minicharts.html">
+                        RSNHBP 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Ray/RSNHBP 3M_minicharts.html">
+                        RSNHBP 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Ray/RSNHBP 6M_minicharts.html">
+                        RSNHBP 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Ray/RSNHBP 12M_minicharts.html">
+                        RSNHBP 12M
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Mark Minvervini
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Mark Minvervini/Trend Template_minicharts.html">
+                        Trend Template
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Vo
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Vo/Top Gainers From Open_minicharts.html">
+                        Top Gainers From Open
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Vo/Top Gainers_minicharts.html">
+                        Top Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Vo/Volume Gainers_minicharts.html">
+                        Volume Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Vo/Insiders_minicharts.html">
+                        Insiders
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Vo/Darvas Scan_minicharts.html">
+                        Darvas Scan
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Vo/Darvas Scan with Growth_minicharts.html">
+                        Darvas Scan with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Vo/52W High_minicharts.html">
+                        52W High
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../canada/Vo/Quite and Tight_minicharts.html">
+                        Quite and Tight
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+    </aside>
+</div>
+        </div>
+        <div class="column is-10">
+            
+            
+<section class="block my-6">
+    <div class="columns ">
+        <div class="column is-5 has-text-left">
+            <h1 class="title is-4">Biggest Gainers 12M @ Canada</h1>
+            <h2 class="subtitle is-6">2022-04-20</h2>
+        </div>
+        <div class="column has-text-right mr-5">
+            <div class="media">
+
+                <div class="media-content">
+                    <p class="title is-5">Kristjan Kullamägi</p>
+                    <p class="subtitle is-6"><a class="has-text-grey-light" href="https://twitter.com/Qullamaggie">@Qullamaggie</a></p>
+                </div>
+                <div class="media-right">
+                    <figure class="image is-48x48">
+                        <img src="https://unavatar.io/twitter/Qullamaggie" alt="Placeholder image">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  
+            <section class="my-auto mr-5">
+                
+    <div class="table-container">
+        <table border="1" class="dataframe table is-striped no-wrap" id="data" style="width:100%; font-size:85%">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>symbol_id</th>
+      <th>symbol</th>
+      <th>name</th>
+      <th>exchange</th>
+      <th>sector</th>
+      <th>industry</th>
+      <th>country</th>
+      <th>yahoo_symbol</th>
+      <th>forexpros_symbol</th>
+      <th>IPO Date</th>
+      <th>EPS Growth Q</th>
+      <th>EPS Growth Y</th>
+      <th>EPS Growth FQ</th>
+      <th>EPS Growth FY</th>
+      <th>EPS Growth FQ1</th>
+      <th>EPS Growth FY1</th>
+      <th>Rev Growth Q</th>
+      <th>Rev Growth FQ</th>
+      <th>Rev Growth FY</th>
+      <th>Rev Growth FQ1</th>
+      <th>Rev Growth FY1</th>
+      <th>Insiders %</th>
+      <th>Institutions %</th>
+      <th>Institutions No.</th>
+      <th>Market Cap</th>
+      <th>Shares Outstanding</th>
+      <th>Shares Float</th>
+      <th>Shares Short</th>
+      <th>Short Ratio</th>
+      <th>Net Insider Trading %</th>
+      <th>close</th>
+      <th>volume</th>
+      <th>1m RS</th>
+      <th>3m RS</th>
+      <th>RS</th>
+      <th>Industry 1m RS</th>
+      <th>Industry 3m RS</th>
+      <th>Industry RS</th>
+      <th>UD Ratio</th>
+      <th>50d avg Volume</th>
+      <th>rel Volume</th>
+      <th>Pocket Pivot</th>
+      <th>1w Pocket Pivots</th>
+      <th>1m Pocket Pivots</th>
+      <th>Rocket Ratio</th>
+      <th>52w High</th>
+      <th>% below 52w High</th>
+      <th>52w Low</th>
+      <th>% above 52w Low</th>
+      <th>adr(20)</th>
+      <th>atr(14)</th>
+      <th>roc</th>
+      <th>roc(5)</th>
+      <th>roc(21)</th>
+      <th>roc(63)</th>
+      <th>roc(126)</th>
+      <th>roc(252)</th>
+      <th>ema(9)</th>
+      <th>% from 9d ema</th>
+      <th>ema(21)</th>
+      <th>% from 21d ema</th>
+      <th>sma(50)</th>
+      <th>% from 50d sma</th>
+      <th>market</th>
+      <th>date</th>
+      <th>group_name</th>
+      <th>scan_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>24442</td>
+      <td>AAV</td>
+      <td>Advantage Oil &amp; Gas Ltd.</td>
+      <td>Toronto</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>Canada</td>
+      <td>AAV.TO</td>
+      <td>Toronto:AAV</td>
+      <td>2009-10-29 13:30:00</td>
+      <td>13.90</td>
+      <td>13.04</td>
+      <td>0.23</td>
+      <td>-0.48</td>
+      <td>5.50</td>
+      <td>-0.12</td>
+      <td>1.14</td>
+      <td>0.77</td>
+      <td>0.29</td>
+      <td>NaN</td>
+      <td>-0.16</td>
+      <td>0.85</td>
+      <td>46.48</td>
+      <td>74.0</td>
+      <td>1.560981e+09</td>
+      <td>190828992.0</td>
+      <td>185930784.0</td>
+      <td>3926648.0</td>
+      <td>2.95</td>
+      <td>0.0</td>
+      <td>11.01</td>
+      <td>1134215.0</td>
+      <td>96</td>
+      <td>95</td>
+      <td>96</td>
+      <td>90</td>
+      <td>93</td>
+      <td>92</td>
+      <td>1.87</td>
+      <td>1224961.00</td>
+      <td>0.93</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>151.79</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.50</td>
+      <td>0.45</td>
+      <td>2.42</td>
+      <td>9.33</td>
+      <td>38.84</td>
+      <td>52.92</td>
+      <td>77.87</td>
+      <td>NaN</td>
+      <td>10.28</td>
+      <td>7.08</td>
+      <td>9.48</td>
+      <td>16.17</td>
+      <td>7.97</td>
+      <td>38.20</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>24472</td>
+      <td>BIR</td>
+      <td>Birchcliff Energy Ltd.</td>
+      <td>Toronto</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>Canada</td>
+      <td>BIR.TO</td>
+      <td>Toronto:BIR</td>
+      <td>1996-08-08 13:30:00</td>
+      <td>1.58</td>
+      <td>1.48</td>
+      <td>3.00</td>
+      <td>-0.04</td>
+      <td>0.75</td>
+      <td>-0.10</td>
+      <td>0.74</td>
+      <td>0.75</td>
+      <td>0.06</td>
+      <td>0.38</td>
+      <td>-0.09</td>
+      <td>1.18</td>
+      <td>23.23</td>
+      <td>78.0</td>
+      <td>2.070658e+09</td>
+      <td>264790000.0</td>
+      <td>261752295.0</td>
+      <td>7249345.0</td>
+      <td>3.69</td>
+      <td>0.0</td>
+      <td>10.13</td>
+      <td>1928209.0</td>
+      <td>96</td>
+      <td>96</td>
+      <td>95</td>
+      <td>90</td>
+      <td>93</td>
+      <td>92</td>
+      <td>2.59</td>
+      <td>2106999.66</td>
+      <td>0.92</td>
+      <td>False</td>
+      <td>3.0</td>
+      <td>8.0</td>
+      <td>124.23</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.49</td>
+      <td>0.42</td>
+      <td>2.12</td>
+      <td>6.97</td>
+      <td>38.58</td>
+      <td>59.78</td>
+      <td>55.61</td>
+      <td>NaN</td>
+      <td>9.72</td>
+      <td>4.26</td>
+      <td>9.01</td>
+      <td>12.37</td>
+      <td>7.64</td>
+      <td>32.65</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>24474</td>
+      <td>BNE</td>
+      <td>Bonterra Energy Corp</td>
+      <td>Toronto</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>Canada</td>
+      <td>BNE.TO</td>
+      <td>Toronto:BNE</td>
+      <td>1996-08-13 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.97</td>
+      <td>1.55</td>
+      <td>7.80</td>
+      <td>-0.74</td>
+      <td>1.08</td>
+      <td>0.31</td>
+      <td>0.34</td>
+      <td>NaN</td>
+      <td>0.11</td>
+      <td>26.12</td>
+      <td>4.43</td>
+      <td>10.0</td>
+      <td>3.080380e+08</td>
+      <td>33739100.0</td>
+      <td>29033177.0</td>
+      <td>331925.0</td>
+      <td>2.40</td>
+      <td>0.0</td>
+      <td>11.97</td>
+      <td>116754.0</td>
+      <td>88</td>
+      <td>95</td>
+      <td>95</td>
+      <td>90</td>
+      <td>93</td>
+      <td>92</td>
+      <td>1.74</td>
+      <td>166236.62</td>
+      <td>0.70</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>174.65</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.40</td>
+      <td>0.57</td>
+      <td>-1.40</td>
+      <td>-2.21</td>
+      <td>16.55</td>
+      <td>53.66</td>
+      <td>73.73</td>
+      <td>NaN</td>
+      <td>12.10</td>
+      <td>-1.04</td>
+      <td>11.74</td>
+      <td>2.00</td>
+      <td>10.52</td>
+      <td>13.77</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>24479</td>
+      <td>BTE</td>
+      <td>Baytex Energy Corp</td>
+      <td>Toronto</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>Canada</td>
+      <td>BTE.TO</td>
+      <td>Toronto:BTE</td>
+      <td>1996-03-21 14:30:00</td>
+      <td>1.55</td>
+      <td>1.48</td>
+      <td>2.83</td>
+      <td>-0.74</td>
+      <td>4.33</td>
+      <td>0.31</td>
+      <td>1.31</td>
+      <td>0.63</td>
+      <td>0.30</td>
+      <td>NaN</td>
+      <td>0.05</td>
+      <td>0.42</td>
+      <td>8.92</td>
+      <td>51.0</td>
+      <td>3.199014e+09</td>
+      <td>564200000.0</td>
+      <td>558044578.0</td>
+      <td>20788151.0</td>
+      <td>2.27</td>
+      <td>0.0</td>
+      <td>6.88</td>
+      <td>8450521.0</td>
+      <td>90</td>
+      <td>95</td>
+      <td>97</td>
+      <td>90</td>
+      <td>93</td>
+      <td>92</td>
+      <td>1.41</td>
+      <td>7428514.02</td>
+      <td>1.14</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>75.12</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.15</td>
+      <td>0.27</td>
+      <td>3.61</td>
+      <td>20.07</td>
+      <td>19.86</td>
+      <td>52.21</td>
+      <td>72.86</td>
+      <td>NaN</td>
+      <td>6.26</td>
+      <td>9.93</td>
+      <td>5.94</td>
+      <td>15.78</td>
+      <td>5.60</td>
+      <td>22.87</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>24504</td>
+      <td>CR</td>
+      <td>Crew Energy Inc</td>
+      <td>Toronto</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>Canada</td>
+      <td>CR.TO</td>
+      <td>Toronto:CR</td>
+      <td>2003-09-10 13:30:00</td>
+      <td>0.47</td>
+      <td>0.27</td>
+      <td>15.00</td>
+      <td>-0.59</td>
+      <td>1.73</td>
+      <td>0.00</td>
+      <td>1.35</td>
+      <td>0.17</td>
+      <td>0.46</td>
+      <td>NaN</td>
+      <td>-0.06</td>
+      <td>6.69</td>
+      <td>23.14</td>
+      <td>20.0</td>
+      <td>5.885728e+08</td>
+      <td>152480000.0</td>
+      <td>112299129.0</td>
+      <td>3032525.0</td>
+      <td>2.44</td>
+      <td>0.0</td>
+      <td>5.22</td>
+      <td>1285831.0</td>
+      <td>96</td>
+      <td>94</td>
+      <td>96</td>
+      <td>90</td>
+      <td>93</td>
+      <td>92</td>
+      <td>1.87</td>
+      <td>1263184.74</td>
+      <td>1.02</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>88.90</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.34</td>
+      <td>0.30</td>
+      <td>-2.06</td>
+      <td>1.95</td>
+      <td>38.83</td>
+      <td>51.30</td>
+      <td>83.80</td>
+      <td>NaN</td>
+      <td>5.23</td>
+      <td>-0.12</td>
+      <td>4.88</td>
+      <td>7.01</td>
+      <td>4.10</td>
+      <td>27.46</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>24505</td>
+      <td>CS</td>
+      <td>Capstone Mining Corp</td>
+      <td>Toronto</td>
+      <td>Basic Materials</td>
+      <td>Copper</td>
+      <td>Canada</td>
+      <td>CS.TO</td>
+      <td>Toronto:CS</td>
+      <td>1996-08-08 13:30:00</td>
+      <td>0.50</td>
+      <td>0.51</td>
+      <td>0.00</td>
+      <td>-0.10</td>
+      <td>-0.23</td>
+      <td>0.06</td>
+      <td>0.46</td>
+      <td>0.21</td>
+      <td>0.63</td>
+      <td>0.72</td>
+      <td>0.16</td>
+      <td>25.37</td>
+      <td>25.90</td>
+      <td>96.0</td>
+      <td>3.051497e+09</td>
+      <td>413481984.0</td>
+      <td>301925276.0</td>
+      <td>2751791.0</td>
+      <td>1.48</td>
+      <td>0.0</td>
+      <td>6.42</td>
+      <td>3227895.0</td>
+      <td>13</td>
+      <td>54</td>
+      <td>73</td>
+      <td>68</td>
+      <td>70</td>
+      <td>62</td>
+      <td>1.07</td>
+      <td>1541911.66</td>
+      <td>2.09</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>195.81</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.57</td>
+      <td>0.34</td>
+      <td>-6.69</td>
+      <td>-3.60</td>
+      <td>-13.36</td>
+      <td>-2.58</td>
+      <td>16.52</td>
+      <td>NaN</td>
+      <td>6.82</td>
+      <td>-5.82</td>
+      <td>6.89</td>
+      <td>-6.86</td>
+      <td>6.79</td>
+      <td>-5.48</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>24524</td>
+      <td>EDR</td>
+      <td>Endeavour Silver Corp.</td>
+      <td>Toronto</td>
+      <td>Basic Materials</td>
+      <td>Other Precious Metals &amp; Mining</td>
+      <td>Canada</td>
+      <td>EDR.TO</td>
+      <td>Toronto:EDR</td>
+      <td>1996-08-08 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.57</td>
+      <td>-0.20</td>
+      <td>-0.40</td>
+      <td>-0.62</td>
+      <td>-0.20</td>
+      <td>0.66</td>
+      <td>0.06</td>
+      <td>-0.06</td>
+      <td>-0.10</td>
+      <td>0.64</td>
+      <td>30.41</td>
+      <td>182.0</td>
+      <td>1.125471e+09</td>
+      <td>179895008.0</td>
+      <td>169298111.0</td>
+      <td>3633834.0</td>
+      <td>6.39</td>
+      <td>0.0</td>
+      <td>6.53</td>
+      <td>410130.0</td>
+      <td>72</td>
+      <td>76</td>
+      <td>73</td>
+      <td>68</td>
+      <td>70</td>
+      <td>62</td>
+      <td>1.43</td>
+      <td>545749.48</td>
+      <td>0.75</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>310.21</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.68</td>
+      <td>0.32</td>
+      <td>-0.91</td>
+      <td>-1.36</td>
+      <td>4.98</td>
+      <td>12.01</td>
+      <td>12.78</td>
+      <td>NaN</td>
+      <td>6.55</td>
+      <td>-0.34</td>
+      <td>6.34</td>
+      <td>2.96</td>
+      <td>5.98</td>
+      <td>9.12</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>24532</td>
+      <td>ESI</td>
+      <td>Ensign Energy Services Inc</td>
+      <td>Toronto</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas Drilling</td>
+      <td>Canada</td>
+      <td>ESI.TO</td>
+      <td>Toronto:ESI</td>
+      <td>1996-04-25 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.37</td>
+      <td>0.53</td>
+      <td>0.38</td>
+      <td>0.57</td>
+      <td>0.47</td>
+      <td>0.36</td>
+      <td>0.34</td>
+      <td>0.38</td>
+      <td>0.10</td>
+      <td>30.57</td>
+      <td>4.78</td>
+      <td>17.0</td>
+      <td>4.842873e+08</td>
+      <td>161968992.0</td>
+      <td>118023796.0</td>
+      <td>892625.0</td>
+      <td>0.94</td>
+      <td>0.0</td>
+      <td>4.32</td>
+      <td>646055.0</td>
+      <td>96</td>
+      <td>98</td>
+      <td>97</td>
+      <td>98</td>
+      <td>99</td>
+      <td>97</td>
+      <td>2.20</td>
+      <td>850658.24</td>
+      <td>0.76</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>9.0</td>
+      <td>138.74</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.51</td>
+      <td>0.24</td>
+      <td>0.00</td>
+      <td>1.89</td>
+      <td>39.81</td>
+      <td>96.36</td>
+      <td>95.48</td>
+      <td>NaN</td>
+      <td>4.20</td>
+      <td>2.97</td>
+      <td>3.83</td>
+      <td>12.76</td>
+      <td>3.16</td>
+      <td>36.84</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>24544</td>
+      <td>FVI</td>
+      <td>Fortuna Silver Mines Inc</td>
+      <td>Toronto</td>
+      <td>Basic Materials</td>
+      <td>Silver</td>
+      <td>Canada</td>
+      <td>FVI.TO</td>
+      <td>Toronto:FVI</td>
+      <td>1994-06-03 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.21</td>
+      <td>0.20</td>
+      <td>-0.43</td>
+      <td>0.32</td>
+      <td>0.95</td>
+      <td>0.93</td>
+      <td>0.16</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>0.62</td>
+      <td>34.37</td>
+      <td>220.0</td>
+      <td>1.423189e+09</td>
+      <td>291636992.0</td>
+      <td>288426403.0</td>
+      <td>9805907.0</td>
+      <td>8.58</td>
+      <td>0.0</td>
+      <td>5.32</td>
+      <td>684001.0</td>
+      <td>58</td>
+      <td>69</td>
+      <td>57</td>
+      <td>68</td>
+      <td>70</td>
+      <td>62</td>
+      <td>1.30</td>
+      <td>1115711.22</td>
+      <td>0.61</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>258.51</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.37</td>
+      <td>0.22</td>
+      <td>-0.19</td>
+      <td>-0.37</td>
+      <td>0.00</td>
+      <td>6.19</td>
+      <td>-6.83</td>
+      <td>NaN</td>
+      <td>5.30</td>
+      <td>0.31</td>
+      <td>5.18</td>
+      <td>2.76</td>
+      <td>5.02</td>
+      <td>6.06</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>24582</td>
+      <td>MEG</td>
+      <td>MEG Energy Corp</td>
+      <td>Toronto</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>Canada</td>
+      <td>MEG.TO</td>
+      <td>Toronto:MEG</td>
+      <td>2010-08-17 13:30:00</td>
+      <td>10.12</td>
+      <td>9.76</td>
+      <td>12.83</td>
+      <td>2.26</td>
+      <td>1.86</td>
+      <td>-0.19</td>
+      <td>0.66</td>
+      <td>0.56</td>
+      <td>0.15</td>
+      <td>0.17</td>
+      <td>0.01</td>
+      <td>0.60</td>
+      <td>41.01</td>
+      <td>94.0</td>
+      <td>5.572468e+09</td>
+      <td>307023008.0</td>
+      <td>304571630.0</td>
+      <td>5316200.0</td>
+      <td>1.52</td>
+      <td>0.0</td>
+      <td>19.80</td>
+      <td>3075039.0</td>
+      <td>71</td>
+      <td>91</td>
+      <td>95</td>
+      <td>90</td>
+      <td>93</td>
+      <td>92</td>
+      <td>1.92</td>
+      <td>2990437.16</td>
+      <td>1.03</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>101.85</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.43</td>
+      <td>0.86</td>
+      <td>4.49</td>
+      <td>16.06</td>
+      <td>4.49</td>
+      <td>38.27</td>
+      <td>79.35</td>
+      <td>NaN</td>
+      <td>18.42</td>
+      <td>7.52</td>
+      <td>17.96</td>
+      <td>10.28</td>
+      <td>17.33</td>
+      <td>14.26</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>24602</td>
+      <td>NVA</td>
+      <td>NuVista Energy Ltd.</td>
+      <td>Toronto</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>Canada</td>
+      <td>NVA.TO</td>
+      <td>Toronto:NVA</td>
+      <td>2003-07-09 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.90</td>
+      <td>2.12</td>
+      <td>2.14</td>
+      <td>0.15</td>
+      <td>1.01</td>
+      <td>0.12</td>
+      <td>0.85</td>
+      <td>NaN</td>
+      <td>0.28</td>
+      <td>22.44</td>
+      <td>20.83</td>
+      <td>43.0</td>
+      <td>2.060422e+09</td>
+      <td>226420000.0</td>
+      <td>149178905.0</td>
+      <td>3077224.0</td>
+      <td>2.61</td>
+      <td>0.0</td>
+      <td>11.38</td>
+      <td>1030493.0</td>
+      <td>84</td>
+      <td>91</td>
+      <td>97</td>
+      <td>90</td>
+      <td>93</td>
+      <td>92</td>
+      <td>1.45</td>
+      <td>1643540.36</td>
+      <td>0.63</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>90.77</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.74</td>
+      <td>0.54</td>
+      <td>0.98</td>
+      <td>1.97</td>
+      <td>12.23</td>
+      <td>40.67</td>
+      <td>91.91</td>
+      <td>NaN</td>
+      <td>11.19</td>
+      <td>1.69</td>
+      <td>10.84</td>
+      <td>4.97</td>
+      <td>10.16</td>
+      <td>11.97</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>24614</td>
+      <td>PEY</td>
+      <td>Peyto Exploration&amp;Development Corp</td>
+      <td>Toronto</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>Canada</td>
+      <td>PEY.TO</td>
+      <td>Toronto:PEY</td>
+      <td>1997-12-11 14:30:00</td>
+      <td>0.09</td>
+      <td>0.02</td>
+      <td>1.39</td>
+      <td>1.19</td>
+      <td>4.33</td>
+      <td>0.02</td>
+      <td>1.41</td>
+      <td>0.34</td>
+      <td>0.67</td>
+      <td>NaN</td>
+      <td>-0.10</td>
+      <td>2.79</td>
+      <td>34.56</td>
+      <td>74.0</td>
+      <td>2.017812e+09</td>
+      <td>168151008.0</td>
+      <td>162883041.0</td>
+      <td>4851712.0</td>
+      <td>5.19</td>
+      <td>0.0</td>
+      <td>14.28</td>
+      <td>618474.0</td>
+      <td>93</td>
+      <td>92</td>
+      <td>94</td>
+      <td>90</td>
+      <td>93</td>
+      <td>92</td>
+      <td>1.85</td>
+      <td>928751.30</td>
+      <td>0.67</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>8.0</td>
+      <td>175.38</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.30</td>
+      <td>0.58</td>
+      <td>-0.97</td>
+      <td>3.18</td>
+      <td>27.05</td>
+      <td>42.66</td>
+      <td>58.67</td>
+      <td>NaN</td>
+      <td>14.15</td>
+      <td>0.93</td>
+      <td>13.43</td>
+      <td>6.33</td>
+      <td>11.79</td>
+      <td>21.08</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>24625</td>
+      <td>FEC</td>
+      <td>Frontera Energy Corp</td>
+      <td>Toronto</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>Canada</td>
+      <td>FEC.TO</td>
+      <td>Toronto:FEC</td>
+      <td>2016-11-03 13:30:00</td>
+      <td>11.94</td>
+      <td>10.70</td>
+      <td>3.93</td>
+      <td>1.17</td>
+      <td>NaN</td>
+      <td>0.22</td>
+      <td>0.70</td>
+      <td>NaN</td>
+      <td>-0.04</td>
+      <td>NaN</td>
+      <td>-0.04</td>
+      <td>0.02</td>
+      <td>52.35</td>
+      <td>43.0</td>
+      <td>1.311660e+09</td>
+      <td>94500000.0</td>
+      <td>52339767.0</td>
+      <td>9088600.0</td>
+      <td>53.12</td>
+      <td>0.0</td>
+      <td>14.99</td>
+      <td>153149.0</td>
+      <td>82</td>
+      <td>96</td>
+      <td>95</td>
+      <td>90</td>
+      <td>93</td>
+      <td>92</td>
+      <td>1.30</td>
+      <td>142328.92</td>
+      <td>1.08</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>367.74</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.51</td>
+      <td>0.63</td>
+      <td>-0.07</td>
+      <td>1.28</td>
+      <td>10.06</td>
+      <td>60.32</td>
+      <td>73.90</td>
+      <td>NaN</td>
+      <td>14.87</td>
+      <td>0.80</td>
+      <td>14.51</td>
+      <td>3.30</td>
+      <td>13.67</td>
+      <td>9.66</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>24630</td>
+      <td>OBE</td>
+      <td>Obsidian Energy Ltd</td>
+      <td>Toronto</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>Canada</td>
+      <td>OBE.TO</td>
+      <td>Toronto:OBE</td>
+      <td>1996-04-25 13:30:00</td>
+      <td>107.50</td>
+      <td>97.30</td>
+      <td>0.32</td>
+      <td>-0.69</td>
+      <td>-0.85</td>
+      <td>0.00</td>
+      <td>0.90</td>
+      <td>0.69</td>
+      <td>0.36</td>
+      <td>0.50</td>
+      <td>-0.01</td>
+      <td>6.00</td>
+      <td>5.72</td>
+      <td>17.0</td>
+      <td>8.089702e+08</td>
+      <td>80978000.0</td>
+      <td>79490444.0</td>
+      <td>1056540.0</td>
+      <td>1.71</td>
+      <td>0.0</td>
+      <td>11.59</td>
+      <td>571952.0</td>
+      <td>88</td>
+      <td>93</td>
+      <td>97</td>
+      <td>90</td>
+      <td>93</td>
+      <td>92</td>
+      <td>1.01</td>
+      <td>563565.78</td>
+      <td>1.01</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>141.05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.31</td>
+      <td>0.68</td>
+      <td>0.17</td>
+      <td>9.65</td>
+      <td>17.43</td>
+      <td>45.06</td>
+      <td>147.65</td>
+      <td>NaN</td>
+      <td>11.37</td>
+      <td>1.95</td>
+      <td>10.99</td>
+      <td>5.51</td>
+      <td>10.41</td>
+      <td>11.30</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>24667</td>
+      <td>TCW</td>
+      <td>Trican Well Service Ltd.</td>
+      <td>Toronto</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas Equipment &amp; Services</td>
+      <td>Canada</td>
+      <td>TCW.TO</td>
+      <td>Toronto:TCW</td>
+      <td>1998-06-03 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.00</td>
+      <td>1.71</td>
+      <td>-0.33</td>
+      <td>0.42</td>
+      <td>0.52</td>
+      <td>0.44</td>
+      <td>0.33</td>
+      <td>0.24</td>
+      <td>0.11</td>
+      <td>10.90</td>
+      <td>25.50</td>
+      <td>48.0</td>
+      <td>8.620169e+08</td>
+      <td>247706000.0</td>
+      <td>231189028.0</td>
+      <td>2211711.0</td>
+      <td>1.26</td>
+      <td>0.0</td>
+      <td>4.60</td>
+      <td>1043012.0</td>
+      <td>96</td>
+      <td>92</td>
+      <td>92</td>
+      <td>98</td>
+      <td>99</td>
+      <td>97</td>
+      <td>1.62</td>
+      <td>1506463.32</td>
+      <td>0.69</td>
+      <td>True</td>
+      <td>4.0</td>
+      <td>10.0</td>
+      <td>153.46</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.26</td>
+      <td>0.18</td>
+      <td>0.22</td>
+      <td>10.84</td>
+      <td>37.72</td>
+      <td>43.30</td>
+      <td>32.95</td>
+      <td>NaN</td>
+      <td>4.29</td>
+      <td>7.21</td>
+      <td>3.98</td>
+      <td>15.43</td>
+      <td>3.58</td>
+      <td>28.59</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>24682</td>
+      <td>VET</td>
+      <td>Vermilion Energy Inc.</td>
+      <td>Toronto</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>Canada</td>
+      <td>VET.TO</td>
+      <td>Toronto:VET</td>
+      <td>1996-08-13 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.65</td>
+      <td>-0.29</td>
+      <td>-0.29</td>
+      <td>-0.04</td>
+      <td>1.46</td>
+      <td>0.28</td>
+      <td>0.29</td>
+      <td>0.40</td>
+      <td>0.04</td>
+      <td>2.32</td>
+      <td>28.96</td>
+      <td>211.0</td>
+      <td>4.484349e+09</td>
+      <td>162300000.0</td>
+      <td>158047740.0</td>
+      <td>6531597.0</td>
+      <td>2.47</td>
+      <td>0.0</td>
+      <td>28.48</td>
+      <td>2006426.0</td>
+      <td>74</td>
+      <td>93</td>
+      <td>97</td>
+      <td>90</td>
+      <td>93</td>
+      <td>92</td>
+      <td>1.33</td>
+      <td>2251342.54</td>
+      <td>0.89</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>70.20</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.76</td>
+      <td>1.30</td>
+      <td>0.92</td>
+      <td>7.92</td>
+      <td>5.68</td>
+      <td>46.80</td>
+      <td>118.57</td>
+      <td>NaN</td>
+      <td>27.68</td>
+      <td>2.89</td>
+      <td>27.08</td>
+      <td>5.19</td>
+      <td>25.47</td>
+      <td>11.82</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>24787</td>
+      <td>HWX</td>
+      <td>Headwater Exploration Inc</td>
+      <td>Toronto</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>Canada</td>
+      <td>HWX.TO</td>
+      <td>Toronto:HWX</td>
+      <td>1997-12-11 14:30:00</td>
+      <td>0.65</td>
+      <td>0.22</td>
+      <td>2.14</td>
+      <td>1.14</td>
+      <td>3.00</td>
+      <td>0.33</td>
+      <td>9.65</td>
+      <td>-0.27</td>
+      <td>0.94</td>
+      <td>NaN</td>
+      <td>0.29</td>
+      <td>27.62</td>
+      <td>39.90</td>
+      <td>44.0</td>
+      <td>1.516869e+09</td>
+      <td>217484992.0</td>
+      <td>194622511.0</td>
+      <td>1584386.0</td>
+      <td>1.16</td>
+      <td>0.0</td>
+      <td>7.46</td>
+      <td>405889.0</td>
+      <td>77</td>
+      <td>81</td>
+      <td>91</td>
+      <td>90</td>
+      <td>93</td>
+      <td>92</td>
+      <td>1.01</td>
+      <td>1438342.40</td>
+      <td>0.28</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>135.31</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.30</td>
+      <td>0.30</td>
+      <td>0.95</td>
+      <td>7.49</td>
+      <td>6.88</td>
+      <td>17.85</td>
+      <td>56.39</td>
+      <td>NaN</td>
+      <td>7.23</td>
+      <td>3.21</td>
+      <td>7.05</td>
+      <td>5.85</td>
+      <td>6.96</td>
+      <td>7.21</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>24952</td>
+      <td>IFP</td>
+      <td>Interfor Corp</td>
+      <td>Toronto</td>
+      <td>Basic Materials</td>
+      <td>Lumber &amp; Wood Production</td>
+      <td>Canada</td>
+      <td>IFP.TO</td>
+      <td>Toronto:IFP</td>
+      <td>1980-03-17 14:30:00</td>
+      <td>-0.53</td>
+      <td>-0.49</td>
+      <td>0.08</td>
+      <td>-0.17</td>
+      <td>-0.48</td>
+      <td>-0.54</td>
+      <td>0.02</td>
+      <td>0.13</td>
+      <td>0.18</td>
+      <td>0.03</td>
+      <td>-0.09</td>
+      <td>0.44</td>
+      <td>53.94</td>
+      <td>125.0</td>
+      <td>2.342786e+09</td>
+      <td>60804200.0</td>
+      <td>60439352.0</td>
+      <td>3047528.0</td>
+      <td>7.53</td>
+      <td>0.0</td>
+      <td>37.54</td>
+      <td>506599.0</td>
+      <td>29</td>
+      <td>42</td>
+      <td>76</td>
+      <td>2</td>
+      <td>24</td>
+      <td>36</td>
+      <td>1.15</td>
+      <td>533271.06</td>
+      <td>0.95</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>113.34</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.77</td>
+      <td>1.64</td>
+      <td>7.81</td>
+      <td>14.56</td>
+      <td>-6.83</td>
+      <td>-7.31</td>
+      <td>17.72</td>
+      <td>NaN</td>
+      <td>34.45</td>
+      <td>8.97</td>
+      <td>34.91</td>
+      <td>7.52</td>
+      <td>37.16</td>
+      <td>1.04</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>24990</td>
+      <td>MAG</td>
+      <td>MAG Silver Corp</td>
+      <td>Toronto</td>
+      <td>Basic Materials</td>
+      <td>Silver</td>
+      <td>Canada</td>
+      <td>MAG.TO</td>
+      <td>Toronto:MAG</td>
+      <td>2003-10-09 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.29</td>
+      <td>1.00</td>
+      <td>2.25</td>
+      <td>99.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>385.77</td>
+      <td>11.01</td>
+      <td>52.32</td>
+      <td>212.0</td>
+      <td>2.089346e+09</td>
+      <td>97724304.0</td>
+      <td>84571041.0</td>
+      <td>2420769.0</td>
+      <td>9.20</td>
+      <td>0.0</td>
+      <td>21.81</td>
+      <td>105973.0</td>
+      <td>68</td>
+      <td>68</td>
+      <td>61</td>
+      <td>68</td>
+      <td>70</td>
+      <td>62</td>
+      <td>1.21</td>
+      <td>273316.50</td>
+      <td>0.39</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>309.43</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.02</td>
+      <td>0.86</td>
+      <td>0.09</td>
+      <td>-0.91</td>
+      <td>2.73</td>
+      <td>5.01</td>
+      <td>-0.64</td>
+      <td>NaN</td>
+      <td>21.84</td>
+      <td>-0.13</td>
+      <td>21.51</td>
+      <td>1.41</td>
+      <td>21.23</td>
+      <td>2.73</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>31094</td>
+      <td>BLDP</td>
+      <td>Ballard Power Systems Inc</td>
+      <td>Toronto</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>Canada</td>
+      <td>BLDP.TO</td>
+      <td>Toronto:BLDP</td>
+      <td>1996-03-21 14:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.22</td>
+      <td>-0.56</td>
+      <td>0.17</td>
+      <td>-0.02</td>
+      <td>NaN</td>
+      <td>0.13</td>
+      <td>0.20</td>
+      <td>0.43</td>
+      <td>19.01</td>
+      <td>36.41</td>
+      <td>468.0</td>
+      <td>4.580318e+09</td>
+      <td>297627008.0</td>
+      <td>240957791.0</td>
+      <td>6070141.0</td>
+      <td>4.36</td>
+      <td>0.0</td>
+      <td>12.46</td>
+      <td>1073478.0</td>
+      <td>13</td>
+      <td>48</td>
+      <td>21</td>
+      <td>85</td>
+      <td>24</td>
+      <td>15</td>
+      <td>0.96</td>
+      <td>1262839.42</td>
+      <td>0.85</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>190.81</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.44</td>
+      <td>0.73</td>
+      <td>-4.81</td>
+      <td>-4.96</td>
+      <td>-13.65</td>
+      <td>-4.67</td>
+      <td>-39.51</td>
+      <td>NaN</td>
+      <td>13.16</td>
+      <td>-5.28</td>
+      <td>13.63</td>
+      <td>-8.60</td>
+      <td>13.57</td>
+      <td>-8.19</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>40464</td>
+      <td>SGY</td>
+      <td>Surge Energy Inc.</td>
+      <td>Toronto</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>Canada</td>
+      <td>SGY.TO</td>
+      <td>Toronto:SGY</td>
+      <td>1998-09-09 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.25</td>
+      <td>-0.88</td>
+      <td>1.56</td>
+      <td>0.75</td>
+      <td>1.23</td>
+      <td>1.00</td>
+      <td>0.38</td>
+      <td>NaN</td>
+      <td>-0.01</td>
+      <td>7.58</td>
+      <td>12.54</td>
+      <td>11.0</td>
+      <td>6.997260e+08</td>
+      <td>83400000.0</td>
+      <td>67350134.0</td>
+      <td>691758.0</td>
+      <td>0.56</td>
+      <td>0.0</td>
+      <td>10.62</td>
+      <td>1323304.0</td>
+      <td>91</td>
+      <td>96</td>
+      <td>96</td>
+      <td>90</td>
+      <td>93</td>
+      <td>92</td>
+      <td>1.78</td>
+      <td>1069256.26</td>
+      <td>1.24</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>62.99</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.87</td>
+      <td>0.49</td>
+      <td>5.57</td>
+      <td>20.96</td>
+      <td>21.65</td>
+      <td>63.38</td>
+      <td>98.88</td>
+      <td>NaN</td>
+      <td>9.71</td>
+      <td>9.38</td>
+      <td>9.19</td>
+      <td>15.50</td>
+      <td>8.26</td>
+      <td>28.61</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>42713</td>
+      <td>IPO</td>
+      <td>InPlay Oil Corp</td>
+      <td>Toronto</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>Canada</td>
+      <td>IPO.TO</td>
+      <td>Toronto:IPO</td>
+      <td>2016-11-16 14:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.40</td>
+      <td>0.50</td>
+      <td>NaN</td>
+      <td>-0.39</td>
+      <td>1.69</td>
+      <td>1.62</td>
+      <td>0.84</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>24.93</td>
+      <td>0.13</td>
+      <td>4.0</td>
+      <td>3.172705e+08</td>
+      <td>86214800.0</td>
+      <td>64083424.0</td>
+      <td>498000.0</td>
+      <td>0.82</td>
+      <td>0.0</td>
+      <td>4.36</td>
+      <td>534216.0</td>
+      <td>93</td>
+      <td>89</td>
+      <td>98</td>
+      <td>90</td>
+      <td>93</td>
+      <td>92</td>
+      <td>1.37</td>
+      <td>552244.06</td>
+      <td>0.97</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>116.04</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.02</td>
+      <td>0.24</td>
+      <td>-2.46</td>
+      <td>7.13</td>
+      <td>27.11</td>
+      <td>34.15</td>
+      <td>156.47</td>
+      <td>NaN</td>
+      <td>4.25</td>
+      <td>2.48</td>
+      <td>4.02</td>
+      <td>8.57</td>
+      <td>3.59</td>
+      <td>21.49</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>42725</td>
+      <td>ACQ</td>
+      <td>Autocanada Inc</td>
+      <td>Toronto</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto &amp; Truck Dealerships</td>
+      <td>Canada</td>
+      <td>ACQ.TO</td>
+      <td>Toronto:ACQ</td>
+      <td>2008-07-24 13:30:00</td>
+      <td>0.07</td>
+      <td>0.03</td>
+      <td>-0.18</td>
+      <td>15.78</td>
+      <td>0.08</td>
+      <td>0.05</td>
+      <td>0.19</td>
+      <td>0.25</td>
+      <td>0.37</td>
+      <td>0.16</td>
+      <td>0.13</td>
+      <td>13.50</td>
+      <td>60.84</td>
+      <td>63.0</td>
+      <td>9.159163e+08</td>
+      <td>27227000.0</td>
+      <td>21452167.0</td>
+      <td>295484.0</td>
+      <td>2.54</td>
+      <td>0.0</td>
+      <td>33.48</td>
+      <td>80220.0</td>
+      <td>69</td>
+      <td>25</td>
+      <td>23</td>
+      <td>4</td>
+      <td>18</td>
+      <td>44</td>
+      <td>1.00</td>
+      <td>141618.80</td>
+      <td>0.57</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>151.48</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.61</td>
+      <td>1.56</td>
+      <td>-2.96</td>
+      <td>4.62</td>
+      <td>3.33</td>
+      <td>-15.35</td>
+      <td>-22.14</td>
+      <td>NaN</td>
+      <td>33.24</td>
+      <td>0.73</td>
+      <td>33.20</td>
+      <td>0.84</td>
+      <td>32.88</td>
+      <td>1.84</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>42838</td>
+      <td>EFR</td>
+      <td>Energy Fuels Inc</td>
+      <td>Toronto</td>
+      <td>Energy</td>
+      <td>Uranium</td>
+      <td>Canada</td>
+      <td>EFR.TO</td>
+      <td>Toronto:EFR</td>
+      <td>1996-07-31 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.48</td>
+      <td>NaN</td>
+      <td>8.13</td>
+      <td>3.32</td>
+      <td>NaN</td>
+      <td>22.33</td>
+      <td>NaN</td>
+      <td>0.72</td>
+      <td>1.45</td>
+      <td>34.50</td>
+      <td>225.0</td>
+      <td>1.998014e+09</td>
+      <td>156262000.0</td>
+      <td>153261292.0</td>
+      <td>4874878.0</td>
+      <td>5.16</td>
+      <td>0.0</td>
+      <td>12.21</td>
+      <td>764062.0</td>
+      <td>40</td>
+      <td>92</td>
+      <td>92</td>
+      <td>90</td>
+      <td>93</td>
+      <td>92</td>
+      <td>1.65</td>
+      <td>871330.36</td>
+      <td>0.88</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>175.89</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.79</td>
+      <td>0.83</td>
+      <td>2.01</td>
+      <td>-3.40</td>
+      <td>-3.93</td>
+      <td>43.48</td>
+      <td>19.01</td>
+      <td>NaN</td>
+      <td>12.41</td>
+      <td>-1.59</td>
+      <td>12.09</td>
+      <td>1.02</td>
+      <td>10.99</td>
+      <td>11.09</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>42940</td>
+      <td>LAC</td>
+      <td>Lithium Americas Corp</td>
+      <td>Toronto</td>
+      <td>Basic Materials</td>
+      <td>Other Industrial Metals &amp; Mining</td>
+      <td>Canada</td>
+      <td>LAC.TO</td>
+      <td>Toronto:LAC</td>
+      <td>2008-07-16 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.67</td>
+      <td>1.27</td>
+      <td>-0.33</td>
+      <td>8.54</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.01</td>
+      <td>14.98</td>
+      <td>24.40</td>
+      <td>281.0</td>
+      <td>5.848755e+09</td>
+      <td>134115000.0</td>
+      <td>107750371.0</td>
+      <td>2160341.0</td>
+      <td>2.24</td>
+      <td>0.0</td>
+      <td>39.63</td>
+      <td>898880.0</td>
+      <td>71</td>
+      <td>78</td>
+      <td>90</td>
+      <td>68</td>
+      <td>70</td>
+      <td>62</td>
+      <td>1.21</td>
+      <td>1119672.26</td>
+      <td>0.80</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>96.23</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>8.32</td>
+      <td>3.31</td>
+      <td>-1.98</td>
+      <td>7.20</td>
+      <td>4.02</td>
+      <td>14.70</td>
+      <td>21.83</td>
+      <td>NaN</td>
+      <td>39.59</td>
+      <td>0.10</td>
+      <td>39.87</td>
+      <td>-0.60</td>
+      <td>37.79</td>
+      <td>4.87</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>43062</td>
+      <td>KRR</td>
+      <td>Karora Resources Inc</td>
+      <td>Toronto</td>
+      <td>Basic Materials</td>
+      <td>Gold</td>
+      <td>Canada</td>
+      <td>KRR.TO</td>
+      <td>Toronto:KRR</td>
+      <td>2010-12-17 14:30:00</td>
+      <td>-0.70</td>
+      <td>-0.71</td>
+      <td>-0.64</td>
+      <td>-0.48</td>
+      <td>0.83</td>
+      <td>0.53</td>
+      <td>0.15</td>
+      <td>0.15</td>
+      <td>0.11</td>
+      <td>NaN</td>
+      <td>0.16</td>
+      <td>1.12</td>
+      <td>25.70</td>
+      <td>50.0</td>
+      <td>8.061768e+08</td>
+      <td>152684992.0</td>
+      <td>149847087.0</td>
+      <td>398186.0</td>
+      <td>0.65</td>
+      <td>0.0</td>
+      <td>7.34</td>
+      <td>658294.0</td>
+      <td>88</td>
+      <td>97</td>
+      <td>95</td>
+      <td>68</td>
+      <td>70</td>
+      <td>62</td>
+      <td>0.95</td>
+      <td>1232851.08</td>
+      <td>0.53</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>121.55</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.11</td>
+      <td>0.29</td>
+      <td>-0.81</td>
+      <td>4.26</td>
+      <td>17.44</td>
+      <td>70.30</td>
+      <td>73.11</td>
+      <td>NaN</td>
+      <td>7.17</td>
+      <td>2.40</td>
+      <td>6.80</td>
+      <td>7.95</td>
+      <td>6.10</td>
+      <td>20.38</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>48703</td>
+      <td>GTII</td>
+      <td>Green Thumb Industries Inc</td>
+      <td>CSE</td>
+      <td>Healthcare</td>
+      <td>Drug Manufacturers—Specialty &amp; Generic</td>
+      <td>Canada</td>
+      <td>GTII.CN</td>
+      <td>CSE:GTII</td>
+      <td>2003-10-28 14:30:00</td>
+      <td>0.02</td>
+      <td>-0.07</td>
+      <td>0.60</td>
+      <td>0.19</td>
+      <td>-0.25</td>
+      <td>0.65</td>
+      <td>0.37</td>
+      <td>0.59</td>
+      <td>0.20</td>
+      <td>0.22</td>
+      <td>0.28</td>
+      <td>3.56</td>
+      <td>8.26</td>
+      <td>36.0</td>
+      <td>5.096940e+09</td>
+      <td>202526000.0</td>
+      <td>190313513.0</td>
+      <td>412588.0</td>
+      <td>1.34</td>
+      <td>0.0</td>
+      <td>20.49</td>
+      <td>111062.0</td>
+      <td>18</td>
+      <td>18</td>
+      <td>15</td>
+      <td>22</td>
+      <td>10</td>
+      <td>25</td>
+      <td>1.04</td>
+      <td>264246.26</td>
+      <td>0.42</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>720.21</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.42</td>
+      <td>1.16</td>
+      <td>-1.49</td>
+      <td>-0.68</td>
+      <td>-10.91</td>
+      <td>-21.22</td>
+      <td>-30.68</td>
+      <td>NaN</td>
+      <td>21.16</td>
+      <td>-3.16</td>
+      <td>21.71</td>
+      <td>-5.63</td>
+      <td>22.87</td>
+      <td>-10.42</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>48935</td>
+      <td>GLO</td>
+      <td>Global Atomic Corp</td>
+      <td>Toronto</td>
+      <td>Basic Materials</td>
+      <td>Other Industrial Metals &amp; Mining</td>
+      <td>Canada</td>
+      <td>GLO.TO</td>
+      <td>Toronto:GLO</td>
+      <td>2007-10-25 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.53</td>
+      <td>NaN</td>
+      <td>0.84</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>12.28</td>
+      <td>7.97</td>
+      <td>13.0</td>
+      <td>7.858800e+08</td>
+      <td>174640000.0</td>
+      <td>144241028.0</td>
+      <td>1805396.0</td>
+      <td>3.31</td>
+      <td>0.0</td>
+      <td>4.59</td>
+      <td>457937.0</td>
+      <td>62</td>
+      <td>88</td>
+      <td>88</td>
+      <td>68</td>
+      <td>70</td>
+      <td>62</td>
+      <td>1.63</td>
+      <td>478090.52</td>
+      <td>0.96</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>301.70</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.67</td>
+      <td>0.25</td>
+      <td>6.25</td>
+      <td>3.61</td>
+      <td>0.66</td>
+      <td>32.28</td>
+      <td>9.55</td>
+      <td>NaN</td>
+      <td>4.41</td>
+      <td>4.14</td>
+      <td>4.38</td>
+      <td>4.75</td>
+      <td>4.26</td>
+      <td>7.87</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>49039</td>
+      <td>PIPE</td>
+      <td>Pipestone Energy Corp</td>
+      <td>Toronto</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>Canada</td>
+      <td>PIPE.TO</td>
+      <td>Toronto:PIPE</td>
+      <td>2010-03-25 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.54</td>
+      <td>NaN</td>
+      <td>0.34</td>
+      <td>1.98</td>
+      <td>0.79</td>
+      <td>0.39</td>
+      <td>NaN</td>
+      <td>0.18</td>
+      <td>55.75</td>
+      <td>48.99</td>
+      <td>11.0</td>
+      <td>9.344300e+08</td>
+      <td>190700000.0</td>
+      <td>114946224.0</td>
+      <td>225207.0</td>
+      <td>0.45</td>
+      <td>0.0</td>
+      <td>5.28</td>
+      <td>245361.0</td>
+      <td>75</td>
+      <td>81</td>
+      <td>95</td>
+      <td>90</td>
+      <td>93</td>
+      <td>92</td>
+      <td>1.43</td>
+      <td>448375.28</td>
+      <td>0.55</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>256.36</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.09</td>
+      <td>0.20</td>
+      <td>-0.94</td>
+      <td>-0.94</td>
+      <td>6.02</td>
+      <td>16.81</td>
+      <td>97.75</td>
+      <td>NaN</td>
+      <td>5.34</td>
+      <td>-1.05</td>
+      <td>5.25</td>
+      <td>0.64</td>
+      <td>5.02</td>
+      <td>5.15</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>49093</td>
+      <td>SDE</td>
+      <td>Spartan Delta Corp</td>
+      <td>Toronto</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>Canada</td>
+      <td>SDE.TO</td>
+      <td>Toronto:SDE</td>
+      <td>2006-05-31 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.67</td>
+      <td>NaN</td>
+      <td>-0.27</td>
+      <td>-0.26</td>
+      <td>2.62</td>
+      <td>0.05</td>
+      <td>4.40</td>
+      <td>NaN</td>
+      <td>0.87</td>
+      <td>28.11</td>
+      <td>23.96</td>
+      <td>23.0</td>
+      <td>1.296918e+09</td>
+      <td>153052000.0</td>
+      <td>91168581.0</td>
+      <td>309359.0</td>
+      <td>1.02</td>
+      <td>0.0</td>
+      <td>12.25</td>
+      <td>678379.0</td>
+      <td>96</td>
+      <td>97</td>
+      <td>97</td>
+      <td>90</td>
+      <td>93</td>
+      <td>92</td>
+      <td>1.92</td>
+      <td>453170.82</td>
+      <td>1.50</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>8.0</td>
+      <td>201.18</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.82</td>
+      <td>0.59</td>
+      <td>1.58</td>
+      <td>11.67</td>
+      <td>37.80</td>
+      <td>67.35</td>
+      <td>107.28</td>
+      <td>NaN</td>
+      <td>11.53</td>
+      <td>6.24</td>
+      <td>10.71</td>
+      <td>14.33</td>
+      <td>9.32</td>
+      <td>31.44</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>49233</td>
+      <td>NXE</td>
+      <td>NexGen Energy Ltd.</td>
+      <td>Toronto</td>
+      <td>Energy</td>
+      <td>Uranium</td>
+      <td>Canada</td>
+      <td>NXE.TO</td>
+      <td>Toronto:NXE</td>
+      <td>2014-07-02 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.00</td>
+      <td>0.81</td>
+      <td>1.00</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>15.99</td>
+      <td>31.05</td>
+      <td>189.0</td>
+      <td>3.503851e+09</td>
+      <td>479323008.0</td>
+      <td>444231979.0</td>
+      <td>8684555.0</td>
+      <td>3.86</td>
+      <td>0.0</td>
+      <td>7.39</td>
+      <td>2843880.0</td>
+      <td>63</td>
+      <td>90</td>
+      <td>85</td>
+      <td>90</td>
+      <td>93</td>
+      <td>92</td>
+      <td>1.61</td>
+      <td>2001187.98</td>
+      <td>1.42</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>221.98</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.47</td>
+      <td>0.43</td>
+      <td>2.92</td>
+      <td>-6.57</td>
+      <td>0.96</td>
+      <td>36.10</td>
+      <td>-3.90</td>
+      <td>NaN</td>
+      <td>7.49</td>
+      <td>-1.34</td>
+      <td>7.32</td>
+      <td>1.01</td>
+      <td>6.74</td>
+      <td>9.58</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>943922</td>
+      <td>CJ</td>
+      <td>Cardinal Energy Ltd</td>
+      <td>Toronto</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>Canada</td>
+      <td>CJ.TO</td>
+      <td>Toronto:CJ</td>
+      <td>2014-01-07 14:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.00</td>
+      <td>1.05</td>
+      <td>-0.88</td>
+      <td>4.07</td>
+      <td>0.82</td>
+      <td>NaN</td>
+      <td>0.24</td>
+      <td>0.05</td>
+      <td>0.10</td>
+      <td>16.82</td>
+      <td>13.14</td>
+      <td>24.0</td>
+      <td>8.091520e+08</td>
+      <td>150400000.0</td>
+      <td>124561597.0</td>
+      <td>3059498.0</td>
+      <td>3.01</td>
+      <td>0.0</td>
+      <td>7.44</td>
+      <td>1180061.0</td>
+      <td>31</td>
+      <td>93</td>
+      <td>95</td>
+      <td>90</td>
+      <td>93</td>
+      <td>92</td>
+      <td>1.41</td>
+      <td>1299433.80</td>
+      <td>0.91</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>95.86</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.52</td>
+      <td>0.34</td>
+      <td>0.13</td>
+      <td>4.20</td>
+      <td>-6.06</td>
+      <td>45.03</td>
+      <td>72.62</td>
+      <td>NaN</td>
+      <td>7.38</td>
+      <td>0.76</td>
+      <td>7.36</td>
+      <td>1.03</td>
+      <td>6.93</td>
+      <td>7.42</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>976223</td>
+      <td>WELL</td>
+      <td>WELL Health Technologies Corp</td>
+      <td>Toronto</td>
+      <td>Healthcare</td>
+      <td>Medical Care Facilities</td>
+      <td>Canada</td>
+      <td>WELL.TO</td>
+      <td>Toronto:WELL</td>
+      <td>2013-01-08 14:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-1.50</td>
+      <td>-5.67</td>
+      <td>0.50</td>
+      <td>0.70</td>
+      <td>7.11</td>
+      <td>5.54</td>
+      <td>4.96</td>
+      <td>3.51</td>
+      <td>0.63</td>
+      <td>9.56</td>
+      <td>3.54</td>
+      <td>43.0</td>
+      <td>8.968482e+08</td>
+      <td>206172000.0</td>
+      <td>190707896.0</td>
+      <td>5349297.0</td>
+      <td>3.56</td>
+      <td>0.0</td>
+      <td>4.62</td>
+      <td>603738.0</td>
+      <td>55</td>
+      <td>83</td>
+      <td>42</td>
+      <td>18</td>
+      <td>14</td>
+      <td>7</td>
+      <td>0.84</td>
+      <td>974267.32</td>
+      <td>0.62</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>195.74</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.46</td>
+      <td>0.25</td>
+      <td>-1.28</td>
+      <td>-5.13</td>
+      <td>-0.22</td>
+      <td>20.63</td>
+      <td>-34.00</td>
+      <td>NaN</td>
+      <td>4.79</td>
+      <td>-3.59</td>
+      <td>4.80</td>
+      <td>-3.72</td>
+      <td>4.62</td>
+      <td>0.09</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>978013</td>
+      <td>JOY</td>
+      <td>Journey Energy Inc</td>
+      <td>Toronto</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>Canada</td>
+      <td>JOY.TO</td>
+      <td>Toronto:JOY</td>
+      <td>2014-06-19 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.80</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>20.00</td>
+      <td>18.00</td>
+      <td>4.0</td>
+      <td>1.677632e+08</td>
+      <td>47525000.0</td>
+      <td>29855205.0</td>
+      <td>254247.0</td>
+      <td>0.60</td>
+      <td>0.0</td>
+      <td>5.37</td>
+      <td>583356.0</td>
+      <td>75</td>
+      <td>94</td>
+      <td>98</td>
+      <td>90</td>
+      <td>93</td>
+      <td>92</td>
+      <td>1.29</td>
+      <td>561630.12</td>
+      <td>1.04</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>53.16</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>8.22</td>
+      <td>0.38</td>
+      <td>-2.89</td>
+      <td>-1.83</td>
+      <td>6.13</td>
+      <td>49.17</td>
+      <td>225.45</td>
+      <td>NaN</td>
+      <td>5.61</td>
+      <td>-4.31</td>
+      <td>5.57</td>
+      <td>-3.57</td>
+      <td>4.88</td>
+      <td>9.96</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>978552</td>
+      <td>OLA</td>
+      <td>Orla Mining Ltd</td>
+      <td>Toronto</td>
+      <td>Basic Materials</td>
+      <td>Gold</td>
+      <td>Canada</td>
+      <td>OLA.TO</td>
+      <td>Toronto:OLA</td>
+      <td>2017-02-09 14:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.60</td>
+      <td>2.57</td>
+      <td>1.60</td>
+      <td>0.36</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>36.91</td>
+      <td>NaN</td>
+      <td>0.18</td>
+      <td>40.78</td>
+      <td>30.55</td>
+      <td>96.0</td>
+      <td>1.481976e+09</td>
+      <td>247822000.0</td>
+      <td>149213900.0</td>
+      <td>3022719.0</td>
+      <td>5.12</td>
+      <td>0.0</td>
+      <td>6.07</td>
+      <td>366509.0</td>
+      <td>46</td>
+      <td>83</td>
+      <td>85</td>
+      <td>68</td>
+      <td>70</td>
+      <td>62</td>
+      <td>1.75</td>
+      <td>478173.54</td>
+      <td>0.77</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>312.05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.16</td>
+      <td>0.26</td>
+      <td>-1.30</td>
+      <td>-1.94</td>
+      <td>-2.41</td>
+      <td>19.72</td>
+      <td>46.62</td>
+      <td>NaN</td>
+      <td>6.20</td>
+      <td>-2.04</td>
+      <td>6.10</td>
+      <td>-0.45</td>
+      <td>5.65</td>
+      <td>7.38</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>978576</td>
+      <td>SLI</td>
+      <td>Standard Lithium Ltd</td>
+      <td>TSXV</td>
+      <td>Basic Materials</td>
+      <td>Other Industrial Metals &amp; Mining</td>
+      <td>Canada</td>
+      <td>SLI.V</td>
+      <td>TSXV:SLI</td>
+      <td>1999-09-30 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.29</td>
+      <td>0.43</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7.01</td>
+      <td>4.82</td>
+      <td>20.03</td>
+      <td>98.0</td>
+      <td>1.463548e+09</td>
+      <td>161718000.0</td>
+      <td>139858619.0</td>
+      <td>1630659.0</td>
+      <td>6.68</td>
+      <td>0.0</td>
+      <td>8.73</td>
+      <td>156593.0</td>
+      <td>66</td>
+      <td>69</td>
+      <td>67</td>
+      <td>68</td>
+      <td>70</td>
+      <td>62</td>
+      <td>1.20</td>
+      <td>260896.92</td>
+      <td>0.60</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>536.07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7.68</td>
+      <td>0.83</td>
+      <td>-2.89</td>
+      <td>0.23</td>
+      <td>1.99</td>
+      <td>6.46</td>
+      <td>-35.33</td>
+      <td>NaN</td>
+      <td>9.11</td>
+      <td>-4.16</td>
+      <td>9.17</td>
+      <td>-4.78</td>
+      <td>8.54</td>
+      <td>2.23</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>978638</td>
+      <td>SIL</td>
+      <td>SilverCrest Metals Inc</td>
+      <td>Toronto</td>
+      <td>Basic Materials</td>
+      <td>Other Precious Metals &amp; Mining</td>
+      <td>Canada</td>
+      <td>SIL.TO</td>
+      <td>Toronto:SIL</td>
+      <td>2018-07-10 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.56</td>
+      <td>0.66</td>
+      <td>0.67</td>
+      <td>1.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.13</td>
+      <td>50.07</td>
+      <td>195.0</td>
+      <td>1.743239e+09</td>
+      <td>145148992.0</td>
+      <td>139272950.0</td>
+      <td>2658201.0</td>
+      <td>6.75</td>
+      <td>0.0</td>
+      <td>11.28</td>
+      <td>182927.0</td>
+      <td>28</td>
+      <td>66</td>
+      <td>75</td>
+      <td>68</td>
+      <td>70</td>
+      <td>62</td>
+      <td>1.04</td>
+      <td>300919.74</td>
+      <td>0.61</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>462.82</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.21</td>
+      <td>0.47</td>
+      <td>-0.09</td>
+      <td>-2.51</td>
+      <td>-7.01</td>
+      <td>4.25</td>
+      <td>21.95</td>
+      <td>NaN</td>
+      <td>11.56</td>
+      <td>-2.39</td>
+      <td>11.53</td>
+      <td>-2.19</td>
+      <td>11.41</td>
+      <td>-1.15</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>988873</td>
+      <td>FIL</td>
+      <td>Filo Mining Corp</td>
+      <td>Toronto</td>
+      <td>Basic Materials</td>
+      <td>Other Industrial Metals &amp; Mining</td>
+      <td>Canada</td>
+      <td>FIL.TO</td>
+      <td>Toronto:FIL</td>
+      <td>2016-09-01 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.24</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>33.80</td>
+      <td>2.05</td>
+      <td>16.0</td>
+      <td>2.740461e+09</td>
+      <td>121313000.0</td>
+      <td>80133385.0</td>
+      <td>209579.0</td>
+      <td>0.69</td>
+      <td>0.0</td>
+      <td>23.83</td>
+      <td>227446.0</td>
+      <td>96</td>
+      <td>94</td>
+      <td>97</td>
+      <td>68</td>
+      <td>70</td>
+      <td>62</td>
+      <td>1.99</td>
+      <td>285389.58</td>
+      <td>0.80</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>280.79</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.89</td>
+      <td>1.38</td>
+      <td>-0.21</td>
+      <td>4.66</td>
+      <td>37.83</td>
+      <td>50.35</td>
+      <td>114.68</td>
+      <td>NaN</td>
+      <td>22.96</td>
+      <td>3.80</td>
+      <td>21.25</td>
+      <td>12.14</td>
+      <td>17.70</td>
+      <td>34.61</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>1009369</td>
+      <td>STEP</td>
+      <td>STEP Energy Services Ltd</td>
+      <td>Toronto</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas Equipment &amp; Services</td>
+      <td>Canada</td>
+      <td>STEP.TO</td>
+      <td>Toronto:STEP</td>
+      <td>2018-07-10 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.88</td>
+      <td>0.44</td>
+      <td>1.42</td>
+      <td>0.97</td>
+      <td>1.14</td>
+      <td>0.96</td>
+      <td>0.40</td>
+      <td>0.67</td>
+      <td>0.24</td>
+      <td>0.41</td>
+      <td>59.19</td>
+      <td>3.0</td>
+      <td>1.342065e+08</td>
+      <td>68125104.0</td>
+      <td>27225529.0</td>
+      <td>121076.0</td>
+      <td>0.92</td>
+      <td>0.0</td>
+      <td>4.01</td>
+      <td>609351.0</td>
+      <td>98</td>
+      <td>98</td>
+      <td>97</td>
+      <td>98</td>
+      <td>99</td>
+      <td>97</td>
+      <td>3.58</td>
+      <td>189272.16</td>
+      <td>3.22</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>143.84</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.92</td>
+      <td>0.24</td>
+      <td>8.97</td>
+      <td>15.23</td>
+      <td>65.70</td>
+      <td>107.77</td>
+      <td>119.13</td>
+      <td>NaN</td>
+      <td>3.52</td>
+      <td>13.97</td>
+      <td>3.15</td>
+      <td>27.41</td>
+      <td>2.47</td>
+      <td>62.22</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>1055217</td>
+      <td>CCO</td>
+      <td>Cameco Corp</td>
+      <td>Toronto</td>
+      <td>Energy</td>
+      <td>Uranium</td>
+      <td>Canada</td>
+      <td>CCO.TO</td>
+      <td>Toronto:CCO</td>
+      <td>1995-01-12 14:30:00</td>
+      <td>-0.86</td>
+      <td>-0.86</td>
+      <td>0.43</td>
+      <td>2.08</td>
+      <td>0.80</td>
+      <td>2.48</td>
+      <td>-0.16</td>
+      <td>0.38</td>
+      <td>0.17</td>
+      <td>0.39</td>
+      <td>0.22</td>
+      <td>0.12</td>
+      <td>64.35</td>
+      <td>642.0</td>
+      <td>1.447382e+10</td>
+      <td>398288992.0</td>
+      <td>397361247.0</td>
+      <td>6168378.0</td>
+      <td>2.72</td>
+      <td>0.0</td>
+      <td>39.42</td>
+      <td>1675862.0</td>
+      <td>77</td>
+      <td>92</td>
+      <td>90</td>
+      <td>90</td>
+      <td>93</td>
+      <td>92</td>
+      <td>1.03</td>
+      <td>1996373.84</td>
+      <td>0.84</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>6.0</td>
+      <td>199.04</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.63</td>
+      <td>1.86</td>
+      <td>3.36</td>
+      <td>0.79</td>
+      <td>6.97</td>
+      <td>44.45</td>
+      <td>19.67</td>
+      <td>NaN</td>
+      <td>38.49</td>
+      <td>2.43</td>
+      <td>37.05</td>
+      <td>6.41</td>
+      <td>33.21</td>
+      <td>18.72</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>1055239</td>
+      <td>BB</td>
+      <td>BlackBerry Ltd</td>
+      <td>Toronto</td>
+      <td>Technology</td>
+      <td>Software—Infrastructure</td>
+      <td>Canada</td>
+      <td>BB.TO</td>
+      <td>Toronto:BB</td>
+      <td>1997-12-15 14:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.56</td>
+      <td>-0.16</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>1.09</td>
+      <td>41.11</td>
+      <td>445.0</td>
+      <td>5.484343e+09</td>
+      <td>573676032.0</td>
+      <td>517226184.0</td>
+      <td>5007821.0</td>
+      <td>2.04</td>
+      <td>0.0</td>
+      <td>8.01</td>
+      <td>2623178.0</td>
+      <td>18</td>
+      <td>12</td>
+      <td>11</td>
+      <td>11</td>
+      <td>5</td>
+      <td>4</td>
+      <td>0.96</td>
+      <td>2620420.32</td>
+      <td>1.00</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>197.38</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.48</td>
+      <td>0.41</td>
+      <td>-4.07</td>
+      <td>-5.32</td>
+      <td>-10.90</td>
+      <td>-28.10</td>
+      <td>-43.71</td>
+      <td>NaN</td>
+      <td>8.41</td>
+      <td>-4.74</td>
+      <td>8.62</td>
+      <td>-7.02</td>
+      <td>8.70</td>
+      <td>-7.88</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>1096521</td>
+      <td>ERO</td>
+      <td>Ero Copper Corp</td>
+      <td>Toronto</td>
+      <td>Basic Materials</td>
+      <td>Copper</td>
+      <td>Canada</td>
+      <td>ERO.TO</td>
+      <td>Toronto:ERO</td>
+      <td>2017-10-19 13:30:00</td>
+      <td>-0.09</td>
+      <td>0.12</td>
+      <td>-0.12</td>
+      <td>-0.22</td>
+      <td>-0.22</td>
+      <td>-0.02</td>
+      <td>0.48</td>
+      <td>0.25</td>
+      <td>-0.02</td>
+      <td>0.45</td>
+      <td>0.01</td>
+      <td>15.46</td>
+      <td>44.97</td>
+      <td>149.0</td>
+      <td>1.601661e+09</td>
+      <td>90234400.0</td>
+      <td>75991784.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>20.40</td>
+      <td>171700.0</td>
+      <td>83</td>
+      <td>81</td>
+      <td>61</td>
+      <td>68</td>
+      <td>70</td>
+      <td>62</td>
+      <td>2.05</td>
+      <td>404153.20</td>
+      <td>0.42</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>188.03</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.26</td>
+      <td>0.93</td>
+      <td>-0.20</td>
+      <td>10.15</td>
+      <td>11.35</td>
+      <td>17.71</td>
+      <td>-18.43</td>
+      <td>NaN</td>
+      <td>19.87</td>
+      <td>2.67</td>
+      <td>19.28</td>
+      <td>5.78</td>
+      <td>18.48</td>
+      <td>10.40</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>1123081</td>
+      <td>CTS</td>
+      <td>Converge Technology Solutions Corp</td>
+      <td>Toronto</td>
+      <td>Technology</td>
+      <td>Information Technology Services</td>
+      <td>Canada</td>
+      <td>CTS.TO</td>
+      <td>Toronto:CTS</td>
+      <td>2018-11-13 14:30:00</td>
+      <td>6.01</td>
+      <td>6.46</td>
+      <td>3.00</td>
+      <td>3.30</td>
+      <td>8.00</td>
+      <td>0.33</td>
+      <td>0.74</td>
+      <td>0.65</td>
+      <td>0.50</td>
+      <td>0.63</td>
+      <td>0.14</td>
+      <td>4.62</td>
+      <td>24.45</td>
+      <td>69.0</td>
+      <td>2.167544e+09</td>
+      <td>214396000.0</td>
+      <td>203985074.0</td>
+      <td>2515097.0</td>
+      <td>4.49</td>
+      <td>0.0</td>
+      <td>9.01</td>
+      <td>383967.0</td>
+      <td>10</td>
+      <td>66</td>
+      <td>47</td>
+      <td>3</td>
+      <td>2</td>
+      <td>6</td>
+      <td>0.91</td>
+      <td>591320.44</td>
+      <td>0.65</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>344.97</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.91</td>
+      <td>0.41</td>
+      <td>-0.99</td>
+      <td>3.44</td>
+      <td>-17.26</td>
+      <td>4.28</td>
+      <td>-16.34</td>
+      <td>NaN</td>
+      <td>9.19</td>
+      <td>-1.96</td>
+      <td>9.48</td>
+      <td>-4.95</td>
+      <td>9.82</td>
+      <td>-8.25</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>1163394</td>
+      <td>SLS</td>
+      <td>Solaris Resources Inc</td>
+      <td>Toronto</td>
+      <td>Basic Materials</td>
+      <td>Other Precious Metals &amp; Mining</td>
+      <td>Canada</td>
+      <td>SLS.TO</td>
+      <td>Toronto:SLS</td>
+      <td>2020-07-13 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.57</td>
+      <td>-0.73</td>
+      <td>0.17</td>
+      <td>0.25</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>52.72</td>
+      <td>16.92</td>
+      <td>37.0</td>
+      <td>1.530492e+09</td>
+      <td>108162000.0</td>
+      <td>45919473.0</td>
+      <td>144332.0</td>
+      <td>0.60</td>
+      <td>0.0</td>
+      <td>14.07</td>
+      <td>297677.0</td>
+      <td>74</td>
+      <td>37</td>
+      <td>60</td>
+      <td>68</td>
+      <td>70</td>
+      <td>62</td>
+      <td>1.12</td>
+      <td>186432.76</td>
+      <td>1.60</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>246.31</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.69</td>
+      <td>0.69</td>
+      <td>-4.29</td>
+      <td>1.22</td>
+      <td>5.55</td>
+      <td>-9.23</td>
+      <td>3.99</td>
+      <td>NaN</td>
+      <td>14.17</td>
+      <td>-0.68</td>
+      <td>13.74</td>
+      <td>2.39</td>
+      <td>13.61</td>
+      <td>3.34</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>1165312</td>
+      <td>NFG</td>
+      <td>New Found Gold Corp</td>
+      <td>TSXV</td>
+      <td>Basic Materials</td>
+      <td>Gold</td>
+      <td>Canada</td>
+      <td>NFG.V</td>
+      <td>TSXV:NFG</td>
+      <td>2020-08-11 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>56.77</td>
+      <td>2.62</td>
+      <td>33.0</td>
+      <td>1.264686e+09</td>
+      <td>164244992.0</td>
+      <td>56339267.0</td>
+      <td>905003.0</td>
+      <td>4.75</td>
+      <td>0.0</td>
+      <td>9.23</td>
+      <td>464789.0</td>
+      <td>92</td>
+      <td>76</td>
+      <td>68</td>
+      <td>68</td>
+      <td>70</td>
+      <td>62</td>
+      <td>1.13</td>
+      <td>182424.42</td>
+      <td>2.55</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>308.84</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.30</td>
+      <td>0.41</td>
+      <td>-1.70</td>
+      <td>11.88</td>
+      <td>23.07</td>
+      <td>11.74</td>
+      <td>-1.70</td>
+      <td>NaN</td>
+      <td>8.66</td>
+      <td>6.54</td>
+      <td>8.23</td>
+      <td>12.13</td>
+      <td>7.93</td>
+      <td>16.40</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>1166355</td>
+      <td>NVEI</td>
+      <td>Nuvei Corp</td>
+      <td>Toronto</td>
+      <td>Technology</td>
+      <td>Software—Infrastructure</td>
+      <td>Canada</td>
+      <td>NVEI.TO</td>
+      <td>Toronto:NVEI</td>
+      <td>2020-09-18 13:30:00</td>
+      <td>-0.50</td>
+      <td>-0.53</td>
+      <td>0.46</td>
+      <td>0.21</td>
+      <td>0.11</td>
+      <td>0.29</td>
+      <td>0.83</td>
+      <td>0.77</td>
+      <td>0.33</td>
+      <td>0.43</td>
+      <td>0.29</td>
+      <td>10.11</td>
+      <td>72.40</td>
+      <td>274.0</td>
+      <td>1.315545e+10</td>
+      <td>66929400.0</td>
+      <td>66173622.0</td>
+      <td>769465.0</td>
+      <td>1.49</td>
+      <td>0.0</td>
+      <td>82.01</td>
+      <td>276846.0</td>
+      <td>25</td>
+      <td>68</td>
+      <td>32</td>
+      <td>3</td>
+      <td>2</td>
+      <td>6</td>
+      <td>1.14</td>
+      <td>444331.98</td>
+      <td>0.62</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>148.93</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.14</td>
+      <td>4.49</td>
+      <td>-5.52</td>
+      <td>-0.64</td>
+      <td>-8.12</td>
+      <td>5.47</td>
+      <td>-47.44</td>
+      <td>NaN</td>
+      <td>85.03</td>
+      <td>-3.55</td>
+      <td>85.38</td>
+      <td>-3.94</td>
+      <td>79.63</td>
+      <td>2.99</td>
+      <td>canada</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+            </section>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+    </div>
+</footer>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bm/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+<script>
+        $(document).ready(function () {
+            $('#data').DataTable(
+                {
+                    "scrollX": true,
+                    "dom": 'Bfrtip',
+                    "buttons": [
+                        'copy', 'csv', 'excel', 'print'
+                    ]
+
+                }
+            );
+        });
+    </script>
+    
+</body>
+
+</html>

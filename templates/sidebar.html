@@ -1,0 +1,47 @@
+<div class="box has-background-light my-0 mx-2 p-auto">
+    <aside class="menu">
+        <p class="menu-label has-text-dark">
+            Market Monitor
+        </p>
+        <ul class="menu-list">
+            <li><a class="has-text-grey-light">New Highs/Lows</a></li>
+            <li><a class="has-text-grey-light">Breadth</a></li>
+            <li><a class="has-text-grey-light">Above/Below SMA</a></li>
+            <li><a class="has-text-grey-light">Sectors</a></li>
+        </ul>
+        {% for group_name in eod_scans %}
+        <p class="menu-label has-text-dark">
+            {{ group_name }}
+        </p>
+        <ul class="menu-list">
+            {% for _scan_name in eod_scans[group_name]["scans"] %}
+            <li>
+                {% if _scan_name==scan_name %}
+                    {% if path %}
+                    <a class="is-active"
+                        href="../{{ path }}/{{ market }}/{{ group_name }}/{{ _scan_name }}_minicharts.html">
+                        {{ _scan_name }}
+                    </a>
+                    {% else %}
+                    <a class="is-active" href="../{{ market }}/{{ group_name }}/{{ _scan_name }}_minicharts.html">
+                        {{ _scan_name }}
+                    </a>
+                    {% endif %}
+                {% else %}
+                    {% if path %}
+                    <a class="has-text-grey-light"
+                        href="../{{ path }}/{{ market }}/{{ group_name }}/{{ _scan_name }}_minicharts.html">
+                        {{ _scan_name }}
+                    </a>
+                    {% else %}
+                    <a class="has-text-grey-light" href="../{{ market }}/{{ group_name }}/{{ _scan_name }}_minicharts.html">
+                        {{ _scan_name }}
+                    </a>
+                    {% endif %}
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endfor %}
+    </aside>
+</div>

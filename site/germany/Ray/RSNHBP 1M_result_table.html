@@ -1,0 +1,2294 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.datatables.net/v/bm/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/sc-2.0.5/datatables.min.css" />
+
+</head >
+
+
+<body>
+    <section class="hero is-small is-dark">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <!-- <a class="navbar-item">
+                        
+                        <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDEwMCAxMDA7IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOm5vbmU7fQoJLnN0MXtmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO30KPC9zdHlsZT48dGl0bGUvPjxnPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MS44LDg0YzAuMSwwLjIsMC4xLDAuMywwLjEsMC41YzAsMy4zLDAuMiw2LjcsMC41LDEwYzIuNi0wLjEsNC45LTAuMSw3LjItMC4ydjBjMC4zLDAsMC43LDAsMSwwICAgYy0wLjMtNS0wLjQtMTAtMC41LTE1QzQ4LjQsODAuNCw0NS41LDgyLjEsNDEuOCw4NHoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTYuMyw5NGMtMC4yLDAuMS0wLjQsMC4xLTAuNSwwLjJjMS43LDAuMSw0LjMsMC4yLDcuNywwLjNjMS40LDAsMi43LDAuMSw0LDAuMWMtMC4xLTEuNC0wLjMtMi44LTAuNC00LjEgICBDMjIuNiw5Mi4xLDE4LjgsOTMuMiwxNi4zLDk0eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02Ni45LDQ3LjVjMy4xLTMuMyw2LjgtNy41LDEwLjgtMTIuN2MwLDAsMCwwLDAtMC4xYzAuNS0wLjYsMS40LTAuNywyLTAuMmMxLjcsMS41LDMuNiwyLjksNS42LDQuNCAgIGMxLDAuOCwyLjEsMS41LDMuMSwyLjJjMC4zLDAuMiwwLjYsMC4zLDEsMC4zYzAuNCwwLDAuOC0wLjIsMS4yLTAuNGMwLjMtMC4zLDAuNS0wLjcsMC41LTEuMWMwLjItNC45LDAuMy05LjksMC4zLTE1di0wLjcgICBjMC01LjYtMC4xLTExLTAuMy0xNi4zYzAtMC4yLDAtMC4zLTAuMS0wLjVjLTAuMy0xLjQtMS43LTIuMy0zLjItMkM3Ni42LDgsNjUuNSwxMC43LDU0LjUsMTMuN2MtMC4zLDAuMS0wLjYsMC4zLTAuOCwwLjUgICBjLTAuMiwwLjMtMC4zLDAuNi0wLjMsMC45YzAsMC41LDAuMywxLDAuNywxLjJjMC45LDAuNiwxLjgsMS4xLDIuNywxLjdjMi4yLDEuMyw0LjMsMi41LDYuMywzLjVjMC43LDAuNCwxLDEuMiwwLjYsMS45ICAgYy0zLjEsNi02LjYsMTEuNy0xMC42LDE3LjFjLTguNSwxMS40LTE4LDIwLTMwLDMwLjhDMTYuNyw3NywxMiw4MSw5LjQsODMuNWMtMC42LDAuNi0xLjIsMS4yLTEuNywxLjhjMC43LTAuMSwxLjQtMC4yLDIuMS0wLjQgICBjMS4xLTAuMywyLjQtMC43LDMuNi0xLjFjMi41LTAuOSw0LjktMS45LDYuMS0yLjRDMjguOSw3Ny42LDQ3LjEsNjguNiw2Ni45LDQ3LjV6Ii8+PHBhdGggY2xhc3M9InN0MCIgZD0iTTMxLjUsODguN2MtMC42LDAuMi0xLjIsMC41LTEuNywwLjdjMC4yLDEuNywwLjQsMy41LDAuNSw1LjJjMC43LDAsMS4zLDAsMS45LDBjMi42LDAsNSwwLDcuMy0wLjEgICBjLTAuMy0zLjEtMC40LTYuMS0wLjUtOS4yQzM2LjgsODYuNSwzNC4yLDg3LjYsMzEuNSw4OC43eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik01Mi45LDc3LjVjMCwwLjEsMCwwLjEsMCwwLjJjMC4xLDUuNSwwLjMsMTEuMSwwLjYsMTYuNmMzLjQtMC4xLDYuOS0wLjIsMTAuNC0wLjNjLTAuMy04LjEtMC41LTE2LjMtMC44LTI0LjQgICBDNTkuOCw3Mi40LDU2LjQsNzUsNTIuOSw3Ny41eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik05MS4yLDU1LjNjLTAuMS0wLjEtMC4xLTAuMS0wLjItMC4xYy0wLjEsMC0wLjItMC4xLTAuNS0wLjJjLTAuNi0wLjMtMS42LTAuNy0zLjUtMS42ICAgYy0xLjItMC42LTIuMy0xLjEtMy40LTEuNmMtMC41LTAuMi0xLTAuNC0xLjYtMC40Yy0xLjEsMC0yLjEsMC41LTIuOCwxLjRsMCwwYy0wLjIsMC4zLTAuNCwwLjUtMC42LDAuOGwyLjMsNDAuM2gwLjYgICBjMi4yLDAsMy45LDAsNS4yLTAuMmMxLTAuMSwxLjktMC4zLDIuOC0wLjdjMC41LTAuMiwwLjktMC41LDEuMi0wLjljMC41LTAuNCwwLjgtMSwxLTEuNmMwLjItMC45LDAuMy0xLjgsMC4zLTIuNyAgIGMwLTEuNy0wLjEtNC4xLTAuMS03LjVjMC0yLjEsMC4xLTQuNywwLjMtNy43bDAsMGMwLjMtNC45LDAuOC04LjgsMC44LTExLjhjMC0xLjItMC4xLTIuNC0wLjQtMy41QzkyLjIsNTYuNSw5MS44LDU1LjgsOTEuMiw1NS4zeiAgICIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02NS44LDY3LjFjMCwwLjEsMC4xLDAuMywwLjEsMC40YzAuMyw4LjgsMC42LDE3LjYsMC45LDI2LjRjMy4yLTAuMSw2LjQtMC4xLDkuNi0wLjF2MGgwLjNoMS4xICAgYzAtMC4xLDAuMS0wLjIsMC4xLTAuNGMtMC43LTEyLjItMS40LTI0LjUtMi4xLTM2LjdDNzIuNyw2MC40LDY5LjMsNjMuOCw2NS44LDY3LjF6Ii8+PHBhdGggZD0iTTIwLjYsODQuMWM5LjYtMy45LDI4LjMtMTMuMSw0OC40LTM0LjZjMi45LTMuMSw2LjMtNywxMC4xLTExLjhjMS40LDEuMiwzLDIuNCw0LjYsMy42YzEuMSwwLjgsMi4xLDEuNSwzLjIsMi4zICAgYzEuOCwxLjIsNC4xLDEuMSw1LjctMC40YzAuOS0wLjgsMS40LTIsMS41LTMuMmMwLjItNC45LDAuMy05LjksMC4zLTE1LjF2LTAuN2MwLTUuNi0wLjEtMTEuMS0wLjMtMTYuNGMtMC4xLTMtMi43LTUuNC01LjctNS4zICAgYy0wLjMsMC0wLjcsMC4xLTEsMC4xQzc2LDUuMiw2NC44LDcuOSw1My43LDEwLjljLTEsMC4zLTEuOCwwLjgtMi40LDEuNmMtMC41LDAuOC0wLjgsMS43LTAuOCwyLjZjMCwxLjUsMC44LDIuOSwyLDMuNyAgIGMwLjksMC42LDEuOCwxLjEsMi44LDEuN2MxLjgsMS4xLDMuNSwyLDUuMiwyLjljLTIuOCw1LjQtNi4xLDEwLjYtOS43LDE1LjVDNDIuNiw1MCwzMy4yLDU4LjQsMjEuMiw2OS4yQzE2LDczLjksMTEuOSw3Ny40LDksNzkuOSAgIGMtMS4yLDEtMi4zLDIuMS0zLjMsMy4zYy0wLjQsMC40LTAuNywwLjgtMSwxLjNjLTAuMywwLjUtMC41LDEtMC41LDEuNWMwLDAuNywwLjMsMS4zLDAuOSwxLjdjMC4zLDAuMiwwLjYsMC40LDEsMC40ICAgYzAuMywwLjEsMC42LDAuMSwxLDAuMWMxLjEsMCwyLjMtMC4yLDMuNC0wLjVjMi0wLjUsMy45LTEuMiw1LjgtMS45QzE4LjEsODUuMSwxOS43LDg0LjQsMjAuNiw4NC4xeiBNOS43LDg0LjkgICBjLTAuNywwLjItMS40LDAuMy0yLjEsMC40YzAuNS0wLjYsMS4xLTEuMiwxLjctMS44QzEyLDgxLDE2LjcsNzcsMjMuMSw3MS40YzEyLTEwLjgsMjEuNi0xOS40LDMwLTMwLjhjNC01LjQsNy42LTExLjEsMTAuNi0xNy4xICAgYzAuNC0wLjcsMC4xLTEuNi0wLjYtMS45Yy0yLjEtMS4xLTQuMi0yLjMtNi4zLTMuNWMtMC45LTAuNi0xLjgtMS4xLTIuNy0xLjdjLTAuNC0wLjMtMC43LTAuNy0wLjctMS4yYzAtMC4zLDAuMS0wLjYsMC4zLTAuOSAgIGMwLjItMC4zLDAuNS0wLjUsMC44LTAuNUM2NS41LDEwLjcsNzYuNiw4LDg3LjgsNS40YzEuNC0wLjMsMi44LDAuNiwzLjIsMkM5MSw3LjYsOTEsNy44LDkxLDcuOWMwLjIsNS4yLDAuMywxMC43LDAuMywxNi4zdjAuNyAgIGMwLDUuMi0wLjEsMTAuMi0wLjMsMTVjMCwwLjQtMC4yLDAuOS0wLjUsMS4xYy0wLjMsMC4zLTAuNywwLjQtMS4yLDAuNGMtMC4zLDAtMC43LTAuMS0xLTAuM2MtMS0wLjctMi0xLjQtMy4xLTIuMiAgIGMtMi0xLjUtMy45LTMtNS42LTQuNGMtMC42LTAuNS0xLjUtMC40LTIsMC4yYzAsMCwwLDAsMCwwLjFjLTQsNS4yLTcuNyw5LjUtMTAuOCwxMi43Yy0xOS43LDIxLjEtMzgsMzAuMS00Ny40LDMzLjkgICBjLTEuMiwwLjUtMy42LDEuNS02LjEsMi40QzEyLjEsODQuMiwxMC44LDg0LjYsOS43LDg0Ljl6Ii8+PGxpbmUgY2xhc3M9InN0MSIgeDE9IjQuNSIgeDI9IjQuNSIgeTE9Ijg3LjEiIHkyPSI4Ny4xIi8+PHBhdGggZD0iTTk1LjcsNjAuN2MwLTEuNS0wLjEtMy0wLjUtNC40Qzk0LjgsNTUsOTQsNTMuOSw5Mi45LDUzYy0wLjItMC4xLTAuNC0wLjMtMC42LTAuNGMtMC4zLTAuMi0wLjYtMC4zLTEuMi0wLjYgICBjLTAuNi0wLjMtMS41LTAuNy0yLjktMS4zYy0xLjItMC42LTIuMy0xLjEtMy4zLTEuNmMtMi43LTEuNC02LTAuNi03LjksMS44bDAsMGMtNy44LDkuOS0xNywxOC40LTI3LjUsMjUuNCAgIGMtNiwzLjgtMTIuNCw3LjEtMTksOS44Yy01LjMsMi4yLTEwLDMuNi0xMy40LDQuN2MtMS43LDAuNS0zLjEsMS00LjEsMS40Yy0wLjUsMC4yLTAuOSwwLjQtMS40LDAuN2MtMC4yLDAuMi0wLjQsMC40LTAuNiwwLjYgICBjLTAuMiwwLjMtMC40LDAuNy0wLjQsMS4xYzAsMC4xLDAsMC4yLDAsMC4ydjB2MGMwLDAuMiwwLjEsMC41LDAuMywwLjdjMC4yLDAuMywwLjUsMC42LDAuOCwwLjdjMC41LDAuMiwxLjEsMC40LDEuNiwwLjUgICBjMS4zLDAuMiwyLjUsMC4zLDMuOCwwLjRjMS42LDAuMSwzLjcsMC4yLDYuMiwwLjJjMy4yLDAuMSw2LjIsMC4xLDguOSwwLjFjNywwLDEyLjUtMC4yLDE3LjQtMC4zYzguOS0wLjIsMTcuOC0wLjYsMjYuNy0wLjZoMC4zICAgYzEuOCwwLDMuNCwwLDQuOCwwYzIuMywwLjEsNC42LDAsNi45LTAuNGMwLjgtMC4xLDEuNi0wLjQsMi40LTAuOGMwLjctMC40LDEuNC0wLjgsMi0xLjRjMC44LTAuOCwxLjQtMS44LDEuOC0yLjkgICBjMC4zLTEuMSwwLjQtMi4zLDAuNC0zLjVjMC0xLjktMC4xLTQuMi0wLjEtNy41YzAtMi4xLDAuMS00LjYsMC4yLTcuNUM5NS4yLDY3LjksOTUuNyw2NCw5NS43LDYwLjd6IE0yMy40LDk0LjUgICBjLTMuNC0wLjEtNi0wLjItNy43LTAuM2MwLjItMC4xLDAuNC0wLjEsMC41LTAuMmMyLjUtMC44LDYuMy0yLDEwLjctMy42YzAuMSwxLjQsMC4zLDIuOCwwLjQsNC4xQzI2LjEsOTQuNiwyNC44LDk0LjYsMjMuNCw5NC41eiAgICBNMzIuMiw5NC42Yy0wLjYsMC0xLjMsMC0xLjksMGMtMC4yLTEuNy0wLjQtMy41LTAuNS01LjJjMC42LTAuMiwxLjEtMC40LDEuNy0wLjdjMi43LTEuMSw1LjMtMi4zLDcuNS0zLjQgICBjMC4xLDMuMSwwLjIsNi4xLDAuNSw5LjJDMzcuMyw5NC42LDM0LjksOTQuNiwzMi4yLDk0LjZ6IE00OS42LDk0LjNMNDkuNiw5NC4zYy0yLjMsMC00LjcsMC4xLTcuMiwwLjJjLTAuMy0zLjMtMC41LTYuNy0wLjUtMTAgICBjMC0wLjIsMC0wLjMtMC4xLTAuNWMzLjctMS45LDYuNi0zLjYsOC4zLTQuN2MwLjEsNSwwLjMsMTAsMC41LDE1QzUwLjMsOTQuMyw0OS45LDk0LjMsNDkuNiw5NC4zeiBNNTMuNSw5NC4yICAgYy0wLjMtNS41LTAuNS0xMS0wLjYtMTYuNmMwLTAuMSwwLTAuMSwwLTAuMmMzLjUtMi40LDYuOS01LjEsMTAuMi03LjljMC4zLDguMSwwLjUsMTYuMywwLjgsMjQuNEM2MC40LDk0LDU2LjksOTQuMSw1My41LDk0LjJ6ICAgIE03Ny44LDkzLjhoLTEuMWgtMC4zdjBjLTMuMiwwLTYuNCwwLjEtOS42LDAuMWMtMC4zLTguOC0wLjYtMTcuNi0wLjktMjYuNGMwLTAuMSwwLTAuMy0wLjEtMC40YzMuNi0zLjMsNi45LTYuOCwxMC4xLTEwLjQgICBjMC43LDEyLjIsMS40LDI0LjUsMi4xLDM2LjdDNzcuOSw5My41LDc3LjgsOTMuNiw3Ny44LDkzLjh6IE05Miw3Mi41TDkyLDcyLjVjLTAuMiwzLTAuMiw1LjYtMC4yLDcuN2MwLDMuNCwwLjEsNS44LDAuMSw3LjUgICBjMCwwLjktMC4xLDEuOC0wLjMsMi43Yy0wLjIsMC42LTAuNSwxLjItMSwxLjZjLTAuNCwwLjQtMC44LDAuNy0xLjIsMC45Yy0wLjksMC40LTEuOCwwLjYtMi44LDAuN2MtMS4zLDAuMS0zLDAuMi01LjIsMC4yaC0wLjYgICBsLTIuMy00MC4zYzAuMi0wLjMsMC40LTAuNSwwLjYtMC44bDAsMGMwLjctMC45LDEuNy0xLjQsMi44LTEuNGMwLjUsMCwxLjEsMC4xLDEuNiwwLjRjMSwwLjUsMi4xLDEuMSwzLjQsMS42ICAgYzEuOSwwLjksMi45LDEuMywzLjUsMS42YzAuMywwLjEsMC40LDAuMiwwLjUsMC4yYzAuMSwwLDAuMSwwLjEsMC4yLDAuMWMwLjYsMC41LDEuMSwxLjIsMS4zLDEuOWMwLjMsMS4xLDAuNCwyLjMsMC40LDMuNSAgIEM5Mi45LDYzLjYsOTIuMyw2Ny42LDkyLDcyLjV6Ii8+PC9nPjwvc3ZnPg=="
+                            alt="Logo">
+                       
+                    </a> -->
+                    <span class="navbar-burger" data-target="navbarMenuHeroB">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </div>
+                <div id="navbarMenuHeroB" class="navbar-menu">
+                    <div class="navbar-start">
+                        
+                        <a class="navbar-item" href="../../germany/market_monitor.html">
+                            
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-home"></i>
+                                    </span>
+                                    <span>Home</span>
+                                </span>
+                            </a>
+
+                            <div class="navbar-item has-dropdown is-hoverable has-background-dark">
+                                <a class="navbar-link">
+                                    <span>Choose Market</span>
+                                </a>
+
+                                <div class="navbar-dropdown has-background-dark">
+                                    
+                                    <a class="navbar-item" href="../../australia/market_monitor.html">
+                                        <span>Australia</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../canada/market_monitor.html">
+                                        <span>Canada</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../germany/market_monitor.html">
+                                        <span>Germany</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../hong_kong/market_monitor.html">
+                                        <span>Hong Kong</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../japan/market_monitor.html">
+                                        <span>Japan</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../nordic_markets/market_monitor.html">
+                                        <span>Nordic Markets</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_kingdom/market_monitor.html">
+                                        <span>United Kingdom</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_states/market_monitor.html">
+                                        <span>United States</span>
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                    </div>
+                    <div class="navbar-end"></div>
+                    <span class="navbar-item">
+                        <a class="button is-info is-light" href="https://twitter.com/LignoL23">
+                            <span class="icon">
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                            <span>Twitter</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <a class="button  is-success is-light" href="https://www.paypal.com/paypalme/volkerlorrmann/5">
+                            <span class="icon">
+                                <i class="fab fa-paypal"></i>
+                            </span>
+                            <span>paypal.me</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+                        <script
+                            type='text/javascript'>kofiwidget2.init('Support me', '#d6d6d6', 'W7W0ACJPB'); kofiwidget2.draw();</script>
+                    </span>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="columns is-multiline is-mobile is-centered">
+                <div class="column is-1">
+                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDEwMCAxMDA7IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOm5vbmU7fQoJLnN0MXtmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO30KPC9zdHlsZT48dGl0bGUvPjxnPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MS44LDg0YzAuMSwwLjIsMC4xLDAuMywwLjEsMC41YzAsMy4zLDAuMiw2LjcsMC41LDEwYzIuNi0wLjEsNC45LTAuMSw3LjItMC4ydjBjMC4zLDAsMC43LDAsMSwwICAgYy0wLjMtNS0wLjQtMTAtMC41LTE1QzQ4LjQsODAuNCw0NS41LDgyLjEsNDEuOCw4NHoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTYuMyw5NGMtMC4yLDAuMS0wLjQsMC4xLTAuNSwwLjJjMS43LDAuMSw0LjMsMC4yLDcuNywwLjNjMS40LDAsMi43LDAuMSw0LDAuMWMtMC4xLTEuNC0wLjMtMi44LTAuNC00LjEgICBDMjIuNiw5Mi4xLDE4LjgsOTMuMiwxNi4zLDk0eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02Ni45LDQ3LjVjMy4xLTMuMyw2LjgtNy41LDEwLjgtMTIuN2MwLDAsMCwwLDAtMC4xYzAuNS0wLjYsMS40LTAuNywyLTAuMmMxLjcsMS41LDMuNiwyLjksNS42LDQuNCAgIGMxLDAuOCwyLjEsMS41LDMuMSwyLjJjMC4zLDAuMiwwLjYsMC4zLDEsMC4zYzAuNCwwLDAuOC0wLjIsMS4yLTAuNGMwLjMtMC4zLDAuNS0wLjcsMC41LTEuMWMwLjItNC45LDAuMy05LjksMC4zLTE1di0wLjcgICBjMC01LjYtMC4xLTExLTAuMy0xNi4zYzAtMC4yLDAtMC4zLTAuMS0wLjVjLTAuMy0xLjQtMS43LTIuMy0zLjItMkM3Ni42LDgsNjUuNSwxMC43LDU0LjUsMTMuN2MtMC4zLDAuMS0wLjYsMC4zLTAuOCwwLjUgICBjLTAuMiwwLjMtMC4zLDAuNi0wLjMsMC45YzAsMC41LDAuMywxLDAuNywxLjJjMC45LDAuNiwxLjgsMS4xLDIuNywxLjdjMi4yLDEuMyw0LjMsMi41LDYuMywzLjVjMC43LDAuNCwxLDEuMiwwLjYsMS45ICAgYy0zLjEsNi02LjYsMTEuNy0xMC42LDE3LjFjLTguNSwxMS40LTE4LDIwLTMwLDMwLjhDMTYuNyw3NywxMiw4MSw5LjQsODMuNWMtMC42LDAuNi0xLjIsMS4yLTEuNywxLjhjMC43LTAuMSwxLjQtMC4yLDIuMS0wLjQgICBjMS4xLTAuMywyLjQtMC43LDMuNi0xLjFjMi41LTAuOSw0LjktMS45LDYuMS0yLjRDMjguOSw3Ny42LDQ3LjEsNjguNiw2Ni45LDQ3LjV6Ii8+PHBhdGggY2xhc3M9InN0MCIgZD0iTTMxLjUsODguN2MtMC42LDAuMi0xLjIsMC41LTEuNywwLjdjMC4yLDEuNywwLjQsMy41LDAuNSw1LjJjMC43LDAsMS4zLDAsMS45LDBjMi42LDAsNSwwLDcuMy0wLjEgICBjLTAuMy0zLjEtMC40LTYuMS0wLjUtOS4yQzM2LjgsODYuNSwzNC4yLDg3LjYsMzEuNSw4OC43eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik01Mi45LDc3LjVjMCwwLjEsMCwwLjEsMCwwLjJjMC4xLDUuNSwwLjMsMTEuMSwwLjYsMTYuNmMzLjQtMC4xLDYuOS0wLjIsMTAuNC0wLjNjLTAuMy04LjEtMC41LTE2LjMtMC44LTI0LjQgICBDNTkuOCw3Mi40LDU2LjQsNzUsNTIuOSw3Ny41eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik05MS4yLDU1LjNjLTAuMS0wLjEtMC4xLTAuMS0wLjItMC4xYy0wLjEsMC0wLjItMC4xLTAuNS0wLjJjLTAuNi0wLjMtMS42LTAuNy0zLjUtMS42ICAgYy0xLjItMC42LTIuMy0xLjEtMy40LTEuNmMtMC41LTAuMi0xLTAuNC0xLjYtMC40Yy0xLjEsMC0yLjEsMC41LTIuOCwxLjRsMCwwYy0wLjIsMC4zLTAuNCwwLjUtMC42LDAuOGwyLjMsNDAuM2gwLjYgICBjMi4yLDAsMy45LDAsNS4yLTAuMmMxLTAuMSwxLjktMC4zLDIuOC0wLjdjMC41LTAuMiwwLjktMC41LDEuMi0wLjljMC41LTAuNCwwLjgtMSwxLTEuNmMwLjItMC45LDAuMy0xLjgsMC4zLTIuNyAgIGMwLTEuNy0wLjEtNC4xLTAuMS03LjVjMC0yLjEsMC4xLTQuNywwLjMtNy43bDAsMGMwLjMtNC45LDAuOC04LjgsMC44LTExLjhjMC0xLjItMC4xLTIuNC0wLjQtMy41QzkyLjIsNTYuNSw5MS44LDU1LjgsOTEuMiw1NS4zeiAgICIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02NS44LDY3LjFjMCwwLjEsMC4xLDAuMywwLjEsMC40YzAuMyw4LjgsMC42LDE3LjYsMC45LDI2LjRjMy4yLTAuMSw2LjQtMC4xLDkuNi0wLjF2MGgwLjNoMS4xICAgYzAtMC4xLDAuMS0wLjIsMC4xLTAuNGMtMC43LTEyLjItMS40LTI0LjUtMi4xLTM2LjdDNzIuNyw2MC40LDY5LjMsNjMuOCw2NS44LDY3LjF6Ii8+PHBhdGggZD0iTTIwLjYsODQuMWM5LjYtMy45LDI4LjMtMTMuMSw0OC40LTM0LjZjMi45LTMuMSw2LjMtNywxMC4xLTExLjhjMS40LDEuMiwzLDIuNCw0LjYsMy42YzEuMSwwLjgsMi4xLDEuNSwzLjIsMi4zICAgYzEuOCwxLjIsNC4xLDEuMSw1LjctMC40YzAuOS0wLjgsMS40LTIsMS41LTMuMmMwLjItNC45LDAuMy05LjksMC4zLTE1LjF2LTAuN2MwLTUuNi0wLjEtMTEuMS0wLjMtMTYuNGMtMC4xLTMtMi43LTUuNC01LjctNS4zICAgYy0wLjMsMC0wLjcsMC4xLTEsMC4xQzc2LDUuMiw2NC44LDcuOSw1My43LDEwLjljLTEsMC4zLTEuOCwwLjgtMi40LDEuNmMtMC41LDAuOC0wLjgsMS43LTAuOCwyLjZjMCwxLjUsMC44LDIuOSwyLDMuNyAgIGMwLjksMC42LDEuOCwxLjEsMi44LDEuN2MxLjgsMS4xLDMuNSwyLDUuMiwyLjljLTIuOCw1LjQtNi4xLDEwLjYtOS43LDE1LjVDNDIuNiw1MCwzMy4yLDU4LjQsMjEuMiw2OS4yQzE2LDczLjksMTEuOSw3Ny40LDksNzkuOSAgIGMtMS4yLDEtMi4zLDIuMS0zLjMsMy4zYy0wLjQsMC40LTAuNywwLjgtMSwxLjNjLTAuMywwLjUtMC41LDEtMC41LDEuNWMwLDAuNywwLjMsMS4zLDAuOSwxLjdjMC4zLDAuMiwwLjYsMC40LDEsMC40ICAgYzAuMywwLjEsMC42LDAuMSwxLDAuMWMxLjEsMCwyLjMtMC4yLDMuNC0wLjVjMi0wLjUsMy45LTEuMiw1LjgtMS45QzE4LjEsODUuMSwxOS43LDg0LjQsMjAuNiw4NC4xeiBNOS43LDg0LjkgICBjLTAuNywwLjItMS40LDAuMy0yLjEsMC40YzAuNS0wLjYsMS4xLTEuMiwxLjctMS44QzEyLDgxLDE2LjcsNzcsMjMuMSw3MS40YzEyLTEwLjgsMjEuNi0xOS40LDMwLTMwLjhjNC01LjQsNy42LTExLjEsMTAuNi0xNy4xICAgYzAuNC0wLjcsMC4xLTEuNi0wLjYtMS45Yy0yLjEtMS4xLTQuMi0yLjMtNi4zLTMuNWMtMC45LTAuNi0xLjgtMS4xLTIuNy0xLjdjLTAuNC0wLjMtMC43LTAuNy0wLjctMS4yYzAtMC4zLDAuMS0wLjYsMC4zLTAuOSAgIGMwLjItMC4zLDAuNS0wLjUsMC44LTAuNUM2NS41LDEwLjcsNzYuNiw4LDg3LjgsNS40YzEuNC0wLjMsMi44LDAuNiwzLjIsMkM5MSw3LjYsOTEsNy44LDkxLDcuOWMwLjIsNS4yLDAuMywxMC43LDAuMywxNi4zdjAuNyAgIGMwLDUuMi0wLjEsMTAuMi0wLjMsMTVjMCwwLjQtMC4yLDAuOS0wLjUsMS4xYy0wLjMsMC4zLTAuNywwLjQtMS4yLDAuNGMtMC4zLDAtMC43LTAuMS0xLTAuM2MtMS0wLjctMi0xLjQtMy4xLTIuMiAgIGMtMi0xLjUtMy45LTMtNS42LTQuNGMtMC42LTAuNS0xLjUtMC40LTIsMC4yYzAsMCwwLDAsMCwwLjFjLTQsNS4yLTcuNyw5LjUtMTAuOCwxMi43Yy0xOS43LDIxLjEtMzgsMzAuMS00Ny40LDMzLjkgICBjLTEuMiwwLjUtMy42LDEuNS02LjEsMi40QzEyLjEsODQuMiwxMC44LDg0LjYsOS43LDg0Ljl6Ii8+PGxpbmUgY2xhc3M9InN0MSIgeDE9IjQuNSIgeDI9IjQuNSIgeTE9Ijg3LjEiIHkyPSI4Ny4xIi8+PHBhdGggZD0iTTk1LjcsNjAuN2MwLTEuNS0wLjEtMy0wLjUtNC40Qzk0LjgsNTUsOTQsNTMuOSw5Mi45LDUzYy0wLjItMC4xLTAuNC0wLjMtMC42LTAuNGMtMC4zLTAuMi0wLjYtMC4zLTEuMi0wLjYgICBjLTAuNi0wLjMtMS41LTAuNy0yLjktMS4zYy0xLjItMC42LTIuMy0xLjEtMy4zLTEuNmMtMi43LTEuNC02LTAuNi03LjksMS44bDAsMGMtNy44LDkuOS0xNywxOC40LTI3LjUsMjUuNCAgIGMtNiwzLjgtMTIuNCw3LjEtMTksOS44Yy01LjMsMi4yLTEwLDMuNi0xMy40LDQuN2MtMS43LDAuNS0zLjEsMS00LjEsMS40Yy0wLjUsMC4yLTAuOSwwLjQtMS40LDAuN2MtMC4yLDAuMi0wLjQsMC40LTAuNiwwLjYgICBjLTAuMiwwLjMtMC40LDAuNy0wLjQsMS4xYzAsMC4xLDAsMC4yLDAsMC4ydjB2MGMwLDAuMiwwLjEsMC41LDAuMywwLjdjMC4yLDAuMywwLjUsMC42LDAuOCwwLjdjMC41LDAuMiwxLjEsMC40LDEuNiwwLjUgICBjMS4zLDAuMiwyLjUsMC4zLDMuOCwwLjRjMS42LDAuMSwzLjcsMC4yLDYuMiwwLjJjMy4yLDAuMSw2LjIsMC4xLDguOSwwLjFjNywwLDEyLjUtMC4yLDE3LjQtMC4zYzguOS0wLjIsMTcuOC0wLjYsMjYuNy0wLjZoMC4zICAgYzEuOCwwLDMuNCwwLDQuOCwwYzIuMywwLjEsNC42LDAsNi45LTAuNGMwLjgtMC4xLDEuNi0wLjQsMi40LTAuOGMwLjctMC40LDEuNC0wLjgsMi0xLjRjMC44LTAuOCwxLjQtMS44LDEuOC0yLjkgICBjMC4zLTEuMSwwLjQtMi4zLDAuNC0zLjVjMC0xLjktMC4xLTQuMi0wLjEtNy41YzAtMi4xLDAuMS00LjYsMC4yLTcuNUM5NS4yLDY3LjksOTUuNyw2NCw5NS43LDYwLjd6IE0yMy40LDk0LjUgICBjLTMuNC0wLjEtNi0wLjItNy43LTAuM2MwLjItMC4xLDAuNC0wLjEsMC41LTAuMmMyLjUtMC44LDYuMy0yLDEwLjctMy42YzAuMSwxLjQsMC4zLDIuOCwwLjQsNC4xQzI2LjEsOTQuNiwyNC44LDk0LjYsMjMuNCw5NC41eiAgICBNMzIuMiw5NC42Yy0wLjYsMC0xLjMsMC0xLjksMGMtMC4yLTEuNy0wLjQtMy41LTAuNS01LjJjMC42LTAuMiwxLjEtMC40LDEuNy0wLjdjMi43LTEuMSw1LjMtMi4zLDcuNS0zLjQgICBjMC4xLDMuMSwwLjIsNi4xLDAuNSw5LjJDMzcuMyw5NC42LDM0LjksOTQuNiwzMi4yLDk0LjZ6IE00OS42LDk0LjNMNDkuNiw5NC4zYy0yLjMsMC00LjcsMC4xLTcuMiwwLjJjLTAuMy0zLjMtMC41LTYuNy0wLjUtMTAgICBjMC0wLjIsMC0wLjMtMC4xLTAuNWMzLjctMS45LDYuNi0zLjYsOC4zLTQuN2MwLjEsNSwwLjMsMTAsMC41LDE1QzUwLjMsOTQuMyw0OS45LDk0LjMsNDkuNiw5NC4zeiBNNTMuNSw5NC4yICAgYy0wLjMtNS41LTAuNS0xMS0wLjYtMTYuNmMwLTAuMSwwLTAuMSwwLTAuMmMzLjUtMi40LDYuOS01LjEsMTAuMi03LjljMC4zLDguMSwwLjUsMTYuMywwLjgsMjQuNEM2MC40LDk0LDU2LjksOTQuMSw1My41LDk0LjJ6ICAgIE03Ny44LDkzLjhoLTEuMWgtMC4zdjBjLTMuMiwwLTYuNCwwLjEtOS42LDAuMWMtMC4zLTguOC0wLjYtMTcuNi0wLjktMjYuNGMwLTAuMSwwLTAuMy0wLjEtMC40YzMuNi0zLjMsNi45LTYuOCwxMC4xLTEwLjQgICBjMC43LDEyLjIsMS40LDI0LjUsMi4xLDM2LjdDNzcuOSw5My41LDc3LjgsOTMuNiw3Ny44LDkzLjh6IE05Miw3Mi41TDkyLDcyLjVjLTAuMiwzLTAuMiw1LjYtMC4yLDcuN2MwLDMuNCwwLjEsNS44LDAuMSw3LjUgICBjMCwwLjktMC4xLDEuOC0wLjMsMi43Yy0wLjIsMC42LTAuNSwxLjItMSwxLjZjLTAuNCwwLjQtMC44LDAuNy0xLjIsMC45Yy0wLjksMC40LTEuOCwwLjYtMi44LDAuN2MtMS4zLDAuMS0zLDAuMi01LjIsMC4yaC0wLjYgICBsLTIuMy00MC4zYzAuMi0wLjMsMC40LTAuNSwwLjYtMC44bDAsMGMwLjctMC45LDEuNy0xLjQsMi44LTEuNGMwLjUsMCwxLjEsMC4xLDEuNiwwLjRjMSwwLjUsMi4xLDEuMSwzLjQsMS42ICAgYzEuOSwwLjksMi45LDEuMywzLjUsMS42YzAuMywwLjEsMC40LDAuMiwwLjUsMC4yYzAuMSwwLDAuMSwwLjEsMC4yLDAuMWMwLjYsMC41LDEuMSwxLjIsMS4zLDEuOWMwLjMsMS4xLDAuNCwyLjMsMC40LDMuNSAgIEM5Mi45LDYzLjYsOTIuMyw2Ny42LDkyLDcyLjV6Ii8+PC9nPjwvc3ZnPg==" alt="Logo">
+                </div>
+                <div class="column is-4">
+                    <p class="title">
+                        EOD Stockmarket Scans
+                    </p>
+                    <p class="subtitle">
+                        Fintwits most popular stockmarket scans
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+            <div class="container">
+                <ul>
+                    
+                    <li class="is-active">
+                        <a href="../Ray/RSNHBP 1M_result_table.html"> Results </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Ray/RSNHBP 1M_minicharts.html"> Minicharts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Ray/RSNHBP 1M_charts.html"> Charts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Ray/RSNHBP 1M_criteria.html"> Criteria </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+</section>
+    <div class="columns is-centered">
+        <div class="column is-2">
+            <div class="box has-background-light my-0 mx-2 p-auto">
+    <aside class="menu">
+        <p class="menu-label has-text-dark">
+            Market Monitor
+        </p>
+        <ul class="menu-list">
+            <li><a class="has-text-grey-light">New Highs/Lows</a></li>
+            <li><a class="has-text-grey-light">Breadth</a></li>
+            <li><a class="has-text-grey-light">Above/Below SMA</a></li>
+            <li><a class="has-text-grey-light">Sectors</a></li>
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Kristjan Kullamägi
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Biggest Gainers 1M_minicharts.html">
+                        Biggest Gainers 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Biggest Gainers 3M_minicharts.html">
+                        Biggest Gainers 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Biggest Gainers 6M_minicharts.html">
+                        Biggest Gainers 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Biggest Gainers 12M_minicharts.html">
+                        Biggest Gainers 12M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/EP with Growth_minicharts.html">
+                        EP with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/EP_minicharts.html">
+                        EP
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/High Trend Intensity_minicharts.html">
+                        High Trend Intensity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Small Stock Momo_minicharts.html">
+                        Small Stock Momo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Momentum_minicharts.html">
+                        Momentum
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Brad Schulz
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Brad Schulz/Pocket Pivot_minicharts.html">
+                        Pocket Pivot
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Stockbee
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Stockbee/4% Gainers_minicharts.html">
+                        4% Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Stockbee/Combo_minicharts.html">
+                        Combo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Stockbee/Ants_minicharts.html">
+                        Ants
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Stockbee/Breakout 1M Base_minicharts.html">
+                        Breakout 1M Base
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Stockbee/Breakout 3M Base_minicharts.html">
+                        Breakout 3M Base
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Leif Soreide
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Leif Soreide/HTF_minicharts.html">
+                        HTF
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Blake Davis
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Blake Davis/Strength_minicharts.html">
+                        Strength
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ben
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ben/Power of 3_minicharts.html">
+                        Power of 3
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ben/Velocity_minicharts.html">
+                        Velocity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ben/Focus_minicharts.html">
+                        Focus
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ray
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ray/RSNHBP 5D_minicharts.html">
+                        RSNHBP 5D
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="is-active"
+                        href="../../germany/Ray/RSNHBP 1M_minicharts.html">
+                        RSNHBP 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ray/RSNHBP 3M_minicharts.html">
+                        RSNHBP 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ray/RSNHBP 6M_minicharts.html">
+                        RSNHBP 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ray/RSNHBP 12M_minicharts.html">
+                        RSNHBP 12M
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Mark Minvervini
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Mark Minvervini/Trend Template_minicharts.html">
+                        Trend Template
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Vo
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Vo/Top Gainers From Open_minicharts.html">
+                        Top Gainers From Open
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Vo/Top Gainers_minicharts.html">
+                        Top Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Vo/Volume Gainers_minicharts.html">
+                        Volume Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Vo/Insiders_minicharts.html">
+                        Insiders
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Vo/Darvas Scan_minicharts.html">
+                        Darvas Scan
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Vo/Darvas Scan with Growth_minicharts.html">
+                        Darvas Scan with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Vo/52W High_minicharts.html">
+                        52W High
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Vo/Quite and Tight_minicharts.html">
+                        Quite and Tight
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+    </aside>
+</div>
+        </div>
+        <div class="column is-10">
+            
+            
+<section class="block my-6">
+    <div class="columns ">
+        <div class="column is-5 has-text-left">
+            <h1 class="title is-4">RSNHBP 1M @ Germany</h1>
+            <h2 class="subtitle is-6">2022-04-20</h2>
+        </div>
+        <div class="column has-text-right mr-5">
+            <div class="media">
+
+                <div class="media-content">
+                    <p class="title is-5">Ray</p>
+                    <p class="subtitle is-6"><a class="has-text-grey-light" href="https://twitter.com/RayTL_">@RayTL_</a></p>
+                </div>
+                <div class="media-right">
+                    <figure class="image is-48x48">
+                        <img src="https://unavatar.io/twitter/RayTL_" alt="Placeholder image">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  
+            <section class="my-auto mr-5">
+                
+    <div class="table-container">
+        <table border="1" class="dataframe table is-striped no-wrap" id="data" style="width:100%; font-size:85%">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>symbol_id</th>
+      <th>symbol</th>
+      <th>name</th>
+      <th>exchange</th>
+      <th>sector</th>
+      <th>industry</th>
+      <th>country</th>
+      <th>yahoo_symbol</th>
+      <th>forexpros_symbol</th>
+      <th>IPO Date</th>
+      <th>EPS Growth Q</th>
+      <th>EPS Growth Y</th>
+      <th>EPS Growth FQ</th>
+      <th>EPS Growth FY</th>
+      <th>EPS Growth FQ1</th>
+      <th>EPS Growth FY1</th>
+      <th>Rev Growth Q</th>
+      <th>Rev Growth FQ</th>
+      <th>Rev Growth FY</th>
+      <th>Rev Growth FQ1</th>
+      <th>Rev Growth FY1</th>
+      <th>Insiders %</th>
+      <th>Institutions %</th>
+      <th>Institutions No.</th>
+      <th>Market Cap</th>
+      <th>Shares Outstanding</th>
+      <th>Shares Float</th>
+      <th>Shares Short</th>
+      <th>Short Ratio</th>
+      <th>Net Insider Trading %</th>
+      <th>close</th>
+      <th>volume</th>
+      <th>1m RS</th>
+      <th>3m RS</th>
+      <th>RS</th>
+      <th>Industry 1m RS</th>
+      <th>Industry 3m RS</th>
+      <th>Industry RS</th>
+      <th>UD Ratio</th>
+      <th>50d avg Volume</th>
+      <th>rel Volume</th>
+      <th>Pocket Pivot</th>
+      <th>1w Pocket Pivots</th>
+      <th>1m Pocket Pivots</th>
+      <th>Rocket Ratio</th>
+      <th>52w High</th>
+      <th>% below 52w High</th>
+      <th>52w Low</th>
+      <th>% above 52w Low</th>
+      <th>adr(20)</th>
+      <th>atr(14)</th>
+      <th>roc</th>
+      <th>roc(5)</th>
+      <th>roc(21)</th>
+      <th>roc(63)</th>
+      <th>roc(126)</th>
+      <th>roc(252)</th>
+      <th>ema(9)</th>
+      <th>% from 9d ema</th>
+      <th>ema(21)</th>
+      <th>% from 21d ema</th>
+      <th>sma(50)</th>
+      <th>% from 50d sma</th>
+      <th>market</th>
+      <th>date</th>
+      <th>group_name</th>
+      <th>scan_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>14154</td>
+      <td>VBKG</td>
+      <td>Verbio Vereinigte Bioenergie AG</td>
+      <td>Xetra</td>
+      <td>Basic Materials</td>
+      <td>Specialty Chemicals</td>
+      <td>Germany</td>
+      <td>VBK.DE</td>
+      <td>Xetra:VBKG</td>
+      <td>2006-10-16 07:00:00</td>
+      <td>6.89</td>
+      <td>6.70</td>
+      <td>NaN</td>
+      <td>1.30</td>
+      <td>NaN</td>
+      <td>-0.20</td>
+      <td>1.11</td>
+      <td>NaN</td>
+      <td>0.44</td>
+      <td>NaN</td>
+      <td>-0.05</td>
+      <td>49.89</td>
+      <td>14.44</td>
+      <td>145.0</td>
+      <td>5.260035e+09</td>
+      <td>6.318360e+07</td>
+      <td>1.972593e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>86.20</td>
+      <td>105828.0</td>
+      <td>99</td>
+      <td>99</td>
+      <td>98</td>
+      <td>97</td>
+      <td>97</td>
+      <td>96</td>
+      <td>1.34</td>
+      <td>187898.08</td>
+      <td>0.56</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>104.98</td>
+      <td>87.40</td>
+      <td>-1.37</td>
+      <td>32.60</td>
+      <td>164.42</td>
+      <td>5.73</td>
+      <td>4.57</td>
+      <td>2.56</td>
+      <td>2.13</td>
+      <td>28.85</td>
+      <td>70.52</td>
+      <td>37.81</td>
+      <td>124.60</td>
+      <td>81.77</td>
+      <td>5.41</td>
+      <td>76.88</td>
+      <td>12.13</td>
+      <td>67.74</td>
+      <td>27.25</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>665</td>
+      <td>RHMG</td>
+      <td>Rheinmetall AG</td>
+      <td>Xetra</td>
+      <td>Industrials</td>
+      <td>Industrial Distribution</td>
+      <td>Germany</td>
+      <td>RHM.DE</td>
+      <td>Xetra:RHMG</td>
+      <td>2005-06-28 06:00:00</td>
+      <td>0.27</td>
+      <td>0.28</td>
+      <td>NaN</td>
+      <td>0.62</td>
+      <td>0.12</td>
+      <td>0.29</td>
+      <td>0.02</td>
+      <td>0.15</td>
+      <td>0.05</td>
+      <td>NaN</td>
+      <td>0.07</td>
+      <td>0.00</td>
+      <td>47.47</td>
+      <td>208.0</td>
+      <td>9.154381e+09</td>
+      <td>4.330360e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>217.00</td>
+      <td>276950.0</td>
+      <td>99</td>
+      <td>100</td>
+      <td>99</td>
+      <td>56</td>
+      <td>93</td>
+      <td>92</td>
+      <td>2.26</td>
+      <td>442725.08</td>
+      <td>0.63</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>217.90</td>
+      <td>-0.41</td>
+      <td>76.28</td>
+      <td>184.48</td>
+      <td>5.37</td>
+      <td>8.71</td>
+      <td>0.93</td>
+      <td>7.43</td>
+      <td>28.02</td>
+      <td>129.82</td>
+      <td>156.68</td>
+      <td>156.50</td>
+      <td>207.83</td>
+      <td>4.41</td>
+      <td>194.96</td>
+      <td>11.31</td>
+      <td>156.36</td>
+      <td>38.78</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1073870</td>
+      <td>RHMG</td>
+      <td>Rheinmetall AG</td>
+      <td>Xetra</td>
+      <td>Industrials</td>
+      <td>Industrial Distribution</td>
+      <td>Germany</td>
+      <td>RHM.F</td>
+      <td>Xetra:RHMG</td>
+      <td>2005-06-28 06:00:00</td>
+      <td>0.27</td>
+      <td>0.28</td>
+      <td>NaN</td>
+      <td>0.62</td>
+      <td>0.12</td>
+      <td>0.29</td>
+      <td>0.02</td>
+      <td>0.15</td>
+      <td>0.05</td>
+      <td>NaN</td>
+      <td>0.07</td>
+      <td>0.00</td>
+      <td>47.47</td>
+      <td>208.0</td>
+      <td>9.154381e+09</td>
+      <td>4.330360e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>217.00</td>
+      <td>276950.0</td>
+      <td>99</td>
+      <td>100</td>
+      <td>99</td>
+      <td>87</td>
+      <td>99</td>
+      <td>94</td>
+      <td>2.24</td>
+      <td>444788.26</td>
+      <td>0.62</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>217.90</td>
+      <td>-0.41</td>
+      <td>86.10</td>
+      <td>152.03</td>
+      <td>NaN</td>
+      <td>8.75</td>
+      <td>0.93</td>
+      <td>7.43</td>
+      <td>28.02</td>
+      <td>129.82</td>
+      <td>146.31</td>
+      <td>146.31</td>
+      <td>207.66</td>
+      <td>4.50</td>
+      <td>194.79</td>
+      <td>11.40</td>
+      <td>156.51</td>
+      <td>38.65</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>963249</td>
+      <td>AEGN</td>
+      <td>Aegon NV</td>
+      <td>Xetra</td>
+      <td>Financial Services</td>
+      <td>Insurance—Diversified</td>
+      <td>Germany</td>
+      <td>AGN.AS</td>
+      <td>Xetra:AEGN</td>
+      <td>1995-03-29 07:00:00</td>
+      <td>0.92</td>
+      <td>0.99</td>
+      <td>NaN</td>
+      <td>0.73</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>-0.37</td>
+      <td>NaN</td>
+      <td>-0.16</td>
+      <td>NaN</td>
+      <td>0.03</td>
+      <td>15.40</td>
+      <td>40.09</td>
+      <td>338.0</td>
+      <td>1.040367e+10</td>
+      <td>1.984940e+09</td>
+      <td>1.741160e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>5.37</td>
+      <td>126492.0</td>
+      <td>98</td>
+      <td>81</td>
+      <td>89</td>
+      <td>89</td>
+      <td>76</td>
+      <td>81</td>
+      <td>1.53</td>
+      <td>32622.86</td>
+      <td>3.88</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>53372.37</td>
+      <td>5.40</td>
+      <td>-0.52</td>
+      <td>3.35</td>
+      <td>60.42</td>
+      <td>2.18</td>
+      <td>0.10</td>
+      <td>2.67</td>
+      <td>6.04</td>
+      <td>24.77</td>
+      <td>7.76</td>
+      <td>19.93</td>
+      <td>39.08</td>
+      <td>5.13</td>
+      <td>4.72</td>
+      <td>4.93</td>
+      <td>9.10</td>
+      <td>4.64</td>
+      <td>15.90</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>19794</td>
+      <td>CE2G</td>
+      <td>Cropenergies AG</td>
+      <td>Xetra</td>
+      <td>Basic Materials</td>
+      <td>Specialty Chemicals</td>
+      <td>Germany</td>
+      <td>CE2.DE</td>
+      <td>Xetra:CE2G</td>
+      <td>2006-09-29 07:00:00</td>
+      <td>0.60</td>
+      <td>0.60</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.41</td>
+      <td>-0.12</td>
+      <td>-0.12</td>
+      <td>-0.12</td>
+      <td>0.11</td>
+      <td>74.02</td>
+      <td>7.68</td>
+      <td>78.0</td>
+      <td>1.123780e+09</td>
+      <td>8.725000e+07</td>
+      <td>2.266930e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>14.34</td>
+      <td>289604.0</td>
+      <td>98</td>
+      <td>82</td>
+      <td>88</td>
+      <td>97</td>
+      <td>97</td>
+      <td>96</td>
+      <td>1.18</td>
+      <td>122208.62</td>
+      <td>2.37</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>185.50</td>
+      <td>14.46</td>
+      <td>-0.83</td>
+      <td>9.64</td>
+      <td>48.76</td>
+      <td>4.09</td>
+      <td>0.52</td>
+      <td>8.80</td>
+      <td>16.78</td>
+      <td>23.83</td>
+      <td>9.30</td>
+      <td>29.89</td>
+      <td>31.80</td>
+      <td>12.83</td>
+      <td>11.76</td>
+      <td>12.40</td>
+      <td>15.65</td>
+      <td>11.99</td>
+      <td>19.64</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>25361</td>
+      <td>AIXGn</td>
+      <td>Aixtron SE</td>
+      <td>Xetra</td>
+      <td>Technology</td>
+      <td>Semiconductor Equipment &amp; Materials</td>
+      <td>Germany</td>
+      <td>AIXA.DE</td>
+      <td>Xetra:AIXGn</td>
+      <td>1998-11-09 08:00:00</td>
+      <td>1.09</td>
+      <td>1.09</td>
+      <td>1.75</td>
+      <td>-0.07</td>
+      <td>1.43</td>
+      <td>0.19</td>
+      <td>0.67</td>
+      <td>0.79</td>
+      <td>0.12</td>
+      <td>0.60</td>
+      <td>0.11</td>
+      <td>4.75</td>
+      <td>70.18</td>
+      <td>153.0</td>
+      <td>2.525802e+09</td>
+      <td>1.122080e+08</td>
+      <td>1.122079e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>23.70</td>
+      <td>825542.0</td>
+      <td>94</td>
+      <td>93</td>
+      <td>85</td>
+      <td>21</td>
+      <td>32</td>
+      <td>54</td>
+      <td>1.66</td>
+      <td>753336.02</td>
+      <td>1.10</td>
+      <td>True</td>
+      <td>5.0</td>
+      <td>8.0</td>
+      <td>148.95</td>
+      <td>26.60</td>
+      <td>-10.90</td>
+      <td>14.82</td>
+      <td>59.92</td>
+      <td>4.33</td>
+      <td>1.07</td>
+      <td>2.51</td>
+      <td>15.78</td>
+      <td>15.33</td>
+      <td>22.07</td>
+      <td>16.63</td>
+      <td>24.70</td>
+      <td>22.04</td>
+      <td>7.52</td>
+      <td>21.03</td>
+      <td>12.69</td>
+      <td>19.12</td>
+      <td>23.98</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>40216</td>
+      <td>O2Dn</td>
+      <td>Telefonica Deutschland Holding AG</td>
+      <td>Xetra</td>
+      <td>Communication Services</td>
+      <td>Telecom Services</td>
+      <td>Germany</td>
+      <td>O2D.DE</td>
+      <td>Xetra:O2Dn</td>
+      <td>2013-12-13 08:00:00</td>
+      <td>-0.42</td>
+      <td>-0.42</td>
+      <td>NaN</td>
+      <td>-0.86</td>
+      <td>NaN</td>
+      <td>4.00</td>
+      <td>0.02</td>
+      <td>0.04</td>
+      <td>0.02</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>69.20</td>
+      <td>12.80</td>
+      <td>284.0</td>
+      <td>8.248427e+09</td>
+      <td>2.974550e+09</td>
+      <td>9.158655e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>2.88</td>
+      <td>5722237.0</td>
+      <td>95</td>
+      <td>84</td>
+      <td>83</td>
+      <td>80</td>
+      <td>67</td>
+      <td>87</td>
+      <td>0.86</td>
+      <td>4342024.90</td>
+      <td>1.32</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>210.93</td>
+      <td>2.88</td>
+      <td>-0.17</td>
+      <td>2.20</td>
+      <td>30.76</td>
+      <td>2.03</td>
+      <td>0.06</td>
+      <td>4.01</td>
+      <td>5.58</td>
+      <td>17.66</td>
+      <td>11.16</td>
+      <td>24.05</td>
+      <td>21.69</td>
+      <td>2.73</td>
+      <td>5.38</td>
+      <td>2.63</td>
+      <td>9.22</td>
+      <td>2.54</td>
+      <td>13.17</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>964616</td>
+      <td>CLIQ</td>
+      <td>Cliq Digital AG</td>
+      <td>Xetra</td>
+      <td>Communication Services</td>
+      <td>Entertainment</td>
+      <td>Germany</td>
+      <td>CLIQ.DE</td>
+      <td>Xetra:CLIQ</td>
+      <td>2005-12-05 08:00:00</td>
+      <td>1.75</td>
+      <td>1.60</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.30</td>
+      <td>0.55</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.40</td>
+      <td>19.00</td>
+      <td>2.84</td>
+      <td>16.0</td>
+      <td>1.740010e+08</td>
+      <td>6.504710e+06</td>
+      <td>5.788740e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>28.40</td>
+      <td>36049.0</td>
+      <td>95</td>
+      <td>96</td>
+      <td>80</td>
+      <td>73</td>
+      <td>57</td>
+      <td>27</td>
+      <td>1.17</td>
+      <td>31094.46</td>
+      <td>1.16</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>7.0</td>
+      <td>186.17</td>
+      <td>38.95</td>
+      <td>-27.09</td>
+      <td>17.78</td>
+      <td>59.73</td>
+      <td>4.73</td>
+      <td>1.13</td>
+      <td>3.46</td>
+      <td>12.03</td>
+      <td>18.33</td>
+      <td>29.09</td>
+      <td>18.33</td>
+      <td>-22.51</td>
+      <td>26.65</td>
+      <td>6.55</td>
+      <td>25.71</td>
+      <td>10.47</td>
+      <td>23.67</td>
+      <td>19.99</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>19212</td>
+      <td>EVDG</td>
+      <td>CTS Eventim AG</td>
+      <td>Xetra</td>
+      <td>Communication Services</td>
+      <td>Entertainment</td>
+      <td>Germany</td>
+      <td>EVD.DE</td>
+      <td>Xetra:EVDG</td>
+      <td>2000-02-02 08:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.00</td>
+      <td>NaN</td>
+      <td>13.00</td>
+      <td>7.10</td>
+      <td>7.10</td>
+      <td>0.59</td>
+      <td>NaN</td>
+      <td>2.14</td>
+      <td>38.83</td>
+      <td>53.67</td>
+      <td>193.0</td>
+      <td>6.359423e+09</td>
+      <td>9.599130e+07</td>
+      <td>5.871692e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>67.40</td>
+      <td>126340.0</td>
+      <td>94</td>
+      <td>67</td>
+      <td>74</td>
+      <td>8</td>
+      <td>49</td>
+      <td>79</td>
+      <td>1.06</td>
+      <td>133047.54</td>
+      <td>0.95</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>441.32</td>
+      <td>72.68</td>
+      <td>-7.26</td>
+      <td>50.34</td>
+      <td>33.89</td>
+      <td>3.26</td>
+      <td>2.17</td>
+      <td>1.89</td>
+      <td>5.07</td>
+      <td>15.37</td>
+      <td>0.27</td>
+      <td>2.03</td>
+      <td>18.75</td>
+      <td>65.08</td>
+      <td>3.57</td>
+      <td>63.25</td>
+      <td>6.56</td>
+      <td>61.63</td>
+      <td>9.36</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>6322</td>
+      <td>SZUG</td>
+      <td>Suedzucker AG</td>
+      <td>Xetra</td>
+      <td>Consumer Defensive</td>
+      <td>Packaged Foods</td>
+      <td>Germany</td>
+      <td>SZU.F</td>
+      <td>Xetra:SZUG</td>
+      <td>2000-01-03 07:00:00</td>
+      <td>9.94</td>
+      <td>340.50</td>
+      <td>NaN</td>
+      <td>1.97</td>
+      <td>NaN</td>
+      <td>0.55</td>
+      <td>0.17</td>
+      <td>NaN</td>
+      <td>-0.05</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>69.43</td>
+      <td>9.13</td>
+      <td>92.0</td>
+      <td>2.595382e+09</td>
+      <td>2.042000e+08</td>
+      <td>5.895200e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>13.10</td>
+      <td>485253.0</td>
+      <td>94</td>
+      <td>73</td>
+      <td>63</td>
+      <td>94</td>
+      <td>78</td>
+      <td>74</td>
+      <td>1.22</td>
+      <td>292219.50</td>
+      <td>1.66</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>5.0</td>
+      <td>201.74</td>
+      <td>14.62</td>
+      <td>-10.40</td>
+      <td>9.75</td>
+      <td>34.36</td>
+      <td>2.35</td>
+      <td>0.31</td>
+      <td>2.42</td>
+      <td>6.07</td>
+      <td>14.91</td>
+      <td>3.97</td>
+      <td>-1.50</td>
+      <td>-3.89</td>
+      <td>12.47</td>
+      <td>5.07</td>
+      <td>12.12</td>
+      <td>8.08</td>
+      <td>11.89</td>
+      <td>10.20</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>22334</td>
+      <td>GBFG</td>
+      <td>Bilfinger SE O.N.</td>
+      <td>Xetra</td>
+      <td>Industrials</td>
+      <td>Engineering &amp; Construction</td>
+      <td>Germany</td>
+      <td>GBF.DE</td>
+      <td>Xetra:GBFG</td>
+      <td>1998-07-22 07:00:00</td>
+      <td>-0.68</td>
+      <td>-0.68</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>1.03</td>
+      <td>0.20</td>
+      <td>0.11</td>
+      <td>NaN</td>
+      <td>0.07</td>
+      <td>0.05</td>
+      <td>0.04</td>
+      <td>0.00</td>
+      <td>69.58</td>
+      <td>107.0</td>
+      <td>1.554586e+09</td>
+      <td>4.071730e+07</td>
+      <td>2.446704e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>38.82</td>
+      <td>111453.0</td>
+      <td>84</td>
+      <td>95</td>
+      <td>94</td>
+      <td>54</td>
+      <td>75</td>
+      <td>75</td>
+      <td>1.30</td>
+      <td>181898.16</td>
+      <td>0.61</td>
+      <td>False</td>
+      <td>3.0</td>
+      <td>5.0</td>
+      <td>134.51</td>
+      <td>39.00</td>
+      <td>-0.46</td>
+      <td>22.92</td>
+      <td>69.37</td>
+      <td>2.64</td>
+      <td>1.04</td>
+      <td>0.99</td>
+      <td>7.77</td>
+      <td>9.85</td>
+      <td>25.31</td>
+      <td>27.78</td>
+      <td>33.40</td>
+      <td>37.18</td>
+      <td>4.40</td>
+      <td>36.03</td>
+      <td>7.73</td>
+      <td>34.60</td>
+      <td>12.20</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>958262</td>
+      <td>PBBG</td>
+      <td>Deutsche Pfandbriefbank AG</td>
+      <td>Xetra</td>
+      <td>Financial Services</td>
+      <td>Mortgage Finance</td>
+      <td>Germany</td>
+      <td>PBB.DE</td>
+      <td>Xetra:PBBG</td>
+      <td>2015-07-16 07:00:00</td>
+      <td>0.46</td>
+      <td>-0.11</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.01</td>
+      <td>0.15</td>
+      <td>-0.08</td>
+      <td>-0.08</td>
+      <td>0.08</td>
+      <td>-0.03</td>
+      <td>4.50</td>
+      <td>51.01</td>
+      <td>106.0</td>
+      <td>1.589634e+09</td>
+      <td>1.344750e+08</td>
+      <td>1.304545e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>12.11</td>
+      <td>425137.0</td>
+      <td>86</td>
+      <td>83</td>
+      <td>86</td>
+      <td>99</td>
+      <td>95</td>
+      <td>92</td>
+      <td>1.24</td>
+      <td>611735.28</td>
+      <td>0.69</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>213.25</td>
+      <td>12.20</td>
+      <td>-0.74</td>
+      <td>7.91</td>
+      <td>53.17</td>
+      <td>2.59</td>
+      <td>0.27</td>
+      <td>2.28</td>
+      <td>4.22</td>
+      <td>11.00</td>
+      <td>9.44</td>
+      <td>15.44</td>
+      <td>25.54</td>
+      <td>11.69</td>
+      <td>3.62</td>
+      <td>11.38</td>
+      <td>6.42</td>
+      <td>10.87</td>
+      <td>11.41</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>942682</td>
+      <td>HLE</td>
+      <td>Hella KGaA Hueck &amp; Co</td>
+      <td>Xetra</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Parts</td>
+      <td>Germany</td>
+      <td>HLE.DE</td>
+      <td>Xetra:HLE</td>
+      <td>2014-11-11 08:00:00</td>
+      <td>-0.70</td>
+      <td>-0.70</td>
+      <td>NaN</td>
+      <td>-0.38</td>
+      <td>NaN</td>
+      <td>0.56</td>
+      <td>-0.11</td>
+      <td>NaN</td>
+      <td>-0.01</td>
+      <td>-0.00</td>
+      <td>0.13</td>
+      <td>83.23</td>
+      <td>14.03</td>
+      <td>102.0</td>
+      <td>6.472216e+09</td>
+      <td>1.111110e+08</td>
+      <td>1.495000e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>59.45</td>
+      <td>41392.0</td>
+      <td>83</td>
+      <td>51</td>
+      <td>67</td>
+      <td>41</td>
+      <td>26</td>
+      <td>4</td>
+      <td>0.34</td>
+      <td>72590.34</td>
+      <td>0.57</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>205.95</td>
+      <td>68.72</td>
+      <td>-13.49</td>
+      <td>45.12</td>
+      <td>31.76</td>
+      <td>2.63</td>
+      <td>1.49</td>
+      <td>1.97</td>
+      <td>1.97</td>
+      <td>9.36</td>
+      <td>-6.64</td>
+      <td>-0.05</td>
+      <td>29.89</td>
+      <td>58.46</td>
+      <td>1.69</td>
+      <td>58.04</td>
+      <td>2.43</td>
+      <td>58.66</td>
+      <td>1.34</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>22452</td>
+      <td>FREG</td>
+      <td>Fresenius SE &amp; Co KGAA O.N.</td>
+      <td>Xetra</td>
+      <td>Healthcare</td>
+      <td>Medical Care Facilities</td>
+      <td>Germany</td>
+      <td>FRE.DE</td>
+      <td>Xetra:FREG</td>
+      <td>1998-11-09 08:00:00</td>
+      <td>0.22</td>
+      <td>0.24</td>
+      <td>NaN</td>
+      <td>0.05</td>
+      <td>0.06</td>
+      <td>0.12</td>
+      <td>0.07</td>
+      <td>NaN</td>
+      <td>0.05</td>
+      <td>0.08</td>
+      <td>0.05</td>
+      <td>26.62</td>
+      <td>36.26</td>
+      <td>604.0</td>
+      <td>2.262863e+10</td>
+      <td>5.585020e+08</td>
+      <td>4.098177e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>35.00</td>
+      <td>1496555.0</td>
+      <td>78</td>
+      <td>52</td>
+      <td>41</td>
+      <td>43</td>
+      <td>37</td>
+      <td>43</td>
+      <td>0.95</td>
+      <td>2042216.30</td>
+      <td>0.73</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>200.67</td>
+      <td>47.60</td>
+      <td>-26.46</td>
+      <td>26.69</td>
+      <td>31.14</td>
+      <td>2.20</td>
+      <td>0.78</td>
+      <td>1.86</td>
+      <td>1.89</td>
+      <td>7.16</td>
+      <td>-5.70</td>
+      <td>-14.18</td>
+      <td>-11.92</td>
+      <td>34.11</td>
+      <td>2.61</td>
+      <td>33.49</td>
+      <td>4.50</td>
+      <td>33.12</td>
+      <td>5.67</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>963693</td>
+      <td>SHA_p</td>
+      <td>Schaeffler AG</td>
+      <td>Xetra</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Parts</td>
+      <td>Germany</td>
+      <td>SHA.DE</td>
+      <td>Xetra:SHA_p</td>
+      <td>2015-10-09 07:00:00</td>
+      <td>0.41</td>
+      <td>0.41</td>
+      <td>NaN</td>
+      <td>-0.12</td>
+      <td>-0.43</td>
+      <td>0.17</td>
+      <td>-0.03</td>
+      <td>NaN</td>
+      <td>0.07</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>0.00</td>
+      <td>52.24</td>
+      <td>126.0</td>
+      <td>3.789540e+09</td>
+      <td>1.660000e+08</td>
+      <td>1.660005e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.87</td>
+      <td>1193271.0</td>
+      <td>66</td>
+      <td>28</td>
+      <td>29</td>
+      <td>41</td>
+      <td>26</td>
+      <td>4</td>
+      <td>0.57</td>
+      <td>1212768.34</td>
+      <td>0.98</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>136.88</td>
+      <td>8.28</td>
+      <td>-29.15</td>
+      <td>4.58</td>
+      <td>28.22</td>
+      <td>3.80</td>
+      <td>0.21</td>
+      <td>0.86</td>
+      <td>2.53</td>
+      <td>3.25</td>
+      <td>-15.96</td>
+      <td>-14.43</td>
+      <td>-24.50</td>
+      <td>5.71</td>
+      <td>2.73</td>
+      <td>5.70</td>
+      <td>2.97</td>
+      <td>5.86</td>
+      <td>0.09</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>23122</td>
+      <td>MBGn</td>
+      <td>Mercedes Benz Group AG</td>
+      <td>Xetra</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Manufacturers</td>
+      <td>Germany</td>
+      <td>MBG.DE</td>
+      <td>Xetra:MBGn</td>
+      <td>1996-10-30 08:00:00</td>
+      <td>2.63</td>
+      <td>2.63</td>
+      <td>-0.48</td>
+      <td>0.05</td>
+      <td>-0.38</td>
+      <td>0.06</td>
+      <td>-0.04</td>
+      <td>-0.24</td>
+      <td>0.05</td>
+      <td>-0.26</td>
+      <td>0.05</td>
+      <td>17.98</td>
+      <td>35.48</td>
+      <td>731.0</td>
+      <td>6.774227e+10</td>
+      <td>1.069840e+09</td>
+      <td>7.533260e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>65.35</td>
+      <td>3107995.0</td>
+      <td>71</td>
+      <td>38</td>
+      <td>37</td>
+      <td>68</td>
+      <td>8</td>
+      <td>33</td>
+      <td>0.70</td>
+      <td>4582653.92</td>
+      <td>0.68</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>164.39</td>
+      <td>91.63</td>
+      <td>-28.68</td>
+      <td>54.67</td>
+      <td>19.54</td>
+      <td>2.96</td>
+      <td>1.83</td>
+      <td>1.66</td>
+      <td>4.74</td>
+      <td>4.34</td>
+      <td>-12.28</td>
+      <td>-20.26</td>
+      <td>-12.51</td>
+      <td>63.69</td>
+      <td>2.61</td>
+      <td>63.68</td>
+      <td>2.62</td>
+      <td>65.69</td>
+      <td>-0.51</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>964815</td>
+      <td>MUXG</td>
+      <td>Mutares AG</td>
+      <td>Xetra</td>
+      <td>Financial Services</td>
+      <td>Asset Management</td>
+      <td>Germany</td>
+      <td>MUX.DE</td>
+      <td>Xetra:MUXG</td>
+      <td>2010-05-07 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-1.22</td>
+      <td>NaN</td>
+      <td>1.07</td>
+      <td>0.77</td>
+      <td>NaN</td>
+      <td>0.46</td>
+      <td>NaN</td>
+      <td>-0.06</td>
+      <td>43.46</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>3.462082e+08</td>
+      <td>1.542130e+07</td>
+      <td>9.973428e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>22.95</td>
+      <td>53733.0</td>
+      <td>48</td>
+      <td>70</td>
+      <td>63</td>
+      <td>27</td>
+      <td>29</td>
+      <td>45</td>
+      <td>0.74</td>
+      <td>43777.10</td>
+      <td>1.23</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>227.82</td>
+      <td>28.27</td>
+      <td>-18.82</td>
+      <td>16.94</td>
+      <td>35.48</td>
+      <td>3.10</td>
+      <td>0.76</td>
+      <td>1.32</td>
+      <td>5.52</td>
+      <td>-0.65</td>
+      <td>1.32</td>
+      <td>1.55</td>
+      <td>-0.18</td>
+      <td>22.42</td>
+      <td>2.35</td>
+      <td>22.20</td>
+      <td>3.38</td>
+      <td>21.66</td>
+      <td>5.98</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>29422</td>
+      <td>INN1</td>
+      <td>ING Groep NV</td>
+      <td>Xetra</td>
+      <td>Financial Services</td>
+      <td>Banks—Diversified</td>
+      <td>Germany</td>
+      <td>INGA.AS</td>
+      <td>Xetra:INN1</td>
+      <td>1995-03-29 07:00:00</td>
+      <td>0.30</td>
+      <td>0.32</td>
+      <td>NaN</td>
+      <td>-0.14</td>
+      <td>-0.22</td>
+      <td>0.21</td>
+      <td>0.05</td>
+      <td>NaN</td>
+      <td>-0.01</td>
+      <td>0.02</td>
+      <td>0.03</td>
+      <td>0.00</td>
+      <td>50.23</td>
+      <td>706.0</td>
+      <td>3.555897e+10</td>
+      <td>3.763650e+09</td>
+      <td>3.775687e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>9.77</td>
+      <td>366853.0</td>
+      <td>65</td>
+      <td>11</td>
+      <td>29</td>
+      <td>34</td>
+      <td>5</td>
+      <td>31</td>
+      <td>0.56</td>
+      <td>550926.96</td>
+      <td>0.67</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>6853.33</td>
+      <td>13.94</td>
+      <td>-29.95</td>
+      <td>7.91</td>
+      <td>23.52</td>
+      <td>3.07</td>
+      <td>0.29</td>
+      <td>2.19</td>
+      <td>3.46</td>
+      <td>2.94</td>
+      <td>-26.75</td>
+      <td>-25.22</td>
+      <td>-7.32</td>
+      <td>9.52</td>
+      <td>2.56</td>
+      <td>9.59</td>
+      <td>1.83</td>
+      <td>10.36</td>
+      <td>-5.71</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>41032</td>
+      <td>RRTLc1</td>
+      <td>RTL Group SA</td>
+      <td>NYSE</td>
+      <td>Communication Services</td>
+      <td>Broadcasting</td>
+      <td>United States</td>
+      <td>RRTL.DE</td>
+      <td>NYSE:RRTLc1</td>
+      <td>2007-10-31 08:00:00</td>
+      <td>0.10</td>
+      <td>0.09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>NaN</td>
+      <td>0.03</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>76.28</td>
+      <td>13.97</td>
+      <td>139.0</td>
+      <td>8.046637e+09</td>
+      <td>1.547430e+08</td>
+      <td>3.670499e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>53.05</td>
+      <td>102226.0</td>
+      <td>76</td>
+      <td>79</td>
+      <td>72</td>
+      <td>92</td>
+      <td>89</td>
+      <td>82</td>
+      <td>1.16</td>
+      <td>99971.16</td>
+      <td>1.02</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>367.16</td>
+      <td>53.50</td>
+      <td>-0.84</td>
+      <td>43.00</td>
+      <td>23.37</td>
+      <td>1.90</td>
+      <td>0.88</td>
+      <td>0.95</td>
+      <td>4.22</td>
+      <td>6.74</td>
+      <td>6.74</td>
+      <td>5.41</td>
+      <td>5.68</td>
+      <td>51.69</td>
+      <td>2.63</td>
+      <td>51.03</td>
+      <td>3.96</td>
+      <td>50.43</td>
+      <td>5.19</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>1072226</td>
+      <td>SHLG</td>
+      <td>Siemens Healthineers AG</td>
+      <td>Xetra</td>
+      <td>Healthcare</td>
+      <td>Medical Devices</td>
+      <td>Germany</td>
+      <td>SHL.DE</td>
+      <td>Xetra:SHLG</td>
+      <td>2018-04-12 07:00:00</td>
+      <td>0.08</td>
+      <td>0.02</td>
+      <td>NaN</td>
+      <td>0.07</td>
+      <td>-0.07</td>
+      <td>0.10</td>
+      <td>0.31</td>
+      <td>NaN</td>
+      <td>0.14</td>
+      <td>NaN</td>
+      <td>0.05</td>
+      <td>75.35</td>
+      <td>10.80</td>
+      <td>495.0</td>
+      <td>6.309420e+10</td>
+      <td>1.122670e+09</td>
+      <td>2.751900e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>57.08</td>
+      <td>557131.0</td>
+      <td>56</td>
+      <td>58</td>
+      <td>65</td>
+      <td>61</td>
+      <td>45</td>
+      <td>7</td>
+      <td>0.91</td>
+      <td>800972.04</td>
+      <td>0.70</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>343.57</td>
+      <td>67.66</td>
+      <td>-15.64</td>
+      <td>45.17</td>
+      <td>26.37</td>
+      <td>2.54</td>
+      <td>1.39</td>
+      <td>2.26</td>
+      <td>3.03</td>
+      <td>0.78</td>
+      <td>-3.97</td>
+      <td>-2.76</td>
+      <td>19.04</td>
+      <td>56.05</td>
+      <td>1.84</td>
+      <td>55.84</td>
+      <td>2.22</td>
+      <td>55.40</td>
+      <td>3.03</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>23018</td>
+      <td>FIEG</td>
+      <td>Fielmann AG</td>
+      <td>Xetra</td>
+      <td>Healthcare</td>
+      <td>Medical Instruments &amp; Supplies</td>
+      <td>Germany</td>
+      <td>FIE.F</td>
+      <td>Xetra:FIEG</td>
+      <td>2000-01-03 07:00:00</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.14</td>
+      <td>0.10</td>
+      <td>-0.40</td>
+      <td>-0.06</td>
+      <td>0.16</td>
+      <td>0.18</td>
+      <td>71.64</td>
+      <td>10.61</td>
+      <td>167.0</td>
+      <td>4.258609e+09</td>
+      <td>8.396200e+07</td>
+      <td>2.502002e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>51.70</td>
+      <td>36446.0</td>
+      <td>69</td>
+      <td>50</td>
+      <td>38</td>
+      <td>37</td>
+      <td>24</td>
+      <td>51</td>
+      <td>0.80</td>
+      <td>74785.32</td>
+      <td>0.49</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>334.56</td>
+      <td>67.85</td>
+      <td>-23.80</td>
+      <td>47.64</td>
+      <td>8.52</td>
+      <td>1.94</td>
+      <td>0.98</td>
+      <td>1.67</td>
+      <td>1.47</td>
+      <td>3.86</td>
+      <td>-7.10</td>
+      <td>-9.30</td>
+      <td>-23.24</td>
+      <td>50.84</td>
+      <td>1.69</td>
+      <td>50.68</td>
+      <td>2.02</td>
+      <td>51.42</td>
+      <td>0.55</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>10520</td>
+      <td>VOWG_p</td>
+      <td>Volkswagen AG VZO O.N.</td>
+      <td>Xetra</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Manufacturers</td>
+      <td>Germany</td>
+      <td>VOW3.DE</td>
+      <td>Xetra:VOWG_p</td>
+      <td>1998-07-22 07:00:00</td>
+      <td>-0.42</td>
+      <td>-0.43</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>-0.24</td>
+      <td>0.10</td>
+      <td>-0.06</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>-0.00</td>
+      <td>0.06</td>
+      <td>0.00</td>
+      <td>32.94</td>
+      <td>652.0</td>
+      <td>9.131431e+10</td>
+      <td>2.062050e+08</td>
+      <td>2.348268e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>155.10</td>
+      <td>824336.0</td>
+      <td>55</td>
+      <td>21</td>
+      <td>21</td>
+      <td>68</td>
+      <td>8</td>
+      <td>33</td>
+      <td>0.64</td>
+      <td>1611505.02</td>
+      <td>0.51</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>145.72</td>
+      <td>245.45</td>
+      <td>-36.81</td>
+      <td>131.30</td>
+      <td>18.13</td>
+      <td>3.01</td>
+      <td>4.75</td>
+      <td>1.37</td>
+      <td>2.25</td>
+      <td>0.77</td>
+      <td>-19.09</td>
+      <td>-16.98</td>
+      <td>-31.81</td>
+      <td>152.78</td>
+      <td>1.52</td>
+      <td>154.05</td>
+      <td>0.68</td>
+      <td>161.65</td>
+      <td>-4.05</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Ray</td>
+      <td>RSNHBP 1M</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+            </section>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+    </div>
+</footer>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bm/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+<script>
+        $(document).ready(function () {
+            $('#data').DataTable(
+                {
+                    "scrollX": true,
+                    "dom": 'Bfrtip',
+                    "buttons": [
+                        'copy', 'csv', 'excel', 'print'
+                    ]
+
+                }
+            );
+        });
+    </script>
+    
+</body>
+
+</html>

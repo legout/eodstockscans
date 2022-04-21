@@ -1,0 +1,5300 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.datatables.net/v/bm/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/sc-2.0.5/datatables.min.css" />
+
+</head >
+
+
+<body>
+    <section class="hero is-small is-dark">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <!-- <a class="navbar-item">
+                        
+                        <img src="data:image/svg+xml;base64,"
+                            alt="Logo">
+                       
+                    </a> -->
+                    <span class="navbar-burger" data-target="navbarMenuHeroB">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </div>
+                <div id="navbarMenuHeroB" class="navbar-menu">
+                    <div class="navbar-start">
+                        
+                        <a class="navbar-item" href="../../united_kingdom/market_monitor.html">
+                            
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-home"></i>
+                                    </span>
+                                    <span>Home</span>
+                                </span>
+                            </a>
+
+                            <div class="navbar-item has-dropdown is-hoverable has-background-dark">
+                                <a class="navbar-link">
+                                    <span>Choose Market</span>
+                                </a>
+
+                                <div class="navbar-dropdown has-background-dark">
+                                    
+                                    <a class="navbar-item" href="../../australia/market_monitor.html">
+                                        <span>Australia</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../canada/market_monitor.html">
+                                        <span>Canada</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../germany/market_monitor.html">
+                                        <span>Germany</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../hong_kong/market_monitor.html">
+                                        <span>Hong Kong</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../japan/market_monitor.html">
+                                        <span>Japan</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../nordic_markets/market_monitor.html">
+                                        <span>Nordic Markets</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_kingdom/market_monitor.html">
+                                        <span>United Kingdom</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_states/market_monitor.html">
+                                        <span>United States</span>
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                    </div>
+                    <div class="navbar-end"></div>
+                    <span class="navbar-item">
+                        <a class="button is-info is-light" href="https://twitter.com/LignoL23">
+                            <span class="icon">
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                            <span>Twitter</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <a class="button  is-success is-light" href="https://www.paypal.com/paypalme/volkerlorrmann/5">
+                            <span class="icon">
+                                <i class="fab fa-paypal"></i>
+                            </span>
+                            <span>paypal.me</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+                        <script
+                            type='text/javascript'>kofiwidget2.init('Support me', '#d6d6d6', 'W7W0ACJPB'); kofiwidget2.draw();</script>
+                    </span>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="columns is-multiline is-mobile is-centered">
+                <div class="column is-1">
+                    <img src="data:image/svg+xml;base64," alt="Logo">
+                </div>
+                <div class="column is-4">
+                    <p class="title">
+                        EOD Stockmarket Scans
+                    </p>
+                    <p class="subtitle">
+                        Fintwits most popular stockmarket scans
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+            <div class="container">
+                <ul>
+                    
+                    <li class="is-active">
+                        <a href="../MeMyselfAndI/Top Gainers From Open_result_table.html"> Results </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../MeMyselfAndI/Top Gainers From Open_minicharts.html"> Minicharts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../MeMyselfAndI/Top Gainers From Open_charts.html"> Charts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../MeMyselfAndI/Top Gainers From Open_criteria.html"> Criteria </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+</section>
+    <div class="columns is-centered">
+        <div class="column is-2">
+            <div class="box has-background-light my-0 mx-2 p-auto">
+    <aside class="menu">
+        <p class="menu-label has-text-dark">
+            Market Monitor
+        </p>
+        <ul class="menu-list">
+            <li><a class="has-text-grey-light">New Highs/Lows</a></li>
+            <li><a class="has-text-grey-light">Breadth</a></li>
+            <li><a class="has-text-grey-light">Above/Below SMA</a></li>
+            <li><a class="has-text-grey-light">Sectors</a></li>
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Kristjan Kullamägi
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/Kristjan Kullamägi/Biggest Gainers 1M_minicharts.html">
+                        Biggest Gainers 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/Kristjan Kullamägi/Biggest Gainers 3M_minicharts.html">
+                        Biggest Gainers 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/Kristjan Kullamägi/Biggest Gainers 6M_minicharts.html">
+                        Biggest Gainers 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/Kristjan Kullamägi/Biggest Gainers 12M_minicharts.html">
+                        Biggest Gainers 12M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/Kristjan Kullamägi/EP with Growth_minicharts.html">
+                        EP with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/Kristjan Kullamägi/EP_minicharts.html">
+                        EP
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/Kristjan Kullamägi/High Trend Intensity_minicharts.html">
+                        High Trend Intensity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/Kristjan Kullamägi/Small Stock Momo_minicharts.html">
+                        Small Stock Momo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/Kristjan Kullamägi/Momentum_minicharts.html">
+                        Momentum
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Brad Schulz
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/Brad Schulz/Pocket Pivot_minicharts.html">
+                        Pocket Pivot
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Stockbee
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/Stockbee/4% Gainers_minicharts.html">
+                        4% Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/Stockbee/Combo_minicharts.html">
+                        Combo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/Stockbee/Ants_minicharts.html">
+                        Ants
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/Stockbee/Breakout 1M Base_minicharts.html">
+                        Breakout 1M Base
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/Stockbee/Breakout 3M Base_minicharts.html">
+                        Breakout 3M Base
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Leif Soreide
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/Leif Soreide/HTF_minicharts.html">
+                        HTF
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Blake Davis
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/Blake Davis/Strength_minicharts.html">
+                        Strength
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ben
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/Ben/Power of 3_minicharts.html">
+                        Power of 3
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/Ben/Velocity_minicharts.html">
+                        Velocity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/Ben/Focus_minicharts.html">
+                        Focus
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ray
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/Ray/RSNHBP 5D_minicharts.html">
+                        RSNHBP 5D
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/Ray/RSNHBP 1M_minicharts.html">
+                        RSNHBP 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/Ray/RSNHBP 3M_minicharts.html">
+                        RSNHBP 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/Ray/RSNHBP 6M_minicharts.html">
+                        RSNHBP 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/Ray/RSNHBP 12M_minicharts.html">
+                        RSNHBP 12M
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Mark Minvervini
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/Mark Minvervini/Trend Template_minicharts.html">
+                        Trend Template
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            MeMyselfAndI
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="is-active"
+                        href="../../united_kingdom/MeMyselfAndI/Top Gainers From Open_minicharts.html">
+                        Top Gainers From Open
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/MeMyselfAndI/Top Gainers_minicharts.html">
+                        Top Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/MeMyselfAndI/Volume Gainers_minicharts.html">
+                        Volume Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/MeMyselfAndI/Insiders_minicharts.html">
+                        Insiders
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/MeMyselfAndI/Darvas Scan_minicharts.html">
+                        Darvas Scan
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/MeMyselfAndI/Darvas Scan with Growth_minicharts.html">
+                        Darvas Scan with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/MeMyselfAndI/52W High_minicharts.html">
+                        52W High
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_kingdom/MeMyselfAndI/Quite and Tight_minicharts.html">
+                        Quite and Tight
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+    </aside>
+</div>
+        </div>
+        <div class="column is-10">
+            <section class="block my-6">
+                <div class="columns ">
+                    <div class="column is-5 has-text-left">
+                        <h1 class="title is-4">Top Gainers From Open @ United Kingdom</h1>
+                        <h2 class="subtitle is-6">2022-04-20</h2>
+                    </div>
+                    <div class="column has-text-right mr-5">
+                        <div class="media">
+                           
+                            <div class="media-content">
+                                <p class="title is-5">MeMyselfAndI</p>
+                                <p class="subtitle is-6"><a class="has-text-grey-light" href="https://twitter.com/LignoL23">@LignoL23</a></p>
+                            </div>
+                            <div class="media-right">
+                                <figure class="image is-48x48">
+                                    <img src="https://unavatar.io/twitter/LignoL23" alt="Placeholder image">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="my-auto mr-5">
+                
+    <div class="table-container">
+        <table border="1" class="dataframe table is-striped no-wrap" id="data" style="width:100%; font-size:85%">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>symbol_id</th>
+      <th>symbol</th>
+      <th>name</th>
+      <th>exchange</th>
+      <th>sector</th>
+      <th>industry</th>
+      <th>country</th>
+      <th>yahoo_symbol</th>
+      <th>forexpros_symbol</th>
+      <th>IPO Date</th>
+      <th>EPS Growth Q</th>
+      <th>EPS Growth Y</th>
+      <th>EPS Growth FQ</th>
+      <th>EPS Growth FY</th>
+      <th>EPS Growth FQ1</th>
+      <th>EPS Growth FY1</th>
+      <th>Rev Growth Q</th>
+      <th>Rev Growth FQ</th>
+      <th>Rev Growth FY</th>
+      <th>Rev Growth FQ1</th>
+      <th>Rev Growth FY1</th>
+      <th>Insiders %</th>
+      <th>Institutions %</th>
+      <th>Institutions No.</th>
+      <th>Market Cap</th>
+      <th>Shares Outstanding</th>
+      <th>Shares Float</th>
+      <th>Shares Short</th>
+      <th>Short Ratio</th>
+      <th>Net Insider Trading %</th>
+      <th>close</th>
+      <th>volume</th>
+      <th>1m RS</th>
+      <th>3m RS</th>
+      <th>RS</th>
+      <th>Industry 1m RS</th>
+      <th>Industry 3m RS</th>
+      <th>Industry RS</th>
+      <th>UD Ratio</th>
+      <th>50d avg Volume</th>
+      <th>rel Volume</th>
+      <th>Pocket Pivot</th>
+      <th>1w Pocket Pivots</th>
+      <th>1m Pocket Pivots</th>
+      <th>Rocket Ratio</th>
+      <th>52w High</th>
+      <th>% below 52w High</th>
+      <th>52w Low</th>
+      <th>% above 52w Low</th>
+      <th>adr(20)</th>
+      <th>atr(14)</th>
+      <th>roc</th>
+      <th>roc(5)</th>
+      <th>roc(21)</th>
+      <th>roc(63)</th>
+      <th>roc(126)</th>
+      <th>roc(252)</th>
+      <th>ema(9)</th>
+      <th>% from 9d ema</th>
+      <th>ema(21)</th>
+      <th>% from 21d ema</th>
+      <th>sma(50)</th>
+      <th>% from 50d sma</th>
+      <th>market</th>
+      <th>date</th>
+      <th>group_name</th>
+      <th>scan_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>989683</td>
+      <td>0QWC</td>
+      <td>Ams AG</td>
+      <td>London</td>
+      <td>Technology</td>
+      <td>Semiconductors</td>
+      <td>United Kingdom</td>
+      <td>AMS.SW</td>
+      <td>London:0QWC</td>
+      <td>2004-05-17 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.50</td>
+      <td>0.06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.01</td>
+      <td>0.00</td>
+      <td>52.05</td>
+      <td>257.0</td>
+      <td>4.263274e+09</td>
+      <td>2.606710e+08</td>
+      <td>2.473533e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>20.60</td>
+      <td>188310.0</td>
+      <td>44</td>
+      <td>66</td>
+      <td>64</td>
+      <td>66</td>
+      <td>71</td>
+      <td>73</td>
+      <td>NaN</td>
+      <td>395092.48</td>
+      <td>0.48</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>626.06</td>
+      <td>20.60</td>
+      <td>0.00</td>
+      <td>1.86</td>
+      <td>1007.53</td>
+      <td>NaN</td>
+      <td>7.94</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>20.60</td>
+      <td>0.00</td>
+      <td>20.60</td>
+      <td>0.00</td>
+      <td>20.60</td>
+      <td>0.00</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1178435</td>
+      <td>LST</td>
+      <td>Light Science Technologies Holdings PLC</td>
+      <td>London</td>
+      <td>Technology</td>
+      <td>Electronic Components</td>
+      <td>United Kingdom</td>
+      <td>LST.L</td>
+      <td>London:LST</td>
+      <td>2021-10-15 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>67.35</td>
+      <td>5.74</td>
+      <td>1.0</td>
+      <td>3.221775e+07</td>
+      <td>1.741500e+08</td>
+      <td>1.737843e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>12.50</td>
+      <td>494551.0</td>
+      <td>34</td>
+      <td>9</td>
+      <td>39</td>
+      <td>12</td>
+      <td>27</td>
+      <td>28</td>
+      <td>0.87</td>
+      <td>137393.48</td>
+      <td>3.60</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>1264.87</td>
+      <td>32.00</td>
+      <td>-60.94</td>
+      <td>10.00</td>
+      <td>25.00</td>
+      <td>NaN</td>
+      <td>0.78</td>
+      <td>19.05</td>
+      <td>11.11</td>
+      <td>-1.96</td>
+      <td>-28.57</td>
+      <td>2.04</td>
+      <td>NaN</td>
+      <td>11.28</td>
+      <td>10.84</td>
+      <td>11.65</td>
+      <td>7.29</td>
+      <td>12.86</td>
+      <td>-2.80</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>27763</td>
+      <td>SYMU</td>
+      <td>Symphony Environmental Technologies PLC</td>
+      <td>London</td>
+      <td>Consumer Cyclical</td>
+      <td>Packaging &amp; Containers</td>
+      <td>United Kingdom</td>
+      <td>SYM.L</td>
+      <td>London:SYMU</td>
+      <td>2001-11-30 08:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.03</td>
+      <td>0.06</td>
+      <td>0.06</td>
+      <td>0.06</td>
+      <td>0.08</td>
+      <td>62.07</td>
+      <td>1.76</td>
+      <td>3.0</td>
+      <td>4.750152e+07</td>
+      <td>1.792510e+08</td>
+      <td>1.104059e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>20.50</td>
+      <td>713404.0</td>
+      <td>94</td>
+      <td>34</td>
+      <td>36</td>
+      <td>74</td>
+      <td>82</td>
+      <td>80</td>
+      <td>0.75</td>
+      <td>245281.76</td>
+      <td>2.91</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>450.12</td>
+      <td>28.92</td>
+      <td>-29.13</td>
+      <td>13.66</td>
+      <td>50.07</td>
+      <td>8.16</td>
+      <td>1.45</td>
+      <td>17.14</td>
+      <td>20.59</td>
+      <td>24.24</td>
+      <td>-11.83</td>
+      <td>-21.15</td>
+      <td>NaN</td>
+      <td>17.91</td>
+      <td>14.48</td>
+      <td>17.46</td>
+      <td>17.41</td>
+      <td>17.92</td>
+      <td>14.37</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>32421</td>
+      <td>VLX</td>
+      <td>Volex Plc</td>
+      <td>London</td>
+      <td>Industrials</td>
+      <td>Electrical Equipment &amp; Parts</td>
+      <td>United Kingdom</td>
+      <td>VLX.L</td>
+      <td>London:VLX</td>
+      <td>1988-07-01 07:00:00</td>
+      <td>0.11</td>
+      <td>0.08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.45</td>
+      <td>0.10</td>
+      <td>0.10</td>
+      <td>0.10</td>
+      <td>0.05</td>
+      <td>38.56</td>
+      <td>46.12</td>
+      <td>79.0</td>
+      <td>5.055200e+08</td>
+      <td>1.587190e+08</td>
+      <td>1.152650e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>297.00</td>
+      <td>1438598.0</td>
+      <td>61</td>
+      <td>70</td>
+      <td>39</td>
+      <td>69</td>
+      <td>67</td>
+      <td>35</td>
+      <td>0.83</td>
+      <td>563132.30</td>
+      <td>2.55</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>204.69</td>
+      <td>494.70</td>
+      <td>-39.96</td>
+      <td>222.20</td>
+      <td>33.66</td>
+      <td>5.65</td>
+      <td>15.69</td>
+      <td>20.24</td>
+      <td>21.72</td>
+      <td>3.30</td>
+      <td>1.71</td>
+      <td>-34.58</td>
+      <td>NaN</td>
+      <td>261.67</td>
+      <td>13.50</td>
+      <td>263.32</td>
+      <td>12.79</td>
+      <td>267.59</td>
+      <td>10.99</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>28261</td>
+      <td>DOTD</td>
+      <td>Dotdigital Group Plc</td>
+      <td>London</td>
+      <td>Technology</td>
+      <td>Software—Application</td>
+      <td>United Kingdom</td>
+      <td>DOTD.L</td>
+      <td>London:DOTD</td>
+      <td>2011-03-29 07:00:00</td>
+      <td>-0.14</td>
+      <td>-0.14</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>0.23</td>
+      <td>NaN</td>
+      <td>0.13</td>
+      <td>NaN</td>
+      <td>0.14</td>
+      <td>11.04</td>
+      <td>52.76</td>
+      <td>55.0</td>
+      <td>5.079243e+08</td>
+      <td>2.987790e+08</td>
+      <td>2.358029e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>95.50</td>
+      <td>783867.0</td>
+      <td>80</td>
+      <td>2</td>
+      <td>2</td>
+      <td>77</td>
+      <td>12</td>
+      <td>12</td>
+      <td>0.68</td>
+      <td>1329693.12</td>
+      <td>0.59</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>177.34</td>
+      <td>295.00</td>
+      <td>-67.63</td>
+      <td>52.60</td>
+      <td>81.56</td>
+      <td>7.73</td>
+      <td>6.40</td>
+      <td>12.35</td>
+      <td>14.51</td>
+      <td>9.14</td>
+      <td>-47.76</td>
+      <td>-62.10</td>
+      <td>NaN</td>
+      <td>87.85</td>
+      <td>8.71</td>
+      <td>88.96</td>
+      <td>7.36</td>
+      <td>104.28</td>
+      <td>-8.42</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>28111</td>
+      <td>FCRM</td>
+      <td>Fulcrum Utility Services Ltd</td>
+      <td>London</td>
+      <td>Industrials</td>
+      <td>Engineering &amp; Construction</td>
+      <td>United Kingdom</td>
+      <td>FCRM.L</td>
+      <td>London:FCRM</td>
+      <td>2009-12-24 09:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.00</td>
+      <td>0.46</td>
+      <td>NaN</td>
+      <td>0.18</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>42.72</td>
+      <td>26.93</td>
+      <td>8.0</td>
+      <td>2.970828e+07</td>
+      <td>2.221180e+08</td>
+      <td>1.618907e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>10.38</td>
+      <td>322013.0</td>
+      <td>92</td>
+      <td>19</td>
+      <td>6</td>
+      <td>94</td>
+      <td>80</td>
+      <td>72</td>
+      <td>0.55</td>
+      <td>293113.46</td>
+      <td>1.10</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>552.31</td>
+      <td>37.19</td>
+      <td>-72.10</td>
+      <td>7.37</td>
+      <td>40.80</td>
+      <td>NaN</td>
+      <td>0.57</td>
+      <td>14.01</td>
+      <td>25.76</td>
+      <td>19.94</td>
+      <td>-19.57</td>
+      <td>-45.39</td>
+      <td>NaN</td>
+      <td>8.92</td>
+      <td>16.35</td>
+      <td>8.68</td>
+      <td>19.57</td>
+      <td>9.07</td>
+      <td>14.41</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>991232</td>
+      <td>MILA</td>
+      <td>Mila Resources PLC</td>
+      <td>London</td>
+      <td>Financial Services</td>
+      <td>Asset Management</td>
+      <td>United Kingdom</td>
+      <td>MILA.L</td>
+      <td>London:MILA</td>
+      <td>2016-10-07 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>34.90</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>7.351944e+06</td>
+      <td>3.063310e+08</td>
+      <td>3.006088e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>4.45</td>
+      <td>14441539.0</td>
+      <td>99</td>
+      <td>98</td>
+      <td>98</td>
+      <td>88</td>
+      <td>89</td>
+      <td>86</td>
+      <td>2.80</td>
+      <td>2722665.04</td>
+      <td>5.30</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>11.0</td>
+      <td>110.41</td>
+      <td>4.59</td>
+      <td>-3.05</td>
+      <td>2.00</td>
+      <td>122.50</td>
+      <td>NaN</td>
+      <td>0.40</td>
+      <td>12.66</td>
+      <td>34.85</td>
+      <td>93.48</td>
+      <td>78.00</td>
+      <td>50.85</td>
+      <td>NaN</td>
+      <td>3.61</td>
+      <td>23.23</td>
+      <td>3.20</td>
+      <td>38.87</td>
+      <td>2.67</td>
+      <td>66.48</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>6884</td>
+      <td>WINEW</td>
+      <td>Naked Wines PLC</td>
+      <td>London</td>
+      <td>Consumer Defensive</td>
+      <td>Beverages—Wineries &amp; Distilleries</td>
+      <td>United Kingdom</td>
+      <td>WINE.L</td>
+      <td>London:WINEW</td>
+      <td>1996-11-11 08:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.01</td>
+      <td>0.07</td>
+      <td>0.07</td>
+      <td>0.07</td>
+      <td>0.07</td>
+      <td>21.81</td>
+      <td>55.21</td>
+      <td>86.0</td>
+      <td>4.310875e+08</td>
+      <td>7.343910e+07</td>
+      <td>6.202263e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>385.00</td>
+      <td>561506.0</td>
+      <td>66</td>
+      <td>5</td>
+      <td>4</td>
+      <td>82</td>
+      <td>10</td>
+      <td>18</td>
+      <td>0.78</td>
+      <td>253542.94</td>
+      <td>2.21</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>244.62</td>
+      <td>899.00</td>
+      <td>-57.17</td>
+      <td>323.41</td>
+      <td>19.04</td>
+      <td>6.36</td>
+      <td>26.10</td>
+      <td>16.74</td>
+      <td>6.35</td>
+      <td>4.48</td>
+      <td>-35.19</td>
+      <td>-44.20</td>
+      <td>NaN</td>
+      <td>360.27</td>
+      <td>6.86</td>
+      <td>366.14</td>
+      <td>5.15</td>
+      <td>389.12</td>
+      <td>-1.06</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>994717</td>
+      <td>SFOR</td>
+      <td>S4 Capital PLC</td>
+      <td>London</td>
+      <td>Communication Services</td>
+      <td>Advertising Agencies</td>
+      <td>United Kingdom</td>
+      <td>SFOR.L</td>
+      <td>London:SFOR</td>
+      <td>2016-12-29 08:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.98</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>34.88</td>
+      <td>48.71</td>
+      <td>122.0</td>
+      <td>3.045039e+09</td>
+      <td>5.556640e+08</td>
+      <td>3.175992e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>336.20</td>
+      <td>4775669.0</td>
+      <td>1</td>
+      <td>5</td>
+      <td>3</td>
+      <td>54</td>
+      <td>40</td>
+      <td>39</td>
+      <td>0.70</td>
+      <td>2608550.22</td>
+      <td>1.83</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>121.75</td>
+      <td>878.00</td>
+      <td>-61.71</td>
+      <td>265.00</td>
+      <td>26.87</td>
+      <td>11.28</td>
+      <td>42.82</td>
+      <td>11.84</td>
+      <td>4.93</td>
+      <td>-23.68</td>
+      <td>-35.10</td>
+      <td>-57.44</td>
+      <td>NaN</td>
+      <td>328.45</td>
+      <td>2.36</td>
+      <td>355.41</td>
+      <td>-5.41</td>
+      <td>416.78</td>
+      <td>-19.33</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>961864</td>
+      <td>HMI</td>
+      <td>Harvest Minerals Ltd</td>
+      <td>London</td>
+      <td>Basic Materials</td>
+      <td>Agricultural Inputs</td>
+      <td>United Kingdom</td>
+      <td>HMI.L</td>
+      <td>London:HMI</td>
+      <td>2015-09-07 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.64</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>44.12</td>
+      <td>7.91</td>
+      <td>2.0</td>
+      <td>9.553034e+06</td>
+      <td>1.891690e+08</td>
+      <td>1.770942e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>17.80</td>
+      <td>2435323.0</td>
+      <td>96</td>
+      <td>99</td>
+      <td>99</td>
+      <td>74</td>
+      <td>82</td>
+      <td>80</td>
+      <td>2.02</td>
+      <td>1690531.06</td>
+      <td>1.44</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>104.76</td>
+      <td>18.50</td>
+      <td>-3.78</td>
+      <td>2.72</td>
+      <td>554.41</td>
+      <td>NaN</td>
+      <td>1.24</td>
+      <td>9.88</td>
+      <td>18.27</td>
+      <td>29.45</td>
+      <td>220.72</td>
+      <td>387.67</td>
+      <td>NaN</td>
+      <td>16.05</td>
+      <td>10.93</td>
+      <td>15.18</td>
+      <td>17.23</td>
+      <td>12.10</td>
+      <td>47.15</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1184882</td>
+      <td>ELTA_old</td>
+      <td>Unbound Group PLC</td>
+      <td>London</td>
+      <td>Consumer Cyclical</td>
+      <td>Internet Retail</td>
+      <td>United Kingdom</td>
+      <td>UBG.L</td>
+      <td>London:ELTA_old</td>
+      <td>1976-02-27 08:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.08</td>
+      <td>NaN</td>
+      <td>-0.32</td>
+      <td>-0.32</td>
+      <td>0.00</td>
+      <td>0.17</td>
+      <td>26.58</td>
+      <td>32.02</td>
+      <td>25.0</td>
+      <td>2.696067e+07</td>
+      <td>4.225810e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>39.50</td>
+      <td>176739.0</td>
+      <td>73</td>
+      <td>4</td>
+      <td>2</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.43</td>
+      <td>150016.06</td>
+      <td>1.18</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>122.47</td>
+      <td>-67.75</td>
+      <td>34.00</td>
+      <td>16.18</td>
+      <td>NaN</td>
+      <td>1.73</td>
+      <td>9.72</td>
+      <td>11.27</td>
+      <td>6.76</td>
+      <td>-38.85</td>
+      <td>-62.52</td>
+      <td>NaN</td>
+      <td>36.57</td>
+      <td>8.02</td>
+      <td>37.33</td>
+      <td>5.82</td>
+      <td>43.00</td>
+      <td>-8.13</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>28409</td>
+      <td>STCM</td>
+      <td>Steppe Cement</td>
+      <td>London</td>
+      <td>Basic Materials</td>
+      <td>Building Materials</td>
+      <td>United Kingdom</td>
+      <td>STCM.L</td>
+      <td>London:STCM</td>
+      <td>2005-09-15 07:00:00</td>
+      <td>0.52</td>
+      <td>0.49</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.17</td>
+      <td>0.17</td>
+      <td>0.17</td>
+      <td>0.17</td>
+      <td>0.06</td>
+      <td>54.83</td>
+      <td>26.78</td>
+      <td>5.0</td>
+      <td>8.650500e+07</td>
+      <td>2.190000e+08</td>
+      <td>1.244906e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>34.50</td>
+      <td>1389958.0</td>
+      <td>93</td>
+      <td>22</td>
+      <td>19</td>
+      <td>10</td>
+      <td>16</td>
+      <td>17</td>
+      <td>1.26</td>
+      <td>362938.54</td>
+      <td>3.83</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>343.01</td>
+      <td>62.00</td>
+      <td>-44.35</td>
+      <td>24.12</td>
+      <td>43.01</td>
+      <td>6.78</td>
+      <td>2.33</td>
+      <td>9.52</td>
+      <td>6.15</td>
+      <td>23.21</td>
+      <td>-17.86</td>
+      <td>-23.33</td>
+      <td>NaN</td>
+      <td>31.70</td>
+      <td>8.85</td>
+      <td>30.85</td>
+      <td>11.84</td>
+      <td>32.50</td>
+      <td>6.15</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>1173157</td>
+      <td>DARK</td>
+      <td>Darktrace PLC</td>
+      <td>London</td>
+      <td>Technology</td>
+      <td>Software—Infrastructure</td>
+      <td>United Kingdom</td>
+      <td>DARK.L</td>
+      <td>London:DARK</td>
+      <td>2021-04-30 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.81</td>
+      <td>NaN</td>
+      <td>0.33</td>
+      <td>0.43</td>
+      <td>0.37</td>
+      <td>0.37</td>
+      <td>NaN</td>
+      <td>0.32</td>
+      <td>70.54</td>
+      <td>17.83</td>
+      <td>84.0</td>
+      <td>2.727925e+09</td>
+      <td>6.969660e+08</td>
+      <td>1.834962e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>411.20</td>
+      <td>3019537.0</td>
+      <td>13</td>
+      <td>62</td>
+      <td>15</td>
+      <td>77</td>
+      <td>12</td>
+      <td>12</td>
+      <td>1.24</td>
+      <td>3548904.08</td>
+      <td>0.85</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>51.71</td>
+      <td>1003.00</td>
+      <td>-59.00</td>
+      <td>250.00</td>
+      <td>64.48</td>
+      <td>6.98</td>
+      <td>32.77</td>
+      <td>7.03</td>
+      <td>-7.89</td>
+      <td>-8.38</td>
+      <td>-1.39</td>
+      <td>-55.55</td>
+      <td>NaN</td>
+      <td>412.24</td>
+      <td>-0.25</td>
+      <td>425.52</td>
+      <td>-3.37</td>
+      <td>423.40</td>
+      <td>-2.88</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>28540</td>
+      <td>RQE</td>
+      <td>ReNeuron Group PLC</td>
+      <td>London</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>United Kingdom</td>
+      <td>RENE.L</td>
+      <td>London:RQE</td>
+      <td>2005-08-12 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.42</td>
+      <td>38.07</td>
+      <td>38.07</td>
+      <td>38.07</td>
+      <td>-0.79</td>
+      <td>25.74</td>
+      <td>40.16</td>
+      <td>31.0</td>
+      <td>4.936002e+07</td>
+      <td>5.706360e+07</td>
+      <td>3.340857e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>38.00</td>
+      <td>156343.0</td>
+      <td>92</td>
+      <td>52</td>
+      <td>7</td>
+      <td>56</td>
+      <td>15</td>
+      <td>4</td>
+      <td>1.54</td>
+      <td>320568.82</td>
+      <td>0.49</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>104.22</td>
+      <td>153.78</td>
+      <td>-75.29</td>
+      <td>25.00</td>
+      <td>52.00</td>
+      <td>6.81</td>
+      <td>2.29</td>
+      <td>8.57</td>
+      <td>0.00</td>
+      <td>20.63</td>
+      <td>-5.00</td>
+      <td>-67.93</td>
+      <td>NaN</td>
+      <td>35.96</td>
+      <td>5.67</td>
+      <td>34.42</td>
+      <td>10.39</td>
+      <td>32.84</td>
+      <td>15.73</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>6842</td>
+      <td>SFR</td>
+      <td>Severfield PLC</td>
+      <td>London</td>
+      <td>Industrials</td>
+      <td>Engineering &amp; Construction</td>
+      <td>United Kingdom</td>
+      <td>SFR.L</td>
+      <td>London:SFR</td>
+      <td>1988-07-01 07:00:00</td>
+      <td>-0.01</td>
+      <td>-0.02</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.05</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>0.03</td>
+      <td>2.96</td>
+      <td>78.68</td>
+      <td>59.0</td>
+      <td>2.122299e+08</td>
+      <td>3.093730e+08</td>
+      <td>3.015889e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>70.00</td>
+      <td>639466.0</td>
+      <td>70</td>
+      <td>73</td>
+      <td>61</td>
+      <td>17</td>
+      <td>38</td>
+      <td>63</td>
+      <td>0.35</td>
+      <td>239176.74</td>
+      <td>2.67</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1260.95</td>
+      <td>84.84</td>
+      <td>-17.49</td>
+      <td>60.05</td>
+      <td>16.58</td>
+      <td>4.38</td>
+      <td>3.16</td>
+      <td>9.20</td>
+      <td>11.11</td>
+      <td>5.42</td>
+      <td>2.94</td>
+      <td>-1.13</td>
+      <td>NaN</td>
+      <td>64.83</td>
+      <td>7.97</td>
+      <td>65.04</td>
+      <td>7.63</td>
+      <td>67.09</td>
+      <td>4.34</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>14115</td>
+      <td>SNR</td>
+      <td>Senior PLC</td>
+      <td>London</td>
+      <td>Industrials</td>
+      <td>Aerospace &amp; Defense</td>
+      <td>United Kingdom</td>
+      <td>SNR.L</td>
+      <td>London:SNR</td>
+      <td>1988-07-01 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.19</td>
+      <td>0.03</td>
+      <td>0.03</td>
+      <td>0.03</td>
+      <td>0.05</td>
+      <td>1.98</td>
+      <td>101.47</td>
+      <td>106.0</td>
+      <td>5.884435e+08</td>
+      <td>4.194180e+08</td>
+      <td>4.092218e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>132.00</td>
+      <td>185607.0</td>
+      <td>67</td>
+      <td>45</td>
+      <td>36</td>
+      <td>80</td>
+      <td>93</td>
+      <td>92</td>
+      <td>0.75</td>
+      <td>369634.00</td>
+      <td>0.50</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1107.10</td>
+      <td>186.71</td>
+      <td>-29.30</td>
+      <td>100.00</td>
+      <td>32.00</td>
+      <td>5.88</td>
+      <td>6.91</td>
+      <td>3.12</td>
+      <td>8.20</td>
+      <td>4.76</td>
+      <td>-7.69</td>
+      <td>-18.62</td>
+      <td>NaN</td>
+      <td>127.87</td>
+      <td>3.23</td>
+      <td>128.04</td>
+      <td>3.09</td>
+      <td>132.55</td>
+      <td>-0.41</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>1177819</td>
+      <td>PHLL</td>
+      <td>Petershill Partners PLC</td>
+      <td>London</td>
+      <td>Financial Services</td>
+      <td>Asset Management</td>
+      <td>United Kingdom</td>
+      <td>PHLL.L</td>
+      <td>London:PHLL</td>
+      <td>2021-09-28 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.05</td>
+      <td>87.36</td>
+      <td>26.0</td>
+      <td>2.903317e+09</td>
+      <td>1.156700e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>279.50</td>
+      <td>535864.0</td>
+      <td>86</td>
+      <td>90</td>
+      <td>69</td>
+      <td>40</td>
+      <td>51</td>
+      <td>49</td>
+      <td>3.53</td>
+      <td>972151.14</td>
+      <td>0.55</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>7.0</td>
+      <td>NaN</td>
+      <td>359.35</td>
+      <td>-22.22</td>
+      <td>183.20</td>
+      <td>52.57</td>
+      <td>3.93</td>
+      <td>9.78</td>
+      <td>5.67</td>
+      <td>7.50</td>
+      <td>13.39</td>
+      <td>19.19</td>
+      <td>-9.69</td>
+      <td>NaN</td>
+      <td>263.77</td>
+      <td>5.96</td>
+      <td>254.29</td>
+      <td>9.91</td>
+      <td>231.50</td>
+      <td>20.74</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>28339</td>
+      <td>FUM</td>
+      <td>Futura Medical</td>
+      <td>London</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>United Kingdom</td>
+      <td>FUM.L</td>
+      <td>London:FUM</td>
+      <td>2003-07-22 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>23.79</td>
+      <td>23.79</td>
+      <td>23.79</td>
+      <td>-0.89</td>
+      <td>42.33</td>
+      <td>37.72</td>
+      <td>21.0</td>
+      <td>1.062459e+08</td>
+      <td>2.871510e+08</td>
+      <td>2.401693e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>34.50</td>
+      <td>397468.0</td>
+      <td>97</td>
+      <td>76</td>
+      <td>72</td>
+      <td>93</td>
+      <td>73</td>
+      <td>100</td>
+      <td>1.37</td>
+      <td>498002.34</td>
+      <td>0.80</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>482.27</td>
+      <td>62.52</td>
+      <td>-44.82</td>
+      <td>24.00</td>
+      <td>43.75</td>
+      <td>7.85</td>
+      <td>2.25</td>
+      <td>8.15</td>
+      <td>21.48</td>
+      <td>34.24</td>
+      <td>4.55</td>
+      <td>11.29</td>
+      <td>NaN</td>
+      <td>30.33</td>
+      <td>13.77</td>
+      <td>28.41</td>
+      <td>21.46</td>
+      <td>27.58</td>
+      <td>25.07</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>1128674</td>
+      <td>NETW</td>
+      <td>Network International Holdings PLC</td>
+      <td>London</td>
+      <td>Technology</td>
+      <td>Information Technology Services</td>
+      <td>United Kingdom</td>
+      <td>NETW.L</td>
+      <td>London:NETW</td>
+      <td>2019-04-10 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.16</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>11.34</td>
+      <td>80.15</td>
+      <td>139.0</td>
+      <td>1.553691e+09</td>
+      <td>5.611020e+08</td>
+      <td>4.999830e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>250.40</td>
+      <td>430931.0</td>
+      <td>46</td>
+      <td>38</td>
+      <td>23</td>
+      <td>25</td>
+      <td>21</td>
+      <td>31</td>
+      <td>1.57</td>
+      <td>1279302.98</td>
+      <td>0.34</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>390.82</td>
+      <td>445.20</td>
+      <td>-43.76</td>
+      <td>152.90</td>
+      <td>63.77</td>
+      <td>6.68</td>
+      <td>17.12</td>
+      <td>2.88</td>
+      <td>0.24</td>
+      <td>0.20</td>
+      <td>-10.32</td>
+      <td>-27.42</td>
+      <td>NaN</td>
+      <td>252.81</td>
+      <td>-0.95</td>
+      <td>253.65</td>
+      <td>-1.28</td>
+      <td>237.30</td>
+      <td>5.52</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>940913</td>
+      <td>MCLSM</td>
+      <td>McColls Retail Group plc</td>
+      <td>London</td>
+      <td>Consumer Defensive</td>
+      <td>Grocery Stores</td>
+      <td>United Kingdom</td>
+      <td>MCLS.L</td>
+      <td>London:MCLSM</td>
+      <td>2014-02-25 08:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-6.30</td>
+      <td>NaN</td>
+      <td>1.22</td>
+      <td>-0.05</td>
+      <td>NaN</td>
+      <td>-0.08</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>31.11</td>
+      <td>66.00</td>
+      <td>21.0</td>
+      <td>3.174522e+07</td>
+      <td>2.803110e+08</td>
+      <td>8.465418e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>4.76</td>
+      <td>7417839.0</td>
+      <td>99</td>
+      <td>1</td>
+      <td>0</td>
+      <td>82</td>
+      <td>10</td>
+      <td>18</td>
+      <td>0.72</td>
+      <td>8199632.46</td>
+      <td>0.90</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>10.32</td>
+      <td>39.28</td>
+      <td>-87.89</td>
+      <td>1.06</td>
+      <td>348.58</td>
+      <td>36.49</td>
+      <td>0.99</td>
+      <td>9.94</td>
+      <td>69.82</td>
+      <td>138.35</td>
+      <td>-54.28</td>
+      <td>-77.36</td>
+      <td>NaN</td>
+      <td>3.58</td>
+      <td>32.64</td>
+      <td>3.14</td>
+      <td>51.31</td>
+      <td>3.74</td>
+      <td>27.10</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>28127</td>
+      <td>LVCG</td>
+      <td>Live Company Group PLC</td>
+      <td>London</td>
+      <td>Communication Services</td>
+      <td>Entertainment</td>
+      <td>United Kingdom</td>
+      <td>LVCG.L</td>
+      <td>London:LVCG</td>
+      <td>1994-08-04 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.36</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>61.24</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>4.928386e+06</td>
+      <td>1.471160e+08</td>
+      <td>9.678165e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>10.35</td>
+      <td>1637480.0</td>
+      <td>99</td>
+      <td>99</td>
+      <td>99</td>
+      <td>61</td>
+      <td>60</td>
+      <td>37</td>
+      <td>2.55</td>
+      <td>1515342.58</td>
+      <td>1.08</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>7.0</td>
+      <td>63.87</td>
+      <td>11.00</td>
+      <td>-5.91</td>
+      <td>2.86</td>
+      <td>262.52</td>
+      <td>NaN</td>
+      <td>0.93</td>
+      <td>6.92</td>
+      <td>16.29</td>
+      <td>88.18</td>
+      <td>187.50</td>
+      <td>191.55</td>
+      <td>NaN</td>
+      <td>8.93</td>
+      <td>15.93</td>
+      <td>7.79</td>
+      <td>32.82</td>
+      <td>5.99</td>
+      <td>72.92</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>28257</td>
+      <td>GDRG</td>
+      <td>Genedrive PLC</td>
+      <td>London</td>
+      <td>Healthcare</td>
+      <td>Diagnostics &amp; Research</td>
+      <td>United Kingdom</td>
+      <td>GDR.L</td>
+      <td>London:GDRG</td>
+      <td>2007-04-04 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.58</td>
+      <td>NaN</td>
+      <td>2.00</td>
+      <td>-0.23</td>
+      <td>NaN</td>
+      <td>11.15</td>
+      <td>NaN</td>
+      <td>0.72</td>
+      <td>34.71</td>
+      <td>4.43</td>
+      <td>7.0</td>
+      <td>3.358661e+07</td>
+      <td>9.227090e+07</td>
+      <td>6.235315e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>28.00</td>
+      <td>2813816.0</td>
+      <td>4</td>
+      <td>93</td>
+      <td>80</td>
+      <td>27</td>
+      <td>7</td>
+      <td>5</td>
+      <td>1.43</td>
+      <td>4472827.88</td>
+      <td>0.63</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>13.94</td>
+      <td>95.06</td>
+      <td>-70.54</td>
+      <td>10.00</td>
+      <td>180.00</td>
+      <td>17.27</td>
+      <td>4.18</td>
+      <td>8.53</td>
+      <td>-6.67</td>
+      <td>-15.15</td>
+      <td>27.27</td>
+      <td>29.63</td>
+      <td>NaN</td>
+      <td>28.83</td>
+      <td>-2.89</td>
+      <td>27.80</td>
+      <td>0.73</td>
+      <td>21.61</td>
+      <td>29.58</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>1072301</td>
+      <td>JTC</td>
+      <td>JTC PLC</td>
+      <td>London</td>
+      <td>Financial Services</td>
+      <td>Asset Management</td>
+      <td>United Kingdom</td>
+      <td>JTC.L</td>
+      <td>London:JTC</td>
+      <td>2018-03-14 08:00:00</td>
+      <td>2.70</td>
+      <td>2.44</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.25</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.26</td>
+      <td>12.24</td>
+      <td>70.65</td>
+      <td>78.0</td>
+      <td>1.307603e+09</td>
+      <td>1.475850e+08</td>
+      <td>1.116764e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>763.00</td>
+      <td>301152.0</td>
+      <td>16</td>
+      <td>53</td>
+      <td>69</td>
+      <td>40</td>
+      <td>51</td>
+      <td>49</td>
+      <td>0.50</td>
+      <td>436104.22</td>
+      <td>0.69</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>256.08</td>
+      <td>945.00</td>
+      <td>-19.26</td>
+      <td>452.50</td>
+      <td>68.62</td>
+      <td>4.38</td>
+      <td>33.46</td>
+      <td>7.01</td>
+      <td>-6.95</td>
+      <td>-7.40</td>
+      <td>-4.63</td>
+      <td>-5.80</td>
+      <td>NaN</td>
+      <td>791.86</td>
+      <td>-3.64</td>
+      <td>806.21</td>
+      <td>-5.36</td>
+      <td>791.70</td>
+      <td>-3.63</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>940890</td>
+      <td>HUR</td>
+      <td>Hurricane Energy plc</td>
+      <td>London</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>United Kingdom</td>
+      <td>HUR.L</td>
+      <td>London:HUR</td>
+      <td>2014-02-06 08:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.52</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>13.50</td>
+      <td>52.04</td>
+      <td>32.0</td>
+      <td>7.616910e+07</td>
+      <td>1.991870e+09</td>
+      <td>1.094174e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>10.78</td>
+      <td>10017000.0</td>
+      <td>94</td>
+      <td>99</td>
+      <td>99</td>
+      <td>97</td>
+      <td>97</td>
+      <td>96</td>
+      <td>1.37</td>
+      <td>17871392.00</td>
+      <td>0.56</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>61.22</td>
+      <td>12.37</td>
+      <td>-12.85</td>
+      <td>0.59</td>
+      <td>1727.12</td>
+      <td>12.46</td>
+      <td>1.12</td>
+      <td>2.86</td>
+      <td>0.94</td>
+      <td>24.12</td>
+      <td>148.39</td>
+      <td>147.82</td>
+      <td>NaN</td>
+      <td>10.68</td>
+      <td>0.91</td>
+      <td>10.18</td>
+      <td>5.86</td>
+      <td>8.66</td>
+      <td>24.43</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>948558</td>
+      <td>0H4N</td>
+      <td>Siemens Gamesa Renewable Energy SA</td>
+      <td>London</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>United Kingdom</td>
+      <td>SGRE.MC</td>
+      <td>London:0H4N</td>
+      <td>2002-01-02 08:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.21</td>
+      <td>NaN</td>
+      <td>7.67</td>
+      <td>-0.00</td>
+      <td>NaN</td>
+      <td>-0.03</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>67.07</td>
+      <td>19.58</td>
+      <td>359.0</td>
+      <td>1.366255e+10</td>
+      <td>6.800670e+08</td>
+      <td>2.232117e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>15.81</td>
+      <td>726266.0</td>
+      <td>6</td>
+      <td>29</td>
+      <td>20</td>
+      <td>69</td>
+      <td>67</td>
+      <td>35</td>
+      <td>0.66</td>
+      <td>314040.14</td>
+      <td>2.31</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>710.77</td>
+      <td>32.88</td>
+      <td>-51.92</td>
+      <td>14.57</td>
+      <td>8.51</td>
+      <td>NaN</td>
+      <td>0.80</td>
+      <td>2.80</td>
+      <td>-0.44</td>
+      <td>-12.84</td>
+      <td>-14.22</td>
+      <td>-23.55</td>
+      <td>NaN</td>
+      <td>15.65</td>
+      <td>1.04</td>
+      <td>16.15</td>
+      <td>-2.13</td>
+      <td>17.08</td>
+      <td>-7.45</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>976462</td>
+      <td>OSIO</td>
+      <td>Osirium Technologies PLC</td>
+      <td>London</td>
+      <td>Technology</td>
+      <td>Software—Infrastructure</td>
+      <td>United Kingdom</td>
+      <td>OSI.L</td>
+      <td>London:OSIO</td>
+      <td>2016-04-15 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.05</td>
+      <td>0.56</td>
+      <td>0.56</td>
+      <td>0.56</td>
+      <td>0.36</td>
+      <td>22.56</td>
+      <td>43.87</td>
+      <td>9.0</td>
+      <td>4.407300e+06</td>
+      <td>2.938200e+07</td>
+      <td>1.319725e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>15.00</td>
+      <td>1079645.0</td>
+      <td>99</td>
+      <td>91</td>
+      <td>54</td>
+      <td>77</td>
+      <td>12</td>
+      <td>12</td>
+      <td>2.88</td>
+      <td>2433311.38</td>
+      <td>0.44</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>5.42</td>
+      <td>26.98</td>
+      <td>-44.40</td>
+      <td>4.50</td>
+      <td>233.33</td>
+      <td>NaN</td>
+      <td>3.03</td>
+      <td>6.38</td>
+      <td>15.38</td>
+      <td>114.29</td>
+      <td>20.00</td>
+      <td>-23.08</td>
+      <td>NaN</td>
+      <td>13.87</td>
+      <td>8.13</td>
+      <td>11.81</td>
+      <td>27.04</td>
+      <td>8.19</td>
+      <td>83.08</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>976461</td>
+      <td>FORT</td>
+      <td>Forterra PLC</td>
+      <td>London</td>
+      <td>Basic Materials</td>
+      <td>Building Materials</td>
+      <td>United Kingdom</td>
+      <td>FORT.L</td>
+      <td>London:FORT</td>
+      <td>2016-04-21 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.47</td>
+      <td>0.09</td>
+      <td>0.09</td>
+      <td>0.09</td>
+      <td>0.05</td>
+      <td>1.05</td>
+      <td>78.74</td>
+      <td>97.0</td>
+      <td>6.173469e+08</td>
+      <td>2.286470e+08</td>
+      <td>2.056828e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>237.00</td>
+      <td>287572.0</td>
+      <td>35</td>
+      <td>46</td>
+      <td>37</td>
+      <td>10</td>
+      <td>16</td>
+      <td>17</td>
+      <td>0.73</td>
+      <td>598643.26</td>
+      <td>0.48</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>343.58</td>
+      <td>330.00</td>
+      <td>-28.18</td>
+      <td>197.40</td>
+      <td>20.06</td>
+      <td>3.40</td>
+      <td>8.09</td>
+      <td>1.94</td>
+      <td>1.72</td>
+      <td>-1.46</td>
+      <td>-7.24</td>
+      <td>-13.35</td>
+      <td>NaN</td>
+      <td>233.80</td>
+      <td>1.37</td>
+      <td>234.20</td>
+      <td>1.20</td>
+      <td>236.32</td>
+      <td>0.29</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>28533</td>
+      <td>AFEN</td>
+      <td>AFC Energy Plc</td>
+      <td>London</td>
+      <td>Industrials</td>
+      <td>Electrical Equipment &amp; Parts</td>
+      <td>United Kingdom</td>
+      <td>AFC.L</td>
+      <td>London:AFEN</td>
+      <td>1998-07-30 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>16.75</td>
+      <td>16.75</td>
+      <td>16.75</td>
+      <td>2.07</td>
+      <td>6.06</td>
+      <td>16.66</td>
+      <td>23.0</td>
+      <td>3.228062e+08</td>
+      <td>7.344850e+08</td>
+      <td>7.159754e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>39.56</td>
+      <td>3535537.0</td>
+      <td>69</td>
+      <td>77</td>
+      <td>35</td>
+      <td>69</td>
+      <td>67</td>
+      <td>35</td>
+      <td>0.86</td>
+      <td>4122036.28</td>
+      <td>0.86</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>173.69</td>
+      <td>71.90</td>
+      <td>-44.98</td>
+      <td>27.56</td>
+      <td>43.55</td>
+      <td>7.63</td>
+      <td>2.95</td>
+      <td>5.10</td>
+      <td>2.49</td>
+      <td>5.21</td>
+      <td>5.21</td>
+      <td>-30.60</td>
+      <td>NaN</td>
+      <td>39.02</td>
+      <td>1.38</td>
+      <td>38.85</td>
+      <td>1.82</td>
+      <td>36.91</td>
+      <td>7.17</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>25648</td>
+      <td>GMRG</td>
+      <td>Gaming Realms PLC</td>
+      <td>London</td>
+      <td>Consumer Cyclical</td>
+      <td>Gambling</td>
+      <td>United Kingdom</td>
+      <td>GMR.L</td>
+      <td>London:GMRG</td>
+      <td>2001-05-23 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.50</td>
+      <td>-0.39</td>
+      <td>-0.39</td>
+      <td>-0.39</td>
+      <td>-0.09</td>
+      <td>38.09</td>
+      <td>23.87</td>
+      <td>16.0</td>
+      <td>9.705051e+07</td>
+      <td>2.897030e+08</td>
+      <td>2.091997e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>30.50</td>
+      <td>67557.0</td>
+      <td>74</td>
+      <td>37</td>
+      <td>39</td>
+      <td>61</td>
+      <td>60</td>
+      <td>37</td>
+      <td>0.75</td>
+      <td>416776.68</td>
+      <td>0.16</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>501.95</td>
+      <td>47.00</td>
+      <td>-35.11</td>
+      <td>20.39</td>
+      <td>49.60</td>
+      <td>5.81</td>
+      <td>1.82</td>
+      <td>1.67</td>
+      <td>2.26</td>
+      <td>7.02</td>
+      <td>-10.82</td>
+      <td>-4.09</td>
+      <td>NaN</td>
+      <td>30.19</td>
+      <td>1.01</td>
+      <td>29.68</td>
+      <td>2.76</td>
+      <td>28.02</td>
+      <td>8.87</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>1172311</td>
+      <td>TRST</td>
+      <td>Trustpilot Group PLC</td>
+      <td>London</td>
+      <td>Technology</td>
+      <td>Software—Application</td>
+      <td>United Kingdom</td>
+      <td>TRST.L</td>
+      <td>London:TRST</td>
+      <td>2021-03-23 08:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.31</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>9.92</td>
+      <td>81.34</td>
+      <td>71.0</td>
+      <td>1.219726e+09</td>
+      <td>4.137470e+08</td>
+      <td>2.060223e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>142.80</td>
+      <td>1010724.0</td>
+      <td>6</td>
+      <td>5</td>
+      <td>2</td>
+      <td>23</td>
+      <td>37</td>
+      <td>64</td>
+      <td>0.71</td>
+      <td>2739799.00</td>
+      <td>0.37</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>75.20</td>
+      <td>481.80</td>
+      <td>-70.36</td>
+      <td>123.20</td>
+      <td>15.91</td>
+      <td>9.07</td>
+      <td>9.98</td>
+      <td>2.29</td>
+      <td>-5.24</td>
+      <td>-13.45</td>
+      <td>-35.62</td>
+      <td>-62.28</td>
+      <td>NaN</td>
+      <td>144.81</td>
+      <td>-1.39</td>
+      <td>146.58</td>
+      <td>-2.58</td>
+      <td>147.40</td>
+      <td>-3.12</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>1091127</td>
+      <td>PRDP</td>
+      <td>Predator Oil &amp; Gas Holdings PLC</td>
+      <td>London</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>United Kingdom</td>
+      <td>PRD.L</td>
+      <td>London:PRDP</td>
+      <td>2018-05-24 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>22.10</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>1.567261e+07</td>
+      <td>2.929460e+08</td>
+      <td>2.198329e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>13.30</td>
+      <td>2050437.0</td>
+      <td>97</td>
+      <td>99</td>
+      <td>99</td>
+      <td>97</td>
+      <td>97</td>
+      <td>96</td>
+      <td>1.36</td>
+      <td>3343495.18</td>
+      <td>0.61</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>65.75</td>
+      <td>22.50</td>
+      <td>-40.89</td>
+      <td>4.54</td>
+      <td>192.95</td>
+      <td>12.59</td>
+      <td>1.62</td>
+      <td>6.40</td>
+      <td>-3.27</td>
+      <td>36.41</td>
+      <td>98.51</td>
+      <td>100.00</td>
+      <td>NaN</td>
+      <td>12.79</td>
+      <td>3.98</td>
+      <td>12.18</td>
+      <td>9.17</td>
+      <td>11.15</td>
+      <td>19.25</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>1159368</td>
+      <td>N91</td>
+      <td>Ninety One PLC</td>
+      <td>London</td>
+      <td>Financial Services</td>
+      <td>Asset Management</td>
+      <td>United Kingdom</td>
+      <td>N91.L</td>
+      <td>London:N91</td>
+      <td>2020-03-16 08:00:00</td>
+      <td>0.40</td>
+      <td>0.40</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>53.36</td>
+      <td>27.69</td>
+      <td>163.0</td>
+      <td>2.380538e+09</td>
+      <td>6.226000e+08</td>
+      <td>4.578435e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>264.80</td>
+      <td>409141.0</td>
+      <td>70</td>
+      <td>65</td>
+      <td>73</td>
+      <td>40</td>
+      <td>51</td>
+      <td>49</td>
+      <td>3.91</td>
+      <td>913444.02</td>
+      <td>0.45</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>501.23</td>
+      <td>289.00</td>
+      <td>-8.37</td>
+      <td>215.00</td>
+      <td>23.16</td>
+      <td>3.80</td>
+      <td>9.84</td>
+      <td>0.91</td>
+      <td>4.33</td>
+      <td>5.75</td>
+      <td>-0.38</td>
+      <td>2.00</td>
+      <td>NaN</td>
+      <td>258.71</td>
+      <td>2.35</td>
+      <td>255.15</td>
+      <td>3.78</td>
+      <td>251.14</td>
+      <td>5.44</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>28351</td>
+      <td>LTGL</td>
+      <td>Learning Technologies Group PLC</td>
+      <td>London</td>
+      <td>Consumer Defensive</td>
+      <td>Education &amp; Training Services</td>
+      <td>United Kingdom</td>
+      <td>LTG.L</td>
+      <td>London:LTGL</td>
+      <td>2011-06-15 07:00:00</td>
+      <td>0.06</td>
+      <td>-0.01</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.29</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.34</td>
+      <td>26.47</td>
+      <td>53.72</td>
+      <td>81.0</td>
+      <td>1.317838e+09</td>
+      <td>7.872390e+08</td>
+      <td>4.577722e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>161.60</td>
+      <td>1598772.0</td>
+      <td>20</td>
+      <td>76</td>
+      <td>45</td>
+      <td>77</td>
+      <td>12</td>
+      <td>12</td>
+      <td>0.51</td>
+      <td>1494131.98</td>
+      <td>1.07</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>306.38</td>
+      <td>239.00</td>
+      <td>-32.38</td>
+      <td>135.40</td>
+      <td>19.35</td>
+      <td>4.68</td>
+      <td>7.67</td>
+      <td>2.60</td>
+      <td>2.54</td>
+      <td>-5.66</td>
+      <td>4.46</td>
+      <td>-23.41</td>
+      <td>NaN</td>
+      <td>160.31</td>
+      <td>0.80</td>
+      <td>162.22</td>
+      <td>-0.38</td>
+      <td>164.45</td>
+      <td>-1.73</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>1131407</td>
+      <td>WOSG</td>
+      <td>Watches Of Switzerland Group PLC</td>
+      <td>London</td>
+      <td>Consumer Cyclical</td>
+      <td>Luxury Goods</td>
+      <td>United Kingdom</td>
+      <td>WOSG.L</td>
+      <td>London:WOSG</td>
+      <td>2019-05-30 07:00:00</td>
+      <td>0.79</td>
+      <td>0.80</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.42</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.11</td>
+      <td>76.72</td>
+      <td>134.0</td>
+      <td>3.448166e+09</td>
+      <td>2.394560e+08</td>
+      <td>2.303495e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1168.00</td>
+      <td>365917.0</td>
+      <td>47</td>
+      <td>41</td>
+      <td>72</td>
+      <td>15</td>
+      <td>19</td>
+      <td>26</td>
+      <td>1.38</td>
+      <td>516558.80</td>
+      <td>0.71</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>445.93</td>
+      <td>1600.00</td>
+      <td>-27.00</td>
+      <td>648.00</td>
+      <td>80.25</td>
+      <td>4.81</td>
+      <td>53.11</td>
+      <td>3.64</td>
+      <td>6.67</td>
+      <td>0.34</td>
+      <td>-9.18</td>
+      <td>7.75</td>
+      <td>NaN</td>
+      <td>1132.34</td>
+      <td>3.15</td>
+      <td>1133.11</td>
+      <td>3.08</td>
+      <td>1161.76</td>
+      <td>0.54</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>1053059</td>
+      <td>TIFS</td>
+      <td>TI Fluid Systems PLC</td>
+      <td>London</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Parts</td>
+      <td>United Kingdom</td>
+      <td>TIFS.L</td>
+      <td>London:TIFS</td>
+      <td>2017-10-25 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.29</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>0.03</td>
+      <td>38.50</td>
+      <td>36.28</td>
+      <td>87.0</td>
+      <td>1.370909e+09</td>
+      <td>5.202690e+08</td>
+      <td>3.248648e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>171.00</td>
+      <td>353482.0</td>
+      <td>9</td>
+      <td>5</td>
+      <td>6</td>
+      <td>13</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.77</td>
+      <td>540232.66</td>
+      <td>0.65</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>601.34</td>
+      <td>330.50</td>
+      <td>-48.26</td>
+      <td>155.20</td>
+      <td>10.18</td>
+      <td>4.89</td>
+      <td>9.87</td>
+      <td>3.39</td>
+      <td>5.04</td>
+      <td>-10.38</td>
+      <td>-34.98</td>
+      <td>-32.28</td>
+      <td>NaN</td>
+      <td>169.44</td>
+      <td>0.92</td>
+      <td>178.93</td>
+      <td>-4.43</td>
+      <td>201.08</td>
+      <td>-14.96</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>14104</td>
+      <td>IQE</td>
+      <td>IQE PLC</td>
+      <td>London</td>
+      <td>Technology</td>
+      <td>Semiconductor Equipment &amp; Materials</td>
+      <td>United Kingdom</td>
+      <td>IQE.L</td>
+      <td>London:IQE</td>
+      <td>2000-05-19 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.12</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>0.21</td>
+      <td>8.40</td>
+      <td>65.37</td>
+      <td>68.0</td>
+      <td>3.380273e+08</td>
+      <td>8.042480e+08</td>
+      <td>7.548510e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>32.65</td>
+      <td>1699348.0</td>
+      <td>3</td>
+      <td>74</td>
+      <td>35</td>
+      <td>66</td>
+      <td>71</td>
+      <td>73</td>
+      <td>1.20</td>
+      <td>2962575.96</td>
+      <td>0.57</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>254.80</td>
+      <td>63.30</td>
+      <td>-48.42</td>
+      <td>27.53</td>
+      <td>18.59</td>
+      <td>6.78</td>
+      <td>2.28</td>
+      <td>2.35</td>
+      <td>1.56</td>
+      <td>-16.82</td>
+      <td>3.65</td>
+      <td>-26.55</td>
+      <td>NaN</td>
+      <td>32.94</td>
+      <td>-0.88</td>
+      <td>34.52</td>
+      <td>-5.43</td>
+      <td>36.93</td>
+      <td>-11.60</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>14618</td>
+      <td>POLYP</td>
+      <td>Polymetal International PLC</td>
+      <td>London</td>
+      <td>Basic Materials</td>
+      <td>Other Precious Metals &amp; Mining</td>
+      <td>United Kingdom</td>
+      <td>POLY.L</td>
+      <td>London:POLYP</td>
+      <td>2011-10-28 07:00:00</td>
+      <td>-0.30</td>
+      <td>-0.29</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>-0.07</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>0.08</td>
+      <td>0.03</td>
+      <td>28.63</td>
+      <td>40.49</td>
+      <td>279.0</td>
+      <td>1.204904e+09</td>
+      <td>4.736260e+08</td>
+      <td>3.757419e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>233.70</td>
+      <td>1595911.0</td>
+      <td>99</td>
+      <td>0</td>
+      <td>0</td>
+      <td>88</td>
+      <td>89</td>
+      <td>86</td>
+      <td>1.01</td>
+      <td>9223009.30</td>
+      <td>0.17</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>40.74</td>
+      <td>1737.00</td>
+      <td>-86.55</td>
+      <td>92.02</td>
+      <td>153.97</td>
+      <td>20.07</td>
+      <td>50.01</td>
+      <td>-2.67</td>
+      <td>-15.05</td>
+      <td>93.14</td>
+      <td>-80.82</td>
+      <td>-82.96</td>
+      <td>NaN</td>
+      <td>261.29</td>
+      <td>-10.56</td>
+      <td>280.54</td>
+      <td>-16.70</td>
+      <td>460.35</td>
+      <td>-49.23</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>6699</td>
+      <td>MTO</td>
+      <td>Mitie Group PLC</td>
+      <td>London</td>
+      <td>Industrials</td>
+      <td>Specialty Business Services</td>
+      <td>United Kingdom</td>
+      <td>MTO.L</td>
+      <td>London:MTO</td>
+      <td>1988-07-01 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.99</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>0.07</td>
+      <td>2.85</td>
+      <td>82.23</td>
+      <td>101.0</td>
+      <td>9.025023e+08</td>
+      <td>1.428010e+09</td>
+      <td>1.354378e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>52.00</td>
+      <td>296720.0</td>
+      <td>5</td>
+      <td>25</td>
+      <td>25</td>
+      <td>28</td>
+      <td>36</td>
+      <td>33</td>
+      <td>1.16</td>
+      <td>1487198.66</td>
+      <td>0.20</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>910.69</td>
+      <td>79.00</td>
+      <td>-34.18</td>
+      <td>44.70</td>
+      <td>16.33</td>
+      <td>5.27</td>
+      <td>3.08</td>
+      <td>0.58</td>
+      <td>0.00</td>
+      <td>-14.33</td>
+      <td>-16.40</td>
+      <td>-22.27</td>
+      <td>NaN</td>
+      <td>52.52</td>
+      <td>-0.99</td>
+      <td>54.02</td>
+      <td>-3.74</td>
+      <td>55.87</td>
+      <td>-6.93</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>6662</td>
+      <td>SHI</td>
+      <td>SIG</td>
+      <td>London</td>
+      <td>Industrials</td>
+      <td>Industrial Distribution</td>
+      <td>United Kingdom</td>
+      <td>SHI.L</td>
+      <td>London:SHI</td>
+      <td>1989-05-17 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.32</td>
+      <td>-0.04</td>
+      <td>-0.04</td>
+      <td>-0.04</td>
+      <td>0.02</td>
+      <td>15.08</td>
+      <td>63.38</td>
+      <td>69.0</td>
+      <td>5.558059e+08</td>
+      <td>1.181560e+09</td>
+      <td>6.064288e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>39.60</td>
+      <td>1225717.0</td>
+      <td>44</td>
+      <td>49</td>
+      <td>37</td>
+      <td>58</td>
+      <td>68</td>
+      <td>71</td>
+      <td>1.07</td>
+      <td>1497806.12</td>
+      <td>0.82</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>404.88</td>
+      <td>65.00</td>
+      <td>-39.08</td>
+      <td>30.76</td>
+      <td>28.74</td>
+      <td>4.74</td>
+      <td>1.87</td>
+      <td>1.54</td>
+      <td>-0.38</td>
+      <td>0.00</td>
+      <td>-5.80</td>
+      <td>-15.78</td>
+      <td>NaN</td>
+      <td>39.95</td>
+      <td>-0.87</td>
+      <td>40.42</td>
+      <td>-2.04</td>
+      <td>39.48</td>
+      <td>0.31</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>948806</td>
+      <td>0NMK</td>
+      <td>Vestas Wind Systems A/S</td>
+      <td>London</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>United Kingdom</td>
+      <td>VWS.CO</td>
+      <td>London:0NMK</td>
+      <td>2000-05-10 07:00:00</td>
+      <td>-0.97</td>
+      <td>-0.97</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.15</td>
+      <td>0.06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.01</td>
+      <td>0.07</td>
+      <td>46.88</td>
+      <td>605.0</td>
+      <td>2.013798e+11</td>
+      <td>1.005140e+09</td>
+      <td>1.004642e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>207.78</td>
+      <td>1018885.0</td>
+      <td>42</td>
+      <td>87</td>
+      <td>64</td>
+      <td>69</td>
+      <td>67</td>
+      <td>35</td>
+      <td>1.00</td>
+      <td>1115224.88</td>
+      <td>0.91</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>900.84</td>
+      <td>1347.60</td>
+      <td>-84.58</td>
+      <td>151.55</td>
+      <td>37.10</td>
+      <td>NaN</td>
+      <td>10.37</td>
+      <td>3.66</td>
+      <td>-2.18</td>
+      <td>-0.11</td>
+      <td>14.01</td>
+      <td>-17.71</td>
+      <td>NaN</td>
+      <td>204.41</td>
+      <td>1.65</td>
+      <td>203.26</td>
+      <td>2.22</td>
+      <td>195.14</td>
+      <td>6.48</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>1172028</td>
+      <td>ROO</td>
+      <td>Deliveroo Holdings PLC</td>
+      <td>London</td>
+      <td>Consumer Cyclical</td>
+      <td>Internet Retail</td>
+      <td>United Kingdom</td>
+      <td>ROO.L</td>
+      <td>London:ROO</td>
+      <td>2021-03-31 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.26</td>
+      <td>NaN</td>
+      <td>0.37</td>
+      <td>0.82</td>
+      <td>NaN</td>
+      <td>0.25</td>
+      <td>NaN</td>
+      <td>0.24</td>
+      <td>11.00</td>
+      <td>65.98</td>
+      <td>72.0</td>
+      <td>2.420463e+09</td>
+      <td>1.755430e+09</td>
+      <td>9.618790e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>111.05</td>
+      <td>2216309.0</td>
+      <td>5</td>
+      <td>6</td>
+      <td>2</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.90</td>
+      <td>3990723.90</td>
+      <td>0.56</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>241.03</td>
+      <td>396.80</td>
+      <td>-72.01</td>
+      <td>100.95</td>
+      <td>10.00</td>
+      <td>7.45</td>
+      <td>8.37</td>
+      <td>2.78</td>
+      <td>1.46</td>
+      <td>-13.91</td>
+      <td>-34.52</td>
+      <td>-61.77</td>
+      <td>NaN</td>
+      <td>111.92</td>
+      <td>-0.78</td>
+      <td>115.21</td>
+      <td>-3.61</td>
+      <td>121.71</td>
+      <td>-8.76</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>1164696</td>
+      <td>PRE</td>
+      <td>Pensana Rare Earths Plc</td>
+      <td>London</td>
+      <td>Basic Materials</td>
+      <td>Other Industrial Metals &amp; Mining</td>
+      <td>United Kingdom</td>
+      <td>PRE.L</td>
+      <td>London:PRE</td>
+      <td>2020-07-06 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>42.35</td>
+      <td>5.27</td>
+      <td>2.0</td>
+      <td>2.169876e+08</td>
+      <td>2.356000e+08</td>
+      <td>1.509476e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>80.30</td>
+      <td>300893.0</td>
+      <td>77</td>
+      <td>28</td>
+      <td>27</td>
+      <td>88</td>
+      <td>89</td>
+      <td>86</td>
+      <td>0.98</td>
+      <td>409327.04</td>
+      <td>0.74</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>368.77</td>
+      <td>162.00</td>
+      <td>-50.43</td>
+      <td>48.70</td>
+      <td>64.89</td>
+      <td>7.58</td>
+      <td>6.35</td>
+      <td>1.65</td>
+      <td>0.38</td>
+      <td>7.64</td>
+      <td>-14.76</td>
+      <td>-23.52</td>
+      <td>NaN</td>
+      <td>80.32</td>
+      <td>-0.02</td>
+      <td>79.44</td>
+      <td>1.08</td>
+      <td>75.16</td>
+      <td>6.83</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>28336</td>
+      <td>PMG</td>
+      <td>Parkmead Group PLC</td>
+      <td>London</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>United Kingdom</td>
+      <td>PMG.L</td>
+      <td>London:PMG</td>
+      <td>2000-03-13 08:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.05</td>
+      <td>-0.07</td>
+      <td>-0.07</td>
+      <td>-0.07</td>
+      <td>-0.17</td>
+      <td>53.06</td>
+      <td>12.10</td>
+      <td>15.0</td>
+      <td>4.632921e+07</td>
+      <td>1.092670e+08</td>
+      <td>7.969384e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>58.40</td>
+      <td>587643.0</td>
+      <td>93</td>
+      <td>96</td>
+      <td>92</td>
+      <td>97</td>
+      <td>97</td>
+      <td>96</td>
+      <td>1.73</td>
+      <td>438075.80</td>
+      <td>1.34</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>181.92</td>
+      <td>64.40</td>
+      <td>-9.32</td>
+      <td>34.40</td>
+      <td>69.77</td>
+      <td>6.01</td>
+      <td>3.07</td>
+      <td>5.99</td>
+      <td>3.18</td>
+      <td>22.95</td>
+      <td>43.67</td>
+      <td>8.15</td>
+      <td>NaN</td>
+      <td>55.92</td>
+      <td>4.43</td>
+      <td>53.87</td>
+      <td>8.41</td>
+      <td>48.17</td>
+      <td>21.24</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>1165422</td>
+      <td>CGO</td>
+      <td>Contango Holdings PLC</td>
+      <td>London</td>
+      <td>Financial Services</td>
+      <td>Asset Management</td>
+      <td>United Kingdom</td>
+      <td>CGO.L</td>
+      <td>London:CGO</td>
+      <td>2017-11-01 08:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>40.98</td>
+      <td>12.96</td>
+      <td>2.0</td>
+      <td>2.181446e+07</td>
+      <td>3.094250e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7.75</td>
+      <td>4231021.0</td>
+      <td>29</td>
+      <td>89</td>
+      <td>89</td>
+      <td>40</td>
+      <td>51</td>
+      <td>49</td>
+      <td>0.75</td>
+      <td>4869823.22</td>
+      <td>0.87</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>10.50</td>
+      <td>-26.19</td>
+      <td>4.54</td>
+      <td>70.80</td>
+      <td>NaN</td>
+      <td>0.56</td>
+      <td>4.73</td>
+      <td>4.03</td>
+      <td>-3.12</td>
+      <td>17.42</td>
+      <td>5.44</td>
+      <td>NaN</td>
+      <td>7.47</td>
+      <td>3.74</td>
+      <td>7.61</td>
+      <td>1.84</td>
+      <td>7.71</td>
+      <td>0.50</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>6561</td>
+      <td>PFC</td>
+      <td>Petrofac Ltd</td>
+      <td>London</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas Equipment &amp; Services</td>
+      <td>United Kingdom</td>
+      <td>PFC.L</td>
+      <td>London:PFC</td>
+      <td>2005-10-04 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.43</td>
+      <td>NaN</td>
+      <td>2.00</td>
+      <td>-0.24</td>
+      <td>-0.13</td>
+      <td>-0.13</td>
+      <td>NaN</td>
+      <td>0.21</td>
+      <td>17.30</td>
+      <td>46.82</td>
+      <td>93.0</td>
+      <td>5.464331e+08</td>
+      <td>5.211570e+08</td>
+      <td>2.784951e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>133.90</td>
+      <td>4926282.0</td>
+      <td>86</td>
+      <td>50</td>
+      <td>72</td>
+      <td>84</td>
+      <td>84</td>
+      <td>90</td>
+      <td>1.04</td>
+      <td>3999924.42</td>
+      <td>1.23</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>69.63</td>
+      <td>195.45</td>
+      <td>-31.49</td>
+      <td>87.52</td>
+      <td>53.00</td>
+      <td>5.65</td>
+      <td>5.77</td>
+      <td>4.20</td>
+      <td>18.50</td>
+      <td>13.47</td>
+      <td>-5.57</td>
+      <td>-12.33</td>
+      <td>NaN</td>
+      <td>120.39</td>
+      <td>11.22</td>
+      <td>114.91</td>
+      <td>16.52</td>
+      <td>111.23</td>
+      <td>20.38</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>28296</td>
+      <td>SAR</td>
+      <td>Sareum Hldgs Plc</td>
+      <td>London</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>United Kingdom</td>
+      <td>GB00B02RFS12.SG</td>
+      <td>London:SAR</td>
+      <td>2004-10-11 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.20</td>
+      <td>NaN</td>
+      <td>-0.67</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.38</td>
+      <td>2.34</td>
+      <td>5.0</td>
+      <td>1.565596e+08</td>
+      <td>3.403470e+09</td>
+      <td>3.200051e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>295.00</td>
+      <td>346082.0</td>
+      <td>99</td>
+      <td>95</td>
+      <td>100</td>
+      <td>93</td>
+      <td>73</td>
+      <td>100</td>
+      <td>1.59</td>
+      <td>261806.10</td>
+      <td>1.32</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>8.0</td>
+      <td>12222.98</td>
+      <td>345.00</td>
+      <td>-14.49</td>
+      <td>1.86</td>
+      <td>15760.21</td>
+      <td>14.84</td>
+      <td>32.48</td>
+      <td>4.61</td>
+      <td>47.50</td>
+      <td>131.37</td>
+      <td>37.21</td>
+      <td>4138.51</td>
+      <td>NaN</td>
+      <td>234.15</td>
+      <td>25.99</td>
+      <td>191.43</td>
+      <td>54.11</td>
+      <td>163.76</td>
+      <td>80.14</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>1156715</td>
+      <td>JETJ</td>
+      <td>Just Eat Takeaway</td>
+      <td>London</td>
+      <td>Consumer Cyclical</td>
+      <td>Internet Retail</td>
+      <td>United Kingdom</td>
+      <td>TKWY.AS</td>
+      <td>London:JETJ</td>
+      <td>2016-09-30 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.35</td>
+      <td>NaN</td>
+      <td>0.40</td>
+      <td>1.00</td>
+      <td>0.37</td>
+      <td>0.37</td>
+      <td>0.43</td>
+      <td>0.19</td>
+      <td>8.67</td>
+      <td>59.78</td>
+      <td>334.0</td>
+      <td>6.828395e+09</td>
+      <td>2.149660e+08</td>
+      <td>1.592554e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>2217.50</td>
+      <td>277217.0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1.01</td>
+      <td>199734.42</td>
+      <td>1.39</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>797.34</td>
+      <td>8008.00</td>
+      <td>-72.31</td>
+      <td>2072.50</td>
+      <td>7.00</td>
+      <td>6.27</td>
+      <td>172.68</td>
+      <td>2.14</td>
+      <td>-12.70</td>
+      <td>-19.70</td>
+      <td>-43.42</td>
+      <td>-63.15</td>
+      <td>NaN</td>
+      <td>2422.25</td>
+      <td>-8.45</td>
+      <td>2561.03</td>
+      <td>-13.41</td>
+      <td>2745.66</td>
+      <td>-19.24</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>961639</td>
+      <td>GYM</td>
+      <td>GYM Ltd</td>
+      <td>London</td>
+      <td>Consumer Cyclical</td>
+      <td>Leisure</td>
+      <td>United Kingdom</td>
+      <td>GYM.L</td>
+      <td>London:GYM</td>
+      <td>2015-11-09 08:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.21</td>
+      <td>0.36</td>
+      <td>0.36</td>
+      <td>0.36</td>
+      <td>0.21</td>
+      <td>11.56</td>
+      <td>75.83</td>
+      <td>81.0</td>
+      <td>4.479325e+08</td>
+      <td>1.777510e+08</td>
+      <td>1.564566e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>200.00</td>
+      <td>136772.0</td>
+      <td>51</td>
+      <td>14</td>
+      <td>14</td>
+      <td>51</td>
+      <td>30</td>
+      <td>21</td>
+      <td>0.85</td>
+      <td>268911.14</td>
+      <td>0.51</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>581.82</td>
+      <td>317.50</td>
+      <td>-37.01</td>
+      <td>176.40</td>
+      <td>13.38</td>
+      <td>5.54</td>
+      <td>10.75</td>
+      <td>1.94</td>
+      <td>4.38</td>
+      <td>1.01</td>
+      <td>-23.08</td>
+      <td>-29.20</td>
+      <td>NaN</td>
+      <td>196.43</td>
+      <td>1.82</td>
+      <td>196.80</td>
+      <td>1.63</td>
+      <td>205.26</td>
+      <td>-2.56</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>28486</td>
+      <td>AVON</td>
+      <td>Avon Rubber</td>
+      <td>London</td>
+      <td>Industrials</td>
+      <td>Aerospace &amp; Defense</td>
+      <td>United Kingdom</td>
+      <td>AVON.L</td>
+      <td>London:AVON</td>
+      <td>1988-07-01 07:00:00</td>
+      <td>0.67</td>
+      <td>0.66</td>
+      <td>NaN</td>
+      <td>1.18</td>
+      <td>NaN</td>
+      <td>0.26</td>
+      <td>-0.01</td>
+      <td>0.28</td>
+      <td>0.28</td>
+      <td>0.05</td>
+      <td>0.12</td>
+      <td>4.43</td>
+      <td>65.02</td>
+      <td>101.0</td>
+      <td>3.747615e+08</td>
+      <td>3.102330e+07</td>
+      <td>3.047262e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1147.00</td>
+      <td>44909.0</td>
+      <td>7</td>
+      <td>80</td>
+      <td>20</td>
+      <td>80</td>
+      <td>93</td>
+      <td>92</td>
+      <td>1.09</td>
+      <td>135663.66</td>
+      <td>0.33</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>224.62</td>
+      <td>3600.00</td>
+      <td>-68.14</td>
+      <td>860.00</td>
+      <td>33.37</td>
+      <td>5.38</td>
+      <td>83.52</td>
+      <td>1.59</td>
+      <td>3.24</td>
+      <td>-11.77</td>
+      <td>6.60</td>
+      <td>-42.65</td>
+      <td>NaN</td>
+      <td>1151.49</td>
+      <td>-0.39</td>
+      <td>1194.69</td>
+      <td>-3.99</td>
+      <td>1205.50</td>
+      <td>-4.85</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>948962</td>
+      <td>0QB8</td>
+      <td>ASML Holding NV</td>
+      <td>London</td>
+      <td>Technology</td>
+      <td>Semiconductor Equipment &amp; Materials</td>
+      <td>United Kingdom</td>
+      <td>ASML.AS</td>
+      <td>London:0QB8</td>
+      <td>1999-12-31 08:00:00</td>
+      <td>0.31</td>
+      <td>0.36</td>
+      <td>NaN</td>
+      <td>0.17</td>
+      <td>NaN</td>
+      <td>0.18</td>
+      <td>0.17</td>
+      <td>NaN</td>
+      <td>0.19</td>
+      <td>NaN</td>
+      <td>0.12</td>
+      <td>0.01</td>
+      <td>61.02</td>
+      <td>1181.0</td>
+      <td>2.249337e+11</td>
+      <td>4.026020e+08</td>
+      <td>4.024889e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>590.90</td>
+      <td>424583.0</td>
+      <td>34</td>
+      <td>51</td>
+      <td>49</td>
+      <td>66</td>
+      <td>71</td>
+      <td>73</td>
+      <td>0.93</td>
+      <td>283945.26</td>
+      <td>1.50</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1417.49</td>
+      <td>776.60</td>
+      <td>-23.91</td>
+      <td>472.54</td>
+      <td>25.05</td>
+      <td>3.46</td>
+      <td>21.38</td>
+      <td>4.70</td>
+      <td>7.05</td>
+      <td>-1.94</td>
+      <td>-5.51</td>
+      <td>-13.06</td>
+      <td>NaN</td>
+      <td>574.82</td>
+      <td>2.80</td>
+      <td>581.34</td>
+      <td>1.65</td>
+      <td>578.22</td>
+      <td>2.19</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>948702</td>
+      <td>0MEC</td>
+      <td>Nordex SE O.N.</td>
+      <td>London</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>United Kingdom</td>
+      <td>NDX1.DE</td>
+      <td>London:0MEC</td>
+      <td>2001-04-05 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.75</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>-0.00</td>
+      <td>38.39</td>
+      <td>37.19</td>
+      <td>162.0</td>
+      <td>2.555535e+09</td>
+      <td>1.600210e+08</td>
+      <td>1.055403e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>16.73</td>
+      <td>293119.0</td>
+      <td>60</td>
+      <td>91</td>
+      <td>84</td>
+      <td>69</td>
+      <td>67</td>
+      <td>35</td>
+      <td>1.27</td>
+      <td>316415.04</td>
+      <td>0.93</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>333.55</td>
+      <td>26.60</td>
+      <td>-37.11</td>
+      <td>11.40</td>
+      <td>46.75</td>
+      <td>NaN</td>
+      <td>0.93</td>
+      <td>1.15</td>
+      <td>-1.99</td>
+      <td>3.08</td>
+      <td>20.01</td>
+      <td>11.91</td>
+      <td>NaN</td>
+      <td>16.43</td>
+      <td>1.83</td>
+      <td>16.17</td>
+      <td>3.44</td>
+      <td>15.30</td>
+      <td>9.35</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>6837</td>
+      <td>SPT</td>
+      <td>Spirent Communications plc</td>
+      <td>London</td>
+      <td>Technology</td>
+      <td>Software—Infrastructure</td>
+      <td>United Kingdom</td>
+      <td>SPT.L</td>
+      <td>London:SPT</td>
+      <td>1988-07-01 07:00:00</td>
+      <td>-0.08</td>
+      <td>-0.08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>0.06</td>
+      <td>0.97</td>
+      <td>131.48</td>
+      <td>163.0</td>
+      <td>1.572177e+09</td>
+      <td>6.117420e+08</td>
+      <td>6.018354e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>227.20</td>
+      <td>709581.0</td>
+      <td>13</td>
+      <td>62</td>
+      <td>42</td>
+      <td>14</td>
+      <td>23</td>
+      <td>25</td>
+      <td>0.91</td>
+      <td>940436.08</td>
+      <td>0.75</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>639.95</td>
+      <td>310.60</td>
+      <td>-26.85</td>
+      <td>209.80</td>
+      <td>8.29</td>
+      <td>4.51</td>
+      <td>11.13</td>
+      <td>-0.18</td>
+      <td>-2.49</td>
+      <td>-8.39</td>
+      <td>-1.39</td>
+      <td>-21.76</td>
+      <td>NaN</td>
+      <td>232.41</td>
+      <td>-2.24</td>
+      <td>235.85</td>
+      <td>-3.67</td>
+      <td>237.79</td>
+      <td>-4.45</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>6703</td>
+      <td>ROR</td>
+      <td>Rotork PLC</td>
+      <td>London</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>United Kingdom</td>
+      <td>ROR.L</td>
+      <td>London:ROR</td>
+      <td>1988-07-01 07:00:00</td>
+      <td>0.07</td>
+      <td>0.07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>0.50</td>
+      <td>81.07</td>
+      <td>191.0</td>
+      <td>3.093552e+09</td>
+      <td>8.602760e+08</td>
+      <td>8.669402e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>311.60</td>
+      <td>1131591.0</td>
+      <td>25</td>
+      <td>37</td>
+      <td>38</td>
+      <td>1</td>
+      <td>4</td>
+      <td>15</td>
+      <td>1.17</td>
+      <td>1709578.84</td>
+      <td>0.66</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>507.11</td>
+      <td>375.60</td>
+      <td>-17.04</td>
+      <td>274.60</td>
+      <td>13.47</td>
+      <td>2.93</td>
+      <td>9.47</td>
+      <td>1.96</td>
+      <td>0.97</td>
+      <td>-4.18</td>
+      <td>-10.87</td>
+      <td>-11.53</td>
+      <td>NaN</td>
+      <td>311.39</td>
+      <td>0.07</td>
+      <td>315.85</td>
+      <td>-1.35</td>
+      <td>316.08</td>
+      <td>-1.42</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>989865</td>
+      <td>0E4Q</td>
+      <td>Nel ASA</td>
+      <td>London</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>United Kingdom</td>
+      <td>NEL.OL</td>
+      <td>London:0E4Q</td>
+      <td>2004-10-11 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.73</td>
+      <td>0.69</td>
+      <td>0.52</td>
+      <td>0.39</td>
+      <td>0.15</td>
+      <td>0.53</td>
+      <td>0.54</td>
+      <td>0.60</td>
+      <td>0.64</td>
+      <td>0.53</td>
+      <td>19.54</td>
+      <td>182.0</td>
+      <td>2.397645e+10</td>
+      <td>1.558430e+09</td>
+      <td>1.454978e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>16.04</td>
+      <td>1297722.0</td>
+      <td>26</td>
+      <td>93</td>
+      <td>86</td>
+      <td>69</td>
+      <td>67</td>
+      <td>35</td>
+      <td>0.68</td>
+      <td>1414040.40</td>
+      <td>0.92</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>1028.95</td>
+      <td>26.10</td>
+      <td>-38.54</td>
+      <td>10.52</td>
+      <td>52.47</td>
+      <td>NaN</td>
+      <td>0.64</td>
+      <td>5.80</td>
+      <td>3.89</td>
+      <td>-4.01</td>
+      <td>25.90</td>
+      <td>21.24</td>
+      <td>NaN</td>
+      <td>15.35</td>
+      <td>4.49</td>
+      <td>15.33</td>
+      <td>4.66</td>
+      <td>14.79</td>
+      <td>8.46</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>940886</td>
+      <td>FOG</td>
+      <td>Falcon Oil &amp; Gas Ltd.</td>
+      <td>London</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>United Kingdom</td>
+      <td>FO.V</td>
+      <td>London:FOG</td>
+      <td>2006-05-01 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>20.59</td>
+      <td>0.65</td>
+      <td>4.0</td>
+      <td>1.472771e+08</td>
+      <td>9.818470e+08</td>
+      <td>7.792334e+08</td>
+      <td>345084.0</td>
+      <td>1.17</td>
+      <td>0.0</td>
+      <td>11.50</td>
+      <td>1230253.0</td>
+      <td>97</td>
+      <td>52</td>
+      <td>93</td>
+      <td>97</td>
+      <td>97</td>
+      <td>96</td>
+      <td>1.50</td>
+      <td>785336.60</td>
+      <td>1.57</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>992.23</td>
+      <td>15.00</td>
+      <td>-23.33</td>
+      <td>4.90</td>
+      <td>134.67</td>
+      <td>NaN</td>
+      <td>0.65</td>
+      <td>4.55</td>
+      <td>7.23</td>
+      <td>38.14</td>
+      <td>-4.96</td>
+      <td>28.85</td>
+      <td>NaN</td>
+      <td>10.90</td>
+      <td>5.52</td>
+      <td>10.36</td>
+      <td>10.96</td>
+      <td>9.48</td>
+      <td>21.27</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>1055838</td>
+      <td>BAKK</td>
+      <td>Bakkavor Group PLC</td>
+      <td>London</td>
+      <td>Consumer Defensive</td>
+      <td>Packaged Foods</td>
+      <td>United Kingdom</td>
+      <td>BAKK.L</td>
+      <td>London:BAKK</td>
+      <td>2017-11-16 08:00:00</td>
+      <td>3.56</td>
+      <td>3.67</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>0.03</td>
+      <td>0.03</td>
+      <td>0.03</td>
+      <td>0.05</td>
+      <td>49.36</td>
+      <td>15.27</td>
+      <td>44.0</td>
+      <td>7.300768e+08</td>
+      <td>5.794260e+08</td>
+      <td>1.448796e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>108.00</td>
+      <td>32602.0</td>
+      <td>27</td>
+      <td>35</td>
+      <td>32</td>
+      <td>72</td>
+      <td>78</td>
+      <td>74</td>
+      <td>3.87</td>
+      <td>537649.08</td>
+      <td>0.06</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>269.47</td>
+      <td>143.80</td>
+      <td>-24.90</td>
+      <td>96.80</td>
+      <td>11.57</td>
+      <td>7.79</td>
+      <td>8.10</td>
+      <td>1.31</td>
+      <td>1.12</td>
+      <td>-3.57</td>
+      <td>-11.33</td>
+      <td>-15.36</td>
+      <td>NaN</td>
+      <td>108.51</td>
+      <td>-0.47</td>
+      <td>110.02</td>
+      <td>-1.84</td>
+      <td>114.91</td>
+      <td>-6.02</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>6784</td>
+      <td>GFRD</td>
+      <td>Galliford Try PLC</td>
+      <td>London</td>
+      <td>Industrials</td>
+      <td>Engineering &amp; Construction</td>
+      <td>United Kingdom</td>
+      <td>GFRD.L</td>
+      <td>London:GFRD</td>
+      <td>1988-07-01 07:00:00</td>
+      <td>-0.98</td>
+      <td>-0.98</td>
+      <td>NaN</td>
+      <td>1.08</td>
+      <td>NaN</td>
+      <td>0.18</td>
+      <td>0.29</td>
+      <td>0.15</td>
+      <td>0.15</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>5.06</td>
+      <td>58.84</td>
+      <td>52.0</td>
+      <td>1.962307e+08</td>
+      <td>1.110530e+08</td>
+      <td>1.080899e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>170.20</td>
+      <td>102844.0</td>
+      <td>14</td>
+      <td>56</td>
+      <td>57</td>
+      <td>17</td>
+      <td>38</td>
+      <td>63</td>
+      <td>0.73</td>
+      <td>193121.44</td>
+      <td>0.53</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>559.70</td>
+      <td>213.00</td>
+      <td>-20.09</td>
+      <td>118.30</td>
+      <td>43.87</td>
+      <td>6.94</td>
+      <td>11.83</td>
+      <td>0.35</td>
+      <td>-1.39</td>
+      <td>-8.10</td>
+      <td>-3.68</td>
+      <td>-12.00</td>
+      <td>NaN</td>
+      <td>172.11</td>
+      <td>-1.11</td>
+      <td>174.64</td>
+      <td>-2.54</td>
+      <td>178.54</td>
+      <td>-4.67</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>948492</td>
+      <td>0XVE</td>
+      <td>BE Semiconductor Industries NV</td>
+      <td>London</td>
+      <td>Technology</td>
+      <td>Semiconductor Equipment &amp; Materials</td>
+      <td>United Kingdom</td>
+      <td>BESI.AS</td>
+      <td>London:0XVE</td>
+      <td>1998-07-20 07:00:00</td>
+      <td>1.48</td>
+      <td>1.33</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.03</td>
+      <td>0.92</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>1.92</td>
+      <td>82.08</td>
+      <td>275.0</td>
+      <td>5.365479e+09</td>
+      <td>7.724560e+07</td>
+      <td>7.660705e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>69.30</td>
+      <td>159817.0</td>
+      <td>8</td>
+      <td>21</td>
+      <td>44</td>
+      <td>66</td>
+      <td>71</td>
+      <td>73</td>
+      <td>1.07</td>
+      <td>198762.46</td>
+      <td>0.80</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>385.42</td>
+      <td>89.18</td>
+      <td>-22.29</td>
+      <td>58.00</td>
+      <td>19.48</td>
+      <td>4.32</td>
+      <td>3.59</td>
+      <td>4.71</td>
+      <td>6.94</td>
+      <td>-11.63</td>
+      <td>-18.15</td>
+      <td>2.65</td>
+      <td>NaN</td>
+      <td>68.88</td>
+      <td>0.60</td>
+      <td>71.55</td>
+      <td>-3.14</td>
+      <td>73.36</td>
+      <td>-5.53</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>14142</td>
+      <td>SYNTS</td>
+      <td>Synthomer PLC</td>
+      <td>London</td>
+      <td>Basic Materials</td>
+      <td>Specialty Chemicals</td>
+      <td>United Kingdom</td>
+      <td>SYNT.L</td>
+      <td>London:SYNTS</td>
+      <td>1988-07-01 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.68</td>
+      <td>0.05</td>
+      <td>0.05</td>
+      <td>0.05</td>
+      <td>0.08</td>
+      <td>23.49</td>
+      <td>47.92</td>
+      <td>132.0</td>
+      <td>1.721496e+09</td>
+      <td>4.248510e+08</td>
+      <td>3.336758e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>286.40</td>
+      <td>1285955.0</td>
+      <td>15</td>
+      <td>12</td>
+      <td>8</td>
+      <td>74</td>
+      <td>82</td>
+      <td>80</td>
+      <td>0.92</td>
+      <td>1271564.16</td>
+      <td>1.01</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>262.41</td>
+      <td>570.50</td>
+      <td>-49.80</td>
+      <td>241.80</td>
+      <td>18.44</td>
+      <td>3.41</td>
+      <td>10.70</td>
+      <td>2.29</td>
+      <td>0.28</td>
+      <td>-7.79</td>
+      <td>-24.83</td>
+      <td>-39.04</td>
+      <td>NaN</td>
+      <td>287.65</td>
+      <td>-0.43</td>
+      <td>292.51</td>
+      <td>-2.09</td>
+      <td>296.16</td>
+      <td>-3.30</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>948824</td>
+      <td>0NQC</td>
+      <td>Pandora A/S</td>
+      <td>London</td>
+      <td>Consumer Cyclical</td>
+      <td>Luxury Goods</td>
+      <td>United Kingdom</td>
+      <td>PNDORA.CO</td>
+      <td>London:0NQC</td>
+      <td>2010-05-10 07:00:00</td>
+      <td>0.06</td>
+      <td>0.04</td>
+      <td>NaN</td>
+      <td>0.24</td>
+      <td>0.06</td>
+      <td>0.12</td>
+      <td>0.14</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>0.07</td>
+      <td>0.05</td>
+      <td>6.76</td>
+      <td>56.75</td>
+      <td>391.0</td>
+      <td>5.966783e+10</td>
+      <td>9.411330e+07</td>
+      <td>9.014222e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>672.50</td>
+      <td>118204.0</td>
+      <td>65</td>
+      <td>29</td>
+      <td>25</td>
+      <td>62</td>
+      <td>35</td>
+      <td>30</td>
+      <td>1.18</td>
+      <td>142340.84</td>
+      <td>0.83</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>633.28</td>
+      <td>949.20</td>
+      <td>-29.15</td>
+      <td>557.60</td>
+      <td>20.61</td>
+      <td>NaN</td>
+      <td>17.85</td>
+      <td>4.47</td>
+      <td>8.05</td>
+      <td>4.12</td>
+      <td>-14.53</td>
+      <td>-22.24</td>
+      <td>NaN</td>
+      <td>642.80</td>
+      <td>4.62</td>
+      <td>640.09</td>
+      <td>5.06</td>
+      <td>653.33</td>
+      <td>2.93</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>1086986</td>
+      <td>CBOX</td>
+      <td>Cake Box Holdings PLC</td>
+      <td>London</td>
+      <td>Consumer Defensive</td>
+      <td>Grocery Stores</td>
+      <td>United Kingdom</td>
+      <td>CBOX.L</td>
+      <td>London:CBOX</td>
+      <td>2018-06-27 07:00:00</td>
+      <td>1.16</td>
+      <td>1.16</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.92</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.18</td>
+      <td>36.60</td>
+      <td>50.90</td>
+      <td>21.0</td>
+      <td>1.440000e+08</td>
+      <td>4.000000e+07</td>
+      <td>2.225480e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>218.00</td>
+      <td>106880.0</td>
+      <td>53</td>
+      <td>7</td>
+      <td>8</td>
+      <td>82</td>
+      <td>10</td>
+      <td>18</td>
+      <td>1.48</td>
+      <td>303488.92</td>
+      <td>0.35</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>73.33</td>
+      <td>428.00</td>
+      <td>-49.07</td>
+      <td>135.00</td>
+      <td>61.48</td>
+      <td>8.25</td>
+      <td>15.16</td>
+      <td>4.31</td>
+      <td>7.92</td>
+      <td>1.40</td>
+      <td>-32.30</td>
+      <td>-42.18</td>
+      <td>NaN</td>
+      <td>201.86</td>
+      <td>8.00</td>
+      <td>199.30</td>
+      <td>9.38</td>
+      <td>187.92</td>
+      <td>16.01</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>948874</td>
+      <td>0NY8</td>
+      <td>Veolia Environnement VE SA</td>
+      <td>London</td>
+      <td>Industrials</td>
+      <td>Waste Management</td>
+      <td>United Kingdom</td>
+      <td>VIE.PA</td>
+      <td>London:0NY8</td>
+      <td>2000-07-20 07:00:00</td>
+      <td>0.28</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.42</td>
+      <td>NaN</td>
+      <td>0.26</td>
+      <td>0.07</td>
+      <td>NaN</td>
+      <td>0.32</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>3.37</td>
+      <td>51.74</td>
+      <td>550.0</td>
+      <td>1.922900e+10</td>
+      <td>6.872410e+08</td>
+      <td>6.329264e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>28.47</td>
+      <td>606884.0</td>
+      <td>29</td>
+      <td>34</td>
+      <td>58</td>
+      <td>70</td>
+      <td>80</td>
+      <td>82</td>
+      <td>0.88</td>
+      <td>1440273.38</td>
+      <td>0.42</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>439.45</td>
+      <td>33.36</td>
+      <td>-14.66</td>
+      <td>22.89</td>
+      <td>24.38</td>
+      <td>3.13</td>
+      <td>0.92</td>
+      <td>2.67</td>
+      <td>2.08</td>
+      <td>-3.20</td>
+      <td>-11.64</td>
+      <td>3.64</td>
+      <td>NaN</td>
+      <td>28.13</td>
+      <td>1.21</td>
+      <td>28.35</td>
+      <td>0.41</td>
+      <td>29.31</td>
+      <td>-2.85</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>948597</td>
+      <td>0HC0</td>
+      <td>Sandvik AB</td>
+      <td>London</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>United Kingdom</td>
+      <td>SAND.ST</td>
+      <td>London:0HC0</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>0.47</td>
+      <td>0.47</td>
+      <td>NaN</td>
+      <td>0.18</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>0.30</td>
+      <td>NaN</td>
+      <td>0.16</td>
+      <td>0.17</td>
+      <td>0.06</td>
+      <td>2.74</td>
+      <td>57.54</td>
+      <td>432.0</td>
+      <td>2.406547e+11</td>
+      <td>1.254390e+09</td>
+      <td>1.051401e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>205.40</td>
+      <td>11390534.0</td>
+      <td>21</td>
+      <td>24</td>
+      <td>37</td>
+      <td>1</td>
+      <td>4</td>
+      <td>15</td>
+      <td>1.58</td>
+      <td>1698268.44</td>
+      <td>6.71</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>619.10</td>
+      <td>262.80</td>
+      <td>-21.84</td>
+      <td>178.30</td>
+      <td>15.20</td>
+      <td>NaN</td>
+      <td>6.21</td>
+      <td>4.26</td>
+      <td>6.29</td>
+      <td>-5.39</td>
+      <td>-16.94</td>
+      <td>-5.24</td>
+      <td>NaN</td>
+      <td>197.35</td>
+      <td>4.08</td>
+      <td>201.11</td>
+      <td>2.14</td>
+      <td>211.92</td>
+      <td>-3.08</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>6722</td>
+      <td>INCH</td>
+      <td>Inchcape PLC</td>
+      <td>London</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto &amp; Truck Dealerships</td>
+      <td>United Kingdom</td>
+      <td>INCH.L</td>
+      <td>London:INCH</td>
+      <td>1988-07-01 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.30</td>
+      <td>NaN</td>
+      <td>0.03</td>
+      <td>NaN</td>
+      <td>0.01</td>
+      <td>4.53</td>
+      <td>72.56</td>
+      <td>185.0</td>
+      <td>3.478576e+09</td>
+      <td>3.837370e+08</td>
+      <td>3.761116e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>668.00</td>
+      <td>418637.0</td>
+      <td>17</td>
+      <td>13</td>
+      <td>20</td>
+      <td>18</td>
+      <td>9</td>
+      <td>19</td>
+      <td>0.99</td>
+      <td>838214.52</td>
+      <td>0.50</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>448.71</td>
+      <td>940.50</td>
+      <td>-28.97</td>
+      <td>615.00</td>
+      <td>8.62</td>
+      <td>2.82</td>
+      <td>18.98</td>
+      <td>1.52</td>
+      <td>3.17</td>
+      <td>-6.77</td>
+      <td>-24.09</td>
+      <td>-17.28</td>
+      <td>NaN</td>
+      <td>660.78</td>
+      <td>1.09</td>
+      <td>674.93</td>
+      <td>-1.03</td>
+      <td>724.79</td>
+      <td>-7.84</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>948522</td>
+      <td>0FQI</td>
+      <td>Publicis Groupe SA</td>
+      <td>London</td>
+      <td>Communication Services</td>
+      <td>Advertising Agencies</td>
+      <td>United Kingdom</td>
+      <td>PUB.PA</td>
+      <td>London:0FQI</td>
+      <td>2000-09-19 07:00:00</td>
+      <td>2.04</td>
+      <td>1.93</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>-0.06</td>
+      <td>-0.06</td>
+      <td>-0.06</td>
+      <td>0.03</td>
+      <td>9.32</td>
+      <td>46.87</td>
+      <td>487.0</td>
+      <td>1.515939e+10</td>
+      <td>2.493320e+08</td>
+      <td>2.349641e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>58.12</td>
+      <td>351343.0</td>
+      <td>52</td>
+      <td>55</td>
+      <td>63</td>
+      <td>54</td>
+      <td>40</td>
+      <td>39</td>
+      <td>0.69</td>
+      <td>461868.44</td>
+      <td>0.76</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>508.73</td>
+      <td>85.75</td>
+      <td>-32.22</td>
+      <td>47.29</td>
+      <td>22.90</td>
+      <td>2.58</td>
+      <td>1.37</td>
+      <td>4.10</td>
+      <td>7.05</td>
+      <td>1.24</td>
+      <td>-3.98</td>
+      <td>-1.14</td>
+      <td>NaN</td>
+      <td>55.80</td>
+      <td>4.15</td>
+      <td>55.84</td>
+      <td>4.09</td>
+      <td>57.54</td>
+      <td>1.02</td>
+      <td>united_kingdom</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+            </section>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+    </div>
+</footer>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bm/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+<script>
+        $(document).ready(function () {
+            $('#data').DataTable(
+                {
+                    "scrollX": true,
+                    "dom": 'Bfrtip',
+                    "buttons": [
+                        'copy', 'csv', 'excel', 'print'
+                    ]
+
+                }
+            );
+        });
+    </script>
+    
+</body>
+
+</html>

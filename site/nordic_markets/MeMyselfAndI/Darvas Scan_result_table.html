@@ -1,0 +1,2360 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.datatables.net/v/bm/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/sc-2.0.5/datatables.min.css" />
+
+</head >
+
+
+<body>
+    <section class="hero is-small is-dark">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <!-- <a class="navbar-item">
+                        
+                        <img src="data:image/svg+xml;base64,"
+                            alt="Logo">
+                       
+                    </a> -->
+                    <span class="navbar-burger" data-target="navbarMenuHeroB">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </div>
+                <div id="navbarMenuHeroB" class="navbar-menu">
+                    <div class="navbar-start">
+                        
+                        <a class="navbar-item" href="../../nordic_markets/market_monitor.html">
+                            
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-home"></i>
+                                    </span>
+                                    <span>Home</span>
+                                </span>
+                            </a>
+
+                            <div class="navbar-item has-dropdown is-hoverable has-background-dark">
+                                <a class="navbar-link">
+                                    <span>Choose Market</span>
+                                </a>
+
+                                <div class="navbar-dropdown has-background-dark">
+                                    
+                                    <a class="navbar-item" href="../../australia/market_monitor.html">
+                                        <span>Australia</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../canada/market_monitor.html">
+                                        <span>Canada</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../germany/market_monitor.html">
+                                        <span>Germany</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../hong_kong/market_monitor.html">
+                                        <span>Hong Kong</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../japan/market_monitor.html">
+                                        <span>Japan</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../nordic_markets/market_monitor.html">
+                                        <span>Nordic Markets</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_kingdom/market_monitor.html">
+                                        <span>United Kingdom</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_states/market_monitor.html">
+                                        <span>United States</span>
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                    </div>
+                    <div class="navbar-end"></div>
+                    <span class="navbar-item">
+                        <a class="button is-info is-light" href="https://twitter.com/LignoL23">
+                            <span class="icon">
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                            <span>Twitter</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <a class="button  is-success is-light" href="https://www.paypal.com/paypalme/volkerlorrmann/5">
+                            <span class="icon">
+                                <i class="fab fa-paypal"></i>
+                            </span>
+                            <span>paypal.me</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+                        <script
+                            type='text/javascript'>kofiwidget2.init('Support me', '#d6d6d6', 'W7W0ACJPB'); kofiwidget2.draw();</script>
+                    </span>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="columns is-multiline is-mobile is-centered">
+                <div class="column is-1">
+                    <img src="data:image/svg+xml;base64," alt="Logo">
+                </div>
+                <div class="column is-4">
+                    <p class="title">
+                        EOD Stockmarket Scans
+                    </p>
+                    <p class="subtitle">
+                        Fintwits most popular stockmarket scans
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+            <div class="container">
+                <ul>
+                    
+                    <li class="is-active">
+                        <a href="../MeMyselfAndI/Darvas Scan_result_table.html"> Results </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../MeMyselfAndI/Darvas Scan_minicharts.html"> Minicharts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../MeMyselfAndI/Darvas Scan_charts.html"> Charts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../MeMyselfAndI/Darvas Scan_criteria.html"> Criteria </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+</section>
+    <div class="columns is-centered">
+        <div class="column is-2">
+            <div class="box has-background-light my-0 mx-2 p-auto">
+    <aside class="menu">
+        <p class="menu-label has-text-dark">
+            Market Monitor
+        </p>
+        <ul class="menu-list">
+            <li><a class="has-text-grey-light">New Highs/Lows</a></li>
+            <li><a class="has-text-grey-light">Breadth</a></li>
+            <li><a class="has-text-grey-light">Above/Below SMA</a></li>
+            <li><a class="has-text-grey-light">Sectors</a></li>
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Kristjan Kullamägi
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Kristjan Kullamägi/Biggest Gainers 1M_minicharts.html">
+                        Biggest Gainers 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Kristjan Kullamägi/Biggest Gainers 3M_minicharts.html">
+                        Biggest Gainers 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Kristjan Kullamägi/Biggest Gainers 6M_minicharts.html">
+                        Biggest Gainers 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Kristjan Kullamägi/Biggest Gainers 12M_minicharts.html">
+                        Biggest Gainers 12M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Kristjan Kullamägi/EP with Growth_minicharts.html">
+                        EP with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Kristjan Kullamägi/EP_minicharts.html">
+                        EP
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Kristjan Kullamägi/High Trend Intensity_minicharts.html">
+                        High Trend Intensity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Kristjan Kullamägi/Small Stock Momo_minicharts.html">
+                        Small Stock Momo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Kristjan Kullamägi/Momentum_minicharts.html">
+                        Momentum
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Brad Schulz
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Brad Schulz/Pocket Pivot_minicharts.html">
+                        Pocket Pivot
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Stockbee
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Stockbee/4% Gainers_minicharts.html">
+                        4% Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Stockbee/Combo_minicharts.html">
+                        Combo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Stockbee/Ants_minicharts.html">
+                        Ants
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Stockbee/Breakout 1M Base_minicharts.html">
+                        Breakout 1M Base
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Stockbee/Breakout 3M Base_minicharts.html">
+                        Breakout 3M Base
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Leif Soreide
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Leif Soreide/HTF_minicharts.html">
+                        HTF
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Blake Davis
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Blake Davis/Strength_minicharts.html">
+                        Strength
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ben
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Ben/Power of 3_minicharts.html">
+                        Power of 3
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Ben/Velocity_minicharts.html">
+                        Velocity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Ben/Focus_minicharts.html">
+                        Focus
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ray
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Ray/RSNHBP 5D_minicharts.html">
+                        RSNHBP 5D
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Ray/RSNHBP 1M_minicharts.html">
+                        RSNHBP 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Ray/RSNHBP 3M_minicharts.html">
+                        RSNHBP 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Ray/RSNHBP 6M_minicharts.html">
+                        RSNHBP 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Ray/RSNHBP 12M_minicharts.html">
+                        RSNHBP 12M
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Mark Minvervini
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Mark Minvervini/Trend Template_minicharts.html">
+                        Trend Template
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            MeMyselfAndI
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/MeMyselfAndI/Top Gainers From Open_minicharts.html">
+                        Top Gainers From Open
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/MeMyselfAndI/Top Gainers_minicharts.html">
+                        Top Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/MeMyselfAndI/Volume Gainers_minicharts.html">
+                        Volume Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/MeMyselfAndI/Insiders_minicharts.html">
+                        Insiders
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="is-active"
+                        href="../../nordic_markets/MeMyselfAndI/Darvas Scan_minicharts.html">
+                        Darvas Scan
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/MeMyselfAndI/Darvas Scan with Growth_minicharts.html">
+                        Darvas Scan with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/MeMyselfAndI/52W High_minicharts.html">
+                        52W High
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/MeMyselfAndI/Quite and Tight_minicharts.html">
+                        Quite and Tight
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+    </aside>
+</div>
+        </div>
+        <div class="column is-10">
+            <section class="block my-6">
+                <div class="columns ">
+                    <div class="column is-5 has-text-left">
+                        <h1 class="title is-4">Darvas Scan @ Nordic Markets</h1>
+                        <h2 class="subtitle is-6">2022-04-20</h2>
+                    </div>
+                    <div class="column has-text-right mx-5">
+                        <div class="media">
+                           
+                            <div class="media-content">
+                                <p class="title is-5">MeMyselfAndI</p>
+                                <p class="subtitle is-6"><a class="has-text-grey-light" href="https://twitter.com/LignoL23">@LignoL23</a></p>
+                            </div>
+                            <div class="media-right">
+                                <figure class="image is-48x48">
+                                    <img src="https://unavatar.io/twitter/LignoL23" alt="Placeholder image">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="my-auto mr-6">
+                
+    <div class="table-container">
+        <table border="1" class="dataframe table is-striped no-wrap" id="data" style="width:100%; font-size:85%">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>symbol_id</th>
+      <th>symbol</th>
+      <th>name</th>
+      <th>exchange</th>
+      <th>sector</th>
+      <th>industry</th>
+      <th>country</th>
+      <th>yahoo_symbol</th>
+      <th>forexpros_symbol</th>
+      <th>IPO Date</th>
+      <th>EPS Growth Q</th>
+      <th>EPS Growth Y</th>
+      <th>EPS Growth FQ</th>
+      <th>EPS Growth FY</th>
+      <th>EPS Growth FQ1</th>
+      <th>EPS Growth FY1</th>
+      <th>Rev Growth Q</th>
+      <th>Rev Growth FQ</th>
+      <th>Rev Growth FY</th>
+      <th>Rev Growth FQ1</th>
+      <th>Rev Growth FY1</th>
+      <th>Insiders %</th>
+      <th>Institutions %</th>
+      <th>Institutions No.</th>
+      <th>Market Cap</th>
+      <th>Shares Outstanding</th>
+      <th>Shares Float</th>
+      <th>Shares Short</th>
+      <th>Short Ratio</th>
+      <th>Net Insider Trading %</th>
+      <th>close</th>
+      <th>volume</th>
+      <th>1m RS</th>
+      <th>3m RS</th>
+      <th>RS</th>
+      <th>Industry 1m RS</th>
+      <th>Industry 3m RS</th>
+      <th>Industry RS</th>
+      <th>UD Ratio</th>
+      <th>50d avg Volume</th>
+      <th>rel Volume</th>
+      <th>Pocket Pivot</th>
+      <th>1w Pocket Pivots</th>
+      <th>1m Pocket Pivots</th>
+      <th>Rocket Ratio</th>
+      <th>52w High</th>
+      <th>% below 52w High</th>
+      <th>52w Low</th>
+      <th>% above 52w Low</th>
+      <th>adr(20)</th>
+      <th>atr(14)</th>
+      <th>roc</th>
+      <th>roc(5)</th>
+      <th>roc(21)</th>
+      <th>roc(63)</th>
+      <th>roc(126)</th>
+      <th>roc(252)</th>
+      <th>ema(9)</th>
+      <th>% from 9d ema</th>
+      <th>ema(21)</th>
+      <th>% from 21d ema</th>
+      <th>sma(50)</th>
+      <th>% from 50d sma</th>
+      <th>market</th>
+      <th>date</th>
+      <th>group_name</th>
+      <th>scan_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>372</td>
+      <td>PRSO</td>
+      <td>Prosafe</td>
+      <td>Oslo</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas Equipment &amp; Services</td>
+      <td>Norway</td>
+      <td>PRS.OL</td>
+      <td>Oslo:PRSO</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.79</td>
+      <td>-0.23</td>
+      <td>0.09</td>
+      <td>-0.26</td>
+      <td>0.96</td>
+      <td>43.74</td>
+      <td>37.06</td>
+      <td>6.0</td>
+      <td>1.655915e+09</td>
+      <td>8.798700e+06</td>
+      <td>8.409446e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>199.80</td>
+      <td>11342.0</td>
+      <td>99</td>
+      <td>100</td>
+      <td>100</td>
+      <td>98</td>
+      <td>100</td>
+      <td>100</td>
+      <td>5.15</td>
+      <td>100834.34</td>
+      <td>0.11</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>7.0</td>
+      <td>83.40</td>
+      <td>234.50</td>
+      <td>-14.80</td>
+      <td>0.09</td>
+      <td>229555.18</td>
+      <td>NaN</td>
+      <td>22.55</td>
+      <td>-0.35</td>
+      <td>3.31</td>
+      <td>86.73</td>
+      <td>202126.72</td>
+      <td>15884.00</td>
+      <td>17006.16</td>
+      <td>193.79</td>
+      <td>3.10</td>
+      <td>172.99</td>
+      <td>15.50</td>
+      <td>123.36</td>
+      <td>61.97</td>
+      <td>nordic_markets</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1036848</td>
+      <td>BORR</td>
+      <td>Borr Drilling Ltd</td>
+      <td>Oslo</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas Drilling</td>
+      <td>Norway</td>
+      <td>BORR.OL</td>
+      <td>Oslo:BORR</td>
+      <td>2017-08-30 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.19</td>
+      <td>0.24</td>
+      <td>0.48</td>
+      <td>0.84</td>
+      <td>0.15</td>
+      <td>NaN</td>
+      <td>0.60</td>
+      <td>NaN</td>
+      <td>0.48</td>
+      <td>7.58</td>
+      <td>34.02</td>
+      <td>41.0</td>
+      <td>5.596513e+09</td>
+      <td>1.516670e+08</td>
+      <td>8.699929e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>36.65</td>
+      <td>935737.0</td>
+      <td>97</td>
+      <td>98</td>
+      <td>99</td>
+      <td>98</td>
+      <td>100</td>
+      <td>100</td>
+      <td>1.32</td>
+      <td>1660635.16</td>
+      <td>0.56</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>52.39</td>
+      <td>41.90</td>
+      <td>-12.54</td>
+      <td>7.64</td>
+      <td>379.96</td>
+      <td>NaN</td>
+      <td>2.96</td>
+      <td>-3.77</td>
+      <td>3.56</td>
+      <td>34.72</td>
+      <td>87.19</td>
+      <td>83.50</td>
+      <td>141.09</td>
+      <td>36.37</td>
+      <td>0.75</td>
+      <td>33.78</td>
+      <td>8.47</td>
+      <td>27.37</td>
+      <td>33.89</td>
+      <td>nordic_markets</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1008984</td>
+      <td>IPCOR</td>
+      <td>International Petroleum Corp</td>
+      <td>Stockholm</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>Sweden</td>
+      <td>IPCO.TO</td>
+      <td>Stockholm:IPCOR</td>
+      <td>2017-04-24 13:30:00</td>
+      <td>2.45</td>
+      <td>2.34</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.26</td>
+      <td>1.05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.43</td>
+      <td>28.86</td>
+      <td>16.90</td>
+      <td>56.0</td>
+      <td>1.902172e+09</td>
+      <td>1.509660e+08</td>
+      <td>1.089260e+08</td>
+      <td>115696.0</td>
+      <td>1.01</td>
+      <td>0.0</td>
+      <td>100.00</td>
+      <td>510881.0</td>
+      <td>94</td>
+      <td>97</td>
+      <td>99</td>
+      <td>94</td>
+      <td>96</td>
+      <td>96</td>
+      <td>2.26</td>
+      <td>975616.42</td>
+      <td>0.52</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>111.65</td>
+      <td>102.20</td>
+      <td>-2.15</td>
+      <td>28.68</td>
+      <td>248.68</td>
+      <td>NaN</td>
+      <td>3.60</td>
+      <td>3.20</td>
+      <td>6.95</td>
+      <td>26.18</td>
+      <td>61.42</td>
+      <td>94.55</td>
+      <td>249.65</td>
+      <td>94.96</td>
+      <td>5.30</td>
+      <td>90.19</td>
+      <td>10.87</td>
+      <td>78.85</td>
+      <td>26.82</td>
+      <td>nordic_markets</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1137588</td>
+      <td>OKEA</td>
+      <td>Okea ASA</td>
+      <td>Oslo</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>Norway</td>
+      <td>OKEA.OL</td>
+      <td>Oslo:OKEA</td>
+      <td>2019-06-18 07:00:00</td>
+      <td>0.55</td>
+      <td>0.54</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.07</td>
+      <td>1.81</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.97</td>
+      <td>82.29</td>
+      <td>2.67</td>
+      <td>7.0</td>
+      <td>4.191154e+09</td>
+      <td>1.038700e+08</td>
+      <td>3.017641e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>36.60</td>
+      <td>446991.0</td>
+      <td>88</td>
+      <td>89</td>
+      <td>97</td>
+      <td>94</td>
+      <td>96</td>
+      <td>96</td>
+      <td>2.12</td>
+      <td>439972.52</td>
+      <td>1.02</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>68.59</td>
+      <td>42.00</td>
+      <td>-12.86</td>
+      <td>12.50</td>
+      <td>192.80</td>
+      <td>NaN</td>
+      <td>1.78</td>
+      <td>-8.50</td>
+      <td>-2.66</td>
+      <td>15.82</td>
+      <td>23.65</td>
+      <td>22.00</td>
+      <td>161.43</td>
+      <td>38.07</td>
+      <td>-3.87</td>
+      <td>36.65</td>
+      <td>-0.15</td>
+      <td>32.92</td>
+      <td>11.19</td>
+      <td>nordic_markets</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>49913</td>
+      <td>NOR</td>
+      <td>Norwegian Ener</td>
+      <td>Oslo</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>Norway</td>
+      <td>NOR.OL</td>
+      <td>Oslo:NOR</td>
+      <td>2007-11-09 08:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.41</td>
+      <td>NaN</td>
+      <td>0.86</td>
+      <td>0.20</td>
+      <td>-0.67</td>
+      <td>0.19</td>
+      <td>0.33</td>
+      <td>0.43</td>
+      <td>3.47</td>
+      <td>1.35</td>
+      <td>5.0</td>
+      <td>8.089207e+09</td>
+      <td>2.411090e+07</td>
+      <td>2.109826e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>344.00</td>
+      <td>165761.0</td>
+      <td>98</td>
+      <td>99</td>
+      <td>99</td>
+      <td>94</td>
+      <td>96</td>
+      <td>96</td>
+      <td>2.86</td>
+      <td>67798.72</td>
+      <td>2.44</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>8.0</td>
+      <td>311.19</td>
+      <td>356.50</td>
+      <td>-3.51</td>
+      <td>124.60</td>
+      <td>176.08</td>
+      <td>NaN</td>
+      <td>17.86</td>
+      <td>0.29</td>
+      <td>9.55</td>
+      <td>40.98</td>
+      <td>109.76</td>
+      <td>130.87</td>
+      <td>140.90</td>
+      <td>327.82</td>
+      <td>4.94</td>
+      <td>299.97</td>
+      <td>14.68</td>
+      <td>238.92</td>
+      <td>43.98</td>
+      <td>nordic_markets</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1165546</td>
+      <td>BEWI</td>
+      <td>Bewi Asa</td>
+      <td>Oslo</td>
+      <td>Consumer Cyclical</td>
+      <td>Packaging &amp; Containers</td>
+      <td>Norway</td>
+      <td>BEWI.OL</td>
+      <td>Oslo:BEWI</td>
+      <td>2020-08-31 07:00:00</td>
+      <td>-0.29</td>
+      <td>-0.36</td>
+      <td>NaN</td>
+      <td>0.47</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>0.60</td>
+      <td>NaN</td>
+      <td>0.34</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>71.50</td>
+      <td>12.14</td>
+      <td>15.0</td>
+      <td>1.130688e+10</td>
+      <td>1.570400e+08</td>
+      <td>3.529068e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>71.60</td>
+      <td>42093.0</td>
+      <td>77</td>
+      <td>73</td>
+      <td>97</td>
+      <td>81</td>
+      <td>9</td>
+      <td>31</td>
+      <td>1.23</td>
+      <td>113809.42</td>
+      <td>0.37</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>310.09</td>
+      <td>81.80</td>
+      <td>-12.47</td>
+      <td>26.00</td>
+      <td>175.38</td>
+      <td>NaN</td>
+      <td>3.44</td>
+      <td>-2.59</td>
+      <td>1.70</td>
+      <td>9.15</td>
+      <td>4.68</td>
+      <td>19.33</td>
+      <td>150.35</td>
+      <td>71.79</td>
+      <td>-0.26</td>
+      <td>70.08</td>
+      <td>2.17</td>
+      <td>67.47</td>
+      <td>6.11</td>
+      <td>nordic_markets</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1167180</td>
+      <td>EFUEL</td>
+      <td>Everfuel AS</td>
+      <td>Oslo</td>
+      <td>Basic Materials</td>
+      <td>Specialty Chemicals</td>
+      <td>Norway</td>
+      <td>EFUEL.OL</td>
+      <td>Oslo:EFUEL</td>
+      <td>2020-10-29 08:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.07</td>
+      <td>NaN</td>
+      <td>0.88</td>
+      <td>-0.04</td>
+      <td>3.80</td>
+      <td>3.80</td>
+      <td>NaN</td>
+      <td>3.50</td>
+      <td>79.95</td>
+      <td>8.31</td>
+      <td>17.0</td>
+      <td>7.176000e+09</td>
+      <td>7.800000e+07</td>
+      <td>1.274052e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>81.70</td>
+      <td>113232.0</td>
+      <td>99</td>
+      <td>99</td>
+      <td>97</td>
+      <td>94</td>
+      <td>96</td>
+      <td>96</td>
+      <td>1.48</td>
+      <td>61377.04</td>
+      <td>1.84</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>6.0</td>
+      <td>207.58</td>
+      <td>92.00</td>
+      <td>-11.20</td>
+      <td>31.82</td>
+      <td>156.76</td>
+      <td>NaN</td>
+      <td>7.23</td>
+      <td>0.86</td>
+      <td>10.11</td>
+      <td>67.42</td>
+      <td>114.77</td>
+      <td>67.76</td>
+      <td>12.92</td>
+      <td>76.49</td>
+      <td>6.82</td>
+      <td>67.42</td>
+      <td>21.18</td>
+      <td>53.47</td>
+      <td>52.79</td>
+      <td>nordic_markets</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>993648</td>
+      <td>FLNG</td>
+      <td>FLEX LNG Ltd</td>
+      <td>Oslo</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas Midstream</td>
+      <td>Norway</td>
+      <td>FLNG.OL</td>
+      <td>Oslo:FLNG</td>
+      <td>2009-10-30 08:00:00</td>
+      <td>1.69</td>
+      <td>1.72</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>1.09</td>
+      <td>0.04</td>
+      <td>0.70</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>47.26</td>
+      <td>23.46</td>
+      <td>90.0</td>
+      <td>1.375020e+10</td>
+      <td>5.313060e+07</td>
+      <td>2.826441e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>243.60</td>
+      <td>243670.0</td>
+      <td>95</td>
+      <td>89</td>
+      <td>97</td>
+      <td>94</td>
+      <td>96</td>
+      <td>96</td>
+      <td>1.63</td>
+      <td>203903.54</td>
+      <td>1.20</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>138.62</td>
+      <td>271.60</td>
+      <td>-10.31</td>
+      <td>96.40</td>
+      <td>152.70</td>
+      <td>NaN</td>
+      <td>12.41</td>
+      <td>-6.74</td>
+      <td>-1.77</td>
+      <td>28.75</td>
+      <td>23.53</td>
+      <td>45.35</td>
+      <td>146.06</td>
+      <td>252.30</td>
+      <td>-3.45</td>
+      <td>241.32</td>
+      <td>0.95</td>
+      <td>213.49</td>
+      <td>14.10</td>
+      <td>nordic_markets</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>949736</td>
+      <td>AKSOA</td>
+      <td>Aker Solutions OL</td>
+      <td>Oslo</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas Equipment &amp; Services</td>
+      <td>Norway</td>
+      <td>AKSO.OL</td>
+      <td>Oslo:AKSOA</td>
+      <td>2004-04-02 07:00:00</td>
+      <td>-0.49</td>
+      <td>-0.72</td>
+      <td>NaN</td>
+      <td>0.94</td>
+      <td>NaN</td>
+      <td>0.23</td>
+      <td>-0.24</td>
+      <td>NaN</td>
+      <td>0.21</td>
+      <td>NaN</td>
+      <td>0.03</td>
+      <td>53.28</td>
+      <td>17.29</td>
+      <td>66.0</td>
+      <td>1.626864e+10</td>
+      <td>4.856310e+08</td>
+      <td>2.600897e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>34.18</td>
+      <td>1043973.0</td>
+      <td>86</td>
+      <td>94</td>
+      <td>98</td>
+      <td>98</td>
+      <td>100</td>
+      <td>100</td>
+      <td>2.79</td>
+      <td>2340975.72</td>
+      <td>0.45</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>111.10</td>
+      <td>35.18</td>
+      <td>-2.84</td>
+      <td>13.84</td>
+      <td>146.97</td>
+      <td>NaN</td>
+      <td>1.37</td>
+      <td>1.73</td>
+      <td>7.69</td>
+      <td>13.86</td>
+      <td>37.55</td>
+      <td>52.73</td>
+      <td>140.70</td>
+      <td>32.76</td>
+      <td>4.35</td>
+      <td>31.59</td>
+      <td>8.21</td>
+      <td>29.75</td>
+      <td>14.90</td>
+      <td>nordic_markets</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>49918</td>
+      <td>PENR</td>
+      <td>Panoro Energy</td>
+      <td>Oslo</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>Norway</td>
+      <td>PEN.OL</td>
+      <td>Oslo:PENR</td>
+      <td>2010-06-08 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.76</td>
+      <td>NaN</td>
+      <td>0.76</td>
+      <td>7.10</td>
+      <td>1.20</td>
+      <td>1.20</td>
+      <td>0.10</td>
+      <td>0.25</td>
+      <td>19.35</td>
+      <td>42.61</td>
+      <td>15.0</td>
+      <td>3.809702e+09</td>
+      <td>1.133840e+08</td>
+      <td>8.397425e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>33.42</td>
+      <td>661967.0</td>
+      <td>79</td>
+      <td>92</td>
+      <td>93</td>
+      <td>94</td>
+      <td>96</td>
+      <td>96</td>
+      <td>1.57</td>
+      <td>974387.72</td>
+      <td>0.68</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>86.18</td>
+      <td>34.60</td>
+      <td>-3.41</td>
+      <td>16.20</td>
+      <td>106.30</td>
+      <td>NaN</td>
+      <td>1.22</td>
+      <td>-1.42</td>
+      <td>5.43</td>
+      <td>10.12</td>
+      <td>29.53</td>
+      <td>32.09</td>
+      <td>67.94</td>
+      <td>33.30</td>
+      <td>0.37</td>
+      <td>32.40</td>
+      <td>3.16</td>
+      <td>29.53</td>
+      <td>13.17</td>
+      <td>nordic_markets</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>384</td>
+      <td>TGS</td>
+      <td>TGS NOPEC Geophysical Company ASA</td>
+      <td>Oslo</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas Equipment &amp; Services</td>
+      <td>Norway</td>
+      <td>TGS.OL</td>
+      <td>Oslo:TGS</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.15</td>
+      <td>NaN</td>
+      <td>1.51</td>
+      <td>-0.67</td>
+      <td>NaN</td>
+      <td>-0.27</td>
+      <td>NaN</td>
+      <td>0.15</td>
+      <td>1.67</td>
+      <td>59.36</td>
+      <td>119.0</td>
+      <td>1.694208e+10</td>
+      <td>1.058880e+08</td>
+      <td>1.141261e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>156.40</td>
+      <td>267158.0</td>
+      <td>95</td>
+      <td>95</td>
+      <td>95</td>
+      <td>98</td>
+      <td>100</td>
+      <td>100</td>
+      <td>1.74</td>
+      <td>710991.26</td>
+      <td>0.38</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>160.52</td>
+      <td>163.00</td>
+      <td>-4.05</td>
+      <td>77.16</td>
+      <td>102.70</td>
+      <td>NaN</td>
+      <td>7.05</td>
+      <td>-0.82</td>
+      <td>0.45</td>
+      <td>28.14</td>
+      <td>46.85</td>
+      <td>85.97</td>
+      <td>26.64</td>
+      <td>151.98</td>
+      <td>2.91</td>
+      <td>141.63</td>
+      <td>10.43</td>
+      <td>120.92</td>
+      <td>29.35</td>
+      <td>nordic_markets</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>376</td>
+      <td>EQNR</td>
+      <td>Equinor ASA</td>
+      <td>Oslo</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas Integrated</td>
+      <td>Norway</td>
+      <td>EQNR.OL</td>
+      <td>Oslo:EQNR</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.55</td>
+      <td>1.61</td>
+      <td>-0.24</td>
+      <td>1.70</td>
+      <td>NaN</td>
+      <td>0.38</td>
+      <td>0.89</td>
+      <td>-0.16</td>
+      <td>67.02</td>
+      <td>22.08</td>
+      <td>498.0</td>
+      <td>1.104477e+12</td>
+      <td>3.220990e+09</td>
+      <td>1.023773e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>337.20</td>
+      <td>2324230.0</td>
+      <td>83</td>
+      <td>94</td>
+      <td>96</td>
+      <td>94</td>
+      <td>96</td>
+      <td>96</td>
+      <td>1.50</td>
+      <td>5432476.94</td>
+      <td>0.43</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>188.45</td>
+      <td>347.60</td>
+      <td>-2.99</td>
+      <td>166.40</td>
+      <td>102.64</td>
+      <td>NaN</td>
+      <td>10.75</td>
+      <td>-0.82</td>
+      <td>2.48</td>
+      <td>12.10</td>
+      <td>35.04</td>
+      <td>42.94</td>
+      <td>101.77</td>
+      <td>335.42</td>
+      <td>0.53</td>
+      <td>326.34</td>
+      <td>3.33</td>
+      <td>302.01</td>
+      <td>11.65</td>
+      <td>nordic_markets</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>41038</td>
+      <td>TETY</td>
+      <td>Tethys Oil AB</td>
+      <td>Stockholm</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>Sweden</td>
+      <td>TETY.ST</td>
+      <td>Stockholm:TETY</td>
+      <td>2004-10-04 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.27</td>
+      <td>4.12</td>
+      <td>-0.48</td>
+      <td>0.42</td>
+      <td>NaN</td>
+      <td>0.27</td>
+      <td>NaN</td>
+      <td>-0.12</td>
+      <td>17.38</td>
+      <td>32.28</td>
+      <td>43.0</td>
+      <td>2.833929e+09</td>
+      <td>3.257390e+07</td>
+      <td>2.568043e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>91.50</td>
+      <td>228110.0</td>
+      <td>95</td>
+      <td>93</td>
+      <td>93</td>
+      <td>94</td>
+      <td>96</td>
+      <td>96</td>
+      <td>1.33</td>
+      <td>360406.66</td>
+      <td>0.63</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>71.25</td>
+      <td>93.10</td>
+      <td>-1.72</td>
+      <td>47.65</td>
+      <td>92.03</td>
+      <td>NaN</td>
+      <td>3.51</td>
+      <td>2.35</td>
+      <td>16.56</td>
+      <td>29.97</td>
+      <td>32.80</td>
+      <td>37.59</td>
+      <td>54.41</td>
+      <td>84.79</td>
+      <td>7.91</td>
+      <td>80.58</td>
+      <td>13.56</td>
+      <td>73.17</td>
+      <td>25.05</td>
+      <td>nordic_markets</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>49912</td>
+      <td>GSFG</td>
+      <td>Grieg Seafood</td>
+      <td>Oslo</td>
+      <td>Consumer Defensive</td>
+      <td>Farm Products</td>
+      <td>Norway</td>
+      <td>GSF.OL</td>
+      <td>Oslo:GSFG</td>
+      <td>2007-06-21 07:00:00</td>
+      <td>7.41</td>
+      <td>4.94</td>
+      <td>NaN</td>
+      <td>1.74</td>
+      <td>15.53</td>
+      <td>0.03</td>
+      <td>0.33</td>
+      <td>NaN</td>
+      <td>0.35</td>
+      <td>0.42</td>
+      <td>0.09</td>
+      <td>59.38</td>
+      <td>22.20</td>
+      <td>75.0</td>
+      <td>1.483668e+10</td>
+      <td>1.123140e+08</td>
+      <td>4.612065e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>135.90</td>
+      <td>361194.0</td>
+      <td>94</td>
+      <td>96</td>
+      <td>95</td>
+      <td>87</td>
+      <td>87</td>
+      <td>80</td>
+      <td>1.78</td>
+      <td>422353.36</td>
+      <td>0.86</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>109.20</td>
+      <td>138.00</td>
+      <td>-1.52</td>
+      <td>71.60</td>
+      <td>89.80</td>
+      <td>NaN</td>
+      <td>4.49</td>
+      <td>-1.52</td>
+      <td>1.42</td>
+      <td>25.95</td>
+      <td>53.04</td>
+      <td>44.57</td>
+      <td>58.76</td>
+      <td>133.32</td>
+      <td>1.93</td>
+      <td>126.36</td>
+      <td>7.55</td>
+      <td>113.80</td>
+      <td>19.42</td>
+      <td>nordic_markets</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>986099</td>
+      <td>MAHAa</td>
+      <td>Maha Energy AB</td>
+      <td>Stockholm</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>Sweden</td>
+      <td>MAHA-A.ST</td>
+      <td>Stockholm:MAHAa</td>
+      <td>2016-07-29 07:00:00</td>
+      <td>2.30</td>
+      <td>1.75</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.67</td>
+      <td>1.15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.47</td>
+      <td>30.30</td>
+      <td>11.01</td>
+      <td>11.0</td>
+      <td>2.207563e+09</td>
+      <td>1.192320e+08</td>
+      <td>8.454083e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>19.74</td>
+      <td>1473063.0</td>
+      <td>96</td>
+      <td>97</td>
+      <td>96</td>
+      <td>94</td>
+      <td>96</td>
+      <td>96</td>
+      <td>1.21</td>
+      <td>1284024.96</td>
+      <td>1.15</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>65.84</td>
+      <td>19.94</td>
+      <td>-1.00</td>
+      <td>10.53</td>
+      <td>87.46</td>
+      <td>NaN</td>
+      <td>0.82</td>
+      <td>4.00</td>
+      <td>16.05</td>
+      <td>34.56</td>
+      <td>62.34</td>
+      <td>37.08</td>
+      <td>56.17</td>
+      <td>18.20</td>
+      <td>8.45</td>
+      <td>17.07</td>
+      <td>15.66</td>
+      <td>15.20</td>
+      <td>29.88</td>
+      <td>nordic_markets</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>1127905</td>
+      <td>DRLCO</td>
+      <td>Maersk Drilling A/S</td>
+      <td>Copenhagen</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas Drilling</td>
+      <td>Denmark</td>
+      <td>DRLCO.CO</td>
+      <td>Copenhagen:DRLCO</td>
+      <td>2019-04-04 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-1.16</td>
+      <td>NaN</td>
+      <td>2.23</td>
+      <td>0.12</td>
+      <td>-0.24</td>
+      <td>-0.18</td>
+      <td>-0.08</td>
+      <td>0.17</td>
+      <td>50.54</td>
+      <td>15.72</td>
+      <td>62.0</td>
+      <td>1.497201e+10</td>
+      <td>4.129070e+07</td>
+      <td>4.127585e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>369.60</td>
+      <td>41851.0</td>
+      <td>73</td>
+      <td>95</td>
+      <td>93</td>
+      <td>98</td>
+      <td>100</td>
+      <td>100</td>
+      <td>1.63</td>
+      <td>75437.20</td>
+      <td>0.55</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>547.16</td>
+      <td>404.80</td>
+      <td>-8.70</td>
+      <td>198.30</td>
+      <td>86.38</td>
+      <td>NaN</td>
+      <td>12.64</td>
+      <td>-2.12</td>
+      <td>-0.91</td>
+      <td>7.44</td>
+      <td>40.32</td>
+      <td>48.55</td>
+      <td>42.48</td>
+      <td>371.47</td>
+      <td>-0.50</td>
+      <td>362.97</td>
+      <td>1.83</td>
+      <td>325.14</td>
+      <td>13.67</td>
+      <td>nordic_markets</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>367</td>
+      <td>NHY</td>
+      <td>Norsk Hydro ASA</td>
+      <td>Oslo</td>
+      <td>Basic Materials</td>
+      <td>Aluminum</td>
+      <td>Norway</td>
+      <td>NHY.OL</td>
+      <td>Oslo:NHY</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>0.39</td>
+      <td>0.39</td>
+      <td>1.40</td>
+      <td>0.82</td>
+      <td>1.08</td>
+      <td>-0.15</td>
+      <td>0.56</td>
+      <td>0.55</td>
+      <td>0.31</td>
+      <td>0.48</td>
+      <td>-0.04</td>
+      <td>34.30</td>
+      <td>41.19</td>
+      <td>411.0</td>
+      <td>1.846332e+11</td>
+      <td>2.051480e+09</td>
+      <td>1.341973e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>88.88</td>
+      <td>4590412.0</td>
+      <td>71</td>
+      <td>88</td>
+      <td>92</td>
+      <td>91</td>
+      <td>90</td>
+      <td>89</td>
+      <td>1.39</td>
+      <td>6132074.78</td>
+      <td>0.75</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>218.84</td>
+      <td>94.82</td>
+      <td>-6.26</td>
+      <td>48.25</td>
+      <td>84.21</td>
+      <td>NaN</td>
+      <td>3.46</td>
+      <td>-1.77</td>
+      <td>4.32</td>
+      <td>6.75</td>
+      <td>22.39</td>
+      <td>30.90</td>
+      <td>58.66</td>
+      <td>88.76</td>
+      <td>0.14</td>
+      <td>87.66</td>
+      <td>1.40</td>
+      <td>84.36</td>
+      <td>5.35</td>
+      <td>nordic_markets</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>477</td>
+      <td>BOL</td>
+      <td>Boliden AB</td>
+      <td>Stockholm</td>
+      <td>Basic Materials</td>
+      <td>Other Industrial Metals &amp; Mining</td>
+      <td>Sweden</td>
+      <td>BOL.ST</td>
+      <td>Stockholm:BOL</td>
+      <td>2001-12-05 08:00:00</td>
+      <td>0.08</td>
+      <td>0.08</td>
+      <td>NaN</td>
+      <td>0.46</td>
+      <td>NaN</td>
+      <td>-0.17</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>0.20</td>
+      <td>NaN</td>
+      <td>-0.06</td>
+      <td>1.79</td>
+      <td>60.17</td>
+      <td>412.0</td>
+      <td>1.379589e+11</td>
+      <td>2.735110e+08</td>
+      <td>2.684950e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>484.40</td>
+      <td>927175.0</td>
+      <td>80</td>
+      <td>87</td>
+      <td>92</td>
+      <td>91</td>
+      <td>90</td>
+      <td>89</td>
+      <td>1.36</td>
+      <td>1652579.98</td>
+      <td>0.56</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>162.47</td>
+      <td>514.60</td>
+      <td>-5.87</td>
+      <td>268.60</td>
+      <td>80.34</td>
+      <td>NaN</td>
+      <td>19.55</td>
+      <td>-3.66</td>
+      <td>1.64</td>
+      <td>10.34</td>
+      <td>21.77</td>
+      <td>47.77</td>
+      <td>43.61</td>
+      <td>492.61</td>
+      <td>-1.67</td>
+      <td>482.02</td>
+      <td>0.49</td>
+      <td>449.64</td>
+      <td>7.73</td>
+      <td>nordic_markets</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>1153250</td>
+      <td>NSKOG</td>
+      <td>Norske Skog Asa</td>
+      <td>Oslo</td>
+      <td>Basic Materials</td>
+      <td>Paper &amp; Paper Products</td>
+      <td>Norway</td>
+      <td>NSKOG.OL</td>
+      <td>Oslo:NSKOG</td>
+      <td>2019-10-18 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>42.37</td>
+      <td>NaN</td>
+      <td>-0.40</td>
+      <td>0.24</td>
+      <td>NaN</td>
+      <td>0.26</td>
+      <td>NaN</td>
+      <td>-0.02</td>
+      <td>35.13</td>
+      <td>26.16</td>
+      <td>33.0</td>
+      <td>4.825444e+09</td>
+      <td>9.226470e+07</td>
+      <td>6.157088e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>51.40</td>
+      <td>342905.0</td>
+      <td>65</td>
+      <td>85</td>
+      <td>92</td>
+      <td>90</td>
+      <td>93</td>
+      <td>91</td>
+      <td>1.09</td>
+      <td>516478.48</td>
+      <td>0.66</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>119.21</td>
+      <td>57.00</td>
+      <td>-9.82</td>
+      <td>29.15</td>
+      <td>76.33</td>
+      <td>NaN</td>
+      <td>1.90</td>
+      <td>-0.19</td>
+      <td>-1.15</td>
+      <td>4.37</td>
+      <td>18.16</td>
+      <td>42.98</td>
+      <td>36.16</td>
+      <td>51.67</td>
+      <td>-0.52</td>
+      <td>50.98</td>
+      <td>0.82</td>
+      <td>49.71</td>
+      <td>3.41</td>
+      <td>nordic_markets</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>1017262</td>
+      <td>LUMIN</td>
+      <td>Lundin Mining Corporation</td>
+      <td>Stockholm</td>
+      <td>Basic Materials</td>
+      <td>Copper</td>
+      <td>Sweden</td>
+      <td>LUN.TO</td>
+      <td>Stockholm:LUMIN</td>
+      <td>1996-08-08 13:30:00</td>
+      <td>0.92</td>
+      <td>0.95</td>
+      <td>NaN</td>
+      <td>0.44</td>
+      <td>0.40</td>
+      <td>-0.28</td>
+      <td>0.92</td>
+      <td>NaN</td>
+      <td>0.17</td>
+      <td>NaN</td>
+      <td>-0.11</td>
+      <td>13.44</td>
+      <td>45.59</td>
+      <td>297.0</td>
+      <td>1.002870e+10</td>
+      <td>7.379470e+08</td>
+      <td>6.368915e+08</td>
+      <td>8105831.0</td>
+      <td>4.45</td>
+      <td>0.0</td>
+      <td>102.40</td>
+      <td>702627.0</td>
+      <td>83</td>
+      <td>92</td>
+      <td>87</td>
+      <td>91</td>
+      <td>90</td>
+      <td>89</td>
+      <td>1.58</td>
+      <td>783926.66</td>
+      <td>0.90</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>812.44</td>
+      <td>107.20</td>
+      <td>-4.48</td>
+      <td>58.20</td>
+      <td>75.95</td>
+      <td>NaN</td>
+      <td>3.79</td>
+      <td>-1.96</td>
+      <td>7.56</td>
+      <td>12.59</td>
+      <td>29.29</td>
+      <td>37.17</td>
+      <td>-1.54</td>
+      <td>99.37</td>
+      <td>3.05</td>
+      <td>97.06</td>
+      <td>5.50</td>
+      <td>93.04</td>
+      <td>10.06</td>
+      <td>nordic_markets</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>1155094</td>
+      <td>HAFNI</td>
+      <td>Hafnia Ltd</td>
+      <td>Oslo</td>
+      <td>Industrials</td>
+      <td>Marine Shipping</td>
+      <td>Norway</td>
+      <td>HAFNI.OL</td>
+      <td>Oslo:HAFNI</td>
+      <td>2020-02-18 08:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.91</td>
+      <td>0.43</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.82</td>
+      <td>58.78</td>
+      <td>2.25</td>
+      <td>29.0</td>
+      <td>9.078900e+09</td>
+      <td>3.631560e+08</td>
+      <td>1.054907e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>25.90</td>
+      <td>1011570.0</td>
+      <td>87</td>
+      <td>96</td>
+      <td>94</td>
+      <td>94</td>
+      <td>96</td>
+      <td>96</td>
+      <td>2.20</td>
+      <td>451049.52</td>
+      <td>2.24</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>7.0</td>
+      <td>233.88</td>
+      <td>26.45</td>
+      <td>-2.08</td>
+      <td>14.80</td>
+      <td>75.00</td>
+      <td>NaN</td>
+      <td>1.24</td>
+      <td>1.97</td>
+      <td>7.25</td>
+      <td>15.63</td>
+      <td>50.58</td>
+      <td>37.91</td>
+      <td>44.05</td>
+      <td>24.72</td>
+      <td>4.79</td>
+      <td>23.61</td>
+      <td>9.70</td>
+      <td>21.32</td>
+      <td>21.48</td>
+      <td>nordic_markets</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>489</td>
+      <td>LUNE</td>
+      <td>Lundin Energy AB</td>
+      <td>Stockholm</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>Sweden</td>
+      <td>LUNE.ST</td>
+      <td>Stockholm:LUNE</td>
+      <td>2001-09-06 07:00:00</td>
+      <td>-0.60</td>
+      <td>-0.60</td>
+      <td>NaN</td>
+      <td>1.37</td>
+      <td>0.57</td>
+      <td>0.12</td>
+      <td>1.15</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>NaN</td>
+      <td>0.12</td>
+      <td>44.66</td>
+      <td>38.89</td>
+      <td>340.0</td>
+      <td>1.219089e+11</td>
+      <td>2.845680e+08</td>
+      <td>1.872259e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>428.70</td>
+      <td>552569.0</td>
+      <td>89</td>
+      <td>85</td>
+      <td>91</td>
+      <td>94</td>
+      <td>96</td>
+      <td>96</td>
+      <td>1.80</td>
+      <td>1098305.64</td>
+      <td>0.50</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>170.47</td>
+      <td>439.70</td>
+      <td>-2.50</td>
+      <td>248.70</td>
+      <td>72.38</td>
+      <td>NaN</td>
+      <td>12.65</td>
+      <td>-0.56</td>
+      <td>3.65</td>
+      <td>16.91</td>
+      <td>16.53</td>
+      <td>22.42</td>
+      <td>58.19</td>
+      <td>422.17</td>
+      <td>1.55</td>
+      <td>407.79</td>
+      <td>5.13</td>
+      <td>376.06</td>
+      <td>14.00</td>
+      <td>nordic_markets</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>26018</td>
+      <td>SSABb</td>
+      <td>SSAB AB ser. B</td>
+      <td>Stockholm</td>
+      <td>Basic Materials</td>
+      <td>Steel</td>
+      <td>Sweden</td>
+      <td>SSAB-B.ST</td>
+      <td>Stockholm:SSABb</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>14.91</td>
+      <td>14.91</td>
+      <td>NaN</td>
+      <td>-0.05</td>
+      <td>NaN</td>
+      <td>-0.67</td>
+      <td>0.61</td>
+      <td>NaN</td>
+      <td>0.14</td>
+      <td>NaN</td>
+      <td>-0.09</td>
+      <td>14.99</td>
+      <td>33.55</td>
+      <td>139.0</td>
+      <td>6.249033e+10</td>
+      <td>7.256520e+08</td>
+      <td>8.565552e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>59.04</td>
+      <td>4663042.0</td>
+      <td>66</td>
+      <td>85</td>
+      <td>90</td>
+      <td>91</td>
+      <td>90</td>
+      <td>89</td>
+      <td>1.17</td>
+      <td>8545318.08</td>
+      <td>0.55</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>100.24</td>
+      <td>68.46</td>
+      <td>-13.76</td>
+      <td>34.35</td>
+      <td>71.88</td>
+      <td>NaN</td>
+      <td>2.34</td>
+      <td>0.61</td>
+      <td>1.97</td>
+      <td>4.76</td>
+      <td>18.32</td>
+      <td>49.43</td>
+      <td>29.05</td>
+      <td>59.62</td>
+      <td>-0.97</td>
+      <td>59.76</td>
+      <td>-1.21</td>
+      <td>56.27</td>
+      <td>4.91</td>
+      <td>nordic_markets</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+            </section>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+    </div>
+</footer>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bm/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+<script>
+        $(document).ready(function () {
+            $('#data').DataTable(
+                {
+                    "scrollX": true,
+                    "dom": 'Bfrtip',
+                    "buttons": [
+                        'copy', 'csv', 'excel', 'print'
+                    ]
+
+                }
+            );
+        });
+    </script>
+    
+</body>
+
+</html>

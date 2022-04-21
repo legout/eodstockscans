@@ -1,0 +1,2290 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.datatables.net/v/bm/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/sc-2.0.5/datatables.min.css" />
+
+</head >
+
+
+<body>
+    <section class="hero is-small is-dark">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <!-- <a class="navbar-item">
+                        
+                        <img src="data:image/svg+xml;base64,"
+                            alt="Logo">
+                       
+                    </a> -->
+                    <span class="navbar-burger" data-target="navbarMenuHeroB">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </div>
+                <div id="navbarMenuHeroB" class="navbar-menu">
+                    <div class="navbar-start">
+                        
+                        <a class="navbar-item" href="../../japan/market_monitor.html">
+                            
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-home"></i>
+                                    </span>
+                                    <span>Home</span>
+                                </span>
+                            </a>
+
+                            <div class="navbar-item has-dropdown is-hoverable has-background-dark">
+                                <a class="navbar-link">
+                                    <span>Choose Market</span>
+                                </a>
+
+                                <div class="navbar-dropdown has-background-dark">
+                                    
+                                    <a class="navbar-item" href="../../australia/market_monitor.html">
+                                        <span>Australia</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../canada/market_monitor.html">
+                                        <span>Canada</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../germany/market_monitor.html">
+                                        <span>Germany</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../hong_kong/market_monitor.html">
+                                        <span>Hong Kong</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../japan/market_monitor.html">
+                                        <span>Japan</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../nordic_markets/market_monitor.html">
+                                        <span>Nordic Markets</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_kingdom/market_monitor.html">
+                                        <span>United Kingdom</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_states/market_monitor.html">
+                                        <span>United States</span>
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                    </div>
+                    <div class="navbar-end"></div>
+                    <span class="navbar-item">
+                        <a class="button is-info is-light" href="https://twitter.com/LignoL23">
+                            <span class="icon">
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                            <span>Twitter</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <a class="button  is-success is-light" href="https://www.paypal.com/paypalme/volkerlorrmann/5">
+                            <span class="icon">
+                                <i class="fab fa-paypal"></i>
+                            </span>
+                            <span>paypal.me</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+                        <script
+                            type='text/javascript'>kofiwidget2.init('Support me', '#d6d6d6', 'W7W0ACJPB'); kofiwidget2.draw();</script>
+                    </span>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="columns is-multiline is-mobile is-centered">
+                <div class="column is-1">
+                    <img src="data:image/svg+xml;base64," alt="Logo">
+                </div>
+                <div class="column is-4">
+                    <p class="title">
+                        EOD Stockmarket Scans
+                    </p>
+                    <p class="subtitle">
+                        Fintwits most popular stockmarket scans
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+            <div class="container">
+                <ul>
+                    
+                    <li class="is-active">
+                        <a href="../MeMyselfAndI/Top Gainers_result_table.html"> Results </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../MeMyselfAndI/Top Gainers_minicharts.html"> Minicharts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../MeMyselfAndI/Top Gainers_charts.html"> Charts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../MeMyselfAndI/Top Gainers_criteria.html"> Criteria </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+</section>
+    <div class="columns is-centered">
+        <div class="column is-2">
+            <div class="box has-background-light my-0 mx-2 p-auto">
+    <aside class="menu">
+        <p class="menu-label has-text-dark">
+            Market Monitor
+        </p>
+        <ul class="menu-list">
+            <li><a class="has-text-grey-light">New Highs/Lows</a></li>
+            <li><a class="has-text-grey-light">Breadth</a></li>
+            <li><a class="has-text-grey-light">Above/Below SMA</a></li>
+            <li><a class="has-text-grey-light">Sectors</a></li>
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Kristjan Kullamägi
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Kristjan Kullamägi/Biggest Gainers 1M_minicharts.html">
+                        Biggest Gainers 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Kristjan Kullamägi/Biggest Gainers 3M_minicharts.html">
+                        Biggest Gainers 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Kristjan Kullamägi/Biggest Gainers 6M_minicharts.html">
+                        Biggest Gainers 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Kristjan Kullamägi/Biggest Gainers 12M_minicharts.html">
+                        Biggest Gainers 12M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Kristjan Kullamägi/EP with Growth_minicharts.html">
+                        EP with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Kristjan Kullamägi/EP_minicharts.html">
+                        EP
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Kristjan Kullamägi/High Trend Intensity_minicharts.html">
+                        High Trend Intensity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Kristjan Kullamägi/Small Stock Momo_minicharts.html">
+                        Small Stock Momo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Kristjan Kullamägi/Momentum_minicharts.html">
+                        Momentum
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Brad Schulz
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Brad Schulz/Pocket Pivot_minicharts.html">
+                        Pocket Pivot
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Stockbee
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Stockbee/4% Gainers_minicharts.html">
+                        4% Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Stockbee/Combo_minicharts.html">
+                        Combo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Stockbee/Ants_minicharts.html">
+                        Ants
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Stockbee/Breakout 1M Base_minicharts.html">
+                        Breakout 1M Base
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Stockbee/Breakout 3M Base_minicharts.html">
+                        Breakout 3M Base
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Leif Soreide
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Leif Soreide/HTF_minicharts.html">
+                        HTF
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Blake Davis
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Blake Davis/Strength_minicharts.html">
+                        Strength
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ben
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Ben/Power of 3_minicharts.html">
+                        Power of 3
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Ben/Velocity_minicharts.html">
+                        Velocity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Ben/Focus_minicharts.html">
+                        Focus
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ray
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Ray/RSNHBP 5D_minicharts.html">
+                        RSNHBP 5D
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Ray/RSNHBP 1M_minicharts.html">
+                        RSNHBP 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Ray/RSNHBP 3M_minicharts.html">
+                        RSNHBP 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Ray/RSNHBP 6M_minicharts.html">
+                        RSNHBP 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Ray/RSNHBP 12M_minicharts.html">
+                        RSNHBP 12M
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Mark Minvervini
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Mark Minvervini/Trend Template_minicharts.html">
+                        Trend Template
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            MeMyselfAndI
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/MeMyselfAndI/Top Gainers From Open_minicharts.html">
+                        Top Gainers From Open
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="is-active"
+                        href="../../japan/MeMyselfAndI/Top Gainers_minicharts.html">
+                        Top Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/MeMyselfAndI/Volume Gainers_minicharts.html">
+                        Volume Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/MeMyselfAndI/Insiders_minicharts.html">
+                        Insiders
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/MeMyselfAndI/Darvas Scan_minicharts.html">
+                        Darvas Scan
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/MeMyselfAndI/Darvas Scan with Growth_minicharts.html">
+                        Darvas Scan with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/MeMyselfAndI/52W High_minicharts.html">
+                        52W High
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/MeMyselfAndI/Quite and Tight_minicharts.html">
+                        Quite and Tight
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+    </aside>
+</div>
+        </div>
+        <div class="column is-10">
+            <section class="block my-6">
+                <div class="columns ">
+                    <div class="column is-5 has-text-left">
+                        <h1 class="title is-4">Top Gainers @ Japan</h1>
+                        <h2 class="subtitle is-6">2022-04-20</h2>
+                    </div>
+                    <div class="column has-text-right mr-5">
+                        <div class="media">
+                           
+                            <div class="media-content">
+                                <p class="title is-5">MeMyselfAndI</p>
+                                <p class="subtitle is-6"><a class="has-text-grey-light" href="https://twitter.com/LignoL23">@LignoL23</a></p>
+                            </div>
+                            <div class="media-right">
+                                <figure class="image is-48x48">
+                                    <img src="https://unavatar.io/twitter/LignoL23" alt="Placeholder image">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="my-auto mr-5">
+                
+    <div class="table-container">
+        <table border="1" class="dataframe table is-striped no-wrap" id="data" style="width:100%; font-size:85%">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>symbol_id</th>
+      <th>symbol</th>
+      <th>name</th>
+      <th>exchange</th>
+      <th>sector</th>
+      <th>industry</th>
+      <th>country</th>
+      <th>yahoo_symbol</th>
+      <th>forexpros_symbol</th>
+      <th>IPO Date</th>
+      <th>EPS Growth Q</th>
+      <th>EPS Growth Y</th>
+      <th>EPS Growth FQ</th>
+      <th>EPS Growth FY</th>
+      <th>EPS Growth FQ1</th>
+      <th>EPS Growth FY1</th>
+      <th>Rev Growth Q</th>
+      <th>Rev Growth FQ</th>
+      <th>Rev Growth FY</th>
+      <th>Rev Growth FQ1</th>
+      <th>Rev Growth FY1</th>
+      <th>Insiders %</th>
+      <th>Institutions %</th>
+      <th>Institutions No.</th>
+      <th>Market Cap</th>
+      <th>Shares Outstanding</th>
+      <th>Shares Float</th>
+      <th>Shares Short</th>
+      <th>Short Ratio</th>
+      <th>Net Insider Trading %</th>
+      <th>close</th>
+      <th>volume</th>
+      <th>1m RS</th>
+      <th>3m RS</th>
+      <th>RS</th>
+      <th>Industry 1m RS</th>
+      <th>Industry 3m RS</th>
+      <th>Industry RS</th>
+      <th>UD Ratio</th>
+      <th>50d avg Volume</th>
+      <th>rel Volume</th>
+      <th>Pocket Pivot</th>
+      <th>1w Pocket Pivots</th>
+      <th>1m Pocket Pivots</th>
+      <th>Rocket Ratio</th>
+      <th>52w High</th>
+      <th>% below 52w High</th>
+      <th>52w Low</th>
+      <th>% above 52w Low</th>
+      <th>adr(20)</th>
+      <th>atr(14)</th>
+      <th>roc</th>
+      <th>roc(5)</th>
+      <th>roc(21)</th>
+      <th>roc(63)</th>
+      <th>roc(126)</th>
+      <th>roc(252)</th>
+      <th>ema(9)</th>
+      <th>% from 9d ema</th>
+      <th>ema(21)</th>
+      <th>% from 21d ema</th>
+      <th>sma(50)</th>
+      <th>% from 50d sma</th>
+      <th>market</th>
+      <th>date</th>
+      <th>group_name</th>
+      <th>scan_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>44255</td>
+      <td>5232</td>
+      <td>Sumitomo Osaka Cement Co., Ltd., Japan</td>
+      <td>Tokyo</td>
+      <td>Basic Materials</td>
+      <td>Building Materials</td>
+      <td>NaN</td>
+      <td>5232.T</td>
+      <td>Tokyo:5232</td>
+      <td>2000-01-04</td>
+      <td>-0.38</td>
+      <td>-0.36</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.25</td>
+      <td>0.02</td>
+      <td>0.63</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>5.92</td>
+      <td>59.66</td>
+      <td>99.0</td>
+      <td>1.120904e+11</td>
+      <td>3.575450e+07</td>
+      <td>3.628511e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>4045.0</td>
+      <td>3025500.0</td>
+      <td>96</td>
+      <td>89</td>
+      <td>94</td>
+      <td>19</td>
+      <td>31</td>
+      <td>67</td>
+      <td>1.13</td>
+      <td>365064.0</td>
+      <td>8.29</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>99.39</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.87</td>
+      <td>138.93</td>
+      <td>18.45</td>
+      <td>27.80</td>
+      <td>17.76</td>
+      <td>14.10</td>
+      <td>21.11</td>
+      <td>NaN</td>
+      <td>3420.21</td>
+      <td>18.27</td>
+      <td>3363.11</td>
+      <td>20.28</td>
+      <td>3391.90</td>
+      <td>19.25</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1031003</td>
+      <td>3990</td>
+      <td>UUUM Co Ltd</td>
+      <td>Tokyo</td>
+      <td>Communication Services</td>
+      <td>Internet Content &amp; Information</td>
+      <td>Japan</td>
+      <td>3990.T</td>
+      <td>Tokyo:3990</td>
+      <td>2017-08-31</td>
+      <td>0.25</td>
+      <td>0.23</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.04</td>
+      <td>0.60</td>
+      <td>0.60</td>
+      <td>0.60</td>
+      <td>0.43</td>
+      <td>50.40</td>
+      <td>4.02</td>
+      <td>15.0</td>
+      <td>2.330989e+10</td>
+      <td>1.977090e+07</td>
+      <td>9.325253e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1215.0</td>
+      <td>1129900.0</td>
+      <td>96</td>
+      <td>98</td>
+      <td>93</td>
+      <td>97</td>
+      <td>100</td>
+      <td>89</td>
+      <td>1.73</td>
+      <td>270510.0</td>
+      <td>4.18</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>6.0</td>
+      <td>34.47</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7.67</td>
+      <td>120.14</td>
+      <td>12.29</td>
+      <td>-3.42</td>
+      <td>16.49</td>
+      <td>45.51</td>
+      <td>-6.11</td>
+      <td>NaN</td>
+      <td>1177.46</td>
+      <td>3.19</td>
+      <td>1164.71</td>
+      <td>4.32</td>
+      <td>1034.16</td>
+      <td>17.49</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1185606</td>
+      <td>7793</td>
+      <td>Image Magic Inc</td>
+      <td>Tokyo</td>
+      <td>Industrials</td>
+      <td>Specialty Business Services</td>
+      <td>Japan</td>
+      <td>7793.T</td>
+      <td>Tokyo:7793</td>
+      <td>2022-03-03</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69.17</td>
+      <td>7.30</td>
+      <td>1.0</td>
+      <td>4.182338e+09</td>
+      <td>1.978400e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2285.0</td>
+      <td>80300.0</td>
+      <td>94</td>
+      <td>57</td>
+      <td>68</td>
+      <td>56</td>
+      <td>79</td>
+      <td>75</td>
+      <td>0.40</td>
+      <td>759132.0</td>
+      <td>0.11</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.27</td>
+      <td>107.07</td>
+      <td>8.81</td>
+      <td>10.28</td>
+      <td>13.57</td>
+      <td>-0.65</td>
+      <td>-0.65</td>
+      <td>NaN</td>
+      <td>2131.55</td>
+      <td>7.20</td>
+      <td>2122.14</td>
+      <td>7.67</td>
+      <td>2170.12</td>
+      <td>5.29</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1152960</td>
+      <td>4880</td>
+      <td>Cellsource Co Ltd</td>
+      <td>Tokyo</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>Japan</td>
+      <td>4880.T</td>
+      <td>Tokyo:4880</td>
+      <td>2019-10-29</td>
+      <td>0.37</td>
+      <td>-0.54</td>
+      <td>NaN</td>
+      <td>0.20</td>
+      <td>NaN</td>
+      <td>0.29</td>
+      <td>0.32</td>
+      <td>0.35</td>
+      <td>0.29</td>
+      <td>NaN</td>
+      <td>0.27</td>
+      <td>69.81</td>
+      <td>7.64</td>
+      <td>37.0</td>
+      <td>5.868035e+10</td>
+      <td>1.865830e+07</td>
+      <td>5.152148e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>3380.0</td>
+      <td>1199800.0</td>
+      <td>99</td>
+      <td>3</td>
+      <td>3</td>
+      <td>99</td>
+      <td>85</td>
+      <td>18</td>
+      <td>0.92</td>
+      <td>340974.0</td>
+      <td>3.52</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>15.11</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7.37</td>
+      <td>259.36</td>
+      <td>8.68</td>
+      <td>3.05</td>
+      <td>41.90</td>
+      <td>-24.97</td>
+      <td>-46.06</td>
+      <td>NaN</td>
+      <td>3188.38</td>
+      <td>6.01</td>
+      <td>3151.48</td>
+      <td>7.25</td>
+      <td>3221.50</td>
+      <td>4.92</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>952609</td>
+      <td>7732</td>
+      <td>Topcon Corp</td>
+      <td>Tokyo</td>
+      <td>Technology</td>
+      <td>Scientific &amp; Technical Instruments</td>
+      <td>Japan</td>
+      <td>7732.T</td>
+      <td>Tokyo:7732</td>
+      <td>2001-01-01</td>
+      <td>1.61</td>
+      <td>1.61</td>
+      <td>-0.88</td>
+      <td>1.75</td>
+      <td>NaN</td>
+      <td>0.23</td>
+      <td>0.26</td>
+      <td>-0.20</td>
+      <td>0.08</td>
+      <td>0.04</td>
+      <td>0.06</td>
+      <td>1.00</td>
+      <td>60.05</td>
+      <td>121.0</td>
+      <td>1.594999e+11</td>
+      <td>1.052110e+08</td>
+      <td>9.957203e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1699.0</td>
+      <td>1491500.0</td>
+      <td>94</td>
+      <td>86</td>
+      <td>80</td>
+      <td>46</td>
+      <td>8</td>
+      <td>47</td>
+      <td>1.27</td>
+      <td>488602.0</td>
+      <td>3.05</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>203.79</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.36</td>
+      <td>66.64</td>
+      <td>8.22</td>
+      <td>13.80</td>
+      <td>13.42</td>
+      <td>10.61</td>
+      <td>-8.66</td>
+      <td>NaN</td>
+      <td>1569.87</td>
+      <td>8.23</td>
+      <td>1544.34</td>
+      <td>10.01</td>
+      <td>1495.38</td>
+      <td>13.62</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>952376</td>
+      <td>6440</td>
+      <td>Juki Corp</td>
+      <td>Tokyo</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>Japan</td>
+      <td>6440.T</td>
+      <td>Tokyo:6440</td>
+      <td>2001-01-01</td>
+      <td>1.40</td>
+      <td>1.40</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.19</td>
+      <td>0.04</td>
+      <td>0.09</td>
+      <td>0.09</td>
+      <td>0.03</td>
+      <td>2.02</td>
+      <td>35.61</td>
+      <td>48.0</td>
+      <td>2.372871e+10</td>
+      <td>2.929470e+07</td>
+      <td>2.851157e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>903.0</td>
+      <td>1861700.0</td>
+      <td>98</td>
+      <td>86</td>
+      <td>89</td>
+      <td>38</td>
+      <td>25</td>
+      <td>41</td>
+      <td>1.24</td>
+      <td>542440.0</td>
+      <td>3.43</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>52.56</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.85</td>
+      <td>30.29</td>
+      <td>7.24</td>
+      <td>13.02</td>
+      <td>25.07</td>
+      <td>10.12</td>
+      <td>11.48</td>
+      <td>NaN</td>
+      <td>836.81</td>
+      <td>7.91</td>
+      <td>810.75</td>
+      <td>11.38</td>
+      <td>739.74</td>
+      <td>22.07</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1131559</td>
+      <td>7066</td>
+      <td>Peers Co Ltd</td>
+      <td>Tokyo</td>
+      <td>Industrials</td>
+      <td>Conglomerates</td>
+      <td>Japan</td>
+      <td>7066.T</td>
+      <td>Tokyo:7066</td>
+      <td>2019-06-20</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>66.14</td>
+      <td>1.60</td>
+      <td>1.0</td>
+      <td>5.581427e+09</td>
+      <td>4.639590e+06</td>
+      <td>1.292590e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1426.0</td>
+      <td>642600.0</td>
+      <td>100</td>
+      <td>100</td>
+      <td>99</td>
+      <td>95</td>
+      <td>74</td>
+      <td>51</td>
+      <td>3.23</td>
+      <td>467258.0</td>
+      <td>1.38</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>2.77</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>208.36</td>
+      <td>6.98</td>
+      <td>3.63</td>
+      <td>247.80</td>
+      <td>202.76</td>
+      <td>73.90</td>
+      <td>NaN</td>
+      <td>1211.24</td>
+      <td>17.73</td>
+      <td>941.69</td>
+      <td>51.43</td>
+      <td>574.28</td>
+      <td>148.31</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1179941</td>
+      <td>9250</td>
+      <td>GRCS Inc</td>
+      <td>Tokyo</td>
+      <td>Technology</td>
+      <td>Information Technology Services</td>
+      <td>Japan</td>
+      <td>9250.T</td>
+      <td>Tokyo:9250</td>
+      <td>2021-11-18</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>53.48</td>
+      <td>7.21</td>
+      <td>2.0</td>
+      <td>6.466460e+09</td>
+      <td>1.309000e+06</td>
+      <td>2.592580e+05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>4865.0</td>
+      <td>283100.0</td>
+      <td>70</td>
+      <td>94</td>
+      <td>65</td>
+      <td>88</td>
+      <td>64</td>
+      <td>14</td>
+      <td>2.18</td>
+      <td>348452.0</td>
+      <td>0.81</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>0.74</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.08</td>
+      <td>588.21</td>
+      <td>6.46</td>
+      <td>-21.78</td>
+      <td>1.57</td>
+      <td>20.57</td>
+      <td>-23.98</td>
+      <td>NaN</td>
+      <td>5196.17</td>
+      <td>-6.37</td>
+      <td>5299.76</td>
+      <td>-8.20</td>
+      <td>4503.24</td>
+      <td>8.03</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1097736</td>
+      <td>7044</td>
+      <td>PIALA Inc</td>
+      <td>Tokyo</td>
+      <td>Communication Services</td>
+      <td>Advertising Agencies</td>
+      <td>Japan</td>
+      <td>7044.T</td>
+      <td>Tokyo:7044</td>
+      <td>2018-12-11</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.25</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>50.27</td>
+      <td>19.49</td>
+      <td>25.0</td>
+      <td>6.476764e+09</td>
+      <td>6.919620e+06</td>
+      <td>2.956784e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1019.0</td>
+      <td>981100.0</td>
+      <td>99</td>
+      <td>99</td>
+      <td>98</td>
+      <td>91</td>
+      <td>96</td>
+      <td>80</td>
+      <td>1.01</td>
+      <td>1075782.0</td>
+      <td>0.91</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>2.75</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>13.58</td>
+      <td>164.36</td>
+      <td>6.15</td>
+      <td>-1.07</td>
+      <td>84.94</td>
+      <td>68.43</td>
+      <td>39.40</td>
+      <td>NaN</td>
+      <td>967.75</td>
+      <td>5.30</td>
+      <td>877.59</td>
+      <td>16.11</td>
+      <td>668.80</td>
+      <td>52.36</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>952106</td>
+      <td>4574</td>
+      <td>Taiko Pharmaceutical Co Ltd</td>
+      <td>Tokyo</td>
+      <td>Healthcare</td>
+      <td>Drug Manufacturers—Specialty &amp; Generic</td>
+      <td>Japan</td>
+      <td>4574.T</td>
+      <td>Tokyo:4574</td>
+      <td>2009-03-18</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.85</td>
+      <td>NaN</td>
+      <td>1.14</td>
+      <td>NaN</td>
+      <td>-0.26</td>
+      <td>-0.26</td>
+      <td>-0.45</td>
+      <td>0.26</td>
+      <td>50.82</td>
+      <td>17.01</td>
+      <td>44.0</td>
+      <td>2.479770e+10</td>
+      <td>4.358120e+07</td>
+      <td>2.316949e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>595.0</td>
+      <td>301500.0</td>
+      <td>85</td>
+      <td>10</td>
+      <td>7</td>
+      <td>69</td>
+      <td>20</td>
+      <td>6</td>
+      <td>0.98</td>
+      <td>169106.0</td>
+      <td>1.78</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>137.01</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.52</td>
+      <td>23.86</td>
+      <td>5.87</td>
+      <td>-2.94</td>
+      <td>6.06</td>
+      <td>-16.32</td>
+      <td>-30.25</td>
+      <td>NaN</td>
+      <td>581.86</td>
+      <td>2.26</td>
+      <td>585.75</td>
+      <td>1.58</td>
+      <td>592.82</td>
+      <td>0.37</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>44167</td>
+      <td>7270</td>
+      <td>Subaru Corp</td>
+      <td>Tokyo</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Manufacturers</td>
+      <td>Japan</td>
+      <td>7270.T</td>
+      <td>Tokyo:7270</td>
+      <td>2000-01-04</td>
+      <td>-0.64</td>
+      <td>-0.64</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.57</td>
+      <td>0.81</td>
+      <td>-0.22</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.26</td>
+      <td>0.23</td>
+      <td>23.37</td>
+      <td>37.60</td>
+      <td>294.0</td>
+      <td>1.383435e+12</td>
+      <td>7.668710e+08</td>
+      <td>6.041870e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1936.0</td>
+      <td>6229300.0</td>
+      <td>76</td>
+      <td>20</td>
+      <td>30</td>
+      <td>93</td>
+      <td>6</td>
+      <td>31</td>
+      <td>0.73</td>
+      <td>3447154.0</td>
+      <td>1.81</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>175.27</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.90</td>
+      <td>46.32</td>
+      <td>5.42</td>
+      <td>5.79</td>
+      <td>3.03</td>
+      <td>-11.31</td>
+      <td>-13.22</td>
+      <td>NaN</td>
+      <td>1853.77</td>
+      <td>4.44</td>
+      <td>1862.41</td>
+      <td>3.95</td>
+      <td>1880.05</td>
+      <td>2.98</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>946183</td>
+      <td>5929</td>
+      <td>Sanwa Holdings Corp</td>
+      <td>Tokyo</td>
+      <td>Industrials</td>
+      <td>Building Products &amp; Equipment</td>
+      <td>Japan</td>
+      <td>5929.T</td>
+      <td>Tokyo:5929</td>
+      <td>2001-01-01</td>
+      <td>-0.47</td>
+      <td>-0.47</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.65</td>
+      <td>0.11</td>
+      <td>0.12</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>4.55</td>
+      <td>47.09</td>
+      <td>165.0</td>
+      <td>2.480628e+11</td>
+      <td>2.208930e+08</td>
+      <td>2.110428e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1173.0</td>
+      <td>979300.0</td>
+      <td>29</td>
+      <td>30</td>
+      <td>31</td>
+      <td>14</td>
+      <td>21</td>
+      <td>30</td>
+      <td>1.29</td>
+      <td>604708.0</td>
+      <td>1.62</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>349.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.47</td>
+      <td>32.71</td>
+      <td>5.30</td>
+      <td>3.90</td>
+      <td>-4.32</td>
+      <td>-7.35</td>
+      <td>-16.57</td>
+      <td>NaN</td>
+      <td>1144.23</td>
+      <td>2.51</td>
+      <td>1171.05</td>
+      <td>0.17</td>
+      <td>1215.40</td>
+      <td>-3.49</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>992296</td>
+      <td>7747</td>
+      <td>Asahi Intecc Co Ltd</td>
+      <td>Tokyo</td>
+      <td>Healthcare</td>
+      <td>Medical Instruments &amp; Supplies</td>
+      <td>Japan</td>
+      <td>7747.T</td>
+      <td>Tokyo:7747</td>
+      <td>2005-06-17</td>
+      <td>0.64</td>
+      <td>0.58</td>
+      <td>NaN</td>
+      <td>0.15</td>
+      <td>0.04</td>
+      <td>0.17</td>
+      <td>0.41</td>
+      <td>NaN</td>
+      <td>0.25</td>
+      <td>0.18</td>
+      <td>0.12</td>
+      <td>19.67</td>
+      <td>40.34</td>
+      <td>257.0</td>
+      <td>6.883002e+11</td>
+      <td>2.716260e+08</td>
+      <td>2.212962e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>2699.0</td>
+      <td>2232200.0</td>
+      <td>97</td>
+      <td>96</td>
+      <td>90</td>
+      <td>69</td>
+      <td>20</td>
+      <td>6</td>
+      <td>1.30</td>
+      <td>1382846.0</td>
+      <td>1.61</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>160.03</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.24</td>
+      <td>100.64</td>
+      <td>5.14</td>
+      <td>2.82</td>
+      <td>19.48</td>
+      <td>29.39</td>
+      <td>-7.60</td>
+      <td>NaN</td>
+      <td>2570.72</td>
+      <td>4.99</td>
+      <td>2495.43</td>
+      <td>8.16</td>
+      <td>2346.28</td>
+      <td>15.03</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>952608</td>
+      <td>7730</td>
+      <td>Mani Inc</td>
+      <td>Tokyo</td>
+      <td>Healthcare</td>
+      <td>Medical Instruments &amp; Supplies</td>
+      <td>Japan</td>
+      <td>7730.T</td>
+      <td>Tokyo:7730</td>
+      <td>2010-02-22</td>
+      <td>0.34</td>
+      <td>0.34</td>
+      <td>NaN</td>
+      <td>0.03</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>0.13</td>
+      <td>0.10</td>
+      <td>0.10</td>
+      <td>0.15</td>
+      <td>0.09</td>
+      <td>25.16</td>
+      <td>21.84</td>
+      <td>89.0</td>
+      <td>1.471476e+11</td>
+      <td>9.842650e+07</td>
+      <td>6.610130e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1498.0</td>
+      <td>367000.0</td>
+      <td>80</td>
+      <td>27</td>
+      <td>11</td>
+      <td>69</td>
+      <td>20</td>
+      <td>6</td>
+      <td>1.07</td>
+      <td>419010.0</td>
+      <td>0.88</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>157.76</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.39</td>
+      <td>67.71</td>
+      <td>5.12</td>
+      <td>-7.30</td>
+      <td>4.10</td>
+      <td>-8.55</td>
+      <td>-25.69</td>
+      <td>NaN</td>
+      <td>1506.67</td>
+      <td>-0.58</td>
+      <td>1515.88</td>
+      <td>-1.18</td>
+      <td>1540.76</td>
+      <td>-2.78</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>1165316</td>
+      <td>4056</td>
+      <td>Neural Pocket Inc</td>
+      <td>Tokyo</td>
+      <td>Technology</td>
+      <td>Information Technology Services</td>
+      <td>Japan</td>
+      <td>4056.T</td>
+      <td>Tokyo:4056</td>
+      <td>2020-08-24</td>
+      <td>0.84</td>
+      <td>1.06</td>
+      <td>NaN</td>
+      <td>15.46</td>
+      <td>NaN</td>
+      <td>0.37</td>
+      <td>-0.10</td>
+      <td>0.33</td>
+      <td>0.33</td>
+      <td>-0.10</td>
+      <td>0.34</td>
+      <td>72.59</td>
+      <td>14.13</td>
+      <td>18.0</td>
+      <td>1.994306e+10</td>
+      <td>1.429610e+07</td>
+      <td>4.725252e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1412.0</td>
+      <td>107500.0</td>
+      <td>94</td>
+      <td>95</td>
+      <td>19</td>
+      <td>73</td>
+      <td>69</td>
+      <td>21</td>
+      <td>1.36</td>
+      <td>142782.0</td>
+      <td>0.75</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>33.09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.61</td>
+      <td>107.36</td>
+      <td>4.90</td>
+      <td>-3.16</td>
+      <td>13.87</td>
+      <td>26.64</td>
+      <td>-49.82</td>
+      <td>NaN</td>
+      <td>1415.34</td>
+      <td>-0.24</td>
+      <td>1395.68</td>
+      <td>1.17</td>
+      <td>1260.48</td>
+      <td>12.02</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>946099</td>
+      <td>2593</td>
+      <td>Ito En Ltd</td>
+      <td>Tokyo</td>
+      <td>Consumer Defensive</td>
+      <td>Beverages—Non-Alcoholic</td>
+      <td>Japan</td>
+      <td>2593.T</td>
+      <td>Tokyo:2593</td>
+      <td>2001-01-01</td>
+      <td>1.23</td>
+      <td>1.23</td>
+      <td>NaN</td>
+      <td>0.91</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>-0.07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.16</td>
+      <td>0.04</td>
+      <td>34.76</td>
+      <td>29.26</td>
+      <td>172.0</td>
+      <td>5.160046e+11</td>
+      <td>8.820040e+07</td>
+      <td>8.068130e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>5350.0</td>
+      <td>456500.0</td>
+      <td>2</td>
+      <td>14</td>
+      <td>15</td>
+      <td>43</td>
+      <td>58</td>
+      <td>60</td>
+      <td>0.63</td>
+      <td>192436.0</td>
+      <td>2.37</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>419.26</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.35</td>
+      <td>148.21</td>
+      <td>4.90</td>
+      <td>-0.56</td>
+      <td>-14.26</td>
+      <td>-14.13</td>
+      <td>-24.65</td>
+      <td>NaN</td>
+      <td>5365.64</td>
+      <td>-0.29</td>
+      <td>5666.43</td>
+      <td>-5.58</td>
+      <td>6189.40</td>
+      <td>-13.56</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>1185338</td>
+      <td>4268</td>
+      <td>EDGE Technology Inc</td>
+      <td>Tokyo</td>
+      <td>Technology</td>
+      <td>Software—Infrastructure</td>
+      <td>Japan</td>
+      <td>4268.T</td>
+      <td>Tokyo:4268</td>
+      <td>2022-02-17</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>70.44</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>1.343306e+10</td>
+      <td>1.054400e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1312.0</td>
+      <td>922900.0</td>
+      <td>99</td>
+      <td>99</td>
+      <td>99</td>
+      <td>73</td>
+      <td>69</td>
+      <td>21</td>
+      <td>1.28</td>
+      <td>6843062.0</td>
+      <td>0.13</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>13.18</td>
+      <td>143.71</td>
+      <td>4.71</td>
+      <td>8.43</td>
+      <td>42.76</td>
+      <td>96.41</td>
+      <td>96.41</td>
+      <td>NaN</td>
+      <td>1259.30</td>
+      <td>4.18</td>
+      <td>1179.96</td>
+      <td>11.19</td>
+      <td>878.38</td>
+      <td>49.37</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>44127</td>
+      <td>7201</td>
+      <td>Nissan Motor Co., Ltd., Japan</td>
+      <td>Tokyo</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Manufacturers</td>
+      <td>NaN</td>
+      <td>7201.T</td>
+      <td>Tokyo:7201</td>
+      <td>2000-01-04</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.48</td>
+      <td>0.22</td>
+      <td>-0.01</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.16</td>
+      <td>0.16</td>
+      <td>47.03</td>
+      <td>13.45</td>
+      <td>274.0</td>
+      <td>1.998519e+12</td>
+      <td>3.914060e+09</td>
+      <td>2.082174e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>550.8</td>
+      <td>30839800.0</td>
+      <td>87</td>
+      <td>16</td>
+      <td>37</td>
+      <td>93</td>
+      <td>6</td>
+      <td>31</td>
+      <td>0.90</td>
+      <td>20448592.0</td>
+      <td>1.51</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>101.82</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.48</td>
+      <td>14.24</td>
+      <td>4.66</td>
+      <td>9.29</td>
+      <td>6.91</td>
+      <td>-12.96</td>
+      <td>-5.10</td>
+      <td>NaN</td>
+      <td>521.31</td>
+      <td>5.66</td>
+      <td>520.70</td>
+      <td>5.78</td>
+      <td>534.53</td>
+      <td>3.04</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>44254</td>
+      <td>3382</td>
+      <td>Seven &amp; i Holdings Co., Ltd., Japan</td>
+      <td>Tokyo</td>
+      <td>Consumer Defensive</td>
+      <td>Grocery Stores</td>
+      <td>NaN</td>
+      <td>3382.T</td>
+      <td>Tokyo:3382</td>
+      <td>2000-01-04</td>
+      <td>0.17</td>
+      <td>0.17</td>
+      <td>0.35</td>
+      <td>0.24</td>
+      <td>0.11</td>
+      <td>0.12</td>
+      <td>0.68</td>
+      <td>0.59</td>
+      <td>0.17</td>
+      <td>0.29</td>
+      <td>0.01</td>
+      <td>15.70</td>
+      <td>45.67</td>
+      <td>417.0</td>
+      <td>4.920775e+12</td>
+      <td>8.829670e+08</td>
+      <td>7.761631e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>5810.0</td>
+      <td>2503700.0</td>
+      <td>79</td>
+      <td>87</td>
+      <td>92</td>
+      <td>4</td>
+      <td>57</td>
+      <td>61</td>
+      <td>0.91</td>
+      <td>2666190.0</td>
+      <td>0.94</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>291.11</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.27</td>
+      <td>138.21</td>
+      <td>4.63</td>
+      <td>2.92</td>
+      <td>3.81</td>
+      <td>11.95</td>
+      <td>22.08</td>
+      <td>NaN</td>
+      <td>5658.46</td>
+      <td>2.68</td>
+      <td>5645.78</td>
+      <td>2.91</td>
+      <td>5619.32</td>
+      <td>3.39</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>976175</td>
+      <td>9517</td>
+      <td>eREX Co Ltd</td>
+      <td>Tokyo</td>
+      <td>Utilities</td>
+      <td>Utilities—Renewable</td>
+      <td>Japan</td>
+      <td>9517.T</td>
+      <td>Tokyo:9517</td>
+      <td>2014-12-22</td>
+      <td>1.82</td>
+      <td>1.64</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.06</td>
+      <td>1.41</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.15</td>
+      <td>53.79</td>
+      <td>20.32</td>
+      <td>91.0</td>
+      <td>1.136016e+11</td>
+      <td>5.904450e+07</td>
+      <td>3.281568e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1990.0</td>
+      <td>3640400.0</td>
+      <td>91</td>
+      <td>94</td>
+      <td>61</td>
+      <td>61</td>
+      <td>98</td>
+      <td>67</td>
+      <td>1.44</td>
+      <td>1164220.0</td>
+      <td>3.13</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>28.19</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.42</td>
+      <td>113.79</td>
+      <td>4.30</td>
+      <td>4.35</td>
+      <td>10.37</td>
+      <td>21.12</td>
+      <td>-20.65</td>
+      <td>NaN</td>
+      <td>1938.14</td>
+      <td>2.68</td>
+      <td>1899.17</td>
+      <td>4.78</td>
+      <td>1800.62</td>
+      <td>10.52</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>991936</td>
+      <td>5724</td>
+      <td>Asaka Riken Co Ltd</td>
+      <td>Tokyo</td>
+      <td>Basic Materials</td>
+      <td>Other Industrial Metals &amp; Mining</td>
+      <td>Japan</td>
+      <td>5724.T</td>
+      <td>Tokyo:5724</td>
+      <td>2008-11-06</td>
+      <td>1.86</td>
+      <td>1.85</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.21</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>47.49</td>
+      <td>11.80</td>
+      <td>5.0</td>
+      <td>7.826041e+09</td>
+      <td>5.058850e+06</td>
+      <td>2.440720e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1628.0</td>
+      <td>111800.0</td>
+      <td>95</td>
+      <td>97</td>
+      <td>95</td>
+      <td>56</td>
+      <td>79</td>
+      <td>75</td>
+      <td>1.73</td>
+      <td>125678.0</td>
+      <td>0.89</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>6.0</td>
+      <td>19.42</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.78</td>
+      <td>73.71</td>
+      <td>4.16</td>
+      <td>10.22</td>
+      <td>16.29</td>
+      <td>37.50</td>
+      <td>6.06</td>
+      <td>NaN</td>
+      <td>1538.52</td>
+      <td>5.82</td>
+      <td>1481.85</td>
+      <td>9.86</td>
+      <td>1328.48</td>
+      <td>22.55</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>946092</td>
+      <td>2212</td>
+      <td>Yamazaki Baking Co Ltd</td>
+      <td>Tokyo</td>
+      <td>Consumer Defensive</td>
+      <td>Packaged Foods</td>
+      <td>Japan</td>
+      <td>2212.T</td>
+      <td>Tokyo:2212</td>
+      <td>2001-01-01</td>
+      <td>-0.03</td>
+      <td>-0.01</td>
+      <td>NaN</td>
+      <td>0.15</td>
+      <td>-0.16</td>
+      <td>0.16</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>-0.00</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>35.23</td>
+      <td>20.81</td>
+      <td>127.0</td>
+      <td>3.106575e+11</td>
+      <td>2.086350e+08</td>
+      <td>1.164895e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1575.0</td>
+      <td>1509900.0</td>
+      <td>88</td>
+      <td>78</td>
+      <td>68</td>
+      <td>18</td>
+      <td>52</td>
+      <td>69</td>
+      <td>0.84</td>
+      <td>917392.0</td>
+      <td>1.65</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>126.98</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.25</td>
+      <td>36.21</td>
+      <td>4.03</td>
+      <td>4.03</td>
+      <td>7.44</td>
+      <td>5.99</td>
+      <td>-17.06</td>
+      <td>NaN</td>
+      <td>1521.23</td>
+      <td>3.53</td>
+      <td>1518.84</td>
+      <td>3.70</td>
+      <td>1529.04</td>
+      <td>3.01</td>
+      <td>japan</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+            </section>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+    </div>
+</footer>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bm/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+<script>
+        $(document).ready(function () {
+            $('#data').DataTable(
+                {
+                    "scrollX": true,
+                    "dom": 'Bfrtip',
+                    "buttons": [
+                        'copy', 'csv', 'excel', 'print'
+                    ]
+
+                }
+            );
+        });
+    </script>
+    
+</body>
+
+</html>

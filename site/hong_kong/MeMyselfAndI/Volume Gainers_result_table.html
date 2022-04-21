@@ -1,0 +1,3620 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.datatables.net/v/bm/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/sc-2.0.5/datatables.min.css" />
+
+</head >
+
+
+<body>
+    <section class="hero is-small is-dark">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <!-- <a class="navbar-item">
+                        
+                        <img src="data:image/svg+xml;base64,"
+                            alt="Logo">
+                       
+                    </a> -->
+                    <span class="navbar-burger" data-target="navbarMenuHeroB">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </div>
+                <div id="navbarMenuHeroB" class="navbar-menu">
+                    <div class="navbar-start">
+                        
+                        <a class="navbar-item" href="../../hong_kong/market_monitor.html">
+                            
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-home"></i>
+                                    </span>
+                                    <span>Home</span>
+                                </span>
+                            </a>
+
+                            <div class="navbar-item has-dropdown is-hoverable has-background-dark">
+                                <a class="navbar-link">
+                                    <span>Choose Market</span>
+                                </a>
+
+                                <div class="navbar-dropdown has-background-dark">
+                                    
+                                    <a class="navbar-item" href="../../australia/market_monitor.html">
+                                        <span>Australia</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../canada/market_monitor.html">
+                                        <span>Canada</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../germany/market_monitor.html">
+                                        <span>Germany</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../hong_kong/market_monitor.html">
+                                        <span>Hong Kong</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../japan/market_monitor.html">
+                                        <span>Japan</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../nordic_markets/market_monitor.html">
+                                        <span>Nordic Markets</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_kingdom/market_monitor.html">
+                                        <span>United Kingdom</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_states/market_monitor.html">
+                                        <span>United States</span>
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                    </div>
+                    <div class="navbar-end"></div>
+                    <span class="navbar-item">
+                        <a class="button is-info is-light" href="https://twitter.com/LignoL23">
+                            <span class="icon">
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                            <span>Twitter</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <a class="button  is-success is-light" href="https://www.paypal.com/paypalme/volkerlorrmann/5">
+                            <span class="icon">
+                                <i class="fab fa-paypal"></i>
+                            </span>
+                            <span>paypal.me</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+                        <script
+                            type='text/javascript'>kofiwidget2.init('Support me', '#d6d6d6', 'W7W0ACJPB'); kofiwidget2.draw();</script>
+                    </span>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="columns is-multiline is-mobile is-centered">
+                <div class="column is-1">
+                    <img src="data:image/svg+xml;base64," alt="Logo">
+                </div>
+                <div class="column is-4">
+                    <p class="title">
+                        EOD Stockmarket Scans
+                    </p>
+                    <p class="subtitle">
+                        Fintwits most popular stockmarket scans
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+            <div class="container">
+                <ul>
+                    
+                    <li class="is-active">
+                        <a href="../MeMyselfAndI/Volume Gainers_result_table.html"> Results </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../MeMyselfAndI/Volume Gainers_minicharts.html"> Minicharts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../MeMyselfAndI/Volume Gainers_charts.html"> Charts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../MeMyselfAndI/Volume Gainers_criteria.html"> Criteria </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+</section>
+    <div class="columns is-centered">
+        <div class="column is-2">
+            <div class="box has-background-light my-0 mx-2 p-auto">
+    <aside class="menu">
+        <p class="menu-label has-text-dark">
+            Market Monitor
+        </p>
+        <ul class="menu-list">
+            <li><a class="has-text-grey-light">New Highs/Lows</a></li>
+            <li><a class="has-text-grey-light">Breadth</a></li>
+            <li><a class="has-text-grey-light">Above/Below SMA</a></li>
+            <li><a class="has-text-grey-light">Sectors</a></li>
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Kristjan Kullamägi
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Kristjan Kullamägi/Biggest Gainers 1M_minicharts.html">
+                        Biggest Gainers 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Kristjan Kullamägi/Biggest Gainers 3M_minicharts.html">
+                        Biggest Gainers 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Kristjan Kullamägi/Biggest Gainers 6M_minicharts.html">
+                        Biggest Gainers 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Kristjan Kullamägi/Biggest Gainers 12M_minicharts.html">
+                        Biggest Gainers 12M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Kristjan Kullamägi/EP with Growth_minicharts.html">
+                        EP with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Kristjan Kullamägi/EP_minicharts.html">
+                        EP
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Kristjan Kullamägi/High Trend Intensity_minicharts.html">
+                        High Trend Intensity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Kristjan Kullamägi/Small Stock Momo_minicharts.html">
+                        Small Stock Momo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Kristjan Kullamägi/Momentum_minicharts.html">
+                        Momentum
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Brad Schulz
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Brad Schulz/Pocket Pivot_minicharts.html">
+                        Pocket Pivot
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Stockbee
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Stockbee/4% Gainers_minicharts.html">
+                        4% Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Stockbee/Combo_minicharts.html">
+                        Combo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Stockbee/Ants_minicharts.html">
+                        Ants
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Stockbee/Breakout 1M Base_minicharts.html">
+                        Breakout 1M Base
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Stockbee/Breakout 3M Base_minicharts.html">
+                        Breakout 3M Base
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Leif Soreide
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Leif Soreide/HTF_minicharts.html">
+                        HTF
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Blake Davis
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Blake Davis/Strength_minicharts.html">
+                        Strength
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ben
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Ben/Power of 3_minicharts.html">
+                        Power of 3
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Ben/Velocity_minicharts.html">
+                        Velocity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Ben/Focus_minicharts.html">
+                        Focus
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ray
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Ray/RSNHBP 5D_minicharts.html">
+                        RSNHBP 5D
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Ray/RSNHBP 1M_minicharts.html">
+                        RSNHBP 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Ray/RSNHBP 3M_minicharts.html">
+                        RSNHBP 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Ray/RSNHBP 6M_minicharts.html">
+                        RSNHBP 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Ray/RSNHBP 12M_minicharts.html">
+                        RSNHBP 12M
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Mark Minvervini
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Mark Minvervini/Trend Template_minicharts.html">
+                        Trend Template
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            MeMyselfAndI
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/MeMyselfAndI/Top Gainers From Open_minicharts.html">
+                        Top Gainers From Open
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/MeMyselfAndI/Top Gainers_minicharts.html">
+                        Top Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="is-active"
+                        href="../../hong_kong/MeMyselfAndI/Volume Gainers_minicharts.html">
+                        Volume Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/MeMyselfAndI/Insiders_minicharts.html">
+                        Insiders
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/MeMyselfAndI/Darvas Scan_minicharts.html">
+                        Darvas Scan
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/MeMyselfAndI/Darvas Scan with Growth_minicharts.html">
+                        Darvas Scan with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/MeMyselfAndI/52W High_minicharts.html">
+                        52W High
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/MeMyselfAndI/Quite and Tight_minicharts.html">
+                        Quite and Tight
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+    </aside>
+</div>
+        </div>
+        <div class="column is-10">
+            <section class="block my-6">
+                <div class="columns ">
+                    <div class="column is-5 has-text-left">
+                        <h1 class="title is-4">Volume Gainers @ Hong Kong</h1>
+                        <h2 class="subtitle is-6">2022-04-20</h2>
+                    </div>
+                    <div class="column has-text-right mx-5">
+                        <div class="media">
+                           
+                            <div class="media-content">
+                                <p class="title is-5">MeMyselfAndI</p>
+                                <p class="subtitle is-6"><a class="has-text-grey-light" href="https://twitter.com/LignoL23">@LignoL23</a></p>
+                            </div>
+                            <div class="media-right">
+                                <figure class="image is-48x48">
+                                    <img src="https://unavatar.io/twitter/LignoL23" alt="Placeholder image">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="my-auto mr-6">
+                
+    <div class="table-container">
+        <table border="1" class="dataframe table is-striped no-wrap" id="data" style="width:100%; font-size:85%">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>symbol_id</th>
+      <th>symbol</th>
+      <th>name</th>
+      <th>exchange</th>
+      <th>sector</th>
+      <th>industry</th>
+      <th>country</th>
+      <th>yahoo_symbol</th>
+      <th>forexpros_symbol</th>
+      <th>IPO Date</th>
+      <th>EPS Growth Q</th>
+      <th>EPS Growth Y</th>
+      <th>EPS Growth FQ</th>
+      <th>EPS Growth FY</th>
+      <th>EPS Growth FQ1</th>
+      <th>EPS Growth FY1</th>
+      <th>Rev Growth Q</th>
+      <th>Rev Growth FQ</th>
+      <th>Rev Growth FY</th>
+      <th>Rev Growth FQ1</th>
+      <th>Rev Growth FY1</th>
+      <th>Insiders %</th>
+      <th>Institutions %</th>
+      <th>Institutions No.</th>
+      <th>Market Cap</th>
+      <th>Shares Outstanding</th>
+      <th>Shares Float</th>
+      <th>Shares Short</th>
+      <th>Short Ratio</th>
+      <th>Net Insider Trading %</th>
+      <th>close</th>
+      <th>volume</th>
+      <th>1m RS</th>
+      <th>3m RS</th>
+      <th>RS</th>
+      <th>Industry 1m RS</th>
+      <th>Industry 3m RS</th>
+      <th>Industry RS</th>
+      <th>UD Ratio</th>
+      <th>50d avg Volume</th>
+      <th>rel Volume</th>
+      <th>Pocket Pivot</th>
+      <th>1w Pocket Pivots</th>
+      <th>1m Pocket Pivots</th>
+      <th>Rocket Ratio</th>
+      <th>52w High</th>
+      <th>% below 52w High</th>
+      <th>52w Low</th>
+      <th>% above 52w Low</th>
+      <th>adr(20)</th>
+      <th>atr(14)</th>
+      <th>roc</th>
+      <th>roc(5)</th>
+      <th>roc(21)</th>
+      <th>roc(63)</th>
+      <th>roc(126)</th>
+      <th>roc(252)</th>
+      <th>ema(9)</th>
+      <th>% from 9d ema</th>
+      <th>ema(21)</th>
+      <th>% from 21d ema</th>
+      <th>sma(50)</th>
+      <th>% from 50d sma</th>
+      <th>market</th>
+      <th>date</th>
+      <th>group_name</th>
+      <th>scan_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>941680</td>
+      <td>1913</td>
+      <td>Prada SpA</td>
+      <td>Hong Kong</td>
+      <td>Consumer Cyclical</td>
+      <td>Luxury Goods</td>
+      <td>Hong Kong</td>
+      <td>1913.HK</td>
+      <td>Hong Kong:1913</td>
+      <td>2007-10-30 01:30:00</td>
+      <td>0.56</td>
+      <td>0.56</td>
+      <td>NaN</td>
+      <td>0.34</td>
+      <td>NaN</td>
+      <td>0.28</td>
+      <td>0.26</td>
+      <td>NaN</td>
+      <td>0.12</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>79.98</td>
+      <td>15.45</td>
+      <td>108.0</td>
+      <td>1.137396e+11</td>
+      <td>2.558820e+09</td>
+      <td>5.122766e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>49.00</td>
+      <td>2098502.0</td>
+      <td>83</td>
+      <td>78</td>
+      <td>74</td>
+      <td>77</td>
+      <td>76</td>
+      <td>64</td>
+      <td>0.93</td>
+      <td>1044949.96</td>
+      <td>2.01</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>490.24</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.66</td>
+      <td>3.27</td>
+      <td>1.14</td>
+      <td>7.93</td>
+      <td>12.39</td>
+      <td>2.51</td>
+      <td>-1.11</td>
+      <td>NaN</td>
+      <td>48.12</td>
+      <td>1.82</td>
+      <td>47.24</td>
+      <td>3.72</td>
+      <td>45.96</td>
+      <td>6.62</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1173895</td>
+      <td>6699</td>
+      <td>Angelalign Technology Inc</td>
+      <td>Hong Kong</td>
+      <td>Healthcare</td>
+      <td>Medical Instruments &amp; Supplies</td>
+      <td>Hong Kong</td>
+      <td>6699.HK</td>
+      <td>Hong Kong:6699</td>
+      <td>2021-06-16 01:30:00</td>
+      <td>0.56</td>
+      <td>0.49</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.85</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>29.48</td>
+      <td>66.38</td>
+      <td>53.0</td>
+      <td>2.212558e+10</td>
+      <td>1.683320e+08</td>
+      <td>3.077436e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>118.00</td>
+      <td>908019.0</td>
+      <td>5</td>
+      <td>3</td>
+      <td>2</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.79</td>
+      <td>477632.18</td>
+      <td>1.90</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>64.43</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>9.24</td>
+      <td>10.45</td>
+      <td>2.61</td>
+      <td>-0.17</td>
+      <td>-18.56</td>
+      <td>-48.52</td>
+      <td>-63.80</td>
+      <td>NaN</td>
+      <td>121.43</td>
+      <td>-2.83</td>
+      <td>129.95</td>
+      <td>-9.20</td>
+      <td>151.08</td>
+      <td>-21.89</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>990550</td>
+      <td>0973</td>
+      <td>L’Occitane International SA</td>
+      <td>Hong Kong</td>
+      <td>Consumer Defensive</td>
+      <td>Household &amp; Personal Products</td>
+      <td>Hong Kong</td>
+      <td>0973.HK</td>
+      <td>Hong Kong:0973</td>
+      <td>2010-05-07 01:30:00</td>
+      <td>2.98</td>
+      <td>3.08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.13</td>
+      <td>0.09</td>
+      <td>0.09</td>
+      <td>0.09</td>
+      <td>0.06</td>
+      <td>73.28</td>
+      <td>21.18</td>
+      <td>100.0</td>
+      <td>3.637317e+10</td>
+      <td>1.466660e+09</td>
+      <td>3.961992e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>25.80</td>
+      <td>930642.0</td>
+      <td>79</td>
+      <td>28</td>
+      <td>49</td>
+      <td>68</td>
+      <td>63</td>
+      <td>47</td>
+      <td>1.15</td>
+      <td>564157.84</td>
+      <td>1.65</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>702.28</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.46</td>
+      <td>1.04</td>
+      <td>0.98</td>
+      <td>4.24</td>
+      <td>9.55</td>
+      <td>-20.98</td>
+      <td>0.39</td>
+      <td>NaN</td>
+      <td>25.35</td>
+      <td>1.79</td>
+      <td>25.20</td>
+      <td>2.37</td>
+      <td>25.89</td>
+      <td>-0.34</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>50040</td>
+      <td>0669</td>
+      <td>Techtronic Industries Co Ltd</td>
+      <td>Hong Kong</td>
+      <td>Industrials</td>
+      <td>Tools &amp; Accessories</td>
+      <td>Hong Kong</td>
+      <td>0669.HK</td>
+      <td>Hong Kong:0669</td>
+      <td>2004-06-14 01:30:00</td>
+      <td>0.23</td>
+      <td>0.22</td>
+      <td>NaN</td>
+      <td>0.20</td>
+      <td>NaN</td>
+      <td>0.20</td>
+      <td>0.22</td>
+      <td>0.16</td>
+      <td>0.16</td>
+      <td>0.15</td>
+      <td>0.15</td>
+      <td>27.52</td>
+      <td>46.15</td>
+      <td>509.0</td>
+      <td>2.298603e+11</td>
+      <td>1.834480e+09</td>
+      <td>1.375662e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>113.40</td>
+      <td>6932504.0</td>
+      <td>8</td>
+      <td>30</td>
+      <td>35</td>
+      <td>42</td>
+      <td>44</td>
+      <td>37</td>
+      <td>0.86</td>
+      <td>5830924.50</td>
+      <td>1.19</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>235.93</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.49</td>
+      <td>4.61</td>
+      <td>1.43</td>
+      <td>3.00</td>
+      <td>-14.42</td>
+      <td>-19.86</td>
+      <td>-27.12</td>
+      <td>NaN</td>
+      <td>113.91</td>
+      <td>-0.45</td>
+      <td>118.61</td>
+      <td>-4.39</td>
+      <td>126.41</td>
+      <td>-10.29</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>13888</td>
+      <td>2319</td>
+      <td>China Mengniu Dairy Co</td>
+      <td>Hong Kong</td>
+      <td>Consumer Defensive</td>
+      <td>Packaged Foods</td>
+      <td>Hong Kong</td>
+      <td>2319.HK</td>
+      <td>Hong Kong:2319</td>
+      <td>2004-06-10 01:30:00</td>
+      <td>1.43</td>
+      <td>1.42</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.22</td>
+      <td>0.16</td>
+      <td>0.16</td>
+      <td>0.16</td>
+      <td>0.11</td>
+      <td>23.19</td>
+      <td>50.08</td>
+      <td>395.0</td>
+      <td>1.743227e+11</td>
+      <td>3.948420e+09</td>
+      <td>3.033647e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>43.10</td>
+      <td>13854200.0</td>
+      <td>28</td>
+      <td>52</td>
+      <td>63</td>
+      <td>100</td>
+      <td>41</td>
+      <td>79</td>
+      <td>0.94</td>
+      <td>12280936.00</td>
+      <td>1.13</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>247.02</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.89</td>
+      <td>1.71</td>
+      <td>3.36</td>
+      <td>3.48</td>
+      <td>-5.59</td>
+      <td>-9.83</td>
+      <td>-5.27</td>
+      <td>NaN</td>
+      <td>42.59</td>
+      <td>1.21</td>
+      <td>43.29</td>
+      <td>-0.44</td>
+      <td>45.77</td>
+      <td>-5.83</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1168688</td>
+      <td>6690</td>
+      <td>Haier Smart Home Co Ltd</td>
+      <td>Hong Kong</td>
+      <td>Consumer Cyclical</td>
+      <td>Furnishings, Fixtures &amp; Appliances</td>
+      <td>Hong Kong</td>
+      <td>6690.HK</td>
+      <td>Hong Kong:6690</td>
+      <td>2020-12-23 01:30:00</td>
+      <td>-0.12</td>
+      <td>-0.36</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.18</td>
+      <td>-0.01</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>23.16</td>
+      <td>39.70</td>
+      <td>292.0</td>
+      <td>2.365183e+11</td>
+      <td>2.866690e+09</td>
+      <td>6.149043e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>26.45</td>
+      <td>9274157.0</td>
+      <td>60</td>
+      <td>33</td>
+      <td>51</td>
+      <td>37</td>
+      <td>15</td>
+      <td>15</td>
+      <td>0.79</td>
+      <td>9113865.60</td>
+      <td>1.02</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>674.69</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.64</td>
+      <td>1.18</td>
+      <td>2.52</td>
+      <td>7.96</td>
+      <td>2.72</td>
+      <td>-18.36</td>
+      <td>-5.37</td>
+      <td>NaN</td>
+      <td>25.90</td>
+      <td>2.14</td>
+      <td>25.65</td>
+      <td>3.13</td>
+      <td>26.26</td>
+      <td>0.71</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>49975</td>
+      <td>0316</td>
+      <td>Orient Overseas International Ltd</td>
+      <td>Hong Kong</td>
+      <td>Industrials</td>
+      <td>Marine Shipping</td>
+      <td>Hong Kong</td>
+      <td>0316.HK</td>
+      <td>Hong Kong:0316</td>
+      <td>2004-04-15 01:30:00</td>
+      <td>26.54</td>
+      <td>26.12</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.04</td>
+      <td>0.08</td>
+      <td>0.08</td>
+      <td>0.08</td>
+      <td>0.07</td>
+      <td>80.15</td>
+      <td>6.88</td>
+      <td>78.0</td>
+      <td>1.446217e+11</td>
+      <td>6.603730e+08</td>
+      <td>1.259795e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>205.80</td>
+      <td>1674203.0</td>
+      <td>11</td>
+      <td>79</td>
+      <td>93</td>
+      <td>15</td>
+      <td>57</td>
+      <td>74</td>
+      <td>1.08</td>
+      <td>1762973.74</td>
+      <td>0.95</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>71.46</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.76</td>
+      <td>10.93</td>
+      <td>0.78</td>
+      <td>7.86</td>
+      <td>-12.35</td>
+      <td>2.90</td>
+      <td>82.93</td>
+      <td>NaN</td>
+      <td>201.69</td>
+      <td>2.04</td>
+      <td>206.05</td>
+      <td>-0.12</td>
+      <td>211.17</td>
+      <td>-2.54</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>985905</td>
+      <td>1579</td>
+      <td>Yihai International Holding Ltd</td>
+      <td>Hong Kong</td>
+      <td>Consumer Defensive</td>
+      <td>Packaged Foods</td>
+      <td>Hong Kong</td>
+      <td>1579.HK</td>
+      <td>Hong Kong:1579</td>
+      <td>2016-07-13 01:30:00</td>
+      <td>-0.14</td>
+      <td>-0.14</td>
+      <td>NaN</td>
+      <td>0.23</td>
+      <td>NaN</td>
+      <td>0.20</td>
+      <td>0.05</td>
+      <td>0.20</td>
+      <td>0.20</td>
+      <td>0.53</td>
+      <td>0.16</td>
+      <td>59.04</td>
+      <td>23.03</td>
+      <td>200.0</td>
+      <td>2.119972e+10</td>
+      <td>1.046900e+09</td>
+      <td>6.056811e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>24.60</td>
+      <td>5236435.0</td>
+      <td>47</td>
+      <td>14</td>
+      <td>10</td>
+      <td>100</td>
+      <td>41</td>
+      <td>79</td>
+      <td>0.88</td>
+      <td>5546574.94</td>
+      <td>0.94</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>109.20</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>8.71</td>
+      <td>1.53</td>
+      <td>4.46</td>
+      <td>21.18</td>
+      <td>-0.40</td>
+      <td>-31.67</td>
+      <td>-45.64</td>
+      <td>NaN</td>
+      <td>22.44</td>
+      <td>9.64</td>
+      <td>22.84</td>
+      <td>7.71</td>
+      <td>27.44</td>
+      <td>-10.36</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>100123</td>
+      <td>2020</td>
+      <td>ANTA Sports Products Ltd</td>
+      <td>Hong Kong</td>
+      <td>Consumer Cyclical</td>
+      <td>Leisure</td>
+      <td>Hong Kong</td>
+      <td>2020.HK</td>
+      <td>Hong Kong:2020</td>
+      <td>2007-07-10 01:30:00</td>
+      <td>0.11</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>0.21</td>
+      <td>NaN</td>
+      <td>0.25</td>
+      <td>0.27</td>
+      <td>0.19</td>
+      <td>0.19</td>
+      <td>0.35</td>
+      <td>0.19</td>
+      <td>54.71</td>
+      <td>20.26</td>
+      <td>443.0</td>
+      <td>2.633043e+11</td>
+      <td>2.703330e+09</td>
+      <td>1.214146e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>89.60</td>
+      <td>9615375.0</td>
+      <td>8</td>
+      <td>25</td>
+      <td>21</td>
+      <td>77</td>
+      <td>76</td>
+      <td>64</td>
+      <td>0.92</td>
+      <td>10559364.84</td>
+      <td>0.91</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>114.98</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.38</td>
+      <td>5.07</td>
+      <td>1.53</td>
+      <td>5.10</td>
+      <td>-14.26</td>
+      <td>-22.63</td>
+      <td>-26.19</td>
+      <td>NaN</td>
+      <td>91.19</td>
+      <td>-1.74</td>
+      <td>95.10</td>
+      <td>-5.78</td>
+      <td>107.25</td>
+      <td>-16.46</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>49961</td>
+      <td>0014</td>
+      <td>Hysan Development Co Ltd</td>
+      <td>Hong Kong</td>
+      <td>Real Estate</td>
+      <td>Real Estate Services</td>
+      <td>Hong Kong</td>
+      <td>0014.HK</td>
+      <td>Hong Kong:0014</td>
+      <td>2000-01-04 01:30:00</td>
+      <td>2.94</td>
+      <td>9.94</td>
+      <td>NaN</td>
+      <td>-0.03</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>0.02</td>
+      <td>0.06</td>
+      <td>0.06</td>
+      <td>0.09</td>
+      <td>0.09</td>
+      <td>42.02</td>
+      <td>27.08</td>
+      <td>168.0</td>
+      <td>2.422291e+10</td>
+      <td>1.032960e+09</td>
+      <td>5.976951e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>23.50</td>
+      <td>1679406.0</td>
+      <td>67</td>
+      <td>72</td>
+      <td>59</td>
+      <td>28</td>
+      <td>33</td>
+      <td>26</td>
+      <td>1.04</td>
+      <td>1903469.00</td>
+      <td>0.88</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>314.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.20</td>
+      <td>0.46</td>
+      <td>0.21</td>
+      <td>0.00</td>
+      <td>4.68</td>
+      <td>-0.84</td>
+      <td>-11.32</td>
+      <td>NaN</td>
+      <td>23.38</td>
+      <td>0.51</td>
+      <td>23.24</td>
+      <td>1.13</td>
+      <td>23.19</td>
+      <td>1.33</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>13830</td>
+      <td>1044</td>
+      <td>Hengan Intl Group Ltd-H</td>
+      <td>Hong Kong</td>
+      <td>Consumer Defensive</td>
+      <td>Household &amp; Personal Products</td>
+      <td>Hong Kong</td>
+      <td>1044.HK</td>
+      <td>Hong Kong:1044</td>
+      <td>2000-01-04 01:30:00</td>
+      <td>-0.40</td>
+      <td>-0.38</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>NaN</td>
+      <td>0.07</td>
+      <td>-0.06</td>
+      <td>0.05</td>
+      <td>0.05</td>
+      <td>0.09</td>
+      <td>0.04</td>
+      <td>48.18</td>
+      <td>25.61</td>
+      <td>235.0</td>
+      <td>4.166200e+10</td>
+      <td>1.162120e+09</td>
+      <td>6.150538e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>37.30</td>
+      <td>2555385.0</td>
+      <td>30</td>
+      <td>48</td>
+      <td>43</td>
+      <td>68</td>
+      <td>63</td>
+      <td>47</td>
+      <td>1.24</td>
+      <td>2926040.36</td>
+      <td>0.87</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>210.20</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.12</td>
+      <td>0.91</td>
+      <td>1.08</td>
+      <td>1.50</td>
+      <td>-4.73</td>
+      <td>-11.51</td>
+      <td>-13.76</td>
+      <td>NaN</td>
+      <td>36.81</td>
+      <td>1.34</td>
+      <td>37.19</td>
+      <td>0.31</td>
+      <td>39.02</td>
+      <td>-4.41</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>50011</td>
+      <td>2313</td>
+      <td>Shenzhou International Group Holdings Ltd</td>
+      <td>Hong Kong</td>
+      <td>Consumer Cyclical</td>
+      <td>Textile Manufacturing</td>
+      <td>Hong Kong</td>
+      <td>2313.HK</td>
+      <td>Hong Kong:2313</td>
+      <td>2005-11-24 01:30:00</td>
+      <td>-0.11</td>
+      <td>-0.11</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.11</td>
+      <td>0.17</td>
+      <td>0.17</td>
+      <td>0.17</td>
+      <td>0.17</td>
+      <td>49.80</td>
+      <td>30.54</td>
+      <td>432.0</td>
+      <td>1.652039e+11</td>
+      <td>1.503220e+09</td>
+      <td>7.922132e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>103.10</td>
+      <td>4399039.0</td>
+      <td>54</td>
+      <td>15</td>
+      <td>18</td>
+      <td>77</td>
+      <td>76</td>
+      <td>64</td>
+      <td>0.54</td>
+      <td>5209337.54</td>
+      <td>0.84</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>152.08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.43</td>
+      <td>5.92</td>
+      <td>3.46</td>
+      <td>6.02</td>
+      <td>1.28</td>
+      <td>-30.05</td>
+      <td>-36.86</td>
+      <td>NaN</td>
+      <td>102.46</td>
+      <td>0.62</td>
+      <td>105.31</td>
+      <td>-2.10</td>
+      <td>117.08</td>
+      <td>-11.94</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>49962</td>
+      <td>0027</td>
+      <td>Galaxy Entertainment Group Ltd</td>
+      <td>Hong Kong</td>
+      <td>Consumer Cyclical</td>
+      <td>Resorts &amp; Casinos</td>
+      <td>Hong Kong</td>
+      <td>0027.HK</td>
+      <td>Hong Kong:0027</td>
+      <td>2000-01-04 01:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.24</td>
+      <td>NaN</td>
+      <td>1.55</td>
+      <td>0.36</td>
+      <td>0.48</td>
+      <td>0.48</td>
+      <td>0.17</td>
+      <td>0.53</td>
+      <td>50.76</td>
+      <td>22.94</td>
+      <td>347.0</td>
+      <td>2.009753e+11</td>
+      <td>4.359550e+09</td>
+      <td>2.895380e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>47.00</td>
+      <td>11574367.0</td>
+      <td>78</td>
+      <td>90</td>
+      <td>83</td>
+      <td>48</td>
+      <td>65</td>
+      <td>41</td>
+      <td>0.95</td>
+      <td>14041267.22</td>
+      <td>0.82</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>206.21</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.10</td>
+      <td>1.40</td>
+      <td>3.30</td>
+      <td>5.62</td>
+      <td>9.05</td>
+      <td>15.62</td>
+      <td>17.94</td>
+      <td>NaN</td>
+      <td>45.96</td>
+      <td>2.26</td>
+      <td>45.48</td>
+      <td>3.33</td>
+      <td>44.96</td>
+      <td>4.54</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>32502</td>
+      <td>1299</td>
+      <td>AIA Group Ltd</td>
+      <td>Hong Kong</td>
+      <td>Financial Services</td>
+      <td>Insurance—Life</td>
+      <td>Hong Kong</td>
+      <td>1299.HK</td>
+      <td>Hong Kong:1299</td>
+      <td>2010-10-29 01:30:00</td>
+      <td>0.17</td>
+      <td>0.17</td>
+      <td>NaN</td>
+      <td>0.12</td>
+      <td>NaN</td>
+      <td>0.12</td>
+      <td>-0.28</td>
+      <td>0.19</td>
+      <td>0.19</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>0.04</td>
+      <td>49.87</td>
+      <td>783.0</td>
+      <td>9.699709e+11</td>
+      <td>1.209440e+10</td>
+      <td>1.206150e+10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>79.60</td>
+      <td>21397848.0</td>
+      <td>47</td>
+      <td>65</td>
+      <td>60</td>
+      <td>38</td>
+      <td>51</td>
+      <td>35</td>
+      <td>0.98</td>
+      <td>26357103.60</td>
+      <td>0.81</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>457.62</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.37</td>
+      <td>2.09</td>
+      <td>1.60</td>
+      <td>-2.57</td>
+      <td>-0.31</td>
+      <td>-3.75</td>
+      <td>-9.34</td>
+      <td>NaN</td>
+      <td>80.56</td>
+      <td>-1.19</td>
+      <td>80.89</td>
+      <td>-1.59</td>
+      <td>81.68</td>
+      <td>-2.55</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>32499</td>
+      <td>0168</td>
+      <td>Tsingtao Brew</td>
+      <td>Hong Kong</td>
+      <td>Consumer Defensive</td>
+      <td>Beverages—Brewers</td>
+      <td>Hong Kong</td>
+      <td>0168.HK</td>
+      <td>Hong Kong:0168</td>
+      <td>2000-01-04 01:30:00</td>
+      <td>0.06</td>
+      <td>0.06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.03</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.85</td>
+      <td>60.88</td>
+      <td>215.0</td>
+      <td>1.055542e+11</td>
+      <td>6.550690e+08</td>
+      <td>8.606437e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>63.05</td>
+      <td>3458534.0</td>
+      <td>31</td>
+      <td>60</td>
+      <td>62</td>
+      <td>12</td>
+      <td>50</td>
+      <td>36</td>
+      <td>0.85</td>
+      <td>4313267.98</td>
+      <td>0.80</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>199.53</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.45</td>
+      <td>3.09</td>
+      <td>2.27</td>
+      <td>11.00</td>
+      <td>-4.40</td>
+      <td>-5.90</td>
+      <td>1.61</td>
+      <td>NaN</td>
+      <td>61.37</td>
+      <td>2.74</td>
+      <td>62.28</td>
+      <td>1.24</td>
+      <td>67.53</td>
+      <td>-6.64</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>50066</td>
+      <td>2331</td>
+      <td>Li Ning Co Ltd</td>
+      <td>Hong Kong</td>
+      <td>Consumer Cyclical</td>
+      <td>Leisure</td>
+      <td>Hong Kong</td>
+      <td>2331.HK</td>
+      <td>Hong Kong:2331</td>
+      <td>2004-06-28 01:30:00</td>
+      <td>1.02</td>
+      <td>0.99</td>
+      <td>NaN</td>
+      <td>0.18</td>
+      <td>NaN</td>
+      <td>0.24</td>
+      <td>0.50</td>
+      <td>0.20</td>
+      <td>0.20</td>
+      <td>0.17</td>
+      <td>0.21</td>
+      <td>10.55</td>
+      <td>52.54</td>
+      <td>461.0</td>
+      <td>1.708803e+11</td>
+      <td>2.616850e+09</td>
+      <td>2.260313e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>61.90</td>
+      <td>16858198.0</td>
+      <td>35</td>
+      <td>25</td>
+      <td>27</td>
+      <td>77</td>
+      <td>76</td>
+      <td>64</td>
+      <td>0.66</td>
+      <td>22495958.28</td>
+      <td>0.75</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>100.48</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.35</td>
+      <td>3.93</td>
+      <td>4.38</td>
+      <td>8.60</td>
+      <td>-3.21</td>
+      <td>-22.14</td>
+      <td>-27.30</td>
+      <td>NaN</td>
+      <td>61.87</td>
+      <td>0.04</td>
+      <td>63.50</td>
+      <td>-2.53</td>
+      <td>69.24</td>
+      <td>-10.60</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>1141315</td>
+      <td>1876</td>
+      <td>Budweiser Brewing Company</td>
+      <td>Hong Kong</td>
+      <td>Consumer Defensive</td>
+      <td>Beverages—Brewers</td>
+      <td>Hong Kong</td>
+      <td>1876.HK</td>
+      <td>Hong Kong:1876</td>
+      <td>2019-09-30 01:30:00</td>
+      <td>6.62</td>
+      <td>6.62</td>
+      <td>NaN</td>
+      <td>0.16</td>
+      <td>0.31</td>
+      <td>0.15</td>
+      <td>0.20</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>0.13</td>
+      <td>0.08</td>
+      <td>87.22</td>
+      <td>7.48</td>
+      <td>254.0</td>
+      <td>2.688329e+11</td>
+      <td>1.324300e+10</td>
+      <td>1.669620e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>20.30</td>
+      <td>8847649.0</td>
+      <td>26</td>
+      <td>75</td>
+      <td>71</td>
+      <td>12</td>
+      <td>50</td>
+      <td>36</td>
+      <td>0.91</td>
+      <td>11931073.60</td>
+      <td>0.74</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>139.94</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.06</td>
+      <td>0.82</td>
+      <td>1.91</td>
+      <td>4.32</td>
+      <td>-6.24</td>
+      <td>0.50</td>
+      <td>4.21</td>
+      <td>NaN</td>
+      <td>20.18</td>
+      <td>0.57</td>
+      <td>20.58</td>
+      <td>-1.38</td>
+      <td>21.88</td>
+      <td>-7.24</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>8580</td>
+      <td>2388</td>
+      <td>BOC Hong Kong Holdings Ltd</td>
+      <td>Hong Kong</td>
+      <td>Financial Services</td>
+      <td>Banks—Regional</td>
+      <td>Hong Kong</td>
+      <td>2388.HK</td>
+      <td>Hong Kong:2388</td>
+      <td>2002-07-25 01:30:00</td>
+      <td>-0.17</td>
+      <td>-0.17</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.13</td>
+      <td>-0.15</td>
+      <td>-0.15</td>
+      <td>-0.15</td>
+      <td>0.10</td>
+      <td>0.00</td>
+      <td>75.36</td>
+      <td>342.0</td>
+      <td>3.029107e+11</td>
+      <td>1.057280e+10</td>
+      <td>3.588507e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>29.85</td>
+      <td>11406264.0</td>
+      <td>65</td>
+      <td>81</td>
+      <td>86</td>
+      <td>40</td>
+      <td>60</td>
+      <td>58</td>
+      <td>0.71</td>
+      <td>17194635.92</td>
+      <td>0.66</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>208.70</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.46</td>
+      <td>0.72</td>
+      <td>1.36</td>
+      <td>0.00</td>
+      <td>4.19</td>
+      <td>4.19</td>
+      <td>18.92</td>
+      <td>NaN</td>
+      <td>29.73</td>
+      <td>0.39</td>
+      <td>29.44</td>
+      <td>1.38</td>
+      <td>29.40</td>
+      <td>1.55</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>8560</td>
+      <td>0291</td>
+      <td>China Resources Beer Holdings Co Ltd</td>
+      <td>Hong Kong</td>
+      <td>Consumer Defensive</td>
+      <td>Beverages—Brewers</td>
+      <td>Hong Kong</td>
+      <td>0291.HK</td>
+      <td>Hong Kong:0291</td>
+      <td>2000-01-04 01:30:00</td>
+      <td>1.06</td>
+      <td>1.06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.13</td>
+      <td>0.11</td>
+      <td>0.11</td>
+      <td>0.11</td>
+      <td>0.07</td>
+      <td>51.96</td>
+      <td>22.28</td>
+      <td>317.0</td>
+      <td>1.516570e+11</td>
+      <td>3.244000e+09</td>
+      <td>1.558482e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>46.05</td>
+      <td>8458008.0</td>
+      <td>13</td>
+      <td>28</td>
+      <td>30</td>
+      <td>12</td>
+      <td>50</td>
+      <td>36</td>
+      <td>0.79</td>
+      <td>12757960.86</td>
+      <td>0.66</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>122.16</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.36</td>
+      <td>2.43</td>
+      <td>3.02</td>
+      <td>9.64</td>
+      <td>-11.01</td>
+      <td>-20.74</td>
+      <td>-22.15</td>
+      <td>NaN</td>
+      <td>45.46</td>
+      <td>1.30</td>
+      <td>47.29</td>
+      <td>-2.63</td>
+      <td>53.63</td>
+      <td>-14.13</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>1167184</td>
+      <td>9995</td>
+      <td>Remegen Co Ltd</td>
+      <td>Hong Kong</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>Hong Kong</td>
+      <td>9995.HK</td>
+      <td>Hong Kong:9995</td>
+      <td>2020-11-09 01:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>41.78</td>
+      <td>23.84</td>
+      <td>80.0</td>
+      <td>2.578992e+10</td>
+      <td>1.895810e+08</td>
+      <td>1.012590e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>34.05</td>
+      <td>1032601.0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>58</td>
+      <td>6</td>
+      <td>3</td>
+      <td>0.82</td>
+      <td>1601083.66</td>
+      <td>0.64</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>63.24</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>9.72</td>
+      <td>4.00</td>
+      <td>1.64</td>
+      <td>-16.85</td>
+      <td>-41.24</td>
+      <td>-54.36</td>
+      <td>-66.62</td>
+      <td>NaN</td>
+      <td>39.26</td>
+      <td>-13.27</td>
+      <td>44.32</td>
+      <td>-23.17</td>
+      <td>51.19</td>
+      <td>-33.49</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>50014</td>
+      <td>2688</td>
+      <td>ENN Energy Holdings Ltd</td>
+      <td>Hong Kong</td>
+      <td>Utilities</td>
+      <td>Utilities—Regulated Gas</td>
+      <td>Hong Kong</td>
+      <td>2688.HK</td>
+      <td>Hong Kong:2688</td>
+      <td>2001-05-10 01:30:00</td>
+      <td>0.11</td>
+      <td>0.11</td>
+      <td>NaN</td>
+      <td>0.01</td>
+      <td>NaN</td>
+      <td>0.14</td>
+      <td>0.30</td>
+      <td>0.17</td>
+      <td>0.17</td>
+      <td>0.24</td>
+      <td>0.14</td>
+      <td>32.68</td>
+      <td>47.43</td>
+      <td>346.0</td>
+      <td>1.356156e+11</td>
+      <td>1.130130e+09</td>
+      <td>7.582106e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>104.40</td>
+      <td>2109337.0</td>
+      <td>52</td>
+      <td>18</td>
+      <td>29</td>
+      <td>6</td>
+      <td>8</td>
+      <td>13</td>
+      <td>0.94</td>
+      <td>3364123.64</td>
+      <td>0.63</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>225.38</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.75</td>
+      <td>4.93</td>
+      <td>1.26</td>
+      <td>-5.18</td>
+      <td>0.77</td>
+      <td>-27.50</td>
+      <td>-10.39</td>
+      <td>NaN</td>
+      <td>108.91</td>
+      <td>-4.14</td>
+      <td>110.99</td>
+      <td>-5.94</td>
+      <td>112.84</td>
+      <td>-7.48</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>1161144</td>
+      <td>9939</td>
+      <td>Kintor Pharmaceutical Ltd</td>
+      <td>Hong Kong</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>Hong Kong</td>
+      <td>9939.HK</td>
+      <td>Hong Kong:9939</td>
+      <td>2020-05-22 01:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>56.34</td>
+      <td>9.85</td>
+      <td>24.0</td>
+      <td>4.151944e+09</td>
+      <td>3.693900e+08</td>
+      <td>2.201780e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>25.50</td>
+      <td>8906440.0</td>
+      <td>99</td>
+      <td>99</td>
+      <td>94</td>
+      <td>58</td>
+      <td>6</td>
+      <td>3</td>
+      <td>1.59</td>
+      <td>14244407.60</td>
+      <td>0.63</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>15.46</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>23.83</td>
+      <td>5.40</td>
+      <td>4.08</td>
+      <td>-6.59</td>
+      <td>158.36</td>
+      <td>120.21</td>
+      <td>-40.84</td>
+      <td>NaN</td>
+      <td>24.24</td>
+      <td>5.18</td>
+      <td>19.91</td>
+      <td>28.04</td>
+      <td>14.00</td>
+      <td>82.08</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>1161261</td>
+      <td>9923</td>
+      <td>Yeahka Ltd</td>
+      <td>Hong Kong</td>
+      <td>Technology</td>
+      <td>Software—Infrastructure</td>
+      <td>Hong Kong</td>
+      <td>9923.HK</td>
+      <td>Hong Kong:9923</td>
+      <td>2020-06-01 01:30:00</td>
+      <td>0.36</td>
+      <td>1.09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>62.06</td>
+      <td>22.02</td>
+      <td>56.0</td>
+      <td>1.021264e+10</td>
+      <td>4.440280e+08</td>
+      <td>1.621370e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>21.80</td>
+      <td>741600.0</td>
+      <td>23</td>
+      <td>34</td>
+      <td>25</td>
+      <td>66</td>
+      <td>68</td>
+      <td>70</td>
+      <td>0.87</td>
+      <td>1207809.98</td>
+      <td>0.61</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>134.24</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.01</td>
+      <td>1.30</td>
+      <td>0.93</td>
+      <td>-3.11</td>
+      <td>-7.23</td>
+      <td>-17.89</td>
+      <td>-18.81</td>
+      <td>NaN</td>
+      <td>22.46</td>
+      <td>-2.93</td>
+      <td>22.59</td>
+      <td>-3.51</td>
+      <td>22.28</td>
+      <td>-2.13</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>1162599</td>
+      <td>6078</td>
+      <td>Hygeia Healthcare Holdings Co Ltd</td>
+      <td>Hong Kong</td>
+      <td>Healthcare</td>
+      <td>Medical Care Facilities</td>
+      <td>Hong Kong</td>
+      <td>6078.HK</td>
+      <td>Hong Kong:6078</td>
+      <td>2020-06-29 01:30:00</td>
+      <td>82.87</td>
+      <td>52.58</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.47</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>48.30</td>
+      <td>23.12</td>
+      <td>147.0</td>
+      <td>1.918012e+10</td>
+      <td>6.167240e+08</td>
+      <td>3.359633e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>36.50</td>
+      <td>5553264.0</td>
+      <td>84</td>
+      <td>20</td>
+      <td>12</td>
+      <td>97</td>
+      <td>96</td>
+      <td>89</td>
+      <td>0.80</td>
+      <td>9206849.64</td>
+      <td>0.60</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>36.49</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>9.85</td>
+      <td>3.04</td>
+      <td>1.96</td>
+      <td>14.96</td>
+      <td>13.53</td>
+      <td>-25.74</td>
+      <td>-48.04</td>
+      <td>NaN</td>
+      <td>34.24</td>
+      <td>6.60</td>
+      <td>33.77</td>
+      <td>8.10</td>
+      <td>35.63</td>
+      <td>2.44</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>1167048</td>
+      <td>9698</td>
+      <td>GDS Holdings Ltd</td>
+      <td>Hong Kong</td>
+      <td>Technology</td>
+      <td>Information Technology Services</td>
+      <td>Hong Kong</td>
+      <td>9698.HK</td>
+      <td>Hong Kong:9698</td>
+      <td>2020-11-02 01:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.03</td>
+      <td>-0.04</td>
+      <td>-0.19</td>
+      <td>0.34</td>
+      <td>NaN</td>
+      <td>0.24</td>
+      <td>0.30</td>
+      <td>0.23</td>
+      <td>0.00</td>
+      <td>6.08</td>
+      <td>89.0</td>
+      <td>5.823323e+10</td>
+      <td>1.456840e+09</td>
+      <td>1.153073e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>33.50</td>
+      <td>1727568.0</td>
+      <td>15</td>
+      <td>22</td>
+      <td>16</td>
+      <td>66</td>
+      <td>68</td>
+      <td>70</td>
+      <td>0.88</td>
+      <td>2905970.28</td>
+      <td>0.59</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>39.68</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.72</td>
+      <td>2.61</td>
+      <td>1.21</td>
+      <td>5.35</td>
+      <td>-10.43</td>
+      <td>-24.21</td>
+      <td>-40.50</td>
+      <td>NaN</td>
+      <td>35.26</td>
+      <td>-4.99</td>
+      <td>36.42</td>
+      <td>-8.01</td>
+      <td>38.41</td>
+      <td>-12.79</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>100144</td>
+      <td>3898</td>
+      <td>Zhuzhou CRRC Times Electric Co Ltd</td>
+      <td>Hong Kong</td>
+      <td>Industrials</td>
+      <td>Railroads</td>
+      <td>Hong Kong</td>
+      <td>3898.HK</td>
+      <td>Hong Kong:3898</td>
+      <td>2006-12-20 01:30:00</td>
+      <td>-0.17</td>
+      <td>-0.32</td>
+      <td>NaN</td>
+      <td>0.16</td>
+      <td>NaN</td>
+      <td>0.16</td>
+      <td>0.07</td>
+      <td>0.13</td>
+      <td>0.13</td>
+      <td>0.07</td>
+      <td>0.12</td>
+      <td>7.76</td>
+      <td>43.97</td>
+      <td>205.0</td>
+      <td>8.353399e+10</td>
+      <td>5.473290e+08</td>
+      <td>7.500816e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>25.65</td>
+      <td>3756002.0</td>
+      <td>2</td>
+      <td>9</td>
+      <td>13</td>
+      <td>2</td>
+      <td>46</td>
+      <td>51</td>
+      <td>0.61</td>
+      <td>6472419.46</td>
+      <td>0.58</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>115.89</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.29</td>
+      <td>1.86</td>
+      <td>0.39</td>
+      <td>-0.19</td>
+      <td>-24.11</td>
+      <td>-37.36</td>
+      <td>-30.39</td>
+      <td>NaN</td>
+      <td>26.64</td>
+      <td>-3.71</td>
+      <td>28.99</td>
+      <td>-11.51</td>
+      <td>33.94</td>
+      <td>-24.43</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>943515</td>
+      <td>2196</td>
+      <td>Shanghai Fosun Pharmaceutical Group Co Ltd</td>
+      <td>Hong Kong</td>
+      <td>Healthcare</td>
+      <td>Drug Manufacturers—Specialty &amp; Generic</td>
+      <td>Hong Kong</td>
+      <td>2196.HK</td>
+      <td>Hong Kong:2196</td>
+      <td>2012-10-30 01:30:00</td>
+      <td>-0.01</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.15</td>
+      <td>0.46</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.15</td>
+      <td>0.06</td>
+      <td>37.47</td>
+      <td>188.0</td>
+      <td>1.448878e+11</td>
+      <td>5.519400e+08</td>
+      <td>1.531152e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>33.15</td>
+      <td>5542210.0</td>
+      <td>47</td>
+      <td>69</td>
+      <td>47</td>
+      <td>91</td>
+      <td>55</td>
+      <td>33</td>
+      <td>1.33</td>
+      <td>9720978.60</td>
+      <td>0.57</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>157.51</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>8.79</td>
+      <td>2.75</td>
+      <td>1.69</td>
+      <td>-5.01</td>
+      <td>-0.45</td>
+      <td>-2.07</td>
+      <td>-12.42</td>
+      <td>NaN</td>
+      <td>34.84</td>
+      <td>-4.85</td>
+      <td>35.31</td>
+      <td>-6.11</td>
+      <td>33.26</td>
+      <td>-0.32</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>8541</td>
+      <td>0001</td>
+      <td>CK Hutchison Holdings Ltd</td>
+      <td>Hong Kong</td>
+      <td>Industrials</td>
+      <td>Conglomerates</td>
+      <td>Hong Kong</td>
+      <td>0001.HK</td>
+      <td>Hong Kong:0001</td>
+      <td>2000-01-04 01:30:00</td>
+      <td>-0.06</td>
+      <td>-0.06</td>
+      <td>NaN</td>
+      <td>0.13</td>
+      <td>NaN</td>
+      <td>-0.03</td>
+      <td>0.02</td>
+      <td>0.06</td>
+      <td>0.06</td>
+      <td>0.10</td>
+      <td>0.18</td>
+      <td>30.62</td>
+      <td>19.50</td>
+      <td>384.0</td>
+      <td>2.233585e+11</td>
+      <td>3.834480e+09</td>
+      <td>2.653414e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>57.25</td>
+      <td>3524463.0</td>
+      <td>65</td>
+      <td>81</td>
+      <td>81</td>
+      <td>15</td>
+      <td>59</td>
+      <td>44</td>
+      <td>1.23</td>
+      <td>6407989.46</td>
+      <td>0.55</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>414.08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.73</td>
+      <td>0.98</td>
+      <td>0.26</td>
+      <td>0.53</td>
+      <td>4.09</td>
+      <td>4.09</td>
+      <td>9.05</td>
+      <td>NaN</td>
+      <td>56.96</td>
+      <td>0.50</td>
+      <td>56.81</td>
+      <td>0.77</td>
+      <td>56.55</td>
+      <td>1.24</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>1137420</td>
+      <td>1821</td>
+      <td>ESR Cayman Ltd</td>
+      <td>Hong Kong</td>
+      <td>Real Estate</td>
+      <td>Real Estate Services</td>
+      <td>Hong Kong</td>
+      <td>1821.HK</td>
+      <td>Hong Kong:1821</td>
+      <td>2019-11-01 01:30:00</td>
+      <td>0.61</td>
+      <td>0.88</td>
+      <td>NaN</td>
+      <td>0.44</td>
+      <td>NaN</td>
+      <td>0.15</td>
+      <td>0.17</td>
+      <td>1.22</td>
+      <td>1.22</td>
+      <td>NaN</td>
+      <td>0.19</td>
+      <td>59.44</td>
+      <td>42.49</td>
+      <td>228.0</td>
+      <td>1.097702e+11</td>
+      <td>4.471190e+09</td>
+      <td>1.304612e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>24.40</td>
+      <td>1700655.0</td>
+      <td>38</td>
+      <td>53</td>
+      <td>66</td>
+      <td>28</td>
+      <td>33</td>
+      <td>26</td>
+      <td>0.83</td>
+      <td>3382836.52</td>
+      <td>0.50</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>385.66</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.69</td>
+      <td>0.79</td>
+      <td>0.41</td>
+      <td>4.72</td>
+      <td>-2.20</td>
+      <td>-9.29</td>
+      <td>2.74</td>
+      <td>NaN</td>
+      <td>24.01</td>
+      <td>1.63</td>
+      <td>24.12</td>
+      <td>1.17</td>
+      <td>24.52</td>
+      <td>-0.49</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>8545</td>
+      <td>0005</td>
+      <td>HSBC Holdings PLC</td>
+      <td>Hong Kong</td>
+      <td>Financial Services</td>
+      <td>Banks—Diversified</td>
+      <td>Hong Kong</td>
+      <td>HSBA.L</td>
+      <td>Hong Kong:0005</td>
+      <td>1988-07-05 07:00:00</td>
+      <td>1.54</td>
+      <td>2.75</td>
+      <td>NaN</td>
+      <td>-0.09</td>
+      <td>NaN</td>
+      <td>0.22</td>
+      <td>0.09</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>0.29</td>
+      <td>37.85</td>
+      <td>519.0</td>
+      <td>1.052558e+11</td>
+      <td>2.014850e+10</td>
+      <td>1.991013e+10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>53.95</td>
+      <td>12920024.0</td>
+      <td>69</td>
+      <td>75</td>
+      <td>85</td>
+      <td>40</td>
+      <td>60</td>
+      <td>58</td>
+      <td>0.78</td>
+      <td>26105467.58</td>
+      <td>0.49</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>762.68</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.43</td>
+      <td>0.77</td>
+      <td>0.94</td>
+      <td>-0.19</td>
+      <td>5.37</td>
+      <td>0.56</td>
+      <td>17.16</td>
+      <td>NaN</td>
+      <td>53.58</td>
+      <td>0.69</td>
+      <td>53.30</td>
+      <td>1.23</td>
+      <td>53.91</td>
+      <td>0.07</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>1167762</td>
+      <td>9992</td>
+      <td>Pop Mart International Group Ltd</td>
+      <td>Hong Kong</td>
+      <td>Consumer Cyclical</td>
+      <td>Leisure</td>
+      <td>Hong Kong</td>
+      <td>9992.HK</td>
+      <td>Hong Kong:9992</td>
+      <td>2020-12-11 01:30:00</td>
+      <td>1.54</td>
+      <td>1.12</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.17</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>48.92</td>
+      <td>8.35</td>
+      <td>83.0</td>
+      <td>4.626402e+10</td>
+      <td>1.401940e+09</td>
+      <td>7.454523e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>34.75</td>
+      <td>3622143.0</td>
+      <td>67</td>
+      <td>21</td>
+      <td>18</td>
+      <td>60</td>
+      <td>48</td>
+      <td>19</td>
+      <td>0.96</td>
+      <td>7381103.10</td>
+      <td>0.49</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>100.99</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>8.09</td>
+      <td>2.83</td>
+      <td>0.87</td>
+      <td>4.98</td>
+      <td>4.98</td>
+      <td>-24.95</td>
+      <td>-36.59</td>
+      <td>NaN</td>
+      <td>35.22</td>
+      <td>-1.33</td>
+      <td>35.31</td>
+      <td>-1.60</td>
+      <td>36.71</td>
+      <td>-5.33</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>1165598</td>
+      <td>9987</td>
+      <td>Yum China Holdings Inc</td>
+      <td>Hong Kong</td>
+      <td>Consumer Cyclical</td>
+      <td>Restaurants</td>
+      <td>Hong Kong</td>
+      <td>YUMC</td>
+      <td>Hong Kong:9987</td>
+      <td>2016-10-17 13:30:00</td>
+      <td>2.15</td>
+      <td>2.14</td>
+      <td>NaN</td>
+      <td>0.31</td>
+      <td>NaN</td>
+      <td>0.33</td>
+      <td>0.01</td>
+      <td>0.14</td>
+      <td>0.11</td>
+      <td>NaN</td>
+      <td>0.13</td>
+      <td>0.19</td>
+      <td>86.68</td>
+      <td>1090.0</td>
+      <td>1.780669e+10</td>
+      <td>4.255900e+08</td>
+      <td>4.245684e+08</td>
+      <td>8167287.0</td>
+      <td>1.98</td>
+      <td>19.3</td>
+      <td>335.00</td>
+      <td>149600.0</td>
+      <td>55</td>
+      <td>49</td>
+      <td>34</td>
+      <td>48</td>
+      <td>65</td>
+      <td>41</td>
+      <td>0.72</td>
+      <td>312795.98</td>
+      <td>0.48</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>1357.33</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.07</td>
+      <td>14.91</td>
+      <td>3.01</td>
+      <td>6.96</td>
+      <td>1.33</td>
+      <td>-11.09</td>
+      <td>-27.83</td>
+      <td>NaN</td>
+      <td>328.72</td>
+      <td>1.91</td>
+      <td>335.11</td>
+      <td>-0.03</td>
+      <td>359.62</td>
+      <td>-6.85</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>1165549</td>
+      <td>9633</td>
+      <td>Nongfu Spring Co Ltd</td>
+      <td>Hong Kong</td>
+      <td>Consumer Defensive</td>
+      <td>Beverages—Non-Alcoholic</td>
+      <td>Hong Kong</td>
+      <td>9633.HK</td>
+      <td>Hong Kong:9633</td>
+      <td>2020-09-08 01:30:00</td>
+      <td>0.40</td>
+      <td>0.34</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.31</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>65.16</td>
+      <td>3.25</td>
+      <td>167.0</td>
+      <td>4.301786e+11</td>
+      <td>5.034670e+09</td>
+      <td>1.753886e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>42.20</td>
+      <td>5944900.0</td>
+      <td>79</td>
+      <td>60</td>
+      <td>72</td>
+      <td>12</td>
+      <td>50</td>
+      <td>36</td>
+      <td>0.75</td>
+      <td>12707140.00</td>
+      <td>0.47</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>138.02</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.18</td>
+      <td>1.99</td>
+      <td>1.32</td>
+      <td>2.43</td>
+      <td>9.75</td>
+      <td>-5.91</td>
+      <td>9.61</td>
+      <td>NaN</td>
+      <td>41.95</td>
+      <td>0.59</td>
+      <td>41.61</td>
+      <td>1.42</td>
+      <td>42.85</td>
+      <td>-1.53</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>50031</td>
+      <td>0303</td>
+      <td>VTech Holdings Ltd</td>
+      <td>Hong Kong</td>
+      <td>Technology</td>
+      <td>Communication Equipment</td>
+      <td>Hong Kong</td>
+      <td>0303.HK</td>
+      <td>Hong Kong:0303</td>
+      <td>2000-01-04 01:30:00</td>
+      <td>-0.38</td>
+      <td>-0.38</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.01</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.04</td>
+      <td>37.48</td>
+      <td>26.02</td>
+      <td>147.0</td>
+      <td>1.429727e+10</td>
+      <td>2.523790e+08</td>
+      <td>1.576654e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>55.20</td>
+      <td>276800.0</td>
+      <td>52</td>
+      <td>50</td>
+      <td>45</td>
+      <td>80</td>
+      <td>50</td>
+      <td>44</td>
+      <td>0.96</td>
+      <td>610226.84</td>
+      <td>0.45</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>258.37</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.16</td>
+      <td>1.21</td>
+      <td>0.36</td>
+      <td>-1.78</td>
+      <td>0.64</td>
+      <td>-10.39</td>
+      <td>-7.69</td>
+      <td>NaN</td>
+      <td>55.99</td>
+      <td>-1.41</td>
+      <td>56.45</td>
+      <td>-2.21</td>
+      <td>58.46</td>
+      <td>-5.57</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>8548</td>
+      <td>0011</td>
+      <td>Hang Seng Bank</td>
+      <td>Hong Kong</td>
+      <td>Financial Services</td>
+      <td>Banks—Regional</td>
+      <td>Hong Kong</td>
+      <td>0011.HK</td>
+      <td>Hong Kong:0011</td>
+      <td>2000-01-04 01:30:00</td>
+      <td>-0.31</td>
+      <td>-0.33</td>
+      <td>NaN</td>
+      <td>0.21</td>
+      <td>NaN</td>
+      <td>0.24</td>
+      <td>-0.14</td>
+      <td>0.09</td>
+      <td>0.09</td>
+      <td>0.14</td>
+      <td>0.14</td>
+      <td>62.14</td>
+      <td>7.58</td>
+      <td>319.0</td>
+      <td>2.886878e+11</td>
+      <td>1.911840e+09</td>
+      <td>7.237854e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>152.80</td>
+      <td>1084821.0</td>
+      <td>68</td>
+      <td>71</td>
+      <td>75</td>
+      <td>40</td>
+      <td>60</td>
+      <td>58</td>
+      <td>1.39</td>
+      <td>2588487.90</td>
+      <td>0.42</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>279.62</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.76</td>
+      <td>2.44</td>
+      <td>0.53</td>
+      <td>1.19</td>
+      <td>5.16</td>
+      <td>-1.61</td>
+      <td>3.03</td>
+      <td>NaN</td>
+      <td>151.53</td>
+      <td>0.84</td>
+      <td>150.40</td>
+      <td>1.59</td>
+      <td>151.02</td>
+      <td>1.18</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>8574</td>
+      <td>1038</td>
+      <td>CK Infrastructure Holdings Ltd</td>
+      <td>Hong Kong</td>
+      <td>Utilities</td>
+      <td>Utilities—Regulated Electric</td>
+      <td>Hong Kong</td>
+      <td>1038.HK</td>
+      <td>Hong Kong:1038</td>
+      <td>2000-01-04 01:30:00</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>NaN</td>
+      <td>0.30</td>
+      <td>NaN</td>
+      <td>-0.01</td>
+      <td>-0.11</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.04</td>
+      <td>0.02</td>
+      <td>80.88</td>
+      <td>6.79</td>
+      <td>253.0</td>
+      <td>1.337913e+11</td>
+      <td>2.519610e+09</td>
+      <td>6.071758e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>53.80</td>
+      <td>828502.0</td>
+      <td>66</td>
+      <td>87</td>
+      <td>88</td>
+      <td>14</td>
+      <td>54</td>
+      <td>45</td>
+      <td>1.12</td>
+      <td>2142902.44</td>
+      <td>0.39</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>283.34</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.76</td>
+      <td>0.90</td>
+      <td>0.56</td>
+      <td>1.03</td>
+      <td>4.67</td>
+      <td>10.25</td>
+      <td>24.25</td>
+      <td>NaN</td>
+      <td>53.49</td>
+      <td>0.58</td>
+      <td>52.93</td>
+      <td>1.64</td>
+      <td>51.34</td>
+      <td>4.79</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>50049</td>
+      <td>0881</td>
+      <td>Zhongsheng Group Holdings Ltd</td>
+      <td>Hong Kong</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto &amp; Truck Dealerships</td>
+      <td>Hong Kong</td>
+      <td>0881.HK</td>
+      <td>Hong Kong:0881</td>
+      <td>2010-03-26 01:30:00</td>
+      <td>0.43</td>
+      <td>0.37</td>
+      <td>NaN</td>
+      <td>0.21</td>
+      <td>NaN</td>
+      <td>0.19</td>
+      <td>-0.03</td>
+      <td>0.23</td>
+      <td>0.23</td>
+      <td>0.21</td>
+      <td>0.16</td>
+      <td>75.33</td>
+      <td>18.29</td>
+      <td>301.0</td>
+      <td>1.319819e+11</td>
+      <td>2.415040e+09</td>
+      <td>5.881070e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>52.75</td>
+      <td>1618537.0</td>
+      <td>58</td>
+      <td>39</td>
+      <td>34</td>
+      <td>60</td>
+      <td>48</td>
+      <td>19</td>
+      <td>0.82</td>
+      <td>4588622.18</td>
+      <td>0.35</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>128.17</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.06</td>
+      <td>2.05</td>
+      <td>0.19</td>
+      <td>3.03</td>
+      <td>2.13</td>
+      <td>-15.33</td>
+      <td>-23.99</td>
+      <td>NaN</td>
+      <td>52.89</td>
+      <td>-0.27</td>
+      <td>53.18</td>
+      <td>-0.80</td>
+      <td>54.08</td>
+      <td>-2.46</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>100143</td>
+      <td>3888</td>
+      <td>Kingsoft Corp Ltd</td>
+      <td>Hong Kong</td>
+      <td>Communication Services</td>
+      <td>Electronic Gaming &amp; Multimedia</td>
+      <td>Hong Kong</td>
+      <td>3888.HK</td>
+      <td>Hong Kong:3888</td>
+      <td>2007-10-09 01:30:00</td>
+      <td>-0.15</td>
+      <td>-0.15</td>
+      <td>NaN</td>
+      <td>1.71</td>
+      <td>2.25</td>
+      <td>0.53</td>
+      <td>0.14</td>
+      <td>NaN</td>
+      <td>0.22</td>
+      <td>NaN</td>
+      <td>0.21</td>
+      <td>32.42</td>
+      <td>41.02</td>
+      <td>238.0</td>
+      <td>3.733834e+10</td>
+      <td>1.365240e+09</td>
+      <td>9.301113e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>23.35</td>
+      <td>2171116.0</td>
+      <td>22</td>
+      <td>10</td>
+      <td>15</td>
+      <td>8</td>
+      <td>23</td>
+      <td>49</td>
+      <td>0.65</td>
+      <td>6661105.40</td>
+      <td>0.33</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>139.63</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.49</td>
+      <td>1.30</td>
+      <td>1.30</td>
+      <td>3.78</td>
+      <td>-7.52</td>
+      <td>-36.03</td>
+      <td>-27.71</td>
+      <td>NaN</td>
+      <td>23.73</td>
+      <td>-1.59</td>
+      <td>24.50</td>
+      <td>-4.68</td>
+      <td>27.15</td>
+      <td>-14.00</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>990779</td>
+      <td>1548</td>
+      <td>Genscript Biotech Corp</td>
+      <td>Hong Kong</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>Hong Kong</td>
+      <td>1548.HK</td>
+      <td>Hong Kong:1548</td>
+      <td>2015-12-30 01:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.41</td>
+      <td>NaN</td>
+      <td>2.13</td>
+      <td>0.25</td>
+      <td>0.64</td>
+      <td>0.64</td>
+      <td>0.41</td>
+      <td>0.72</td>
+      <td>38.59</td>
+      <td>17.68</td>
+      <td>168.0</td>
+      <td>5.302095e+10</td>
+      <td>2.095690e+09</td>
+      <td>1.122009e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>22.25</td>
+      <td>3261237.0</td>
+      <td>7</td>
+      <td>14</td>
+      <td>20</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.79</td>
+      <td>10371598.90</td>
+      <td>0.31</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>108.18</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.67</td>
+      <td>1.52</td>
+      <td>2.06</td>
+      <td>0.23</td>
+      <td>-14.75</td>
+      <td>-31.01</td>
+      <td>-20.54</td>
+      <td>NaN</td>
+      <td>22.93</td>
+      <td>-2.98</td>
+      <td>24.04</td>
+      <td>-7.46</td>
+      <td>25.98</td>
+      <td>-14.36</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>987131</td>
+      <td>2588</td>
+      <td>Boc Aviation Ltd</td>
+      <td>Hong Kong</td>
+      <td>Industrials</td>
+      <td>Rental &amp; Leasing Services</td>
+      <td>Hong Kong</td>
+      <td>2588.HK</td>
+      <td>Hong Kong:2588</td>
+      <td>2016-06-01 01:30:00</td>
+      <td>0.65</td>
+      <td>0.69</td>
+      <td>NaN</td>
+      <td>0.21</td>
+      <td>NaN</td>
+      <td>0.21</td>
+      <td>0.03</td>
+      <td>0.06</td>
+      <td>0.06</td>
+      <td>0.22</td>
+      <td>0.11</td>
+      <td>0.05</td>
+      <td>90.65</td>
+      <td>196.0</td>
+      <td>4.150180e+10</td>
+      <td>6.940100e+08</td>
+      <td>2.078283e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>60.40</td>
+      <td>297084.0</td>
+      <td>69</td>
+      <td>53</td>
+      <td>60</td>
+      <td>95</td>
+      <td>94</td>
+      <td>91</td>
+      <td>1.22</td>
+      <td>1361587.30</td>
+      <td>0.22</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>152.64</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.48</td>
+      <td>2.31</td>
+      <td>0.75</td>
+      <td>2.55</td>
+      <td>5.41</td>
+      <td>-9.24</td>
+      <td>-11.18</td>
+      <td>NaN</td>
+      <td>60.27</td>
+      <td>0.22</td>
+      <td>60.34</td>
+      <td>0.10</td>
+      <td>62.92</td>
+      <td>-4.00</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>1089516</td>
+      <td>6160</td>
+      <td>Beigene Ltd</td>
+      <td>Hong Kong</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>Hong Kong</td>
+      <td>6160.HK</td>
+      <td>Hong Kong:6160</td>
+      <td>2018-08-08 01:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.16</td>
+      <td>NaN</td>
+      <td>0.34</td>
+      <td>1.14</td>
+      <td>NaN</td>
+      <td>0.28</td>
+      <td>NaN</td>
+      <td>0.37</td>
+      <td>5.06</td>
+      <td>20.08</td>
+      <td>94.0</td>
+      <td>1.512166e+11</td>
+      <td>1.333480e+09</td>
+      <td>6.137841e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>107.20</td>
+      <td>158179.0</td>
+      <td>35</td>
+      <td>17</td>
+      <td>14</td>
+      <td>58</td>
+      <td>6</td>
+      <td>3</td>
+      <td>0.95</td>
+      <td>811216.80</td>
+      <td>0.19</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>75.66</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.96</td>
+      <td>6.81</td>
+      <td>2.29</td>
+      <td>-4.20</td>
+      <td>-3.34</td>
+      <td>-27.81</td>
+      <td>-49.81</td>
+      <td>NaN</td>
+      <td>113.12</td>
+      <td>-5.23</td>
+      <td>115.43</td>
+      <td>-7.13</td>
+      <td>118.75</td>
+      <td>-9.73</td>
+      <td>hong_kong</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+            </section>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+    </div>
+</footer>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bm/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+<script>
+        $(document).ready(function () {
+            $('#data').DataTable(
+                {
+                    "scrollX": true,
+                    "dom": 'Bfrtip',
+                    "buttons": [
+                        'copy', 'csv', 'excel', 'print'
+                    ]
+
+                }
+            );
+        });
+    </script>
+    
+</body>
+
+</html>

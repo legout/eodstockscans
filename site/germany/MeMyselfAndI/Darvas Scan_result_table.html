@@ -1,0 +1,1310 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.datatables.net/v/bm/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/sc-2.0.5/datatables.min.css" />
+
+</head >
+
+
+<body>
+    <section class="hero is-small is-dark">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <!-- <a class="navbar-item">
+                        
+                        <img src="data:image/svg+xml;base64,"
+                            alt="Logo">
+                       
+                    </a> -->
+                    <span class="navbar-burger" data-target="navbarMenuHeroB">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </div>
+                <div id="navbarMenuHeroB" class="navbar-menu">
+                    <div class="navbar-start">
+                        
+                        <a class="navbar-item" href="../../germany/market_monitor.html">
+                            
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-home"></i>
+                                    </span>
+                                    <span>Home</span>
+                                </span>
+                            </a>
+
+                            <div class="navbar-item has-dropdown is-hoverable has-background-dark">
+                                <a class="navbar-link">
+                                    <span>Choose Market</span>
+                                </a>
+
+                                <div class="navbar-dropdown has-background-dark">
+                                    
+                                    <a class="navbar-item" href="../../australia/market_monitor.html">
+                                        <span>Australia</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../canada/market_monitor.html">
+                                        <span>Canada</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../germany/market_monitor.html">
+                                        <span>Germany</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../hong_kong/market_monitor.html">
+                                        <span>Hong Kong</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../japan/market_monitor.html">
+                                        <span>Japan</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../nordic_markets/market_monitor.html">
+                                        <span>Nordic Markets</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_kingdom/market_monitor.html">
+                                        <span>United Kingdom</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_states/market_monitor.html">
+                                        <span>United States</span>
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                    </div>
+                    <div class="navbar-end"></div>
+                    <span class="navbar-item">
+                        <a class="button is-info is-light" href="https://twitter.com/LignoL23">
+                            <span class="icon">
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                            <span>Twitter</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <a class="button  is-success is-light" href="https://www.paypal.com/paypalme/volkerlorrmann/5">
+                            <span class="icon">
+                                <i class="fab fa-paypal"></i>
+                            </span>
+                            <span>paypal.me</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+                        <script
+                            type='text/javascript'>kofiwidget2.init('Support me', '#d6d6d6', 'W7W0ACJPB'); kofiwidget2.draw();</script>
+                    </span>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="columns is-multiline is-mobile is-centered">
+                <div class="column is-1">
+                    <img src="data:image/svg+xml;base64," alt="Logo">
+                </div>
+                <div class="column is-4">
+                    <p class="title">
+                        EOD Stockmarket Scans
+                    </p>
+                    <p class="subtitle">
+                        Fintwits most popular stockmarket scans
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+            <div class="container">
+                <ul>
+                    
+                    <li class="is-active">
+                        <a href="../MeMyselfAndI/Darvas Scan_result_table.html"> Results </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../MeMyselfAndI/Darvas Scan_minicharts.html"> Minicharts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../MeMyselfAndI/Darvas Scan_charts.html"> Charts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../MeMyselfAndI/Darvas Scan_criteria.html"> Criteria </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+</section>
+    <div class="columns is-centered">
+        <div class="column is-2">
+            <div class="box has-background-light my-0 mx-2 p-auto">
+    <aside class="menu">
+        <p class="menu-label has-text-dark">
+            Market Monitor
+        </p>
+        <ul class="menu-list">
+            <li><a class="has-text-grey-light">New Highs/Lows</a></li>
+            <li><a class="has-text-grey-light">Breadth</a></li>
+            <li><a class="has-text-grey-light">Above/Below SMA</a></li>
+            <li><a class="has-text-grey-light">Sectors</a></li>
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Kristjan Kullamägi
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Biggest Gainers 1M_minicharts.html">
+                        Biggest Gainers 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Biggest Gainers 3M_minicharts.html">
+                        Biggest Gainers 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Biggest Gainers 6M_minicharts.html">
+                        Biggest Gainers 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Biggest Gainers 12M_minicharts.html">
+                        Biggest Gainers 12M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/EP with Growth_minicharts.html">
+                        EP with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/EP_minicharts.html">
+                        EP
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/High Trend Intensity_minicharts.html">
+                        High Trend Intensity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Small Stock Momo_minicharts.html">
+                        Small Stock Momo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Momentum_minicharts.html">
+                        Momentum
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Brad Schulz
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Brad Schulz/Pocket Pivot_minicharts.html">
+                        Pocket Pivot
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Stockbee
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Stockbee/4% Gainers_minicharts.html">
+                        4% Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Stockbee/Combo_minicharts.html">
+                        Combo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Stockbee/Ants_minicharts.html">
+                        Ants
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Stockbee/Breakout 1M Base_minicharts.html">
+                        Breakout 1M Base
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Stockbee/Breakout 3M Base_minicharts.html">
+                        Breakout 3M Base
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Leif Soreide
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Leif Soreide/HTF_minicharts.html">
+                        HTF
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Blake Davis
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Blake Davis/Strength_minicharts.html">
+                        Strength
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ben
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ben/Power of 3_minicharts.html">
+                        Power of 3
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ben/Velocity_minicharts.html">
+                        Velocity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ben/Focus_minicharts.html">
+                        Focus
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ray
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ray/RSNHBP 5D_minicharts.html">
+                        RSNHBP 5D
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ray/RSNHBP 1M_minicharts.html">
+                        RSNHBP 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ray/RSNHBP 3M_minicharts.html">
+                        RSNHBP 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ray/RSNHBP 6M_minicharts.html">
+                        RSNHBP 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ray/RSNHBP 12M_minicharts.html">
+                        RSNHBP 12M
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Mark Minvervini
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Mark Minvervini/Trend Template_minicharts.html">
+                        Trend Template
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            MeMyselfAndI
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/MeMyselfAndI/Top Gainers From Open_minicharts.html">
+                        Top Gainers From Open
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/MeMyselfAndI/Top Gainers_minicharts.html">
+                        Top Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/MeMyselfAndI/Volume Gainers_minicharts.html">
+                        Volume Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/MeMyselfAndI/Insiders_minicharts.html">
+                        Insiders
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="is-active"
+                        href="../../germany/MeMyselfAndI/Darvas Scan_minicharts.html">
+                        Darvas Scan
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/MeMyselfAndI/Darvas Scan with Growth_minicharts.html">
+                        Darvas Scan with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/MeMyselfAndI/52W High_minicharts.html">
+                        52W High
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/MeMyselfAndI/Quite and Tight_minicharts.html">
+                        Quite and Tight
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+    </aside>
+</div>
+        </div>
+        <div class="column is-10">
+            <section class="block my-6">
+                <div class="columns ">
+                    <div class="column is-5 has-text-left">
+                        <h1 class="title is-4">Darvas Scan @ Germany</h1>
+                        <h2 class="subtitle is-6">2022-04-20</h2>
+                    </div>
+                    <div class="column has-text-right mx-5">
+                        <div class="media">
+                           
+                            <div class="media-content">
+                                <p class="title is-5">MeMyselfAndI</p>
+                                <p class="subtitle is-6"><a class="has-text-grey-light" href="https://twitter.com/LignoL23">@LignoL23</a></p>
+                            </div>
+                            <div class="media-right">
+                                <figure class="image is-48x48">
+                                    <img src="https://unavatar.io/twitter/LignoL23" alt="Placeholder image">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="my-auto mr-6">
+                
+    <div class="table-container">
+        <table border="1" class="dataframe table is-striped no-wrap" id="data" style="width:100%; font-size:85%">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>symbol_id</th>
+      <th>symbol</th>
+      <th>name</th>
+      <th>exchange</th>
+      <th>sector</th>
+      <th>industry</th>
+      <th>country</th>
+      <th>yahoo_symbol</th>
+      <th>forexpros_symbol</th>
+      <th>IPO Date</th>
+      <th>EPS Growth Q</th>
+      <th>EPS Growth Y</th>
+      <th>EPS Growth FQ</th>
+      <th>EPS Growth FY</th>
+      <th>EPS Growth FQ1</th>
+      <th>EPS Growth FY1</th>
+      <th>Rev Growth Q</th>
+      <th>Rev Growth FQ</th>
+      <th>Rev Growth FY</th>
+      <th>Rev Growth FQ1</th>
+      <th>Rev Growth FY1</th>
+      <th>Insiders %</th>
+      <th>Institutions %</th>
+      <th>Institutions No.</th>
+      <th>Market Cap</th>
+      <th>Shares Outstanding</th>
+      <th>Shares Float</th>
+      <th>Shares Short</th>
+      <th>Short Ratio</th>
+      <th>Net Insider Trading %</th>
+      <th>close</th>
+      <th>volume</th>
+      <th>1m RS</th>
+      <th>3m RS</th>
+      <th>RS</th>
+      <th>Industry 1m RS</th>
+      <th>Industry 3m RS</th>
+      <th>Industry RS</th>
+      <th>UD Ratio</th>
+      <th>50d avg Volume</th>
+      <th>rel Volume</th>
+      <th>Pocket Pivot</th>
+      <th>1w Pocket Pivots</th>
+      <th>1m Pocket Pivots</th>
+      <th>Rocket Ratio</th>
+      <th>52w High</th>
+      <th>% below 52w High</th>
+      <th>52w Low</th>
+      <th>% above 52w Low</th>
+      <th>adr(20)</th>
+      <th>atr(14)</th>
+      <th>roc</th>
+      <th>roc(5)</th>
+      <th>roc(21)</th>
+      <th>roc(63)</th>
+      <th>roc(126)</th>
+      <th>roc(252)</th>
+      <th>ema(9)</th>
+      <th>% from 9d ema</th>
+      <th>ema(21)</th>
+      <th>% from 21d ema</th>
+      <th>sma(50)</th>
+      <th>% from 50d sma</th>
+      <th>market</th>
+      <th>date</th>
+      <th>group_name</th>
+      <th>scan_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>21877</td>
+      <td>SDFGn</td>
+      <td>K&amp;S AG</td>
+      <td>Xetra</td>
+      <td>Basic Materials</td>
+      <td>Agricultural Inputs</td>
+      <td>Germany</td>
+      <td>SDF.DE</td>
+      <td>Xetra:SDFGn</td>
+      <td>1998-11-09 08:00:00</td>
+      <td>10.33</td>
+      <td>10.34</td>
+      <td>NaN</td>
+      <td>-0.76</td>
+      <td>1.05</td>
+      <td>-0.51</td>
+      <td>0.70</td>
+      <td>NaN</td>
+      <td>0.52</td>
+      <td>NaN</td>
+      <td>-0.10</td>
+      <td>0.15</td>
+      <td>32.03</td>
+      <td>197.0</td>
+      <td>6.767904e+09</td>
+      <td>1.914000e+08</td>
+      <td>1.914000e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>34.14</td>
+      <td>1562073.0</td>
+      <td>99</td>
+      <td>99</td>
+      <td>99</td>
+      <td>50</td>
+      <td>43</td>
+      <td>63</td>
+      <td>1.74</td>
+      <td>2198616.90</td>
+      <td>0.71</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>87.05</td>
+      <td>36.45</td>
+      <td>-6.34</td>
+      <td>8.72</td>
+      <td>291.51</td>
+      <td>5.72</td>
+      <td>1.63</td>
+      <td>-0.06</td>
+      <td>4.18</td>
+      <td>34.62</td>
+      <td>93.37</td>
+      <td>150.39</td>
+      <td>284.29</td>
+      <td>32.77</td>
+      <td>4.20</td>
+      <td>30.27</td>
+      <td>12.80</td>
+      <td>25.41</td>
+      <td>34.33</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>14154</td>
+      <td>VBKG</td>
+      <td>Verbio Vereinigte Bioenergie AG</td>
+      <td>Xetra</td>
+      <td>Basic Materials</td>
+      <td>Specialty Chemicals</td>
+      <td>Germany</td>
+      <td>VBK.DE</td>
+      <td>Xetra:VBKG</td>
+      <td>2006-10-16 07:00:00</td>
+      <td>6.89</td>
+      <td>6.70</td>
+      <td>NaN</td>
+      <td>1.30</td>
+      <td>NaN</td>
+      <td>-0.20</td>
+      <td>1.11</td>
+      <td>NaN</td>
+      <td>0.44</td>
+      <td>NaN</td>
+      <td>-0.05</td>
+      <td>49.89</td>
+      <td>14.44</td>
+      <td>145.0</td>
+      <td>5.260035e+09</td>
+      <td>6.318360e+07</td>
+      <td>1.972593e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>86.20</td>
+      <td>105828.0</td>
+      <td>99</td>
+      <td>99</td>
+      <td>98</td>
+      <td>97</td>
+      <td>97</td>
+      <td>96</td>
+      <td>1.34</td>
+      <td>187898.08</td>
+      <td>0.56</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>104.98</td>
+      <td>87.40</td>
+      <td>-1.37</td>
+      <td>32.60</td>
+      <td>164.42</td>
+      <td>5.73</td>
+      <td>4.57</td>
+      <td>2.56</td>
+      <td>2.13</td>
+      <td>28.85</td>
+      <td>70.52</td>
+      <td>37.81</td>
+      <td>124.60</td>
+      <td>81.77</td>
+      <td>5.41</td>
+      <td>76.88</td>
+      <td>12.13</td>
+      <td>67.74</td>
+      <td>27.25</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>964644</td>
+      <td>DR0G</td>
+      <td>Deutsche Rohstoff AG</td>
+      <td>Xetra</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>Germany</td>
+      <td>DR0.DE</td>
+      <td>Xetra:DR0G</td>
+      <td>2010-05-27 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.36</td>
+      <td>1.31</td>
+      <td>0.87</td>
+      <td>0.68</td>
+      <td>0.87</td>
+      <td>-0.33</td>
+      <td>10.04</td>
+      <td>3.18</td>
+      <td>12.0</td>
+      <td>1.305200e+08</td>
+      <td>4.943940e+06</td>
+      <td>4.445762e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>27.20</td>
+      <td>13680.0</td>
+      <td>67</td>
+      <td>85</td>
+      <td>96</td>
+      <td>97</td>
+      <td>97</td>
+      <td>96</td>
+      <td>1.04</td>
+      <td>30989.30</td>
+      <td>0.44</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>143.46</td>
+      <td>31.40</td>
+      <td>-13.38</td>
+      <td>12.10</td>
+      <td>124.79</td>
+      <td>4.76</td>
+      <td>1.30</td>
+      <td>-1.81</td>
+      <td>3.82</td>
+      <td>3.42</td>
+      <td>11.93</td>
+      <td>8.80</td>
+      <td>117.60</td>
+      <td>27.25</td>
+      <td>-0.20</td>
+      <td>27.54</td>
+      <td>-1.24</td>
+      <td>26.90</td>
+      <td>1.12</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>6286</td>
+      <td>SZGG</td>
+      <td>Salzgitter AG</td>
+      <td>Xetra</td>
+      <td>Basic Materials</td>
+      <td>Steel</td>
+      <td>Germany</td>
+      <td>SZG.DE</td>
+      <td>Xetra:SZGG</td>
+      <td>2000-01-03 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>0.51</td>
+      <td>0.06</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>-0.02</td>
+      <td>46.56</td>
+      <td>17.24</td>
+      <td>107.0</td>
+      <td>2.244596e+09</td>
+      <td>5.408730e+07</td>
+      <td>2.431819e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>42.12</td>
+      <td>449026.0</td>
+      <td>88</td>
+      <td>93</td>
+      <td>95</td>
+      <td>83</td>
+      <td>92</td>
+      <td>98</td>
+      <td>1.56</td>
+      <td>342615.76</td>
+      <td>1.31</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>70.98</td>
+      <td>48.76</td>
+      <td>-13.62</td>
+      <td>22.78</td>
+      <td>84.90</td>
+      <td>4.54</td>
+      <td>1.76</td>
+      <td>0.77</td>
+      <td>5.99</td>
+      <td>11.61</td>
+      <td>21.80</td>
+      <td>48.00</td>
+      <td>50.54</td>
+      <td>41.40</td>
+      <td>1.74</td>
+      <td>41.11</td>
+      <td>2.47</td>
+      <td>38.96</td>
+      <td>8.12</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>29535</td>
+      <td>XON</td>
+      <td>Exxon Mobil Corp</td>
+      <td>Xetra</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas Integrated</td>
+      <td>Germany</td>
+      <td>XOM</td>
+      <td>Xetra:XON</td>
+      <td>1962-01-02 14:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.18</td>
+      <td>0.61</td>
+      <td>1.04</td>
+      <td>-0.16</td>
+      <td>0.79</td>
+      <td>0.70</td>
+      <td>0.34</td>
+      <td>0.47</td>
+      <td>-0.06</td>
+      <td>0.07</td>
+      <td>54.90</td>
+      <td>3503.0</td>
+      <td>3.711406e+11</td>
+      <td>4.225670e+09</td>
+      <td>4.226649e+09</td>
+      <td>32414468.0</td>
+      <td>0.88</td>
+      <td>-14.2</td>
+      <td>80.95</td>
+      <td>12991.0</td>
+      <td>93</td>
+      <td>96</td>
+      <td>96</td>
+      <td>97</td>
+      <td>97</td>
+      <td>96</td>
+      <td>0.97</td>
+      <td>34812.06</td>
+      <td>0.37</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>121413.36</td>
+      <td>83.62</td>
+      <td>-3.19</td>
+      <td>44.67</td>
+      <td>81.22</td>
+      <td>2.73</td>
+      <td>2.11</td>
+      <td>-0.05</td>
+      <td>4.74</td>
+      <td>14.43</td>
+      <td>25.74</td>
+      <td>48.48</td>
+      <td>74.46</td>
+      <td>79.29</td>
+      <td>2.10</td>
+      <td>77.34</td>
+      <td>4.66</td>
+      <td>73.86</td>
+      <td>9.60</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>49819</td>
+      <td>ECVG</td>
+      <td>Encavis AG</td>
+      <td>Xetra</td>
+      <td>Utilities</td>
+      <td>Utilities—Renewable</td>
+      <td>Germany</td>
+      <td>ECV.DE</td>
+      <td>Xetra:ECVG</td>
+      <td>1999-01-07 08:00:00</td>
+      <td>0.96</td>
+      <td>1.25</td>
+      <td>NaN</td>
+      <td>-0.15</td>
+      <td>NaN</td>
+      <td>0.07</td>
+      <td>0.27</td>
+      <td>0.08</td>
+      <td>0.08</td>
+      <td>0.10</td>
+      <td>0.05</td>
+      <td>33.12</td>
+      <td>47.51</td>
+      <td>168.0</td>
+      <td>3.289614e+09</td>
+      <td>1.604690e+08</td>
+      <td>1.147773e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>20.71</td>
+      <td>466528.0</td>
+      <td>93</td>
+      <td>98</td>
+      <td>94</td>
+      <td>84</td>
+      <td>83</td>
+      <td>77</td>
+      <td>1.69</td>
+      <td>655636.34</td>
+      <td>0.71</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>175.06</td>
+      <td>21.59</td>
+      <td>-4.08</td>
+      <td>11.82</td>
+      <td>75.21</td>
+      <td>4.14</td>
+      <td>0.92</td>
+      <td>1.27</td>
+      <td>2.78</td>
+      <td>14.42</td>
+      <td>47.09</td>
+      <td>22.18</td>
+      <td>22.04</td>
+      <td>20.34</td>
+      <td>1.82</td>
+      <td>19.48</td>
+      <td>6.30</td>
+      <td>16.80</td>
+      <td>23.29</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>6311</td>
+      <td>NAFG</td>
+      <td>Aurubis AG</td>
+      <td>Xetra</td>
+      <td>Basic Materials</td>
+      <td>Copper</td>
+      <td>Germany</td>
+      <td>NDA.DE</td>
+      <td>Xetra:NAFG</td>
+      <td>1998-11-09 08:00:00</td>
+      <td>0.74</td>
+      <td>0.74</td>
+      <td>NaN</td>
+      <td>0.33</td>
+      <td>NaN</td>
+      <td>-0.15</td>
+      <td>0.27</td>
+      <td>-0.08</td>
+      <td>0.06</td>
+      <td>-0.13</td>
+      <td>0.02</td>
+      <td>34.86</td>
+      <td>36.95</td>
+      <td>214.0</td>
+      <td>4.704257e+09</td>
+      <td>4.365900e+07</td>
+      <td>3.018562e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>108.85</td>
+      <td>88471.0</td>
+      <td>54</td>
+      <td>80</td>
+      <td>91</td>
+      <td>83</td>
+      <td>92</td>
+      <td>98</td>
+      <td>1.47</td>
+      <td>180548.06</td>
+      <td>0.49</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>167.19</td>
+      <td>116.85</td>
+      <td>-6.85</td>
+      <td>62.20</td>
+      <td>75.00</td>
+      <td>3.58</td>
+      <td>3.89</td>
+      <td>0.46</td>
+      <td>4.51</td>
+      <td>0.32</td>
+      <td>7.24</td>
+      <td>48.18</td>
+      <td>46.66</td>
+      <td>107.72</td>
+      <td>1.05</td>
+      <td>107.85</td>
+      <td>0.93</td>
+      <td>105.90</td>
+      <td>2.79</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>963247</td>
+      <td>R6C0</td>
+      <td>Shell PLC</td>
+      <td>Xetra</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas Integrated</td>
+      <td>Germany</td>
+      <td>RDSA.AS</td>
+      <td>Xetra:R6C0</td>
+      <td>2008-06-25 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.38</td>
+      <td>0.94</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.16</td>
+      <td>0.15</td>
+      <td>26.41</td>
+      <td>758.0</td>
+      <td>2.147324e+11</td>
+      <td>7.542410e+09</td>
+      <td>7.618711e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>26.52</td>
+      <td>82682.0</td>
+      <td>93</td>
+      <td>89</td>
+      <td>96</td>
+      <td>97</td>
+      <td>97</td>
+      <td>96</td>
+      <td>1.64</td>
+      <td>290172.88</td>
+      <td>0.28</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>26255.76</td>
+      <td>27.20</td>
+      <td>-2.50</td>
+      <td>15.47</td>
+      <td>71.45</td>
+      <td>2.36</td>
+      <td>0.56</td>
+      <td>-1.17</td>
+      <td>3.74</td>
+      <td>14.85</td>
+      <td>18.13</td>
+      <td>24.57</td>
+      <td>66.96</td>
+      <td>26.09</td>
+      <td>1.66</td>
+      <td>25.39</td>
+      <td>4.43</td>
+      <td>24.30</td>
+      <td>9.14</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Darvas Scan</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+            </section>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+    </div>
+</footer>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bm/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+<script>
+        $(document).ready(function () {
+            $('#data').DataTable(
+                {
+                    "scrollX": true,
+                    "dom": 'Bfrtip',
+                    "buttons": [
+                        'copy', 'csv', 'excel', 'print'
+                    ]
+
+                }
+            );
+        });
+    </script>
+    
+</body>
+
+</html>

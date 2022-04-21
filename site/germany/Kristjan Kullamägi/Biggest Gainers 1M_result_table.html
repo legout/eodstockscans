@@ -1,0 +1,3694 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.datatables.net/v/bm/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/sc-2.0.5/datatables.min.css" />
+
+</head >
+
+
+<body>
+    <section class="hero is-small is-dark">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <!-- <a class="navbar-item">
+                        
+                        <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDEwMCAxMDA7IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOm5vbmU7fQoJLnN0MXtmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO30KPC9zdHlsZT48dGl0bGUvPjxnPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MS44LDg0YzAuMSwwLjIsMC4xLDAuMywwLjEsMC41YzAsMy4zLDAuMiw2LjcsMC41LDEwYzIuNi0wLjEsNC45LTAuMSw3LjItMC4ydjBjMC4zLDAsMC43LDAsMSwwICAgYy0wLjMtNS0wLjQtMTAtMC41LTE1QzQ4LjQsODAuNCw0NS41LDgyLjEsNDEuOCw4NHoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTYuMyw5NGMtMC4yLDAuMS0wLjQsMC4xLTAuNSwwLjJjMS43LDAuMSw0LjMsMC4yLDcuNywwLjNjMS40LDAsMi43LDAuMSw0LDAuMWMtMC4xLTEuNC0wLjMtMi44LTAuNC00LjEgICBDMjIuNiw5Mi4xLDE4LjgsOTMuMiwxNi4zLDk0eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02Ni45LDQ3LjVjMy4xLTMuMyw2LjgtNy41LDEwLjgtMTIuN2MwLDAsMCwwLDAtMC4xYzAuNS0wLjYsMS40LTAuNywyLTAuMmMxLjcsMS41LDMuNiwyLjksNS42LDQuNCAgIGMxLDAuOCwyLjEsMS41LDMuMSwyLjJjMC4zLDAuMiwwLjYsMC4zLDEsMC4zYzAuNCwwLDAuOC0wLjIsMS4yLTAuNGMwLjMtMC4zLDAuNS0wLjcsMC41LTEuMWMwLjItNC45LDAuMy05LjksMC4zLTE1di0wLjcgICBjMC01LjYtMC4xLTExLTAuMy0xNi4zYzAtMC4yLDAtMC4zLTAuMS0wLjVjLTAuMy0xLjQtMS43LTIuMy0zLjItMkM3Ni42LDgsNjUuNSwxMC43LDU0LjUsMTMuN2MtMC4zLDAuMS0wLjYsMC4zLTAuOCwwLjUgICBjLTAuMiwwLjMtMC4zLDAuNi0wLjMsMC45YzAsMC41LDAuMywxLDAuNywxLjJjMC45LDAuNiwxLjgsMS4xLDIuNywxLjdjMi4yLDEuMyw0LjMsMi41LDYuMywzLjVjMC43LDAuNCwxLDEuMiwwLjYsMS45ICAgYy0zLjEsNi02LjYsMTEuNy0xMC42LDE3LjFjLTguNSwxMS40LTE4LDIwLTMwLDMwLjhDMTYuNyw3NywxMiw4MSw5LjQsODMuNWMtMC42LDAuNi0xLjIsMS4yLTEuNywxLjhjMC43LTAuMSwxLjQtMC4yLDIuMS0wLjQgICBjMS4xLTAuMywyLjQtMC43LDMuNi0xLjFjMi41LTAuOSw0LjktMS45LDYuMS0yLjRDMjguOSw3Ny42LDQ3LjEsNjguNiw2Ni45LDQ3LjV6Ii8+PHBhdGggY2xhc3M9InN0MCIgZD0iTTMxLjUsODguN2MtMC42LDAuMi0xLjIsMC41LTEuNywwLjdjMC4yLDEuNywwLjQsMy41LDAuNSw1LjJjMC43LDAsMS4zLDAsMS45LDBjMi42LDAsNSwwLDcuMy0wLjEgICBjLTAuMy0zLjEtMC40LTYuMS0wLjUtOS4yQzM2LjgsODYuNSwzNC4yLDg3LjYsMzEuNSw4OC43eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik01Mi45LDc3LjVjMCwwLjEsMCwwLjEsMCwwLjJjMC4xLDUuNSwwLjMsMTEuMSwwLjYsMTYuNmMzLjQtMC4xLDYuOS0wLjIsMTAuNC0wLjNjLTAuMy04LjEtMC41LTE2LjMtMC44LTI0LjQgICBDNTkuOCw3Mi40LDU2LjQsNzUsNTIuOSw3Ny41eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik05MS4yLDU1LjNjLTAuMS0wLjEtMC4xLTAuMS0wLjItMC4xYy0wLjEsMC0wLjItMC4xLTAuNS0wLjJjLTAuNi0wLjMtMS42LTAuNy0zLjUtMS42ICAgYy0xLjItMC42LTIuMy0xLjEtMy40LTEuNmMtMC41LTAuMi0xLTAuNC0xLjYtMC40Yy0xLjEsMC0yLjEsMC41LTIuOCwxLjRsMCwwYy0wLjIsMC4zLTAuNCwwLjUtMC42LDAuOGwyLjMsNDAuM2gwLjYgICBjMi4yLDAsMy45LDAsNS4yLTAuMmMxLTAuMSwxLjktMC4zLDIuOC0wLjdjMC41LTAuMiwwLjktMC41LDEuMi0wLjljMC41LTAuNCwwLjgtMSwxLTEuNmMwLjItMC45LDAuMy0xLjgsMC4zLTIuNyAgIGMwLTEuNy0wLjEtNC4xLTAuMS03LjVjMC0yLjEsMC4xLTQuNywwLjMtNy43bDAsMGMwLjMtNC45LDAuOC04LjgsMC44LTExLjhjMC0xLjItMC4xLTIuNC0wLjQtMy41QzkyLjIsNTYuNSw5MS44LDU1LjgsOTEuMiw1NS4zeiAgICIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02NS44LDY3LjFjMCwwLjEsMC4xLDAuMywwLjEsMC40YzAuMyw4LjgsMC42LDE3LjYsMC45LDI2LjRjMy4yLTAuMSw2LjQtMC4xLDkuNi0wLjF2MGgwLjNoMS4xICAgYzAtMC4xLDAuMS0wLjIsMC4xLTAuNGMtMC43LTEyLjItMS40LTI0LjUtMi4xLTM2LjdDNzIuNyw2MC40LDY5LjMsNjMuOCw2NS44LDY3LjF6Ii8+PHBhdGggZD0iTTIwLjYsODQuMWM5LjYtMy45LDI4LjMtMTMuMSw0OC40LTM0LjZjMi45LTMuMSw2LjMtNywxMC4xLTExLjhjMS40LDEuMiwzLDIuNCw0LjYsMy42YzEuMSwwLjgsMi4xLDEuNSwzLjIsMi4zICAgYzEuOCwxLjIsNC4xLDEuMSw1LjctMC40YzAuOS0wLjgsMS40LTIsMS41LTMuMmMwLjItNC45LDAuMy05LjksMC4zLTE1LjF2LTAuN2MwLTUuNi0wLjEtMTEuMS0wLjMtMTYuNGMtMC4xLTMtMi43LTUuNC01LjctNS4zICAgYy0wLjMsMC0wLjcsMC4xLTEsMC4xQzc2LDUuMiw2NC44LDcuOSw1My43LDEwLjljLTEsMC4zLTEuOCwwLjgtMi40LDEuNmMtMC41LDAuOC0wLjgsMS43LTAuOCwyLjZjMCwxLjUsMC44LDIuOSwyLDMuNyAgIGMwLjksMC42LDEuOCwxLjEsMi44LDEuN2MxLjgsMS4xLDMuNSwyLDUuMiwyLjljLTIuOCw1LjQtNi4xLDEwLjYtOS43LDE1LjVDNDIuNiw1MCwzMy4yLDU4LjQsMjEuMiw2OS4yQzE2LDczLjksMTEuOSw3Ny40LDksNzkuOSAgIGMtMS4yLDEtMi4zLDIuMS0zLjMsMy4zYy0wLjQsMC40LTAuNywwLjgtMSwxLjNjLTAuMywwLjUtMC41LDEtMC41LDEuNWMwLDAuNywwLjMsMS4zLDAuOSwxLjdjMC4zLDAuMiwwLjYsMC40LDEsMC40ICAgYzAuMywwLjEsMC42LDAuMSwxLDAuMWMxLjEsMCwyLjMtMC4yLDMuNC0wLjVjMi0wLjUsMy45LTEuMiw1LjgtMS45QzE4LjEsODUuMSwxOS43LDg0LjQsMjAuNiw4NC4xeiBNOS43LDg0LjkgICBjLTAuNywwLjItMS40LDAuMy0yLjEsMC40YzAuNS0wLjYsMS4xLTEuMiwxLjctMS44QzEyLDgxLDE2LjcsNzcsMjMuMSw3MS40YzEyLTEwLjgsMjEuNi0xOS40LDMwLTMwLjhjNC01LjQsNy42LTExLjEsMTAuNi0xNy4xICAgYzAuNC0wLjcsMC4xLTEuNi0wLjYtMS45Yy0yLjEtMS4xLTQuMi0yLjMtNi4zLTMuNWMtMC45LTAuNi0xLjgtMS4xLTIuNy0xLjdjLTAuNC0wLjMtMC43LTAuNy0wLjctMS4yYzAtMC4zLDAuMS0wLjYsMC4zLTAuOSAgIGMwLjItMC4zLDAuNS0wLjUsMC44LTAuNUM2NS41LDEwLjcsNzYuNiw4LDg3LjgsNS40YzEuNC0wLjMsMi44LDAuNiwzLjIsMkM5MSw3LjYsOTEsNy44LDkxLDcuOWMwLjIsNS4yLDAuMywxMC43LDAuMywxNi4zdjAuNyAgIGMwLDUuMi0wLjEsMTAuMi0wLjMsMTVjMCwwLjQtMC4yLDAuOS0wLjUsMS4xYy0wLjMsMC4zLTAuNywwLjQtMS4yLDAuNGMtMC4zLDAtMC43LTAuMS0xLTAuM2MtMS0wLjctMi0xLjQtMy4xLTIuMiAgIGMtMi0xLjUtMy45LTMtNS42LTQuNGMtMC42LTAuNS0xLjUtMC40LTIsMC4yYzAsMCwwLDAsMCwwLjFjLTQsNS4yLTcuNyw5LjUtMTAuOCwxMi43Yy0xOS43LDIxLjEtMzgsMzAuMS00Ny40LDMzLjkgICBjLTEuMiwwLjUtMy42LDEuNS02LjEsMi40QzEyLjEsODQuMiwxMC44LDg0LjYsOS43LDg0Ljl6Ii8+PGxpbmUgY2xhc3M9InN0MSIgeDE9IjQuNSIgeDI9IjQuNSIgeTE9Ijg3LjEiIHkyPSI4Ny4xIi8+PHBhdGggZD0iTTk1LjcsNjAuN2MwLTEuNS0wLjEtMy0wLjUtNC40Qzk0LjgsNTUsOTQsNTMuOSw5Mi45LDUzYy0wLjItMC4xLTAuNC0wLjMtMC42LTAuNGMtMC4zLTAuMi0wLjYtMC4zLTEuMi0wLjYgICBjLTAuNi0wLjMtMS41LTAuNy0yLjktMS4zYy0xLjItMC42LTIuMy0xLjEtMy4zLTEuNmMtMi43LTEuNC02LTAuNi03LjksMS44bDAsMGMtNy44LDkuOS0xNywxOC40LTI3LjUsMjUuNCAgIGMtNiwzLjgtMTIuNCw3LjEtMTksOS44Yy01LjMsMi4yLTEwLDMuNi0xMy40LDQuN2MtMS43LDAuNS0zLjEsMS00LjEsMS40Yy0wLjUsMC4yLTAuOSwwLjQtMS40LDAuN2MtMC4yLDAuMi0wLjQsMC40LTAuNiwwLjYgICBjLTAuMiwwLjMtMC40LDAuNy0wLjQsMS4xYzAsMC4xLDAsMC4yLDAsMC4ydjB2MGMwLDAuMiwwLjEsMC41LDAuMywwLjdjMC4yLDAuMywwLjUsMC42LDAuOCwwLjdjMC41LDAuMiwxLjEsMC40LDEuNiwwLjUgICBjMS4zLDAuMiwyLjUsMC4zLDMuOCwwLjRjMS42LDAuMSwzLjcsMC4yLDYuMiwwLjJjMy4yLDAuMSw2LjIsMC4xLDguOSwwLjFjNywwLDEyLjUtMC4yLDE3LjQtMC4zYzguOS0wLjIsMTcuOC0wLjYsMjYuNy0wLjZoMC4zICAgYzEuOCwwLDMuNCwwLDQuOCwwYzIuMywwLjEsNC42LDAsNi45LTAuNGMwLjgtMC4xLDEuNi0wLjQsMi40LTAuOGMwLjctMC40LDEuNC0wLjgsMi0xLjRjMC44LTAuOCwxLjQtMS44LDEuOC0yLjkgICBjMC4zLTEuMSwwLjQtMi4zLDAuNC0zLjVjMC0xLjktMC4xLTQuMi0wLjEtNy41YzAtMi4xLDAuMS00LjYsMC4yLTcuNUM5NS4yLDY3LjksOTUuNyw2NCw5NS43LDYwLjd6IE0yMy40LDk0LjUgICBjLTMuNC0wLjEtNi0wLjItNy43LTAuM2MwLjItMC4xLDAuNC0wLjEsMC41LTAuMmMyLjUtMC44LDYuMy0yLDEwLjctMy42YzAuMSwxLjQsMC4zLDIuOCwwLjQsNC4xQzI2LjEsOTQuNiwyNC44LDk0LjYsMjMuNCw5NC41eiAgICBNMzIuMiw5NC42Yy0wLjYsMC0xLjMsMC0xLjksMGMtMC4yLTEuNy0wLjQtMy41LTAuNS01LjJjMC42LTAuMiwxLjEtMC40LDEuNy0wLjdjMi43LTEuMSw1LjMtMi4zLDcuNS0zLjQgICBjMC4xLDMuMSwwLjIsNi4xLDAuNSw5LjJDMzcuMyw5NC42LDM0LjksOTQuNiwzMi4yLDk0LjZ6IE00OS42LDk0LjNMNDkuNiw5NC4zYy0yLjMsMC00LjcsMC4xLTcuMiwwLjJjLTAuMy0zLjMtMC41LTYuNy0wLjUtMTAgICBjMC0wLjIsMC0wLjMtMC4xLTAuNWMzLjctMS45LDYuNi0zLjYsOC4zLTQuN2MwLjEsNSwwLjMsMTAsMC41LDE1QzUwLjMsOTQuMyw0OS45LDk0LjMsNDkuNiw5NC4zeiBNNTMuNSw5NC4yICAgYy0wLjMtNS41LTAuNS0xMS0wLjYtMTYuNmMwLTAuMSwwLTAuMSwwLTAuMmMzLjUtMi40LDYuOS01LjEsMTAuMi03LjljMC4zLDguMSwwLjUsMTYuMywwLjgsMjQuNEM2MC40LDk0LDU2LjksOTQuMSw1My41LDk0LjJ6ICAgIE03Ny44LDkzLjhoLTEuMWgtMC4zdjBjLTMuMiwwLTYuNCwwLjEtOS42LDAuMWMtMC4zLTguOC0wLjYtMTcuNi0wLjktMjYuNGMwLTAuMSwwLTAuMy0wLjEtMC40YzMuNi0zLjMsNi45LTYuOCwxMC4xLTEwLjQgICBjMC43LDEyLjIsMS40LDI0LjUsMi4xLDM2LjdDNzcuOSw5My41LDc3LjgsOTMuNiw3Ny44LDkzLjh6IE05Miw3Mi41TDkyLDcyLjVjLTAuMiwzLTAuMiw1LjYtMC4yLDcuN2MwLDMuNCwwLjEsNS44LDAuMSw3LjUgICBjMCwwLjktMC4xLDEuOC0wLjMsMi43Yy0wLjIsMC42LTAuNSwxLjItMSwxLjZjLTAuNCwwLjQtMC44LDAuNy0xLjIsMC45Yy0wLjksMC40LTEuOCwwLjYtMi44LDAuN2MtMS4zLDAuMS0zLDAuMi01LjIsMC4yaC0wLjYgICBsLTIuMy00MC4zYzAuMi0wLjMsMC40LTAuNSwwLjYtMC44bDAsMGMwLjctMC45LDEuNy0xLjQsMi44LTEuNGMwLjUsMCwxLjEsMC4xLDEuNiwwLjRjMSwwLjUsMi4xLDEuMSwzLjQsMS42ICAgYzEuOSwwLjksMi45LDEuMywzLjUsMS42YzAuMywwLjEsMC40LDAuMiwwLjUsMC4yYzAuMSwwLDAuMSwwLjEsMC4yLDAuMWMwLjYsMC41LDEuMSwxLjIsMS4zLDEuOWMwLjMsMS4xLDAuNCwyLjMsMC40LDMuNSAgIEM5Mi45LDYzLjYsOTIuMyw2Ny42LDkyLDcyLjV6Ii8+PC9nPjwvc3ZnPg=="
+                            alt="Logo">
+                       
+                    </a> -->
+                    <span class="navbar-burger" data-target="navbarMenuHeroB">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </div>
+                <div id="navbarMenuHeroB" class="navbar-menu">
+                    <div class="navbar-start">
+                        
+                        <a class="navbar-item" href="../../germany/market_monitor.html">
+                            
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-home"></i>
+                                    </span>
+                                    <span>Home</span>
+                                </span>
+                            </a>
+
+                            <div class="navbar-item has-dropdown is-hoverable has-background-dark">
+                                <a class="navbar-link">
+                                    <span>Choose Market</span>
+                                </a>
+
+                                <div class="navbar-dropdown has-background-dark">
+                                    
+                                    <a class="navbar-item" href="../../australia/market_monitor.html">
+                                        <span>Australia</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../canada/market_monitor.html">
+                                        <span>Canada</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../germany/market_monitor.html">
+                                        <span>Germany</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../hong_kong/market_monitor.html">
+                                        <span>Hong Kong</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../japan/market_monitor.html">
+                                        <span>Japan</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../nordic_markets/market_monitor.html">
+                                        <span>Nordic Markets</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_kingdom/market_monitor.html">
+                                        <span>United Kingdom</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_states/market_monitor.html">
+                                        <span>United States</span>
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                    </div>
+                    <div class="navbar-end"></div>
+                    <span class="navbar-item">
+                        <a class="button is-info is-light" href="https://twitter.com/LignoL23">
+                            <span class="icon">
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                            <span>Twitter</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <a class="button  is-success is-light" href="https://www.paypal.com/paypalme/volkerlorrmann/5">
+                            <span class="icon">
+                                <i class="fab fa-paypal"></i>
+                            </span>
+                            <span>paypal.me</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+                        <script
+                            type='text/javascript'>kofiwidget2.init('Support me', '#d6d6d6', 'W7W0ACJPB'); kofiwidget2.draw();</script>
+                    </span>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="columns is-multiline is-mobile is-centered">
+                <div class="column is-1">
+                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDEwMCAxMDA7IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOm5vbmU7fQoJLnN0MXtmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO30KPC9zdHlsZT48dGl0bGUvPjxnPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MS44LDg0YzAuMSwwLjIsMC4xLDAuMywwLjEsMC41YzAsMy4zLDAuMiw2LjcsMC41LDEwYzIuNi0wLjEsNC45LTAuMSw3LjItMC4ydjBjMC4zLDAsMC43LDAsMSwwICAgYy0wLjMtNS0wLjQtMTAtMC41LTE1QzQ4LjQsODAuNCw0NS41LDgyLjEsNDEuOCw4NHoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTYuMyw5NGMtMC4yLDAuMS0wLjQsMC4xLTAuNSwwLjJjMS43LDAuMSw0LjMsMC4yLDcuNywwLjNjMS40LDAsMi43LDAuMSw0LDAuMWMtMC4xLTEuNC0wLjMtMi44LTAuNC00LjEgICBDMjIuNiw5Mi4xLDE4LjgsOTMuMiwxNi4zLDk0eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02Ni45LDQ3LjVjMy4xLTMuMyw2LjgtNy41LDEwLjgtMTIuN2MwLDAsMCwwLDAtMC4xYzAuNS0wLjYsMS40LTAuNywyLTAuMmMxLjcsMS41LDMuNiwyLjksNS42LDQuNCAgIGMxLDAuOCwyLjEsMS41LDMuMSwyLjJjMC4zLDAuMiwwLjYsMC4zLDEsMC4zYzAuNCwwLDAuOC0wLjIsMS4yLTAuNGMwLjMtMC4zLDAuNS0wLjcsMC41LTEuMWMwLjItNC45LDAuMy05LjksMC4zLTE1di0wLjcgICBjMC01LjYtMC4xLTExLTAuMy0xNi4zYzAtMC4yLDAtMC4zLTAuMS0wLjVjLTAuMy0xLjQtMS43LTIuMy0zLjItMkM3Ni42LDgsNjUuNSwxMC43LDU0LjUsMTMuN2MtMC4zLDAuMS0wLjYsMC4zLTAuOCwwLjUgICBjLTAuMiwwLjMtMC4zLDAuNi0wLjMsMC45YzAsMC41LDAuMywxLDAuNywxLjJjMC45LDAuNiwxLjgsMS4xLDIuNywxLjdjMi4yLDEuMyw0LjMsMi41LDYuMywzLjVjMC43LDAuNCwxLDEuMiwwLjYsMS45ICAgYy0zLjEsNi02LjYsMTEuNy0xMC42LDE3LjFjLTguNSwxMS40LTE4LDIwLTMwLDMwLjhDMTYuNyw3NywxMiw4MSw5LjQsODMuNWMtMC42LDAuNi0xLjIsMS4yLTEuNywxLjhjMC43LTAuMSwxLjQtMC4yLDIuMS0wLjQgICBjMS4xLTAuMywyLjQtMC43LDMuNi0xLjFjMi41LTAuOSw0LjktMS45LDYuMS0yLjRDMjguOSw3Ny42LDQ3LjEsNjguNiw2Ni45LDQ3LjV6Ii8+PHBhdGggY2xhc3M9InN0MCIgZD0iTTMxLjUsODguN2MtMC42LDAuMi0xLjIsMC41LTEuNywwLjdjMC4yLDEuNywwLjQsMy41LDAuNSw1LjJjMC43LDAsMS4zLDAsMS45LDBjMi42LDAsNSwwLDcuMy0wLjEgICBjLTAuMy0zLjEtMC40LTYuMS0wLjUtOS4yQzM2LjgsODYuNSwzNC4yLDg3LjYsMzEuNSw4OC43eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik01Mi45LDc3LjVjMCwwLjEsMCwwLjEsMCwwLjJjMC4xLDUuNSwwLjMsMTEuMSwwLjYsMTYuNmMzLjQtMC4xLDYuOS0wLjIsMTAuNC0wLjNjLTAuMy04LjEtMC41LTE2LjMtMC44LTI0LjQgICBDNTkuOCw3Mi40LDU2LjQsNzUsNTIuOSw3Ny41eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik05MS4yLDU1LjNjLTAuMS0wLjEtMC4xLTAuMS0wLjItMC4xYy0wLjEsMC0wLjItMC4xLTAuNS0wLjJjLTAuNi0wLjMtMS42LTAuNy0zLjUtMS42ICAgYy0xLjItMC42LTIuMy0xLjEtMy40LTEuNmMtMC41LTAuMi0xLTAuNC0xLjYtMC40Yy0xLjEsMC0yLjEsMC41LTIuOCwxLjRsMCwwYy0wLjIsMC4zLTAuNCwwLjUtMC42LDAuOGwyLjMsNDAuM2gwLjYgICBjMi4yLDAsMy45LDAsNS4yLTAuMmMxLTAuMSwxLjktMC4zLDIuOC0wLjdjMC41LTAuMiwwLjktMC41LDEuMi0wLjljMC41LTAuNCwwLjgtMSwxLTEuNmMwLjItMC45LDAuMy0xLjgsMC4zLTIuNyAgIGMwLTEuNy0wLjEtNC4xLTAuMS03LjVjMC0yLjEsMC4xLTQuNywwLjMtNy43bDAsMGMwLjMtNC45LDAuOC04LjgsMC44LTExLjhjMC0xLjItMC4xLTIuNC0wLjQtMy41QzkyLjIsNTYuNSw5MS44LDU1LjgsOTEuMiw1NS4zeiAgICIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02NS44LDY3LjFjMCwwLjEsMC4xLDAuMywwLjEsMC40YzAuMyw4LjgsMC42LDE3LjYsMC45LDI2LjRjMy4yLTAuMSw2LjQtMC4xLDkuNi0wLjF2MGgwLjNoMS4xICAgYzAtMC4xLDAuMS0wLjIsMC4xLTAuNGMtMC43LTEyLjItMS40LTI0LjUtMi4xLTM2LjdDNzIuNyw2MC40LDY5LjMsNjMuOCw2NS44LDY3LjF6Ii8+PHBhdGggZD0iTTIwLjYsODQuMWM5LjYtMy45LDI4LjMtMTMuMSw0OC40LTM0LjZjMi45LTMuMSw2LjMtNywxMC4xLTExLjhjMS40LDEuMiwzLDIuNCw0LjYsMy42YzEuMSwwLjgsMi4xLDEuNSwzLjIsMi4zICAgYzEuOCwxLjIsNC4xLDEuMSw1LjctMC40YzAuOS0wLjgsMS40LTIsMS41LTMuMmMwLjItNC45LDAuMy05LjksMC4zLTE1LjF2LTAuN2MwLTUuNi0wLjEtMTEuMS0wLjMtMTYuNGMtMC4xLTMtMi43LTUuNC01LjctNS4zICAgYy0wLjMsMC0wLjcsMC4xLTEsMC4xQzc2LDUuMiw2NC44LDcuOSw1My43LDEwLjljLTEsMC4zLTEuOCwwLjgtMi40LDEuNmMtMC41LDAuOC0wLjgsMS43LTAuOCwyLjZjMCwxLjUsMC44LDIuOSwyLDMuNyAgIGMwLjksMC42LDEuOCwxLjEsMi44LDEuN2MxLjgsMS4xLDMuNSwyLDUuMiwyLjljLTIuOCw1LjQtNi4xLDEwLjYtOS43LDE1LjVDNDIuNiw1MCwzMy4yLDU4LjQsMjEuMiw2OS4yQzE2LDczLjksMTEuOSw3Ny40LDksNzkuOSAgIGMtMS4yLDEtMi4zLDIuMS0zLjMsMy4zYy0wLjQsMC40LTAuNywwLjgtMSwxLjNjLTAuMywwLjUtMC41LDEtMC41LDEuNWMwLDAuNywwLjMsMS4zLDAuOSwxLjdjMC4zLDAuMiwwLjYsMC40LDEsMC40ICAgYzAuMywwLjEsMC42LDAuMSwxLDAuMWMxLjEsMCwyLjMtMC4yLDMuNC0wLjVjMi0wLjUsMy45LTEuMiw1LjgtMS45QzE4LjEsODUuMSwxOS43LDg0LjQsMjAuNiw4NC4xeiBNOS43LDg0LjkgICBjLTAuNywwLjItMS40LDAuMy0yLjEsMC40YzAuNS0wLjYsMS4xLTEuMiwxLjctMS44QzEyLDgxLDE2LjcsNzcsMjMuMSw3MS40YzEyLTEwLjgsMjEuNi0xOS40LDMwLTMwLjhjNC01LjQsNy42LTExLjEsMTAuNi0xNy4xICAgYzAuNC0wLjcsMC4xLTEuNi0wLjYtMS45Yy0yLjEtMS4xLTQuMi0yLjMtNi4zLTMuNWMtMC45LTAuNi0xLjgtMS4xLTIuNy0xLjdjLTAuNC0wLjMtMC43LTAuNy0wLjctMS4yYzAtMC4zLDAuMS0wLjYsMC4zLTAuOSAgIGMwLjItMC4zLDAuNS0wLjUsMC44LTAuNUM2NS41LDEwLjcsNzYuNiw4LDg3LjgsNS40YzEuNC0wLjMsMi44LDAuNiwzLjIsMkM5MSw3LjYsOTEsNy44LDkxLDcuOWMwLjIsNS4yLDAuMywxMC43LDAuMywxNi4zdjAuNyAgIGMwLDUuMi0wLjEsMTAuMi0wLjMsMTVjMCwwLjQtMC4yLDAuOS0wLjUsMS4xYy0wLjMsMC4zLTAuNywwLjQtMS4yLDAuNGMtMC4zLDAtMC43LTAuMS0xLTAuM2MtMS0wLjctMi0xLjQtMy4xLTIuMiAgIGMtMi0xLjUtMy45LTMtNS42LTQuNGMtMC42LTAuNS0xLjUtMC40LTIsMC4yYzAsMCwwLDAsMCwwLjFjLTQsNS4yLTcuNyw5LjUtMTAuOCwxMi43Yy0xOS43LDIxLjEtMzgsMzAuMS00Ny40LDMzLjkgICBjLTEuMiwwLjUtMy42LDEuNS02LjEsMi40QzEyLjEsODQuMiwxMC44LDg0LjYsOS43LDg0Ljl6Ii8+PGxpbmUgY2xhc3M9InN0MSIgeDE9IjQuNSIgeDI9IjQuNSIgeTE9Ijg3LjEiIHkyPSI4Ny4xIi8+PHBhdGggZD0iTTk1LjcsNjAuN2MwLTEuNS0wLjEtMy0wLjUtNC40Qzk0LjgsNTUsOTQsNTMuOSw5Mi45LDUzYy0wLjItMC4xLTAuNC0wLjMtMC42LTAuNGMtMC4zLTAuMi0wLjYtMC4zLTEuMi0wLjYgICBjLTAuNi0wLjMtMS41LTAuNy0yLjktMS4zYy0xLjItMC42LTIuMy0xLjEtMy4zLTEuNmMtMi43LTEuNC02LTAuNi03LjksMS44bDAsMGMtNy44LDkuOS0xNywxOC40LTI3LjUsMjUuNCAgIGMtNiwzLjgtMTIuNCw3LjEtMTksOS44Yy01LjMsMi4yLTEwLDMuNi0xMy40LDQuN2MtMS43LDAuNS0zLjEsMS00LjEsMS40Yy0wLjUsMC4yLTAuOSwwLjQtMS40LDAuN2MtMC4yLDAuMi0wLjQsMC40LTAuNiwwLjYgICBjLTAuMiwwLjMtMC40LDAuNy0wLjQsMS4xYzAsMC4xLDAsMC4yLDAsMC4ydjB2MGMwLDAuMiwwLjEsMC41LDAuMywwLjdjMC4yLDAuMywwLjUsMC42LDAuOCwwLjdjMC41LDAuMiwxLjEsMC40LDEuNiwwLjUgICBjMS4zLDAuMiwyLjUsMC4zLDMuOCwwLjRjMS42LDAuMSwzLjcsMC4yLDYuMiwwLjJjMy4yLDAuMSw2LjIsMC4xLDguOSwwLjFjNywwLDEyLjUtMC4yLDE3LjQtMC4zYzguOS0wLjIsMTcuOC0wLjYsMjYuNy0wLjZoMC4zICAgYzEuOCwwLDMuNCwwLDQuOCwwYzIuMywwLjEsNC42LDAsNi45LTAuNGMwLjgtMC4xLDEuNi0wLjQsMi40LTAuOGMwLjctMC40LDEuNC0wLjgsMi0xLjRjMC44LTAuOCwxLjQtMS44LDEuOC0yLjkgICBjMC4zLTEuMSwwLjQtMi4zLDAuNC0zLjVjMC0xLjktMC4xLTQuMi0wLjEtNy41YzAtMi4xLDAuMS00LjYsMC4yLTcuNUM5NS4yLDY3LjksOTUuNyw2NCw5NS43LDYwLjd6IE0yMy40LDk0LjUgICBjLTMuNC0wLjEtNi0wLjItNy43LTAuM2MwLjItMC4xLDAuNC0wLjEsMC41LTAuMmMyLjUtMC44LDYuMy0yLDEwLjctMy42YzAuMSwxLjQsMC4zLDIuOCwwLjQsNC4xQzI2LjEsOTQuNiwyNC44LDk0LjYsMjMuNCw5NC41eiAgICBNMzIuMiw5NC42Yy0wLjYsMC0xLjMsMC0xLjksMGMtMC4yLTEuNy0wLjQtMy41LTAuNS01LjJjMC42LTAuMiwxLjEtMC40LDEuNy0wLjdjMi43LTEuMSw1LjMtMi4zLDcuNS0zLjQgICBjMC4xLDMuMSwwLjIsNi4xLDAuNSw5LjJDMzcuMyw5NC42LDM0LjksOTQuNiwzMi4yLDk0LjZ6IE00OS42LDk0LjNMNDkuNiw5NC4zYy0yLjMsMC00LjcsMC4xLTcuMiwwLjJjLTAuMy0zLjMtMC41LTYuNy0wLjUtMTAgICBjMC0wLjIsMC0wLjMtMC4xLTAuNWMzLjctMS45LDYuNi0zLjYsOC4zLTQuN2MwLjEsNSwwLjMsMTAsMC41LDE1QzUwLjMsOTQuMyw0OS45LDk0LjMsNDkuNiw5NC4zeiBNNTMuNSw5NC4yICAgYy0wLjMtNS41LTAuNS0xMS0wLjYtMTYuNmMwLTAuMSwwLTAuMSwwLTAuMmMzLjUtMi40LDYuOS01LjEsMTAuMi03LjljMC4zLDguMSwwLjUsMTYuMywwLjgsMjQuNEM2MC40LDk0LDU2LjksOTQuMSw1My41LDk0LjJ6ICAgIE03Ny44LDkzLjhoLTEuMWgtMC4zdjBjLTMuMiwwLTYuNCwwLjEtOS42LDAuMWMtMC4zLTguOC0wLjYtMTcuNi0wLjktMjYuNGMwLTAuMSwwLTAuMy0wLjEtMC40YzMuNi0zLjMsNi45LTYuOCwxMC4xLTEwLjQgICBjMC43LDEyLjIsMS40LDI0LjUsMi4xLDM2LjdDNzcuOSw5My41LDc3LjgsOTMuNiw3Ny44LDkzLjh6IE05Miw3Mi41TDkyLDcyLjVjLTAuMiwzLTAuMiw1LjYtMC4yLDcuN2MwLDMuNCwwLjEsNS44LDAuMSw3LjUgICBjMCwwLjktMC4xLDEuOC0wLjMsMi43Yy0wLjIsMC42LTAuNSwxLjItMSwxLjZjLTAuNCwwLjQtMC44LDAuNy0xLjIsMC45Yy0wLjksMC40LTEuOCwwLjYtMi44LDAuN2MtMS4zLDAuMS0zLDAuMi01LjIsMC4yaC0wLjYgICBsLTIuMy00MC4zYzAuMi0wLjMsMC40LTAuNSwwLjYtMC44bDAsMGMwLjctMC45LDEuNy0xLjQsMi44LTEuNGMwLjUsMCwxLjEsMC4xLDEuNiwwLjRjMSwwLjUsMi4xLDEuMSwzLjQsMS42ICAgYzEuOSwwLjksMi45LDEuMywzLjUsMS42YzAuMywwLjEsMC40LDAuMiwwLjUsMC4yYzAuMSwwLDAuMSwwLjEsMC4yLDAuMWMwLjYsMC41LDEuMSwxLjIsMS4zLDEuOWMwLjMsMS4xLDAuNCwyLjMsMC40LDMuNSAgIEM5Mi45LDYzLjYsOTIuMyw2Ny42LDkyLDcyLjV6Ii8+PC9nPjwvc3ZnPg==" alt="Logo">
+                </div>
+                <div class="column is-4">
+                    <p class="title">
+                        EOD Stockmarket Scans
+                    </p>
+                    <p class="subtitle">
+                        Fintwits most popular stockmarket scans
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+            <div class="container">
+                <ul>
+                    
+                    <li class="is-active">
+                        <a href="../Kristjan Kullamägi/Biggest Gainers 1M_result_table.html"> Results </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Kristjan Kullamägi/Biggest Gainers 1M_minicharts.html"> Minicharts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Kristjan Kullamägi/Biggest Gainers 1M_charts.html"> Charts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Kristjan Kullamägi/Biggest Gainers 1M_criteria.html"> Criteria </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+</section>
+    <div class="columns is-centered">
+        <div class="column is-2">
+            <div class="box has-background-light my-0 mx-2 p-auto">
+    <aside class="menu">
+        <p class="menu-label has-text-dark">
+            Market Monitor
+        </p>
+        <ul class="menu-list">
+            <li><a class="has-text-grey-light">New Highs/Lows</a></li>
+            <li><a class="has-text-grey-light">Breadth</a></li>
+            <li><a class="has-text-grey-light">Above/Below SMA</a></li>
+            <li><a class="has-text-grey-light">Sectors</a></li>
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Kristjan Kullamägi
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="is-active"
+                        href="../../germany/Kristjan Kullamägi/Biggest Gainers 1M_minicharts.html">
+                        Biggest Gainers 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Biggest Gainers 3M_minicharts.html">
+                        Biggest Gainers 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Biggest Gainers 6M_minicharts.html">
+                        Biggest Gainers 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Biggest Gainers 12M_minicharts.html">
+                        Biggest Gainers 12M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/EP with Growth_minicharts.html">
+                        EP with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/EP_minicharts.html">
+                        EP
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/High Trend Intensity_minicharts.html">
+                        High Trend Intensity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Small Stock Momo_minicharts.html">
+                        Small Stock Momo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Momentum_minicharts.html">
+                        Momentum
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Brad Schulz
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Brad Schulz/Pocket Pivot_minicharts.html">
+                        Pocket Pivot
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Stockbee
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Stockbee/4% Gainers_minicharts.html">
+                        4% Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Stockbee/Combo_minicharts.html">
+                        Combo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Stockbee/Ants_minicharts.html">
+                        Ants
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Stockbee/Breakout 1M Base_minicharts.html">
+                        Breakout 1M Base
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Stockbee/Breakout 3M Base_minicharts.html">
+                        Breakout 3M Base
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Leif Soreide
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Leif Soreide/HTF_minicharts.html">
+                        HTF
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Blake Davis
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Blake Davis/Strength_minicharts.html">
+                        Strength
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ben
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ben/Power of 3_minicharts.html">
+                        Power of 3
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ben/Velocity_minicharts.html">
+                        Velocity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ben/Focus_minicharts.html">
+                        Focus
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ray
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ray/RSNHBP 5D_minicharts.html">
+                        RSNHBP 5D
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ray/RSNHBP 1M_minicharts.html">
+                        RSNHBP 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ray/RSNHBP 3M_minicharts.html">
+                        RSNHBP 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ray/RSNHBP 6M_minicharts.html">
+                        RSNHBP 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ray/RSNHBP 12M_minicharts.html">
+                        RSNHBP 12M
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Mark Minvervini
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Mark Minvervini/Trend Template_minicharts.html">
+                        Trend Template
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Vo
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Vo/Top Gainers From Open_minicharts.html">
+                        Top Gainers From Open
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Vo/Top Gainers_minicharts.html">
+                        Top Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Vo/Volume Gainers_minicharts.html">
+                        Volume Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Vo/Insiders_minicharts.html">
+                        Insiders
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Vo/Darvas Scan_minicharts.html">
+                        Darvas Scan
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Vo/Darvas Scan with Growth_minicharts.html">
+                        Darvas Scan with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Vo/52W High_minicharts.html">
+                        52W High
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Vo/Quite and Tight_minicharts.html">
+                        Quite and Tight
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+    </aside>
+</div>
+        </div>
+        <div class="column is-10">
+            
+            
+<section class="block my-6">
+    <div class="columns ">
+        <div class="column is-5 has-text-left">
+            <h1 class="title is-4">Biggest Gainers 1M @ Germany</h1>
+            <h2 class="subtitle is-6">2022-04-20</h2>
+        </div>
+        <div class="column has-text-right mr-5">
+            <div class="media">
+
+                <div class="media-content">
+                    <p class="title is-5">Kristjan Kullamägi</p>
+                    <p class="subtitle is-6"><a class="has-text-grey-light" href="https://twitter.com/Qullamaggie">@Qullamaggie</a></p>
+                </div>
+                <div class="media-right">
+                    <figure class="image is-48x48">
+                        <img src="https://unavatar.io/twitter/Qullamaggie" alt="Placeholder image">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  
+            <section class="my-auto mr-5">
+                
+    <div class="table-container">
+        <table border="1" class="dataframe table is-striped no-wrap" id="data" style="width:100%; font-size:85%">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>symbol_id</th>
+      <th>symbol</th>
+      <th>name</th>
+      <th>exchange</th>
+      <th>sector</th>
+      <th>industry</th>
+      <th>country</th>
+      <th>yahoo_symbol</th>
+      <th>forexpros_symbol</th>
+      <th>IPO Date</th>
+      <th>EPS Growth Q</th>
+      <th>EPS Growth Y</th>
+      <th>EPS Growth FQ</th>
+      <th>EPS Growth FY</th>
+      <th>EPS Growth FQ1</th>
+      <th>EPS Growth FY1</th>
+      <th>Rev Growth Q</th>
+      <th>Rev Growth FQ</th>
+      <th>Rev Growth FY</th>
+      <th>Rev Growth FQ1</th>
+      <th>Rev Growth FY1</th>
+      <th>Insiders %</th>
+      <th>Institutions %</th>
+      <th>Institutions No.</th>
+      <th>Market Cap</th>
+      <th>Shares Outstanding</th>
+      <th>Shares Float</th>
+      <th>Shares Short</th>
+      <th>Short Ratio</th>
+      <th>Net Insider Trading %</th>
+      <th>close</th>
+      <th>volume</th>
+      <th>1m RS</th>
+      <th>3m RS</th>
+      <th>RS</th>
+      <th>Industry 1m RS</th>
+      <th>Industry 3m RS</th>
+      <th>Industry RS</th>
+      <th>UD Ratio</th>
+      <th>50d avg Volume</th>
+      <th>rel Volume</th>
+      <th>Pocket Pivot</th>
+      <th>1w Pocket Pivots</th>
+      <th>1m Pocket Pivots</th>
+      <th>Rocket Ratio</th>
+      <th>52w High</th>
+      <th>% below 52w High</th>
+      <th>52w Low</th>
+      <th>% above 52w Low</th>
+      <th>adr(20)</th>
+      <th>atr(14)</th>
+      <th>roc</th>
+      <th>roc(5)</th>
+      <th>roc(21)</th>
+      <th>roc(63)</th>
+      <th>roc(126)</th>
+      <th>roc(252)</th>
+      <th>ema(9)</th>
+      <th>% from 9d ema</th>
+      <th>ema(21)</th>
+      <th>% from 21d ema</th>
+      <th>sma(50)</th>
+      <th>% from 50d sma</th>
+      <th>market</th>
+      <th>date</th>
+      <th>group_name</th>
+      <th>scan_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>21877</td>
+      <td>SDFGn</td>
+      <td>K&amp;S AG</td>
+      <td>Xetra</td>
+      <td>Basic Materials</td>
+      <td>Agricultural Inputs</td>
+      <td>Germany</td>
+      <td>SDF.DE</td>
+      <td>Xetra:SDFGn</td>
+      <td>1998-11-09 08:00:00</td>
+      <td>10.33</td>
+      <td>10.34</td>
+      <td>NaN</td>
+      <td>-0.76</td>
+      <td>1.05</td>
+      <td>-0.51</td>
+      <td>0.70</td>
+      <td>NaN</td>
+      <td>0.52</td>
+      <td>NaN</td>
+      <td>-0.10</td>
+      <td>0.15</td>
+      <td>32.03</td>
+      <td>197.0</td>
+      <td>6.767904e+09</td>
+      <td>1.914000e+08</td>
+      <td>1.914000e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>34.14</td>
+      <td>1562073.0</td>
+      <td>99</td>
+      <td>99</td>
+      <td>99</td>
+      <td>50</td>
+      <td>43</td>
+      <td>63</td>
+      <td>1.74</td>
+      <td>2198616.90</td>
+      <td>0.71</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>87.05</td>
+      <td>36.45</td>
+      <td>-6.34</td>
+      <td>8.72</td>
+      <td>291.51</td>
+      <td>5.72</td>
+      <td>1.63</td>
+      <td>-0.06</td>
+      <td>4.18</td>
+      <td>34.62</td>
+      <td>93.37</td>
+      <td>150.39</td>
+      <td>284.29</td>
+      <td>32.77</td>
+      <td>4.20</td>
+      <td>30.27</td>
+      <td>12.80</td>
+      <td>25.41</td>
+      <td>34.33</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>14154</td>
+      <td>VBKG</td>
+      <td>Verbio Vereinigte Bioenergie AG</td>
+      <td>Xetra</td>
+      <td>Basic Materials</td>
+      <td>Specialty Chemicals</td>
+      <td>Germany</td>
+      <td>VBK.DE</td>
+      <td>Xetra:VBKG</td>
+      <td>2006-10-16 07:00:00</td>
+      <td>6.89</td>
+      <td>6.70</td>
+      <td>NaN</td>
+      <td>1.30</td>
+      <td>NaN</td>
+      <td>-0.20</td>
+      <td>1.11</td>
+      <td>NaN</td>
+      <td>0.44</td>
+      <td>NaN</td>
+      <td>-0.05</td>
+      <td>49.89</td>
+      <td>14.44</td>
+      <td>145.0</td>
+      <td>5.260035e+09</td>
+      <td>6.318360e+07</td>
+      <td>1.972593e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>86.20</td>
+      <td>105828.0</td>
+      <td>99</td>
+      <td>99</td>
+      <td>98</td>
+      <td>97</td>
+      <td>97</td>
+      <td>96</td>
+      <td>1.34</td>
+      <td>187898.08</td>
+      <td>0.56</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>104.98</td>
+      <td>87.40</td>
+      <td>-1.37</td>
+      <td>32.60</td>
+      <td>164.42</td>
+      <td>5.73</td>
+      <td>4.57</td>
+      <td>2.56</td>
+      <td>2.13</td>
+      <td>28.85</td>
+      <td>70.52</td>
+      <td>37.81</td>
+      <td>124.60</td>
+      <td>81.77</td>
+      <td>5.41</td>
+      <td>76.88</td>
+      <td>12.13</td>
+      <td>67.74</td>
+      <td>27.25</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>963038</td>
+      <td>TWTR</td>
+      <td>Twitter Inc</td>
+      <td>Xetra</td>
+      <td>Communication Services</td>
+      <td>Internet Content &amp; Information</td>
+      <td>Germany</td>
+      <td>TWTR</td>
+      <td>Xetra:TWTR</td>
+      <td>2013-11-07 14:30:00</td>
+      <td>-0.18</td>
+      <td>-0.23</td>
+      <td>-0.81</td>
+      <td>3.00</td>
+      <td>-0.25</td>
+      <td>0.45</td>
+      <td>0.22</td>
+      <td>0.19</td>
+      <td>0.18</td>
+      <td>0.27</td>
+      <td>0.22</td>
+      <td>12.30</td>
+      <td>83.73</td>
+      <td>1347.0</td>
+      <td>3.442210e+10</td>
+      <td>7.635780e+08</td>
+      <td>7.048311e+08</td>
+      <td>38257267.0</td>
+      <td>2.06</td>
+      <td>2.6</td>
+      <td>42.46</td>
+      <td>38752.0</td>
+      <td>97</td>
+      <td>96</td>
+      <td>54</td>
+      <td>65</td>
+      <td>39</td>
+      <td>15</td>
+      <td>4.43</td>
+      <td>35510.88</td>
+      <td>1.09</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>7.0</td>
+      <td>19848.32</td>
+      <td>62.91</td>
+      <td>-32.51</td>
+      <td>27.28</td>
+      <td>55.65</td>
+      <td>6.95</td>
+      <td>3.66</td>
+      <td>-4.89</td>
+      <td>-0.22</td>
+      <td>21.68</td>
+      <td>29.39</td>
+      <td>-26.68</td>
+      <td>-22.83</td>
+      <td>42.59</td>
+      <td>-0.31</td>
+      <td>40.16</td>
+      <td>5.73</td>
+      <td>34.79</td>
+      <td>22.06</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>665</td>
+      <td>RHMG</td>
+      <td>Rheinmetall AG</td>
+      <td>Xetra</td>
+      <td>Industrials</td>
+      <td>Industrial Distribution</td>
+      <td>Germany</td>
+      <td>RHM.DE</td>
+      <td>Xetra:RHMG</td>
+      <td>2005-06-28 06:00:00</td>
+      <td>0.27</td>
+      <td>0.28</td>
+      <td>NaN</td>
+      <td>0.62</td>
+      <td>0.12</td>
+      <td>0.29</td>
+      <td>0.02</td>
+      <td>0.15</td>
+      <td>0.05</td>
+      <td>NaN</td>
+      <td>0.07</td>
+      <td>0.00</td>
+      <td>47.47</td>
+      <td>208.0</td>
+      <td>9.154381e+09</td>
+      <td>4.330360e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>217.00</td>
+      <td>276950.0</td>
+      <td>99</td>
+      <td>100</td>
+      <td>99</td>
+      <td>56</td>
+      <td>93</td>
+      <td>92</td>
+      <td>2.26</td>
+      <td>442725.08</td>
+      <td>0.63</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>217.90</td>
+      <td>-0.41</td>
+      <td>76.28</td>
+      <td>184.48</td>
+      <td>5.37</td>
+      <td>8.71</td>
+      <td>0.93</td>
+      <td>7.43</td>
+      <td>28.02</td>
+      <td>129.82</td>
+      <td>156.68</td>
+      <td>156.50</td>
+      <td>207.83</td>
+      <td>4.41</td>
+      <td>194.96</td>
+      <td>11.31</td>
+      <td>156.36</td>
+      <td>38.78</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>19794</td>
+      <td>CE2G</td>
+      <td>Cropenergies AG</td>
+      <td>Xetra</td>
+      <td>Basic Materials</td>
+      <td>Specialty Chemicals</td>
+      <td>Germany</td>
+      <td>CE2.DE</td>
+      <td>Xetra:CE2G</td>
+      <td>2006-09-29 07:00:00</td>
+      <td>0.60</td>
+      <td>0.60</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.41</td>
+      <td>-0.12</td>
+      <td>-0.12</td>
+      <td>-0.12</td>
+      <td>0.11</td>
+      <td>74.02</td>
+      <td>7.68</td>
+      <td>78.0</td>
+      <td>1.123780e+09</td>
+      <td>8.725000e+07</td>
+      <td>2.266930e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>14.34</td>
+      <td>289604.0</td>
+      <td>98</td>
+      <td>82</td>
+      <td>88</td>
+      <td>97</td>
+      <td>97</td>
+      <td>96</td>
+      <td>1.18</td>
+      <td>122208.62</td>
+      <td>2.37</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>185.50</td>
+      <td>14.46</td>
+      <td>-0.83</td>
+      <td>9.64</td>
+      <td>48.76</td>
+      <td>4.09</td>
+      <td>0.52</td>
+      <td>8.80</td>
+      <td>16.78</td>
+      <td>23.83</td>
+      <td>9.30</td>
+      <td>29.89</td>
+      <td>31.80</td>
+      <td>12.83</td>
+      <td>11.76</td>
+      <td>12.40</td>
+      <td>15.65</td>
+      <td>11.99</td>
+      <td>19.64</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>964667</td>
+      <td>EKTG</td>
+      <td>Energiekontor AG</td>
+      <td>Xetra</td>
+      <td>Utilities</td>
+      <td>Utilities—Renewable</td>
+      <td>Germany</td>
+      <td>EKT.DE</td>
+      <td>Xetra:EKTG</td>
+      <td>2000-05-25 07:00:00</td>
+      <td>-0.46</td>
+      <td>-0.46</td>
+      <td>NaN</td>
+      <td>0.12</td>
+      <td>NaN</td>
+      <td>0.13</td>
+      <td>-0.38</td>
+      <td>-0.02</td>
+      <td>0.34</td>
+      <td>-0.02</td>
+      <td>0.37</td>
+      <td>59.51</td>
+      <td>32.30</td>
+      <td>63.0</td>
+      <td>1.341523e+09</td>
+      <td>1.401800e+07</td>
+      <td>5.657962e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>95.80</td>
+      <td>11550.0</td>
+      <td>96</td>
+      <td>99</td>
+      <td>97</td>
+      <td>46</td>
+      <td>81</td>
+      <td>57</td>
+      <td>2.45</td>
+      <td>25704.50</td>
+      <td>0.45</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>220.12</td>
+      <td>102.00</td>
+      <td>-6.08</td>
+      <td>50.20</td>
+      <td>90.84</td>
+      <td>4.53</td>
+      <td>4.51</td>
+      <td>-1.03</td>
+      <td>-0.52</td>
+      <td>19.45</td>
+      <td>56.54</td>
+      <td>36.08</td>
+      <td>64.60</td>
+      <td>94.77</td>
+      <td>1.09</td>
+      <td>90.01</td>
+      <td>6.44</td>
+      <td>76.48</td>
+      <td>25.26</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>49819</td>
+      <td>ECVG</td>
+      <td>Encavis AG</td>
+      <td>Xetra</td>
+      <td>Utilities</td>
+      <td>Utilities—Renewable</td>
+      <td>Germany</td>
+      <td>ECV.DE</td>
+      <td>Xetra:ECVG</td>
+      <td>1999-01-07 08:00:00</td>
+      <td>0.96</td>
+      <td>1.25</td>
+      <td>NaN</td>
+      <td>-0.15</td>
+      <td>NaN</td>
+      <td>0.07</td>
+      <td>0.27</td>
+      <td>0.08</td>
+      <td>0.08</td>
+      <td>0.10</td>
+      <td>0.05</td>
+      <td>33.12</td>
+      <td>47.51</td>
+      <td>168.0</td>
+      <td>3.289614e+09</td>
+      <td>1.604690e+08</td>
+      <td>1.147773e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>20.71</td>
+      <td>466528.0</td>
+      <td>93</td>
+      <td>98</td>
+      <td>94</td>
+      <td>84</td>
+      <td>83</td>
+      <td>77</td>
+      <td>1.69</td>
+      <td>655636.34</td>
+      <td>0.71</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>175.06</td>
+      <td>21.59</td>
+      <td>-4.08</td>
+      <td>11.82</td>
+      <td>75.21</td>
+      <td>4.14</td>
+      <td>0.92</td>
+      <td>1.27</td>
+      <td>2.78</td>
+      <td>14.42</td>
+      <td>47.09</td>
+      <td>22.18</td>
+      <td>22.04</td>
+      <td>20.34</td>
+      <td>1.82</td>
+      <td>19.48</td>
+      <td>6.30</td>
+      <td>16.80</td>
+      <td>23.29</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>25361</td>
+      <td>AIXGn</td>
+      <td>Aixtron SE</td>
+      <td>Xetra</td>
+      <td>Technology</td>
+      <td>Semiconductor Equipment &amp; Materials</td>
+      <td>Germany</td>
+      <td>AIXA.DE</td>
+      <td>Xetra:AIXGn</td>
+      <td>1998-11-09 08:00:00</td>
+      <td>1.09</td>
+      <td>1.09</td>
+      <td>1.75</td>
+      <td>-0.07</td>
+      <td>1.43</td>
+      <td>0.19</td>
+      <td>0.67</td>
+      <td>0.79</td>
+      <td>0.12</td>
+      <td>0.60</td>
+      <td>0.11</td>
+      <td>4.75</td>
+      <td>70.18</td>
+      <td>153.0</td>
+      <td>2.525802e+09</td>
+      <td>1.122080e+08</td>
+      <td>1.122079e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>23.70</td>
+      <td>825542.0</td>
+      <td>94</td>
+      <td>93</td>
+      <td>85</td>
+      <td>21</td>
+      <td>32</td>
+      <td>54</td>
+      <td>1.66</td>
+      <td>753336.02</td>
+      <td>1.10</td>
+      <td>True</td>
+      <td>5.0</td>
+      <td>8.0</td>
+      <td>148.95</td>
+      <td>26.60</td>
+      <td>-10.90</td>
+      <td>14.82</td>
+      <td>59.92</td>
+      <td>4.33</td>
+      <td>1.07</td>
+      <td>2.51</td>
+      <td>15.78</td>
+      <td>15.33</td>
+      <td>22.07</td>
+      <td>16.63</td>
+      <td>24.70</td>
+      <td>22.04</td>
+      <td>7.52</td>
+      <td>21.03</td>
+      <td>12.69</td>
+      <td>19.12</td>
+      <td>23.98</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>960689</td>
+      <td>HLAG</td>
+      <td>Hapag Lloyd AG</td>
+      <td>Xetra</td>
+      <td>Industrials</td>
+      <td>Marine Shipping</td>
+      <td>Germany</td>
+      <td>HLAG.DE</td>
+      <td>Xetra:HLAG</td>
+      <td>2015-11-06 08:00:00</td>
+      <td>7.86</td>
+      <td>7.86</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>-0.73</td>
+      <td>1.13</td>
+      <td>NaN</td>
+      <td>0.17</td>
+      <td>0.88</td>
+      <td>-0.26</td>
+      <td>73.90</td>
+      <td>23.05</td>
+      <td>80.0</td>
+      <td>5.529410e+10</td>
+      <td>1.757600e+08</td>
+      <td>6.327371e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>348.40</td>
+      <td>42596.0</td>
+      <td>51</td>
+      <td>97</td>
+      <td>98</td>
+      <td>52</td>
+      <td>100</td>
+      <td>100</td>
+      <td>1.55</td>
+      <td>37227.20</td>
+      <td>1.14</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>169.97</td>
+      <td>366.60</td>
+      <td>-4.96</td>
+      <td>131.50</td>
+      <td>164.94</td>
+      <td>5.40</td>
+      <td>15.51</td>
+      <td>4.37</td>
+      <td>16.68</td>
+      <td>-0.40</td>
+      <td>31.27</td>
+      <td>99.66</td>
+      <td>132.42</td>
+      <td>321.27</td>
+      <td>8.45</td>
+      <td>315.32</td>
+      <td>10.49</td>
+      <td>292.10</td>
+      <td>19.28</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>21812</td>
+      <td>S92G</td>
+      <td>SMA Solar Technology AG</td>
+      <td>Xetra</td>
+      <td>Technology</td>
+      <td>Solar</td>
+      <td>Germany</td>
+      <td>S92.DE</td>
+      <td>Xetra:S92G</td>
+      <td>2008-08-20 07:00:00</td>
+      <td>-0.69</td>
+      <td>-0.69</td>
+      <td>NaN</td>
+      <td>0.91</td>
+      <td>-1.80</td>
+      <td>14.00</td>
+      <td>-0.01</td>
+      <td>-0.09</td>
+      <td>0.01</td>
+      <td>-0.09</td>
+      <td>0.14</td>
+      <td>70.52</td>
+      <td>25.31</td>
+      <td>108.0</td>
+      <td>1.436580e+09</td>
+      <td>3.470000e+07</td>
+      <td>2.152753e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>42.88</td>
+      <td>105487.0</td>
+      <td>89</td>
+      <td>97</td>
+      <td>76</td>
+      <td>21</td>
+      <td>32</td>
+      <td>54</td>
+      <td>1.17</td>
+      <td>245527.80</td>
+      <td>0.43</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>6.0</td>
+      <td>87.68</td>
+      <td>51.15</td>
+      <td>-16.17</td>
+      <td>25.10</td>
+      <td>70.84</td>
+      <td>4.98</td>
+      <td>2.20</td>
+      <td>2.49</td>
+      <td>0.19</td>
+      <td>12.13</td>
+      <td>31.53</td>
+      <td>4.59</td>
+      <td>-14.67</td>
+      <td>41.89</td>
+      <td>2.37</td>
+      <td>40.38</td>
+      <td>6.18</td>
+      <td>35.99</td>
+      <td>19.16</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>6308</td>
+      <td>NDXG</td>
+      <td>Nordex SE O.N.</td>
+      <td>Xetra</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>Germany</td>
+      <td>NDX1.DE</td>
+      <td>Xetra:NDXG</td>
+      <td>2001-04-05 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.75</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>-0.00</td>
+      <td>38.39</td>
+      <td>37.19</td>
+      <td>162.0</td>
+      <td>2.555535e+09</td>
+      <td>1.600210e+08</td>
+      <td>1.055403e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>16.74</td>
+      <td>1382970.0</td>
+      <td>62</td>
+      <td>91</td>
+      <td>67</td>
+      <td>46</td>
+      <td>81</td>
+      <td>57</td>
+      <td>1.57</td>
+      <td>1670929.20</td>
+      <td>0.83</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>63.16</td>
+      <td>25.11</td>
+      <td>-33.35</td>
+      <td>11.30</td>
+      <td>48.10</td>
+      <td>5.91</td>
+      <td>1.00</td>
+      <td>1.36</td>
+      <td>-2.16</td>
+      <td>2.48</td>
+      <td>20.31</td>
+      <td>5.19</td>
+      <td>-31.56</td>
+      <td>16.44</td>
+      <td>1.76</td>
+      <td>16.19</td>
+      <td>3.34</td>
+      <td>15.33</td>
+      <td>9.19</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>964616</td>
+      <td>CLIQ</td>
+      <td>Cliq Digital AG</td>
+      <td>Xetra</td>
+      <td>Communication Services</td>
+      <td>Entertainment</td>
+      <td>Germany</td>
+      <td>CLIQ.DE</td>
+      <td>Xetra:CLIQ</td>
+      <td>2005-12-05 08:00:00</td>
+      <td>1.75</td>
+      <td>1.60</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.30</td>
+      <td>0.55</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.40</td>
+      <td>19.00</td>
+      <td>2.84</td>
+      <td>16.0</td>
+      <td>1.740010e+08</td>
+      <td>6.504710e+06</td>
+      <td>5.788740e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>28.40</td>
+      <td>36049.0</td>
+      <td>95</td>
+      <td>96</td>
+      <td>80</td>
+      <td>73</td>
+      <td>57</td>
+      <td>27</td>
+      <td>1.17</td>
+      <td>31094.46</td>
+      <td>1.16</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>7.0</td>
+      <td>186.17</td>
+      <td>38.95</td>
+      <td>-27.09</td>
+      <td>17.78</td>
+      <td>59.73</td>
+      <td>4.73</td>
+      <td>1.13</td>
+      <td>3.46</td>
+      <td>12.03</td>
+      <td>18.33</td>
+      <td>29.09</td>
+      <td>18.33</td>
+      <td>-22.51</td>
+      <td>26.65</td>
+      <td>6.55</td>
+      <td>25.71</td>
+      <td>10.47</td>
+      <td>23.67</td>
+      <td>19.99</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>1117820</td>
+      <td>NB2</td>
+      <td>Northern Data AG</td>
+      <td>Xetra</td>
+      <td>Technology</td>
+      <td>Information Technology Services</td>
+      <td>Germany</td>
+      <td>NB2.F</td>
+      <td>Xetra:NB2</td>
+      <td>2018-10-02 06:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.34</td>
+      <td>NaN</td>
+      <td>4.36</td>
+      <td>0.72</td>
+      <td>NaN</td>
+      <td>11.56</td>
+      <td>NaN</td>
+      <td>2.12</td>
+      <td>0.00</td>
+      <td>2.16</td>
+      <td>39.0</td>
+      <td>1.373016e+09</td>
+      <td>2.381550e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>54.50</td>
+      <td>13257.0</td>
+      <td>93</td>
+      <td>23</td>
+      <td>20</td>
+      <td>73</td>
+      <td>57</td>
+      <td>27</td>
+      <td>0.76</td>
+      <td>38244.58</td>
+      <td>0.35</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>110.00</td>
+      <td>-50.45</td>
+      <td>38.10</td>
+      <td>43.04</td>
+      <td>7.16</td>
+      <td>3.39</td>
+      <td>1.49</td>
+      <td>3.22</td>
+      <td>14.38</td>
+      <td>-18.17</td>
+      <td>-7.31</td>
+      <td>-40.18</td>
+      <td>54.03</td>
+      <td>0.86</td>
+      <td>53.56</td>
+      <td>1.75</td>
+      <td>52.42</td>
+      <td>3.97</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>25360</td>
+      <td>KCOGn</td>
+      <td>Kloeckner &amp; Co SE NA</td>
+      <td>Xetra</td>
+      <td>Basic Materials</td>
+      <td>Steel</td>
+      <td>Germany</td>
+      <td>KCO.DE</td>
+      <td>Xetra:KCOGn</td>
+      <td>2006-06-28 07:00:00</td>
+      <td>5.40</td>
+      <td>4.85</td>
+      <td>NaN</td>
+      <td>-0.71</td>
+      <td>-0.80</td>
+      <td>-0.46</td>
+      <td>0.65</td>
+      <td>0.31</td>
+      <td>0.02</td>
+      <td>-0.00</td>
+      <td>-0.08</td>
+      <td>28.30</td>
+      <td>26.89</td>
+      <td>105.0</td>
+      <td>1.233907e+09</td>
+      <td>9.975000e+07</td>
+      <td>7.152075e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>12.58</td>
+      <td>327053.0</td>
+      <td>83</td>
+      <td>89</td>
+      <td>78</td>
+      <td>95</td>
+      <td>90</td>
+      <td>83</td>
+      <td>1.31</td>
+      <td>577909.84</td>
+      <td>0.57</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>123.76</td>
+      <td>13.50</td>
+      <td>-6.81</td>
+      <td>9.06</td>
+      <td>38.85</td>
+      <td>4.31</td>
+      <td>0.51</td>
+      <td>1.04</td>
+      <td>6.61</td>
+      <td>9.68</td>
+      <td>15.62</td>
+      <td>9.39</td>
+      <td>7.80</td>
+      <td>12.20</td>
+      <td>3.09</td>
+      <td>12.07</td>
+      <td>4.22</td>
+      <td>11.73</td>
+      <td>7.29</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>1173535</td>
+      <td>SUSEG</td>
+      <td>Suse SA</td>
+      <td>Xetra</td>
+      <td>Technology</td>
+      <td>Software—Infrastructure</td>
+      <td>Germany</td>
+      <td>SUSE.DE</td>
+      <td>Xetra:SUSEG</td>
+      <td>2021-05-21 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.34</td>
+      <td>NaN</td>
+      <td>0.27</td>
+      <td>0.22</td>
+      <td>0.23</td>
+      <td>0.17</td>
+      <td>0.30</td>
+      <td>0.20</td>
+      <td>0.00</td>
+      <td>88.34</td>
+      <td>53.0</td>
+      <td>5.253866e+09</td>
+      <td>1.690270e+08</td>
+      <td>3.920584e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>29.68</td>
+      <td>62625.0</td>
+      <td>82</td>
+      <td>48</td>
+      <td>53</td>
+      <td>73</td>
+      <td>57</td>
+      <td>27</td>
+      <td>0.93</td>
+      <td>107613.26</td>
+      <td>0.58</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>364.32</td>
+      <td>43.60</td>
+      <td>-31.93</td>
+      <td>20.40</td>
+      <td>45.49</td>
+      <td>4.78</td>
+      <td>1.47</td>
+      <td>1.44</td>
+      <td>1.64</td>
+      <td>9.04</td>
+      <td>-7.83</td>
+      <td>-19.89</td>
+      <td>-1.07</td>
+      <td>29.40</td>
+      <td>0.95</td>
+      <td>28.75</td>
+      <td>3.23</td>
+      <td>26.70</td>
+      <td>11.17</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>1177463</td>
+      <td>VTSCn</td>
+      <td>Vitesco Technologies Group AG</td>
+      <td>Xetra</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Parts</td>
+      <td>Germany</td>
+      <td>VTSC.DE</td>
+      <td>Xetra:VTSCn</td>
+      <td>2021-09-17 07:00:00</td>
+      <td>-0.95</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.59</td>
+      <td>-0.16</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.05</td>
+      <td>53.29</td>
+      <td>26.34</td>
+      <td>182.0</td>
+      <td>1.389536e+09</td>
+      <td>4.002120e+07</td>
+      <td>1.961959e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>35.74</td>
+      <td>70921.0</td>
+      <td>88</td>
+      <td>11</td>
+      <td>11</td>
+      <td>41</td>
+      <td>26</td>
+      <td>4</td>
+      <td>0.94</td>
+      <td>145380.32</td>
+      <td>0.49</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>134.95</td>
+      <td>66.88</td>
+      <td>-46.56</td>
+      <td>25.65</td>
+      <td>39.34</td>
+      <td>5.30</td>
+      <td>1.68</td>
+      <td>0.96</td>
+      <td>3.71</td>
+      <td>11.69</td>
+      <td>-27.06</td>
+      <td>-26.61</td>
+      <td>-39.32</td>
+      <td>35.12</td>
+      <td>1.77</td>
+      <td>35.02</td>
+      <td>2.04</td>
+      <td>35.80</td>
+      <td>-0.16</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>963569</td>
+      <td>TSLA</td>
+      <td>Tesla Inc</td>
+      <td>Xetra</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Manufacturers</td>
+      <td>Germany</td>
+      <td>TSLA</td>
+      <td>Xetra:TSLA</td>
+      <td>2010-06-29 13:30:00</td>
+      <td>7.60</td>
+      <td>7.54</td>
+      <td>1.43</td>
+      <td>0.57</td>
+      <td>0.68</td>
+      <td>0.29</td>
+      <td>0.65</td>
+      <td>0.71</td>
+      <td>0.56</td>
+      <td>0.61</td>
+      <td>0.29</td>
+      <td>18.38</td>
+      <td>42.67</td>
+      <td>3343.0</td>
+      <td>1.018007e+12</td>
+      <td>1.033510e+09</td>
+      <td>8.432285e+08</td>
+      <td>25345219.0</td>
+      <td>1.00</td>
+      <td>6.9</td>
+      <td>918.00</td>
+      <td>39840.0</td>
+      <td>91</td>
+      <td>73</td>
+      <td>92</td>
+      <td>68</td>
+      <td>8</td>
+      <td>33</td>
+      <td>0.89</td>
+      <td>48203.70</td>
+      <td>0.83</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>17493.02</td>
+      <td>1080.00</td>
+      <td>-15.00</td>
+      <td>446.05</td>
+      <td>105.81</td>
+      <td>4.40</td>
+      <td>40.79</td>
+      <td>-3.74</td>
+      <td>0.87</td>
+      <td>13.05</td>
+      <td>4.11</td>
+      <td>23.30</td>
+      <td>49.76</td>
+      <td>935.98</td>
+      <td>-1.92</td>
+      <td>919.84</td>
+      <td>-0.20</td>
+      <td>838.30</td>
+      <td>9.51</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>19890</td>
+      <td>TPEG</td>
+      <td>PVA Tepla AG O.N.</td>
+      <td>Xetra</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>Germany</td>
+      <td>TPE.DE</td>
+      <td>Xetra:TPEG</td>
+      <td>1999-06-22 07:00:00</td>
+      <td>-0.36</td>
+      <td>-0.39</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.35</td>
+      <td>0.01</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.18</td>
+      <td>14.00</td>
+      <td>41.40</td>
+      <td>81.0</td>
+      <td>5.193900e+08</td>
+      <td>2.175000e+07</td>
+      <td>1.801595e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>25.50</td>
+      <td>74475.0</td>
+      <td>73</td>
+      <td>12</td>
+      <td>31</td>
+      <td>21</td>
+      <td>32</td>
+      <td>54</td>
+      <td>0.81</td>
+      <td>117440.52</td>
+      <td>0.63</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>153.40</td>
+      <td>50.60</td>
+      <td>-49.60</td>
+      <td>19.14</td>
+      <td>33.23</td>
+      <td>6.53</td>
+      <td>1.28</td>
+      <td>6.07</td>
+      <td>9.72</td>
+      <td>5.37</td>
+      <td>-25.76</td>
+      <td>-30.04</td>
+      <td>-4.14</td>
+      <td>24.59</td>
+      <td>3.69</td>
+      <td>24.85</td>
+      <td>2.63</td>
+      <td>24.71</td>
+      <td>3.20</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>1166364</td>
+      <td>HAGG</td>
+      <td>Hensoldt Ag</td>
+      <td>Xetra</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Germany</td>
+      <td>DE000HAG0005.SG</td>
+      <td>Xetra:HAGG</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>26.50</td>
+      <td>364477.0</td>
+      <td>72</td>
+      <td>99</td>
+      <td>99</td>
+      <td>87</td>
+      <td>99</td>
+      <td>94</td>
+      <td>1.50</td>
+      <td>659315.02</td>
+      <td>0.55</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>30.25</td>
+      <td>-12.40</td>
+      <td>11.56</td>
+      <td>129.24</td>
+      <td>5.99</td>
+      <td>1.16</td>
+      <td>2.51</td>
+      <td>7.72</td>
+      <td>4.74</td>
+      <td>110.32</td>
+      <td>100.45</td>
+      <td>63.78</td>
+      <td>25.74</td>
+      <td>2.95</td>
+      <td>25.14</td>
+      <td>5.43</td>
+      <td>21.45</td>
+      <td>23.54</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>6286</td>
+      <td>SZGG</td>
+      <td>Salzgitter AG</td>
+      <td>Xetra</td>
+      <td>Basic Materials</td>
+      <td>Steel</td>
+      <td>Germany</td>
+      <td>SZG.DE</td>
+      <td>Xetra:SZGG</td>
+      <td>2000-01-03 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>0.51</td>
+      <td>0.06</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>-0.02</td>
+      <td>46.56</td>
+      <td>17.24</td>
+      <td>107.0</td>
+      <td>2.244596e+09</td>
+      <td>5.408730e+07</td>
+      <td>2.431819e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>42.12</td>
+      <td>449026.0</td>
+      <td>88</td>
+      <td>93</td>
+      <td>95</td>
+      <td>83</td>
+      <td>92</td>
+      <td>98</td>
+      <td>1.56</td>
+      <td>342615.76</td>
+      <td>1.31</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>70.98</td>
+      <td>48.76</td>
+      <td>-13.62</td>
+      <td>22.78</td>
+      <td>84.90</td>
+      <td>4.54</td>
+      <td>1.76</td>
+      <td>0.77</td>
+      <td>5.99</td>
+      <td>11.61</td>
+      <td>21.80</td>
+      <td>48.00</td>
+      <td>50.54</td>
+      <td>41.40</td>
+      <td>1.74</td>
+      <td>41.11</td>
+      <td>2.47</td>
+      <td>38.96</td>
+      <td>8.12</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>1166985</td>
+      <td>C0M</td>
+      <td>Compleo Charging Solutions AG</td>
+      <td>Xetra</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Parts</td>
+      <td>Germany</td>
+      <td>C0M.F</td>
+      <td>Xetra:C0M</td>
+      <td>2020-10-22 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-3.24</td>
+      <td>NaN</td>
+      <td>-0.27</td>
+      <td>0.67</td>
+      <td>NaN</td>
+      <td>0.71</td>
+      <td>NaN</td>
+      <td>1.17</td>
+      <td>35.30</td>
+      <td>32.92</td>
+      <td>40.0</td>
+      <td>1.733721e+08</td>
+      <td>4.869780e+06</td>
+      <td>2.477825e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>36.60</td>
+      <td>20495.0</td>
+      <td>81</td>
+      <td>37</td>
+      <td>7</td>
+      <td>46</td>
+      <td>81</td>
+      <td>57</td>
+      <td>1.02</td>
+      <td>33533.28</td>
+      <td>0.61</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>73.89</td>
+      <td>113.04</td>
+      <td>-67.62</td>
+      <td>26.80</td>
+      <td>36.57</td>
+      <td>6.69</td>
+      <td>2.09</td>
+      <td>3.98</td>
+      <td>4.27</td>
+      <td>8.61</td>
+      <td>-12.44</td>
+      <td>-50.80</td>
+      <td>-53.92</td>
+      <td>35.82</td>
+      <td>2.19</td>
+      <td>35.72</td>
+      <td>2.45</td>
+      <td>34.51</td>
+      <td>6.07</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>103939</td>
+      <td>VWSB</td>
+      <td>Vestas Wind Systems A/S</td>
+      <td>Xetra</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>Germany</td>
+      <td>VWS.CO</td>
+      <td>Xetra:VWSB</td>
+      <td>2000-05-10 07:00:00</td>
+      <td>-0.97</td>
+      <td>-0.97</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.15</td>
+      <td>0.06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.01</td>
+      <td>0.07</td>
+      <td>46.88</td>
+      <td>605.0</td>
+      <td>2.013798e+11</td>
+      <td>1.005140e+09</td>
+      <td>1.004642e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>27.62</td>
+      <td>88864.0</td>
+      <td>39</td>
+      <td>86</td>
+      <td>50</td>
+      <td>46</td>
+      <td>81</td>
+      <td>57</td>
+      <td>0.95</td>
+      <td>116968.22</td>
+      <td>0.76</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>8589.01</td>
+      <td>38.32</td>
+      <td>-27.91</td>
+      <td>20.78</td>
+      <td>32.94</td>
+      <td>4.52</td>
+      <td>1.41</td>
+      <td>2.56</td>
+      <td>-3.17</td>
+      <td>-2.66</td>
+      <td>13.26</td>
+      <td>-22.88</td>
+      <td>-22.11</td>
+      <td>27.47</td>
+      <td>0.57</td>
+      <td>27.36</td>
+      <td>0.96</td>
+      <td>26.23</td>
+      <td>5.30</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>1181372</td>
+      <td>DTGGe</td>
+      <td>Daimler Truck Holding AG</td>
+      <td>Xetra</td>
+      <td>Industrials</td>
+      <td>Farm &amp; Heavy Construction Machinery</td>
+      <td>Germany</td>
+      <td>DTG.DE</td>
+      <td>Xetra:DTGGe</td>
+      <td>2021-12-10 07:00:00</td>
+      <td>-0.71</td>
+      <td>-0.71</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.12</td>
+      <td>48.13</td>
+      <td>22.98</td>
+      <td>400.0</td>
+      <td>1.956038e+10</td>
+      <td>8.229020e+08</td>
+      <td>4.707532e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>25.53</td>
+      <td>1859782.0</td>
+      <td>70</td>
+      <td>17</td>
+      <td>31</td>
+      <td>13</td>
+      <td>14</td>
+      <td>20</td>
+      <td>0.55</td>
+      <td>2745334.60</td>
+      <td>0.68</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>171.47</td>
+      <td>35.76</td>
+      <td>-28.58</td>
+      <td>20.28</td>
+      <td>25.88</td>
+      <td>4.29</td>
+      <td>0.94</td>
+      <td>4.14</td>
+      <td>7.15</td>
+      <td>4.18</td>
+      <td>-22.16</td>
+      <td>-14.24</td>
+      <td>-14.24</td>
+      <td>24.33</td>
+      <td>4.94</td>
+      <td>24.60</td>
+      <td>3.82</td>
+      <td>26.25</td>
+      <td>-2.74</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>1167505</td>
+      <td>PLUN</td>
+      <td>Plug Power Inc</td>
+      <td>Xetra</td>
+      <td>Industrials</td>
+      <td>Electrical Equipment &amp; Parts</td>
+      <td>Germany</td>
+      <td>PLUG</td>
+      <td>Xetra:PLUN</td>
+      <td>1999-10-29 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.25</td>
+      <td>0.44</td>
+      <td>0.33</td>
+      <td>0.52</td>
+      <td>0.34</td>
+      <td>1.01</td>
+      <td>0.82</td>
+      <td>0.67</td>
+      <td>0.50</td>
+      <td>10.19</td>
+      <td>55.04</td>
+      <td>888.0</td>
+      <td>1.489529e+10</td>
+      <td>5.780090e+08</td>
+      <td>5.186425e+08</td>
+      <td>65464982.0</td>
+      <td>2.95</td>
+      <td>0.2</td>
+      <td>25.26</td>
+      <td>120757.0</td>
+      <td>80</td>
+      <td>97</td>
+      <td>81</td>
+      <td>46</td>
+      <td>81</td>
+      <td>57</td>
+      <td>1.41</td>
+      <td>152377.74</td>
+      <td>0.79</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>3403.66</td>
+      <td>41.30</td>
+      <td>-38.83</td>
+      <td>14.26</td>
+      <td>77.12</td>
+      <td>6.62</td>
+      <td>1.70</td>
+      <td>-1.94</td>
+      <td>6.47</td>
+      <td>8.11</td>
+      <td>32.51</td>
+      <td>-11.71</td>
+      <td>6.69</td>
+      <td>25.10</td>
+      <td>0.65</td>
+      <td>24.80</td>
+      <td>1.86</td>
+      <td>22.79</td>
+      <td>10.87</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>6339</td>
+      <td>LEOGn</td>
+      <td>Leoni AG</td>
+      <td>Xetra</td>
+      <td>Industrials</td>
+      <td>Electrical Equipment &amp; Parts</td>
+      <td>Germany</td>
+      <td>LEO.F</td>
+      <td>Xetra:LEOGn</td>
+      <td>2002-09-09 06:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.17</td>
+      <td>NaN</td>
+      <td>-0.25</td>
+      <td>0.02</td>
+      <td>NaN</td>
+      <td>0.03</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>26.47</td>
+      <td>24.99</td>
+      <td>34.0</td>
+      <td>2.860094e+08</td>
+      <td>3.266900e+07</td>
+      <td>2.500191e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>8.97</td>
+      <td>32351.0</td>
+      <td>32</td>
+      <td>61</td>
+      <td>29</td>
+      <td>41</td>
+      <td>26</td>
+      <td>4</td>
+      <td>0.84</td>
+      <td>196289.28</td>
+      <td>0.16</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>127.37</td>
+      <td>18.50</td>
+      <td>-51.54</td>
+      <td>6.84</td>
+      <td>31.07</td>
+      <td>5.88</td>
+      <td>0.45</td>
+      <td>1.41</td>
+      <td>1.93</td>
+      <td>-4.27</td>
+      <td>-2.61</td>
+      <td>-29.19</td>
+      <td>-21.91</td>
+      <td>8.85</td>
+      <td>1.30</td>
+      <td>9.03</td>
+      <td>-0.75</td>
+      <td>9.50</td>
+      <td>-5.68</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>19230</td>
+      <td>SIXG</td>
+      <td>Sixt SE</td>
+      <td>Xetra</td>
+      <td>Industrials</td>
+      <td>Rental &amp; Leasing Services</td>
+      <td>Germany</td>
+      <td>SIX2.F</td>
+      <td>Xetra:SIXG</td>
+      <td>1998-11-09 08:00:00</td>
+      <td>1.62</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.03</td>
+      <td>0.84</td>
+      <td>0.85</td>
+      <td>0.49</td>
+      <td>NaN</td>
+      <td>0.20</td>
+      <td>58.29</td>
+      <td>19.04</td>
+      <td>116.0</td>
+      <td>5.010144e+09</td>
+      <td>3.036710e+07</td>
+      <td>1.153539e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>129.00</td>
+      <td>44727.0</td>
+      <td>29</td>
+      <td>24</td>
+      <td>55</td>
+      <td>7</td>
+      <td>18</td>
+      <td>35</td>
+      <td>1.27</td>
+      <td>56468.02</td>
+      <td>0.79</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>204.28</td>
+      <td>170.30</td>
+      <td>-24.25</td>
+      <td>103.70</td>
+      <td>24.40</td>
+      <td>4.41</td>
+      <td>6.24</td>
+      <td>2.95</td>
+      <td>5.91</td>
+      <td>-5.08</td>
+      <td>-17.89</td>
+      <td>-10.10</td>
+      <td>13.76</td>
+      <td>125.49</td>
+      <td>2.79</td>
+      <td>127.15</td>
+      <td>1.46</td>
+      <td>133.74</td>
+      <td>-3.54</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>22416</td>
+      <td>AFXG</td>
+      <td>Carl Zeiss Meditec AG</td>
+      <td>Xetra</td>
+      <td>Healthcare</td>
+      <td>Medical Instruments &amp; Supplies</td>
+      <td>Germany</td>
+      <td>AFX.DE</td>
+      <td>Xetra:AFXG</td>
+      <td>2000-03-22 08:00:00</td>
+      <td>-0.18</td>
+      <td>-0.19</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>-0.08</td>
+      <td>0.12</td>
+      <td>0.11</td>
+      <td>0.05</td>
+      <td>0.10</td>
+      <td>0.05</td>
+      <td>0.09</td>
+      <td>59.10</td>
+      <td>22.17</td>
+      <td>386.0</td>
+      <td>1.153784e+10</td>
+      <td>8.944060e+07</td>
+      <td>3.687309e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>135.20</td>
+      <td>119765.0</td>
+      <td>12</td>
+      <td>56</td>
+      <td>40</td>
+      <td>61</td>
+      <td>45</td>
+      <td>7</td>
+      <td>0.75</td>
+      <td>126418.10</td>
+      <td>0.95</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>291.68</td>
+      <td>202.00</td>
+      <td>-33.07</td>
+      <td>118.10</td>
+      <td>14.48</td>
+      <td>4.06</td>
+      <td>5.81</td>
+      <td>3.01</td>
+      <td>3.60</td>
+      <td>-12.01</td>
+      <td>-4.76</td>
+      <td>-19.52</td>
+      <td>-6.92</td>
+      <td>135.44</td>
+      <td>-0.18</td>
+      <td>139.14</td>
+      <td>-2.83</td>
+      <td>139.50</td>
+      <td>-3.08</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>19239</td>
+      <td>WACGn</td>
+      <td>Wacker Neuson NA O.N.</td>
+      <td>Xetra</td>
+      <td>Industrials</td>
+      <td>Farm &amp; Heavy Construction Machinery</td>
+      <td>Germany</td>
+      <td>WAC.DE</td>
+      <td>Xetra:WACGn</td>
+      <td>2007-05-15 06:00:00</td>
+      <td>1.81</td>
+      <td>1.81</td>
+      <td>NaN</td>
+      <td>-0.13</td>
+      <td>NaN</td>
+      <td>0.18</td>
+      <td>0.18</td>
+      <td>0.06</td>
+      <td>0.09</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>58.00</td>
+      <td>11.08</td>
+      <td>91.0</td>
+      <td>1.331959e+09</td>
+      <td>7.014000e+07</td>
+      <td>2.326411e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>20.10</td>
+      <td>34950.0</td>
+      <td>14</td>
+      <td>27</td>
+      <td>32</td>
+      <td>13</td>
+      <td>14</td>
+      <td>20</td>
+      <td>0.71</td>
+      <td>61683.68</td>
+      <td>0.57</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>377.15</td>
+      <td>30.90</td>
+      <td>-34.95</td>
+      <td>17.74</td>
+      <td>13.30</td>
+      <td>4.02</td>
+      <td>0.70</td>
+      <td>2.81</td>
+      <td>4.85</td>
+      <td>-11.06</td>
+      <td>-16.67</td>
+      <td>-24.32</td>
+      <td>-6.94</td>
+      <td>19.50</td>
+      <td>3.06</td>
+      <td>19.99</td>
+      <td>0.53</td>
+      <td>21.02</td>
+      <td>-4.39</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>962940</td>
+      <td>SANT1</td>
+      <td>S&amp;T AG</td>
+      <td>Xetra</td>
+      <td>Technology</td>
+      <td>Computer Hardware</td>
+      <td>Germany</td>
+      <td>SANT.DE</td>
+      <td>Xetra:SANT1</td>
+      <td>2000-11-20 08:00:00</td>
+      <td>-0.27</td>
+      <td>-0.27</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.29</td>
+      <td>0.02</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.14</td>
+      <td>33.36</td>
+      <td>58.18</td>
+      <td>127.0</td>
+      <td>1.067452e+09</td>
+      <td>6.609610e+07</td>
+      <td>4.139550e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>16.44</td>
+      <td>93651.0</td>
+      <td>91</td>
+      <td>82</td>
+      <td>41</td>
+      <td>31</td>
+      <td>63</td>
+      <td>69</td>
+      <td>1.46</td>
+      <td>315371.08</td>
+      <td>0.30</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>131.26</td>
+      <td>24.20</td>
+      <td>-32.07</td>
+      <td>11.22</td>
+      <td>46.52</td>
+      <td>5.06</td>
+      <td>0.75</td>
+      <td>0.67</td>
+      <td>1.42</td>
+      <td>13.15</td>
+      <td>8.59</td>
+      <td>-25.41</td>
+      <td>-30.92</td>
+      <td>16.49</td>
+      <td>-0.30</td>
+      <td>16.26</td>
+      <td>1.10</td>
+      <td>15.17</td>
+      <td>8.39</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>964687</td>
+      <td>FTKn</td>
+      <td>flatexDEGIRO AG</td>
+      <td>Xetra</td>
+      <td>Financial Services</td>
+      <td>Capital Markets</td>
+      <td>Germany</td>
+      <td>FTK.DE</td>
+      <td>Xetra:FTKn</td>
+      <td>2010-08-05 07:00:00</td>
+      <td>0.25</td>
+      <td>-0.10</td>
+      <td>NaN</td>
+      <td>0.36</td>
+      <td>NaN</td>
+      <td>0.36</td>
+      <td>1.28</td>
+      <td>NaN</td>
+      <td>0.20</td>
+      <td>NaN</td>
+      <td>0.19</td>
+      <td>46.19</td>
+      <td>46.19</td>
+      <td>154.0</td>
+      <td>1.910398e+09</td>
+      <td>1.097930e+08</td>
+      <td>6.639631e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>17.54</td>
+      <td>430962.0</td>
+      <td>15</td>
+      <td>51</td>
+      <td>30</td>
+      <td>27</td>
+      <td>29</td>
+      <td>45</td>
+      <td>0.89</td>
+      <td>598862.38</td>
+      <td>0.72</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>110.87</td>
+      <td>29.70</td>
+      <td>-40.94</td>
+      <td>15.23</td>
+      <td>15.17</td>
+      <td>4.14</td>
+      <td>0.72</td>
+      <td>1.95</td>
+      <td>3.82</td>
+      <td>-10.78</td>
+      <td>-6.50</td>
+      <td>-10.96</td>
+      <td>-35.40</td>
+      <td>17.32</td>
+      <td>1.24</td>
+      <td>17.68</td>
+      <td>-0.80</td>
+      <td>17.89</td>
+      <td>-1.93</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>953062</td>
+      <td>AEIGn</td>
+      <td>Allgeier SE</td>
+      <td>Xetra</td>
+      <td>Technology</td>
+      <td>Information Technology Services</td>
+      <td>Germany</td>
+      <td>AEIN.DE</td>
+      <td>Xetra:AEIGn</td>
+      <td>2000-07-11 07:00:00</td>
+      <td>-0.55</td>
+      <td>-0.56</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.16</td>
+      <td>0.22</td>
+      <td>0.22</td>
+      <td>0.22</td>
+      <td>0.12</td>
+      <td>40.86</td>
+      <td>22.21</td>
+      <td>47.0</td>
+      <td>5.349248e+08</td>
+      <td>1.139350e+07</td>
+      <td>3.674340e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>46.80</td>
+      <td>14990.0</td>
+      <td>76</td>
+      <td>71</td>
+      <td>97</td>
+      <td>31</td>
+      <td>63</td>
+      <td>69</td>
+      <td>0.90</td>
+      <td>27660.98</td>
+      <td>0.54</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>132.83</td>
+      <td>59.80</td>
+      <td>-21.74</td>
+      <td>21.00</td>
+      <td>122.86</td>
+      <td>4.53</td>
+      <td>2.08</td>
+      <td>1.63</td>
+      <td>3.54</td>
+      <td>6.36</td>
+      <td>2.86</td>
+      <td>91.80</td>
+      <td>91.02</td>
+      <td>46.46</td>
+      <td>0.73</td>
+      <td>45.58</td>
+      <td>2.67</td>
+      <td>42.52</td>
+      <td>10.07</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>1170417</td>
+      <td>PTXG</td>
+      <td>Palantir Technologies Inc</td>
+      <td>Xetra</td>
+      <td>Technology</td>
+      <td>Software—Infrastructure</td>
+      <td>Germany</td>
+      <td>PLTR</td>
+      <td>Xetra:PTXG</td>
+      <td>2020-09-30 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>0.54</td>
+      <td>0.25</td>
+      <td>0.30</td>
+      <td>0.34</td>
+      <td>0.34</td>
+      <td>0.30</td>
+      <td>0.32</td>
+      <td>0.30</td>
+      <td>11.60</td>
+      <td>35.03</td>
+      <td>1023.0</td>
+      <td>2.521409e+10</td>
+      <td>1.929180e+09</td>
+      <td>1.620826e+09</td>
+      <td>104727867.0</td>
+      <td>2.30</td>
+      <td>-0.6</td>
+      <td>11.94</td>
+      <td>37889.0</td>
+      <td>63</td>
+      <td>49</td>
+      <td>16</td>
+      <td>73</td>
+      <td>57</td>
+      <td>27</td>
+      <td>0.92</td>
+      <td>77127.28</td>
+      <td>0.49</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>21014.95</td>
+      <td>24.80</td>
+      <td>-51.85</td>
+      <td>8.42</td>
+      <td>41.74</td>
+      <td>4.58</td>
+      <td>0.57</td>
+      <td>0.24</td>
+      <td>3.04</td>
+      <td>2.61</td>
+      <td>-7.48</td>
+      <td>-42.87</td>
+      <td>-39.33</td>
+      <td>11.91</td>
+      <td>0.28</td>
+      <td>11.83</td>
+      <td>0.91</td>
+      <td>11.27</td>
+      <td>5.92</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>1052627</td>
+      <td>VAR1</td>
+      <td>Varta AG</td>
+      <td>Xetra</td>
+      <td>Industrials</td>
+      <td>Electrical Equipment &amp; Parts</td>
+      <td>Germany</td>
+      <td>VAR1.F</td>
+      <td>Xetra:VAR1</td>
+      <td>2000-01-03 07:00:00</td>
+      <td>-0.21</td>
+      <td>-0.21</td>
+      <td>NaN</td>
+      <td>-0.07</td>
+      <td>NaN</td>
+      <td>0.16</td>
+      <td>-0.06</td>
+      <td>-0.17</td>
+      <td>0.09</td>
+      <td>-0.16</td>
+      <td>0.12</td>
+      <td>56.00</td>
+      <td>16.46</td>
+      <td>163.0</td>
+      <td>3.527198e+09</td>
+      <td>4.042170e+07</td>
+      <td>1.800696e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>90.54</td>
+      <td>145825.0</td>
+      <td>31</td>
+      <td>52</td>
+      <td>24</td>
+      <td>46</td>
+      <td>81</td>
+      <td>57</td>
+      <td>0.80</td>
+      <td>192416.86</td>
+      <td>0.76</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>93.58</td>
+      <td>165.90</td>
+      <td>-45.42</td>
+      <td>78.50</td>
+      <td>15.34</td>
+      <td>4.11</td>
+      <td>4.04</td>
+      <td>3.19</td>
+      <td>0.35</td>
+      <td>-4.67</td>
+      <td>-6.20</td>
+      <td>-28.34</td>
+      <td>-27.34</td>
+      <td>89.79</td>
+      <td>0.84</td>
+      <td>90.66</td>
+      <td>-0.13</td>
+      <td>90.75</td>
+      <td>-0.24</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>1153007</td>
+      <td>TMV</td>
+      <td>TeamViewer AG</td>
+      <td>Xetra</td>
+      <td>Technology</td>
+      <td>Software—Application</td>
+      <td>Germany</td>
+      <td>TMV.DE</td>
+      <td>Xetra:TMV</td>
+      <td>2019-09-25 07:00:00</td>
+      <td>-0.02</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>1.64</td>
+      <td>1.14</td>
+      <td>0.29</td>
+      <td>0.09</td>
+      <td>NaN</td>
+      <td>0.14</td>
+      <td>0.12</td>
+      <td>0.15</td>
+      <td>7.46</td>
+      <td>65.35</td>
+      <td>297.0</td>
+      <td>2.626936e+09</td>
+      <td>2.010710e+08</td>
+      <td>1.613333e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>12.94</td>
+      <td>822984.0</td>
+      <td>25</td>
+      <td>54</td>
+      <td>15</td>
+      <td>73</td>
+      <td>57</td>
+      <td>27</td>
+      <td>0.64</td>
+      <td>1471168.94</td>
+      <td>0.56</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>109.66</td>
+      <td>41.18</td>
+      <td>-68.56</td>
+      <td>10.72</td>
+      <td>20.81</td>
+      <td>4.11</td>
+      <td>0.55</td>
+      <td>-1.03</td>
+      <td>3.56</td>
+      <td>-6.26</td>
+      <td>-5.20</td>
+      <td>-1.22</td>
+      <td>-67.05</td>
+      <td>13.04</td>
+      <td>-0.71</td>
+      <td>13.17</td>
+      <td>-1.74</td>
+      <td>13.57</td>
+      <td>-4.61</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>23293</td>
+      <td>MORG</td>
+      <td>Morphosys AG O.N.</td>
+      <td>Xetra</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>Germany</td>
+      <td>MOR.DE</td>
+      <td>Xetra:MORG</td>
+      <td>1999-03-10 08:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.42</td>
+      <td>-4.10</td>
+      <td>0.24</td>
+      <td>0.47</td>
+      <td>0.02</td>
+      <td>0.35</td>
+      <td>0.71</td>
+      <td>0.39</td>
+      <td>0.00</td>
+      <td>53.74</td>
+      <td>128.0</td>
+      <td>8.240105e+08</td>
+      <td>3.414880e+07</td>
+      <td>3.279240e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>23.87</td>
+      <td>107646.0</td>
+      <td>33</td>
+      <td>24</td>
+      <td>6</td>
+      <td>58</td>
+      <td>71</td>
+      <td>10</td>
+      <td>1.05</td>
+      <td>302996.28</td>
+      <td>0.36</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>108.23</td>
+      <td>80.14</td>
+      <td>-70.21</td>
+      <td>20.76</td>
+      <td>14.98</td>
+      <td>5.25</td>
+      <td>1.16</td>
+      <td>0.80</td>
+      <td>-3.59</td>
+      <td>-4.18</td>
+      <td>-17.77</td>
+      <td>-37.76</td>
+      <td>-69.00</td>
+      <td>24.49</td>
+      <td>-2.54</td>
+      <td>24.72</td>
+      <td>-3.46</td>
+      <td>24.59</td>
+      <td>-2.91</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>964644</td>
+      <td>DR0G</td>
+      <td>Deutsche Rohstoff AG</td>
+      <td>Xetra</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>Germany</td>
+      <td>DR0.DE</td>
+      <td>Xetra:DR0G</td>
+      <td>2010-05-27 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.36</td>
+      <td>1.31</td>
+      <td>0.87</td>
+      <td>0.68</td>
+      <td>0.87</td>
+      <td>-0.33</td>
+      <td>10.04</td>
+      <td>3.18</td>
+      <td>12.0</td>
+      <td>1.305200e+08</td>
+      <td>4.943940e+06</td>
+      <td>4.445762e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>27.20</td>
+      <td>13680.0</td>
+      <td>67</td>
+      <td>85</td>
+      <td>96</td>
+      <td>97</td>
+      <td>97</td>
+      <td>96</td>
+      <td>1.04</td>
+      <td>30989.30</td>
+      <td>0.44</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>143.46</td>
+      <td>31.40</td>
+      <td>-13.38</td>
+      <td>12.10</td>
+      <td>124.79</td>
+      <td>4.76</td>
+      <td>1.30</td>
+      <td>-1.81</td>
+      <td>3.82</td>
+      <td>3.42</td>
+      <td>11.93</td>
+      <td>8.80</td>
+      <td>117.60</td>
+      <td>27.25</td>
+      <td>-0.20</td>
+      <td>27.54</td>
+      <td>-1.24</td>
+      <td>26.90</td>
+      <td>1.12</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>941174</td>
+      <td>AM3D</td>
+      <td>SLM Solutions Group AG</td>
+      <td>Xetra</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>Germany</td>
+      <td>AM3D.DE</td>
+      <td>Xetra:AM3D</td>
+      <td>2014-05-09 07:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.48</td>
+      <td>NaN</td>
+      <td>1.06</td>
+      <td>0.53</td>
+      <td>0.72</td>
+      <td>0.41</td>
+      <td>0.41</td>
+      <td>0.31</td>
+      <td>20.66</td>
+      <td>67.48</td>
+      <td>31.0</td>
+      <td>2.846793e+08</td>
+      <td>2.270170e+07</td>
+      <td>1.172907e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>12.68</td>
+      <td>21489.0</td>
+      <td>12</td>
+      <td>22</td>
+      <td>18</td>
+      <td>13</td>
+      <td>14</td>
+      <td>20</td>
+      <td>1.15</td>
+      <td>43903.06</td>
+      <td>0.49</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>267.16</td>
+      <td>23.80</td>
+      <td>-46.72</td>
+      <td>11.72</td>
+      <td>8.19</td>
+      <td>4.59</td>
+      <td>0.60</td>
+      <td>2.59</td>
+      <td>-5.79</td>
+      <td>-11.94</td>
+      <td>-18.72</td>
+      <td>-28.44</td>
+      <td>-32.62</td>
+      <td>13.02</td>
+      <td>-2.64</td>
+      <td>13.46</td>
+      <td>-5.79</td>
+      <td>13.82</td>
+      <td>-8.25</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>962340</td>
+      <td>ADJ</td>
+      <td>Adler Group SA</td>
+      <td>Xetra</td>
+      <td>Real Estate</td>
+      <td>Real Estate Services</td>
+      <td>Germany</td>
+      <td>ADJ.DE</td>
+      <td>Xetra:ADJ</td>
+      <td>2016-05-17 07:00:00</td>
+      <td>0.91</td>
+      <td>0.60</td>
+      <td>NaN</td>
+      <td>-0.43</td>
+      <td>NaN</td>
+      <td>-0.30</td>
+      <td>-0.34</td>
+      <td>NaN</td>
+      <td>-0.33</td>
+      <td>NaN</td>
+      <td>-0.42</td>
+      <td>38.81</td>
+      <td>25.94</td>
+      <td>112.0</td>
+      <td>1.325513e+09</td>
+      <td>1.175100e+08</td>
+      <td>9.643336e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>11.18</td>
+      <td>317679.0</td>
+      <td>2</td>
+      <td>66</td>
+      <td>23</td>
+      <td>3</td>
+      <td>52</td>
+      <td>39</td>
+      <td>1.11</td>
+      <td>465679.64</td>
+      <td>0.68</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>207.08</td>
+      <td>27.74</td>
+      <td>-59.70</td>
+      <td>8.58</td>
+      <td>30.30</td>
+      <td>5.52</td>
+      <td>0.71</td>
+      <td>1.27</td>
+      <td>-10.42</td>
+      <td>-20.09</td>
+      <td>-0.62</td>
+      <td>-4.53</td>
+      <td>-53.14</td>
+      <td>11.56</td>
+      <td>-3.27</td>
+      <td>11.99</td>
+      <td>-6.77</td>
+      <td>11.95</td>
+      <td>-6.46</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>19871</td>
+      <td>NEKG</td>
+      <td>Nemetschek AG O.N.</td>
+      <td>Xetra</td>
+      <td>Technology</td>
+      <td>Software—Application</td>
+      <td>Germany</td>
+      <td>NEM.DE</td>
+      <td>Xetra:NEKG</td>
+      <td>1999-03-11 08:00:00</td>
+      <td>0.30</td>
+      <td>0.31</td>
+      <td>0.36</td>
+      <td>0.17</td>
+      <td>0.21</td>
+      <td>0.14</td>
+      <td>0.17</td>
+      <td>NaN</td>
+      <td>0.13</td>
+      <td>NaN</td>
+      <td>0.11</td>
+      <td>51.58</td>
+      <td>32.41</td>
+      <td>336.0</td>
+      <td>9.489481e+09</td>
+      <td>1.155000e+08</td>
+      <td>5.287012e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>81.06</td>
+      <td>291788.0</td>
+      <td>46</td>
+      <td>59</td>
+      <td>70</td>
+      <td>73</td>
+      <td>57</td>
+      <td>27</td>
+      <td>0.96</td>
+      <td>166684.08</td>
+      <td>1.75</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>317.19</td>
+      <td>116.15</td>
+      <td>-30.21</td>
+      <td>54.64</td>
+      <td>48.35</td>
+      <td>4.33</td>
+      <td>3.36</td>
+      <td>-2.67</td>
+      <td>-1.46</td>
+      <td>-1.00</td>
+      <td>-3.27</td>
+      <td>-12.93</td>
+      <td>35.19</td>
+      <td>83.61</td>
+      <td>-3.05</td>
+      <td>84.02</td>
+      <td>-3.53</td>
+      <td>80.60</td>
+      <td>0.57</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>19213</td>
+      <td>GLJn</td>
+      <td>Grenke N AG</td>
+      <td>Xetra</td>
+      <td>Financial Services</td>
+      <td>Credit Services</td>
+      <td>Germany</td>
+      <td>GLJ.DE</td>
+      <td>Xetra:GLJn</td>
+      <td>2000-04-04 07:00:00</td>
+      <td>0.50</td>
+      <td>0.51</td>
+      <td>NaN</td>
+      <td>-0.10</td>
+      <td>NaN</td>
+      <td>0.27</td>
+      <td>-0.09</td>
+      <td>NaN</td>
+      <td>0.36</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>40.66</td>
+      <td>25.37</td>
+      <td>96.0</td>
+      <td>1.203306e+09</td>
+      <td>4.649560e+07</td>
+      <td>2.750539e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>25.56</td>
+      <td>25257.0</td>
+      <td>15</td>
+      <td>29</td>
+      <td>23</td>
+      <td>63</td>
+      <td>69</td>
+      <td>50</td>
+      <td>0.69</td>
+      <td>69898.54</td>
+      <td>0.36</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>393.50</td>
+      <td>40.25</td>
+      <td>-36.50</td>
+      <td>20.98</td>
+      <td>21.83</td>
+      <td>4.32</td>
+      <td>1.16</td>
+      <td>1.03</td>
+      <td>-2.37</td>
+      <td>-10.32</td>
+      <td>-15.70</td>
+      <td>-20.15</td>
+      <td>-27.39</td>
+      <td>25.71</td>
+      <td>-0.58</td>
+      <td>25.97</td>
+      <td>-1.56</td>
+      <td>26.20</td>
+      <td>-2.45</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>1168290</td>
+      <td>22UAy</td>
+      <td>BioNTech SE</td>
+      <td>Xetra</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>Germany</td>
+      <td>BNTX</td>
+      <td>Xetra:22UAy</td>
+      <td>2019-10-11 06:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>11.80</td>
+      <td>581.71</td>
+      <td>4.34</td>
+      <td>0.08</td>
+      <td>89.18</td>
+      <td>1.70</td>
+      <td>32.03</td>
+      <td>11.36</td>
+      <td>0.04</td>
+      <td>61.91</td>
+      <td>16.36</td>
+      <td>558.0</td>
+      <td>4.014760e+10</td>
+      <td>2.468080e+08</td>
+      <td>8.644041e+07</td>
+      <td>2545914.0</td>
+      <td>1.40</td>
+      <td>0.0</td>
+      <td>142.55</td>
+      <td>91448.0</td>
+      <td>21</td>
+      <td>62</td>
+      <td>33</td>
+      <td>58</td>
+      <td>71</td>
+      <td>10</td>
+      <td>1.08</td>
+      <td>178259.08</td>
+      <td>0.51</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>484.91</td>
+      <td>395.00</td>
+      <td>-63.91</td>
+      <td>111.30</td>
+      <td>28.08</td>
+      <td>5.64</td>
+      <td>10.06</td>
+      <td>-2.86</td>
+      <td>-7.79</td>
+      <td>-8.27</td>
+      <td>-2.40</td>
+      <td>-38.95</td>
+      <td>1.39</td>
+      <td>153.52</td>
+      <td>-7.15</td>
+      <td>152.72</td>
+      <td>-6.66</td>
+      <td>144.12</td>
+      <td>-1.09</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>1056282</td>
+      <td>NVDA</td>
+      <td>NVIDIA Corporation</td>
+      <td>Xetra</td>
+      <td>Technology</td>
+      <td>Semiconductors</td>
+      <td>Germany</td>
+      <td>NVDA</td>
+      <td>Xetra:NVDA</td>
+      <td>1999-01-22 14:30:00</td>
+      <td>1.06</td>
+      <td>1.03</td>
+      <td>0.42</td>
+      <td>0.27</td>
+      <td>0.30</td>
+      <td>0.20</td>
+      <td>0.53</td>
+      <td>0.43</td>
+      <td>0.29</td>
+      <td>0.34</td>
+      <td>0.17</td>
+      <td>4.06</td>
+      <td>66.20</td>
+      <td>3978.0</td>
+      <td>5.297494e+11</td>
+      <td>2.492000e+09</td>
+      <td>2.406236e+09</td>
+      <td>26945545.0</td>
+      <td>0.53</td>
+      <td>4.6</td>
+      <td>198.18</td>
+      <td>53247.0</td>
+      <td>5</td>
+      <td>41</td>
+      <td>78</td>
+      <td>21</td>
+      <td>32</td>
+      <td>54</td>
+      <td>0.79</td>
+      <td>72952.70</td>
+      <td>0.73</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>32983.51</td>
+      <td>307.55</td>
+      <td>-35.56</td>
+      <td>110.21</td>
+      <td>79.82</td>
+      <td>4.46</td>
+      <td>10.61</td>
+      <td>-3.63</td>
+      <td>-1.60</td>
+      <td>-15.87</td>
+      <td>-11.05</td>
+      <td>4.11</td>
+      <td>55.56</td>
+      <td>209.83</td>
+      <td>-5.55</td>
+      <td>218.96</td>
+      <td>-9.49</td>
+      <td>220.41</td>
+      <td>-10.08</td>
+      <td>germany</td>
+      <td>2022-04-20</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 1M</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+            </section>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+    </div>
+</footer>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bm/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+<script>
+        $(document).ready(function () {
+            $('#data').DataTable(
+                {
+                    "scrollX": true,
+                    "dom": 'Bfrtip',
+                    "buttons": [
+                        'copy', 'csv', 'excel', 'print'
+                    ]
+
+                }
+            );
+        });
+    </script>
+    
+</body>
+
+</html>

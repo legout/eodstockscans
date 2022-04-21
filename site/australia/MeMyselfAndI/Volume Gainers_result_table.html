@@ -1,0 +1,7680 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.datatables.net/v/bm/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/sc-2.0.5/datatables.min.css" />
+
+</head >
+
+
+<body>
+    <section class="hero is-small is-dark">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <!-- <a class="navbar-item">
+                        
+                        <img src="data:image/svg+xml;base64,"
+                            alt="Logo">
+                       
+                    </a> -->
+                    <span class="navbar-burger" data-target="navbarMenuHeroB">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </div>
+                <div id="navbarMenuHeroB" class="navbar-menu">
+                    <div class="navbar-start">
+                        
+                        <a class="navbar-item" href="../../australia/market_monitor.html">
+                            
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-home"></i>
+                                    </span>
+                                    <span>Home</span>
+                                </span>
+                            </a>
+
+                            <div class="navbar-item has-dropdown is-hoverable has-background-dark">
+                                <a class="navbar-link">
+                                    <span>Choose Market</span>
+                                </a>
+
+                                <div class="navbar-dropdown has-background-dark">
+                                    
+                                    <a class="navbar-item" href="../../australia/market_monitor.html">
+                                        <span>Australia</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../canada/market_monitor.html">
+                                        <span>Canada</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../germany/market_monitor.html">
+                                        <span>Germany</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../hong_kong/market_monitor.html">
+                                        <span>Hong Kong</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../japan/market_monitor.html">
+                                        <span>Japan</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../nordic_markets/market_monitor.html">
+                                        <span>Nordic Markets</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_kingdom/market_monitor.html">
+                                        <span>United Kingdom</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_states/market_monitor.html">
+                                        <span>United States</span>
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                    </div>
+                    <div class="navbar-end"></div>
+                    <span class="navbar-item">
+                        <a class="button is-info is-light" href="https://twitter.com/LignoL23">
+                            <span class="icon">
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                            <span>Twitter</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <a class="button  is-success is-light" href="https://www.paypal.com/paypalme/volkerlorrmann/5">
+                            <span class="icon">
+                                <i class="fab fa-paypal"></i>
+                            </span>
+                            <span>paypal.me</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+                        <script
+                            type='text/javascript'>kofiwidget2.init('Support me', '#d6d6d6', 'W7W0ACJPB'); kofiwidget2.draw();</script>
+                    </span>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="columns is-multiline is-mobile is-centered">
+                <div class="column is-1">
+                    <img src="data:image/svg+xml;base64," alt="Logo">
+                </div>
+                <div class="column is-4">
+                    <p class="title">
+                        EOD Stockmarket Scans
+                    </p>
+                    <p class="subtitle">
+                        Fintwits most popular stockmarket scans
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+            <div class="container">
+                <ul>
+                    
+                    <li class="is-active">
+                        <a href="../MeMyselfAndI/Volume Gainers_result_table.html"> Results </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../MeMyselfAndI/Volume Gainers_minicharts.html"> Minicharts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../MeMyselfAndI/Volume Gainers_charts.html"> Charts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../MeMyselfAndI/Volume Gainers_criteria.html"> Criteria </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+</section>
+    <div class="columns is-centered">
+        <div class="column is-2">
+            <div class="box has-background-light my-0 mx-2 p-auto">
+    <aside class="menu">
+        <p class="menu-label has-text-dark">
+            Market Monitor
+        </p>
+        <ul class="menu-list">
+            <li><a class="has-text-grey-light">New Highs/Lows</a></li>
+            <li><a class="has-text-grey-light">Breadth</a></li>
+            <li><a class="has-text-grey-light">Above/Below SMA</a></li>
+            <li><a class="has-text-grey-light">Sectors</a></li>
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Kristjan Kullamägi
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Kristjan Kullamägi/Biggest Gainers 1M_minicharts.html">
+                        Biggest Gainers 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Kristjan Kullamägi/Biggest Gainers 3M_minicharts.html">
+                        Biggest Gainers 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Kristjan Kullamägi/Biggest Gainers 6M_minicharts.html">
+                        Biggest Gainers 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Kristjan Kullamägi/Biggest Gainers 12M_minicharts.html">
+                        Biggest Gainers 12M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Kristjan Kullamägi/EP with Growth_minicharts.html">
+                        EP with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Kristjan Kullamägi/EP_minicharts.html">
+                        EP
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Kristjan Kullamägi/High Trend Intensity_minicharts.html">
+                        High Trend Intensity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Kristjan Kullamägi/Small Stock Momo_minicharts.html">
+                        Small Stock Momo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Kristjan Kullamägi/Momentum_minicharts.html">
+                        Momentum
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Brad Schulz
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Brad Schulz/Pocket Pivot_minicharts.html">
+                        Pocket Pivot
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Stockbee
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Stockbee/4% Gainers_minicharts.html">
+                        4% Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Stockbee/Combo_minicharts.html">
+                        Combo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Stockbee/Ants_minicharts.html">
+                        Ants
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Stockbee/Breakout 1M Base_minicharts.html">
+                        Breakout 1M Base
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Stockbee/Breakout 3M Base_minicharts.html">
+                        Breakout 3M Base
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Leif Soreide
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Leif Soreide/HTF_minicharts.html">
+                        HTF
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Blake Davis
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Blake Davis/Strength_minicharts.html">
+                        Strength
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ben
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Ben/Power of 3_minicharts.html">
+                        Power of 3
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Ben/Velocity_minicharts.html">
+                        Velocity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Ben/Focus_minicharts.html">
+                        Focus
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ray
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Ray/RSNHBP 5D_minicharts.html">
+                        RSNHBP 5D
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Ray/RSNHBP 1M_minicharts.html">
+                        RSNHBP 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Ray/RSNHBP 3M_minicharts.html">
+                        RSNHBP 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Ray/RSNHBP 6M_minicharts.html">
+                        RSNHBP 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Ray/RSNHBP 12M_minicharts.html">
+                        RSNHBP 12M
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Mark Minvervini
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/Mark Minvervini/Trend Template_minicharts.html">
+                        Trend Template
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            MeMyselfAndI
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/MeMyselfAndI/Top Gainers From Open_minicharts.html">
+                        Top Gainers From Open
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/MeMyselfAndI/Top Gainers_minicharts.html">
+                        Top Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="is-active"
+                        href="../../australia/MeMyselfAndI/Volume Gainers_minicharts.html">
+                        Volume Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/MeMyselfAndI/Insiders_minicharts.html">
+                        Insiders
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/MeMyselfAndI/Darvas Scan_minicharts.html">
+                        Darvas Scan
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/MeMyselfAndI/Darvas Scan with Growth_minicharts.html">
+                        Darvas Scan with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/MeMyselfAndI/52W High_minicharts.html">
+                        52W High
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../australia/MeMyselfAndI/Quite and Tight_minicharts.html">
+                        Quite and Tight
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+    </aside>
+</div>
+        </div>
+        <div class="column is-10">
+            <section class="block my-6">
+                <div class="columns ">
+                    <div class="column is-5 has-text-left">
+                        <h1 class="title is-4">Volume Gainers @ Australia</h1>
+                        <h2 class="subtitle is-6">2022-04-20</h2>
+                    </div>
+                    <div class="column has-text-right mx-5">
+                        <div class="media">
+                           
+                            <div class="media-content">
+                                <p class="title is-5">MeMyselfAndI</p>
+                                <p class="subtitle is-6"><a class="has-text-grey-light" href="https://twitter.com/LignoL23">@LignoL23</a></p>
+                            </div>
+                            <div class="media-right">
+                                <figure class="image is-48x48">
+                                    <img src="https://unavatar.io/twitter/LignoL23" alt="Placeholder image">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="my-auto mr-6">
+                
+    <div class="table-container">
+        <table border="1" class="dataframe table is-striped no-wrap" id="data" style="width:100%; font-size:85%">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>symbol_id</th>
+      <th>symbol</th>
+      <th>name</th>
+      <th>exchange</th>
+      <th>sector</th>
+      <th>industry</th>
+      <th>country</th>
+      <th>yahoo_symbol</th>
+      <th>forexpros_symbol</th>
+      <th>IPO Date</th>
+      <th>EPS Growth Q</th>
+      <th>EPS Growth Y</th>
+      <th>EPS Growth FQ</th>
+      <th>EPS Growth FY</th>
+      <th>EPS Growth FQ1</th>
+      <th>EPS Growth FY1</th>
+      <th>Rev Growth Q</th>
+      <th>Rev Growth FQ</th>
+      <th>Rev Growth FY</th>
+      <th>Rev Growth FQ1</th>
+      <th>Rev Growth FY1</th>
+      <th>Insiders %</th>
+      <th>Institutions %</th>
+      <th>Institutions No.</th>
+      <th>Market Cap</th>
+      <th>Shares Outstanding</th>
+      <th>Shares Float</th>
+      <th>Shares Short</th>
+      <th>Short Ratio</th>
+      <th>Net Insider Trading %</th>
+      <th>close</th>
+      <th>volume</th>
+      <th>1m RS</th>
+      <th>3m RS</th>
+      <th>RS</th>
+      <th>Industry 1m RS</th>
+      <th>Industry 3m RS</th>
+      <th>Industry RS</th>
+      <th>UD Ratio</th>
+      <th>50d avg Volume</th>
+      <th>rel Volume</th>
+      <th>Pocket Pivot</th>
+      <th>1w Pocket Pivots</th>
+      <th>1m Pocket Pivots</th>
+      <th>Rocket Ratio</th>
+      <th>52w High</th>
+      <th>% below 52w High</th>
+      <th>52w Low</th>
+      <th>% above 52w Low</th>
+      <th>adr(20)</th>
+      <th>atr(14)</th>
+      <th>roc</th>
+      <th>roc(5)</th>
+      <th>roc(21)</th>
+      <th>roc(63)</th>
+      <th>roc(126)</th>
+      <th>roc(252)</th>
+      <th>ema(9)</th>
+      <th>% from 9d ema</th>
+      <th>ema(21)</th>
+      <th>% from 21d ema</th>
+      <th>sma(50)</th>
+      <th>% from 50d sma</th>
+      <th>market</th>
+      <th>date</th>
+      <th>group_name</th>
+      <th>scan_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>8604</td>
+      <td>RHC</td>
+      <td>Ramsay Health Care Ltd</td>
+      <td>Sydney</td>
+      <td>Healthcare</td>
+      <td>Medical Care Facilities</td>
+      <td>Australia</td>
+      <td>RHC.AX</td>
+      <td>Sydney:RHC</td>
+      <td>1997-10-01 00:00:00</td>
+      <td>-0.30</td>
+      <td>-0.30</td>
+      <td>NaN</td>
+      <td>-0.18</td>
+      <td>NaN</td>
+      <td>0.50</td>
+      <td>0.02</td>
+      <td>0.07</td>
+      <td>0.08</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>21.19</td>
+      <td>19.19</td>
+      <td>237.0</td>
+      <td>1.478578e+10</td>
+      <td>2.288820e+08</td>
+      <td>1.803766e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>80.00</td>
+      <td>4208576.0</td>
+      <td>89</td>
+      <td>85</td>
+      <td>78</td>
+      <td>10</td>
+      <td>30</td>
+      <td>43</td>
+      <td>1.30</td>
+      <td>511249.54</td>
+      <td>8.23</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>352.82</td>
+      <td>83.55</td>
+      <td>-4.25</td>
+      <td>59.66</td>
+      <td>34.09</td>
+      <td>1.81</td>
+      <td>2.24</td>
+      <td>24.24</td>
+      <td>23.70</td>
+      <td>26.22</td>
+      <td>19.47</td>
+      <td>19.89</td>
+      <td>17.65</td>
+      <td>67.55</td>
+      <td>18.43</td>
+      <td>65.61</td>
+      <td>21.93</td>
+      <td>64.02</td>
+      <td>24.95</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>101989</td>
+      <td>HSN</td>
+      <td>Hansen Technologies Ltd</td>
+      <td>Sydney</td>
+      <td>Technology</td>
+      <td>Software—Application</td>
+      <td>Australia</td>
+      <td>HSN.AX</td>
+      <td>Sydney:HSN</td>
+      <td>2000-06-01 00:00:00</td>
+      <td>0.15</td>
+      <td>0.14</td>
+      <td>NaN</td>
+      <td>-0.25</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>0.05</td>
+      <td>-0.03</td>
+      <td>-0.03</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>19.26</td>
+      <td>26.87</td>
+      <td>62.0</td>
+      <td>1.146602e+09</td>
+      <td>2.008060e+08</td>
+      <td>1.614805e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>5.94</td>
+      <td>2157209.0</td>
+      <td>78</td>
+      <td>82</td>
+      <td>66</td>
+      <td>38</td>
+      <td>11</td>
+      <td>11</td>
+      <td>2.25</td>
+      <td>320986.36</td>
+      <td>6.72</td>
+      <td>True</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>503.08</td>
+      <td>6.69</td>
+      <td>-11.21</td>
+      <td>4.68</td>
+      <td>26.92</td>
+      <td>2.35</td>
+      <td>0.13</td>
+      <td>1.71</td>
+      <td>6.26</td>
+      <td>13.14</td>
+      <td>15.34</td>
+      <td>-4.35</td>
+      <td>6.26</td>
+      <td>5.71</td>
+      <td>4.04</td>
+      <td>5.57</td>
+      <td>6.65</td>
+      <td>5.29</td>
+      <td>12.37</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>948202</td>
+      <td>SIQ</td>
+      <td>Smartgroup Corporation Ltd</td>
+      <td>Sydney</td>
+      <td>Industrials</td>
+      <td>Specialty Business Services</td>
+      <td>Australia</td>
+      <td>SIQ.AX</td>
+      <td>Sydney:SIQ</td>
+      <td>2014-07-02 00:00:00</td>
+      <td>0.35</td>
+      <td>0.35</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>0.07</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>0.22</td>
+      <td>0.06</td>
+      <td>12.85</td>
+      <td>35.14</td>
+      <td>60.0</td>
+      <td>1.168846e+09</td>
+      <td>1.331260e+08</td>
+      <td>1.215978e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>8.92</td>
+      <td>1458184.0</td>
+      <td>71</td>
+      <td>86</td>
+      <td>76</td>
+      <td>45</td>
+      <td>32</td>
+      <td>31</td>
+      <td>2.34</td>
+      <td>417085.76</td>
+      <td>3.50</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>291.54</td>
+      <td>9.99</td>
+      <td>-10.71</td>
+      <td>6.48</td>
+      <td>37.65</td>
+      <td>1.90</td>
+      <td>0.18</td>
+      <td>0.11</td>
+      <td>2.65</td>
+      <td>9.05</td>
+      <td>21.20</td>
+      <td>-4.19</td>
+      <td>24.41</td>
+      <td>8.73</td>
+      <td>2.19</td>
+      <td>8.52</td>
+      <td>4.66</td>
+      <td>8.15</td>
+      <td>9.48</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1174297</td>
+      <td>DGL</td>
+      <td>DGL Group Ltd</td>
+      <td>Sydney</td>
+      <td>Industrials</td>
+      <td>Conglomerates</td>
+      <td>Australia</td>
+      <td>DGL.AX</td>
+      <td>Sydney:DGL</td>
+      <td>2021-05-24 00:00:00</td>
+      <td>1.85</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.82</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>59.25</td>
+      <td>4.90</td>
+      <td>7.0</td>
+      <td>9.769130e+08</td>
+      <td>2.698440e+08</td>
+      <td>1.111693e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>4.15</td>
+      <td>1217448.0</td>
+      <td>94</td>
+      <td>94</td>
+      <td>96</td>
+      <td>62</td>
+      <td>48</td>
+      <td>54</td>
+      <td>2.09</td>
+      <td>453263.94</td>
+      <td>2.69</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>245.26</td>
+      <td>4.15</td>
+      <td>0.00</td>
+      <td>0.94</td>
+      <td>343.85</td>
+      <td>6.38</td>
+      <td>0.22</td>
+      <td>9.50</td>
+      <td>29.69</td>
+      <td>39.73</td>
+      <td>46.64</td>
+      <td>44.10</td>
+      <td>286.05</td>
+      <td>3.53</td>
+      <td>17.57</td>
+      <td>3.31</td>
+      <td>25.29</td>
+      <td>3.01</td>
+      <td>38.01</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7793</td>
+      <td>BOQ</td>
+      <td>Bank Of Queensland Ltd.</td>
+      <td>Sydney</td>
+      <td>Financial Services</td>
+      <td>Banks—Regional</td>
+      <td>Australia</td>
+      <td>BOQ.AX</td>
+      <td>Sydney:BOQ</td>
+      <td>1999-07-26 00:00:00</td>
+      <td>8.73</td>
+      <td>5.68</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>NaN</td>
+      <td>0.01</td>
+      <td>0.77</td>
+      <td>NaN</td>
+      <td>0.33</td>
+      <td>NaN</td>
+      <td>0.03</td>
+      <td>0.99</td>
+      <td>19.42</td>
+      <td>92.0</td>
+      <td>5.111690e+09</td>
+      <td>6.397610e+08</td>
+      <td>6.292368e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>8.00</td>
+      <td>5724596.0</td>
+      <td>23</td>
+      <td>54</td>
+      <td>43</td>
+      <td>31</td>
+      <td>53</td>
+      <td>46</td>
+      <td>1.06</td>
+      <td>2879948.54</td>
+      <td>1.99</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>218.49</td>
+      <td>9.84</td>
+      <td>-18.70</td>
+      <td>7.49</td>
+      <td>6.81</td>
+      <td>1.74</td>
+      <td>0.18</td>
+      <td>0.76</td>
+      <td>-5.21</td>
+      <td>-4.88</td>
+      <td>-3.26</td>
+      <td>-14.26</td>
+      <td>-10.91</td>
+      <td>8.22</td>
+      <td>-2.70</td>
+      <td>8.28</td>
+      <td>-3.43</td>
+      <td>8.23</td>
+      <td>-2.79</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>101956</td>
+      <td>BGA</td>
+      <td>Bega Cheese Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Defensive</td>
+      <td>Packaged Foods</td>
+      <td>Australia</td>
+      <td>BGA.AX</td>
+      <td>Sydney:BGA</td>
+      <td>2011-08-30 00:00:00</td>
+      <td>0.29</td>
+      <td>-0.04</td>
+      <td>NaN</td>
+      <td>0.13</td>
+      <td>NaN</td>
+      <td>0.53</td>
+      <td>1.13</td>
+      <td>0.51</td>
+      <td>0.46</td>
+      <td>NaN</td>
+      <td>0.05</td>
+      <td>10.75</td>
+      <td>54.58</td>
+      <td>72.0</td>
+      <td>1.554611e+09</td>
+      <td>3.030430e+08</td>
+      <td>2.677478e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>5.19</td>
+      <td>1867667.0</td>
+      <td>56</td>
+      <td>60</td>
+      <td>47</td>
+      <td>22</td>
+      <td>24</td>
+      <td>16</td>
+      <td>0.79</td>
+      <td>980972.76</td>
+      <td>1.90</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>272.94</td>
+      <td>6.51</td>
+      <td>-20.28</td>
+      <td>4.51</td>
+      <td>15.08</td>
+      <td>2.08</td>
+      <td>0.10</td>
+      <td>0.97</td>
+      <td>3.39</td>
+      <td>3.80</td>
+      <td>-0.57</td>
+      <td>-4.24</td>
+      <td>-19.03</td>
+      <td>5.06</td>
+      <td>2.54</td>
+      <td>4.98</td>
+      <td>4.19</td>
+      <td>4.96</td>
+      <td>4.68</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>101943</td>
+      <td>LIC</td>
+      <td>Lifestyle Communities Ltd</td>
+      <td>Sydney</td>
+      <td>Real Estate</td>
+      <td>Real Estate—Diversified</td>
+      <td>Australia</td>
+      <td>LIC.AX</td>
+      <td>Sydney:LIC</td>
+      <td>1999-07-26 00:00:00</td>
+      <td>0.95</td>
+      <td>0.95</td>
+      <td>NaN</td>
+      <td>2.00</td>
+      <td>NaN</td>
+      <td>0.18</td>
+      <td>0.83</td>
+      <td>0.49</td>
+      <td>0.51</td>
+      <td>NaN</td>
+      <td>0.13</td>
+      <td>14.44</td>
+      <td>44.71</td>
+      <td>71.0</td>
+      <td>1.623584e+09</td>
+      <td>1.045450e+08</td>
+      <td>7.369581e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>15.78</td>
+      <td>431425.0</td>
+      <td>15</td>
+      <td>36</td>
+      <td>42</td>
+      <td>20</td>
+      <td>39</td>
+      <td>30</td>
+      <td>0.79</td>
+      <td>251932.00</td>
+      <td>1.71</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>292.52</td>
+      <td>23.85</td>
+      <td>-33.84</td>
+      <td>13.26</td>
+      <td>19.00</td>
+      <td>2.88</td>
+      <td>0.47</td>
+      <td>1.15</td>
+      <td>-2.65</td>
+      <td>-8.57</td>
+      <td>-12.48</td>
+      <td>-32.07</td>
+      <td>12.31</td>
+      <td>15.89</td>
+      <td>-0.66</td>
+      <td>16.29</td>
+      <td>-3.10</td>
+      <td>16.94</td>
+      <td>-6.85</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8636</td>
+      <td>SHV</td>
+      <td>Select Harvests Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Defensive</td>
+      <td>Packaged Foods</td>
+      <td>Australia</td>
+      <td>SHV.AX</td>
+      <td>Sydney:SHV</td>
+      <td>1988-01-31 23:00:00</td>
+      <td>0.81</td>
+      <td>0.51</td>
+      <td>NaN</td>
+      <td>1.15</td>
+      <td>NaN</td>
+      <td>0.71</td>
+      <td>0.15</td>
+      <td>0.07</td>
+      <td>0.07</td>
+      <td>NaN</td>
+      <td>0.14</td>
+      <td>2.09</td>
+      <td>49.58</td>
+      <td>55.0</td>
+      <td>7.208680e+08</td>
+      <td>1.209510e+08</td>
+      <td>1.178511e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>6.22</td>
+      <td>504838.0</td>
+      <td>85</td>
+      <td>76</td>
+      <td>50</td>
+      <td>22</td>
+      <td>24</td>
+      <td>16</td>
+      <td>0.99</td>
+      <td>302578.52</td>
+      <td>1.67</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>389.49</td>
+      <td>8.98</td>
+      <td>-30.73</td>
+      <td>4.98</td>
+      <td>24.90</td>
+      <td>3.74</td>
+      <td>0.22</td>
+      <td>2.30</td>
+      <td>4.54</td>
+      <td>19.62</td>
+      <td>8.36</td>
+      <td>-22.83</td>
+      <td>0.97</td>
+      <td>5.87</td>
+      <td>6.00</td>
+      <td>5.65</td>
+      <td>10.10</td>
+      <td>5.48</td>
+      <td>13.57</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1014093</td>
+      <td>AD8</td>
+      <td>Audinate Group Ltd</td>
+      <td>Sydney</td>
+      <td>Technology</td>
+      <td>Electronic Components</td>
+      <td>Australia</td>
+      <td>AD8.AX</td>
+      <td>Sydney:AD8</td>
+      <td>2017-06-30 00:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.80</td>
+      <td>NaN</td>
+      <td>0.33</td>
+      <td>0.32</td>
+      <td>0.11</td>
+      <td>0.12</td>
+      <td>NaN</td>
+      <td>0.40</td>
+      <td>14.66</td>
+      <td>16.64</td>
+      <td>17.0</td>
+      <td>4.609905e+08</td>
+      <td>7.708870e+07</td>
+      <td>6.398002e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>6.32</td>
+      <td>277063.0</td>
+      <td>11</td>
+      <td>23</td>
+      <td>21</td>
+      <td>7</td>
+      <td>15</td>
+      <td>18</td>
+      <td>0.52</td>
+      <td>173746.18</td>
+      <td>1.59</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>368.24</td>
+      <td>11.01</td>
+      <td>-42.60</td>
+      <td>5.86</td>
+      <td>7.85</td>
+      <td>3.40</td>
+      <td>0.23</td>
+      <td>3.95</td>
+      <td>4.81</td>
+      <td>-10.99</td>
+      <td>-21.78</td>
+      <td>-29.39</td>
+      <td>-21.49</td>
+      <td>6.17</td>
+      <td>2.42</td>
+      <td>6.41</td>
+      <td>-1.38</td>
+      <td>7.02</td>
+      <td>-9.91</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>14292</td>
+      <td>NHF</td>
+      <td>NIB Holdings</td>
+      <td>Sydney</td>
+      <td>Financial Services</td>
+      <td>Insurance—Specialty</td>
+      <td>Australia</td>
+      <td>NHF.AX</td>
+      <td>Sydney:NHF</td>
+      <td>2007-11-04 23:00:00</td>
+      <td>0.25</td>
+      <td>0.25</td>
+      <td>NaN</td>
+      <td>-0.10</td>
+      <td>NaN</td>
+      <td>-0.03</td>
+      <td>0.07</td>
+      <td>0.01</td>
+      <td>0.06</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>1.36</td>
+      <td>16.09</td>
+      <td>68.0</td>
+      <td>2.993364e+09</td>
+      <td>4.591050e+08</td>
+      <td>4.526372e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>6.66</td>
+      <td>853892.0</td>
+      <td>44</td>
+      <td>59</td>
+      <td>62</td>
+      <td>43</td>
+      <td>49</td>
+      <td>49</td>
+      <td>1.02</td>
+      <td>539574.14</td>
+      <td>1.58</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>838.88</td>
+      <td>8.05</td>
+      <td>-17.27</td>
+      <td>5.33</td>
+      <td>24.95</td>
+      <td>2.08</td>
+      <td>0.12</td>
+      <td>0.45</td>
+      <td>3.26</td>
+      <td>0.30</td>
+      <td>-0.89</td>
+      <td>-3.20</td>
+      <td>23.11</td>
+      <td>6.51</td>
+      <td>2.32</td>
+      <td>6.48</td>
+      <td>2.83</td>
+      <td>6.50</td>
+      <td>2.39</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>101966</td>
+      <td>CTD</td>
+      <td>Corporate Travel Managment Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Cyclical</td>
+      <td>Travel Services</td>
+      <td>Australia</td>
+      <td>CTD.AX</td>
+      <td>Sydney:CTD</td>
+      <td>2010-12-14 23:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.92</td>
+      <td>NaN</td>
+      <td>2.91</td>
+      <td>1.80</td>
+      <td>1.52</td>
+      <td>1.41</td>
+      <td>NaN</td>
+      <td>0.77</td>
+      <td>17.54</td>
+      <td>26.73</td>
+      <td>59.0</td>
+      <td>3.609448e+09</td>
+      <td>1.451910e+08</td>
+      <td>1.183056e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>25.35</td>
+      <td>553133.0</td>
+      <td>70</td>
+      <td>83</td>
+      <td>76</td>
+      <td>42</td>
+      <td>45</td>
+      <td>44</td>
+      <td>0.93</td>
+      <td>353580.94</td>
+      <td>1.56</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>334.59</td>
+      <td>25.90</td>
+      <td>-2.12</td>
+      <td>16.52</td>
+      <td>53.45</td>
+      <td>NaN</td>
+      <td>0.78</td>
+      <td>3.60</td>
+      <td>9.08</td>
+      <td>8.89</td>
+      <td>16.44</td>
+      <td>4.75</td>
+      <td>23.48</td>
+      <td>24.22</td>
+      <td>4.68</td>
+      <td>23.73</td>
+      <td>6.85</td>
+      <td>23.05</td>
+      <td>9.98</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>8601</td>
+      <td>REH</td>
+      <td>Reece Ltd</td>
+      <td>Sydney</td>
+      <td>Industrials</td>
+      <td>Industrial Distribution</td>
+      <td>Australia</td>
+      <td>REH.AX</td>
+      <td>Sydney:REH</td>
+      <td>1988-01-28 23:00:00</td>
+      <td>0.28</td>
+      <td>0.28</td>
+      <td>NaN</td>
+      <td>0.30</td>
+      <td>NaN</td>
+      <td>0.16</td>
+      <td>0.17</td>
+      <td>0.11</td>
+      <td>0.16</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>62.60</td>
+      <td>13.75</td>
+      <td>152.0</td>
+      <td>1.107863e+10</td>
+      <td>6.459840e+08</td>
+      <td>2.055964e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>17.42</td>
+      <td>694851.0</td>
+      <td>9</td>
+      <td>15</td>
+      <td>29</td>
+      <td>33</td>
+      <td>46</td>
+      <td>41</td>
+      <td>1.10</td>
+      <td>454057.46</td>
+      <td>1.53</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>452.80</td>
+      <td>28.47</td>
+      <td>-38.81</td>
+      <td>16.81</td>
+      <td>3.63</td>
+      <td>2.71</td>
+      <td>0.56</td>
+      <td>1.16</td>
+      <td>0.00</td>
+      <td>-12.46</td>
+      <td>-27.45</td>
+      <td>-1.41</td>
+      <td>-15.23</td>
+      <td>17.44</td>
+      <td>-0.14</td>
+      <td>18.03</td>
+      <td>-3.38</td>
+      <td>19.06</td>
+      <td>-8.61</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>1159126</td>
+      <td>UMG</td>
+      <td>United Malt Group Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Defensive</td>
+      <td>Beverages—Brewers</td>
+      <td>Australia</td>
+      <td>UMG.AX</td>
+      <td>Sydney:UMG</td>
+      <td>2020-03-23 23:00:00</td>
+      <td>-0.98</td>
+      <td>-0.98</td>
+      <td>NaN</td>
+      <td>0.73</td>
+      <td>NaN</td>
+      <td>0.37</td>
+      <td>0.03</td>
+      <td>0.10</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>14.80</td>
+      <td>41.29</td>
+      <td>53.0</td>
+      <td>1.196716e+09</td>
+      <td>2.991790e+08</td>
+      <td>2.491354e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>4.20</td>
+      <td>1986761.0</td>
+      <td>62</td>
+      <td>55</td>
+      <td>52</td>
+      <td>22</td>
+      <td>24</td>
+      <td>16</td>
+      <td>1.00</td>
+      <td>1337082.78</td>
+      <td>1.49</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>186.33</td>
+      <td>4.76</td>
+      <td>-11.76</td>
+      <td>3.74</td>
+      <td>12.30</td>
+      <td>2.27</td>
+      <td>0.09</td>
+      <td>4.48</td>
+      <td>8.25</td>
+      <td>6.06</td>
+      <td>-2.78</td>
+      <td>2.94</td>
+      <td>0.96</td>
+      <td>3.98</td>
+      <td>5.52</td>
+      <td>3.94</td>
+      <td>6.62</td>
+      <td>4.03</td>
+      <td>4.11</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>8610</td>
+      <td>RMD</td>
+      <td>Resmed Inc DRC</td>
+      <td>Sydney</td>
+      <td>Healthcare</td>
+      <td>Medical Instruments &amp; Supplies</td>
+      <td>Australia</td>
+      <td>RMD.AX</td>
+      <td>Sydney:RMD</td>
+      <td>1999-11-24 23:00:00</td>
+      <td>0.12</td>
+      <td>0.11</td>
+      <td>0.12</td>
+      <td>0.11</td>
+      <td>0.10</td>
+      <td>0.20</td>
+      <td>0.12</td>
+      <td>NaN</td>
+      <td>0.14</td>
+      <td>0.12</td>
+      <td>0.12</td>
+      <td>0.00</td>
+      <td>7.98</td>
+      <td>44.0</td>
+      <td>4.643541e+10</td>
+      <td>1.462340e+09</td>
+      <td>5.795029e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>32.27</td>
+      <td>1363887.0</td>
+      <td>17</td>
+      <td>47</td>
+      <td>53</td>
+      <td>15</td>
+      <td>7</td>
+      <td>20</td>
+      <td>0.73</td>
+      <td>991183.42</td>
+      <td>1.38</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>584.66</td>
+      <td>40.79</td>
+      <td>-20.89</td>
+      <td>24.31</td>
+      <td>32.74</td>
+      <td>1.70</td>
+      <td>0.60</td>
+      <td>2.15</td>
+      <td>-2.74</td>
+      <td>-7.80</td>
+      <td>-7.00</td>
+      <td>-6.27</td>
+      <td>19.39</td>
+      <td>32.18</td>
+      <td>0.29</td>
+      <td>32.51</td>
+      <td>-0.74</td>
+      <td>33.01</td>
+      <td>-2.25</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>7553</td>
+      <td>INA</td>
+      <td>Ingenia Communities Group</td>
+      <td>Sydney</td>
+      <td>Real Estate</td>
+      <td>REIT—Residential</td>
+      <td>Australia</td>
+      <td>INA.AX</td>
+      <td>Sydney:INA</td>
+      <td>2012-06-13 00:00:00</td>
+      <td>0.23</td>
+      <td>0.15</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>0.17</td>
+      <td>0.11</td>
+      <td>0.20</td>
+      <td>0.11</td>
+      <td>NaN</td>
+      <td>0.30</td>
+      <td>11.32</td>
+      <td>35.72</td>
+      <td>112.0</td>
+      <td>1.956398e+09</td>
+      <td>4.075830e+08</td>
+      <td>4.020884e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>4.83</td>
+      <td>1785035.0</td>
+      <td>19</td>
+      <td>27</td>
+      <td>30</td>
+      <td>18</td>
+      <td>51</td>
+      <td>51</td>
+      <td>0.97</td>
+      <td>1400810.94</td>
+      <td>1.27</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>287.04</td>
+      <td>7.08</td>
+      <td>-31.78</td>
+      <td>4.72</td>
+      <td>2.33</td>
+      <td>NaN</td>
+      <td>0.12</td>
+      <td>1.47</td>
+      <td>-2.42</td>
+      <td>-6.76</td>
+      <td>-19.10</td>
+      <td>-25.35</td>
+      <td>-8.52</td>
+      <td>4.91</td>
+      <td>-1.55</td>
+      <td>5.01</td>
+      <td>-3.66</td>
+      <td>5.19</td>
+      <td>-6.86</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>40380</td>
+      <td>NXT</td>
+      <td>Nextdc Ltd</td>
+      <td>Sydney</td>
+      <td>Technology</td>
+      <td>Information Technology Services</td>
+      <td>Australia</td>
+      <td>NXT.AX</td>
+      <td>Sydney:NXT</td>
+      <td>2010-12-12 23:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.50</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>0.19</td>
+      <td>0.17</td>
+      <td>0.18</td>
+      <td>NaN</td>
+      <td>0.18</td>
+      <td>0.24</td>
+      <td>40.57</td>
+      <td>132.0</td>
+      <td>5.110454e+09</td>
+      <td>4.575160e+08</td>
+      <td>4.540719e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>11.25</td>
+      <td>1813609.0</td>
+      <td>52</td>
+      <td>66</td>
+      <td>50</td>
+      <td>5</td>
+      <td>4</td>
+      <td>6</td>
+      <td>1.39</td>
+      <td>1452776.14</td>
+      <td>1.25</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>312.55</td>
+      <td>14.09</td>
+      <td>-20.13</td>
+      <td>9.74</td>
+      <td>15.50</td>
+      <td>1.87</td>
+      <td>0.26</td>
+      <td>0.90</td>
+      <td>0.36</td>
+      <td>2.55</td>
+      <td>1.72</td>
+      <td>-6.79</td>
+      <td>-4.50</td>
+      <td>11.28</td>
+      <td>-0.26</td>
+      <td>11.27</td>
+      <td>-0.19</td>
+      <td>10.90</td>
+      <td>3.17</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>7471</td>
+      <td>GNC</td>
+      <td>Graincorp Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Defensive</td>
+      <td>Farm Products</td>
+      <td>Australia</td>
+      <td>GNC.AX</td>
+      <td>Sydney:GNC</td>
+      <td>1998-04-01 00:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.56</td>
+      <td>NaN</td>
+      <td>-0.52</td>
+      <td>0.72</td>
+      <td>0.21</td>
+      <td>0.21</td>
+      <td>NaN</td>
+      <td>-0.19</td>
+      <td>3.97</td>
+      <td>38.73</td>
+      <td>87.0</td>
+      <td>2.231346e+09</td>
+      <td>2.288560e+08</td>
+      <td>2.254555e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>9.81</td>
+      <td>2093525.0</td>
+      <td>79</td>
+      <td>85</td>
+      <td>90</td>
+      <td>50</td>
+      <td>93</td>
+      <td>56</td>
+      <td>1.71</td>
+      <td>1680989.50</td>
+      <td>1.25</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>134.12</td>
+      <td>10.06</td>
+      <td>-2.49</td>
+      <td>4.76</td>
+      <td>106.09</td>
+      <td>3.01</td>
+      <td>0.34</td>
+      <td>2.83</td>
+      <td>0.00</td>
+      <td>13.94</td>
+      <td>20.96</td>
+      <td>53.04</td>
+      <td>93.87</td>
+      <td>9.43</td>
+      <td>4.01</td>
+      <td>9.07</td>
+      <td>8.14</td>
+      <td>8.56</td>
+      <td>14.59</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>7379</td>
+      <td>IVC</td>
+      <td>Invocare Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Cyclical</td>
+      <td>Personal Services</td>
+      <td>Australia</td>
+      <td>IVC.AX</td>
+      <td>Sydney:IVC</td>
+      <td>2003-12-03 23:00:00</td>
+      <td>4.62</td>
+      <td>4.59</td>
+      <td>NaN</td>
+      <td>0.19</td>
+      <td>NaN</td>
+      <td>0.13</td>
+      <td>0.10</td>
+      <td>0.08</td>
+      <td>0.08</td>
+      <td>0.01</td>
+      <td>0.05</td>
+      <td>6.60</td>
+      <td>27.53</td>
+      <td>61.0</td>
+      <td>1.733054e+09</td>
+      <td>1.440610e+08</td>
+      <td>1.340219e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>12.11</td>
+      <td>431223.0</td>
+      <td>54</td>
+      <td>76</td>
+      <td>68</td>
+      <td>6</td>
+      <td>22</td>
+      <td>21</td>
+      <td>0.92</td>
+      <td>350733.90</td>
+      <td>1.23</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>382.12</td>
+      <td>13.19</td>
+      <td>-8.19</td>
+      <td>9.65</td>
+      <td>25.49</td>
+      <td>1.72</td>
+      <td>0.21</td>
+      <td>1.17</td>
+      <td>1.94</td>
+      <td>3.15</td>
+      <td>8.61</td>
+      <td>3.95</td>
+      <td>5.86</td>
+      <td>11.98</td>
+      <td>1.08</td>
+      <td>11.96</td>
+      <td>1.24</td>
+      <td>12.13</td>
+      <td>-0.13</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>7596</td>
+      <td>APA</td>
+      <td>APA Group</td>
+      <td>Sydney</td>
+      <td>Utilities</td>
+      <td>Utilities—Regulated Gas</td>
+      <td>Australia</td>
+      <td>APA.AX</td>
+      <td>Sydney:APA</td>
+      <td>2000-06-12 00:00:00</td>
+      <td>-0.89</td>
+      <td>-0.89</td>
+      <td>NaN</td>
+      <td>0.12</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>0.07</td>
+      <td>-0.02</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>0.05</td>
+      <td>48.74</td>
+      <td>262.0</td>
+      <td>1.297879e+10</td>
+      <td>1.179890e+09</td>
+      <td>1.179540e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>11.27</td>
+      <td>2624224.0</td>
+      <td>78</td>
+      <td>80</td>
+      <td>76</td>
+      <td>63</td>
+      <td>92</td>
+      <td>57</td>
+      <td>1.31</td>
+      <td>2181580.00</td>
+      <td>1.20</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>540.68</td>
+      <td>11.27</td>
+      <td>0.00</td>
+      <td>8.20</td>
+      <td>37.44</td>
+      <td>1.97</td>
+      <td>0.22</td>
+      <td>1.53</td>
+      <td>4.35</td>
+      <td>13.15</td>
+      <td>12.70</td>
+      <td>32.43</td>
+      <td>10.71</td>
+      <td>10.90</td>
+      <td>3.39</td>
+      <td>10.65</td>
+      <td>5.85</td>
+      <td>10.24</td>
+      <td>10.05</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>7473</td>
+      <td>LYC</td>
+      <td>Lynas Rare Earths Ltd</td>
+      <td>Sydney</td>
+      <td>Basic Materials</td>
+      <td>Other Industrial Metals &amp; Mining</td>
+      <td>Australia</td>
+      <td>LYC.AX</td>
+      <td>Sydney:LYC</td>
+      <td>1999-06-10 00:00:00</td>
+      <td>2.86</td>
+      <td>2.57</td>
+      <td>NaN</td>
+      <td>2.00</td>
+      <td>NaN</td>
+      <td>0.20</td>
+      <td>0.56</td>
+      <td>0.61</td>
+      <td>0.93</td>
+      <td>NaN</td>
+      <td>0.20</td>
+      <td>0.97</td>
+      <td>36.30</td>
+      <td>142.0</td>
+      <td>8.473649e+09</td>
+      <td>9.024120e+08</td>
+      <td>8.936857e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>9.43</td>
+      <td>6999460.0</td>
+      <td>19</td>
+      <td>32</td>
+      <td>82</td>
+      <td>81</td>
+      <td>74</td>
+      <td>75</td>
+      <td>0.97</td>
+      <td>5828665.34</td>
+      <td>1.20</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>153.33</td>
+      <td>11.59</td>
+      <td>-18.64</td>
+      <td>5.11</td>
+      <td>84.54</td>
+      <td>3.79</td>
+      <td>0.42</td>
+      <td>1.07</td>
+      <td>-4.07</td>
+      <td>-6.26</td>
+      <td>-14.97</td>
+      <td>29.53</td>
+      <td>77.59</td>
+      <td>9.71</td>
+      <td>-2.90</td>
+      <td>9.98</td>
+      <td>-5.47</td>
+      <td>9.90</td>
+      <td>-4.76</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>1006182</td>
+      <td>MAF</td>
+      <td>MA Financial Group Ltd</td>
+      <td>Sydney</td>
+      <td>Financial Services</td>
+      <td>Asset Management</td>
+      <td>Australia</td>
+      <td>MAF.AX</td>
+      <td>Sydney:MAF</td>
+      <td>2017-04-10 00:00:00</td>
+      <td>0.01</td>
+      <td>-0.03</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>0.50</td>
+      <td>0.25</td>
+      <td>0.25</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>34.13</td>
+      <td>10.17</td>
+      <td>31.0</td>
+      <td>1.253163e+09</td>
+      <td>1.738090e+08</td>
+      <td>6.499649e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>7.40</td>
+      <td>393256.0</td>
+      <td>35</td>
+      <td>20</td>
+      <td>65</td>
+      <td>27</td>
+      <td>36</td>
+      <td>35</td>
+      <td>0.71</td>
+      <td>339625.64</td>
+      <td>1.16</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>191.38</td>
+      <td>9.87</td>
+      <td>-25.03</td>
+      <td>5.05</td>
+      <td>46.53</td>
+      <td>NaN</td>
+      <td>0.30</td>
+      <td>3.50</td>
+      <td>2.49</td>
+      <td>-0.94</td>
+      <td>-23.55</td>
+      <td>-2.63</td>
+      <td>42.86</td>
+      <td>7.28</td>
+      <td>1.71</td>
+      <td>7.43</td>
+      <td>-0.34</td>
+      <td>7.76</td>
+      <td>-4.65</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>8679</td>
+      <td>TNE</td>
+      <td>Technology One Ltd</td>
+      <td>Sydney</td>
+      <td>Technology</td>
+      <td>Software—Application</td>
+      <td>Australia</td>
+      <td>TNE.AX</td>
+      <td>Sydney:TNE</td>
+      <td>1999-12-07 23:00:00</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>NaN</td>
+      <td>0.13</td>
+      <td>NaN</td>
+      <td>0.12</td>
+      <td>0.04</td>
+      <td>NaN</td>
+      <td>0.12</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>14.07</td>
+      <td>51.39</td>
+      <td>101.0</td>
+      <td>3.528427e+09</td>
+      <td>3.231160e+08</td>
+      <td>2.765954e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>11.07</td>
+      <td>998958.0</td>
+      <td>34</td>
+      <td>59</td>
+      <td>64</td>
+      <td>38</td>
+      <td>11</td>
+      <td>11</td>
+      <td>1.35</td>
+      <td>874255.52</td>
+      <td>1.14</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>316.38</td>
+      <td>13.60</td>
+      <td>-18.60</td>
+      <td>8.50</td>
+      <td>30.24</td>
+      <td>1.77</td>
+      <td>0.22</td>
+      <td>1.00</td>
+      <td>0.54</td>
+      <td>-1.34</td>
+      <td>-0.72</td>
+      <td>-10.73</td>
+      <td>13.31</td>
+      <td>11.05</td>
+      <td>0.22</td>
+      <td>11.07</td>
+      <td>0.00</td>
+      <td>10.77</td>
+      <td>2.80</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>949806</td>
+      <td>A2M</td>
+      <td>A2 Milk Company Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Defensive</td>
+      <td>Farm Products</td>
+      <td>Australia</td>
+      <td>ATM.NZ</td>
+      <td>Sydney:A2M</td>
+      <td>2004-01-05 21:00:00</td>
+      <td>-0.50</td>
+      <td>-0.50</td>
+      <td>NaN</td>
+      <td>0.46</td>
+      <td>NaN</td>
+      <td>0.31</td>
+      <td>-0.02</td>
+      <td>0.08</td>
+      <td>0.16</td>
+      <td>NaN</td>
+      <td>0.15</td>
+      <td>10.16</td>
+      <td>33.88</td>
+      <td>157.0</td>
+      <td>3.829834e+09</td>
+      <td>7.436570e+08</td>
+      <td>7.395739e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>4.72</td>
+      <td>4277081.0</td>
+      <td>9</td>
+      <td>36</td>
+      <td>22</td>
+      <td>22</td>
+      <td>24</td>
+      <td>16</td>
+      <td>0.76</td>
+      <td>3785996.60</td>
+      <td>1.13</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>195.34</td>
+      <td>7.54</td>
+      <td>-37.40</td>
+      <td>4.57</td>
+      <td>3.28</td>
+      <td>2.51</td>
+      <td>0.14</td>
+      <td>2.61</td>
+      <td>-1.05</td>
+      <td>-12.59</td>
+      <td>-12.59</td>
+      <td>-28.70</td>
+      <td>-38.22</td>
+      <td>4.79</td>
+      <td>-1.44</td>
+      <td>4.99</td>
+      <td>-5.34</td>
+      <td>5.26</td>
+      <td>-10.26</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>7387</td>
+      <td>ALL</td>
+      <td>Aristocrat Leisure Ltd</td>
+      <td>Sydney</td>
+      <td>Communication Services</td>
+      <td>Electronic Gaming &amp; Multimedia</td>
+      <td>Australia</td>
+      <td>ALL.AX</td>
+      <td>Sydney:ALL</td>
+      <td>1996-08-01 00:00:00</td>
+      <td>5.53</td>
+      <td>5.52</td>
+      <td>NaN</td>
+      <td>0.14</td>
+      <td>NaN</td>
+      <td>0.15</td>
+      <td>0.33</td>
+      <td>0.23</td>
+      <td>0.13</td>
+      <td>NaN</td>
+      <td>0.07</td>
+      <td>11.07</td>
+      <td>33.44</td>
+      <td>310.0</td>
+      <td>2.219800e+10</td>
+      <td>6.696230e+08</td>
+      <td>5.686810e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>33.04</td>
+      <td>2069450.0</td>
+      <td>9</td>
+      <td>19</td>
+      <td>25</td>
+      <td>42</td>
+      <td>45</td>
+      <td>44</td>
+      <td>0.61</td>
+      <td>1845941.60</td>
+      <td>1.12</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>308.07</td>
+      <td>49.65</td>
+      <td>-33.45</td>
+      <td>32.60</td>
+      <td>1.35</td>
+      <td>NaN</td>
+      <td>0.77</td>
+      <td>0.58</td>
+      <td>0.33</td>
+      <td>-12.68</td>
+      <td>-24.93</td>
+      <td>-29.85</td>
+      <td>-10.00</td>
+      <td>33.44</td>
+      <td>-1.19</td>
+      <td>34.54</td>
+      <td>-4.35</td>
+      <td>36.63</td>
+      <td>-9.80</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>18511</td>
+      <td>DTL</td>
+      <td>Data#3 Ltd</td>
+      <td>Sydney</td>
+      <td>Technology</td>
+      <td>Information Technology Services</td>
+      <td>Australia</td>
+      <td>DTL.AX</td>
+      <td>Sydney:DTL</td>
+      <td>1997-12-31 23:00:00</td>
+      <td>0.32</td>
+      <td>0.32</td>
+      <td>NaN</td>
+      <td>0.25</td>
+      <td>NaN</td>
+      <td>0.15</td>
+      <td>0.17</td>
+      <td>0.12</td>
+      <td>0.14</td>
+      <td>NaN</td>
+      <td>0.12</td>
+      <td>11.54</td>
+      <td>15.33</td>
+      <td>49.0</td>
+      <td>8.782458e+08</td>
+      <td>1.543490e+08</td>
+      <td>1.399128e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>5.67</td>
+      <td>293050.0</td>
+      <td>22</td>
+      <td>33</td>
+      <td>50</td>
+      <td>5</td>
+      <td>4</td>
+      <td>6</td>
+      <td>1.61</td>
+      <td>264849.28</td>
+      <td>1.11</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>528.27</td>
+      <td>6.65</td>
+      <td>-14.74</td>
+      <td>4.47</td>
+      <td>26.85</td>
+      <td>2.67</td>
+      <td>0.15</td>
+      <td>1.07</td>
+      <td>0.71</td>
+      <td>-5.34</td>
+      <td>-14.74</td>
+      <td>7.79</td>
+      <td>-5.66</td>
+      <td>5.66</td>
+      <td>0.16</td>
+      <td>5.69</td>
+      <td>-0.31</td>
+      <td>5.61</td>
+      <td>1.04</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>8670</td>
+      <td>SPK</td>
+      <td>Spark New Zealand Ltd</td>
+      <td>Sydney</td>
+      <td>Communication Services</td>
+      <td>Telecom Services</td>
+      <td>Australia</td>
+      <td>SPK.NZ</td>
+      <td>Sydney:SPK</td>
+      <td>2000-01-01 21:00:00</td>
+      <td>0.22</td>
+      <td>0.21</td>
+      <td>NaN</td>
+      <td>0.05</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>0.05</td>
+      <td>0.01</td>
+      <td>0.03</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>1.09</td>
+      <td>28.69</td>
+      <td>281.0</td>
+      <td>9.122770e+09</td>
+      <td>1.869420e+09</td>
+      <td>1.868059e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>4.54</td>
+      <td>1679073.0</td>
+      <td>52</td>
+      <td>72</td>
+      <td>64</td>
+      <td>48</td>
+      <td>29</td>
+      <td>48</td>
+      <td>1.24</td>
+      <td>1536246.70</td>
+      <td>1.09</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1215.99</td>
+      <td>4.78</td>
+      <td>-5.02</td>
+      <td>4.01</td>
+      <td>13.22</td>
+      <td>1.46</td>
+      <td>0.07</td>
+      <td>2.48</td>
+      <td>2.48</td>
+      <td>2.71</td>
+      <td>4.85</td>
+      <td>3.42</td>
+      <td>10.19</td>
+      <td>4.43</td>
+      <td>2.47</td>
+      <td>4.39</td>
+      <td>3.51</td>
+      <td>4.32</td>
+      <td>5.07</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>1123046</td>
+      <td>UWL</td>
+      <td>Uniti Wireless Ltd</td>
+      <td>Sydney</td>
+      <td>Communication Services</td>
+      <td>Telecom Services</td>
+      <td>Australia</td>
+      <td>UWL.AX</td>
+      <td>Sydney:UWL</td>
+      <td>2019-02-12 23:00:00</td>
+      <td>6.50</td>
+      <td>4.86</td>
+      <td>NaN</td>
+      <td>0.38</td>
+      <td>NaN</td>
+      <td>0.18</td>
+      <td>0.98</td>
+      <td>0.49</td>
+      <td>0.43</td>
+      <td>NaN</td>
+      <td>0.13</td>
+      <td>15.54</td>
+      <td>12.98</td>
+      <td>50.0</td>
+      <td>3.371992e+09</td>
+      <td>6.798370e+08</td>
+      <td>5.822434e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>4.98</td>
+      <td>6609060.0</td>
+      <td>87</td>
+      <td>84</td>
+      <td>86</td>
+      <td>48</td>
+      <td>29</td>
+      <td>48</td>
+      <td>1.24</td>
+      <td>6123132.32</td>
+      <td>1.08</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>95.09</td>
+      <td>5.01</td>
+      <td>-0.60</td>
+      <td>2.59</td>
+      <td>92.65</td>
+      <td>2.35</td>
+      <td>0.07</td>
+      <td>0.20</td>
+      <td>6.41</td>
+      <td>21.46</td>
+      <td>18.01</td>
+      <td>27.04</td>
+      <td>89.35</td>
+      <td>4.84</td>
+      <td>2.94</td>
+      <td>4.61</td>
+      <td>7.92</td>
+      <td>4.05</td>
+      <td>23.10</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>14268</td>
+      <td>FPH</td>
+      <td>Fisher &amp; Paykel Healthcare Ltd</td>
+      <td>Sydney</td>
+      <td>Healthcare</td>
+      <td>Medical Instruments &amp; Supplies</td>
+      <td>Australia</td>
+      <td>FPH.NZ</td>
+      <td>Sydney:FPH</td>
+      <td>2000-01-01 21:00:00</td>
+      <td>-0.02</td>
+      <td>-0.02</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.01</td>
+      <td>0.10</td>
+      <td>0.10</td>
+      <td>0.10</td>
+      <td>0.12</td>
+      <td>6.45</td>
+      <td>29.58</td>
+      <td>296.0</td>
+      <td>1.315859e+10</td>
+      <td>5.770510e+08</td>
+      <td>5.745689e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>20.94</td>
+      <td>770173.0</td>
+      <td>4</td>
+      <td>13</td>
+      <td>17</td>
+      <td>15</td>
+      <td>7</td>
+      <td>20</td>
+      <td>0.64</td>
+      <td>719750.30</td>
+      <td>1.07</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>798.29</td>
+      <td>34.29</td>
+      <td>-38.93</td>
+      <td>20.28</td>
+      <td>3.25</td>
+      <td>2.71</td>
+      <td>0.57</td>
+      <td>2.45</td>
+      <td>-2.74</td>
+      <td>-18.87</td>
+      <td>-28.90</td>
+      <td>-26.42</td>
+      <td>-34.77</td>
+      <td>21.31</td>
+      <td>-1.76</td>
+      <td>22.34</td>
+      <td>-6.29</td>
+      <td>24.55</td>
+      <td>-14.70</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>7420</td>
+      <td>ORI</td>
+      <td>Orica Ltd</td>
+      <td>Sydney</td>
+      <td>Basic Materials</td>
+      <td>Specialty Chemicals</td>
+      <td>Australia</td>
+      <td>ORI.AX</td>
+      <td>Sydney:ORI</td>
+      <td>1988-01-31 23:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.33</td>
+      <td>NaN</td>
+      <td>0.22</td>
+      <td>0.15</td>
+      <td>0.03</td>
+      <td>0.01</td>
+      <td>NaN</td>
+      <td>0.01</td>
+      <td>0.71</td>
+      <td>65.89</td>
+      <td>216.0</td>
+      <td>6.627150e+09</td>
+      <td>4.088310e+08</td>
+      <td>4.043508e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>16.30</td>
+      <td>1342948.0</td>
+      <td>62</td>
+      <td>85</td>
+      <td>77</td>
+      <td>62</td>
+      <td>48</td>
+      <td>54</td>
+      <td>1.43</td>
+      <td>1260805.66</td>
+      <td>1.07</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>320.71</td>
+      <td>16.55</td>
+      <td>-1.51</td>
+      <td>11.46</td>
+      <td>42.23</td>
+      <td>1.95</td>
+      <td>0.31</td>
+      <td>0.06</td>
+      <td>2.64</td>
+      <td>6.05</td>
+      <td>18.72</td>
+      <td>14.15</td>
+      <td>17.18</td>
+      <td>16.10</td>
+      <td>1.26</td>
+      <td>15.84</td>
+      <td>2.92</td>
+      <td>15.21</td>
+      <td>7.18</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>8720</td>
+      <td>WOW</td>
+      <td>Woolworths Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Defensive</td>
+      <td>Grocery Stores</td>
+      <td>Australia</td>
+      <td>WOW.AX</td>
+      <td>Sydney:WOW</td>
+      <td>1993-08-02 00:00:00</td>
+      <td>5.22</td>
+      <td>5.30</td>
+      <td>NaN</td>
+      <td>-0.24</td>
+      <td>NaN</td>
+      <td>0.17</td>
+      <td>0.08</td>
+      <td>-0.12</td>
+      <td>-0.11</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>0.28</td>
+      <td>28.18</td>
+      <td>316.0</td>
+      <td>4.671087e+10</td>
+      <td>1.213900e+09</td>
+      <td>1.206007e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>39.05</td>
+      <td>2859159.0</td>
+      <td>69</td>
+      <td>78</td>
+      <td>64</td>
+      <td>50</td>
+      <td>93</td>
+      <td>56</td>
+      <td>1.29</td>
+      <td>2687499.56</td>
+      <td>1.06</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>448.75</td>
+      <td>42.66</td>
+      <td>-8.46</td>
+      <td>33.45</td>
+      <td>16.74</td>
+      <td>1.13</td>
+      <td>0.44</td>
+      <td>1.14</td>
+      <td>2.17</td>
+      <td>8.29</td>
+      <td>10.69</td>
+      <td>-3.39</td>
+      <td>4.36</td>
+      <td>38.21</td>
+      <td>2.19</td>
+      <td>37.47</td>
+      <td>4.22</td>
+      <td>35.99</td>
+      <td>8.51</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>8583</td>
+      <td>HLS</td>
+      <td>Healius Ltd</td>
+      <td>Sydney</td>
+      <td>Healthcare</td>
+      <td>Diagnostics &amp; Research</td>
+      <td>Australia</td>
+      <td>HLS.AX</td>
+      <td>Sydney:HLS</td>
+      <td>1998-08-03 00:00:00</td>
+      <td>2.71</td>
+      <td>2.86</td>
+      <td>NaN</td>
+      <td>1.54</td>
+      <td>NaN</td>
+      <td>-0.54</td>
+      <td>0.43</td>
+      <td>0.33</td>
+      <td>0.28</td>
+      <td>NaN</td>
+      <td>-0.17</td>
+      <td>0.99</td>
+      <td>33.96</td>
+      <td>84.0</td>
+      <td>2.558584e+09</td>
+      <td>5.788650e+08</td>
+      <td>5.676181e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>4.56</td>
+      <td>2195910.0</td>
+      <td>56</td>
+      <td>55</td>
+      <td>57</td>
+      <td>10</td>
+      <td>30</td>
+      <td>43</td>
+      <td>0.85</td>
+      <td>2068405.74</td>
+      <td>1.06</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>274.42</td>
+      <td>5.54</td>
+      <td>-17.69</td>
+      <td>3.89</td>
+      <td>17.22</td>
+      <td>1.95</td>
+      <td>0.09</td>
+      <td>3.64</td>
+      <td>4.11</td>
+      <td>4.11</td>
+      <td>-2.77</td>
+      <td>-1.08</td>
+      <td>10.95</td>
+      <td>4.42</td>
+      <td>3.14</td>
+      <td>4.39</td>
+      <td>3.83</td>
+      <td>4.37</td>
+      <td>4.45</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>7738</td>
+      <td>PMV</td>
+      <td>Premier Investments Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Cyclical</td>
+      <td>Apparel Retail</td>
+      <td>Australia</td>
+      <td>PMV.AX</td>
+      <td>Sydney:PMV</td>
+      <td>1999-01-03 23:00:00</td>
+      <td>-0.13</td>
+      <td>-0.13</td>
+      <td>NaN</td>
+      <td>-0.11</td>
+      <td>NaN</td>
+      <td>-0.04</td>
+      <td>-0.03</td>
+      <td>-0.01</td>
+      <td>-0.00</td>
+      <td>NaN</td>
+      <td>0.03</td>
+      <td>47.42</td>
+      <td>25.86</td>
+      <td>80.0</td>
+      <td>4.164027e+09</td>
+      <td>1.589930e+08</td>
+      <td>9.276606e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>26.44</td>
+      <td>203266.0</td>
+      <td>24</td>
+      <td>50</td>
+      <td>46</td>
+      <td>34</td>
+      <td>21</td>
+      <td>24</td>
+      <td>0.68</td>
+      <td>192660.02</td>
+      <td>1.06</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>481.50</td>
+      <td>32.62</td>
+      <td>-18.95</td>
+      <td>24.17</td>
+      <td>9.39</td>
+      <td>2.43</td>
+      <td>0.73</td>
+      <td>1.23</td>
+      <td>1.97</td>
+      <td>-4.48</td>
+      <td>-5.13</td>
+      <td>-13.88</td>
+      <td>-1.82</td>
+      <td>26.34</td>
+      <td>0.39</td>
+      <td>26.83</td>
+      <td>-1.45</td>
+      <td>27.69</td>
+      <td>-4.51</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>948097</td>
+      <td>PME</td>
+      <td>Pro Medicus Ltd</td>
+      <td>Sydney</td>
+      <td>Healthcare</td>
+      <td>Health Information Services</td>
+      <td>Australia</td>
+      <td>PME.AX</td>
+      <td>Sydney:PME</td>
+      <td>2000-10-09 23:00:00</td>
+      <td>0.53</td>
+      <td>0.53</td>
+      <td>NaN</td>
+      <td>0.45</td>
+      <td>NaN</td>
+      <td>0.29</td>
+      <td>0.40</td>
+      <td>0.37</td>
+      <td>0.37</td>
+      <td>NaN</td>
+      <td>0.25</td>
+      <td>56.14</td>
+      <td>11.64</td>
+      <td>103.0</td>
+      <td>5.075659e+09</td>
+      <td>1.043730e+08</td>
+      <td>4.540166e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>51.61</td>
+      <td>228135.0</td>
+      <td>76</td>
+      <td>78</td>
+      <td>62</td>
+      <td>49</td>
+      <td>19</td>
+      <td>7</td>
+      <td>1.33</td>
+      <td>218200.56</td>
+      <td>1.05</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>6.0</td>
+      <td>208.07</td>
+      <td>70.00</td>
+      <td>-26.27</td>
+      <td>39.25</td>
+      <td>31.49</td>
+      <td>2.97</td>
+      <td>1.65</td>
+      <td>5.20</td>
+      <td>6.41</td>
+      <td>11.59</td>
+      <td>10.16</td>
+      <td>-0.90</td>
+      <td>8.04</td>
+      <td>48.85</td>
+      <td>5.64</td>
+      <td>47.95</td>
+      <td>7.63</td>
+      <td>46.50</td>
+      <td>10.98</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>10547</td>
+      <td>WHC</td>
+      <td>Whitehaven Coal Ltd</td>
+      <td>Sydney</td>
+      <td>Energy</td>
+      <td>Thermal Coal</td>
+      <td>Australia</td>
+      <td>WHC.AX</td>
+      <td>Sydney:WHC</td>
+      <td>2007-06-01 00:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>14.22</td>
+      <td>NaN</td>
+      <td>-0.13</td>
+      <td>1.06</td>
+      <td>NaN</td>
+      <td>1.56</td>
+      <td>NaN</td>
+      <td>-0.02</td>
+      <td>14.07</td>
+      <td>25.95</td>
+      <td>91.0</td>
+      <td>4.642526e+09</td>
+      <td>1.015870e+09</td>
+      <td>8.945643e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>4.80</td>
+      <td>14282620.0</td>
+      <td>86</td>
+      <td>96</td>
+      <td>95</td>
+      <td>58</td>
+      <td>96</td>
+      <td>95</td>
+      <td>1.83</td>
+      <td>13677320.40</td>
+      <td>1.04</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>65.40</td>
+      <td>4.94</td>
+      <td>-2.83</td>
+      <td>1.15</td>
+      <td>316.49</td>
+      <td>3.26</td>
+      <td>0.17</td>
+      <td>3.00</td>
+      <td>6.90</td>
+      <td>20.30</td>
+      <td>67.25</td>
+      <td>44.58</td>
+      <td>258.21</td>
+      <td>4.54</td>
+      <td>5.83</td>
+      <td>4.34</td>
+      <td>10.58</td>
+      <td>3.85</td>
+      <td>24.53</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>13822</td>
+      <td>FBU</td>
+      <td>Fletcher Building Ltd</td>
+      <td>Sydney</td>
+      <td>Basic Materials</td>
+      <td>Building Materials</td>
+      <td>Australia</td>
+      <td>FBU.NZ</td>
+      <td>Sydney:FBU</td>
+      <td>2001-01-04 21:00:00</td>
+      <td>0.41</td>
+      <td>0.44</td>
+      <td>NaN</td>
+      <td>0.17</td>
+      <td>NaN</td>
+      <td>0.11</td>
+      <td>0.02</td>
+      <td>0.03</td>
+      <td>0.03</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>2.55</td>
+      <td>26.95</td>
+      <td>132.0</td>
+      <td>5.057950e+09</td>
+      <td>7.968940e+08</td>
+      <td>8.100114e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>5.75</td>
+      <td>1283372.0</td>
+      <td>29</td>
+      <td>34</td>
+      <td>34</td>
+      <td>11</td>
+      <td>9</td>
+      <td>14</td>
+      <td>0.84</td>
+      <td>1232040.38</td>
+      <td>1.04</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>657.46</td>
+      <td>7.64</td>
+      <td>-24.74</td>
+      <td>5.64</td>
+      <td>1.95</td>
+      <td>1.98</td>
+      <td>0.10</td>
+      <td>0.70</td>
+      <td>0.88</td>
+      <td>-2.87</td>
+      <td>-14.18</td>
+      <td>-15.69</td>
+      <td>-13.66</td>
+      <td>5.74</td>
+      <td>0.24</td>
+      <td>5.80</td>
+      <td>-0.84</td>
+      <td>5.98</td>
+      <td>-3.82</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>947573</td>
+      <td>BAP</td>
+      <td>Bapcor Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Cyclical</td>
+      <td>Specialty Retail</td>
+      <td>Australia</td>
+      <td>BAP.AX</td>
+      <td>Sydney:BAP</td>
+      <td>2014-04-24 00:00:00</td>
+      <td>-0.15</td>
+      <td>-0.15</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>0.02</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>3.33</td>
+      <td>52.49</td>
+      <td>85.0</td>
+      <td>2.219761e+09</td>
+      <td>3.394130e+08</td>
+      <td>3.296171e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>6.78</td>
+      <td>1502507.0</td>
+      <td>69</td>
+      <td>50</td>
+      <td>38</td>
+      <td>35</td>
+      <td>20</td>
+      <td>41</td>
+      <td>0.99</td>
+      <td>1442793.98</td>
+      <td>1.04</td>
+      <td>True</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>228.46</td>
+      <td>8.60</td>
+      <td>-21.16</td>
+      <td>5.97</td>
+      <td>13.57</td>
+      <td>1.96</td>
+      <td>0.15</td>
+      <td>2.73</td>
+      <td>6.94</td>
+      <td>8.48</td>
+      <td>-5.44</td>
+      <td>-9.96</td>
+      <td>-18.02</td>
+      <td>6.50</td>
+      <td>4.31</td>
+      <td>6.43</td>
+      <td>5.51</td>
+      <td>6.49</td>
+      <td>4.53</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>8712</td>
+      <td>WES</td>
+      <td>Wesfarmers Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Cyclical</td>
+      <td>Home Improvement Retail</td>
+      <td>Australia</td>
+      <td>WES.AX</td>
+      <td>Sydney:WES</td>
+      <td>1988-01-31 23:00:00</td>
+      <td>-0.13</td>
+      <td>-0.13</td>
+      <td>NaN</td>
+      <td>-0.10</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>-0.00</td>
+      <td>-0.01</td>
+      <td>0.01</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>0.99</td>
+      <td>29.84</td>
+      <td>334.0</td>
+      <td>5.481299e+10</td>
+      <td>1.134140e+09</td>
+      <td>1.123245e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>49.33</td>
+      <td>2340692.0</td>
+      <td>32</td>
+      <td>40</td>
+      <td>37</td>
+      <td>4</td>
+      <td>55</td>
+      <td>42</td>
+      <td>0.92</td>
+      <td>2253834.66</td>
+      <td>1.04</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>498.37</td>
+      <td>67.20</td>
+      <td>-26.59</td>
+      <td>47.44</td>
+      <td>3.97</td>
+      <td>1.50</td>
+      <td>0.84</td>
+      <td>1.69</td>
+      <td>1.82</td>
+      <td>-1.99</td>
+      <td>-10.60</td>
+      <td>-9.98</td>
+      <td>-12.13</td>
+      <td>48.86</td>
+      <td>0.96</td>
+      <td>49.29</td>
+      <td>0.09</td>
+      <td>50.00</td>
+      <td>-1.34</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>8718</td>
+      <td>WOR</td>
+      <td>Worley Ltd</td>
+      <td>Sydney</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas Equipment &amp; Services</td>
+      <td>Australia</td>
+      <td>WOR.AX</td>
+      <td>Sydney:WOR</td>
+      <td>2002-11-27 23:00:00</td>
+      <td>2.59</td>
+      <td>2.58</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>NaN</td>
+      <td>0.26</td>
+      <td>-0.04</td>
+      <td>NaN</td>
+      <td>-0.00</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>29.72</td>
+      <td>23.46</td>
+      <td>117.0</td>
+      <td>7.313537e+09</td>
+      <td>5.246440e+08</td>
+      <td>3.679991e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>14.16</td>
+      <td>2067249.0</td>
+      <td>76</td>
+      <td>85</td>
+      <td>82</td>
+      <td>46</td>
+      <td>55</td>
+      <td>49</td>
+      <td>1.72</td>
+      <td>2044772.60</td>
+      <td>1.01</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>179.97</td>
+      <td>14.19</td>
+      <td>-0.21</td>
+      <td>8.92</td>
+      <td>58.74</td>
+      <td>2.13</td>
+      <td>0.29</td>
+      <td>0.93</td>
+      <td>1.58</td>
+      <td>11.58</td>
+      <td>18.99</td>
+      <td>32.71</td>
+      <td>38.15</td>
+      <td>13.83</td>
+      <td>2.37</td>
+      <td>13.43</td>
+      <td>5.40</td>
+      <td>12.65</td>
+      <td>11.98</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>1089246</td>
+      <td>CXL</td>
+      <td>Calix Ltd</td>
+      <td>Sydney</td>
+      <td>Basic Materials</td>
+      <td>Specialty Chemicals</td>
+      <td>Australia</td>
+      <td>CXL.AX</td>
+      <td>Sydney:CXL</td>
+      <td>2018-07-20 00:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-2.00</td>
+      <td>NaN</td>
+      <td>0.17</td>
+      <td>0.07</td>
+      <td>0.29</td>
+      <td>0.22</td>
+      <td>NaN</td>
+      <td>0.31</td>
+      <td>26.70</td>
+      <td>25.59</td>
+      <td>19.0</td>
+      <td>1.443434e+09</td>
+      <td>1.614580e+08</td>
+      <td>1.103870e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>9.23</td>
+      <td>636012.0</td>
+      <td>89</td>
+      <td>90</td>
+      <td>96</td>
+      <td>62</td>
+      <td>48</td>
+      <td>54</td>
+      <td>2.85</td>
+      <td>635905.10</td>
+      <td>1.00</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>173.59</td>
+      <td>9.65</td>
+      <td>-4.35</td>
+      <td>2.27</td>
+      <td>306.61</td>
+      <td>6.16</td>
+      <td>0.48</td>
+      <td>0.76</td>
+      <td>8.59</td>
+      <td>26.44</td>
+      <td>31.86</td>
+      <td>75.81</td>
+      <td>313.90</td>
+      <td>8.59</td>
+      <td>7.41</td>
+      <td>8.02</td>
+      <td>15.11</td>
+      <td>6.82</td>
+      <td>35.27</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>7694</td>
+      <td>BWP</td>
+      <td>BWP Trust</td>
+      <td>Sydney</td>
+      <td>Real Estate</td>
+      <td>REIT—Industrial</td>
+      <td>Australia</td>
+      <td>BWP.AX</td>
+      <td>Sydney:BWP</td>
+      <td>1998-10-01 00:00:00</td>
+      <td>1.42</td>
+      <td>1.42</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>-0.00</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>0.03</td>
+      <td>25.30</td>
+      <td>28.01</td>
+      <td>100.0</td>
+      <td>2.620927e+09</td>
+      <td>6.423840e+08</td>
+      <td>4.795524e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>4.13</td>
+      <td>916677.0</td>
+      <td>44</td>
+      <td>66</td>
+      <td>57</td>
+      <td>18</td>
+      <td>51</td>
+      <td>51</td>
+      <td>0.99</td>
+      <td>957419.70</td>
+      <td>0.96</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>500.88</td>
+      <td>4.39</td>
+      <td>-5.92</td>
+      <td>3.82</td>
+      <td>8.12</td>
+      <td>1.32</td>
+      <td>0.06</td>
+      <td>0.49</td>
+      <td>1.72</td>
+      <td>0.49</td>
+      <td>1.23</td>
+      <td>-1.67</td>
+      <td>0.98</td>
+      <td>4.08</td>
+      <td>1.12</td>
+      <td>4.07</td>
+      <td>1.54</td>
+      <td>4.03</td>
+      <td>2.43</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>8668</td>
+      <td>TCL</td>
+      <td>Transurban Group</td>
+      <td>Sydney</td>
+      <td>Industrials</td>
+      <td>Infrastructure Operations</td>
+      <td>Australia</td>
+      <td>TCL.AX</td>
+      <td>Sydney:TCL</td>
+      <td>1996-04-01 00:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.50</td>
+      <td>NaN</td>
+      <td>3.50</td>
+      <td>-0.09</td>
+      <td>0.06</td>
+      <td>0.05</td>
+      <td>NaN</td>
+      <td>0.23</td>
+      <td>0.05</td>
+      <td>47.54</td>
+      <td>351.0</td>
+      <td>4.197661e+10</td>
+      <td>3.070710e+09</td>
+      <td>3.068526e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>13.76</td>
+      <td>5055074.0</td>
+      <td>48</td>
+      <td>70</td>
+      <td>58</td>
+      <td>13</td>
+      <td>55</td>
+      <td>40</td>
+      <td>1.69</td>
+      <td>5307988.40</td>
+      <td>0.95</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>578.10</td>
+      <td>14.93</td>
+      <td>-7.84</td>
+      <td>12.03</td>
+      <td>14.38</td>
+      <td>NaN</td>
+      <td>0.20</td>
+      <td>0.07</td>
+      <td>0.81</td>
+      <td>1.33</td>
+      <td>4.08</td>
+      <td>0.22</td>
+      <td>-3.11</td>
+      <td>13.63</td>
+      <td>0.96</td>
+      <td>13.44</td>
+      <td>2.37</td>
+      <td>13.07</td>
+      <td>5.29</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>960730</td>
+      <td>IDX</td>
+      <td>Integral Diagnostics Ltd</td>
+      <td>Sydney</td>
+      <td>Healthcare</td>
+      <td>Diagnostics &amp; Research</td>
+      <td>Australia</td>
+      <td>IDX.AX</td>
+      <td>Sydney:IDX</td>
+      <td>2015-10-20 23:00:00</td>
+      <td>-0.49</td>
+      <td>-0.50</td>
+      <td>NaN</td>
+      <td>-0.26</td>
+      <td>NaN</td>
+      <td>0.50</td>
+      <td>0.06</td>
+      <td>0.08</td>
+      <td>0.08</td>
+      <td>NaN</td>
+      <td>0.15</td>
+      <td>11.27</td>
+      <td>23.08</td>
+      <td>49.0</td>
+      <td>9.208655e+08</td>
+      <td>2.290710e+08</td>
+      <td>1.799347e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>4.18</td>
+      <td>775016.0</td>
+      <td>74</td>
+      <td>50</td>
+      <td>38</td>
+      <td>61</td>
+      <td>43</td>
+      <td>23</td>
+      <td>1.40</td>
+      <td>814608.58</td>
+      <td>0.95</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>220.88</td>
+      <td>5.55</td>
+      <td>-24.68</td>
+      <td>3.41</td>
+      <td>22.58</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>3.21</td>
+      <td>5.29</td>
+      <td>10.29</td>
+      <td>-5.51</td>
+      <td>-11.25</td>
+      <td>-12.18</td>
+      <td>4.03</td>
+      <td>3.84</td>
+      <td>3.95</td>
+      <td>5.80</td>
+      <td>3.83</td>
+      <td>9.04</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>623</td>
+      <td>CSL</td>
+      <td>CSL Ltd</td>
+      <td>Sydney</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>Australia</td>
+      <td>CSL.AX</td>
+      <td>Sydney:CSL</td>
+      <td>1994-06-01 00:00:00</td>
+      <td>-0.03</td>
+      <td>-0.03</td>
+      <td>NaN</td>
+      <td>-0.05</td>
+      <td>NaN</td>
+      <td>0.19</td>
+      <td>0.05</td>
+      <td>0.06</td>
+      <td>0.04</td>
+      <td>NaN</td>
+      <td>0.22</td>
+      <td>0.05</td>
+      <td>28.65</td>
+      <td>473.0</td>
+      <td>1.276280e+11</td>
+      <td>4.817060e+08</td>
+      <td>4.782409e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>264.50</td>
+      <td>857150.0</td>
+      <td>31</td>
+      <td>54</td>
+      <td>46</td>
+      <td>12</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0.91</td>
+      <td>915167.64</td>
+      <td>0.94</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>522.57</td>
+      <td>319.78</td>
+      <td>-17.29</td>
+      <td>240.10</td>
+      <td>10.16</td>
+      <td>NaN</td>
+      <td>3.84</td>
+      <td>0.82</td>
+      <td>-0.37</td>
+      <td>-2.38</td>
+      <td>-3.37</td>
+      <td>-10.13</td>
+      <td>-3.04</td>
+      <td>264.51</td>
+      <td>-0.01</td>
+      <td>264.91</td>
+      <td>-0.16</td>
+      <td>262.66</td>
+      <td>0.70</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>638</td>
+      <td>GMG</td>
+      <td>Goodman Group</td>
+      <td>Sydney</td>
+      <td>Real Estate</td>
+      <td>REIT—Diversified</td>
+      <td>Australia</td>
+      <td>GMG.AX</td>
+      <td>Sydney:GMG</td>
+      <td>2005-02-01 23:00:00</td>
+      <td>0.92</td>
+      <td>0.91</td>
+      <td>NaN</td>
+      <td>0.27</td>
+      <td>NaN</td>
+      <td>0.14</td>
+      <td>0.51</td>
+      <td>-0.08</td>
+      <td>0.12</td>
+      <td>NaN</td>
+      <td>0.13</td>
+      <td>3.18</td>
+      <td>52.79</td>
+      <td>400.0</td>
+      <td>4.233386e+10</td>
+      <td>1.868220e+09</td>
+      <td>1.621262e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>22.91</td>
+      <td>3680309.0</td>
+      <td>50</td>
+      <td>60</td>
+      <td>66</td>
+      <td>18</td>
+      <td>51</td>
+      <td>51</td>
+      <td>1.40</td>
+      <td>3947164.80</td>
+      <td>0.93</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>410.74</td>
+      <td>26.96</td>
+      <td>-15.02</td>
+      <td>18.22</td>
+      <td>25.74</td>
+      <td>1.78</td>
+      <td>0.45</td>
+      <td>1.55</td>
+      <td>-1.16</td>
+      <td>1.87</td>
+      <td>-0.39</td>
+      <td>8.32</td>
+      <td>19.57</td>
+      <td>22.80</td>
+      <td>0.48</td>
+      <td>22.73</td>
+      <td>0.78</td>
+      <td>22.59</td>
+      <td>1.43</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>8664</td>
+      <td>TAH</td>
+      <td>Tabcorp Holdings Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Cyclical</td>
+      <td>Gambling</td>
+      <td>Australia</td>
+      <td>TAH.AX</td>
+      <td>Sydney:TAH</td>
+      <td>1994-09-01 00:00:00</td>
+      <td>-0.05</td>
+      <td>-0.09</td>
+      <td>NaN</td>
+      <td>-0.06</td>
+      <td>NaN</td>
+      <td>0.24</td>
+      <td>0.02</td>
+      <td>-0.01</td>
+      <td>0.02</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>0.94</td>
+      <td>35.87</td>
+      <td>232.0</td>
+      <td>1.197464e+10</td>
+      <td>2.225770e+09</td>
+      <td>2.189560e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>5.42</td>
+      <td>4681716.0</td>
+      <td>70</td>
+      <td>72</td>
+      <td>68</td>
+      <td>42</td>
+      <td>45</td>
+      <td>44</td>
+      <td>0.98</td>
+      <td>5056301.88</td>
+      <td>0.93</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>433.04</td>
+      <td>5.53</td>
+      <td>-1.99</td>
+      <td>4.57</td>
+      <td>18.60</td>
+      <td>1.62</td>
+      <td>0.09</td>
+      <td>0.18</td>
+      <td>0.74</td>
+      <td>8.84</td>
+      <td>5.45</td>
+      <td>3.63</td>
+      <td>11.52</td>
+      <td>5.38</td>
+      <td>0.68</td>
+      <td>5.30</td>
+      <td>2.22</td>
+      <td>5.16</td>
+      <td>5.01</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>8635</td>
+      <td>SHL</td>
+      <td>Sonic Healthcare Ltd</td>
+      <td>Sydney</td>
+      <td>Healthcare</td>
+      <td>Diagnostics &amp; Research</td>
+      <td>Australia</td>
+      <td>SHL.AX</td>
+      <td>Sydney:SHL</td>
+      <td>1999-01-03 23:00:00</td>
+      <td>0.22</td>
+      <td>0.21</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>NaN</td>
+      <td>-0.40</td>
+      <td>0.07</td>
+      <td>0.04</td>
+      <td>0.05</td>
+      <td>NaN</td>
+      <td>-0.11</td>
+      <td>4.59</td>
+      <td>40.71</td>
+      <td>348.0</td>
+      <td>1.705074e+10</td>
+      <td>4.800320e+08</td>
+      <td>4.557811e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>36.37</td>
+      <td>1403587.0</td>
+      <td>55</td>
+      <td>43</td>
+      <td>45</td>
+      <td>10</td>
+      <td>30</td>
+      <td>43</td>
+      <td>0.81</td>
+      <td>1525917.30</td>
+      <td>0.92</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>298.69</td>
+      <td>46.95</td>
+      <td>-22.53</td>
+      <td>32.12</td>
+      <td>13.23</td>
+      <td>1.69</td>
+      <td>0.64</td>
+      <td>2.45</td>
+      <td>3.24</td>
+      <td>3.53</td>
+      <td>-9.28</td>
+      <td>-6.48</td>
+      <td>-0.30</td>
+      <td>35.51</td>
+      <td>2.42</td>
+      <td>35.30</td>
+      <td>3.04</td>
+      <td>35.34</td>
+      <td>2.92</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>1099590</td>
+      <td>COL</td>
+      <td>Coles Group Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Defensive</td>
+      <td>Grocery Stores</td>
+      <td>Australia</td>
+      <td>COL.AX</td>
+      <td>Sydney:COL</td>
+      <td>2018-11-20 23:00:00</td>
+      <td>-0.02</td>
+      <td>-0.02</td>
+      <td>NaN</td>
+      <td>0.01</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>0.01</td>
+      <td>0.15</td>
+      <td>0.02</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>5.18</td>
+      <td>27.77</td>
+      <td>277.0</td>
+      <td>2.445191e+10</td>
+      <td>1.336170e+09</td>
+      <td>1.263671e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>18.58</td>
+      <td>2790604.0</td>
+      <td>59</td>
+      <td>80</td>
+      <td>71</td>
+      <td>50</td>
+      <td>93</td>
+      <td>56</td>
+      <td>1.31</td>
+      <td>3106593.40</td>
+      <td>0.90</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>406.77</td>
+      <td>18.94</td>
+      <td>-1.90</td>
+      <td>15.37</td>
+      <td>20.88</td>
+      <td>1.23</td>
+      <td>0.24</td>
+      <td>1.31</td>
+      <td>0.76</td>
+      <td>4.74</td>
+      <td>12.67</td>
+      <td>4.91</td>
+      <td>17.30</td>
+      <td>18.30</td>
+      <td>1.52</td>
+      <td>18.07</td>
+      <td>2.81</td>
+      <td>17.52</td>
+      <td>6.03</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>621</td>
+      <td>AMC</td>
+      <td>Amcor PLC</td>
+      <td>Sydney</td>
+      <td>Consumer Cyclical</td>
+      <td>Packaging &amp; Containers</td>
+      <td>Australia</td>
+      <td>AMC.AX</td>
+      <td>Sydney:AMC</td>
+      <td>1988-01-31 23:00:00</td>
+      <td>0.03</td>
+      <td>0.06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.13</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>21.25</td>
+      <td>108.0</td>
+      <td>2.390180e+10</td>
+      <td>1.513730e+09</td>
+      <td>3.010879e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>15.83</td>
+      <td>2495235.0</td>
+      <td>48</td>
+      <td>46</td>
+      <td>52</td>
+      <td>50</td>
+      <td>45</td>
+      <td>29</td>
+      <td>1.12</td>
+      <td>2780704.36</td>
+      <td>0.90</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>1082.78</td>
+      <td>17.90</td>
+      <td>-11.56</td>
+      <td>14.63</td>
+      <td>8.20</td>
+      <td>1.19</td>
+      <td>0.20</td>
+      <td>0.57</td>
+      <td>1.15</td>
+      <td>1.47</td>
+      <td>-7.37</td>
+      <td>-1.62</td>
+      <td>3.94</td>
+      <td>15.63</td>
+      <td>1.25</td>
+      <td>15.51</td>
+      <td>2.09</td>
+      <td>15.61</td>
+      <td>1.44</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>636</td>
+      <td>ANZ</td>
+      <td>Australia and New Zealand Banking Group Ltd</td>
+      <td>Sydney</td>
+      <td>Financial Services</td>
+      <td>Banks—Diversified</td>
+      <td>Australia</td>
+      <td>ANZ.AX</td>
+      <td>Sydney:ANZ</td>
+      <td>1988-01-31 23:00:00</td>
+      <td>0.58</td>
+      <td>0.60</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>0.19</td>
+      <td>0.04</td>
+      <td>0.02</td>
+      <td>NaN</td>
+      <td>0.05</td>
+      <td>0.25</td>
+      <td>22.03</td>
+      <td>370.0</td>
+      <td>7.729835e+10</td>
+      <td>2.819050e+09</td>
+      <td>2.808258e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>27.91</td>
+      <td>5554678.0</td>
+      <td>47</td>
+      <td>54</td>
+      <td>53</td>
+      <td>31</td>
+      <td>53</td>
+      <td>46</td>
+      <td>1.32</td>
+      <td>6207519.78</td>
+      <td>0.89</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>452.40</td>
+      <td>29.64</td>
+      <td>-5.84</td>
+      <td>24.65</td>
+      <td>13.23</td>
+      <td>1.14</td>
+      <td>0.36</td>
+      <td>0.58</td>
+      <td>0.76</td>
+      <td>1.20</td>
+      <td>-2.92</td>
+      <td>-1.17</td>
+      <td>-2.34</td>
+      <td>27.59</td>
+      <td>1.17</td>
+      <td>27.43</td>
+      <td>1.76</td>
+      <td>27.13</td>
+      <td>2.88</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>14232</td>
+      <td>AIA</td>
+      <td>Auckland International Airport Ltd</td>
+      <td>Sydney</td>
+      <td>Industrials</td>
+      <td>Airports &amp; Air Services</td>
+      <td>Australia</td>
+      <td>AIA.NZ</td>
+      <td>Sydney:AIA</td>
+      <td>2000-01-01 21:00:00</td>
+      <td>2.74</td>
+      <td>2.74</td>
+      <td>NaN</td>
+      <td>0.33</td>
+      <td>NaN</td>
+      <td>5.50</td>
+      <td>-0.02</td>
+      <td>0.23</td>
+      <td>0.03</td>
+      <td>NaN</td>
+      <td>0.97</td>
+      <td>18.11</td>
+      <td>20.83</td>
+      <td>244.0</td>
+      <td>1.128081e+10</td>
+      <td>1.472690e+09</td>
+      <td>1.205511e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>7.17</td>
+      <td>734023.0</td>
+      <td>35</td>
+      <td>62</td>
+      <td>58</td>
+      <td>13</td>
+      <td>55</td>
+      <td>40</td>
+      <td>1.52</td>
+      <td>824225.72</td>
+      <td>0.89</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1462.60</td>
+      <td>8.00</td>
+      <td>-10.37</td>
+      <td>6.42</td>
+      <td>11.68</td>
+      <td>1.73</td>
+      <td>0.13</td>
+      <td>1.70</td>
+      <td>2.58</td>
+      <td>-1.10</td>
+      <td>0.00</td>
+      <td>-3.37</td>
+      <td>1.85</td>
+      <td>7.06</td>
+      <td>1.51</td>
+      <td>7.04</td>
+      <td>1.86</td>
+      <td>6.88</td>
+      <td>4.21</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>39194</td>
+      <td>WEB</td>
+      <td>Webjet Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Cyclical</td>
+      <td>Travel Services</td>
+      <td>Australia</td>
+      <td>WEB.AX</td>
+      <td>Sydney:WEB</td>
+      <td>1999-04-28 00:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.90</td>
+      <td>-0.49</td>
+      <td>-0.49</td>
+      <td>-0.49</td>
+      <td>0.29</td>
+      <td>9.69</td>
+      <td>44.20</td>
+      <td>68.0</td>
+      <td>2.225983e+09</td>
+      <td>3.805100e+08</td>
+      <td>3.488874e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>5.96</td>
+      <td>2050872.0</td>
+      <td>61</td>
+      <td>78</td>
+      <td>71</td>
+      <td>42</td>
+      <td>45</td>
+      <td>44</td>
+      <td>1.30</td>
+      <td>2354454.22</td>
+      <td>0.87</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>148.18</td>
+      <td>6.89</td>
+      <td>-13.50</td>
+      <td>4.36</td>
+      <td>36.70</td>
+      <td>2.45</td>
+      <td>0.18</td>
+      <td>2.58</td>
+      <td>12.45</td>
+      <td>5.49</td>
+      <td>10.99</td>
+      <td>-7.74</td>
+      <td>11.61</td>
+      <td>5.65</td>
+      <td>5.40</td>
+      <td>5.59</td>
+      <td>6.68</td>
+      <td>5.61</td>
+      <td>6.24</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>7689</td>
+      <td>ANN</td>
+      <td>Ansell Ltd</td>
+      <td>Sydney</td>
+      <td>Healthcare</td>
+      <td>Medical Instruments &amp; Supplies</td>
+      <td>Australia</td>
+      <td>ANN.AX</td>
+      <td>Sydney:ANN</td>
+      <td>1988-01-31 23:00:00</td>
+      <td>-0.27</td>
+      <td>-0.26</td>
+      <td>NaN</td>
+      <td>-0.32</td>
+      <td>NaN</td>
+      <td>0.07</td>
+      <td>0.08</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>NaN</td>
+      <td>-0.02</td>
+      <td>0.36</td>
+      <td>57.02</td>
+      <td>162.0</td>
+      <td>3.218910e+09</td>
+      <td>1.278360e+08</td>
+      <td>1.247035e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>26.14</td>
+      <td>600511.0</td>
+      <td>55</td>
+      <td>23</td>
+      <td>21</td>
+      <td>15</td>
+      <td>7</td>
+      <td>20</td>
+      <td>1.20</td>
+      <td>695454.70</td>
+      <td>0.86</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>179.31</td>
+      <td>44.07</td>
+      <td>-40.69</td>
+      <td>23.76</td>
+      <td>10.02</td>
+      <td>1.73</td>
+      <td>0.47</td>
+      <td>3.44</td>
+      <td>2.39</td>
+      <td>3.69</td>
+      <td>-21.90</td>
+      <td>-18.03</td>
+      <td>-32.66</td>
+      <td>25.54</td>
+      <td>2.34</td>
+      <td>25.52</td>
+      <td>2.42</td>
+      <td>25.55</td>
+      <td>2.30</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>101944</td>
+      <td>KLS</td>
+      <td>Kelsian Group Ltd</td>
+      <td>Sydney</td>
+      <td>Industrials</td>
+      <td>Railroads</td>
+      <td>Australia</td>
+      <td>SLK.AX</td>
+      <td>Sydney:KLS</td>
+      <td>2014-01-09 23:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.06</td>
+      <td>NaN</td>
+      <td>0.28</td>
+      <td>0.18</td>
+      <td>0.10</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>0.07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.605233e+09</td>
+      <td>2.183990e+08</td>
+      <td>7.849917e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7.58</td>
+      <td>240248.0</td>
+      <td>61</td>
+      <td>71</td>
+      <td>46</td>
+      <td>48</td>
+      <td>50</td>
+      <td>53</td>
+      <td>1.91</td>
+      <td>283918.22</td>
+      <td>0.85</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>276.49</td>
+      <td>10.64</td>
+      <td>-28.76</td>
+      <td>6.18</td>
+      <td>22.55</td>
+      <td>2.53</td>
+      <td>0.20</td>
+      <td>0.93</td>
+      <td>0.66</td>
+      <td>5.28</td>
+      <td>4.70</td>
+      <td>2.57</td>
+      <td>-26.76</td>
+      <td>7.49</td>
+      <td>1.20</td>
+      <td>7.34</td>
+      <td>3.26</td>
+      <td>7.16</td>
+      <td>5.86</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>624</td>
+      <td>MQG</td>
+      <td>Macquarie Group Ltd</td>
+      <td>Sydney</td>
+      <td>Financial Services</td>
+      <td>Capital Markets</td>
+      <td>Australia</td>
+      <td>MQG.AX</td>
+      <td>Sydney:MQG</td>
+      <td>1999-01-03 23:00:00</td>
+      <td>1.07</td>
+      <td>1.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.42</td>
+      <td>0.12</td>
+      <td>0.12</td>
+      <td>0.12</td>
+      <td>0.03</td>
+      <td>4.89</td>
+      <td>33.44</td>
+      <td>382.0</td>
+      <td>7.818033e+10</td>
+      <td>3.837460e+08</td>
+      <td>3.476444e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>206.67</td>
+      <td>726365.0</td>
+      <td>63</td>
+      <td>61</td>
+      <td>74</td>
+      <td>35</td>
+      <td>43</td>
+      <td>55</td>
+      <td>1.22</td>
+      <td>863738.32</td>
+      <td>0.84</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>402.49</td>
+      <td>217.32</td>
+      <td>-4.90</td>
+      <td>147.60</td>
+      <td>40.02</td>
+      <td>NaN</td>
+      <td>3.25</td>
+      <td>0.54</td>
+      <td>2.36</td>
+      <td>6.09</td>
+      <td>-0.09</td>
+      <td>8.53</td>
+      <td>32.14</td>
+      <td>204.24</td>
+      <td>1.19</td>
+      <td>201.35</td>
+      <td>2.64</td>
+      <td>193.70</td>
+      <td>6.70</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>7383</td>
+      <td>COH</td>
+      <td>Cochlear Ltd</td>
+      <td>Sydney</td>
+      <td>Healthcare</td>
+      <td>Medical Devices</td>
+      <td>Australia</td>
+      <td>COH.AX</td>
+      <td>Sydney:COH</td>
+      <td>1995-12-31 23:00:00</td>
+      <td>-0.28</td>
+      <td>-0.28</td>
+      <td>NaN</td>
+      <td>0.21</td>
+      <td>NaN</td>
+      <td>0.11</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>0.42</td>
+      <td>53.97</td>
+      <td>290.0</td>
+      <td>1.487243e+10</td>
+      <td>6.577520e+07</td>
+      <td>6.549410e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>227.20</td>
+      <td>134588.0</td>
+      <td>50</td>
+      <td>81</td>
+      <td>65</td>
+      <td>15</td>
+      <td>7</td>
+      <td>20</td>
+      <td>1.38</td>
+      <td>160462.12</td>
+      <td>0.84</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>408.16</td>
+      <td>257.76</td>
+      <td>-11.86</td>
+      <td>178.54</td>
+      <td>27.25</td>
+      <td>1.87</td>
+      <td>4.10</td>
+      <td>1.23</td>
+      <td>1.21</td>
+      <td>1.99</td>
+      <td>13.13</td>
+      <td>5.56</td>
+      <td>1.23</td>
+      <td>225.00</td>
+      <td>0.98</td>
+      <td>223.18</td>
+      <td>1.80</td>
+      <td>215.76</td>
+      <td>5.30</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>9260</td>
+      <td>ELD</td>
+      <td>Elders Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Defensive</td>
+      <td>Farm Products</td>
+      <td>Australia</td>
+      <td>ELD.AX</td>
+      <td>Sydney:ELD</td>
+      <td>1988-01-31 23:00:00</td>
+      <td>0.15</td>
+      <td>0.14</td>
+      <td>NaN</td>
+      <td>-0.06</td>
+      <td>NaN</td>
+      <td>-0.06</td>
+      <td>0.22</td>
+      <td>0.06</td>
+      <td>0.14</td>
+      <td>NaN</td>
+      <td>-0.01</td>
+      <td>4.13</td>
+      <td>39.85</td>
+      <td>79.0</td>
+      <td>2.220409e+09</td>
+      <td>1.564770e+08</td>
+      <td>1.502019e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>14.59</td>
+      <td>573282.0</td>
+      <td>65</td>
+      <td>87</td>
+      <td>80</td>
+      <td>22</td>
+      <td>24</td>
+      <td>16</td>
+      <td>0.94</td>
+      <td>685981.42</td>
+      <td>0.84</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>218.96</td>
+      <td>14.64</td>
+      <td>-0.34</td>
+      <td>10.73</td>
+      <td>35.97</td>
+      <td>1.98</td>
+      <td>0.31</td>
+      <td>1.89</td>
+      <td>9.29</td>
+      <td>6.89</td>
+      <td>23.43</td>
+      <td>26.54</td>
+      <td>15.98</td>
+      <td>13.91</td>
+      <td>4.91</td>
+      <td>13.50</td>
+      <td>8.09</td>
+      <td>12.67</td>
+      <td>15.13</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>7483</td>
+      <td>MMS</td>
+      <td>Mcmillan Shakespeare Ltd</td>
+      <td>Sydney</td>
+      <td>Industrials</td>
+      <td>Staffing &amp; Employment Services</td>
+      <td>Australia</td>
+      <td>MMS.AX</td>
+      <td>Sydney:MMS</td>
+      <td>2004-03-14 23:00:00</td>
+      <td>0.18</td>
+      <td>0.18</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>0.05</td>
+      <td>0.26</td>
+      <td>0.02</td>
+      <td>0.15</td>
+      <td>NaN</td>
+      <td>-0.04</td>
+      <td>19.05</td>
+      <td>46.04</td>
+      <td>72.0</td>
+      <td>9.216090e+08</td>
+      <td>7.738110e+07</td>
+      <td>6.523947e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>11.69</td>
+      <td>107738.0</td>
+      <td>36</td>
+      <td>57</td>
+      <td>47</td>
+      <td>45</td>
+      <td>32</td>
+      <td>31</td>
+      <td>0.83</td>
+      <td>129700.16</td>
+      <td>0.83</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>503.00</td>
+      <td>14.90</td>
+      <td>-21.54</td>
+      <td>10.67</td>
+      <td>9.56</td>
+      <td>2.26</td>
+      <td>0.26</td>
+      <td>0.26</td>
+      <td>0.43</td>
+      <td>-0.51</td>
+      <td>-1.76</td>
+      <td>-18.48</td>
+      <td>2.90</td>
+      <td>11.76</td>
+      <td>-0.61</td>
+      <td>11.76</td>
+      <td>-0.58</td>
+      <td>11.77</td>
+      <td>-0.66</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>7274</td>
+      <td>JBH</td>
+      <td>JB Hi-Fi Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Cyclical</td>
+      <td>Specialty Retail</td>
+      <td>Australia</td>
+      <td>JBH.AX</td>
+      <td>Sydney:JBH</td>
+      <td>2003-10-23 00:00:00</td>
+      <td>-0.09</td>
+      <td>-0.09</td>
+      <td>NaN</td>
+      <td>-0.05</td>
+      <td>NaN</td>
+      <td>-0.12</td>
+      <td>-0.02</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.01</td>
+      <td>1.08</td>
+      <td>53.27</td>
+      <td>162.0</td>
+      <td>5.860182e+09</td>
+      <td>1.093340e+08</td>
+      <td>1.133899e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>51.70</td>
+      <td>473492.0</td>
+      <td>61</td>
+      <td>70</td>
+      <td>63</td>
+      <td>34</td>
+      <td>21</td>
+      <td>24</td>
+      <td>1.45</td>
+      <td>571392.82</td>
+      <td>0.83</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>198.44</td>
+      <td>56.85</td>
+      <td>-9.06</td>
+      <td>43.12</td>
+      <td>19.90</td>
+      <td>2.04</td>
+      <td>1.14</td>
+      <td>1.23</td>
+      <td>-0.19</td>
+      <td>5.66</td>
+      <td>3.73</td>
+      <td>11.45</td>
+      <td>-2.08</td>
+      <td>51.69</td>
+      <td>0.02</td>
+      <td>51.81</td>
+      <td>-0.21</td>
+      <td>51.32</td>
+      <td>0.73</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>8658</td>
+      <td>SUL</td>
+      <td>Super Retail Group Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Cyclical</td>
+      <td>Specialty Retail</td>
+      <td>Australia</td>
+      <td>SUL.AX</td>
+      <td>Sydney:SUL</td>
+      <td>2004-06-01 00:00:00</td>
+      <td>-0.36</td>
+      <td>-0.36</td>
+      <td>NaN</td>
+      <td>-0.30</td>
+      <td>NaN</td>
+      <td>-0.06</td>
+      <td>-0.04</td>
+      <td>-0.07</td>
+      <td>-0.04</td>
+      <td>NaN</td>
+      <td>-0.02</td>
+      <td>31.49</td>
+      <td>34.32</td>
+      <td>102.0</td>
+      <td>2.405047e+09</td>
+      <td>2.258260e+08</td>
+      <td>1.520445e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>10.87</td>
+      <td>807797.0</td>
+      <td>63</td>
+      <td>38</td>
+      <td>35</td>
+      <td>34</td>
+      <td>21</td>
+      <td>24</td>
+      <td>0.77</td>
+      <td>987058.34</td>
+      <td>0.82</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>154.04</td>
+      <td>13.73</td>
+      <td>-20.83</td>
+      <td>9.73</td>
+      <td>11.72</td>
+      <td>2.01</td>
+      <td>0.26</td>
+      <td>1.68</td>
+      <td>4.32</td>
+      <td>6.15</td>
+      <td>-11.84</td>
+      <td>-15.01</td>
+      <td>-14.54</td>
+      <td>10.61</td>
+      <td>2.42</td>
+      <td>10.56</td>
+      <td>2.90</td>
+      <td>10.93</td>
+      <td>-0.55</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>7528</td>
+      <td>BEN</td>
+      <td>Bendigo And Adelaide Bank Ltd</td>
+      <td>Sydney</td>
+      <td>Financial Services</td>
+      <td>Banks—Regional</td>
+      <td>Australia</td>
+      <td>BEN.AX</td>
+      <td>Sydney:BEN</td>
+      <td>1993-02-28 23:00:00</td>
+      <td>0.32</td>
+      <td>0.34</td>
+      <td>NaN</td>
+      <td>0.14</td>
+      <td>NaN</td>
+      <td>-0.01</td>
+      <td>0.09</td>
+      <td>0.05</td>
+      <td>0.03</td>
+      <td>NaN</td>
+      <td>0.03</td>
+      <td>0.73</td>
+      <td>17.86</td>
+      <td>111.0</td>
+      <td>5.728735e+09</td>
+      <td>5.589010e+08</td>
+      <td>5.546029e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>10.56</td>
+      <td>2098842.0</td>
+      <td>58</td>
+      <td>81</td>
+      <td>69</td>
+      <td>31</td>
+      <td>53</td>
+      <td>46</td>
+      <td>3.01</td>
+      <td>2573279.12</td>
+      <td>0.82</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>215.52</td>
+      <td>11.27</td>
+      <td>-6.30</td>
+      <td>8.43</td>
+      <td>25.27</td>
+      <td>1.20</td>
+      <td>0.14</td>
+      <td>0.19</td>
+      <td>0.76</td>
+      <td>4.55</td>
+      <td>13.18</td>
+      <td>11.39</td>
+      <td>1.25</td>
+      <td>10.44</td>
+      <td>1.18</td>
+      <td>10.29</td>
+      <td>2.65</td>
+      <td>9.95</td>
+      <td>6.18</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>32468</td>
+      <td>CAR</td>
+      <td>Carsales.Com Ltd</td>
+      <td>Sydney</td>
+      <td>Communication Services</td>
+      <td>Internet Content &amp; Information</td>
+      <td>Australia</td>
+      <td>CAR.AX</td>
+      <td>Sydney:CAR</td>
+      <td>2009-09-10 00:00:00</td>
+      <td>0.22</td>
+      <td>0.08</td>
+      <td>NaN</td>
+      <td>0.07</td>
+      <td>NaN</td>
+      <td>0.18</td>
+      <td>0.22</td>
+      <td>0.12</td>
+      <td>0.18</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>7.34</td>
+      <td>33.00</td>
+      <td>139.0</td>
+      <td>5.706098e+09</td>
+      <td>2.826200e+08</td>
+      <td>2.616381e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>20.47</td>
+      <td>584911.0</td>
+      <td>22</td>
+      <td>40</td>
+      <td>44</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0.85</td>
+      <td>719237.86</td>
+      <td>0.81</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>363.77</td>
+      <td>26.67</td>
+      <td>-23.25</td>
+      <td>16.72</td>
+      <td>22.43</td>
+      <td>NaN</td>
+      <td>0.48</td>
+      <td>1.69</td>
+      <td>2.61</td>
+      <td>-5.23</td>
+      <td>-10.69</td>
+      <td>-16.04</td>
+      <td>3.61</td>
+      <td>20.26</td>
+      <td>1.04</td>
+      <td>20.41</td>
+      <td>0.27</td>
+      <td>20.73</td>
+      <td>-1.26</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>7714</td>
+      <td>IGO</td>
+      <td>IGO Ltd</td>
+      <td>Sydney</td>
+      <td>Basic Materials</td>
+      <td>Other Industrial Metals &amp; Mining</td>
+      <td>Australia</td>
+      <td>IGO.AX</td>
+      <td>Sydney:IGO</td>
+      <td>2002-01-03 23:00:00</td>
+      <td>0.68</td>
+      <td>0.33</td>
+      <td>NaN</td>
+      <td>2.24</td>
+      <td>NaN</td>
+      <td>1.29</td>
+      <td>0.21</td>
+      <td>-0.19</td>
+      <td>0.01</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>12.10</td>
+      <td>43.49</td>
+      <td>157.0</td>
+      <td>1.057903e+10</td>
+      <td>7.572680e+08</td>
+      <td>6.652129e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>14.14</td>
+      <td>3201340.0</td>
+      <td>83</td>
+      <td>77</td>
+      <td>89</td>
+      <td>81</td>
+      <td>74</td>
+      <td>75</td>
+      <td>1.64</td>
+      <td>4153559.00</td>
+      <td>0.77</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>160.15</td>
+      <td>15.26</td>
+      <td>-7.34</td>
+      <td>6.91</td>
+      <td>104.63</td>
+      <td>2.97</td>
+      <td>0.52</td>
+      <td>0.28</td>
+      <td>1.00</td>
+      <td>17.64</td>
+      <td>9.70</td>
+      <td>49.16</td>
+      <td>103.45</td>
+      <td>13.98</td>
+      <td>1.13</td>
+      <td>13.70</td>
+      <td>3.21</td>
+      <td>12.77</td>
+      <td>10.69</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>7625</td>
+      <td>PPT</td>
+      <td>Perpetual Ltd</td>
+      <td>Sydney</td>
+      <td>Financial Services</td>
+      <td>Asset Management</td>
+      <td>Australia</td>
+      <td>PPT.AX</td>
+      <td>Sydney:PPT</td>
+      <td>1989-11-30 23:00:00</td>
+      <td>1.12</td>
+      <td>1.05</td>
+      <td>NaN</td>
+      <td>0.20</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>0.34</td>
+      <td>NaN</td>
+      <td>0.19</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>2.49</td>
+      <td>29.56</td>
+      <td>87.0</td>
+      <td>1.810859e+09</td>
+      <td>5.671340e+07</td>
+      <td>5.456746e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>32.26</td>
+      <td>149011.0</td>
+      <td>16</td>
+      <td>37</td>
+      <td>38</td>
+      <td>27</td>
+      <td>36</td>
+      <td>35</td>
+      <td>0.76</td>
+      <td>193714.12</td>
+      <td>0.77</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>281.69</td>
+      <td>42.45</td>
+      <td>-24.00</td>
+      <td>31.25</td>
+      <td>3.23</td>
+      <td>2.05</td>
+      <td>0.84</td>
+      <td>0.16</td>
+      <td>-0.06</td>
+      <td>-7.91</td>
+      <td>-12.05</td>
+      <td>-13.88</td>
+      <td>-4.56</td>
+      <td>32.35</td>
+      <td>-0.28</td>
+      <td>33.06</td>
+      <td>-2.43</td>
+      <td>34.49</td>
+      <td>-6.47</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>7778</td>
+      <td>ARB</td>
+      <td>ARB Corporation Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Parts</td>
+      <td>Australia</td>
+      <td>ARB.AX</td>
+      <td>Sydney:ARB</td>
+      <td>1999-01-03 23:00:00</td>
+      <td>0.28</td>
+      <td>0.26</td>
+      <td>NaN</td>
+      <td>0.14</td>
+      <td>NaN</td>
+      <td>-0.02</td>
+      <td>0.26</td>
+      <td>0.16</td>
+      <td>0.17</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>11.03</td>
+      <td>35.84</td>
+      <td>93.0</td>
+      <td>3.219652e+09</td>
+      <td>8.167560e+07</td>
+      <td>7.366971e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>40.20</td>
+      <td>223233.0</td>
+      <td>23</td>
+      <td>35</td>
+      <td>40</td>
+      <td>46</td>
+      <td>47</td>
+      <td>41</td>
+      <td>0.99</td>
+      <td>292886.06</td>
+      <td>0.76</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>251.53</td>
+      <td>55.00</td>
+      <td>-26.91</td>
+      <td>36.20</td>
+      <td>11.05</td>
+      <td>2.60</td>
+      <td>1.18</td>
+      <td>0.78</td>
+      <td>0.55</td>
+      <td>-4.76</td>
+      <td>-12.89</td>
+      <td>-19.65</td>
+      <td>6.26</td>
+      <td>39.85</td>
+      <td>0.87</td>
+      <td>40.21</td>
+      <td>-0.01</td>
+      <td>40.95</td>
+      <td>-1.83</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>7220</td>
+      <td>JHX</td>
+      <td>James Hardie Industries PLC</td>
+      <td>Sydney</td>
+      <td>Basic Materials</td>
+      <td>Building Materials</td>
+      <td>Australia</td>
+      <td>JHX.AX</td>
+      <td>Sydney:JHX</td>
+      <td>1999-07-26 00:00:00</td>
+      <td>0.97</td>
+      <td>1.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.27</td>
+      <td>0.26</td>
+      <td>0.22</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.16</td>
+      <td>5.62</td>
+      <td>54.80</td>
+      <td>281.0</td>
+      <td>1.819250e+10</td>
+      <td>4.453490e+08</td>
+      <td>4.431304e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>40.95</td>
+      <td>1222445.0</td>
+      <td>10</td>
+      <td>26</td>
+      <td>33</td>
+      <td>17</td>
+      <td>16</td>
+      <td>8</td>
+      <td>0.73</td>
+      <td>1607336.04</td>
+      <td>0.76</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>275.69</td>
+      <td>58.07</td>
+      <td>-29.48</td>
+      <td>39.49</td>
+      <td>3.70</td>
+      <td>2.59</td>
+      <td>1.16</td>
+      <td>0.15</td>
+      <td>2.94</td>
+      <td>-11.56</td>
+      <td>-19.55</td>
+      <td>-18.21</td>
+      <td>-6.80</td>
+      <td>40.71</td>
+      <td>0.58</td>
+      <td>41.56</td>
+      <td>-1.47</td>
+      <td>43.88</td>
+      <td>-6.67</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>633</td>
+      <td>ASX</td>
+      <td>ASX Ltd</td>
+      <td>Sydney</td>
+      <td>Financial Services</td>
+      <td>Financial Data &amp; Stock Exchanges</td>
+      <td>Australia</td>
+      <td>ASX.AX</td>
+      <td>Sydney:ASX</td>
+      <td>1999-01-03 23:00:00</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>NaN</td>
+      <td>0.16</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>0.04</td>
+      <td>0.05</td>
+      <td>0.06</td>
+      <td>NaN</td>
+      <td>0.05</td>
+      <td>1.35</td>
+      <td>47.09</td>
+      <td>287.0</td>
+      <td>1.591932e+10</td>
+      <td>1.935950e+08</td>
+      <td>1.912980e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>82.72</td>
+      <td>318619.0</td>
+      <td>45</td>
+      <td>42</td>
+      <td>59</td>
+      <td>27</td>
+      <td>36</td>
+      <td>35</td>
+      <td>0.83</td>
+      <td>423036.42</td>
+      <td>0.75</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>452.20</td>
+      <td>95.83</td>
+      <td>-13.68</td>
+      <td>70.95</td>
+      <td>16.59</td>
+      <td>1.43</td>
+      <td>1.14</td>
+      <td>0.42</td>
+      <td>0.04</td>
+      <td>0.76</td>
+      <td>-9.74</td>
+      <td>3.34</td>
+      <td>14.22</td>
+      <td>82.37</td>
+      <td>0.43</td>
+      <td>82.05</td>
+      <td>0.82</td>
+      <td>81.88</td>
+      <td>1.02</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>41354</td>
+      <td>NWS</td>
+      <td>News Corp B DRC</td>
+      <td>Sydney</td>
+      <td>Communication Services</td>
+      <td>Broadcasting</td>
+      <td>Australia</td>
+      <td>NWS.AX</td>
+      <td>Sydney:NWS</td>
+      <td>2000-01-02 23:00:00</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>NaN</td>
+      <td>0.36</td>
+      <td>-0.27</td>
+      <td>0.10</td>
+      <td>0.13</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>0.00</td>
+      <td>10.04</td>
+      <td>18.0</td>
+      <td>1.731425e+10</td>
+      <td>5.865260e+08</td>
+      <td>5.087566e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>29.43</td>
+      <td>99833.0</td>
+      <td>26</td>
+      <td>47</td>
+      <td>43</td>
+      <td>16</td>
+      <td>43</td>
+      <td>99</td>
+      <td>1.22</td>
+      <td>134115.24</td>
+      <td>0.74</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>3793.43</td>
+      <td>35.23</td>
+      <td>-16.46</td>
+      <td>28.18</td>
+      <td>4.44</td>
+      <td>1.22</td>
+      <td>0.44</td>
+      <td>0.20</td>
+      <td>1.06</td>
+      <td>-3.89</td>
+      <td>-7.04</td>
+      <td>-10.47</td>
+      <td>-10.14</td>
+      <td>29.36</td>
+      <td>0.24</td>
+      <td>29.60</td>
+      <td>-0.56</td>
+      <td>30.26</td>
+      <td>-2.76</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>7710</td>
+      <td>ORG</td>
+      <td>Origin Energy Ltd</td>
+      <td>Sydney</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas Integrated</td>
+      <td>Australia</td>
+      <td>ORG.AX</td>
+      <td>Sydney:ORG</td>
+      <td>1999-02-21 23:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.85</td>
+      <td>NaN</td>
+      <td>0.67</td>
+      <td>0.07</td>
+      <td>-0.04</td>
+      <td>0.02</td>
+      <td>NaN</td>
+      <td>0.03</td>
+      <td>1.11</td>
+      <td>31.32</td>
+      <td>220.0</td>
+      <td>1.153593e+10</td>
+      <td>1.761210e+09</td>
+      <td>1.740447e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>6.68</td>
+      <td>5451203.0</td>
+      <td>77</td>
+      <td>84</td>
+      <td>86</td>
+      <td>47</td>
+      <td>30</td>
+      <td>29</td>
+      <td>1.74</td>
+      <td>7355409.40</td>
+      <td>0.74</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>236.62</td>
+      <td>6.70</td>
+      <td>-0.30</td>
+      <td>3.87</td>
+      <td>72.61</td>
+      <td>1.98</td>
+      <td>0.13</td>
+      <td>1.37</td>
+      <td>2.61</td>
+      <td>12.84</td>
+      <td>17.19</td>
+      <td>31.24</td>
+      <td>64.94</td>
+      <td>6.54</td>
+      <td>2.10</td>
+      <td>6.40</td>
+      <td>4.44</td>
+      <td>6.10</td>
+      <td>9.53</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>631</td>
+      <td>BXB</td>
+      <td>Brambles Ltd</td>
+      <td>Sydney</td>
+      <td>Industrials</td>
+      <td>Specialty Business Services</td>
+      <td>Australia</td>
+      <td>BXB.AX</td>
+      <td>Sydney:BXB</td>
+      <td>1988-01-31 23:00:00</td>
+      <td>0.04</td>
+      <td>0.08</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>0.09</td>
+      <td>0.12</td>
+      <td>0.08</td>
+      <td>NaN</td>
+      <td>0.05</td>
+      <td>0.33</td>
+      <td>46.13</td>
+      <td>357.0</td>
+      <td>1.444173e+10</td>
+      <td>1.435560e+09</td>
+      <td>1.406999e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>10.02</td>
+      <td>3364545.0</td>
+      <td>52</td>
+      <td>53</td>
+      <td>47</td>
+      <td>53</td>
+      <td>41</td>
+      <td>28</td>
+      <td>1.07</td>
+      <td>4632007.08</td>
+      <td>0.73</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>303.76</td>
+      <td>12.70</td>
+      <td>-21.10</td>
+      <td>9.26</td>
+      <td>8.21</td>
+      <td>1.68</td>
+      <td>0.17</td>
+      <td>1.01</td>
+      <td>1.31</td>
+      <td>2.77</td>
+      <td>-3.65</td>
+      <td>-1.28</td>
+      <td>-6.00</td>
+      <td>9.92</td>
+      <td>0.98</td>
+      <td>9.87</td>
+      <td>1.48</td>
+      <td>9.86</td>
+      <td>1.64</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>14329</td>
+      <td>PNI</td>
+      <td>Pinnacle Investment Management Group Ltd</td>
+      <td>Sydney</td>
+      <td>Financial Services</td>
+      <td>Asset Management</td>
+      <td>Australia</td>
+      <td>PNI.AX</td>
+      <td>Sydney:PNI</td>
+      <td>2007-06-19 00:00:00</td>
+      <td>0.32</td>
+      <td>0.26</td>
+      <td>NaN</td>
+      <td>0.19</td>
+      <td>NaN</td>
+      <td>0.16</td>
+      <td>0.50</td>
+      <td>0.13</td>
+      <td>0.32</td>
+      <td>NaN</td>
+      <td>0.16</td>
+      <td>35.13</td>
+      <td>9.34</td>
+      <td>55.0</td>
+      <td>1.891829e+09</td>
+      <td>1.995600e+08</td>
+      <td>1.082743e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>9.53</td>
+      <td>530728.0</td>
+      <td>18</td>
+      <td>15</td>
+      <td>23</td>
+      <td>17</td>
+      <td>16</td>
+      <td>8</td>
+      <td>0.68</td>
+      <td>745563.10</td>
+      <td>0.71</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>145.22</td>
+      <td>19.29</td>
+      <td>-50.60</td>
+      <td>8.97</td>
+      <td>6.24</td>
+      <td>NaN</td>
+      <td>0.33</td>
+      <td>0.95</td>
+      <td>-1.24</td>
+      <td>-6.93</td>
+      <td>-27.31</td>
+      <td>-40.47</td>
+      <td>-3.15</td>
+      <td>9.68</td>
+      <td>-1.53</td>
+      <td>9.91</td>
+      <td>-3.80</td>
+      <td>10.17</td>
+      <td>-6.27</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>962367</td>
+      <td>MP1</td>
+      <td>Megaport Ltd</td>
+      <td>Sydney</td>
+      <td>Technology</td>
+      <td>Software—Infrastructure</td>
+      <td>Australia</td>
+      <td>MP1.AX</td>
+      <td>Sydney:MP1</td>
+      <td>2015-12-16 23:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.22</td>
+      <td>NaN</td>
+      <td>0.76</td>
+      <td>0.42</td>
+      <td>0.43</td>
+      <td>0.45</td>
+      <td>NaN</td>
+      <td>0.41</td>
+      <td>7.63</td>
+      <td>44.63</td>
+      <td>73.0</td>
+      <td>1.986998e+09</td>
+      <td>1.579490e+08</td>
+      <td>1.465754e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>12.76</td>
+      <td>593390.0</td>
+      <td>32</td>
+      <td>12</td>
+      <td>26</td>
+      <td>5</td>
+      <td>4</td>
+      <td>6</td>
+      <td>1.02</td>
+      <td>833956.54</td>
+      <td>0.71</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>175.76</td>
+      <td>22.00</td>
+      <td>-42.00</td>
+      <td>11.87</td>
+      <td>7.50</td>
+      <td>3.23</td>
+      <td>0.48</td>
+      <td>1.03</td>
+      <td>2.00</td>
+      <td>-1.85</td>
+      <td>-30.16</td>
+      <td>-25.81</td>
+      <td>-0.62</td>
+      <td>12.73</td>
+      <td>0.21</td>
+      <td>13.03</td>
+      <td>-2.09</td>
+      <td>13.35</td>
+      <td>-4.42</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>7788</td>
+      <td>NAB</td>
+      <td>National Australia Bank Ltd</td>
+      <td>Sydney</td>
+      <td>Financial Services</td>
+      <td>Banks—Diversified</td>
+      <td>Australia</td>
+      <td>NAB.AX</td>
+      <td>Sydney:NAB</td>
+      <td>1988-01-31 23:00:00</td>
+      <td>1.53</td>
+      <td>1.44</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>0.23</td>
+      <td>0.05</td>
+      <td>0.06</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>0.41</td>
+      <td>28.46</td>
+      <td>344.0</td>
+      <td>1.073627e+11</td>
+      <td>3.268270e+09</td>
+      <td>3.266456e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>33.27</td>
+      <td>4372381.0</td>
+      <td>64</td>
+      <td>81</td>
+      <td>77</td>
+      <td>31</td>
+      <td>53</td>
+      <td>46</td>
+      <td>1.75</td>
+      <td>6204613.26</td>
+      <td>0.70</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>526.46</td>
+      <td>33.70</td>
+      <td>-1.28</td>
+      <td>25.08</td>
+      <td>32.66</td>
+      <td>1.05</td>
+      <td>0.38</td>
+      <td>0.06</td>
+      <td>0.94</td>
+      <td>6.60</td>
+      <td>13.12</td>
+      <td>15.56</td>
+      <td>26.07</td>
+      <td>32.87</td>
+      <td>1.21</td>
+      <td>32.25</td>
+      <td>3.16</td>
+      <td>30.83</td>
+      <td>7.90</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>627</td>
+      <td>IAG</td>
+      <td>Insurance Australia Group Ltd</td>
+      <td>Sydney</td>
+      <td>Financial Services</td>
+      <td>Insurance—Property &amp; Casualty</td>
+      <td>Australia</td>
+      <td>IAG.AX</td>
+      <td>Sydney:IAG</td>
+      <td>2000-08-07 00:00:00</td>
+      <td>-0.78</td>
+      <td>-0.79</td>
+      <td>NaN</td>
+      <td>-0.36</td>
+      <td>NaN</td>
+      <td>0.55</td>
+      <td>0.02</td>
+      <td>0.20</td>
+      <td>0.33</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>0.21</td>
+      <td>35.46</td>
+      <td>242.0</td>
+      <td>1.072318e+10</td>
+      <td>2.465100e+09</td>
+      <td>2.360910e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>4.40</td>
+      <td>5007839.0</td>
+      <td>24</td>
+      <td>59</td>
+      <td>47</td>
+      <td>43</td>
+      <td>49</td>
+      <td>49</td>
+      <td>1.08</td>
+      <td>7177876.32</td>
+      <td>0.70</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>328.91</td>
+      <td>5.51</td>
+      <td>-20.15</td>
+      <td>4.17</td>
+      <td>5.52</td>
+      <td>1.67</td>
+      <td>0.07</td>
+      <td>0.46</td>
+      <td>1.62</td>
+      <td>-4.56</td>
+      <td>-0.90</td>
+      <td>-10.20</td>
+      <td>-6.18</td>
+      <td>4.36</td>
+      <td>0.85</td>
+      <td>4.40</td>
+      <td>0.10</td>
+      <td>4.51</td>
+      <td>-2.51</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>7385</td>
+      <td>FLT</td>
+      <td>Flight Centre Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Cyclical</td>
+      <td>Travel Services</td>
+      <td>Australia</td>
+      <td>FLT.AX</td>
+      <td>Sydney:FLT</td>
+      <td>1999-01-03 23:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.31</td>
+      <td>NaN</td>
+      <td>1.44</td>
+      <td>0.98</td>
+      <td>1.56</td>
+      <td>1.43</td>
+      <td>NaN</td>
+      <td>0.98</td>
+      <td>22.88</td>
+      <td>34.59</td>
+      <td>101.0</td>
+      <td>4.230642e+09</td>
+      <td>1.997470e+08</td>
+      <td>1.539434e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>21.84</td>
+      <td>1536000.0</td>
+      <td>81</td>
+      <td>86</td>
+      <td>79</td>
+      <td>42</td>
+      <td>45</td>
+      <td>44</td>
+      <td>1.49</td>
+      <td>2212231.20</td>
+      <td>0.69</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>69.59</td>
+      <td>25.28</td>
+      <td>-13.61</td>
+      <td>13.67</td>
+      <td>59.77</td>
+      <td>2.90</td>
+      <td>0.67</td>
+      <td>2.20</td>
+      <td>12.06</td>
+      <td>15.49</td>
+      <td>22.56</td>
+      <td>-3.62</td>
+      <td>20.46</td>
+      <td>20.62</td>
+      <td>5.94</td>
+      <td>19.98</td>
+      <td>9.32</td>
+      <td>19.40</td>
+      <td>12.59</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>7228</td>
+      <td>HVN</td>
+      <td>Harvey Norman Holdings Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Cyclical</td>
+      <td>Department Stores</td>
+      <td>Australia</td>
+      <td>HVN.AX</td>
+      <td>Sydney:HVN</td>
+      <td>1988-01-31 23:00:00</td>
+      <td>-0.07</td>
+      <td>-0.07</td>
+      <td>NaN</td>
+      <td>-0.20</td>
+      <td>NaN</td>
+      <td>-0.10</td>
+      <td>0.00</td>
+      <td>-0.06</td>
+      <td>-0.02</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>56.65</td>
+      <td>11.12</td>
+      <td>149.0</td>
+      <td>6.367111e+09</td>
+      <td>1.246010e+09</td>
+      <td>5.099656e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>5.14</td>
+      <td>2216142.0</td>
+      <td>25</td>
+      <td>66</td>
+      <td>53</td>
+      <td>4</td>
+      <td>55</td>
+      <td>42</td>
+      <td>0.93</td>
+      <td>3236509.14</td>
+      <td>0.68</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>157.57</td>
+      <td>5.93</td>
+      <td>-13.32</td>
+      <td>4.57</td>
+      <td>12.47</td>
+      <td>1.64</td>
+      <td>0.11</td>
+      <td>0.19</td>
+      <td>1.18</td>
+      <td>-4.28</td>
+      <td>1.78</td>
+      <td>5.54</td>
+      <td>-10.30</td>
+      <td>5.14</td>
+      <td>-0.06</td>
+      <td>5.22</td>
+      <td>-1.48</td>
+      <td>5.28</td>
+      <td>-2.58</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>985603</td>
+      <td>QAN</td>
+      <td>Qantas Airways Ltd</td>
+      <td>Sydney</td>
+      <td>Industrials</td>
+      <td>Airlines</td>
+      <td>Australia</td>
+      <td>QAN.AX</td>
+      <td>Sydney:QAN</td>
+      <td>1995-08-01 00:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.08</td>
+      <td>NaN</td>
+      <td>1.46</td>
+      <td>0.32</td>
+      <td>0.45</td>
+      <td>0.39</td>
+      <td>NaN</td>
+      <td>0.94</td>
+      <td>0.84</td>
+      <td>17.36</td>
+      <td>201.0</td>
+      <td>1.027892e+10</td>
+      <td>1.886040e+09</td>
+      <td>1.870158e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>5.43</td>
+      <td>5777106.0</td>
+      <td>62</td>
+      <td>75</td>
+      <td>68</td>
+      <td>2</td>
+      <td>25</td>
+      <td>21</td>
+      <td>1.12</td>
+      <td>8479940.88</td>
+      <td>0.68</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>220.54</td>
+      <td>5.97</td>
+      <td>-9.05</td>
+      <td>4.20</td>
+      <td>29.29</td>
+      <td>1.89</td>
+      <td>0.12</td>
+      <td>0.74</td>
+      <td>7.95</td>
+      <td>6.05</td>
+      <td>8.17</td>
+      <td>-5.57</td>
+      <td>8.38</td>
+      <td>5.25</td>
+      <td>3.42</td>
+      <td>5.17</td>
+      <td>5.03</td>
+      <td>5.13</td>
+      <td>5.80</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>1174890</td>
+      <td>EDV</td>
+      <td>Endeavour Group Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Defensive</td>
+      <td>Beverages—Wineries &amp; Distilleries</td>
+      <td>Australia</td>
+      <td>EDV.AX</td>
+      <td>Sydney:EDV</td>
+      <td>2021-06-24 00:00:00</td>
+      <td>0.16</td>
+      <td>0.16</td>
+      <td>NaN</td>
+      <td>0.12</td>
+      <td>NaN</td>
+      <td>0.11</td>
+      <td>-0.00</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>40.90</td>
+      <td>16.76</td>
+      <td>198.0</td>
+      <td>1.389800e+10</td>
+      <td>1.790980e+09</td>
+      <td>1.258965e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>7.87</td>
+      <td>2383618.0</td>
+      <td>77</td>
+      <td>86</td>
+      <td>79</td>
+      <td>50</td>
+      <td>93</td>
+      <td>56</td>
+      <td>1.67</td>
+      <td>3523409.94</td>
+      <td>0.68</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>357.31</td>
+      <td>7.92</td>
+      <td>-0.63</td>
+      <td>5.77</td>
+      <td>36.40</td>
+      <td>1.59</td>
+      <td>0.12</td>
+      <td>0.77</td>
+      <td>2.61</td>
+      <td>12.91</td>
+      <td>21.83</td>
+      <td>14.72</td>
+      <td>30.73</td>
+      <td>7.70</td>
+      <td>2.26</td>
+      <td>7.48</td>
+      <td>5.20</td>
+      <td>7.07</td>
+      <td>11.29</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>625</td>
+      <td>CBA</td>
+      <td>Commonwealth Bank Of Australia</td>
+      <td>Sydney</td>
+      <td>Financial Services</td>
+      <td>Banks—Diversified</td>
+      <td>Australia</td>
+      <td>CBA.AX</td>
+      <td>Sydney:CBA</td>
+      <td>1991-10-01 00:00:00</td>
+      <td>0.21</td>
+      <td>0.23</td>
+      <td>NaN</td>
+      <td>0.13</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>0.11</td>
+      <td>NaN</td>
+      <td>0.01</td>
+      <td>NaN</td>
+      <td>0.05</td>
+      <td>0.41</td>
+      <td>21.26</td>
+      <td>387.0</td>
+      <td>1.815697e+11</td>
+      <td>1.704880e+09</td>
+      <td>1.699886e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>107.24</td>
+      <td>1831268.0</td>
+      <td>46</td>
+      <td>73</td>
+      <td>70</td>
+      <td>31</td>
+      <td>53</td>
+      <td>46</td>
+      <td>1.25</td>
+      <td>2790454.74</td>
+      <td>0.66</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>609.18</td>
+      <td>110.19</td>
+      <td>-2.68</td>
+      <td>88.40</td>
+      <td>21.31</td>
+      <td>1.15</td>
+      <td>1.28</td>
+      <td>0.21</td>
+      <td>0.34</td>
+      <td>0.89</td>
+      <td>6.40</td>
+      <td>3.17</td>
+      <td>20.31</td>
+      <td>106.44</td>
+      <td>0.75</td>
+      <td>105.33</td>
+      <td>1.82</td>
+      <td>101.54</td>
+      <td>5.62</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>7560</td>
+      <td>EVT</td>
+      <td>Event Hospitality and Entertainment Ltd</td>
+      <td>Sydney</td>
+      <td>Communication Services</td>
+      <td>Entertainment</td>
+      <td>Australia</td>
+      <td>EVT.AX</td>
+      <td>Sydney:EVT</td>
+      <td>1988-01-31 23:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.59</td>
+      <td>NaN</td>
+      <td>3.23</td>
+      <td>0.57</td>
+      <td>0.52</td>
+      <td>0.66</td>
+      <td>NaN</td>
+      <td>0.37</td>
+      <td>35.08</td>
+      <td>45.98</td>
+      <td>42.0</td>
+      <td>2.292207e+09</td>
+      <td>1.611960e+08</td>
+      <td>1.053977e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>14.41</td>
+      <td>106729.0</td>
+      <td>36</td>
+      <td>67</td>
+      <td>67</td>
+      <td>47</td>
+      <td>40</td>
+      <td>55</td>
+      <td>0.85</td>
+      <td>163029.06</td>
+      <td>0.65</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>646.50</td>
+      <td>16.97</td>
+      <td>-15.09</td>
+      <td>11.31</td>
+      <td>27.41</td>
+      <td>2.97</td>
+      <td>0.34</td>
+      <td>1.48</td>
+      <td>2.56</td>
+      <td>-0.62</td>
+      <td>1.84</td>
+      <td>-7.63</td>
+      <td>14.00</td>
+      <td>14.21</td>
+      <td>1.42</td>
+      <td>14.21</td>
+      <td>1.40</td>
+      <td>14.29</td>
+      <td>0.83</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>7421</td>
+      <td>AFI</td>
+      <td>Australian Foundation Investment Company Ltd</td>
+      <td>Sydney</td>
+      <td>Financial Services</td>
+      <td>Asset Management</td>
+      <td>Australia</td>
+      <td>AFI.AX</td>
+      <td>Sydney:AFI</td>
+      <td>1998-12-31 23:00:00</td>
+      <td>0.74</td>
+      <td>0.73</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.68</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.03</td>
+      <td>1.23</td>
+      <td>2.0</td>
+      <td>1.024515e+10</td>
+      <td>1.229910e+09</td>
+      <td>1.206721e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>8.32</td>
+      <td>251780.0</td>
+      <td>49</td>
+      <td>51</td>
+      <td>60</td>
+      <td>27</td>
+      <td>36</td>
+      <td>35</td>
+      <td>0.53</td>
+      <td>386261.18</td>
+      <td>0.65</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3124.11</td>
+      <td>8.92</td>
+      <td>-6.73</td>
+      <td>7.43</td>
+      <td>11.98</td>
+      <td>1.14</td>
+      <td>0.09</td>
+      <td>0.24</td>
+      <td>0.73</td>
+      <td>1.71</td>
+      <td>-4.91</td>
+      <td>1.71</td>
+      <td>11.53</td>
+      <td>8.31</td>
+      <td>0.15</td>
+      <td>8.29</td>
+      <td>0.39</td>
+      <td>8.21</td>
+      <td>1.37</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>1072419</td>
+      <td>JLG</td>
+      <td>Johns Lyng Group Ltd</td>
+      <td>Sydney</td>
+      <td>Industrials</td>
+      <td>Engineering &amp; Construction</td>
+      <td>Australia</td>
+      <td>JLG.AX</td>
+      <td>Sydney:JLG</td>
+      <td>2017-10-25 23:00:00</td>
+      <td>0.22</td>
+      <td>0.20</td>
+      <td>NaN</td>
+      <td>1.00</td>
+      <td>NaN</td>
+      <td>0.25</td>
+      <td>0.34</td>
+      <td>0.39</td>
+      <td>0.46</td>
+      <td>NaN</td>
+      <td>0.20</td>
+      <td>34.89</td>
+      <td>24.97</td>
+      <td>51.0</td>
+      <td>2.301652e+09</td>
+      <td>2.591950e+08</td>
+      <td>1.686758e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>8.98</td>
+      <td>500845.0</td>
+      <td>51</td>
+      <td>68</td>
+      <td>89</td>
+      <td>44</td>
+      <td>92</td>
+      <td>56</td>
+      <td>1.86</td>
+      <td>777273.14</td>
+      <td>0.64</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>7.0</td>
+      <td>217.01</td>
+      <td>9.25</td>
+      <td>-2.92</td>
+      <td>3.91</td>
+      <td>129.67</td>
+      <td>NaN</td>
+      <td>0.28</td>
+      <td>0.11</td>
+      <td>2.63</td>
+      <td>2.28</td>
+      <td>2.39</td>
+      <td>46.44</td>
+      <td>127.64</td>
+      <td>8.84</td>
+      <td>1.62</td>
+      <td>8.68</td>
+      <td>3.44</td>
+      <td>8.21</td>
+      <td>9.39</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>7774</td>
+      <td>CCP</td>
+      <td>Credit Corp Group Ltd</td>
+      <td>Sydney</td>
+      <td>Financial Services</td>
+      <td>Credit Services</td>
+      <td>Australia</td>
+      <td>CCP.AX</td>
+      <td>Sydney:CCP</td>
+      <td>2000-09-03 23:00:00</td>
+      <td>0.19</td>
+      <td>0.19</td>
+      <td>NaN</td>
+      <td>0.12</td>
+      <td>NaN</td>
+      <td>0.14</td>
+      <td>0.07</td>
+      <td>0.06</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>0.12</td>
+      <td>4.30</td>
+      <td>34.54</td>
+      <td>61.0</td>
+      <td>1.999717e+09</td>
+      <td>6.783300e+07</td>
+      <td>6.577088e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>29.84</td>
+      <td>101359.0</td>
+      <td>21</td>
+      <td>31</td>
+      <td>46</td>
+      <td>2</td>
+      <td>6</td>
+      <td>4</td>
+      <td>0.79</td>
+      <td>157832.50</td>
+      <td>0.64</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>416.71</td>
+      <td>36.25</td>
+      <td>-17.68</td>
+      <td>25.99</td>
+      <td>14.81</td>
+      <td>2.06</td>
+      <td>0.70</td>
+      <td>1.22</td>
+      <td>0.34</td>
+      <td>-5.63</td>
+      <td>-15.23</td>
+      <td>-3.12</td>
+      <td>-2.07</td>
+      <td>29.73</td>
+      <td>0.36</td>
+      <td>30.06</td>
+      <td>-0.73</td>
+      <td>30.66</td>
+      <td>-2.68</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>7374</td>
+      <td>APE</td>
+      <td>AP Eagers Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto &amp; Truck Dealerships</td>
+      <td>Australia</td>
+      <td>APE.AX</td>
+      <td>Sydney:APE</td>
+      <td>1999-01-04 23:00:00</td>
+      <td>22.47</td>
+      <td>22.97</td>
+      <td>NaN</td>
+      <td>-0.08</td>
+      <td>NaN</td>
+      <td>-0.12</td>
+      <td>0.13</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>0.04</td>
+      <td>43.40</td>
+      <td>10.57</td>
+      <td>59.0</td>
+      <td>3.463457e+09</td>
+      <td>2.569330e+08</td>
+      <td>1.425131e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>13.61</td>
+      <td>383900.0</td>
+      <td>70</td>
+      <td>70</td>
+      <td>45</td>
+      <td>34</td>
+      <td>21</td>
+      <td>24</td>
+      <td>0.85</td>
+      <td>604236.26</td>
+      <td>0.64</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>235.86</td>
+      <td>17.50</td>
+      <td>-22.23</td>
+      <td>11.60</td>
+      <td>17.33</td>
+      <td>2.66</td>
+      <td>0.39</td>
+      <td>1.80</td>
+      <td>2.41</td>
+      <td>8.71</td>
+      <td>3.89</td>
+      <td>-8.04</td>
+      <td>-18.99</td>
+      <td>13.50</td>
+      <td>0.81</td>
+      <td>13.49</td>
+      <td>0.87</td>
+      <td>13.34</td>
+      <td>2.03</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>7786</td>
+      <td>AUB</td>
+      <td>AUB Group Ltd</td>
+      <td>Sydney</td>
+      <td>Financial Services</td>
+      <td>Insurance Brokers</td>
+      <td>Australia</td>
+      <td>AUB.AX</td>
+      <td>Sydney:AUB</td>
+      <td>2005-11-15 23:00:00</td>
+      <td>0.28</td>
+      <td>0.27</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>0.04</td>
+      <td>0.36</td>
+      <td>0.74</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>1.41</td>
+      <td>57.90</td>
+      <td>73.0</td>
+      <td>1.664161e+09</td>
+      <td>7.445910e+07</td>
+      <td>7.293488e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>22.57</td>
+      <td>158865.0</td>
+      <td>49</td>
+      <td>42</td>
+      <td>54</td>
+      <td>43</td>
+      <td>49</td>
+      <td>49</td>
+      <td>0.99</td>
+      <td>251638.10</td>
+      <td>0.63</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>289.84</td>
+      <td>26.99</td>
+      <td>-16.38</td>
+      <td>18.01</td>
+      <td>25.32</td>
+      <td>2.80</td>
+      <td>0.68</td>
+      <td>0.09</td>
+      <td>-1.40</td>
+      <td>1.62</td>
+      <td>-9.36</td>
+      <td>-1.83</td>
+      <td>13.42</td>
+      <td>22.59</td>
+      <td>-0.08</td>
+      <td>22.53</td>
+      <td>0.19</td>
+      <td>22.44</td>
+      <td>0.56</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>1184808</td>
+      <td>SQ2</td>
+      <td>Block Inc</td>
+      <td>Sydney</td>
+      <td>Technology</td>
+      <td>Software—Infrastructure</td>
+      <td>Australia</td>
+      <td>SQ2.AX</td>
+      <td>Sydney:SQ2</td>
+      <td>2022-01-19 23:00:00</td>
+      <td>-1.00</td>
+      <td>-1.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.29</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>6.64</td>
+      <td>67.0</td>
+      <td>9.812948e+10</td>
+      <td>5.800580e+08</td>
+      <td>5.143607e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>167.75</td>
+      <td>209277.0</td>
+      <td>36</td>
+      <td>51</td>
+      <td>48</td>
+      <td>5</td>
+      <td>4</td>
+      <td>6</td>
+      <td>1.10</td>
+      <td>332467.56</td>
+      <td>0.63</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>1547.10</td>
+      <td>196.00</td>
+      <td>-14.41</td>
+      <td>116.05</td>
+      <td>44.55</td>
+      <td>1.85</td>
+      <td>6.98</td>
+      <td>2.53</td>
+      <td>1.99</td>
+      <td>-0.67</td>
+      <td>-5.03</td>
+      <td>-5.03</td>
+      <td>-5.03</td>
+      <td>168.75</td>
+      <td>-0.59</td>
+      <td>169.60</td>
+      <td>-1.09</td>
+      <td>160.00</td>
+      <td>4.84</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>626</td>
+      <td>LLC</td>
+      <td>Lend Lease Group</td>
+      <td>Sydney</td>
+      <td>Real Estate</td>
+      <td>Real Estate—Diversified</td>
+      <td>Australia</td>
+      <td>LLC.AX</td>
+      <td>Sydney:LLC</td>
+      <td>1988-01-31 23:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.33</td>
+      <td>NaN</td>
+      <td>0.68</td>
+      <td>-0.08</td>
+      <td>0.03</td>
+      <td>-0.04</td>
+      <td>NaN</td>
+      <td>0.20</td>
+      <td>0.44</td>
+      <td>37.33</td>
+      <td>234.0</td>
+      <td>7.812206e+09</td>
+      <td>6.889070e+08</td>
+      <td>6.669182e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>11.48</td>
+      <td>1489844.0</td>
+      <td>59</td>
+      <td>75</td>
+      <td>61</td>
+      <td>20</td>
+      <td>39</td>
+      <td>30</td>
+      <td>1.67</td>
+      <td>2392066.72</td>
+      <td>0.62</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>278.80</td>
+      <td>12.86</td>
+      <td>-10.73</td>
+      <td>9.72</td>
+      <td>18.11</td>
+      <td>1.51</td>
+      <td>0.17</td>
+      <td>1.15</td>
+      <td>3.42</td>
+      <td>4.84</td>
+      <td>8.00</td>
+      <td>6.39</td>
+      <td>-9.39</td>
+      <td>11.24</td>
+      <td>2.18</td>
+      <td>11.06</td>
+      <td>3.76</td>
+      <td>10.69</td>
+      <td>7.42</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>86</th>
+      <td>961867</td>
+      <td>IEL</td>
+      <td>Idp Education Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Defensive</td>
+      <td>Education &amp; Training Services</td>
+      <td>Australia</td>
+      <td>IEL.AX</td>
+      <td>Sydney:IEL</td>
+      <td>2015-11-25 23:00:00</td>
+      <td>0.67</td>
+      <td>0.67</td>
+      <td>NaN</td>
+      <td>1.38</td>
+      <td>NaN</td>
+      <td>0.63</td>
+      <td>0.48</td>
+      <td>0.54</td>
+      <td>0.54</td>
+      <td>NaN</td>
+      <td>0.28</td>
+      <td>0.68</td>
+      <td>38.79</td>
+      <td>186.0</td>
+      <td>7.787841e+09</td>
+      <td>2.783360e+08</td>
+      <td>2.776732e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>27.90</td>
+      <td>696676.0</td>
+      <td>21</td>
+      <td>35</td>
+      <td>44</td>
+      <td>6</td>
+      <td>22</td>
+      <td>21</td>
+      <td>1.06</td>
+      <td>1136350.90</td>
+      <td>0.61</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>244.36</td>
+      <td>40.26</td>
+      <td>-30.70</td>
+      <td>20.17</td>
+      <td>38.32</td>
+      <td>2.74</td>
+      <td>0.83</td>
+      <td>1.45</td>
+      <td>-0.36</td>
+      <td>-5.58</td>
+      <td>-13.08</td>
+      <td>-23.71</td>
+      <td>16.15</td>
+      <td>28.17</td>
+      <td>-0.96</td>
+      <td>28.75</td>
+      <td>-2.95</td>
+      <td>28.74</td>
+      <td>-2.93</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>87</th>
+      <td>1174545</td>
+      <td>ACL</td>
+      <td>Australian Clinical Labs Ltd</td>
+      <td>Sydney</td>
+      <td>Healthcare</td>
+      <td>Diagnostics &amp; Research</td>
+      <td>Australia</td>
+      <td>ACL.AX</td>
+      <td>Sydney:ACL</td>
+      <td>2021-05-14 00:00:00</td>
+      <td>1.28</td>
+      <td>0.64</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.70</td>
+      <td>0.69</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.25</td>
+      <td>10.20</td>
+      <td>47.43</td>
+      <td>9.0</td>
+      <td>1.022245e+09</td>
+      <td>2.008340e+08</td>
+      <td>1.009232e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>5.29</td>
+      <td>291625.0</td>
+      <td>55</td>
+      <td>49</td>
+      <td>79</td>
+      <td>10</td>
+      <td>30</td>
+      <td>43</td>
+      <td>1.50</td>
+      <td>483670.88</td>
+      <td>0.60</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>208.66</td>
+      <td>6.39</td>
+      <td>-17.21</td>
+      <td>3.18</td>
+      <td>66.35</td>
+      <td>3.58</td>
+      <td>0.15</td>
+      <td>2.12</td>
+      <td>3.73</td>
+      <td>3.73</td>
+      <td>-5.70</td>
+      <td>21.61</td>
+      <td>54.68</td>
+      <td>5.13</td>
+      <td>3.15</td>
+      <td>5.07</td>
+      <td>4.26</td>
+      <td>4.95</td>
+      <td>6.87</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>101963</td>
+      <td>CKF</td>
+      <td>Collins Foods Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Cyclical</td>
+      <td>Restaurants</td>
+      <td>Australia</td>
+      <td>CKF.AX</td>
+      <td>Sydney:CKF</td>
+      <td>2011-08-04 00:00:00</td>
+      <td>0.60</td>
+      <td>0.60</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>0.16</td>
+      <td>0.16</td>
+      <td>0.16</td>
+      <td>0.08</td>
+      <td>8.62</td>
+      <td>30.84</td>
+      <td>63.0</td>
+      <td>1.248647e+09</td>
+      <td>1.166960e+08</td>
+      <td>1.062039e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>10.86</td>
+      <td>224594.0</td>
+      <td>58</td>
+      <td>39</td>
+      <td>43</td>
+      <td>42</td>
+      <td>45</td>
+      <td>44</td>
+      <td>0.89</td>
+      <td>381627.34</td>
+      <td>0.59</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>278.29</td>
+      <td>14.30</td>
+      <td>-24.06</td>
+      <td>10.07</td>
+      <td>7.85</td>
+      <td>2.40</td>
+      <td>0.27</td>
+      <td>1.31</td>
+      <td>1.12</td>
+      <td>4.52</td>
+      <td>-11.20</td>
+      <td>-17.10</td>
+      <td>-2.86</td>
+      <td>10.69</td>
+      <td>1.57</td>
+      <td>10.65</td>
+      <td>2.01</td>
+      <td>10.91</td>
+      <td>-0.47</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>7558</td>
+      <td>IRE</td>
+      <td>Iress Ltd</td>
+      <td>Sydney</td>
+      <td>Technology</td>
+      <td>Software—Application</td>
+      <td>Australia</td>
+      <td>IRE.AX</td>
+      <td>Sydney:IRE</td>
+      <td>2000-11-02 23:00:00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>0.14</td>
+      <td>0.12</td>
+      <td>0.07</td>
+      <td>0.07</td>
+      <td>0.08</td>
+      <td>0.05</td>
+      <td>6.54</td>
+      <td>67.32</td>
+      <td>81.0</td>
+      <td>2.188307e+09</td>
+      <td>1.896280e+08</td>
+      <td>1.780091e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>11.53</td>
+      <td>302822.0</td>
+      <td>31</td>
+      <td>52</td>
+      <td>54</td>
+      <td>38</td>
+      <td>11</td>
+      <td>11</td>
+      <td>0.75</td>
+      <td>516053.00</td>
+      <td>0.59</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>344.94</td>
+      <td>15.30</td>
+      <td>-24.64</td>
+      <td>9.80</td>
+      <td>17.65</td>
+      <td>2.44</td>
+      <td>0.34</td>
+      <td>1.68</td>
+      <td>-0.60</td>
+      <td>-2.29</td>
+      <td>-4.47</td>
+      <td>-2.37</td>
+      <td>16.11</td>
+      <td>11.54</td>
+      <td>-0.09</td>
+      <td>11.53</td>
+      <td>-0.04</td>
+      <td>11.33</td>
+      <td>1.78</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>8599</td>
+      <td>REA</td>
+      <td>Rea Group Ltd</td>
+      <td>Sydney</td>
+      <td>Communication Services</td>
+      <td>Internet Content &amp; Information</td>
+      <td>Australia</td>
+      <td>REA.AX</td>
+      <td>Sydney:REA</td>
+      <td>1999-11-30 23:00:00</td>
+      <td>0.28</td>
+      <td>0.27</td>
+      <td>NaN</td>
+      <td>0.31</td>
+      <td>NaN</td>
+      <td>0.16</td>
+      <td>0.57</td>
+      <td>NaN</td>
+      <td>0.24</td>
+      <td>NaN</td>
+      <td>0.13</td>
+      <td>62.11</td>
+      <td>8.70</td>
+      <td>249.0</td>
+      <td>1.700214e+10</td>
+      <td>1.321170e+08</td>
+      <td>5.001694e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>127.66</td>
+      <td>99215.0</td>
+      <td>17</td>
+      <td>29</td>
+      <td>29</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0.73</td>
+      <td>173915.50</td>
+      <td>0.57</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>287.59</td>
+      <td>180.67</td>
+      <td>-29.34</td>
+      <td>124.51</td>
+      <td>2.53</td>
+      <td>2.12</td>
+      <td>2.95</td>
+      <td>0.24</td>
+      <td>-0.44</td>
+      <td>-7.48</td>
+      <td>-17.34</td>
+      <td>-17.18</td>
+      <td>-19.05</td>
+      <td>128.93</td>
+      <td>-0.98</td>
+      <td>130.91</td>
+      <td>-2.48</td>
+      <td>133.40</td>
+      <td>-4.30</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>1161838</td>
+      <td>ALD</td>
+      <td>Ampol Ltd</td>
+      <td>Sydney</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas Refining &amp; Marketing</td>
+      <td>Australia</td>
+      <td>ALD.AX</td>
+      <td>Sydney:ALD</td>
+      <td>1988-01-31 23:00:00</td>
+      <td>0.66</td>
+      <td>0.71</td>
+      <td>NaN</td>
+      <td>0.35</td>
+      <td>NaN</td>
+      <td>0.15</td>
+      <td>0.61</td>
+      <td>0.04</td>
+      <td>0.31</td>
+      <td>0.04</td>
+      <td>0.05</td>
+      <td>0.07</td>
+      <td>49.91</td>
+      <td>225.0</td>
+      <td>7.606600e+09</td>
+      <td>2.383020e+08</td>
+      <td>2.381115e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>32.16</td>
+      <td>449069.0</td>
+      <td>60</td>
+      <td>68</td>
+      <td>70</td>
+      <td>58</td>
+      <td>96</td>
+      <td>95</td>
+      <td>0.98</td>
+      <td>788138.74</td>
+      <td>0.57</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>302.12</td>
+      <td>32.80</td>
+      <td>-1.95</td>
+      <td>25.00</td>
+      <td>28.64</td>
+      <td>2.47</td>
+      <td>0.87</td>
+      <td>0.12</td>
+      <td>1.61</td>
+      <td>5.13</td>
+      <td>2.85</td>
+      <td>4.76</td>
+      <td>26.22</td>
+      <td>31.77</td>
+      <td>1.24</td>
+      <td>31.18</td>
+      <td>3.13</td>
+      <td>30.55</td>
+      <td>5.28</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>102040</td>
+      <td>XRO</td>
+      <td>Xero Ltd</td>
+      <td>Sydney</td>
+      <td>Technology</td>
+      <td>Software—Application</td>
+      <td>Australia</td>
+      <td>XRO.AX</td>
+      <td>Sydney:XRO</td>
+      <td>2012-11-07 23:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.23</td>
+      <td>NaN</td>
+      <td>0.41</td>
+      <td>NaN</td>
+      <td>0.31</td>
+      <td>17.91</td>
+      <td>34.27</td>
+      <td>260.0</td>
+      <td>1.541669e+10</td>
+      <td>1.499970e+08</td>
+      <td>1.304551e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>101.83</td>
+      <td>281999.0</td>
+      <td>52</td>
+      <td>31</td>
+      <td>24</td>
+      <td>38</td>
+      <td>11</td>
+      <td>11</td>
+      <td>0.90</td>
+      <td>502298.52</td>
+      <td>0.56</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>259.72</td>
+      <td>156.65</td>
+      <td>-35.00</td>
+      <td>90.15</td>
+      <td>12.96</td>
+      <td>3.05</td>
+      <td>3.58</td>
+      <td>0.87</td>
+      <td>0.32</td>
+      <td>2.77</td>
+      <td>-15.54</td>
+      <td>-28.10</td>
+      <td>-28.86</td>
+      <td>101.96</td>
+      <td>-0.12</td>
+      <td>101.93</td>
+      <td>-0.10</td>
+      <td>101.71</td>
+      <td>0.12</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>14249</td>
+      <td>PDL</td>
+      <td>Pendal Group Ltd</td>
+      <td>Sydney</td>
+      <td>Financial Services</td>
+      <td>Asset Management</td>
+      <td>Australia</td>
+      <td>PDL.AX</td>
+      <td>Sydney:PDL</td>
+      <td>2007-11-20 23:00:00</td>
+      <td>0.22</td>
+      <td>0.06</td>
+      <td>NaN</td>
+      <td>-0.02</td>
+      <td>NaN</td>
+      <td>-0.02</td>
+      <td>0.35</td>
+      <td>0.20</td>
+      <td>0.15</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>1.46</td>
+      <td>26.70</td>
+      <td>78.0</td>
+      <td>2.000043e+09</td>
+      <td>3.831500e+08</td>
+      <td>3.120930e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>5.21</td>
+      <td>1234984.0</td>
+      <td>71</td>
+      <td>55</td>
+      <td>28</td>
+      <td>27</td>
+      <td>36</td>
+      <td>35</td>
+      <td>1.00</td>
+      <td>2403844.82</td>
+      <td>0.51</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>129.83</td>
+      <td>8.96</td>
+      <td>-41.85</td>
+      <td>4.04</td>
+      <td>28.96</td>
+      <td>NaN</td>
+      <td>0.21</td>
+      <td>0.19</td>
+      <td>-1.70</td>
+      <td>9.00</td>
+      <td>-2.80</td>
+      <td>-26.31</td>
+      <td>-30.90</td>
+      <td>5.19</td>
+      <td>0.40</td>
+      <td>5.03</td>
+      <td>3.61</td>
+      <td>4.79</td>
+      <td>8.78</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>1174904</td>
+      <td>PXA</td>
+      <td>PEXA Group Ltd</td>
+      <td>Sydney</td>
+      <td>Real Estate</td>
+      <td>Real Estate Services</td>
+      <td>Australia</td>
+      <td>PXA.AX</td>
+      <td>Sydney:PXA</td>
+      <td>2021-07-01 00:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.26</td>
+      <td>NaN</td>
+      <td>-0.07</td>
+      <td>0.46</td>
+      <td>0.15</td>
+      <td>0.24</td>
+      <td>NaN</td>
+      <td>0.01</td>
+      <td>43.85</td>
+      <td>30.70</td>
+      <td>30.0</td>
+      <td>3.067740e+09</td>
+      <td>1.773260e+08</td>
+      <td>4.975584e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>17.67</td>
+      <td>105406.0</td>
+      <td>57</td>
+      <td>52</td>
+      <td>60</td>
+      <td>20</td>
+      <td>39</td>
+      <td>30</td>
+      <td>1.04</td>
+      <td>206573.34</td>
+      <td>0.51</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>240.86</td>
+      <td>20.81</td>
+      <td>-15.09</td>
+      <td>14.85</td>
+      <td>18.99</td>
+      <td>3.18</td>
+      <td>0.58</td>
+      <td>0.97</td>
+      <td>0.97</td>
+      <td>4.12</td>
+      <td>-4.23</td>
+      <td>10.71</td>
+      <td>3.03</td>
+      <td>17.52</td>
+      <td>0.87</td>
+      <td>17.46</td>
+      <td>1.22</td>
+      <td>17.51</td>
+      <td>0.90</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>1080047</td>
+      <td>VUL</td>
+      <td>Vulcan Energy Resources Ltd</td>
+      <td>Sydney</td>
+      <td>Basic Materials</td>
+      <td>Other Industrial Metals &amp; Mining</td>
+      <td>Australia</td>
+      <td>VUL.AX</td>
+      <td>Sydney:VUL</td>
+      <td>2018-05-30 00:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.17</td>
+      <td>NaN</td>
+      <td>-1.60</td>
+      <td>NaN</td>
+      <td>4.38</td>
+      <td>6.33</td>
+      <td>NaN</td>
+      <td>0.89</td>
+      <td>39.66</td>
+      <td>7.99</td>
+      <td>32.0</td>
+      <td>1.190071e+09</td>
+      <td>1.316450e+08</td>
+      <td>8.583448e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>9.15</td>
+      <td>371697.0</td>
+      <td>13</td>
+      <td>48</td>
+      <td>52</td>
+      <td>81</td>
+      <td>74</td>
+      <td>75</td>
+      <td>1.03</td>
+      <td>752247.60</td>
+      <td>0.49</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>114.10</td>
+      <td>16.65</td>
+      <td>-45.05</td>
+      <td>6.36</td>
+      <td>43.87</td>
+      <td>NaN</td>
+      <td>0.45</td>
+      <td>0.44</td>
+      <td>1.55</td>
+      <td>-9.41</td>
+      <td>-6.63</td>
+      <td>-27.38</td>
+      <td>28.51</td>
+      <td>9.29</td>
+      <td>-1.50</td>
+      <td>9.49</td>
+      <td>-3.62</td>
+      <td>9.38</td>
+      <td>-2.47</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>32563</td>
+      <td>TWE</td>
+      <td>Treasury Wine Estates Ltd</td>
+      <td>Sydney</td>
+      <td>Consumer Defensive</td>
+      <td>Beverages—Wineries &amp; Distilleries</td>
+      <td>Australia</td>
+      <td>TWE.AX</td>
+      <td>Sydney:TWE</td>
+      <td>2011-05-09 00:00:00</td>
+      <td>-0.08</td>
+      <td>-0.08</td>
+      <td>NaN</td>
+      <td>0.07</td>
+      <td>NaN</td>
+      <td>0.22</td>
+      <td>-0.09</td>
+      <td>-0.07</td>
+      <td>-0.06</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>0.10</td>
+      <td>42.10</td>
+      <td>230.0</td>
+      <td>8.012513e+09</td>
+      <td>7.218480e+08</td>
+      <td>7.211047e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>11.25</td>
+      <td>994667.0</td>
+      <td>23</td>
+      <td>54</td>
+      <td>54</td>
+      <td>43</td>
+      <td>20</td>
+      <td>19</td>
+      <td>0.95</td>
+      <td>2084203.56</td>
+      <td>0.48</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>345.99</td>
+      <td>13.34</td>
+      <td>-15.67</td>
+      <td>9.83</td>
+      <td>14.45</td>
+      <td>1.65</td>
+      <td>0.21</td>
+      <td>1.35</td>
+      <td>-0.35</td>
+      <td>-4.98</td>
+      <td>-3.18</td>
+      <td>-2.68</td>
+      <td>10.51</td>
+      <td>11.28</td>
+      <td>-0.28</td>
+      <td>11.42</td>
+      <td>-1.50</td>
+      <td>11.49</td>
+      <td>-2.06</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>1130929</td>
+      <td>360</td>
+      <td>Life360 Inc</td>
+      <td>Sydney</td>
+      <td>Technology</td>
+      <td>Software—Application</td>
+      <td>Australia</td>
+      <td>360.AX</td>
+      <td>Sydney:360</td>
+      <td>2019-05-10 00:00:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.32</td>
+      <td>NaN</td>
+      <td>0.41</td>
+      <td>0.51</td>
+      <td>1.42</td>
+      <td>1.42</td>
+      <td>NaN</td>
+      <td>0.32</td>
+      <td>20.04</td>
+      <td>19.55</td>
+      <td>21.0</td>
+      <td>1.047626e+09</td>
+      <td>1.932890e+08</td>
+      <td>1.492024e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>5.50</td>
+      <td>585304.0</td>
+      <td>57</td>
+      <td>8</td>
+      <td>19</td>
+      <td>38</td>
+      <td>11</td>
+      <td>11</td>
+      <td>0.61</td>
+      <td>1266990.18</td>
+      <td>0.46</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>117.76</td>
+      <td>13.94</td>
+      <td>-60.53</td>
+      <td>4.30</td>
+      <td>27.91</td>
+      <td>NaN</td>
+      <td>0.31</td>
+      <td>2.42</td>
+      <td>9.13</td>
+      <td>4.17</td>
+      <td>-36.56</td>
+      <td>-38.54</td>
+      <td>5.87</td>
+      <td>5.34</td>
+      <td>2.99</td>
+      <td>5.39</td>
+      <td>1.99</td>
+      <td>5.74</td>
+      <td>-4.12</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>32565</td>
+      <td>JHG</td>
+      <td>Janus Henderson Group PLC DRC</td>
+      <td>Sydney</td>
+      <td>Financial Services</td>
+      <td>Asset Management</td>
+      <td>Australia</td>
+      <td>JHG.AX</td>
+      <td>Sydney:JHG</td>
+      <td>2003-12-22 23:00:00</td>
+      <td>-0.29</td>
+      <td>-0.24</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>5.07</td>
+      <td>13.0</td>
+      <td>7.635808e+09</td>
+      <td>1.690460e+08</td>
+      <td>1.347294e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>46.06</td>
+      <td>55400.0</td>
+      <td>24</td>
+      <td>27</td>
+      <td>36</td>
+      <td>27</td>
+      <td>36</td>
+      <td>35</td>
+      <td>0.99</td>
+      <td>129526.80</td>
+      <td>0.43</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1040.17</td>
+      <td>66.31</td>
+      <td>-30.54</td>
+      <td>39.20</td>
+      <td>17.50</td>
+      <td>1.53</td>
+      <td>1.07</td>
+      <td>2.61</td>
+      <td>0.81</td>
+      <td>-4.46</td>
+      <td>-18.39</td>
+      <td>-23.87</td>
+      <td>6.92</td>
+      <td>45.66</td>
+      <td>0.89</td>
+      <td>45.97</td>
+      <td>0.20</td>
+      <td>46.23</td>
+      <td>-0.37</td>
+      <td>australia</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Volume Gainers</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+            </section>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+    </div>
+</footer>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bm/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+<script>
+        $(document).ready(function () {
+            $('#data').DataTable(
+                {
+                    "scrollX": true,
+                    "dom": 'Bfrtip',
+                    "buttons": [
+                        'copy', 'csv', 'excel', 'print'
+                    ]
+
+                }
+            );
+        });
+    </script>
+    
+</body>
+
+</html>

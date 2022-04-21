@@ -1,0 +1,4040 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.datatables.net/v/bm/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/sc-2.0.5/datatables.min.css" />
+
+</head >
+
+
+<body>
+    <section class="hero is-small is-dark">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <!-- <a class="navbar-item">
+                        
+                        <img src="data:image/svg+xml;base64,"
+                            alt="Logo">
+                       
+                    </a> -->
+                    <span class="navbar-burger" data-target="navbarMenuHeroB">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </div>
+                <div id="navbarMenuHeroB" class="navbar-menu">
+                    <div class="navbar-start">
+                        
+                        <a class="navbar-item" href="../../united_states/market_monitor.html">
+                            
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-home"></i>
+                                    </span>
+                                    <span>Home</span>
+                                </span>
+                            </a>
+
+                            <div class="navbar-item has-dropdown is-hoverable has-background-dark">
+                                <a class="navbar-link">
+                                    <span>Choose Market</span>
+                                </a>
+
+                                <div class="navbar-dropdown has-background-dark">
+                                    
+                                    <a class="navbar-item" href="../../australia/market_monitor.html">
+                                        <span>Australia</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../canada/market_monitor.html">
+                                        <span>Canada</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../germany/market_monitor.html">
+                                        <span>Germany</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../hong_kong/market_monitor.html">
+                                        <span>Hong Kong</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../japan/market_monitor.html">
+                                        <span>Japan</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../nordic_markets/market_monitor.html">
+                                        <span>Nordic Markets</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_kingdom/market_monitor.html">
+                                        <span>United Kingdom</span>
+                                    </a>
+                                    <a class="navbar-item" href="../../united_states/market_monitor.html">
+                                        <span>United States</span>
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                    </div>
+                    <div class="navbar-end"></div>
+                    <span class="navbar-item">
+                        <a class="button is-info is-light" href="https://twitter.com/LignoL23">
+                            <span class="icon">
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                            <span>Twitter</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <a class="button  is-success is-light" href="https://www.paypal.com/paypalme/volkerlorrmann/5">
+                            <span class="icon">
+                                <i class="fab fa-paypal"></i>
+                            </span>
+                            <span>paypal.me</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+                        <script
+                            type='text/javascript'>kofiwidget2.init('Support me', '#d6d6d6', 'W7W0ACJPB'); kofiwidget2.draw();</script>
+                    </span>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="columns is-multiline is-mobile is-centered">
+                <div class="column is-1">
+                    <img src="data:image/svg+xml;base64," alt="Logo">
+                </div>
+                <div class="column is-4">
+                    <p class="title">
+                        EOD Stockmarket Scans
+                    </p>
+                    <p class="subtitle">
+                        Fintwits most popular stockmarket scans
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+            <div class="container">
+                <ul>
+                    
+                    <li class="is-active">
+                        <a href="../MeMyselfAndI/Top Gainers From Open_result_table.html"> Results </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../MeMyselfAndI/Top Gainers From Open_minicharts.html"> Minicharts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../MeMyselfAndI/Top Gainers From Open_charts.html"> Charts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../MeMyselfAndI/Top Gainers From Open_criteria.html"> Criteria </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+</section>
+    <div class="columns is-centered">
+        <div class="column is-2">
+            <div class="box has-background-light my-0 mx-2 p-auto">
+    <aside class="menu">
+        <p class="menu-label has-text-dark">
+            Market Monitor
+        </p>
+        <ul class="menu-list">
+            <li><a class="has-text-grey-light">New Highs/Lows</a></li>
+            <li><a class="has-text-grey-light">Breadth</a></li>
+            <li><a class="has-text-grey-light">Above/Below SMA</a></li>
+            <li><a class="has-text-grey-light">Sectors</a></li>
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Kristjan Kullamägi
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Kristjan Kullamägi/Biggest Gainers 1M_minicharts.html">
+                        Biggest Gainers 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Kristjan Kullamägi/Biggest Gainers 3M_minicharts.html">
+                        Biggest Gainers 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Kristjan Kullamägi/Biggest Gainers 6M_minicharts.html">
+                        Biggest Gainers 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Kristjan Kullamägi/Biggest Gainers 12M_minicharts.html">
+                        Biggest Gainers 12M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Kristjan Kullamägi/EP with Growth_minicharts.html">
+                        EP with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Kristjan Kullamägi/EP_minicharts.html">
+                        EP
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Kristjan Kullamägi/High Trend Intensity_minicharts.html">
+                        High Trend Intensity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Kristjan Kullamägi/Small Stock Momo_minicharts.html">
+                        Small Stock Momo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Kristjan Kullamägi/Momentum_minicharts.html">
+                        Momentum
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Brad Schulz
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Brad Schulz/Pocket Pivot_minicharts.html">
+                        Pocket Pivot
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Stockbee
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Stockbee/4% Gainers_minicharts.html">
+                        4% Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Stockbee/Combo_minicharts.html">
+                        Combo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Stockbee/Ants_minicharts.html">
+                        Ants
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Stockbee/Breakout 1M Base_minicharts.html">
+                        Breakout 1M Base
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Stockbee/Breakout 3M Base_minicharts.html">
+                        Breakout 3M Base
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Leif Soreide
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Leif Soreide/HTF_minicharts.html">
+                        HTF
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Blake Davis
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Blake Davis/Strength_minicharts.html">
+                        Strength
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ben
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Ben/Power of 3_minicharts.html">
+                        Power of 3
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Ben/Velocity_minicharts.html">
+                        Velocity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Ben/Focus_minicharts.html">
+                        Focus
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ray
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Ray/RSNHBP 5D_minicharts.html">
+                        RSNHBP 5D
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Ray/RSNHBP 1M_minicharts.html">
+                        RSNHBP 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Ray/RSNHBP 3M_minicharts.html">
+                        RSNHBP 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Ray/RSNHBP 6M_minicharts.html">
+                        RSNHBP 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Ray/RSNHBP 12M_minicharts.html">
+                        RSNHBP 12M
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Mark Minvervini
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Mark Minvervini/Trend Template_minicharts.html">
+                        Trend Template
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            MeMyselfAndI
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="is-active"
+                        href="../../united_states/MeMyselfAndI/Top Gainers From Open_minicharts.html">
+                        Top Gainers From Open
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/MeMyselfAndI/Top Gainers_minicharts.html">
+                        Top Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/MeMyselfAndI/Volume Gainers_minicharts.html">
+                        Volume Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/MeMyselfAndI/Insiders_minicharts.html">
+                        Insiders
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/MeMyselfAndI/Darvas Scan_minicharts.html">
+                        Darvas Scan
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/MeMyselfAndI/Darvas Scan with Growth_minicharts.html">
+                        Darvas Scan with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/MeMyselfAndI/52W High_minicharts.html">
+                        52W High
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/MeMyselfAndI/Quite and Tight_minicharts.html">
+                        Quite and Tight
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+    </aside>
+</div>
+        </div>
+        <div class="column is-10">
+            <section class="block my-6">
+                <div class="columns ">
+                    <div class="column is-5 has-text-left">
+                        <h1 class="title is-4">Top Gainers From Open @ United States</h1>
+                        <h2 class="subtitle is-6">2022-04-20</h2>
+                    </div>
+                    <div class="column has-text-right mr-5">
+                        <div class="media">
+                           
+                            <div class="media-content">
+                                <p class="title is-5">MeMyselfAndI</p>
+                                <p class="subtitle is-6"><a class="has-text-grey-light" href="https://twitter.com/LignoL23">@LignoL23</a></p>
+                            </div>
+                            <div class="media-right">
+                                <figure class="image is-48x48">
+                                    <img src="https://unavatar.io/twitter/LignoL23" alt="Placeholder image">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="my-auto mr-5">
+                
+    <div class="table-container">
+        <table border="1" class="dataframe table is-striped no-wrap" id="data" style="width:100%; font-size:85%">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>symbol_id</th>
+      <th>symbol</th>
+      <th>name</th>
+      <th>exchange</th>
+      <th>sector</th>
+      <th>industry</th>
+      <th>country</th>
+      <th>yahoo_symbol</th>
+      <th>forexpros_symbol</th>
+      <th>IPO Date</th>
+      <th>EPS Growth Q</th>
+      <th>EPS Growth Y</th>
+      <th>EPS Growth FQ</th>
+      <th>EPS Growth FY</th>
+      <th>EPS Growth FQ1</th>
+      <th>EPS Growth FY1</th>
+      <th>Rev Growth Q</th>
+      <th>Rev Growth FQ</th>
+      <th>Rev Growth FY</th>
+      <th>Rev Growth FQ1</th>
+      <th>Rev Growth FY1</th>
+      <th>Insiders %</th>
+      <th>Institutions %</th>
+      <th>Institutions No.</th>
+      <th>Market Cap</th>
+      <th>Shares Outstanding</th>
+      <th>Shares Float</th>
+      <th>Shares Short</th>
+      <th>Short Ratio</th>
+      <th>Net Insider Trading %</th>
+      <th>close</th>
+      <th>volume</th>
+      <th>1m RS</th>
+      <th>3m RS</th>
+      <th>RS</th>
+      <th>Industry 1m RS</th>
+      <th>Industry 3m RS</th>
+      <th>Industry RS</th>
+      <th>UD Ratio</th>
+      <th>50d avg Volume</th>
+      <th>rel Volume</th>
+      <th>Pocket Pivot</th>
+      <th>1w Pocket Pivots</th>
+      <th>1m Pocket Pivots</th>
+      <th>Rocket Ratio</th>
+      <th>52w High</th>
+      <th>% below 52w High</th>
+      <th>52w Low</th>
+      <th>% above 52w Low</th>
+      <th>adr(20)</th>
+      <th>atr(14)</th>
+      <th>roc</th>
+      <th>roc(5)</th>
+      <th>roc(21)</th>
+      <th>roc(63)</th>
+      <th>roc(126)</th>
+      <th>roc(252)</th>
+      <th>ema(9)</th>
+      <th>% from 9d ema</th>
+      <th>ema(21)</th>
+      <th>% from 21d ema</th>
+      <th>sma(50)</th>
+      <th>% from 50d sma</th>
+      <th>market</th>
+      <th>date</th>
+      <th>group_name</th>
+      <th>scan_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>40973</td>
+      <td>ARCT</td>
+      <td>Arcturus Therapeutics Holdings Inc</td>
+      <td>NASDAQ</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>United States</td>
+      <td>ARCT</td>
+      <td>NASDAQ:ARCT</td>
+      <td>2013-05-22 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.33</td>
+      <td>0.35</td>
+      <td>0.27</td>
+      <td>0.93</td>
+      <td>1.59</td>
+      <td>2.20</td>
+      <td>4.23</td>
+      <td>1.32</td>
+      <td>2.90</td>
+      <td>13.90</td>
+      <td>72.43</td>
+      <td>220.0</td>
+      <td>7.406100e+08</td>
+      <td>26375000.0</td>
+      <td>22708877.0</td>
+      <td>2361242.0</td>
+      <td>5.23</td>
+      <td>-1.0</td>
+      <td>24.47</td>
+      <td>6058119.0</td>
+      <td>57</td>
+      <td>42</td>
+      <td>28</td>
+      <td>11</td>
+      <td>7</td>
+      <td>7</td>
+      <td>0.68</td>
+      <td>590648.48</td>
+      <td>10.26</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>38.45</td>
+      <td>64.84</td>
+      <td>-62.26</td>
+      <td>16.93</td>
+      <td>44.51</td>
+      <td>9.30</td>
+      <td>2.66</td>
+      <td>-3.13</td>
+      <td>-8.76</td>
+      <td>0.00</td>
+      <td>-8.21</td>
+      <td>-45.83</td>
+      <td>NaN</td>
+      <td>26.31</td>
+      <td>-7.00</td>
+      <td>26.37</td>
+      <td>-7.20</td>
+      <td>24.44</td>
+      <td>0.11</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>960585</td>
+      <td>TH</td>
+      <td>Target Hospitality Corp</td>
+      <td>NASDAQ</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas Equipment &amp; Services</td>
+      <td>United States</td>
+      <td>TH</td>
+      <td>NASDAQ:TH</td>
+      <td>2018-03-12 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.07</td>
+      <td>2.80</td>
+      <td>3.00</td>
+      <td>0.22</td>
+      <td>0.58</td>
+      <td>0.94</td>
+      <td>0.14</td>
+      <td>0.11</td>
+      <td>0.03</td>
+      <td>4.74</td>
+      <td>83.40</td>
+      <td>102.0</td>
+      <td>5.825076e+08</td>
+      <td>101837000.0</td>
+      <td>28315235.0</td>
+      <td>993364.0</td>
+      <td>12.37</td>
+      <td>5.7</td>
+      <td>7.24</td>
+      <td>1568116.0</td>
+      <td>97</td>
+      <td>99</td>
+      <td>99</td>
+      <td>45</td>
+      <td>53</td>
+      <td>46</td>
+      <td>1.43</td>
+      <td>389517.48</td>
+      <td>4.03</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>72.69</td>
+      <td>7.47</td>
+      <td>-3.14</td>
+      <td>2.23</td>
+      <td>224.66</td>
+      <td>8.61</td>
+      <td>0.43</td>
+      <td>20.07</td>
+      <td>23.97</td>
+      <td>25.04</td>
+      <td>117.42</td>
+      <td>97.28</td>
+      <td>NaN</td>
+      <td>6.12</td>
+      <td>18.27</td>
+      <td>5.77</td>
+      <td>25.54</td>
+      <td>4.71</td>
+      <td>53.82</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1169944</td>
+      <td>LGVN</td>
+      <td>Longeveron LLC</td>
+      <td>NASDAQ</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>United States</td>
+      <td>LGVN</td>
+      <td>NASDAQ:LGVN</td>
+      <td>2021-02-12 14:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.02</td>
+      <td>NaN</td>
+      <td>-0.08</td>
+      <td>-0.82</td>
+      <td>NaN</td>
+      <td>-0.27</td>
+      <td>NaN</td>
+      <td>0.14</td>
+      <td>12.87</td>
+      <td>8.62</td>
+      <td>19.0</td>
+      <td>1.488906e+08</td>
+      <td>5148080.0</td>
+      <td>4687120.0</td>
+      <td>746237.0</td>
+      <td>1.06</td>
+      <td>2.0</td>
+      <td>11.72</td>
+      <td>14015457.0</td>
+      <td>99</td>
+      <td>97</td>
+      <td>99</td>
+      <td>11</td>
+      <td>7</td>
+      <td>7</td>
+      <td>3.86</td>
+      <td>6175338.44</td>
+      <td>2.27</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>0.76</td>
+      <td>45.00</td>
+      <td>-73.96</td>
+      <td>2.84</td>
+      <td>312.66</td>
+      <td>18.56</td>
+      <td>2.39</td>
+      <td>15.13</td>
+      <td>17.43</td>
+      <td>75.71</td>
+      <td>57.95</td>
+      <td>207.61</td>
+      <td>NaN</td>
+      <td>10.25</td>
+      <td>14.39</td>
+      <td>9.61</td>
+      <td>21.99</td>
+      <td>7.89</td>
+      <td>48.52</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1173117</td>
+      <td>LLAP</td>
+      <td>Terran Orbital Corp</td>
+      <td>NYSE</td>
+      <td>Financial Services</td>
+      <td>Shell Companies</td>
+      <td>United States</td>
+      <td>TWNT</td>
+      <td>NYSE:LLAP</td>
+      <td>2021-04-26 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.58</td>
+      <td>102.29</td>
+      <td>74.0</td>
+      <td>4.024092e+08</td>
+      <td>34500000.0</td>
+      <td>32216962.0</td>
+      <td>1222645.0</td>
+      <td>4.49</td>
+      <td>0.0</td>
+      <td>5.76</td>
+      <td>20590556.0</td>
+      <td>2</td>
+      <td>6</td>
+      <td>13</td>
+      <td>70</td>
+      <td>62</td>
+      <td>67</td>
+      <td>2.92</td>
+      <td>1008425.58</td>
+      <td>20.42</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>31.95</td>
+      <td>12.69</td>
+      <td>-54.61</td>
+      <td>3.80</td>
+      <td>51.58</td>
+      <td>NaN</td>
+      <td>1.18</td>
+      <td>15.66</td>
+      <td>33.03</td>
+      <td>-32.63</td>
+      <td>-41.76</td>
+      <td>-40.80</td>
+      <td>NaN</td>
+      <td>5.31</td>
+      <td>8.37</td>
+      <td>6.55</td>
+      <td>-12.13</td>
+      <td>8.70</td>
+      <td>-33.77</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1174508</td>
+      <td>ISPC</td>
+      <td>iSpecimen Inc</td>
+      <td>NASDAQ</td>
+      <td>Healthcare</td>
+      <td>Diagnostics &amp; Research</td>
+      <td>United States</td>
+      <td>ISPC</td>
+      <td>NASDAQ:ISPC</td>
+      <td>2021-06-17 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.51</td>
+      <td>-0.06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.14</td>
+      <td>31.69</td>
+      <td>13.17</td>
+      <td>16.0</td>
+      <td>3.503388e+07</td>
+      <td>8780420.0</td>
+      <td>5460018.0</td>
+      <td>302275.0</td>
+      <td>0.67</td>
+      <td>11.5</td>
+      <td>4.18</td>
+      <td>3850707.0</td>
+      <td>83</td>
+      <td>18</td>
+      <td>22</td>
+      <td>19</td>
+      <td>12</td>
+      <td>13</td>
+      <td>1.49</td>
+      <td>563311.12</td>
+      <td>6.84</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>9.69</td>
+      <td>28.98</td>
+      <td>-85.58</td>
+      <td>3.42</td>
+      <td>22.22</td>
+      <td>11.64</td>
+      <td>0.55</td>
+      <td>12.06</td>
+      <td>19.43</td>
+      <td>6.63</td>
+      <td>-22.45</td>
+      <td>-41.86</td>
+      <td>NaN</td>
+      <td>3.86</td>
+      <td>8.22</td>
+      <td>3.99</td>
+      <td>4.71</td>
+      <td>4.15</td>
+      <td>0.65</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>16251</td>
+      <td>HCSG</td>
+      <td>Healthcare Services Group Inc</td>
+      <td>NASDAQ</td>
+      <td>Healthcare</td>
+      <td>Medical Care Facilities</td>
+      <td>United States</td>
+      <td>HCSG</td>
+      <td>NASDAQ:HCSG</td>
+      <td>1983-11-29 14:30:00</td>
+      <td>-0.92</td>
+      <td>-0.92</td>
+      <td>-0.82</td>
+      <td>-0.20</td>
+      <td>-0.23</td>
+      <td>0.74</td>
+      <td>-0.01</td>
+      <td>0.05</td>
+      <td>0.05</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>0.73</td>
+      <td>106.59</td>
+      <td>319.0</td>
+      <td>1.301642e+09</td>
+      <td>73999000.0</td>
+      <td>73404048.0</td>
+      <td>8396066.0</td>
+      <td>6.04</td>
+      <td>23.2</td>
+      <td>19.92</td>
+      <td>4958738.0</td>
+      <td>93</td>
+      <td>81</td>
+      <td>54</td>
+      <td>41</td>
+      <td>75</td>
+      <td>48</td>
+      <td>1.01</td>
+      <td>1177606.32</td>
+      <td>4.21</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>62.33</td>
+      <td>32.95</td>
+      <td>-39.54</td>
+      <td>14.75</td>
+      <td>35.05</td>
+      <td>4.02</td>
+      <td>0.84</td>
+      <td>19.93</td>
+      <td>15.34</td>
+      <td>13.83</td>
+      <td>9.87</td>
+      <td>-14.40</td>
+      <td>NaN</td>
+      <td>17.77</td>
+      <td>12.07</td>
+      <td>17.67</td>
+      <td>12.75</td>
+      <td>17.13</td>
+      <td>16.30</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>17147</td>
+      <td>SEED</td>
+      <td>Origin Agritech Ltd</td>
+      <td>NASDAQ</td>
+      <td>Basic Materials</td>
+      <td>Agricultural Inputs</td>
+      <td>United States</td>
+      <td>SEED</td>
+      <td>NASDAQ:SEED</td>
+      <td>2004-03-29 14:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.12</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>26.92</td>
+      <td>5.98</td>
+      <td>13.0</td>
+      <td>5.347511e+07</td>
+      <td>5793620.0</td>
+      <td>4242358.0</td>
+      <td>177238.0</td>
+      <td>0.29</td>
+      <td>0.0</td>
+      <td>9.22</td>
+      <td>465010.0</td>
+      <td>72</td>
+      <td>93</td>
+      <td>82</td>
+      <td>84</td>
+      <td>84</td>
+      <td>58</td>
+      <td>4.87</td>
+      <td>664127.14</td>
+      <td>0.70</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>6.39</td>
+      <td>16.82</td>
+      <td>-45.17</td>
+      <td>4.21</td>
+      <td>119.00</td>
+      <td>9.29</td>
+      <td>0.78</td>
+      <td>11.08</td>
+      <td>15.11</td>
+      <td>2.22</td>
+      <td>27.35</td>
+      <td>-3.46</td>
+      <td>NaN</td>
+      <td>8.39</td>
+      <td>9.86</td>
+      <td>8.29</td>
+      <td>11.25</td>
+      <td>7.86</td>
+      <td>17.37</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>949603</td>
+      <td>REI</td>
+      <td>Ring Energy Inc</td>
+      <td>NYSE</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>United States</td>
+      <td>REI</td>
+      <td>NYSE:REI</td>
+      <td>2007-04-10 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.33</td>
+      <td>3.40</td>
+      <td>0.86</td>
+      <td>1.59</td>
+      <td>0.90</td>
+      <td>0.90</td>
+      <td>0.74</td>
+      <td>0.48</td>
+      <td>0.22</td>
+      <td>30.82</td>
+      <td>24.67</td>
+      <td>99.0</td>
+      <td>3.667064e+08</td>
+      <td>100193000.0</td>
+      <td>72389126.0</td>
+      <td>17205604.0</td>
+      <td>8.00</td>
+      <td>3.6</td>
+      <td>4.72</td>
+      <td>6391897.0</td>
+      <td>98</td>
+      <td>98</td>
+      <td>97</td>
+      <td>97</td>
+      <td>96</td>
+      <td>97</td>
+      <td>1.78</td>
+      <td>3333670.92</td>
+      <td>1.92</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>6.0</td>
+      <td>21.71</td>
+      <td>4.82</td>
+      <td>-2.07</td>
+      <td>1.81</td>
+      <td>160.77</td>
+      <td>7.27</td>
+      <td>0.29</td>
+      <td>11.58</td>
+      <td>21.65</td>
+      <td>34.86</td>
+      <td>72.89</td>
+      <td>20.10</td>
+      <td>NaN</td>
+      <td>4.20</td>
+      <td>12.36</td>
+      <td>3.97</td>
+      <td>18.98</td>
+      <td>3.52</td>
+      <td>34.14</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>21084</td>
+      <td>AVNT</td>
+      <td>Avient Corp</td>
+      <td>NYSE</td>
+      <td>Basic Materials</td>
+      <td>Specialty Chemicals</td>
+      <td>United States</td>
+      <td>AVNT</td>
+      <td>NYSE:AVNT</td>
+      <td>1999-09-13 13:30:00</td>
+      <td>-0.60</td>
+      <td>-0.60</td>
+      <td>0.07</td>
+      <td>0.15</td>
+      <td>0.13</td>
+      <td>0.14</td>
+      <td>0.20</td>
+      <td>0.08</td>
+      <td>0.06</td>
+      <td>0.17</td>
+      <td>0.04</td>
+      <td>1.32</td>
+      <td>93.05</td>
+      <td>376.0</td>
+      <td>4.547267e+09</td>
+      <td>91604896.0</td>
+      <td>90592679.0</td>
+      <td>1453682.0</td>
+      <td>3.17</td>
+      <td>0.0</td>
+      <td>53.77</td>
+      <td>1081942.0</td>
+      <td>79</td>
+      <td>69</td>
+      <td>78</td>
+      <td>80</td>
+      <td>88</td>
+      <td>90</td>
+      <td>0.62</td>
+      <td>460106.48</td>
+      <td>2.35</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>196.90</td>
+      <td>61.46</td>
+      <td>-12.51</td>
+      <td>43.69</td>
+      <td>23.07</td>
+      <td>3.11</td>
+      <td>1.66</td>
+      <td>12.30</td>
+      <td>16.54</td>
+      <td>5.12</td>
+      <td>1.74</td>
+      <td>5.12</td>
+      <td>NaN</td>
+      <td>48.37</td>
+      <td>11.16</td>
+      <td>48.35</td>
+      <td>11.20</td>
+      <td>49.95</td>
+      <td>7.64</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1185565</td>
+      <td>AKAN</td>
+      <td>Akanda Corp</td>
+      <td>NASDAQ</td>
+      <td>Healthcare</td>
+      <td>Drug Manufacturers—Specialty &amp; Generic</td>
+      <td>United States</td>
+      <td>AKAN</td>
+      <td>NASDAQ:AKAN</td>
+      <td>2022-03-15 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>73.96</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>2.572376e+08</td>
+      <td>28903100.0</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>11.30</td>
+      <td>378728.0</td>
+      <td>98</td>
+      <td>78</td>
+      <td>81</td>
+      <td>31</td>
+      <td>37</td>
+      <td>28</td>
+      <td>3.29</td>
+      <td>1048466.74</td>
+      <td>0.36</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>31.00</td>
+      <td>-63.55</td>
+      <td>6.63</td>
+      <td>70.44</td>
+      <td>13.43</td>
+      <td>1.24</td>
+      <td>9.71</td>
+      <td>22.96</td>
+      <td>34.36</td>
+      <td>7.62</td>
+      <td>7.62</td>
+      <td>NaN</td>
+      <td>9.99</td>
+      <td>13.15</td>
+      <td>9.54</td>
+      <td>18.42</td>
+      <td>9.74</td>
+      <td>15.96</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>21041</td>
+      <td>RAD</td>
+      <td>Rite Aid Corporation</td>
+      <td>NYSE</td>
+      <td>Healthcare</td>
+      <td>Pharmaceutical Retailers</td>
+      <td>United States</td>
+      <td>RAD</td>
+      <td>NYSE:RAD</td>
+      <td>1980-03-17 14:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.28</td>
+      <td>-0.60</td>
+      <td>-0.53</td>
+      <td>1.00</td>
+      <td>0.02</td>
+      <td>0.00</td>
+      <td>0.02</td>
+      <td>0.08</td>
+      <td>-0.04</td>
+      <td>2.72</td>
+      <td>67.37</td>
+      <td>275.0</td>
+      <td>5.477812e+08</td>
+      <td>55782200.0</td>
+      <td>52620352.0</td>
+      <td>17613754.0</td>
+      <td>7.62</td>
+      <td>2.8</td>
+      <td>8.22</td>
+      <td>25926868.0</td>
+      <td>18</td>
+      <td>12</td>
+      <td>16</td>
+      <td>100</td>
+      <td>91</td>
+      <td>89</td>
+      <td>0.74</td>
+      <td>4019618.92</td>
+      <td>6.45</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>13.09</td>
+      <td>23.02</td>
+      <td>-64.29</td>
+      <td>6.11</td>
+      <td>34.53</td>
+      <td>9.45</td>
+      <td>0.96</td>
+      <td>11.08</td>
+      <td>12.60</td>
+      <td>-12.18</td>
+      <td>-29.26</td>
+      <td>-39.69</td>
+      <td>NaN</td>
+      <td>7.70</td>
+      <td>6.78</td>
+      <td>8.19</td>
+      <td>0.38</td>
+      <td>9.09</td>
+      <td>-9.56</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>39223</td>
+      <td>CAR</td>
+      <td>Avis Budget Group Inc</td>
+      <td>NASDAQ</td>
+      <td>Industrials</td>
+      <td>Rental &amp; Leasing Services</td>
+      <td>United States</td>
+      <td>CAR</td>
+      <td>NASDAQ:CAR</td>
+      <td>1983-09-14 13:30:00</td>
+      <td>14.00</td>
+      <td>15.59</td>
+      <td>7.52</td>
+      <td>-0.01</td>
+      <td>0.10</td>
+      <td>-0.28</td>
+      <td>0.90</td>
+      <td>0.51</td>
+      <td>0.12</td>
+      <td>0.20</td>
+      <td>0.01</td>
+      <td>1.80</td>
+      <td>111.26</td>
+      <td>404.0</td>
+      <td>1.446400e+10</td>
+      <td>53767500.0</td>
+      <td>34495605.0</td>
+      <td>7238698.0</td>
+      <td>6.10</td>
+      <td>-180.4</td>
+      <td>319.27</td>
+      <td>1653695.0</td>
+      <td>95</td>
+      <td>98</td>
+      <td>99</td>
+      <td>0</td>
+      <td>19</td>
+      <td>49</td>
+      <td>1.19</td>
+      <td>1120595.80</td>
+      <td>1.48</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>30.78</td>
+      <td>545.11</td>
+      <td>-41.43</td>
+      <td>65.87</td>
+      <td>384.70</td>
+      <td>7.03</td>
+      <td>21.04</td>
+      <td>11.89</td>
+      <td>23.85</td>
+      <td>17.54</td>
+      <td>70.10</td>
+      <td>100.93</td>
+      <td>NaN</td>
+      <td>277.33</td>
+      <td>15.12</td>
+      <td>263.68</td>
+      <td>21.08</td>
+      <td>226.32</td>
+      <td>41.07</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>8275</td>
+      <td>MTB</td>
+      <td>M&amp;T Bank Corp</td>
+      <td>NYSE</td>
+      <td>Financial Services</td>
+      <td>Banks—Regional</td>
+      <td>United States</td>
+      <td>MTB</td>
+      <td>NYSE:MTB</td>
+      <td>1980-03-17 14:30:00</td>
+      <td>-0.03</td>
+      <td>-0.04</td>
+      <td>-0.34</td>
+      <td>-0.14</td>
+      <td>-0.21</td>
+      <td>0.31</td>
+      <td>0.04</td>
+      <td>0.06</td>
+      <td>0.25</td>
+      <td>NaN</td>
+      <td>0.13</td>
+      <td>0.34</td>
+      <td>63.58</td>
+      <td>978.0</td>
+      <td>2.871298e+10</td>
+      <td>179951008.0</td>
+      <td>128065435.0</td>
+      <td>8334928.0</td>
+      <td>5.27</td>
+      <td>163.4</td>
+      <td>176.35</td>
+      <td>3855840.0</td>
+      <td>46</td>
+      <td>62</td>
+      <td>84</td>
+      <td>52</td>
+      <td>48</td>
+      <td>78</td>
+      <td>0.63</td>
+      <td>1738748.36</td>
+      <td>2.22</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>73.65</td>
+      <td>186.95</td>
+      <td>-5.67</td>
+      <td>128.46</td>
+      <td>37.28</td>
+      <td>3.29</td>
+      <td>5.52</td>
+      <td>8.83</td>
+      <td>9.89</td>
+      <td>-2.34</td>
+      <td>0.24</td>
+      <td>16.30</td>
+      <td>NaN</td>
+      <td>165.04</td>
+      <td>6.85</td>
+      <td>167.56</td>
+      <td>5.24</td>
+      <td>174.74</td>
+      <td>0.92</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1172059</td>
+      <td>COMP</td>
+      <td>Compass Inc</td>
+      <td>NYSE</td>
+      <td>Technology</td>
+      <td>Software—Application</td>
+      <td>United States</td>
+      <td>COMP</td>
+      <td>NYSE:COMP</td>
+      <td>2021-04-01 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.72</td>
+      <td>0.39</td>
+      <td>0.00</td>
+      <td>0.89</td>
+      <td>0.31</td>
+      <td>0.20</td>
+      <td>0.25</td>
+      <td>0.52</td>
+      <td>0.24</td>
+      <td>7.48</td>
+      <td>65.84</td>
+      <td>158.0</td>
+      <td>3.073603e+09</td>
+      <td>391912992.0</td>
+      <td>206125972.0</td>
+      <td>9325599.0</td>
+      <td>3.37</td>
+      <td>24.5</td>
+      <td>6.82</td>
+      <td>3254674.0</td>
+      <td>76</td>
+      <td>25</td>
+      <td>19</td>
+      <td>38</td>
+      <td>51</td>
+      <td>45</td>
+      <td>0.74</td>
+      <td>2576062.38</td>
+      <td>1.26</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>80.02</td>
+      <td>19.40</td>
+      <td>-64.85</td>
+      <td>5.58</td>
+      <td>22.22</td>
+      <td>6.93</td>
+      <td>0.53</td>
+      <td>7.57</td>
+      <td>0.44</td>
+      <td>3.81</td>
+      <td>-16.83</td>
+      <td>-44.91</td>
+      <td>NaN</td>
+      <td>6.58</td>
+      <td>3.62</td>
+      <td>6.85</td>
+      <td>-0.45</td>
+      <td>7.31</td>
+      <td>-6.74</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>21254</td>
+      <td>LRN</td>
+      <td>Stride Inc</td>
+      <td>NYSE</td>
+      <td>Consumer Defensive</td>
+      <td>Education &amp; Training Services</td>
+      <td>United States</td>
+      <td>LRN</td>
+      <td>NYSE:LRN</td>
+      <td>2007-12-13 14:30:00</td>
+      <td>0.71</td>
+      <td>0.67</td>
+      <td>0.47</td>
+      <td>0.40</td>
+      <td>1.68</td>
+      <td>0.02</td>
+      <td>0.09</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>0.03</td>
+      <td>0.04</td>
+      <td>6.28</td>
+      <td>88.85</td>
+      <td>272.0</td>
+      <td>1.532655e+09</td>
+      <td>42787700.0</td>
+      <td>38828983.0</td>
+      <td>3804525.0</td>
+      <td>7.99</td>
+      <td>193.9</td>
+      <td>40.55</td>
+      <td>1876941.0</td>
+      <td>95</td>
+      <td>96</td>
+      <td>94</td>
+      <td>60</td>
+      <td>94</td>
+      <td>87</td>
+      <td>1.11</td>
+      <td>398686.04</td>
+      <td>4.71</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>97.39</td>
+      <td>41.19</td>
+      <td>-1.55</td>
+      <td>25.55</td>
+      <td>58.71</td>
+      <td>3.73</td>
+      <td>1.46</td>
+      <td>14.52</td>
+      <td>18.53</td>
+      <td>18.05</td>
+      <td>40.65</td>
+      <td>18.60</td>
+      <td>NaN</td>
+      <td>36.09</td>
+      <td>12.37</td>
+      <td>35.43</td>
+      <td>14.45</td>
+      <td>34.44</td>
+      <td>17.75</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>958829</td>
+      <td>SGRY</td>
+      <td>Surgery Partners Inc</td>
+      <td>NASDAQ</td>
+      <td>Healthcare</td>
+      <td>Medical Care Facilities</td>
+      <td>United States</td>
+      <td>SGRY</td>
+      <td>NASDAQ:SGRY</td>
+      <td>2015-09-30 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.80</td>
+      <td>41.00</td>
+      <td>0.87</td>
+      <td>1.00</td>
+      <td>0.11</td>
+      <td>0.11</td>
+      <td>0.14</td>
+      <td>0.15</td>
+      <td>0.11</td>
+      <td>1.76</td>
+      <td>99.67</td>
+      <td>215.0</td>
+      <td>4.780578e+09</td>
+      <td>89356600.0</td>
+      <td>37180905.0</td>
+      <td>2948004.0</td>
+      <td>7.69</td>
+      <td>1.9</td>
+      <td>61.75</td>
+      <td>394089.0</td>
+      <td>95</td>
+      <td>96</td>
+      <td>94</td>
+      <td>42</td>
+      <td>76</td>
+      <td>44</td>
+      <td>1.50</td>
+      <td>357159.60</td>
+      <td>1.10</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>104.10</td>
+      <td>69.58</td>
+      <td>-11.25</td>
+      <td>37.63</td>
+      <td>64.10</td>
+      <td>3.82</td>
+      <td>2.26</td>
+      <td>8.39</td>
+      <td>14.33</td>
+      <td>18.77</td>
+      <td>41.30</td>
+      <td>44.72</td>
+      <td>NaN</td>
+      <td>56.18</td>
+      <td>9.92</td>
+      <td>54.72</td>
+      <td>12.85</td>
+      <td>52.66</td>
+      <td>17.26</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>1175308</td>
+      <td>HTZWW</td>
+      <td>Hertz Global Hldgs New Equity Warrants</td>
+      <td>NASDAQ</td>
+      <td>Industrials</td>
+      <td>Rental &amp; Leasing Services</td>
+      <td>United States</td>
+      <td>HTZZW</td>
+      <td>NASDAQ:HTZWW</td>
+      <td>NaT</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.76</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>291090906.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>16.22</td>
+      <td>982937.0</td>
+      <td>89</td>
+      <td>77</td>
+      <td>95</td>
+      <td>0</td>
+      <td>19</td>
+      <td>49</td>
+      <td>1.51</td>
+      <td>456063.80</td>
+      <td>2.16</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>638.27</td>
+      <td>23.50</td>
+      <td>-30.98</td>
+      <td>5.97</td>
+      <td>171.69</td>
+      <td>5.60</td>
+      <td>0.80</td>
+      <td>5.53</td>
+      <td>13.27</td>
+      <td>9.97</td>
+      <td>6.71</td>
+      <td>42.53</td>
+      <td>NaN</td>
+      <td>15.22</td>
+      <td>6.59</td>
+      <td>14.96</td>
+      <td>8.41</td>
+      <td>14.21</td>
+      <td>14.16</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>1169350</td>
+      <td>SANA</td>
+      <td>Sana Biotechnology Inc</td>
+      <td>NASDAQ</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>United States</td>
+      <td>SANA</td>
+      <td>NASDAQ:SANA</td>
+      <td>2021-02-04 14:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.66</td>
+      <td>-0.07</td>
+      <td>-6.89</td>
+      <td>0.07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>12.17</td>
+      <td>81.70</td>
+      <td>170.0</td>
+      <td>1.387455e+09</td>
+      <td>189543008.0</td>
+      <td>83602487.0</td>
+      <td>13479237.0</td>
+      <td>11.94</td>
+      <td>0.1</td>
+      <td>8.12</td>
+      <td>826333.0</td>
+      <td>95</td>
+      <td>35</td>
+      <td>17</td>
+      <td>11</td>
+      <td>7</td>
+      <td>7</td>
+      <td>1.14</td>
+      <td>1251804.14</td>
+      <td>0.66</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>66.79</td>
+      <td>26.60</td>
+      <td>-69.47</td>
+      <td>5.07</td>
+      <td>60.16</td>
+      <td>8.61</td>
+      <td>0.68</td>
+      <td>7.84</td>
+      <td>-9.78</td>
+      <td>18.37</td>
+      <td>-11.35</td>
+      <td>-59.32</td>
+      <td>NaN</td>
+      <td>8.23</td>
+      <td>-1.34</td>
+      <td>8.06</td>
+      <td>0.78</td>
+      <td>7.13</td>
+      <td>13.86</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>1179775</td>
+      <td>SEV</td>
+      <td>Sono Group NV</td>
+      <td>NASDAQ</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Manufacturers</td>
+      <td>United States</td>
+      <td>SEV</td>
+      <td>NASDAQ:SEV</td>
+      <td>2021-11-17 14:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-1.03</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>41.00</td>
+      <td>70.96</td>
+      <td>6.53</td>
+      <td>41.0</td>
+      <td>4.130046e+08</td>
+      <td>69077600.0</td>
+      <td>10498463.0</td>
+      <td>2111987.0</td>
+      <td>3.86</td>
+      <td>0.0</td>
+      <td>7.51</td>
+      <td>18767986.0</td>
+      <td>98</td>
+      <td>85</td>
+      <td>18</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3.36</td>
+      <td>2789278.34</td>
+      <td>6.73</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>3.76</td>
+      <td>47.49</td>
+      <td>-84.19</td>
+      <td>3.88</td>
+      <td>93.56</td>
+      <td>13.39</td>
+      <td>0.72</td>
+      <td>-1.18</td>
+      <td>70.68</td>
+      <td>37.29</td>
+      <td>13.96</td>
+      <td>-80.34</td>
+      <td>NaN</td>
+      <td>5.72</td>
+      <td>31.30</td>
+      <td>5.37</td>
+      <td>39.96</td>
+      <td>5.23</td>
+      <td>43.53</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>1161496</td>
+      <td>LEGN</td>
+      <td>Legend Biotech Corp</td>
+      <td>NASDAQ</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>United States</td>
+      <td>LEGN</td>
+      <td>NASDAQ:LEGN</td>
+      <td>2020-06-05 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.20</td>
+      <td>-0.08</td>
+      <td>-0.18</td>
+      <td>-0.05</td>
+      <td>-0.09</td>
+      <td>0.22</td>
+      <td>0.99</td>
+      <td>0.33</td>
+      <td>0.82</td>
+      <td>1.70</td>
+      <td>38.35</td>
+      <td>206.0</td>
+      <td>5.937484e+09</td>
+      <td>152831008.0</td>
+      <td>37832937.0</td>
+      <td>4589030.0</td>
+      <td>4.38</td>
+      <td>0.0</td>
+      <td>40.70</td>
+      <td>1651146.0</td>
+      <td>82</td>
+      <td>66</td>
+      <td>46</td>
+      <td>11</td>
+      <td>7</td>
+      <td>7</td>
+      <td>0.83</td>
+      <td>880998.12</td>
+      <td>1.87</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>42.94</td>
+      <td>58.00</td>
+      <td>-29.83</td>
+      <td>27.07</td>
+      <td>50.35</td>
+      <td>5.49</td>
+      <td>2.26</td>
+      <td>6.41</td>
+      <td>1.37</td>
+      <td>6.46</td>
+      <td>0.87</td>
+      <td>-25.49</td>
+      <td>NaN</td>
+      <td>39.89</td>
+      <td>2.04</td>
+      <td>39.29</td>
+      <td>3.60</td>
+      <td>38.44</td>
+      <td>5.87</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>1175179</td>
+      <td>XPOF</td>
+      <td>Xponential Fitness Inc</td>
+      <td>NYSE</td>
+      <td>Consumer Cyclical</td>
+      <td>Leisure</td>
+      <td>United States</td>
+      <td>XPOF</td>
+      <td>NYSE:XPOF</td>
+      <td>2021-07-23 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.06</td>
+      <td>1.36</td>
+      <td>0.91</td>
+      <td>0.78</td>
+      <td>0.54</td>
+      <td>0.35</td>
+      <td>0.40</td>
+      <td>0.20</td>
+      <td>11.18</td>
+      <td>87.72</td>
+      <td>85.0</td>
+      <td>2.164806e+09</td>
+      <td>23898000.0</td>
+      <td>8142302.0</td>
+      <td>694821.0</td>
+      <td>5.43</td>
+      <td>61.8</td>
+      <td>24.10</td>
+      <td>815786.0</td>
+      <td>74</td>
+      <td>98</td>
+      <td>98</td>
+      <td>45</td>
+      <td>53</td>
+      <td>46</td>
+      <td>1.70</td>
+      <td>333542.28</td>
+      <td>2.45</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>24.41</td>
+      <td>26.90</td>
+      <td>-10.41</td>
+      <td>9.87</td>
+      <td>144.17</td>
+      <td>7.38</td>
+      <td>1.37</td>
+      <td>7.30</td>
+      <td>7.73</td>
+      <td>3.21</td>
+      <td>59.60</td>
+      <td>51.10</td>
+      <td>NaN</td>
+      <td>22.83</td>
+      <td>5.58</td>
+      <td>22.58</td>
+      <td>6.74</td>
+      <td>21.53</td>
+      <td>11.93</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>1185531</td>
+      <td>NRGV</td>
+      <td>Energy Vault Holdings Inc</td>
+      <td>NYSE</td>
+      <td>Utilities</td>
+      <td>Utilities—Renewable</td>
+      <td>United States</td>
+      <td>NRGV</td>
+      <td>NYSE:NRGV</td>
+      <td>2021-03-29 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>38.43</td>
+      <td>44.58</td>
+      <td>92.0</td>
+      <td>2.045921e+09</td>
+      <td>133633000.0</td>
+      <td>67145090.0</td>
+      <td>714866.0</td>
+      <td>0.37</td>
+      <td>-6401.3</td>
+      <td>13.70</td>
+      <td>453197.0</td>
+      <td>79</td>
+      <td>95</td>
+      <td>95</td>
+      <td>1</td>
+      <td>28</td>
+      <td>20</td>
+      <td>4.13</td>
+      <td>1260941.94</td>
+      <td>0.36</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>8.0</td>
+      <td>53.25</td>
+      <td>22.10</td>
+      <td>-38.01</td>
+      <td>8.88</td>
+      <td>54.28</td>
+      <td>NaN</td>
+      <td>2.51</td>
+      <td>5.38</td>
+      <td>0.00</td>
+      <td>4.98</td>
+      <td>37.97</td>
+      <td>37.55</td>
+      <td>NaN</td>
+      <td>14.59</td>
+      <td>-6.09</td>
+      <td>14.89</td>
+      <td>-8.00</td>
+      <td>13.37</td>
+      <td>2.45</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>961634</td>
+      <td>VYGR</td>
+      <td>Voyager Therapeutics Inc</td>
+      <td>NASDAQ</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>United States</td>
+      <td>VYGR</td>
+      <td>NASDAQ:VYGR</td>
+      <td>2015-11-11 14:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.41</td>
+      <td>0.16</td>
+      <td>0.62</td>
+      <td>-0.11</td>
+      <td>3.29</td>
+      <td>1.22</td>
+      <td>0.24</td>
+      <td>2.44</td>
+      <td>-0.43</td>
+      <td>14.20</td>
+      <td>47.04</td>
+      <td>79.0</td>
+      <td>3.594216e+08</td>
+      <td>38114700.0</td>
+      <td>22760562.0</td>
+      <td>1474145.0</td>
+      <td>4.54</td>
+      <td>3.7</td>
+      <td>10.06</td>
+      <td>3317168.0</td>
+      <td>96</td>
+      <td>99</td>
+      <td>99</td>
+      <td>11</td>
+      <td>7</td>
+      <td>7</td>
+      <td>2.91</td>
+      <td>787747.46</td>
+      <td>4.21</td>
+      <td>True</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>28.89</td>
+      <td>10.58</td>
+      <td>-4.91</td>
+      <td>2.46</td>
+      <td>308.94</td>
+      <td>9.75</td>
+      <td>0.75</td>
+      <td>5.67</td>
+      <td>24.97</td>
+      <td>20.19</td>
+      <td>242.18</td>
+      <td>119.17</td>
+      <td>NaN</td>
+      <td>9.06</td>
+      <td>11.01</td>
+      <td>8.41</td>
+      <td>19.64</td>
+      <td>6.37</td>
+      <td>57.86</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>13982</td>
+      <td>IONS</td>
+      <td>Ionis Pharmaceuticals Inc</td>
+      <td>NASDAQ</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>United States</td>
+      <td>IONS</td>
+      <td>NASDAQ:IONS</td>
+      <td>1991-05-17 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.11</td>
+      <td>-11.45</td>
+      <td>-0.16</td>
+      <td>-0.08</td>
+      <td>0.52</td>
+      <td>0.12</td>
+      <td>-0.24</td>
+      <td>0.05</td>
+      <td>0.05</td>
+      <td>1.10</td>
+      <td>88.92</td>
+      <td>462.0</td>
+      <td>5.804998e+09</td>
+      <td>141688992.0</td>
+      <td>140358270.0</td>
+      <td>7168592.0</td>
+      <td>7.83</td>
+      <td>14.3</td>
+      <td>43.01</td>
+      <td>1184023.0</td>
+      <td>97</td>
+      <td>96</td>
+      <td>94</td>
+      <td>11</td>
+      <td>7</td>
+      <td>7</td>
+      <td>1.21</td>
+      <td>1051903.62</td>
+      <td>1.13</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>133.43</td>
+      <td>44.10</td>
+      <td>-2.47</td>
+      <td>25.04</td>
+      <td>71.77</td>
+      <td>3.45</td>
+      <td>1.36</td>
+      <td>5.00</td>
+      <td>8.53</td>
+      <td>23.17</td>
+      <td>41.85</td>
+      <td>37.50</td>
+      <td>NaN</td>
+      <td>40.65</td>
+      <td>5.82</td>
+      <td>38.82</td>
+      <td>10.80</td>
+      <td>35.37</td>
+      <td>21.61</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>40103</td>
+      <td>VTNR</td>
+      <td>Vertex Energy Inc</td>
+      <td>NASDAQ</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas Refining &amp; Marketing</td>
+      <td>United States</td>
+      <td>VTNR</td>
+      <td>NASDAQ:VTNR</td>
+      <td>1992-10-21 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-12.00</td>
+      <td>3.06</td>
+      <td>1.87</td>
+      <td>3.68</td>
+      <td>0.87</td>
+      <td>-0.27</td>
+      <td>21.22</td>
+      <td>12.24</td>
+      <td>0.35</td>
+      <td>27.58</td>
+      <td>34.40</td>
+      <td>96.0</td>
+      <td>5.720721e+08</td>
+      <td>63348000.0</td>
+      <td>42938364.0</td>
+      <td>13551275.0</td>
+      <td>4.13</td>
+      <td>2.3</td>
+      <td>9.13</td>
+      <td>2251113.0</td>
+      <td>84</td>
+      <td>99</td>
+      <td>98</td>
+      <td>97</td>
+      <td>96</td>
+      <td>97</td>
+      <td>1.11</td>
+      <td>4172588.10</td>
+      <td>0.54</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>10.29</td>
+      <td>14.27</td>
+      <td>-36.02</td>
+      <td>1.23</td>
+      <td>643.00</td>
+      <td>9.26</td>
+      <td>0.85</td>
+      <td>4.94</td>
+      <td>6.04</td>
+      <td>7.16</td>
+      <td>92.62</td>
+      <td>80.43</td>
+      <td>NaN</td>
+      <td>8.69</td>
+      <td>5.07</td>
+      <td>8.54</td>
+      <td>6.96</td>
+      <td>7.51</td>
+      <td>21.54</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>961626</td>
+      <td>AXSM</td>
+      <td>Axsome Therapeutics Inc</td>
+      <td>NASDAQ</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>United States</td>
+      <td>AXSM</td>
+      <td>NASDAQ:AXSM</td>
+      <td>2015-11-19 14:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.26</td>
+      <td>-0.20</td>
+      <td>-0.23</td>
+      <td>0.40</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>8.33</td>
+      <td>20.95</td>
+      <td>49.44</td>
+      <td>240.0</td>
+      <td>1.384388e+09</td>
+      <td>38476600.0</td>
+      <td>30414961.0</td>
+      <td>4422133.0</td>
+      <td>6.61</td>
+      <td>0.2</td>
+      <td>43.06</td>
+      <td>1692026.0</td>
+      <td>98</td>
+      <td>97</td>
+      <td>90</td>
+      <td>31</td>
+      <td>37</td>
+      <td>28</td>
+      <td>1.48</td>
+      <td>931912.34</td>
+      <td>1.82</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>32.64</td>
+      <td>74.10</td>
+      <td>-41.89</td>
+      <td>19.38</td>
+      <td>122.19</td>
+      <td>7.69</td>
+      <td>3.30</td>
+      <td>5.23</td>
+      <td>12.28</td>
+      <td>29.31</td>
+      <td>50.98</td>
+      <td>7.17</td>
+      <td>NaN</td>
+      <td>39.76</td>
+      <td>8.31</td>
+      <td>38.82</td>
+      <td>10.91</td>
+      <td>34.48</td>
+      <td>24.88</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>1169827</td>
+      <td>LIDR</td>
+      <td>Aeye Inc</td>
+      <td>NASDAQ</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Parts</td>
+      <td>United States</td>
+      <td>LIDR</td>
+      <td>NASDAQ:LIDR</td>
+      <td>2021-01-11 14:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.39</td>
+      <td>-0.89</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.76</td>
+      <td>16.67</td>
+      <td>43.27</td>
+      <td>85.0</td>
+      <td>8.793264e+08</td>
+      <td>155632992.0</td>
+      <td>104007174.0</td>
+      <td>2985108.0</td>
+      <td>5.86</td>
+      <td>11428.0</td>
+      <td>5.27</td>
+      <td>489303.0</td>
+      <td>43</td>
+      <td>98</td>
+      <td>93</td>
+      <td>22</td>
+      <td>30</td>
+      <td>32</td>
+      <td>2.15</td>
+      <td>644160.08</td>
+      <td>0.76</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>161.46</td>
+      <td>12.25</td>
+      <td>-56.98</td>
+      <td>2.59</td>
+      <td>103.47</td>
+      <td>9.13</td>
+      <td>0.39</td>
+      <td>5.61</td>
+      <td>0.57</td>
+      <td>-2.95</td>
+      <td>72.22</td>
+      <td>17.37</td>
+      <td>NaN</td>
+      <td>5.13</td>
+      <td>2.66</td>
+      <td>5.09</td>
+      <td>3.63</td>
+      <td>4.36</td>
+      <td>20.87</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>30743</td>
+      <td>ESTE</td>
+      <td>Earthstone Energy Inc</td>
+      <td>NYSE</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>United States</td>
+      <td>ESTE</td>
+      <td>NYSE:ESTE</td>
+      <td>1994-04-18 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.88</td>
+      <td>0.94</td>
+      <td>1.50</td>
+      <td>0.30</td>
+      <td>2.93</td>
+      <td>1.24</td>
+      <td>1.69</td>
+      <td>2.38</td>
+      <td>0.17</td>
+      <td>13.45</td>
+      <td>70.23</td>
+      <td>132.0</td>
+      <td>9.609800e+08</td>
+      <td>73301296.0</td>
+      <td>50866673.0</td>
+      <td>2914978.0</td>
+      <td>3.61</td>
+      <td>5.8</td>
+      <td>15.94</td>
+      <td>1531653.0</td>
+      <td>97</td>
+      <td>88</td>
+      <td>95</td>
+      <td>97</td>
+      <td>96</td>
+      <td>97</td>
+      <td>1.14</td>
+      <td>859653.68</td>
+      <td>1.78</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>59.17</td>
+      <td>16.24</td>
+      <td>-1.85</td>
+      <td>6.56</td>
+      <td>142.99</td>
+      <td>5.64</td>
+      <td>0.86</td>
+      <td>6.98</td>
+      <td>18.34</td>
+      <td>26.71</td>
+      <td>18.16</td>
+      <td>52.54</td>
+      <td>NaN</td>
+      <td>14.43</td>
+      <td>10.45</td>
+      <td>13.88</td>
+      <td>14.84</td>
+      <td>13.21</td>
+      <td>20.64</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>41336</td>
+      <td>ISEE</td>
+      <td>IVERIC bio Inc</td>
+      <td>NASDAQ</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>United States</td>
+      <td>ISEE</td>
+      <td>NASDAQ:ISEE</td>
+      <td>2013-09-25 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>-0.17</td>
+      <td>0.03</td>
+      <td>-0.03</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.66</td>
+      <td>107.72</td>
+      <td>249.0</td>
+      <td>1.921445e+09</td>
+      <td>115680000.0</td>
+      <td>81109115.0</td>
+      <td>7528346.0</td>
+      <td>5.17</td>
+      <td>18.2</td>
+      <td>16.81</td>
+      <td>1110337.0</td>
+      <td>83</td>
+      <td>93</td>
+      <td>94</td>
+      <td>11</td>
+      <td>7</td>
+      <td>7</td>
+      <td>1.50</td>
+      <td>1651089.88</td>
+      <td>0.67</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>49.12</td>
+      <td>19.34</td>
+      <td>-13.10</td>
+      <td>5.72</td>
+      <td>193.88</td>
+      <td>6.41</td>
+      <td>1.02</td>
+      <td>5.06</td>
+      <td>0.78</td>
+      <td>6.80</td>
+      <td>28.71</td>
+      <td>-2.94</td>
+      <td>NaN</td>
+      <td>16.88</td>
+      <td>-0.42</td>
+      <td>16.76</td>
+      <td>0.30</td>
+      <td>16.01</td>
+      <td>5.01</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>1169818</td>
+      <td>HUMA</td>
+      <td>Humacyte Inc</td>
+      <td>NASDAQ</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>United States</td>
+      <td>HUMA</td>
+      <td>NASDAQ:HUMA</td>
+      <td>2020-12-01 14:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.78</td>
+      <td>NaN</td>
+      <td>-0.74</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>50.76</td>
+      <td>9.44</td>
+      <td>83.0</td>
+      <td>6.643693e+08</td>
+      <td>103003000.0</td>
+      <td>50060675.0</td>
+      <td>4407552.0</td>
+      <td>15.18</td>
+      <td>-1.1</td>
+      <td>7.85</td>
+      <td>387454.0</td>
+      <td>97</td>
+      <td>97</td>
+      <td>86</td>
+      <td>11</td>
+      <td>7</td>
+      <td>7</td>
+      <td>1.52</td>
+      <td>340720.52</td>
+      <td>1.14</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>146.93</td>
+      <td>17.45</td>
+      <td>-55.01</td>
+      <td>4.37</td>
+      <td>79.63</td>
+      <td>6.58</td>
+      <td>0.45</td>
+      <td>6.08</td>
+      <td>16.82</td>
+      <td>24.60</td>
+      <td>49.24</td>
+      <td>-20.55</td>
+      <td>NaN</td>
+      <td>7.20</td>
+      <td>9.03</td>
+      <td>6.87</td>
+      <td>14.29</td>
+      <td>6.20</td>
+      <td>26.51</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>1173828</td>
+      <td>LFST</td>
+      <td>Lifestance Health Group Inc</td>
+      <td>NASDAQ</td>
+      <td>Healthcare</td>
+      <td>Medical Care Facilities</td>
+      <td>United States</td>
+      <td>LFST</td>
+      <td>NASDAQ:LFST</td>
+      <td>2021-06-10 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.50</td>
+      <td>0.41</td>
+      <td>0.76</td>
+      <td>0.61</td>
+      <td>NaN</td>
+      <td>0.31</td>
+      <td>0.34</td>
+      <td>0.28</td>
+      <td>15.57</td>
+      <td>78.97</td>
+      <td>101.0</td>
+      <td>3.653294e+09</td>
+      <td>374271008.0</td>
+      <td>71294877.0</td>
+      <td>8968064.0</td>
+      <td>12.92</td>
+      <td>-0.0</td>
+      <td>10.90</td>
+      <td>421664.0</td>
+      <td>96</td>
+      <td>96</td>
+      <td>77</td>
+      <td>42</td>
+      <td>76</td>
+      <td>44</td>
+      <td>0.71</td>
+      <td>899244.62</td>
+      <td>0.47</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>79.28</td>
+      <td>29.81</td>
+      <td>-63.44</td>
+      <td>6.42</td>
+      <td>69.78</td>
+      <td>5.96</td>
+      <td>0.62</td>
+      <td>5.52</td>
+      <td>4.91</td>
+      <td>21.92</td>
+      <td>39.74</td>
+      <td>-7.86</td>
+      <td>NaN</td>
+      <td>10.43</td>
+      <td>4.52</td>
+      <td>10.12</td>
+      <td>7.66</td>
+      <td>9.45</td>
+      <td>15.35</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>16631</td>
+      <td>MKTX</td>
+      <td>MarketAxess Holdings Inc</td>
+      <td>NASDAQ</td>
+      <td>Financial Services</td>
+      <td>Capital Markets</td>
+      <td>United States</td>
+      <td>MKTX</td>
+      <td>NASDAQ:MKTX</td>
+      <td>2004-11-05 14:30:00</td>
+      <td>-0.28</td>
+      <td>-0.28</td>
+      <td>-0.20</td>
+      <td>0.05</td>
+      <td>0.02</td>
+      <td>0.14</td>
+      <td>-0.04</td>
+      <td>-0.04</td>
+      <td>0.09</td>
+      <td>0.08</td>
+      <td>0.12</td>
+      <td>2.59</td>
+      <td>98.49</td>
+      <td>809.0</td>
+      <td>1.004341e+10</td>
+      <td>37835400.0</td>
+      <td>36855479.0</td>
+      <td>877630.0</td>
+      <td>2.93</td>
+      <td>4.1</td>
+      <td>273.77</td>
+      <td>753361.0</td>
+      <td>8</td>
+      <td>14</td>
+      <td>19</td>
+      <td>70</td>
+      <td>62</td>
+      <td>67</td>
+      <td>0.55</td>
+      <td>368219.20</td>
+      <td>2.05</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>100.09</td>
+      <td>514.61</td>
+      <td>-46.80</td>
+      <td>256.26</td>
+      <td>6.83</td>
+      <td>4.16</td>
+      <td>14.17</td>
+      <td>3.81</td>
+      <td>-0.07</td>
+      <td>-21.48</td>
+      <td>-26.69</td>
+      <td>-33.42</td>
+      <td>NaN</td>
+      <td>277.57</td>
+      <td>-1.37</td>
+      <td>301.28</td>
+      <td>-9.13</td>
+      <td>342.05</td>
+      <td>-19.96</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>1172294</td>
+      <td>BBAI</td>
+      <td>BigBearai Holdings Inc</td>
+      <td>NYSE</td>
+      <td>Financial Services</td>
+      <td>Shell Companies</td>
+      <td>United States</td>
+      <td>US37518G1013.SG</td>
+      <td>NYSE:BBAI</td>
+      <td>2021-04-05 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.17</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.37</td>
+      <td>21.67</td>
+      <td>66.50</td>
+      <td>106.0</td>
+      <td>4.608745e+08</td>
+      <td>45949600.0</td>
+      <td>36979779.0</td>
+      <td>186986.0</td>
+      <td>0.44</td>
+      <td>0.0</td>
+      <td>11.66</td>
+      <td>288624.0</td>
+      <td>99</td>
+      <td>99</td>
+      <td>98</td>
+      <td>57</td>
+      <td>71</td>
+      <td>39</td>
+      <td>5.40</td>
+      <td>982879.20</td>
+      <td>0.29</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>37.62</td>
+      <td>16.12</td>
+      <td>-27.67</td>
+      <td>4.45</td>
+      <td>162.02</td>
+      <td>15.80</td>
+      <td>1.79</td>
+      <td>4.76</td>
+      <td>-0.68</td>
+      <td>88.98</td>
+      <td>132.27</td>
+      <td>17.44</td>
+      <td>NaN</td>
+      <td>11.41</td>
+      <td>2.24</td>
+      <td>10.24</td>
+      <td>13.91</td>
+      <td>7.87</td>
+      <td>48.18</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>1131059</td>
+      <td>BCYC</td>
+      <td>Bicycle Therapeutics Ltd</td>
+      <td>NASDAQ</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>United States</td>
+      <td>BCYC</td>
+      <td>NASDAQ:BCYC</td>
+      <td>2019-05-23 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.07</td>
+      <td>-0.16</td>
+      <td>-0.01</td>
+      <td>-0.22</td>
+      <td>-0.02</td>
+      <td>1.45</td>
+      <td>0.41</td>
+      <td>0.52</td>
+      <td>0.01</td>
+      <td>10.11</td>
+      <td>76.89</td>
+      <td>123.0</td>
+      <td>1.245805e+09</td>
+      <td>29598600.0</td>
+      <td>19443035.0</td>
+      <td>456249.0</td>
+      <td>2.16</td>
+      <td>3.8</td>
+      <td>25.86</td>
+      <td>570337.0</td>
+      <td>2</td>
+      <td>5</td>
+      <td>12</td>
+      <td>11</td>
+      <td>7</td>
+      <td>7</td>
+      <td>0.67</td>
+      <td>505239.14</td>
+      <td>1.13</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>38.48</td>
+      <td>62.08</td>
+      <td>-58.34</td>
+      <td>21.53</td>
+      <td>20.11</td>
+      <td>10.08</td>
+      <td>4.98</td>
+      <td>3.61</td>
+      <td>3.86</td>
+      <td>-35.54</td>
+      <td>-44.54</td>
+      <td>-55.12</td>
+      <td>NaN</td>
+      <td>28.91</td>
+      <td>-10.55</td>
+      <td>34.47</td>
+      <td>-24.98</td>
+      <td>41.89</td>
+      <td>-38.27</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>1163255</td>
+      <td>PNT</td>
+      <td>POINT Biopharma Global Inc</td>
+      <td>NASDAQ</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>United States</td>
+      <td>PNT</td>
+      <td>NASDAQ:PNT</td>
+      <td>2020-07-08 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.61</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>19.45</td>
+      <td>38.68</td>
+      <td>76.0</td>
+      <td>6.413000e+08</td>
+      <td>90121800.0</td>
+      <td>58969393.0</td>
+      <td>4414918.0</td>
+      <td>23.32</td>
+      <td>2.0</td>
+      <td>9.47</td>
+      <td>331674.0</td>
+      <td>99</td>
+      <td>98</td>
+      <td>96</td>
+      <td>11</td>
+      <td>7</td>
+      <td>7</td>
+      <td>0.90</td>
+      <td>315263.96</td>
+      <td>1.05</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>187.05</td>
+      <td>11.72</td>
+      <td>-19.20</td>
+      <td>4.25</td>
+      <td>122.82</td>
+      <td>7.30</td>
+      <td>0.45</td>
+      <td>4.99</td>
+      <td>12.60</td>
+      <td>45.92</td>
+      <td>71.56</td>
+      <td>22.04</td>
+      <td>NaN</td>
+      <td>8.75</td>
+      <td>8.28</td>
+      <td>8.09</td>
+      <td>17.03</td>
+      <td>7.04</td>
+      <td>34.55</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>41018</td>
+      <td>TGTX</td>
+      <td>TG Therapeutics Inc</td>
+      <td>NASDAQ</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>United States</td>
+      <td>TGTX</td>
+      <td>NASDAQ:TGTX</td>
+      <td>2010-05-03 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>0.07</td>
+      <td>-0.02</td>
+      <td>0.27</td>
+      <td>60.08</td>
+      <td>2.85</td>
+      <td>4.04</td>
+      <td>3.69</td>
+      <td>6.11</td>
+      <td>6.80</td>
+      <td>74.75</td>
+      <td>282.0</td>
+      <td>1.475299e+09</td>
+      <td>142816992.0</td>
+      <td>123454774.0</td>
+      <td>18978167.0</td>
+      <td>10.28</td>
+      <td>7.4</td>
+      <td>7.70</td>
+      <td>2590357.0</td>
+      <td>8</td>
+      <td>4</td>
+      <td>3</td>
+      <td>11</td>
+      <td>7</td>
+      <td>7</td>
+      <td>0.94</td>
+      <td>2321257.84</td>
+      <td>1.12</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>53.18</td>
+      <td>45.50</td>
+      <td>-83.08</td>
+      <td>6.02</td>
+      <td>27.89</td>
+      <td>7.73</td>
+      <td>0.81</td>
+      <td>6.06</td>
+      <td>-16.94</td>
+      <td>-20.62</td>
+      <td>-45.96</td>
+      <td>-75.85</td>
+      <td>NaN</td>
+      <td>8.45</td>
+      <td>-8.92</td>
+      <td>9.10</td>
+      <td>-15.40</td>
+      <td>9.63</td>
+      <td>-20.04</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>1179535</td>
+      <td>HTZ</td>
+      <td>Hertz Global Holdings Inc</td>
+      <td>NASDAQ</td>
+      <td>Industrials</td>
+      <td>Rental &amp; Leasing Services</td>
+      <td>United States</td>
+      <td>HTZZ</td>
+      <td>NASDAQ:HTZ</td>
+      <td>2021-07-01 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.73</td>
+      <td>-0.22</td>
+      <td>-0.60</td>
+      <td>-0.33</td>
+      <td>0.58</td>
+      <td>0.60</td>
+      <td>0.21</td>
+      <td>0.32</td>
+      <td>0.07</td>
+      <td>0.78</td>
+      <td>81.04</td>
+      <td>199.0</td>
+      <td>9.830833e+09</td>
+      <td>429294016.0</td>
+      <td>247084628.0</td>
+      <td>14521026.0</td>
+      <td>2.29</td>
+      <td>-77.4</td>
+      <td>23.89</td>
+      <td>6139678.0</td>
+      <td>88</td>
+      <td>81</td>
+      <td>87</td>
+      <td>0</td>
+      <td>19</td>
+      <td>49</td>
+      <td>0.97</td>
+      <td>5470763.36</td>
+      <td>1.12</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>45.16</td>
+      <td>46.00</td>
+      <td>-48.07</td>
+      <td>14.15</td>
+      <td>68.83</td>
+      <td>5.20</td>
+      <td>1.19</td>
+      <td>5.52</td>
+      <td>11.01</td>
+      <td>9.49</td>
+      <td>10.09</td>
+      <td>6.18</td>
+      <td>NaN</td>
+      <td>22.51</td>
+      <td>6.14</td>
+      <td>22.13</td>
+      <td>7.94</td>
+      <td>21.08</td>
+      <td>13.35</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>8286</td>
+      <td>THC</td>
+      <td>Tenet Healthcare Corporation</td>
+      <td>NYSE</td>
+      <td>Healthcare</td>
+      <td>Medical Care Facilities</td>
+      <td>United States</td>
+      <td>THC</td>
+      <td>NYSE:THC</td>
+      <td>1980-03-17 14:30:00</td>
+      <td>-0.40</td>
+      <td>-0.40</td>
+      <td>-0.18</td>
+      <td>-0.12</td>
+      <td>-0.01</td>
+      <td>0.14</td>
+      <td>-0.01</td>
+      <td>-0.01</td>
+      <td>0.02</td>
+      <td>-0.00</td>
+      <td>0.05</td>
+      <td>1.37</td>
+      <td>97.60</td>
+      <td>500.0</td>
+      <td>9.536481e+09</td>
+      <td>107417000.0</td>
+      <td>98842703.0</td>
+      <td>4702512.0</td>
+      <td>3.35</td>
+      <td>9.8</td>
+      <td>88.80</td>
+      <td>2239523.0</td>
+      <td>69</td>
+      <td>86</td>
+      <td>91</td>
+      <td>42</td>
+      <td>76</td>
+      <td>44</td>
+      <td>1.77</td>
+      <td>1263450.42</td>
+      <td>1.77</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>78.23</td>
+      <td>92.65</td>
+      <td>-4.16</td>
+      <td>54.54</td>
+      <td>62.82</td>
+      <td>3.51</td>
+      <td>3.06</td>
+      <td>5.30</td>
+      <td>4.77</td>
+      <td>1.45</td>
+      <td>15.07</td>
+      <td>37.78</td>
+      <td>NaN</td>
+      <td>85.16</td>
+      <td>4.27</td>
+      <td>85.26</td>
+      <td>4.15</td>
+      <td>85.55</td>
+      <td>3.80</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>20931</td>
+      <td>HCA</td>
+      <td>HCA Holdings Inc</td>
+      <td>NYSE</td>
+      <td>Healthcare</td>
+      <td>Medical Care Facilities</td>
+      <td>United States</td>
+      <td>HCA</td>
+      <td>NYSE:HCA</td>
+      <td>2011-03-10 14:30:00</td>
+      <td>0.27</td>
+      <td>0.39</td>
+      <td>0.03</td>
+      <td>0.08</td>
+      <td>0.02</td>
+      <td>0.10</td>
+      <td>0.05</td>
+      <td>0.08</td>
+      <td>0.04</td>
+      <td>0.09</td>
+      <td>0.05</td>
+      <td>23.79</td>
+      <td>69.27</td>
+      <td>1331.0</td>
+      <td>7.880857e+10</td>
+      <td>302017984.0</td>
+      <td>230593308.0</td>
+      <td>3153751.0</td>
+      <td>1.98</td>
+      <td>1.0</td>
+      <td>275.28</td>
+      <td>1521854.0</td>
+      <td>79</td>
+      <td>83</td>
+      <td>84</td>
+      <td>42</td>
+      <td>76</td>
+      <td>44</td>
+      <td>1.04</td>
+      <td>1440916.56</td>
+      <td>1.06</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>160.03</td>
+      <td>275.94</td>
+      <td>-0.24</td>
+      <td>196.22</td>
+      <td>40.29</td>
+      <td>2.32</td>
+      <td>6.16</td>
+      <td>5.08</td>
+      <td>5.52</td>
+      <td>5.25</td>
+      <td>12.21</td>
+      <td>10.70</td>
+      <td>NaN</td>
+      <td>262.02</td>
+      <td>5.06</td>
+      <td>259.20</td>
+      <td>6.20</td>
+      <td>255.54</td>
+      <td>7.73</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>20587</td>
+      <td>MLI</td>
+      <td>Mueller Industries Inc</td>
+      <td>NYSE</td>
+      <td>Industrials</td>
+      <td>Metal Fabrication</td>
+      <td>United States</td>
+      <td>MLI</td>
+      <td>NYSE:MLI</td>
+      <td>1991-02-25 14:30:00</td>
+      <td>2.45</td>
+      <td>2.45</td>
+      <td>NaN</td>
+      <td>-0.08</td>
+      <td>NaN</td>
+      <td>-0.22</td>
+      <td>0.42</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>2.76</td>
+      <td>91.03</td>
+      <td>358.0</td>
+      <td>3.298297e+09</td>
+      <td>57301900.0</td>
+      <td>55628093.0</td>
+      <td>1622493.0</td>
+      <td>4.18</td>
+      <td>1.8</td>
+      <td>59.62</td>
+      <td>375042.0</td>
+      <td>39</td>
+      <td>75</td>
+      <td>90</td>
+      <td>17</td>
+      <td>35</td>
+      <td>36</td>
+      <td>0.96</td>
+      <td>367087.46</td>
+      <td>1.02</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>151.54</td>
+      <td>63.07</td>
+      <td>-5.47</td>
+      <td>39.00</td>
+      <td>52.87</td>
+      <td>3.13</td>
+      <td>1.78</td>
+      <td>5.86</td>
+      <td>14.52</td>
+      <td>-4.21</td>
+      <td>5.54</td>
+      <td>30.03</td>
+      <td>NaN</td>
+      <td>54.82</td>
+      <td>8.75</td>
+      <td>54.87</td>
+      <td>8.65</td>
+      <td>56.21</td>
+      <td>6.06</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>24407</td>
+      <td>UEC</td>
+      <td>Uranium Energy Corp</td>
+      <td>NYSE</td>
+      <td>Energy</td>
+      <td>Uranium</td>
+      <td>United States</td>
+      <td>UEC</td>
+      <td>NYSE:UEC</td>
+      <td>2007-04-05 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.67</td>
+      <td>1.14</td>
+      <td>0.50</td>
+      <td>-4.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.83</td>
+      <td>1.89</td>
+      <td>41.15</td>
+      <td>221.0</td>
+      <td>1.437716e+09</td>
+      <td>283015008.0</td>
+      <td>277660529.0</td>
+      <td>36456854.0</td>
+      <td>3.86</td>
+      <td>2.1</td>
+      <td>6.11</td>
+      <td>18047060.0</td>
+      <td>96</td>
+      <td>99</td>
+      <td>99</td>
+      <td>97</td>
+      <td>96</td>
+      <td>97</td>
+      <td>1.72</td>
+      <td>14987272.62</td>
+      <td>1.20</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>18.53</td>
+      <td>6.60</td>
+      <td>-7.50</td>
+      <td>1.89</td>
+      <td>223.02</td>
+      <td>8.96</td>
+      <td>0.50</td>
+      <td>7.20</td>
+      <td>6.17</td>
+      <td>21.13</td>
+      <td>94.43</td>
+      <td>71.49</td>
+      <td>NaN</td>
+      <td>5.78</td>
+      <td>5.63</td>
+      <td>5.35</td>
+      <td>14.19</td>
+      <td>4.44</td>
+      <td>37.49</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>20297</td>
+      <td>LPI</td>
+      <td>Laredo Petroleum Holdings Inc</td>
+      <td>NYSE</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>United States</td>
+      <td>LPI</td>
+      <td>NYSE:LPI</td>
+      <td>2011-12-15 14:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.39</td>
+      <td>1.82</td>
+      <td>3.04</td>
+      <td>0.31</td>
+      <td>1.50</td>
+      <td>0.45</td>
+      <td>0.06</td>
+      <td>0.70</td>
+      <td>0.06</td>
+      <td>6.80</td>
+      <td>70.52</td>
+      <td>230.0</td>
+      <td>1.294174e+09</td>
+      <td>17304100.0</td>
+      <td>14406068.0</td>
+      <td>2079042.0</td>
+      <td>2.52</td>
+      <td>-26.8</td>
+      <td>85.67</td>
+      <td>686302.0</td>
+      <td>93</td>
+      <td>91</td>
+      <td>92</td>
+      <td>97</td>
+      <td>96</td>
+      <td>97</td>
+      <td>1.72</td>
+      <td>883853.44</td>
+      <td>0.78</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>5.0</td>
+      <td>16.30</td>
+      <td>99.26</td>
+      <td>-13.69</td>
+      <td>32.52</td>
+      <td>163.44</td>
+      <td>6.39</td>
+      <td>5.27</td>
+      <td>6.37</td>
+      <td>6.30</td>
+      <td>14.67</td>
+      <td>23.50</td>
+      <td>18.18</td>
+      <td>NaN</td>
+      <td>82.74</td>
+      <td>3.54</td>
+      <td>80.83</td>
+      <td>5.99</td>
+      <td>76.49</td>
+      <td>12.00</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>7920</td>
+      <td>CCJ</td>
+      <td>Cameco Corp</td>
+      <td>NYSE</td>
+      <td>Energy</td>
+      <td>Uranium</td>
+      <td>United States</td>
+      <td>CCO.TO</td>
+      <td>NYSE:CCJ</td>
+      <td>1995-01-12 14:30:00</td>
+      <td>-0.86</td>
+      <td>-0.86</td>
+      <td>0.43</td>
+      <td>2.08</td>
+      <td>0.80</td>
+      <td>2.48</td>
+      <td>-0.16</td>
+      <td>0.38</td>
+      <td>0.17</td>
+      <td>0.39</td>
+      <td>0.22</td>
+      <td>0.12</td>
+      <td>64.35</td>
+      <td>642.0</td>
+      <td>1.447382e+10</td>
+      <td>398288992.0</td>
+      <td>397361247.0</td>
+      <td>6168378.0</td>
+      <td>2.72</td>
+      <td>0.0</td>
+      <td>31.54</td>
+      <td>7499251.0</td>
+      <td>85</td>
+      <td>96</td>
+      <td>96</td>
+      <td>97</td>
+      <td>96</td>
+      <td>97</td>
+      <td>1.14</td>
+      <td>9007875.88</td>
+      <td>0.83</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>44.11</td>
+      <td>32.49</td>
+      <td>-2.92</td>
+      <td>15.34</td>
+      <td>105.61</td>
+      <td>4.77</td>
+      <td>1.52</td>
+      <td>4.37</td>
+      <td>1.91</td>
+      <td>7.76</td>
+      <td>44.55</td>
+      <td>18.48</td>
+      <td>NaN</td>
+      <td>30.60</td>
+      <td>3.08</td>
+      <td>29.44</td>
+      <td>7.13</td>
+      <td>26.26</td>
+      <td>20.10</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>53013</td>
+      <td>WFG</td>
+      <td>West Fraser Timber Co Ltd</td>
+      <td>NYSE</td>
+      <td>Basic Materials</td>
+      <td>Lumber &amp; Wood Production</td>
+      <td>United States</td>
+      <td>WFG.TO</td>
+      <td>NYSE:WFG</td>
+      <td>1986-05-07 13:30:00</td>
+      <td>0.18</td>
+      <td>-0.24</td>
+      <td>0.05</td>
+      <td>-0.31</td>
+      <td>-0.55</td>
+      <td>-0.42</td>
+      <td>0.57</td>
+      <td>0.41</td>
+      <td>-0.12</td>
+      <td>-0.27</td>
+      <td>-0.12</td>
+      <td>25.51</td>
+      <td>59.94</td>
+      <td>434.0</td>
+      <td>1.157057e+10</td>
+      <td>103366000.0</td>
+      <td>76976968.0</td>
+      <td>2459393.0</td>
+      <td>5.38</td>
+      <td>0.0</td>
+      <td>88.81</td>
+      <td>855043.0</td>
+      <td>42</td>
+      <td>43</td>
+      <td>75</td>
+      <td>85</td>
+      <td>82</td>
+      <td>88</td>
+      <td>0.81</td>
+      <td>335101.80</td>
+      <td>2.55</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>229.71</td>
+      <td>102.55</td>
+      <td>-13.40</td>
+      <td>64.72</td>
+      <td>37.22</td>
+      <td>3.55</td>
+      <td>3.54</td>
+      <td>10.71</td>
+      <td>17.15</td>
+      <td>-3.36</td>
+      <td>-7.73</td>
+      <td>1.75</td>
+      <td>NaN</td>
+      <td>80.24</td>
+      <td>10.69</td>
+      <td>81.90</td>
+      <td>8.43</td>
+      <td>89.77</td>
+      <td>-1.06</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>52433</td>
+      <td>NXE</td>
+      <td>NexGen Energy Ltd.</td>
+      <td>NYSE</td>
+      <td>Energy</td>
+      <td>Uranium</td>
+      <td>United States</td>
+      <td>NXE.TO</td>
+      <td>NYSE:NXE</td>
+      <td>2014-07-02 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.00</td>
+      <td>0.81</td>
+      <td>1.00</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>15.99</td>
+      <td>31.05</td>
+      <td>189.0</td>
+      <td>3.503851e+09</td>
+      <td>479323008.0</td>
+      <td>444231979.0</td>
+      <td>8684555.0</td>
+      <td>3.86</td>
+      <td>0.0</td>
+      <td>5.91</td>
+      <td>2142698.0</td>
+      <td>70</td>
+      <td>95</td>
+      <td>93</td>
+      <td>97</td>
+      <td>96</td>
+      <td>97</td>
+      <td>1.90</td>
+      <td>2444053.10</td>
+      <td>0.88</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>7.0</td>
+      <td>181.76</td>
+      <td>6.56</td>
+      <td>-9.98</td>
+      <td>3.47</td>
+      <td>70.17</td>
+      <td>5.64</td>
+      <td>0.36</td>
+      <td>3.78</td>
+      <td>-5.37</td>
+      <td>1.64</td>
+      <td>36.06</td>
+      <td>-5.22</td>
+      <td>NaN</td>
+      <td>5.95</td>
+      <td>-0.74</td>
+      <td>5.81</td>
+      <td>1.62</td>
+      <td>5.33</td>
+      <td>10.69</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>13956</td>
+      <td>SD</td>
+      <td>SandRidge Energy Inc</td>
+      <td>NYSE</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>United States</td>
+      <td>SD</td>
+      <td>NYSE:SD</td>
+      <td>2016-10-04 13:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.80</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.24</td>
+      <td>61.39</td>
+      <td>140.0</td>
+      <td>5.944833e+08</td>
+      <td>36696500.0</td>
+      <td>35914423.0</td>
+      <td>292438.0</td>
+      <td>0.41</td>
+      <td>3.3</td>
+      <td>20.17</td>
+      <td>612660.0</td>
+      <td>98</td>
+      <td>99</td>
+      <td>99</td>
+      <td>97</td>
+      <td>96</td>
+      <td>97</td>
+      <td>1.59</td>
+      <td>988655.56</td>
+      <td>0.62</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>36.33</td>
+      <td>20.50</td>
+      <td>-1.61</td>
+      <td>3.63</td>
+      <td>455.65</td>
+      <td>5.93</td>
+      <td>1.12</td>
+      <td>5.38</td>
+      <td>15.39</td>
+      <td>34.47</td>
+      <td>92.83</td>
+      <td>75.39</td>
+      <td>NaN</td>
+      <td>18.58</td>
+      <td>8.53</td>
+      <td>17.34</td>
+      <td>16.29</td>
+      <td>15.04</td>
+      <td>34.11</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>1169577</td>
+      <td>LFG</td>
+      <td>Archaea Energy Inc</td>
+      <td>NYSE</td>
+      <td>Utilities</td>
+      <td>Utilities—Renewable</td>
+      <td>United States</td>
+      <td>LFG</td>
+      <td>NYSE:LFG</td>
+      <td>2020-12-14 14:30:00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.50</td>
+      <td>NaN</td>
+      <td>1.32</td>
+      <td>26.20</td>
+      <td>NaN</td>
+      <td>3.29</td>
+      <td>NaN</td>
+      <td>0.42</td>
+      <td>6.90</td>
+      <td>104.66</td>
+      <td>118.0</td>
+      <td>2.478459e+09</td>
+      <td>115870000.0</td>
+      <td>38946705.0</td>
+      <td>1816806.0</td>
+      <td>3.60</td>
+      <td>-333.0</td>
+      <td>23.02</td>
+      <td>786806.0</td>
+      <td>93</td>
+      <td>95</td>
+      <td>94</td>
+      <td>97</td>
+      <td>96</td>
+      <td>97</td>
+      <td>2.70</td>
+      <td>1159908.28</td>
+      <td>0.68</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>33.58</td>
+      <td>23.75</td>
+      <td>-3.07</td>
+      <td>13.75</td>
+      <td>67.42</td>
+      <td>4.84</td>
+      <td>0.93</td>
+      <td>4.45</td>
+      <td>2.04</td>
+      <td>14.36</td>
+      <td>36.37</td>
+      <td>29.40</td>
+      <td>NaN</td>
+      <td>22.58</td>
+      <td>1.97</td>
+      <td>21.90</td>
+      <td>5.09</td>
+      <td>19.72</td>
+      <td>16.71</td>
+      <td>united_states</td>
+      <td>2022-04-20</td>
+      <td>MeMyselfAndI</td>
+      <td>Top Gainers From Open</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+            </section>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+    </div>
+</footer>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bm/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+<script>
+        $(document).ready(function () {
+            $('#data').DataTable(
+                {
+                    "scrollX": true,
+                    "dom": 'Bfrtip',
+                    "buttons": [
+                        'copy', 'csv', 'excel', 'print'
+                    ]
+
+                }
+            );
+        });
+    </script>
+    
+</body>
+
+</html>
