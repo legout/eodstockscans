@@ -1,0 +1,128 @@
+---
+BASE_PATH: /Volumes/FinData/eod_stockmarket_scans
+RESULTS_PATH: results
+IMAGES_PATH: images
+SUMMARY_PATH: summary
+
+CHART_PARAMS:
+  xl_light:
+    add_indicators:
+      - ema(9)
+      - ema(21)
+      - sma(50)
+      - sma(100)
+      - rs
+    down_color: black
+    show_info: true
+    size: XL
+    template: plotly_white
+    up_color: gray
+  xs_light:
+    add_indicators:
+      - ema(9)
+      - ema(21)
+      - sma(50)
+      - sma(100)
+    down_color: black
+    show_info: false
+    size: XS
+    template: plotly_white
+    up_color: gray
+
+MARKETS:
+  Australia:
+    exchanges:
+      - Sydney
+    scale:
+      price: 1
+      volume: 0.5
+  Belgium:
+    exchanges:
+      - Brussels
+    scale:
+      price: 1
+      volume: 0.1
+  Canada:
+    exchanges:
+      - Toronto
+      - TSXV
+      - CSE
+    scale:
+      price: 1
+      volume: 0.5
+  France:
+    exchanges:
+      - Paris
+    scale:
+      price: 1
+      volume: 0.1
+  Germany:
+    exchanges:
+      - XETRA
+    scale:
+      price: 1
+      volume: 0.1
+  Hong Kong:
+    exchanges:
+      - Hong Kong
+    scale:
+      price: 5
+      volume: 1
+  Indonesia:
+    exchanges:
+      - Jakarta
+    scale:
+      price: 100
+      volume: 0.2
+  Italy:
+    exchanges:
+      - Milan
+    scale:
+      price: 1
+      volume: 0.1
+  Japan:
+    exchanges:
+      - Tokyo
+    scale:
+      price: 100
+      volume: 0.5
+  Netherlands:
+    exchanges:
+      - Amsterdam
+    scale:
+      price: 1
+      volume: 0.1
+  Nordic Markets:
+    exchanges:
+      - Stockholm
+      - Oslo
+      - Copenhagen
+      - Helsinki
+    scale:
+      price: 4
+      volume: 0.2
+  Poland:
+    exchanges:
+      - Warsaw
+    scale:
+      price: 4
+      volume: 0.1
+  Singapore:
+    exchanges:
+      - Singapore
+    scale:
+      price: 1
+      volume: 0.2
+  United Kingdom:
+    exchanges:
+      - London
+    scale:
+      price: 1
+      volume: 0.5
+  United States:
+    exchanges:
+      - NASDAQ
+      - NYSE
+    scale:
+      price: 1
+      volume: 1

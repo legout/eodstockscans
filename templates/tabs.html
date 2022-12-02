@@ -1,0 +1,40 @@
+<div class="tabs is-boxed my-6">
+    <ul>
+        {% if tab=="result_table" %}
+        <li class="is-active">
+            <a href="../../{{ market }}/{{ group_name }}/{{ scan_name }}_result_table.html"> Results </a>
+        </li>
+        {% else %}
+        <li>
+            <a href="../../{{ market }}/{{ group_name }}/{{ scan_name }}_result_table.html"> Results </a>
+        </li>
+        {% endif %}
+        {% if tab=="minicharts" %}
+        <li class="is-active">
+            <a href="../../{{ market }}/{{ group_name }}/{{ scan_name }}_minicharts.html"> Minicharts </a>
+        </li>
+        {% else %}
+        <li>
+            <a href="../../{{ market }}/{{ group_name }}/{{ scan_name }}_minicharts.html"> Minicharts </a>
+        </li>
+        {% endif %}
+        {% if tab=="charts" %}
+        <li class="is-active">
+            <a href="../../{{ market }}/{{ group_name }}/{{ scan_name }}_charts.html"> Charts </a>
+        </li>
+        {% else %}
+        <li>
+            <a href="../../{{ market }}/{{ group_name }}/{{ scan_name }}_charts.html"> Charts </a>
+        </li>
+        {% endif %}
+        {% if tab=="criteria" %}
+        <li class="is-active">
+            <a href="../../{{ market }}/{{ group_name }}/{{ scan_name }}_criteria.html"> Criteria </a>
+        </li>
+        {% else %}
+        <li>
+            <a href="../../{{ market }}/{{ group_name }}/{{ scan_name }}_criteria.html"> Criteria </a>
+        </li>
+        {% endif %}
+    </ul>
+</div>

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="notification">
+        <h1 class="title is-size-5">Scanning</h1>
+        <p class="is-size-8">
+            {{ scan["query"] }}
+        </p>
+    </div>
+    <div class="notification">
+        <h1 class="title is-size-5">Sorting</h1>
+        <p class="is-size-8">
+            {{ scan["order"] }}
+        </p>
+    </div>
+    <div class="notification ">
+        <h1 class="title is-size-5">Limitation</h1>
+        <p class="is-size-8">
+            {{ scan["limit"] }}
+        </p>
+    </div>
+{% endblock %}

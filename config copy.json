@@ -1,0 +1,29 @@
+{
+  "xs_light": {
+    "size": "XS",
+    "up_color": "gray",
+    "down_color": "black",
+    "template": "plotly_white",
+    "show_info": false,
+    "add_indicators": [
+      "ema(9)",
+      "ema(21)",
+      "sma(50)",
+      "sma(100)"
+    ]
+  },
+  "xl_light": {
+    "size": "XL",
+    "up_color": "gray",
+    "down_color": "black",
+    "template": "plotly_white",
+    "show_info": true,
+    "add_indicators": [
+      "ema(9)",
+      "ema(21)",
+      "sma(50)",
+      "sma(100)",
+      "rs"
+    ]
+  }
+}

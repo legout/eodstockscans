@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+
+{% include "_header.html" %}
+
+
+<body>
+    {% include "hero.html" %}
+    <div class="columns is-centered">
+        <div class="column is-2">
+            {% include "sidebar.html" %}
+        </div>
+        <div class="column is-10">
+
+            {% include "scan_title.html" %}
+
+            <section class="my-auto mr-5">
+                {% block content %}
+                {% endblock %}
+            </section>
+        </div>
+    </div>
+
+
+    {% include "_footer.html" %}
+    {% if tab=="result_table" %}
+    {% include "_scripts.html" %}
+    {% endif %}
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+<section class="hero is-small is-dark">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+
+                    <div class="navbar-burger" @click="showNav = !showNav" :class="{ 'is-active': showNav }">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="navbar-menu" :class="{ 'is-active': showNav }">
+                    <div class="navbar-start">
+                        {% if path %}
+                        <a class="navbar-item" href="../{{ path }}/index.html">
+                            {% else %}
+                            <a class="navbar-item" href="../index.html">
+                                {% endif %}
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-home"></i>
+                                    </span>
+                                    <span>Home</span>
+                                </span>
+                            </a>
+
+                            <div class="navbar-item has-dropdown is-hoverable has-background-dark">
+                                <a class="navbar-link">
+                                    <span>Choose Market</span>
+                                </a>
+
+                                <div class="navbar-dropdown has-background-dark">
+                                    {% for market_org, market in all_markets %}
+
+                                    {% if path %}
+                                    <a class="navbar-item" href="../{{ path }}/{{ market }}/market_monitor.html">
+                                        <span>{{ market_org }}</span>
+                                        {% else %}
+                                        <a class="navbar-item" href="../{{ market }}/market_monitor.html">
+                                            <span>{{ market_org }}</span>
+                                        </a>
+                                        {% endif %}
+                                        {% endfor %}
+                                </div>
+                            </div>
+                    </div>
+                    <!-- <div class="navbar-end"></div>
+                    <span class="navbar-item">
+                        <a class="button is-info is-light" href="https://twitter.com/LignoL23">
+                            <span class="icon">
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                            <span>Twitter</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <a class="button  is-success is-light" href="https://www.paypal.com/paypalme/volkerlorrmann/5">
+                            <span class="icon">
+                                <i class="fab fa-paypal"></i>
+                            </span>
+                            <span>paypal.me</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+                        <script
+                            type='text/javascript'>kofiwidget2.init('Support me', '#d6d6d6', 'W7W0ACJPB'); kofiwidget2.draw();</script>
+                    </span>
+                </div> -->
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="columns is-multiline is-mobile is-centered">
+                <div class="column is-1">
+                    <img src="data:image/svg+xml;base64,{{ navbar_brand }}" alt="Logo">
+                </div>
+                <div class="column is-4">
+                    <p class="title">
+                        EOD Stock Market Scans
+                    </p>
+                    <p class="subtitle">
+                        Fintwits most popular stockmarket scans
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if tab %}
+    <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+            <div class="container">
+                <ul>
+                    {% if tab=="result_table" %}
+                    <li class="is-active">
+                        <a href="{{ path }}/{{ group_name }}/{{ scan_name }}_result_table.html"> Results </a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="{{ path }}/{{ group_name }}/{{ scan_name }}_result_table.html"> Results </a>
+                    </li>
+                    {% endif %}
+                    {% if tab=="minicharts" %}
+                    <li class="is-active">
+                        <a href="{{ path }}/{{ group_name }}/{{ scan_name }}_minicharts.html"> Minicharts </a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="{{ path }}/{{ group_name }}/{{ scan_name }}_minicharts.html"> Minicharts </a>
+                    </li>
+                    {% endif %}
+                    {% if tab=="charts" %}
+                    <li class="is-active">
+                        <a href="{{ path }}/{{ group_name }}/{{ scan_name }}_charts.html"> Charts </a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="{{ path }}/{{ group_name }}/{{ scan_name }}_charts.html"> Charts </a>
+                    </li>
+                    {% endif %}
+                    {% if tab=="criteria" %}
+                    <li class="is-active">
+                        <a href="{{ path }}/{{ group_name }}/{{ scan_name }}_criteria.html"> Criteria </a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="{{ path }}/{{ group_name }}/{{ scan_name }}_criteria.html"> Criteria </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </div>
+    {% endif %}
+</section>
