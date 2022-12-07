@@ -1,0 +1,7623 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EOD Stock Scans</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.datatables.net/v/bm/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/sc-2.0.5/datatables.min.css" />
+
+</head >
+
+
+<body>
+    <section class="hero is-small is-dark">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+
+                    <div class="navbar-burger" @click="showNav = !showNav" :class="{ 'is-active': showNav }">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="navbar-menu" :class="{ 'is-active': showNav }">
+                    <div class="navbar-start">
+                        
+                        <a class="navbar-item" href="../../index.html">
+                            
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-home"></i>
+                                    </span>
+                                    <span>Home</span>
+                                </span>
+                            </a>
+
+                            <div class="navbar-item has-dropdown is-hoverable has-background-dark">
+                                <a class="navbar-link">
+                                    <span>Choose Market</span>
+                                </a>
+
+                                <div class="navbar-dropdown has-background-dark">
+                                    
+
+                                    
+                                    <a class="navbar-item" href="../../australia/market_monitor.html">
+                                        <span>Australia</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../belgium/market_monitor.html">
+                                        <span>Belgium</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../canada/market_monitor.html">
+                                        <span>Canada</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../france/market_monitor.html">
+                                        <span>France</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../germany/market_monitor.html">
+                                        <span>Germany</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../hong_kong/market_monitor.html">
+                                        <span>Hong Kong</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../indonesia/market_monitor.html">
+                                        <span>Indonesia</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../italy/market_monitor.html">
+                                        <span>Italy</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../japan/market_monitor.html">
+                                        <span>Japan</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../netherlands/market_monitor.html">
+                                        <span>Netherlands</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../nordic_markets/market_monitor.html">
+                                        <span>Nordic Markets</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../poland/market_monitor.html">
+                                        <span>Poland</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../singapore/market_monitor.html">
+                                        <span>Singapore</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../united_kingdom/market_monitor.html">
+                                        <span>United Kingdom</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../united_states/market_monitor.html">
+                                        <span>United States</span>
+                                        
+                                        
+                                </div>
+                            </div>
+                    </div>
+                    <!-- <div class="navbar-end"></div>
+                    <span class="navbar-item">
+                        <a class="button is-info is-light" href="https://twitter.com/LignoL23">
+                            <span class="icon">
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                            <span>Twitter</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <a class="button  is-success is-light" href="https://www.paypal.com/paypalme/volkerlorrmann/5">
+                            <span class="icon">
+                                <i class="fab fa-paypal"></i>
+                            </span>
+                            <span>paypal.me</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+                        <script
+                            type='text/javascript'>kofiwidget2.init('Support me', '#d6d6d6', 'W7W0ACJPB'); kofiwidget2.draw();</script>
+                    </span>
+                </div> -->
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="columns is-multiline is-mobile is-centered">
+                <div class="column is-1">
+                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDEwMCAxMDA7IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOm5vbmU7fQoJLnN0MXtmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO30KPC9zdHlsZT48dGl0bGUvPjxnPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MS44LDg0YzAuMSwwLjIsMC4xLDAuMywwLjEsMC41YzAsMy4zLDAuMiw2LjcsMC41LDEwYzIuNi0wLjEsNC45LTAuMSw3LjItMC4ydjBjMC4zLDAsMC43LDAsMSwwICAgYy0wLjMtNS0wLjQtMTAtMC41LTE1QzQ4LjQsODAuNCw0NS41LDgyLjEsNDEuOCw4NHoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTYuMyw5NGMtMC4yLDAuMS0wLjQsMC4xLTAuNSwwLjJjMS43LDAuMSw0LjMsMC4yLDcuNywwLjNjMS40LDAsMi43LDAuMSw0LDAuMWMtMC4xLTEuNC0wLjMtMi44LTAuNC00LjEgICBDMjIuNiw5Mi4xLDE4LjgsOTMuMiwxNi4zLDk0eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02Ni45LDQ3LjVjMy4xLTMuMyw2LjgtNy41LDEwLjgtMTIuN2MwLDAsMCwwLDAtMC4xYzAuNS0wLjYsMS40LTAuNywyLTAuMmMxLjcsMS41LDMuNiwyLjksNS42LDQuNCAgIGMxLDAuOCwyLjEsMS41LDMuMSwyLjJjMC4zLDAuMiwwLjYsMC4zLDEsMC4zYzAuNCwwLDAuOC0wLjIsMS4yLTAuNGMwLjMtMC4zLDAuNS0wLjcsMC41LTEuMWMwLjItNC45LDAuMy05LjksMC4zLTE1di0wLjcgICBjMC01LjYtMC4xLTExLTAuMy0xNi4zYzAtMC4yLDAtMC4zLTAuMS0wLjVjLTAuMy0xLjQtMS43LTIuMy0zLjItMkM3Ni42LDgsNjUuNSwxMC43LDU0LjUsMTMuN2MtMC4zLDAuMS0wLjYsMC4zLTAuOCwwLjUgICBjLTAuMiwwLjMtMC4zLDAuNi0wLjMsMC45YzAsMC41LDAuMywxLDAuNywxLjJjMC45LDAuNiwxLjgsMS4xLDIuNywxLjdjMi4yLDEuMyw0LjMsMi41LDYuMywzLjVjMC43LDAuNCwxLDEuMiwwLjYsMS45ICAgYy0zLjEsNi02LjYsMTEuNy0xMC42LDE3LjFjLTguNSwxMS40LTE4LDIwLTMwLDMwLjhDMTYuNyw3NywxMiw4MSw5LjQsODMuNWMtMC42LDAuNi0xLjIsMS4yLTEuNywxLjhjMC43LTAuMSwxLjQtMC4yLDIuMS0wLjQgICBjMS4xLTAuMywyLjQtMC43LDMuNi0xLjFjMi41LTAuOSw0LjktMS45LDYuMS0yLjRDMjguOSw3Ny42LDQ3LjEsNjguNiw2Ni45LDQ3LjV6Ii8+PHBhdGggY2xhc3M9InN0MCIgZD0iTTMxLjUsODguN2MtMC42LDAuMi0xLjIsMC41LTEuNywwLjdjMC4yLDEuNywwLjQsMy41LDAuNSw1LjJjMC43LDAsMS4zLDAsMS45LDBjMi42LDAsNSwwLDcuMy0wLjEgICBjLTAuMy0zLjEtMC40LTYuMS0wLjUtOS4yQzM2LjgsODYuNSwzNC4yLDg3LjYsMzEuNSw4OC43eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik01Mi45LDc3LjVjMCwwLjEsMCwwLjEsMCwwLjJjMC4xLDUuNSwwLjMsMTEuMSwwLjYsMTYuNmMzLjQtMC4xLDYuOS0wLjIsMTAuNC0wLjNjLTAuMy04LjEtMC41LTE2LjMtMC44LTI0LjQgICBDNTkuOCw3Mi40LDU2LjQsNzUsNTIuOSw3Ny41eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik05MS4yLDU1LjNjLTAuMS0wLjEtMC4xLTAuMS0wLjItMC4xYy0wLjEsMC0wLjItMC4xLTAuNS0wLjJjLTAuNi0wLjMtMS42LTAuNy0zLjUtMS42ICAgYy0xLjItMC42LTIuMy0xLjEtMy40LTEuNmMtMC41LTAuMi0xLTAuNC0xLjYtMC40Yy0xLjEsMC0yLjEsMC41LTIuOCwxLjRsMCwwYy0wLjIsMC4zLTAuNCwwLjUtMC42LDAuOGwyLjMsNDAuM2gwLjYgICBjMi4yLDAsMy45LDAsNS4yLTAuMmMxLTAuMSwxLjktMC4zLDIuOC0wLjdjMC41LTAuMiwwLjktMC41LDEuMi0wLjljMC41LTAuNCwwLjgtMSwxLTEuNmMwLjItMC45LDAuMy0xLjgsMC4zLTIuNyAgIGMwLTEuNy0wLjEtNC4xLTAuMS03LjVjMC0yLjEsMC4xLTQuNywwLjMtNy43bDAsMGMwLjMtNC45LDAuOC04LjgsMC44LTExLjhjMC0xLjItMC4xLTIuNC0wLjQtMy41QzkyLjIsNTYuNSw5MS44LDU1LjgsOTEuMiw1NS4zeiAgICIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02NS44LDY3LjFjMCwwLjEsMC4xLDAuMywwLjEsMC40YzAuMyw4LjgsMC42LDE3LjYsMC45LDI2LjRjMy4yLTAuMSw2LjQtMC4xLDkuNi0wLjF2MGgwLjNoMS4xICAgYzAtMC4xLDAuMS0wLjIsMC4xLTAuNGMtMC43LTEyLjItMS40LTI0LjUtMi4xLTM2LjdDNzIuNyw2MC40LDY5LjMsNjMuOCw2NS44LDY3LjF6Ii8+PHBhdGggZD0iTTIwLjYsODQuMWM5LjYtMy45LDI4LjMtMTMuMSw0OC40LTM0LjZjMi45LTMuMSw2LjMtNywxMC4xLTExLjhjMS40LDEuMiwzLDIuNCw0LjYsMy42YzEuMSwwLjgsMi4xLDEuNSwzLjIsMi4zICAgYzEuOCwxLjIsNC4xLDEuMSw1LjctMC40YzAuOS0wLjgsMS40LTIsMS41LTMuMmMwLjItNC45LDAuMy05LjksMC4zLTE1LjF2LTAuN2MwLTUuNi0wLjEtMTEuMS0wLjMtMTYuNGMtMC4xLTMtMi43LTUuNC01LjctNS4zICAgYy0wLjMsMC0wLjcsMC4xLTEsMC4xQzc2LDUuMiw2NC44LDcuOSw1My43LDEwLjljLTEsMC4zLTEuOCwwLjgtMi40LDEuNmMtMC41LDAuOC0wLjgsMS43LTAuOCwyLjZjMCwxLjUsMC44LDIuOSwyLDMuNyAgIGMwLjksMC42LDEuOCwxLjEsMi44LDEuN2MxLjgsMS4xLDMuNSwyLDUuMiwyLjljLTIuOCw1LjQtNi4xLDEwLjYtOS43LDE1LjVDNDIuNiw1MCwzMy4yLDU4LjQsMjEuMiw2OS4yQzE2LDczLjksMTEuOSw3Ny40LDksNzkuOSAgIGMtMS4yLDEtMi4zLDIuMS0zLjMsMy4zYy0wLjQsMC40LTAuNywwLjgtMSwxLjNjLTAuMywwLjUtMC41LDEtMC41LDEuNWMwLDAuNywwLjMsMS4zLDAuOSwxLjdjMC4zLDAuMiwwLjYsMC40LDEsMC40ICAgYzAuMywwLjEsMC42LDAuMSwxLDAuMWMxLjEsMCwyLjMtMC4yLDMuNC0wLjVjMi0wLjUsMy45LTEuMiw1LjgtMS45QzE4LjEsODUuMSwxOS43LDg0LjQsMjAuNiw4NC4xeiBNOS43LDg0LjkgICBjLTAuNywwLjItMS40LDAuMy0yLjEsMC40YzAuNS0wLjYsMS4xLTEuMiwxLjctMS44QzEyLDgxLDE2LjcsNzcsMjMuMSw3MS40YzEyLTEwLjgsMjEuNi0xOS40LDMwLTMwLjhjNC01LjQsNy42LTExLjEsMTAuNi0xNy4xICAgYzAuNC0wLjcsMC4xLTEuNi0wLjYtMS45Yy0yLjEtMS4xLTQuMi0yLjMtNi4zLTMuNWMtMC45LTAuNi0xLjgtMS4xLTIuNy0xLjdjLTAuNC0wLjMtMC43LTAuNy0wLjctMS4yYzAtMC4zLDAuMS0wLjYsMC4zLTAuOSAgIGMwLjItMC4zLDAuNS0wLjUsMC44LTAuNUM2NS41LDEwLjcsNzYuNiw4LDg3LjgsNS40YzEuNC0wLjMsMi44LDAuNiwzLjIsMkM5MSw3LjYsOTEsNy44LDkxLDcuOWMwLjIsNS4yLDAuMywxMC43LDAuMywxNi4zdjAuNyAgIGMwLDUuMi0wLjEsMTAuMi0wLjMsMTVjMCwwLjQtMC4yLDAuOS0wLjUsMS4xYy0wLjMsMC4zLTAuNywwLjQtMS4yLDAuNGMtMC4zLDAtMC43LTAuMS0xLTAuM2MtMS0wLjctMi0xLjQtMy4xLTIuMiAgIGMtMi0xLjUtMy45LTMtNS42LTQuNGMtMC42LTAuNS0xLjUtMC40LTIsMC4yYzAsMCwwLDAsMCwwLjFjLTQsNS4yLTcuNyw5LjUtMTAuOCwxMi43Yy0xOS43LDIxLjEtMzgsMzAuMS00Ny40LDMzLjkgICBjLTEuMiwwLjUtMy42LDEuNS02LjEsMi40QzEyLjEsODQuMiwxMC44LDg0LjYsOS43LDg0Ljl6Ii8+PGxpbmUgY2xhc3M9InN0MSIgeDE9IjQuNSIgeDI9IjQuNSIgeTE9Ijg3LjEiIHkyPSI4Ny4xIi8+PHBhdGggZD0iTTk1LjcsNjAuN2MwLTEuNS0wLjEtMy0wLjUtNC40Qzk0LjgsNTUsOTQsNTMuOSw5Mi45LDUzYy0wLjItMC4xLTAuNC0wLjMtMC42LTAuNGMtMC4zLTAuMi0wLjYtMC4zLTEuMi0wLjYgICBjLTAuNi0wLjMtMS41LTAuNy0yLjktMS4zYy0xLjItMC42LTIuMy0xLjEtMy4zLTEuNmMtMi43LTEuNC02LTAuNi03LjksMS44bDAsMGMtNy44LDkuOS0xNywxOC40LTI3LjUsMjUuNCAgIGMtNiwzLjgtMTIuNCw3LjEtMTksOS44Yy01LjMsMi4yLTEwLDMuNi0xMy40LDQuN2MtMS43LDAuNS0zLjEsMS00LjEsMS40Yy0wLjUsMC4yLTAuOSwwLjQtMS40LDAuN2MtMC4yLDAuMi0wLjQsMC40LTAuNiwwLjYgICBjLTAuMiwwLjMtMC40LDAuNy0wLjQsMS4xYzAsMC4xLDAsMC4yLDAsMC4ydjB2MGMwLDAuMiwwLjEsMC41LDAuMywwLjdjMC4yLDAuMywwLjUsMC42LDAuOCwwLjdjMC41LDAuMiwxLjEsMC40LDEuNiwwLjUgICBjMS4zLDAuMiwyLjUsMC4zLDMuOCwwLjRjMS42LDAuMSwzLjcsMC4yLDYuMiwwLjJjMy4yLDAuMSw2LjIsMC4xLDguOSwwLjFjNywwLDEyLjUtMC4yLDE3LjQtMC4zYzguOS0wLjIsMTcuOC0wLjYsMjYuNy0wLjZoMC4zICAgYzEuOCwwLDMuNCwwLDQuOCwwYzIuMywwLjEsNC42LDAsNi45LTAuNGMwLjgtMC4xLDEuNi0wLjQsMi40LTAuOGMwLjctMC40LDEuNC0wLjgsMi0xLjRjMC44LTAuOCwxLjQtMS44LDEuOC0yLjkgICBjMC4zLTEuMSwwLjQtMi4zLDAuNC0zLjVjMC0xLjktMC4xLTQuMi0wLjEtNy41YzAtMi4xLDAuMS00LjYsMC4yLTcuNUM5NS4yLDY3LjksOTUuNyw2NCw5NS43LDYwLjd6IE0yMy40LDk0LjUgICBjLTMuNC0wLjEtNi0wLjItNy43LTAuM2MwLjItMC4xLDAuNC0wLjEsMC41LTAuMmMyLjUtMC44LDYuMy0yLDEwLjctMy42YzAuMSwxLjQsMC4zLDIuOCwwLjQsNC4xQzI2LjEsOTQuNiwyNC44LDk0LjYsMjMuNCw5NC41eiAgICBNMzIuMiw5NC42Yy0wLjYsMC0xLjMsMC0xLjksMGMtMC4yLTEuNy0wLjQtMy41LTAuNS01LjJjMC42LTAuMiwxLjEtMC40LDEuNy0wLjdjMi43LTEuMSw1LjMtMi4zLDcuNS0zLjQgICBjMC4xLDMuMSwwLjIsNi4xLDAuNSw5LjJDMzcuMyw5NC42LDM0LjksOTQuNiwzMi4yLDk0LjZ6IE00OS42LDk0LjNMNDkuNiw5NC4zYy0yLjMsMC00LjcsMC4xLTcuMiwwLjJjLTAuMy0zLjMtMC41LTYuNy0wLjUtMTAgICBjMC0wLjIsMC0wLjMtMC4xLTAuNWMzLjctMS45LDYuNi0zLjYsOC4zLTQuN2MwLjEsNSwwLjMsMTAsMC41LDE1QzUwLjMsOTQuMyw0OS45LDk0LjMsNDkuNiw5NC4zeiBNNTMuNSw5NC4yICAgYy0wLjMtNS41LTAuNS0xMS0wLjYtMTYuNmMwLTAuMSwwLTAuMSwwLTAuMmMzLjUtMi40LDYuOS01LjEsMTAuMi03LjljMC4zLDguMSwwLjUsMTYuMywwLjgsMjQuNEM2MC40LDk0LDU2LjksOTQuMSw1My41LDk0LjJ6ICAgIE03Ny44LDkzLjhoLTEuMWgtMC4zdjBjLTMuMiwwLTYuNCwwLjEtOS42LDAuMWMtMC4zLTguOC0wLjYtMTcuNi0wLjktMjYuNGMwLTAuMSwwLTAuMy0wLjEtMC40YzMuNi0zLjMsNi45LTYuOCwxMC4xLTEwLjQgICBjMC43LDEyLjIsMS40LDI0LjUsMi4xLDM2LjdDNzcuOSw5My41LDc3LjgsOTMuNiw3Ny44LDkzLjh6IE05Miw3Mi41TDkyLDcyLjVjLTAuMiwzLTAuMiw1LjYtMC4yLDcuN2MwLDMuNCwwLjEsNS44LDAuMSw3LjUgICBjMCwwLjktMC4xLDEuOC0wLjMsMi43Yy0wLjIsMC42LTAuNSwxLjItMSwxLjZjLTAuNCwwLjQtMC44LDAuNy0xLjIsMC45Yy0wLjksMC40LTEuOCwwLjYtMi44LDAuN2MtMS4zLDAuMS0zLDAuMi01LjIsMC4yaC0wLjYgICBsLTIuMy00MC4zYzAuMi0wLjMsMC40LTAuNSwwLjYtMC44bDAsMGMwLjctMC45LDEuNy0xLjQsMi44LTEuNGMwLjUsMCwxLjEsMC4xLDEuNiwwLjRjMSwwLjUsMi4xLDEuMSwzLjQsMS42ICAgYzEuOSwwLjksMi45LDEuMywzLjUsMS42YzAuMywwLjEsMC40LDAuMiwwLjUsMC4yYzAuMSwwLDAuMSwwLjEsMC4yLDAuMWMwLjYsMC41LDEuMSwxLjIsMS4zLDEuOWMwLjMsMS4xLDAuNCwyLjMsMC40LDMuNSAgIEM5Mi45LDYzLjYsOTIuMyw2Ny42LDkyLDcyLjV6Ii8+PC9nPjwvc3ZnPg==" alt="Logo">
+                </div>
+                <div class="column is-4">
+                    <p class="title">
+                        EOD Stock Market Scans
+                    </p>
+                    <p class="subtitle">
+                        Fintwits most popular stockmarket scans
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+            <div class="container">
+                <ul>
+                    
+                    <li class="is-active">
+                        <a href="../Ray/RSNHBP 5D_result_table.html"> Results </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Ray/RSNHBP 5D_minicharts.html"> Minicharts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Ray/RSNHBP 5D_charts.html"> Charts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Ray/RSNHBP 5D_criteria.html"> Criteria </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+</section>
+    <div class="columns is-centered">
+        <div class="column is-2">
+            <div class="box has-background-light my-0 mx-2 p-auto">
+    <aside class="menu">
+        <p class="menu-label has-text-dark">
+            Market Monitor
+        </p>
+        <ul class="menu-list">
+            <li><a class="has-text-grey-light">New Highs/Lows</a></li>
+            <li><a class="has-text-grey-light">Breadth</a></li>
+            <li><a class="has-text-grey-light">Above/Below SMA</a></li>
+            <li><a class="has-text-grey-light">Sectors</a></li>
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Kristjan Kullamägi
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Kristjan Kullamägi/Biggest Gainers 1M_minicharts.html">
+                        Biggest Gainers 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Kristjan Kullamägi/Biggest Gainers 3M_minicharts.html">
+                        Biggest Gainers 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Kristjan Kullamägi/Biggest Gainers 6M_minicharts.html">
+                        Biggest Gainers 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Kristjan Kullamägi/Biggest Gainers 12M_minicharts.html">
+                        Biggest Gainers 12M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Kristjan Kullamägi/EP with Growth_minicharts.html">
+                        EP with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Kristjan Kullamägi/EP_minicharts.html">
+                        EP
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Kristjan Kullamägi/High Trend Intensity_minicharts.html">
+                        High Trend Intensity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Kristjan Kullamägi/Small Stock Momo_minicharts.html">
+                        Small Stock Momo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Kristjan Kullamägi/Momentum_minicharts.html">
+                        Momentum
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Brad Schulz
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Brad Schulz/Pocket Pivot_minicharts.html">
+                        Pocket Pivot
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Stockbee
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Stockbee/4 PCT  Gainers_minicharts.html">
+                        4 PCT  Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Stockbee/Combo_minicharts.html">
+                        Combo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Stockbee/Ants_minicharts.html">
+                        Ants
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Stockbee/Breakout 1M Base_minicharts.html">
+                        Breakout 1M Base
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Stockbee/Breakout 3M Base_minicharts.html">
+                        Breakout 3M Base
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Leif Soreide
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Leif Soreide/HTF_minicharts.html">
+                        HTF
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Blake Davis
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Blake Davis/Strength_minicharts.html">
+                        Strength
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ben
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Ben/Power of 3_minicharts.html">
+                        Power of 3
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Ben/Velocity_minicharts.html">
+                        Velocity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Ben/Focus_minicharts.html">
+                        Focus
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ray
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="is-active"
+                        href="../../nordic_markets/Ray/RSNHBP 5D_minicharts.html">
+                        RSNHBP 5D
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Ray/RSNHBP 1M_minicharts.html">
+                        RSNHBP 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Ray/RSNHBP 3M_minicharts.html">
+                        RSNHBP 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Ray/RSNHBP 6M_minicharts.html">
+                        RSNHBP 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Ray/RSNHBP 12M_minicharts.html">
+                        RSNHBP 12M
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Mark Minvervini
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Mark Minvervini/Trend Template_minicharts.html">
+                        Trend Template
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Vo
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Vo/Top Gainers From Open_minicharts.html">
+                        Top Gainers From Open
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Vo/Top Gainers_minicharts.html">
+                        Top Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Vo/Volume Gainers_minicharts.html">
+                        Volume Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Vo/Insiders_minicharts.html">
+                        Insiders
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Vo/Darvas Scan_minicharts.html">
+                        Darvas Scan
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Vo/Darvas Scan with Growth_minicharts.html">
+                        Darvas Scan with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Vo/52W High_minicharts.html">
+                        52W High
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Vo/Quite and Tight_minicharts.html">
+                        Quite and Tight
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../nordic_markets/Vo/Mo Scan_minicharts.html">
+                        Mo Scan
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+    </aside>
+</div>
+        </div>
+        <div class="column is-10">
+
+            
+<section class="block my-6">
+    <div class="columns ">
+        <div class="column is-5 has-text-left">
+            <h1 class="title is-4">RSNHBP 5D @ Nordic Markets</h1>
+            <h2 class="subtitle is-6">2022-12-07</h2>
+        </div>
+        <div class="column has-text-right mr-5">
+            <div class="media">
+
+                <div class="media-content">
+                    <p class="title is-5">Ray</p>
+                    <p class="subtitle is-6"><a class="has-text-grey-light" href="https://twitter.com/RayTL_">@RayTL_</a></p>
+                </div>
+                <div class="media-right">
+                    <figure class="image is-48x48">
+                        <img src="https://unavatar.io/twitter/RayTL_" alt="Placeholder image">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+            <section class="my-auto mr-5">
+                
+    <div class="table-container">
+        <table border="1" class="dataframe table is-striped no-wrap" id="data" style="width:100%; font-size:85%">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>symbol</th>
+      <th>yahoo_symbol</th>
+      <th>name</th>
+      <th>sector</th>
+      <th>industry</th>
+      <th>roc</th>
+      <th>close</th>
+      <th>volume</th>
+      <th>rel Volume</th>
+      <th>adr(20)</th>
+      <th>atr(14)</th>
+      <th>roc(5)</th>
+      <th>roc(21)</th>
+      <th>roc(63)</th>
+      <th>roc(126)</th>
+      <th>roc(252)</th>
+      <th>52w High</th>
+      <th>% below 52w High</th>
+      <th>52w Low</th>
+      <th>% above 52w Low</th>
+      <th>UD Ratio</th>
+      <th>50d avg Volume</th>
+      <th>Pocket Pivot</th>
+      <th>1w Pocket Pivots</th>
+      <th>1m Pocket Pivots</th>
+      <th>Rocket Ratio</th>
+      <th>1m RS</th>
+      <th>3m RS</th>
+      <th>RS</th>
+      <th>Industry 1m RS</th>
+      <th>Industry 3m RS</th>
+      <th>Industry RS</th>
+      <th>ema(9)</th>
+      <th>% from 9d ema</th>
+      <th>ema(21)</th>
+      <th>% from 21d ema</th>
+      <th>sma(50)</th>
+      <th>% from 50d sma</th>
+      <th>EPS Growth Q</th>
+      <th>EPS Growth Y</th>
+      <th>EPS Growth FQ</th>
+      <th>EPS Growth FY</th>
+      <th>EPS Growth FQ1</th>
+      <th>EPS Growth FY1</th>
+      <th>Rev Growth Q</th>
+      <th>Rev Growth FQ</th>
+      <th>Rev Growth FY</th>
+      <th>Rev Growth FQ1</th>
+      <th>Rev Growth FY1</th>
+      <th>Insiders %</th>
+      <th>Institutions %</th>
+      <th>Institutions No.</th>
+      <th>Market Cap</th>
+      <th>Shares Outstanding</th>
+      <th>Shares Float</th>
+      <th>Shares Short</th>
+      <th>Short Ratio</th>
+      <th>Net Insider Trading %</th>
+      <th>exchange</th>
+      <th>country</th>
+      <th>IPO Date</th>
+      <th>market</th>
+      <th>date</th>
+      <th>group_name</th>
+      <th>scan_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>READ</td>
+      <td>READ.ST</td>
+      <td>Readly International AB</td>
+      <td>Communication Services</td>
+      <td>Internet Content &amp; Information</td>
+      <td>0.00</td>
+      <td>11.82</td>
+      <td>249989.0</td>
+      <td>1.47</td>
+      <td>6.29</td>
+      <td>0.60</td>
+      <td>60.82</td>
+      <td>56.87</td>
+      <td>71.30</td>
+      <td>70.07</td>
+      <td>-28.58</td>
+      <td>19.86</td>
+      <td>-40.48</td>
+      <td>5.95</td>
+      <td>98.66</td>
+      <td>4.54</td>
+      <td>170476.86</td>
+      <td>False</td>
+      <td>3.0</td>
+      <td>5.0</td>
+      <td>215.92</td>
+      <td>99</td>
+      <td>98</td>
+      <td>95</td>
+      <td>18</td>
+      <td>57</td>
+      <td>46</td>
+      <td>9.51</td>
+      <td>24.28</td>
+      <td>8.33</td>
+      <td>41.83</td>
+      <td>7.26</td>
+      <td>62.76</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.49</td>
+      <td>0.64</td>
+      <td>0.32</td>
+      <td>0.28</td>
+      <td>NaN</td>
+      <td>0.25</td>
+      <td>0.23</td>
+      <td>0.04</td>
+      <td>13.06</td>
+      <td>32.23</td>
+      <td>18.0</td>
+      <td>3.032376e+08</td>
+      <td>3.790470e+07</td>
+      <td>3.681005e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2020-09-17 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>WYLD</td>
+      <td>WYLD.ST</td>
+      <td>Wyld Networks AB</td>
+      <td>Technology</td>
+      <td>Information Technology Services</td>
+      <td>12.88</td>
+      <td>17.00</td>
+      <td>249721.0</td>
+      <td>5.31</td>
+      <td>9.52</td>
+      <td>1.24</td>
+      <td>38.66</td>
+      <td>30.77</td>
+      <td>52.60</td>
+      <td>64.41</td>
+      <td>29.57</td>
+      <td>26.55</td>
+      <td>-35.97</td>
+      <td>9.64</td>
+      <td>76.35</td>
+      <td>2.59</td>
+      <td>47056.76</td>
+      <td>True</td>
+      <td>4.0</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>97</td>
+      <td>97</td>
+      <td>94</td>
+      <td>92</td>
+      <td>75</td>
+      <td>45</td>
+      <td>13.90</td>
+      <td>22.27</td>
+      <td>13.38</td>
+      <td>27.06</td>
+      <td>12.55</td>
+      <td>35.50</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.45</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>65.06</td>
+      <td>1.56</td>
+      <td>1.0</td>
+      <td>1.554045e+08</td>
+      <td>1.111620e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2021-07-02 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ACARIX</td>
+      <td>ACARIX.ST</td>
+      <td>Acarix A/S</td>
+      <td>Healthcare</td>
+      <td>Medical Devices</td>
+      <td>11.27</td>
+      <td>0.40</td>
+      <td>4327685.0</td>
+      <td>5.62</td>
+      <td>12.39</td>
+      <td>0.06</td>
+      <td>25.40</td>
+      <td>-33.72</td>
+      <td>-47.12</td>
+      <td>-55.57</td>
+      <td>-50.81</td>
+      <td>1.00</td>
+      <td>-60.42</td>
+      <td>0.29</td>
+      <td>37.15</td>
+      <td>0.81</td>
+      <td>770229.68</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>324.43</td>
+      <td>2</td>
+      <td>4</td>
+      <td>7</td>
+      <td>9</td>
+      <td>21</td>
+      <td>11</td>
+      <td>0.36</td>
+      <td>10.44</td>
+      <td>0.41</td>
+      <td>-4.65</td>
+      <td>0.55</td>
+      <td>-28.64</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.09</td>
+      <td>NaN</td>
+      <td>0.24</td>
+      <td>0.91</td>
+      <td>NaN</td>
+      <td>2.46</td>
+      <td>NaN</td>
+      <td>1.54</td>
+      <td>15.23</td>
+      <td>4.21</td>
+      <td>2.0</td>
+      <td>1.489154e+08</td>
+      <td>2.519720e+08</td>
+      <td>2.498884e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2016-12-19 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>BIOGAS</td>
+      <td>BIOGAS.ST</td>
+      <td>Scandinavian Biogas Fuels International AB</td>
+      <td>Basic Materials</td>
+      <td>Specialty Chemicals</td>
+      <td>16.67</td>
+      <td>18.90</td>
+      <td>5008514.0</td>
+      <td>28.74</td>
+      <td>3.47</td>
+      <td>0.59</td>
+      <td>20.69</td>
+      <td>16.67</td>
+      <td>1.07</td>
+      <td>-31.02</td>
+      <td>-34.83</td>
+      <td>44.80</td>
+      <td>-57.81</td>
+      <td>13.16</td>
+      <td>43.62</td>
+      <td>4.06</td>
+      <td>174296.00</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>129.70</td>
+      <td>92</td>
+      <td>62</td>
+      <td>34</td>
+      <td>2</td>
+      <td>61</td>
+      <td>94</td>
+      <td>16.49</td>
+      <td>14.61</td>
+      <td>16.17</td>
+      <td>16.87</td>
+      <td>16.00</td>
+      <td>18.11</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>39.86</td>
+      <td>33.04</td>
+      <td>12.0</td>
+      <td>5.103619e+08</td>
+      <td>3.123390e+07</td>
+      <td>2.260665e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2020-12-16 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>SYNACT</td>
+      <td>SYNACT.ST</td>
+      <td>SynAct Pharma AB</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>4.04</td>
+      <td>70.75</td>
+      <td>117373.0</td>
+      <td>1.87</td>
+      <td>5.38</td>
+      <td>3.13</td>
+      <td>11.77</td>
+      <td>27.48</td>
+      <td>28.05</td>
+      <td>57.22</td>
+      <td>-50.16</td>
+      <td>143.33</td>
+      <td>-50.64</td>
+      <td>37.00</td>
+      <td>91.22</td>
+      <td>1.52</td>
+      <td>62637.50</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>367.40</td>
+      <td>96</td>
+      <td>94</td>
+      <td>80</td>
+      <td>58</td>
+      <td>48</td>
+      <td>26</td>
+      <td>63.90</td>
+      <td>10.72</td>
+      <td>60.07</td>
+      <td>17.77</td>
+      <td>55.03</td>
+      <td>28.56</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>34.14</td>
+      <td>0.23</td>
+      <td>3.0</td>
+      <td>1.594422e+09</td>
+      <td>2.837050e+07</td>
+      <td>2.301302e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2016-07-11 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>ALZ</td>
+      <td>ALZ.ST</td>
+      <td>Alzinova AB</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>18.36</td>
+      <td>3.03</td>
+      <td>1367504.0</td>
+      <td>1.26</td>
+      <td>20.38</td>
+      <td>0.42</td>
+      <td>19.76</td>
+      <td>60.74</td>
+      <td>108.25</td>
+      <td>28.94</td>
+      <td>-43.58</td>
+      <td>7.74</td>
+      <td>-60.85</td>
+      <td>0.98</td>
+      <td>209.18</td>
+      <td>0.77</td>
+      <td>1085357.58</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>26.12</td>
+      <td>99</td>
+      <td>99</td>
+      <td>93</td>
+      <td>58</td>
+      <td>48</td>
+      <td>26</td>
+      <td>2.66</td>
+      <td>13.83</td>
+      <td>2.56</td>
+      <td>18.26</td>
+      <td>2.42</td>
+      <td>25.15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.54</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>0.37</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>19.76</td>
+      <td>0.96</td>
+      <td>1.0</td>
+      <td>7.034923e+07</td>
+      <td>3.241900e+07</td>
+      <td>2.834656e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2015-11-25 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>RENEW</td>
+      <td>RENEW.ST</td>
+      <td>Renewcell AB</td>
+      <td>Consumer Cyclical</td>
+      <td>Textile Manufacturing</td>
+      <td>6.52</td>
+      <td>74.35</td>
+      <td>314024.0</td>
+      <td>1.60</td>
+      <td>7.00</td>
+      <td>4.17</td>
+      <td>21.09</td>
+      <td>27.64</td>
+      <td>-11.75</td>
+      <td>-26.96</td>
+      <td>-67.76</td>
+      <td>235.20</td>
+      <td>-68.39</td>
+      <td>53.05</td>
+      <td>40.15</td>
+      <td>1.07</td>
+      <td>196694.86</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>150.06</td>
+      <td>96</td>
+      <td>33</td>
+      <td>18</td>
+      <td>95</td>
+      <td>97</td>
+      <td>70</td>
+      <td>66.74</td>
+      <td>11.40</td>
+      <td>64.53</td>
+      <td>15.21</td>
+      <td>65.04</td>
+      <td>14.31</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.74</td>
+      <td>-0.80</td>
+      <td>0.37</td>
+      <td>0.78</td>
+      <td>3.77</td>
+      <td>37.70</td>
+      <td>32.03</td>
+      <td>62.98</td>
+      <td>6.06</td>
+      <td>36.53</td>
+      <td>48.44</td>
+      <td>63.0</td>
+      <td>2.143501e+09</td>
+      <td>3.394300e+07</td>
+      <td>2.951650e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2020-11-26 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>KEBNIb</td>
+      <td>KEBNI-B.ST</td>
+      <td>KebNi AB</td>
+      <td>Technology</td>
+      <td>Communication Equipment</td>
+      <td>10.24</td>
+      <td>0.93</td>
+      <td>3802486.0</td>
+      <td>3.80</td>
+      <td>6.96</td>
+      <td>0.07</td>
+      <td>0.65</td>
+      <td>-9.22</td>
+      <td>-22.83</td>
+      <td>2.66</td>
+      <td>23.63</td>
+      <td>1.50</td>
+      <td>-38.27</td>
+      <td>0.37</td>
+      <td>153.47</td>
+      <td>1.00</td>
+      <td>1001799.46</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>163.10</td>
+      <td>21</td>
+      <td>17</td>
+      <td>84</td>
+      <td>93</td>
+      <td>58</td>
+      <td>76</td>
+      <td>0.90</td>
+      <td>3.15</td>
+      <td>0.93</td>
+      <td>-0.19</td>
+      <td>1.00</td>
+      <td>-7.32</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.19</td>
+      <td>NaN</td>
+      <td>2.07</td>
+      <td>-0.20</td>
+      <td>0.98</td>
+      <td>55.03</td>
+      <td>0.96</td>
+      <td>1.0</td>
+      <td>2.167293e+08</td>
+      <td>2.153550e+08</td>
+      <td>1.633985e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2020-08-25 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>KFASTb</td>
+      <td>KFAST-B.ST</td>
+      <td>K-Fast Holding AB</td>
+      <td>Real Estate</td>
+      <td>Real Estate Services</td>
+      <td>0.32</td>
+      <td>24.86</td>
+      <td>257129.0</td>
+      <td>0.96</td>
+      <td>7.81</td>
+      <td>1.40</td>
+      <td>17.04</td>
+      <td>8.09</td>
+      <td>-4.46</td>
+      <td>3.41</td>
+      <td>-68.69</td>
+      <td>92.05</td>
+      <td>-72.99</td>
+      <td>17.01</td>
+      <td>46.15</td>
+      <td>0.95</td>
+      <td>266966.22</td>
+      <td>True</td>
+      <td>4.0</td>
+      <td>6.0</td>
+      <td>213.04</td>
+      <td>82</td>
+      <td>48</td>
+      <td>24</td>
+      <td>46</td>
+      <td>12</td>
+      <td>17</td>
+      <td>23.15</td>
+      <td>7.41</td>
+      <td>22.40</td>
+      <td>10.99</td>
+      <td>21.49</td>
+      <td>15.68</td>
+      <td>0.82</td>
+      <td>0.82</td>
+      <td>NaN</td>
+      <td>0.60</td>
+      <td>NaN</td>
+      <td>0.21</td>
+      <td>0.20</td>
+      <td>0.47</td>
+      <td>0.43</td>
+      <td>0.40</td>
+      <td>0.38</td>
+      <td>70.61</td>
+      <td>21.13</td>
+      <td>46.0</td>
+      <td>5.120586e+09</td>
+      <td>1.928310e+08</td>
+      <td>5.687542e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2019-11-29 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>SFAST</td>
+      <td>SFAST.ST</td>
+      <td>Stenhus Fastigheter I Norden AB</td>
+      <td>Real Estate</td>
+      <td>Real Estate Services</td>
+      <td>1.69</td>
+      <td>12.04</td>
+      <td>347530.0</td>
+      <td>1.42</td>
+      <td>5.98</td>
+      <td>0.54</td>
+      <td>11.90</td>
+      <td>3.79</td>
+      <td>-7.24</td>
+      <td>-9.47</td>
+      <td>-53.69</td>
+      <td>30.50</td>
+      <td>-60.52</td>
+      <td>8.20</td>
+      <td>46.83</td>
+      <td>1.27</td>
+      <td>244850.58</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>651.70</td>
+      <td>70</td>
+      <td>42</td>
+      <td>30</td>
+      <td>46</td>
+      <td>12</td>
+      <td>17</td>
+      <td>11.50</td>
+      <td>4.66</td>
+      <td>11.53</td>
+      <td>4.42</td>
+      <td>11.00</td>
+      <td>9.42</td>
+      <td>-0.27</td>
+      <td>-0.62</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>45.04</td>
+      <td>20.38</td>
+      <td>11.0</td>
+      <td>4.655100e+09</td>
+      <td>3.706290e+08</td>
+      <td>1.595698e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2020-11-24 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>TRANS</td>
+      <td>TRANS.ST</td>
+      <td>Transtema Group AB</td>
+      <td>Communication Services</td>
+      <td>Telecom Services</td>
+      <td>3.27</td>
+      <td>30.98</td>
+      <td>145661.0</td>
+      <td>1.49</td>
+      <td>4.41</td>
+      <td>1.17</td>
+      <td>13.90</td>
+      <td>12.90</td>
+      <td>10.33</td>
+      <td>31.94</td>
+      <td>-30.23</td>
+      <td>51.20</td>
+      <td>-39.49</td>
+      <td>22.56</td>
+      <td>37.32</td>
+      <td>2.19</td>
+      <td>98079.72</td>
+      <td>True</td>
+      <td>4.0</td>
+      <td>8.0</td>
+      <td>257.15</td>
+      <td>89</td>
+      <td>79</td>
+      <td>77</td>
+      <td>67</td>
+      <td>29</td>
+      <td>52</td>
+      <td>28.94</td>
+      <td>7.06</td>
+      <td>28.08</td>
+      <td>10.34</td>
+      <td>26.49</td>
+      <td>16.94</td>
+      <td>0.14</td>
+      <td>0.12</td>
+      <td>NaN</td>
+      <td>-0.06</td>
+      <td>-0.02</td>
+      <td>0.26</td>
+      <td>0.60</td>
+      <td>NaN</td>
+      <td>0.39</td>
+      <td>0.39</td>
+      <td>0.10</td>
+      <td>54.74</td>
+      <td>12.11</td>
+      <td>16.0</td>
+      <td>1.076899e+09</td>
+      <td>3.890530e+07</td>
+      <td>2.522132e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2015-05-21 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>ENSU</td>
+      <td>ENSU.OL</td>
+      <td>Ensurge Micropower ASA</td>
+      <td>Technology</td>
+      <td>Electronic Components</td>
+      <td>9.12</td>
+      <td>2.16</td>
+      <td>2062830.0</td>
+      <td>1.37</td>
+      <td>7.78</td>
+      <td>0.14</td>
+      <td>14.82</td>
+      <td>-15.80</td>
+      <td>-39.54</td>
+      <td>-26.17</td>
+      <td>208.57</td>
+      <td>6.75</td>
+      <td>-68.01</td>
+      <td>0.68</td>
+      <td>220.00</td>
+      <td>0.44</td>
+      <td>1504653.16</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>76.14</td>
+      <td>11</td>
+      <td>6</td>
+      <td>84</td>
+      <td>19</td>
+      <td>3</td>
+      <td>42</td>
+      <td>2.01</td>
+      <td>7.33</td>
+      <td>2.08</td>
+      <td>3.77</td>
+      <td>2.25</td>
+      <td>-3.92</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>27.02</td>
+      <td>22.03</td>
+      <td>7.0</td>
+      <td>4.325968e+08</td>
+      <td>2.133120e+08</td>
+      <td>1.145634e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Oslo</td>
+      <td>Norway</td>
+      <td>2008-01-30 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>IRIST</td>
+      <td>IRIS.ST</td>
+      <td>Irisity AB</td>
+      <td>Industrials</td>
+      <td>Security &amp; Protection Services</td>
+      <td>10.35</td>
+      <td>5.33</td>
+      <td>817577.0</td>
+      <td>1.55</td>
+      <td>8.23</td>
+      <td>0.35</td>
+      <td>10.70</td>
+      <td>4.51</td>
+      <td>-67.89</td>
+      <td>-70.12</td>
+      <td>-90.55</td>
+      <td>63.00</td>
+      <td>-91.54</td>
+      <td>3.60</td>
+      <td>48.06</td>
+      <td>0.48</td>
+      <td>527756.96</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>48.30</td>
+      <td>72</td>
+      <td>1</td>
+      <td>0</td>
+      <td>39</td>
+      <td>25</td>
+      <td>40</td>
+      <td>4.99</td>
+      <td>6.76</td>
+      <td>5.48</td>
+      <td>-2.75</td>
+      <td>8.69</td>
+      <td>-38.65</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.81</td>
+      <td>NaN</td>
+      <td>4.24</td>
+      <td>1.34</td>
+      <td>2.29</td>
+      <td>0.90</td>
+      <td>1.67</td>
+      <td>0.65</td>
+      <td>47.79</td>
+      <td>11.59</td>
+      <td>7.0</td>
+      <td>1.984059e+08</td>
+      <td>3.830230e+07</td>
+      <td>2.549135e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2013-10-23 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>HTRO</td>
+      <td>HTRO.ST</td>
+      <td>Hexatronic Group AB</td>
+      <td>Technology</td>
+      <td>Communication Equipment</td>
+      <td>2.12</td>
+      <td>161.20</td>
+      <td>1181574.0</td>
+      <td>1.05</td>
+      <td>5.15</td>
+      <td>7.58</td>
+      <td>11.36</td>
+      <td>11.63</td>
+      <td>40.30</td>
+      <td>109.35</td>
+      <td>-65.56</td>
+      <td>514.00</td>
+      <td>-68.64</td>
+      <td>57.60</td>
+      <td>179.86</td>
+      <td>2.27</td>
+      <td>1128191.50</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>139.80</td>
+      <td>88</td>
+      <td>96</td>
+      <td>96</td>
+      <td>13</td>
+      <td>8</td>
+      <td>44</td>
+      <td>153.39</td>
+      <td>5.09</td>
+      <td>147.99</td>
+      <td>8.93</td>
+      <td>135.39</td>
+      <td>19.07</td>
+      <td>2.68</td>
+      <td>2.51</td>
+      <td>1.58</td>
+      <td>1.71</td>
+      <td>1.19</td>
+      <td>0.28</td>
+      <td>0.91</td>
+      <td>0.50</td>
+      <td>0.86</td>
+      <td>0.47</td>
+      <td>0.35</td>
+      <td>19.73</td>
+      <td>45.28</td>
+      <td>86.0</td>
+      <td>2.949259e+10</td>
+      <td>2.024200e+08</td>
+      <td>1.577238e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2011-07-05 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>NETIb</td>
+      <td>NETI-B.ST</td>
+      <td>Net Insight AB ser. B</td>
+      <td>Technology</td>
+      <td>Communication Equipment</td>
+      <td>0.60</td>
+      <td>6.74</td>
+      <td>1813876.0</td>
+      <td>1.03</td>
+      <td>4.24</td>
+      <td>0.21</td>
+      <td>11.60</td>
+      <td>2.28</td>
+      <td>25.65</td>
+      <td>83.72</td>
+      <td>4.74</td>
+      <td>7.18</td>
+      <td>-6.20</td>
+      <td>3.06</td>
+      <td>120.10</td>
+      <td>2.29</td>
+      <td>1755235.74</td>
+      <td>True</td>
+      <td>5.0</td>
+      <td>8.0</td>
+      <td>171.11</td>
+      <td>63</td>
+      <td>93</td>
+      <td>95</td>
+      <td>93</td>
+      <td>58</td>
+      <td>76</td>
+      <td>6.33</td>
+      <td>6.41</td>
+      <td>6.07</td>
+      <td>10.88</td>
+      <td>5.95</td>
+      <td>13.13</td>
+      <td>0.69</td>
+      <td>0.65</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.50</td>
+      <td>0.17</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.12</td>
+      <td>38.37</td>
+      <td>12.65</td>
+      <td>18.0</td>
+      <td>2.225860e+09</td>
+      <td>3.600480e+08</td>
+      <td>3.003350e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>ARISE</td>
+      <td>ARISE.ST</td>
+      <td>Arise Windpower AB</td>
+      <td>Utilities</td>
+      <td>Utilities—Renewable</td>
+      <td>0.99</td>
+      <td>50.90</td>
+      <td>69406.0</td>
+      <td>0.58</td>
+      <td>4.64</td>
+      <td>2.04</td>
+      <td>2.83</td>
+      <td>0.79</td>
+      <td>-28.91</td>
+      <td>21.77</td>
+      <td>17.96</td>
+      <td>79.40</td>
+      <td>-35.89</td>
+      <td>36.80</td>
+      <td>38.32</td>
+      <td>0.49</td>
+      <td>119028.48</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>229.71</td>
+      <td>56</td>
+      <td>11</td>
+      <td>67</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>50.25</td>
+      <td>1.29</td>
+      <td>50.77</td>
+      <td>0.26</td>
+      <td>51.73</td>
+      <td>-1.60</td>
+      <td>12.06</td>
+      <td>11.49</td>
+      <td>3.62</td>
+      <td>9.12</td>
+      <td>3.62</td>
+      <td>-0.47</td>
+      <td>6.86</td>
+      <td>0.46</td>
+      <td>2.22</td>
+      <td>0.46</td>
+      <td>-0.17</td>
+      <td>40.40</td>
+      <td>34.11</td>
+      <td>42.0</td>
+      <td>2.319768e+09</td>
+      <td>4.444000e+07</td>
+      <td>2.734164e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2010-03-24 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>ELABS</td>
+      <td>ELABS.OL</td>
+      <td>Elliptic Laboratories AS</td>
+      <td>Technology</td>
+      <td>Software—Infrastructure</td>
+      <td>2.22</td>
+      <td>16.58</td>
+      <td>96697.0</td>
+      <td>1.10</td>
+      <td>4.40</td>
+      <td>0.62</td>
+      <td>10.53</td>
+      <td>10.98</td>
+      <td>-7.37</td>
+      <td>-5.80</td>
+      <td>-19.32</td>
+      <td>29.50</td>
+      <td>-43.80</td>
+      <td>13.74</td>
+      <td>20.67</td>
+      <td>1.13</td>
+      <td>88249.30</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>621.39</td>
+      <td>87</td>
+      <td>42</td>
+      <td>47</td>
+      <td>53</td>
+      <td>35</td>
+      <td>35</td>
+      <td>15.82</td>
+      <td>4.77</td>
+      <td>15.67</td>
+      <td>5.83</td>
+      <td>15.61</td>
+      <td>6.21</td>
+      <td>-0.60</td>
+      <td>-0.64</td>
+      <td>NaN</td>
+      <td>1.54</td>
+      <td>11.00</td>
+      <td>12.83</td>
+      <td>1.00</td>
+      <td>2.62</td>
+      <td>0.71</td>
+      <td>0.85</td>
+      <td>1.67</td>
+      <td>30.99</td>
+      <td>24.57</td>
+      <td>7.0</td>
+      <td>1.758851e+09</td>
+      <td>1.040740e+08</td>
+      <td>5.483689e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Oslo</td>
+      <td>Norway</td>
+      <td>2020-10-16 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>ENEA</td>
+      <td>ENEA.ST</td>
+      <td>Enea AB</td>
+      <td>Technology</td>
+      <td>Software—Application</td>
+      <td>1.98</td>
+      <td>87.70</td>
+      <td>35179.0</td>
+      <td>0.80</td>
+      <td>4.91</td>
+      <td>3.09</td>
+      <td>9.62</td>
+      <td>-3.52</td>
+      <td>-6.20</td>
+      <td>-15.51</td>
+      <td>-67.52</td>
+      <td>293.50</td>
+      <td>-70.12</td>
+      <td>67.10</td>
+      <td>30.70</td>
+      <td>1.73</td>
+      <td>44085.36</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>313.90</td>
+      <td>37</td>
+      <td>44</td>
+      <td>21</td>
+      <td>25</td>
+      <td>42</td>
+      <td>57</td>
+      <td>85.18</td>
+      <td>2.96</td>
+      <td>83.85</td>
+      <td>4.59</td>
+      <td>79.22</td>
+      <td>10.70</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>-0.49</td>
+      <td>-0.33</td>
+      <td>-0.46</td>
+      <td>-0.44</td>
+      <td>-0.00</td>
+      <td>-0.14</td>
+      <td>-0.04</td>
+      <td>-0.12</td>
+      <td>-0.00</td>
+      <td>35.18</td>
+      <td>44.77</td>
+      <td>34.0</td>
+      <td>2.053444e+09</td>
+      <td>2.161520e+07</td>
+      <td>1.383846e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2004-10-04 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>NTGNT</td>
+      <td>NTG.CO</td>
+      <td>NTG Nordic Transport Group A/S</td>
+      <td>Industrials</td>
+      <td>Integrated Freight &amp; Logistics</td>
+      <td>3.33</td>
+      <td>248.50</td>
+      <td>96897.0</td>
+      <td>2.07</td>
+      <td>3.76</td>
+      <td>7.82</td>
+      <td>8.52</td>
+      <td>-0.20</td>
+      <td>-4.42</td>
+      <td>-12.65</td>
+      <td>-50.50</td>
+      <td>539.00</td>
+      <td>-53.90</td>
+      <td>185.00</td>
+      <td>34.32</td>
+      <td>1.34</td>
+      <td>46794.84</td>
+      <td>True</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>297.77</td>
+      <td>52</td>
+      <td>48</td>
+      <td>33</td>
+      <td>19</td>
+      <td>6</td>
+      <td>14</td>
+      <td>237.68</td>
+      <td>4.55</td>
+      <td>234.47</td>
+      <td>5.98</td>
+      <td>226.32</td>
+      <td>9.80</td>
+      <td>0.46</td>
+      <td>0.48</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.22</td>
+      <td>0.51</td>
+      <td>0.30</td>
+      <td>0.42</td>
+      <td>0.30</td>
+      <td>-0.04</td>
+      <td>32.49</td>
+      <td>21.25</td>
+      <td>45.0</td>
+      <td>5.380132e+09</td>
+      <td>2.209500e+07</td>
+      <td>1.393395e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Copenhagen</td>
+      <td>Denmark</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>NSKOG</td>
+      <td>NSKOG.OL</td>
+      <td>Norske Skog Asa</td>
+      <td>Basic Materials</td>
+      <td>Paper &amp; Paper Products</td>
+      <td>1.06</td>
+      <td>62.20</td>
+      <td>239491.0</td>
+      <td>0.52</td>
+      <td>3.53</td>
+      <td>1.99</td>
+      <td>4.71</td>
+      <td>1.72</td>
+      <td>-3.57</td>
+      <td>16.15</td>
+      <td>68.11</td>
+      <td>78.85</td>
+      <td>-21.12</td>
+      <td>35.30</td>
+      <td>76.20</td>
+      <td>0.71</td>
+      <td>457680.96</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>122.97</td>
+      <td>60</td>
+      <td>50</td>
+      <td>91</td>
+      <td>84</td>
+      <td>65</td>
+      <td>90</td>
+      <td>61.02</td>
+      <td>1.93</td>
+      <td>61.07</td>
+      <td>1.85</td>
+      <td>60.23</td>
+      <td>3.27</td>
+      <td>2.00</td>
+      <td>2.02</td>
+      <td>1.23</td>
+      <td>64.56</td>
+      <td>-0.30</td>
+      <td>-0.34</td>
+      <td>0.40</td>
+      <td>0.38</td>
+      <td>0.55</td>
+      <td>0.22</td>
+      <td>-0.00</td>
+      <td>49.08</td>
+      <td>25.78</td>
+      <td>40.0</td>
+      <td>5.951073e+09</td>
+      <td>9.226470e+07</td>
+      <td>5.628074e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Oslo</td>
+      <td>Norway</td>
+      <td>2019-10-18 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>AMBUb</td>
+      <td>AMBU-B.CO</td>
+      <td>Ambu A/S</td>
+      <td>Healthcare</td>
+      <td>Medical Devices</td>
+      <td>0.14</td>
+      <td>97.14</td>
+      <td>816399.0</td>
+      <td>0.64</td>
+      <td>5.07</td>
+      <td>3.21</td>
+      <td>9.52</td>
+      <td>5.29</td>
+      <td>26.65</td>
+      <td>38.06</td>
+      <td>-46.58</td>
+      <td>184.70</td>
+      <td>-47.41</td>
+      <td>61.26</td>
+      <td>58.57</td>
+      <td>1.47</td>
+      <td>1282560.76</td>
+      <td>False</td>
+      <td>3.0</td>
+      <td>5.0</td>
+      <td>157.43</td>
+      <td>75</td>
+      <td>93</td>
+      <td>81</td>
+      <td>9</td>
+      <td>21</td>
+      <td>11</td>
+      <td>92.35</td>
+      <td>5.18</td>
+      <td>88.50</td>
+      <td>9.76</td>
+      <td>81.78</td>
+      <td>18.78</td>
+      <td>-0.55</td>
+      <td>-0.54</td>
+      <td>-0.75</td>
+      <td>-0.39</td>
+      <td>0.25</td>
+      <td>0.40</td>
+      <td>0.16</td>
+      <td>0.09</td>
+      <td>0.11</td>
+      <td>0.21</td>
+      <td>0.11</td>
+      <td>22.56</td>
+      <td>36.99</td>
+      <td>172.0</td>
+      <td>2.355270e+10</td>
+      <td>2.197540e+08</td>
+      <td>2.019076e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Copenhagen</td>
+      <td>Denmark</td>
+      <td>2004-02-11 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>HAUTO</td>
+      <td>HAUTO.OL</td>
+      <td>Hoegh Autoliners ASA</td>
+      <td>Industrials</td>
+      <td>Marine Shipping</td>
+      <td>0.51</td>
+      <td>59.00</td>
+      <td>217876.0</td>
+      <td>0.56</td>
+      <td>4.80</td>
+      <td>2.44</td>
+      <td>1.90</td>
+      <td>-10.47</td>
+      <td>59.46</td>
+      <td>93.44</td>
+      <td>180.95</td>
+      <td>68.30</td>
+      <td>-13.62</td>
+      <td>21.10</td>
+      <td>179.55</td>
+      <td>2.30</td>
+      <td>387715.48</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>115.20</td>
+      <td>18</td>
+      <td>98</td>
+      <td>99</td>
+      <td>15</td>
+      <td>94</td>
+      <td>91</td>
+      <td>57.84</td>
+      <td>2.00</td>
+      <td>57.41</td>
+      <td>2.77</td>
+      <td>52.84</td>
+      <td>11.67</td>
+      <td>92.25</td>
+      <td>13.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>0.44</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>52.07</td>
+      <td>40.62</td>
+      <td>20.0</td>
+      <td>1.192313e+10</td>
+      <td>1.907700e+08</td>
+      <td>4.466301e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Oslo</td>
+      <td>Norway</td>
+      <td>2021-11-29 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>MCOVb</td>
+      <td>MCOV-B.ST</td>
+      <td>Medicover AB</td>
+      <td>Healthcare</td>
+      <td>Medical Care Facilities</td>
+      <td>6.74</td>
+      <td>145.70</td>
+      <td>102156.0</td>
+      <td>0.72</td>
+      <td>5.61</td>
+      <td>8.31</td>
+      <td>-3.06</td>
+      <td>3.48</td>
+      <td>2.10</td>
+      <td>0.62</td>
+      <td>-51.67</td>
+      <td>372.00</td>
+      <td>-60.83</td>
+      <td>109.90</td>
+      <td>32.58</td>
+      <td>0.59</td>
+      <td>141190.92</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>336.77</td>
+      <td>68</td>
+      <td>64</td>
+      <td>42</td>
+      <td>68</td>
+      <td>92</td>
+      <td>72</td>
+      <td>146.38</td>
+      <td>-0.46</td>
+      <td>147.43</td>
+      <td>-1.18</td>
+      <td>139.22</td>
+      <td>4.65</td>
+      <td>-0.95</td>
+      <td>-0.95</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.35</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.15</td>
+      <td>15.67</td>
+      <td>45.18</td>
+      <td>57.0</td>
+      <td>2.221288e+10</td>
+      <td>7.155430e+07</td>
+      <td>4.754896e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2017-05-23 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>CAMX</td>
+      <td>CAMX.ST</td>
+      <td>Camurus AB</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>2.74</td>
+      <td>277.40</td>
+      <td>69630.0</td>
+      <td>0.74</td>
+      <td>4.19</td>
+      <td>7.91</td>
+      <td>4.60</td>
+      <td>14.16</td>
+      <td>9.56</td>
+      <td>51.42</td>
+      <td>73.59</td>
+      <td>278.00</td>
+      <td>-0.22</td>
+      <td>120.00</td>
+      <td>131.17</td>
+      <td>1.19</td>
+      <td>94734.42</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>302.34</td>
+      <td>90</td>
+      <td>78</td>
+      <td>96</td>
+      <td>30</td>
+      <td>52</td>
+      <td>54</td>
+      <td>268.62</td>
+      <td>3.27</td>
+      <td>262.56</td>
+      <td>5.65</td>
+      <td>253.70</td>
+      <td>9.34</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.12</td>
+      <td>1.84</td>
+      <td>296.00</td>
+      <td>5.08</td>
+      <td>0.64</td>
+      <td>0.82</td>
+      <td>0.68</td>
+      <td>1.12</td>
+      <td>0.58</td>
+      <td>52.92</td>
+      <td>21.49</td>
+      <td>58.0</td>
+      <td>1.458800e+10</td>
+      <td>5.538340e+07</td>
+      <td>2.864156e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2015-12-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>BCS</td>
+      <td>BCS.OL</td>
+      <td>Bergen Carbon Solutions AS</td>
+      <td>Basic Materials</td>
+      <td>Specialty Chemicals</td>
+      <td>4.48</td>
+      <td>11.20</td>
+      <td>381137.0</td>
+      <td>0.50</td>
+      <td>9.45</td>
+      <td>0.95</td>
+      <td>1.82</td>
+      <td>-29.20</td>
+      <td>-61.90</td>
+      <td>-61.11</td>
+      <td>-78.00</td>
+      <td>83.98</td>
+      <td>-86.66</td>
+      <td>9.63</td>
+      <td>16.30</td>
+      <td>0.76</td>
+      <td>762992.14</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>17.92</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>95</td>
+      <td>97</td>
+      <td>70</td>
+      <td>11.19</td>
+      <td>0.13</td>
+      <td>11.92</td>
+      <td>-6.05</td>
+      <td>15.27</td>
+      <td>-26.65</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.24</td>
+      <td>NaN</td>
+      <td>2.12</td>
+      <td>-0.79</td>
+      <td>NaN</td>
+      <td>5.86</td>
+      <td>NaN</td>
+      <td>38.08</td>
+      <td>43.20</td>
+      <td>27.89</td>
+      <td>3.0</td>
+      <td>9.191452e+08</td>
+      <td>4.197010e+07</td>
+      <td>1.367177e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Oslo</td>
+      <td>Norway</td>
+      <td>2021-04-19 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>NYFO</td>
+      <td>NYF.ST</td>
+      <td>Nyfosa AB</td>
+      <td>Real Estate</td>
+      <td>Real Estate Services</td>
+      <td>-0.13</td>
+      <td>79.65</td>
+      <td>235347.0</td>
+      <td>0.60</td>
+      <td>4.89</td>
+      <td>3.02</td>
+      <td>5.85</td>
+      <td>15.35</td>
+      <td>-9.49</td>
+      <td>-16.73</td>
+      <td>-47.87</td>
+      <td>158.70</td>
+      <td>-49.81</td>
+      <td>55.30</td>
+      <td>44.03</td>
+      <td>1.43</td>
+      <td>393450.34</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>374.25</td>
+      <td>91</td>
+      <td>37</td>
+      <td>27</td>
+      <td>46</td>
+      <td>12</td>
+      <td>17</td>
+      <td>77.94</td>
+      <td>2.20</td>
+      <td>75.33</td>
+      <td>5.73</td>
+      <td>68.13</td>
+      <td>16.91</td>
+      <td>-0.62</td>
+      <td>-0.63</td>
+      <td>0.15</td>
+      <td>0.24</td>
+      <td>0.16</td>
+      <td>-0.35</td>
+      <td>0.15</td>
+      <td>0.19</td>
+      <td>0.26</td>
+      <td>0.17</td>
+      <td>0.12</td>
+      <td>23.83</td>
+      <td>53.18</td>
+      <td>102.0</td>
+      <td>1.462276e+10</td>
+      <td>1.910230e+08</td>
+      <td>1.472480e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2018-11-23 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>MIPS</td>
+      <td>MIPS.ST</td>
+      <td>MIPS AB</td>
+      <td>Consumer Cyclical</td>
+      <td>Leisure</td>
+      <td>0.09</td>
+      <td>428.40</td>
+      <td>99767.0</td>
+      <td>0.71</td>
+      <td>5.25</td>
+      <td>17.82</td>
+      <td>7.64</td>
+      <td>18.08</td>
+      <td>-12.61</td>
+      <td>-23.80</td>
+      <td>-62.26</td>
+      <td>1241.00</td>
+      <td>-65.48</td>
+      <td>281.00</td>
+      <td>52.46</td>
+      <td>1.19</td>
+      <td>139838.40</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>7.0</td>
+      <td>183.86</td>
+      <td>94</td>
+      <td>31</td>
+      <td>20</td>
+      <td>99</td>
+      <td>71</td>
+      <td>13</td>
+      <td>411.44</td>
+      <td>4.12</td>
+      <td>397.57</td>
+      <td>7.75</td>
+      <td>373.53</td>
+      <td>14.69</td>
+      <td>-0.67</td>
+      <td>-0.67</td>
+      <td>-0.61</td>
+      <td>-0.21</td>
+      <td>-0.04</td>
+      <td>0.22</td>
+      <td>-0.39</td>
+      <td>-0.37</td>
+      <td>-0.04</td>
+      <td>0.24</td>
+      <td>0.08</td>
+      <td>1.96</td>
+      <td>64.00</td>
+      <td>157.0</td>
+      <td>1.143615e+10</td>
+      <td>2.617790e+07</td>
+      <td>2.571138e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2017-03-23 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>DMYDb</td>
+      <td>DMYD-B.ST</td>
+      <td>Diamyd Medical AB</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>1.29</td>
+      <td>15.70</td>
+      <td>110766.0</td>
+      <td>1.08</td>
+      <td>5.27</td>
+      <td>0.99</td>
+      <td>-1.07</td>
+      <td>18.13</td>
+      <td>10.49</td>
+      <td>-1.88</td>
+      <td>12.14</td>
+      <td>22.40</td>
+      <td>-29.91</td>
+      <td>10.65</td>
+      <td>47.42</td>
+      <td>1.77</td>
+      <td>102829.94</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>7.0</td>
+      <td>513.58</td>
+      <td>94</td>
+      <td>79</td>
+      <td>81</td>
+      <td>58</td>
+      <td>48</td>
+      <td>26</td>
+      <td>15.34</td>
+      <td>2.33</td>
+      <td>14.65</td>
+      <td>7.18</td>
+      <td>13.62</td>
+      <td>15.25</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.16</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>35.70</td>
+      <td>0.25</td>
+      <td>1.0</td>
+      <td>1.015436e+09</td>
+      <td>7.437070e+07</td>
+      <td>5.281111e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2013-05-20 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>NP3</td>
+      <td>NP3.ST</td>
+      <td>NP3 Fastigheter AB</td>
+      <td>Real Estate</td>
+      <td>Real Estate Services</td>
+      <td>1.26</td>
+      <td>193.40</td>
+      <td>27080.0</td>
+      <td>0.30</td>
+      <td>5.40</td>
+      <td>8.16</td>
+      <td>6.38</td>
+      <td>8.41</td>
+      <td>-17.88</td>
+      <td>-16.82</td>
+      <td>-42.78</td>
+      <td>384.50</td>
+      <td>-49.70</td>
+      <td>141.80</td>
+      <td>36.39</td>
+      <td>1.95</td>
+      <td>90816.10</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>271.36</td>
+      <td>83</td>
+      <td>24</td>
+      <td>25</td>
+      <td>46</td>
+      <td>12</td>
+      <td>17</td>
+      <td>189.17</td>
+      <td>2.23</td>
+      <td>186.07</td>
+      <td>3.94</td>
+      <td>175.70</td>
+      <td>10.07</td>
+      <td>-0.22</td>
+      <td>-0.24</td>
+      <td>0.39</td>
+      <td>0.08</td>
+      <td>-0.48</td>
+      <td>-0.02</td>
+      <td>0.21</td>
+      <td>0.28</td>
+      <td>0.25</td>
+      <td>0.17</td>
+      <td>0.14</td>
+      <td>53.03</td>
+      <td>34.98</td>
+      <td>56.0</td>
+      <td>1.097619e+10</td>
+      <td>5.460790e+07</td>
+      <td>2.464343e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2014-12-04 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>ELMRA</td>
+      <td>NO0010815673.SG</td>
+      <td>Elmera Group ASA</td>
+      <td>Utilities</td>
+      <td>Utilities—Regulated Electric</td>
+      <td>0.30</td>
+      <td>20.26</td>
+      <td>181049.0</td>
+      <td>0.29</td>
+      <td>3.95</td>
+      <td>0.77</td>
+      <td>4.06</td>
+      <td>-15.58</td>
+      <td>13.12</td>
+      <td>6.69</td>
+      <td>-51.99</td>
+      <td>49.00</td>
+      <td>-58.65</td>
+      <td>14.35</td>
+      <td>41.18</td>
+      <td>1.22</td>
+      <td>617204.18</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>159.74</td>
+      <td>11</td>
+      <td>82</td>
+      <td>50</td>
+      <td>19</td>
+      <td>98</td>
+      <td>64</td>
+      <td>20.09</td>
+      <td>0.82</td>
+      <td>20.20</td>
+      <td>0.31</td>
+      <td>18.64</td>
+      <td>8.69</td>
+      <td>0.16</td>
+      <td>0.21</td>
+      <td>0.24</td>
+      <td>-0.11</td>
+      <td>1.01</td>
+      <td>0.02</td>
+      <td>1.67</td>
+      <td>0.59</td>
+      <td>0.80</td>
+      <td>0.02</td>
+      <td>-0.01</td>
+      <td>10.90</td>
+      <td>59.66</td>
+      <td>54.0</td>
+      <td>2.834099e+09</td>
+      <td>1.127940e+08</td>
+      <td>9.859424e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Oslo</td>
+      <td>Norway</td>
+      <td>2018-03-21 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>NPAPER</td>
+      <td>NPAPER.ST</td>
+      <td>Nordic Paper Holding AB</td>
+      <td>Basic Materials</td>
+      <td>Paper &amp; Paper Products</td>
+      <td>3.55</td>
+      <td>32.10</td>
+      <td>1106185.0</td>
+      <td>9.01</td>
+      <td>3.76</td>
+      <td>1.12</td>
+      <td>0.00</td>
+      <td>-0.31</td>
+      <td>-8.02</td>
+      <td>-12.65</td>
+      <td>-10.34</td>
+      <td>44.45</td>
+      <td>-27.78</td>
+      <td>27.00</td>
+      <td>18.89</td>
+      <td>1.21</td>
+      <td>122797.38</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>281.80</td>
+      <td>51</td>
+      <td>40</td>
+      <td>55</td>
+      <td>84</td>
+      <td>65</td>
+      <td>90</td>
+      <td>31.81</td>
+      <td>0.92</td>
+      <td>31.76</td>
+      <td>1.08</td>
+      <td>30.43</td>
+      <td>5.49</td>
+      <td>3.69</td>
+      <td>3.60</td>
+      <td>1.27</td>
+      <td>1.13</td>
+      <td>0.96</td>
+      <td>-0.18</td>
+      <td>0.46</td>
+      <td>0.38</td>
+      <td>0.41</td>
+      <td>0.36</td>
+      <td>0.02</td>
+      <td>49.65</td>
+      <td>29.22</td>
+      <td>19.0</td>
+      <td>2.154463e+09</td>
+      <td>6.690880e+07</td>
+      <td>3.460456e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2020-10-22 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>PHO</td>
+      <td>PHO.OL</td>
+      <td>Photocure</td>
+      <td>Healthcare</td>
+      <td>Drug Manufacturers—Specialty &amp; Generic</td>
+      <td>2.88</td>
+      <td>103.70</td>
+      <td>107204.0</td>
+      <td>2.60</td>
+      <td>2.93</td>
+      <td>2.83</td>
+      <td>2.67</td>
+      <td>1.37</td>
+      <td>17.57</td>
+      <td>-2.54</td>
+      <td>6.74</td>
+      <td>122.70</td>
+      <td>-15.48</td>
+      <td>79.45</td>
+      <td>30.52</td>
+      <td>1.62</td>
+      <td>41206.80</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>521.97</td>
+      <td>59</td>
+      <td>88</td>
+      <td>83</td>
+      <td>30</td>
+      <td>52</td>
+      <td>54</td>
+      <td>100.41</td>
+      <td>3.27</td>
+      <td>98.80</td>
+      <td>4.96</td>
+      <td>94.18</td>
+      <td>10.10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.20</td>
+      <td>-0.67</td>
+      <td>1.12</td>
+      <td>1.50</td>
+      <td>0.22</td>
+      <td>0.18</td>
+      <td>0.10</td>
+      <td>0.26</td>
+      <td>0.28</td>
+      <td>4.16</td>
+      <td>48.90</td>
+      <td>28.0</td>
+      <td>2.753939e+09</td>
+      <td>2.710570e+07</td>
+      <td>2.150891e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Oslo</td>
+      <td>Norway</td>
+      <td>2000-05-30 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>MTGb</td>
+      <td>MTG-B.ST</td>
+      <td>Modern Times Group MTG AB B</td>
+      <td>Communication Services</td>
+      <td>Electronic Gaming &amp; Multimedia</td>
+      <td>0.63</td>
+      <td>86.01</td>
+      <td>176026.0</td>
+      <td>0.65</td>
+      <td>2.92</td>
+      <td>2.22</td>
+      <td>4.83</td>
+      <td>-1.21</td>
+      <td>-2.42</td>
+      <td>4.95</td>
+      <td>-0.74</td>
+      <td>109.21</td>
+      <td>-21.24</td>
+      <td>63.64</td>
+      <td>35.16</td>
+      <td>1.43</td>
+      <td>268842.90</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>350.30</td>
+      <td>47</td>
+      <td>52</td>
+      <td>68</td>
+      <td>28</td>
+      <td>44</td>
+      <td>49</td>
+      <td>84.44</td>
+      <td>1.85</td>
+      <td>83.93</td>
+      <td>2.48</td>
+      <td>80.52</td>
+      <td>6.81</td>
+      <td>6.64</td>
+      <td>6.02</td>
+      <td>1.61</td>
+      <td>4.91</td>
+      <td>1.71</td>
+      <td>-0.19</td>
+      <td>0.31</td>
+      <td>-0.12</td>
+      <td>0.06</td>
+      <td>0.10</td>
+      <td>0.10</td>
+      <td>23.49</td>
+      <td>50.56</td>
+      <td>84.0</td>
+      <td>1.096972e+10</td>
+      <td>1.244720e+08</td>
+      <td>9.417510e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>STORb</td>
+      <td>STOR-B.ST</td>
+      <td>Storskogen Group AB</td>
+      <td>Financial Services</td>
+      <td>Asset Management</td>
+      <td>3.78</td>
+      <td>7.90</td>
+      <td>9442191.0</td>
+      <td>1.13</td>
+      <td>8.13</td>
+      <td>0.43</td>
+      <td>-1.03</td>
+      <td>-19.66</td>
+      <td>-27.32</td>
+      <td>-49.74</td>
+      <td>-83.80</td>
+      <td>64.50</td>
+      <td>-87.75</td>
+      <td>6.90</td>
+      <td>14.55</td>
+      <td>0.66</td>
+      <td>8361825.58</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>158.19</td>
+      <td>7</td>
+      <td>13</td>
+      <td>6</td>
+      <td>74</td>
+      <td>40</td>
+      <td>42</td>
+      <td>8.08</td>
+      <td>-2.17</td>
+      <td>8.37</td>
+      <td>-5.56</td>
+      <td>8.42</td>
+      <td>-6.13</td>
+      <td>1.25</td>
+      <td>0.79</td>
+      <td>0.40</td>
+      <td>0.28</td>
+      <td>-0.09</td>
+      <td>0.08</td>
+      <td>1.37</td>
+      <td>0.76</td>
+      <td>0.89</td>
+      <td>0.50</td>
+      <td>0.08</td>
+      <td>11.50</td>
+      <td>53.40</td>
+      <td>63.0</td>
+      <td>1.758282e+10</td>
+      <td>1.515760e+09</td>
+      <td>1.322792e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2021-10-06 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>GRANG</td>
+      <td>GRNG.ST</td>
+      <td>Granges</td>
+      <td>Basic Materials</td>
+      <td>Aluminum</td>
+      <td>-0.17</td>
+      <td>88.30</td>
+      <td>62139.0</td>
+      <td>0.36</td>
+      <td>3.09</td>
+      <td>2.44</td>
+      <td>4.50</td>
+      <td>7.55</td>
+      <td>2.02</td>
+      <td>6.45</td>
+      <td>-7.88</td>
+      <td>122.40</td>
+      <td>-27.86</td>
+      <td>68.05</td>
+      <td>29.76</td>
+      <td>1.37</td>
+      <td>174039.48</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>590.83</td>
+      <td>80</td>
+      <td>64</td>
+      <td>76</td>
+      <td>81</td>
+      <td>86</td>
+      <td>97</td>
+      <td>87.23</td>
+      <td>1.22</td>
+      <td>85.62</td>
+      <td>3.13</td>
+      <td>79.68</td>
+      <td>10.82</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>8.43</td>
+      <td>0.52</td>
+      <td>9.57</td>
+      <td>-0.01</td>
+      <td>0.34</td>
+      <td>0.12</td>
+      <td>0.35</td>
+      <td>0.02</td>
+      <td>-0.03</td>
+      <td>1.41</td>
+      <td>70.21</td>
+      <td>84.0</td>
+      <td>9.387085e+09</td>
+      <td>1.063090e+08</td>
+      <td>1.028281e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2014-10-10 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>LUNG</td>
+      <td>LUG.TO</td>
+      <td>Lundin Gold Inc</td>
+      <td>Basic Materials</td>
+      <td>Gold</td>
+      <td>0.76</td>
+      <td>106.40</td>
+      <td>103781.0</td>
+      <td>1.39</td>
+      <td>4.36</td>
+      <td>4.74</td>
+      <td>4.11</td>
+      <td>21.60</td>
+      <td>36.59</td>
+      <td>31.36</td>
+      <td>57.16</td>
+      <td>108.00</td>
+      <td>-1.48</td>
+      <td>62.30</td>
+      <td>70.79</td>
+      <td>1.70</td>
+      <td>74436.68</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>1289.77</td>
+      <td>95</td>
+      <td>96</td>
+      <td>94</td>
+      <td>81</td>
+      <td>86</td>
+      <td>97</td>
+      <td>103.38</td>
+      <td>2.92</td>
+      <td>98.20</td>
+      <td>8.35</td>
+      <td>87.81</td>
+      <td>21.17</td>
+      <td>0.11</td>
+      <td>0.08</td>
+      <td>-0.62</td>
+      <td>-0.52</td>
+      <td>-0.56</td>
+      <td>-0.09</td>
+      <td>0.10</td>
+      <td>-0.19</td>
+      <td>-0.08</td>
+      <td>0.25</td>
+      <td>-0.09</td>
+      <td>63.32</td>
+      <td>22.88</td>
+      <td>85.0</td>
+      <td>2.899683e+09</td>
+      <td>2.351730e+08</td>
+      <td>9.600643e+07</td>
+      <td>703103.0</td>
+      <td>4.24</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>1996-08-08 13:30:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>LOOMIS</td>
+      <td>LOOMIS.ST</td>
+      <td>Loomis AB ser. B</td>
+      <td>Industrials</td>
+      <td>Security &amp; Protection Services</td>
+      <td>2.04</td>
+      <td>319.80</td>
+      <td>157304.0</td>
+      <td>0.83</td>
+      <td>2.25</td>
+      <td>6.03</td>
+      <td>3.97</td>
+      <td>2.17</td>
+      <td>10.20</td>
+      <td>35.16</td>
+      <td>33.81</td>
+      <td>326.60</td>
+      <td>-2.08</td>
+      <td>221.30</td>
+      <td>44.51</td>
+      <td>1.35</td>
+      <td>189579.00</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>380.68</td>
+      <td>63</td>
+      <td>79</td>
+      <td>91</td>
+      <td>39</td>
+      <td>25</td>
+      <td>40</td>
+      <td>312.01</td>
+      <td>2.50</td>
+      <td>306.87</td>
+      <td>4.21</td>
+      <td>296.78</td>
+      <td>7.76</td>
+      <td>0.69</td>
+      <td>0.75</td>
+      <td>0.43</td>
+      <td>0.38</td>
+      <td>0.23</td>
+      <td>0.21</td>
+      <td>0.31</td>
+      <td>0.27</td>
+      <td>0.28</td>
+      <td>0.15</td>
+      <td>0.09</td>
+      <td>8.46</td>
+      <td>66.67</td>
+      <td>130.0</td>
+      <td>2.217273e+10</td>
+      <td>7.231800e+07</td>
+      <td>7.216835e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2008-12-09 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>WAWI</td>
+      <td>WAWI.OL</td>
+      <td>Wallenius Wilhelmsen Logistics ASA</td>
+      <td>Industrials</td>
+      <td>Marine Shipping</td>
+      <td>0.55</td>
+      <td>92.10</td>
+      <td>264413.0</td>
+      <td>0.50</td>
+      <td>3.63</td>
+      <td>3.20</td>
+      <td>1.10</td>
+      <td>-7.81</td>
+      <td>60.59</td>
+      <td>57.84</td>
+      <td>101.71</td>
+      <td>100.80</td>
+      <td>-8.63</td>
+      <td>43.32</td>
+      <td>112.60</td>
+      <td>3.02</td>
+      <td>527011.60</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>192.16</td>
+      <td>24</td>
+      <td>98</td>
+      <td>97</td>
+      <td>15</td>
+      <td>94</td>
+      <td>91</td>
+      <td>90.62</td>
+      <td>1.63</td>
+      <td>88.90</td>
+      <td>3.60</td>
+      <td>78.61</td>
+      <td>17.16</td>
+      <td>3.24</td>
+      <td>3.23</td>
+      <td>2.01</td>
+      <td>4.15</td>
+      <td>0.28</td>
+      <td>0.18</td>
+      <td>0.37</td>
+      <td>0.43</td>
+      <td>0.47</td>
+      <td>0.23</td>
+      <td>0.06</td>
+      <td>75.91</td>
+      <td>11.84</td>
+      <td>77.0</td>
+      <td>4.087871e+10</td>
+      <td>4.225190e+08</td>
+      <td>1.012686e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Oslo</td>
+      <td>Norway</td>
+      <td>2010-06-24 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>SAABb</td>
+      <td>SAAB-B.ST</td>
+      <td>SAAB AB ser. B</td>
+      <td>Industrials</td>
+      <td>Aerospace &amp; Defense</td>
+      <td>0.45</td>
+      <td>399.70</td>
+      <td>495093.0</td>
+      <td>1.23</td>
+      <td>3.12</td>
+      <td>8.98</td>
+      <td>3.02</td>
+      <td>1.73</td>
+      <td>12.56</td>
+      <td>0.86</td>
+      <td>79.16</td>
+      <td>448.90</td>
+      <td>-10.96</td>
+      <td>203.10</td>
+      <td>96.80</td>
+      <td>1.71</td>
+      <td>403865.62</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>217.09</td>
+      <td>60</td>
+      <td>82</td>
+      <td>92</td>
+      <td>83</td>
+      <td>90</td>
+      <td>82</td>
+      <td>392.18</td>
+      <td>1.92</td>
+      <td>386.43</td>
+      <td>3.43</td>
+      <td>377.94</td>
+      <td>5.76</td>
+      <td>0.03</td>
+      <td>0.03</td>
+      <td>0.39</td>
+      <td>0.11</td>
+      <td>0.32</td>
+      <td>0.27</td>
+      <td>0.10</td>
+      <td>0.15</td>
+      <td>0.06</td>
+      <td>0.07</td>
+      <td>0.09</td>
+      <td>3.23</td>
+      <td>65.09</td>
+      <td>126.0</td>
+      <td>5.095500e+10</td>
+      <td>1.323470e+08</td>
+      <td>8.767434e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>KLARAb</td>
+      <td>KLARA-B.ST</td>
+      <td>KlaraBo Sverige AB</td>
+      <td>Real Estate</td>
+      <td>Real Estate Services</td>
+      <td>2.15</td>
+      <td>17.10</td>
+      <td>1047738.0</td>
+      <td>6.42</td>
+      <td>5.46</td>
+      <td>0.96</td>
+      <td>6.21</td>
+      <td>-9.86</td>
+      <td>-8.11</td>
+      <td>-16.59</td>
+      <td>-65.73</td>
+      <td>50.40</td>
+      <td>-66.07</td>
+      <td>12.25</td>
+      <td>39.59</td>
+      <td>4.05</td>
+      <td>163322.80</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>488.58</td>
+      <td>19</td>
+      <td>40</td>
+      <td>20</td>
+      <td>46</td>
+      <td>12</td>
+      <td>17</td>
+      <td>16.89</td>
+      <td>1.24</td>
+      <td>17.06</td>
+      <td>0.26</td>
+      <td>16.40</td>
+      <td>4.27</td>
+      <td>-0.77</td>
+      <td>-0.90</td>
+      <td>NaN</td>
+      <td>-0.73</td>
+      <td>-0.72</td>
+      <td>-0.09</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>0.46</td>
+      <td>0.25</td>
+      <td>0.20</td>
+      <td>28.59</td>
+      <td>44.65</td>
+      <td>20.0</td>
+      <td>2.492859e+09</td>
+      <td>1.155280e+08</td>
+      <td>7.979674e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2021-12-02 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>BONAVb</td>
+      <td>BONAV-B.ST</td>
+      <td>Bonava AB B</td>
+      <td>Consumer Cyclical</td>
+      <td>Residential Construction</td>
+      <td>2.55</td>
+      <td>28.96</td>
+      <td>996551.0</td>
+      <td>1.88</td>
+      <td>5.28</td>
+      <td>1.12</td>
+      <td>4.25</td>
+      <td>-16.11</td>
+      <td>-25.82</td>
+      <td>-11.92</td>
+      <td>-65.11</td>
+      <td>84.05</td>
+      <td>-65.54</td>
+      <td>24.62</td>
+      <td>17.63</td>
+      <td>0.93</td>
+      <td>529805.44</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>151.61</td>
+      <td>10</td>
+      <td>14</td>
+      <td>15</td>
+      <td>22</td>
+      <td>17</td>
+      <td>8</td>
+      <td>28.63</td>
+      <td>1.15</td>
+      <td>29.22</td>
+      <td>-0.90</td>
+      <td>29.22</td>
+      <td>-0.88</td>
+      <td>-0.66</td>
+      <td>-0.65</td>
+      <td>-0.28</td>
+      <td>0.01</td>
+      <td>-0.29</td>
+      <td>-0.18</td>
+      <td>-0.10</td>
+      <td>-0.17</td>
+      <td>-0.01</td>
+      <td>0.28</td>
+      <td>-0.09</td>
+      <td>2.73</td>
+      <td>65.32</td>
+      <td>74.0</td>
+      <td>3.602375e+09</td>
+      <td>9.599550e+07</td>
+      <td>8.032639e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2016-06-09 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>ATRLJb</td>
+      <td>ATRLJ-B.ST</td>
+      <td>Atrium Ljungberg AB ser. B</td>
+      <td>Real Estate</td>
+      <td>Real Estate—Development</td>
+      <td>0.23</td>
+      <td>174.50</td>
+      <td>82419.0</td>
+      <td>0.74</td>
+      <td>3.94</td>
+      <td>5.90</td>
+      <td>3.93</td>
+      <td>12.44</td>
+      <td>15.56</td>
+      <td>21.01</td>
+      <td>-12.75</td>
+      <td>215.00</td>
+      <td>-18.84</td>
+      <td>117.90</td>
+      <td>48.01</td>
+      <td>2.13</td>
+      <td>110832.90</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>469.22</td>
+      <td>89</td>
+      <td>86</td>
+      <td>78</td>
+      <td>46</td>
+      <td>12</td>
+      <td>17</td>
+      <td>171.89</td>
+      <td>1.52</td>
+      <td>166.80</td>
+      <td>4.61</td>
+      <td>150.51</td>
+      <td>15.94</td>
+      <td>-0.31</td>
+      <td>-0.31</td>
+      <td>4.86</td>
+      <td>2.02</td>
+      <td>1.97</td>
+      <td>-0.01</td>
+      <td>0.62</td>
+      <td>0.12</td>
+      <td>0.22</td>
+      <td>0.17</td>
+      <td>0.12</td>
+      <td>77.75</td>
+      <td>23.90</td>
+      <td>80.0</td>
+      <td>2.055519e+10</td>
+      <td>1.221060e+08</td>
+      <td>5.200480e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2000-01-04 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>NZYMb</td>
+      <td>NZYM-B.CO</td>
+      <td>Novozymes A/S B</td>
+      <td>Basic Materials</td>
+      <td>Specialty Chemicals</td>
+      <td>2.29</td>
+      <td>429.60</td>
+      <td>361271.0</td>
+      <td>1.15</td>
+      <td>2.56</td>
+      <td>9.16</td>
+      <td>4.68</td>
+      <td>9.70</td>
+      <td>2.24</td>
+      <td>7.19</td>
+      <td>-17.23</td>
+      <td>545.80</td>
+      <td>-21.29</td>
+      <td>353.20</td>
+      <td>21.63</td>
+      <td>1.12</td>
+      <td>314268.98</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>650.05</td>
+      <td>85</td>
+      <td>64</td>
+      <td>73</td>
+      <td>95</td>
+      <td>97</td>
+      <td>70</td>
+      <td>418.79</td>
+      <td>2.58</td>
+      <td>411.07</td>
+      <td>4.51</td>
+      <td>395.21</td>
+      <td>8.70</td>
+      <td>0.37</td>
+      <td>0.38</td>
+      <td>0.27</td>
+      <td>0.13</td>
+      <td>0.08</td>
+      <td>0.01</td>
+      <td>0.16</td>
+      <td>0.17</td>
+      <td>0.17</td>
+      <td>NaN</td>
+      <td>0.05</td>
+      <td>8.04</td>
+      <td>43.79</td>
+      <td>423.0</td>
+      <td>1.298030e+11</td>
+      <td>2.226330e+08</td>
+      <td>2.042908e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Copenhagen</td>
+      <td>Denmark</td>
+      <td>2000-11-20 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>ARP</td>
+      <td>ATC.WA</td>
+      <td>Arctic Paper SA</td>
+      <td>Basic Materials</td>
+      <td>Paper &amp; Paper Products</td>
+      <td>3.19</td>
+      <td>48.50</td>
+      <td>44809.0</td>
+      <td>0.58</td>
+      <td>4.51</td>
+      <td>1.81</td>
+      <td>-0.72</td>
+      <td>0.31</td>
+      <td>2.11</td>
+      <td>63.30</td>
+      <td>178.74</td>
+      <td>56.30</td>
+      <td>-13.85</td>
+      <td>16.60</td>
+      <td>192.17</td>
+      <td>1.37</td>
+      <td>76824.62</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>286.92</td>
+      <td>54</td>
+      <td>64</td>
+      <td>98</td>
+      <td>84</td>
+      <td>65</td>
+      <td>90</td>
+      <td>47.50</td>
+      <td>2.11</td>
+      <td>47.01</td>
+      <td>3.17</td>
+      <td>45.23</td>
+      <td>7.22</td>
+      <td>5.02</td>
+      <td>5.04</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.58</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>68.13</td>
+      <td>3.34</td>
+      <td>18.0</td>
+      <td>1.437722e+09</td>
+      <td>6.928780e+07</td>
+      <td>2.204252e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2010-02-22 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>SECTb</td>
+      <td>SECT-B.ST</td>
+      <td>Sectra AB</td>
+      <td>Healthcare</td>
+      <td>Medical Devices</td>
+      <td>2.92</td>
+      <td>177.02</td>
+      <td>119956.0</td>
+      <td>0.82</td>
+      <td>4.49</td>
+      <td>6.90</td>
+      <td>4.04</td>
+      <td>19.93</td>
+      <td>35.36</td>
+      <td>36.50</td>
+      <td>-10.78</td>
+      <td>202.60</td>
+      <td>-12.63</td>
+      <td>110.54</td>
+      <td>60.14</td>
+      <td>2.14</td>
+      <td>146196.72</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>7.0</td>
+      <td>872.18</td>
+      <td>95</td>
+      <td>96</td>
+      <td>92</td>
+      <td>98</td>
+      <td>64</td>
+      <td>47</td>
+      <td>173.47</td>
+      <td>2.05</td>
+      <td>167.56</td>
+      <td>5.65</td>
+      <td>149.57</td>
+      <td>18.35</td>
+      <td>-0.26</td>
+      <td>-0.26</td>
+      <td>0.06</td>
+      <td>-0.02</td>
+      <td>-0.03</td>
+      <td>0.20</td>
+      <td>0.18</td>
+      <td>0.14</td>
+      <td>0.18</td>
+      <td>0.14</td>
+      <td>0.13</td>
+      <td>28.35</td>
+      <td>53.71</td>
+      <td>90.0</td>
+      <td>3.071033e+10</td>
+      <td>1.795590e+08</td>
+      <td>1.275097e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2004-10-04 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>SALME</td>
+      <td>SALME.OL</td>
+      <td>Salmon Evolution Holding AS</td>
+      <td>Consumer Defensive</td>
+      <td>Farm Products</td>
+      <td>2.32</td>
+      <td>8.37</td>
+      <td>609901.0</td>
+      <td>0.94</td>
+      <td>3.18</td>
+      <td>0.24</td>
+      <td>1.82</td>
+      <td>-10.86</td>
+      <td>-4.01</td>
+      <td>3.08</td>
+      <td>2.07</td>
+      <td>11.70</td>
+      <td>-28.46</td>
+      <td>7.39</td>
+      <td>13.26</td>
+      <td>1.13</td>
+      <td>650394.64</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>255.92</td>
+      <td>18</td>
+      <td>49</td>
+      <td>67</td>
+      <td>66</td>
+      <td>1</td>
+      <td>6</td>
+      <td>8.29</td>
+      <td>0.94</td>
+      <td>8.39</td>
+      <td>-0.28</td>
+      <td>8.53</td>
+      <td>-1.83</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-1.50</td>
+      <td>-0.09</td>
+      <td>-0.25</td>
+      <td>3.67</td>
+      <td>17.18</td>
+      <td>NaN</td>
+      <td>2.45</td>
+      <td>3999.00</td>
+      <td>10.18</td>
+      <td>51.79</td>
+      <td>20.02</td>
+      <td>10.0</td>
+      <td>3.021899e+09</td>
+      <td>3.457550e+08</td>
+      <td>1.664498e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Oslo</td>
+      <td>Norway</td>
+      <td>2020-09-18 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>ZELA</td>
+      <td>ZEAL.CO</td>
+      <td>Zealand Pharma A/S</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>3.30</td>
+      <td>203.20</td>
+      <td>217801.0</td>
+      <td>0.89</td>
+      <td>4.99</td>
+      <td>8.29</td>
+      <td>0.89</td>
+      <td>4.42</td>
+      <td>42.90</td>
+      <td>141.47</td>
+      <td>52.10</td>
+      <td>211.00</td>
+      <td>-3.70</td>
+      <td>69.55</td>
+      <td>192.16</td>
+      <td>1.31</td>
+      <td>244534.02</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>138.85</td>
+      <td>72</td>
+      <td>96</td>
+      <td>98</td>
+      <td>58</td>
+      <td>48</td>
+      <td>26</td>
+      <td>198.57</td>
+      <td>2.33</td>
+      <td>193.55</td>
+      <td>4.99</td>
+      <td>184.29</td>
+      <td>10.26</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.27</td>
+      <td>0.16</td>
+      <td>0.21</td>
+      <td>0.13</td>
+      <td>-0.59</td>
+      <td>-0.78</td>
+      <td>-0.35</td>
+      <td>-0.77</td>
+      <td>4.19</td>
+      <td>0.07</td>
+      <td>52.01</td>
+      <td>64.0</td>
+      <td>9.846002e+09</td>
+      <td>5.109490e+07</td>
+      <td>3.395368e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Copenhagen</td>
+      <td>Denmark</td>
+      <td>2010-11-23 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>SENS</td>
+      <td>SENS.ST</td>
+      <td>Sensys Traffic AB</td>
+      <td>Technology</td>
+      <td>Scientific &amp; Technical Instruments</td>
+      <td>2.28</td>
+      <td>0.99</td>
+      <td>3245315.0</td>
+      <td>1.00</td>
+      <td>4.51</td>
+      <td>0.03</td>
+      <td>2.28</td>
+      <td>-10.90</td>
+      <td>-11.70</td>
+      <td>-5.99</td>
+      <td>9.77</td>
+      <td>1.35</td>
+      <td>-26.74</td>
+      <td>0.78</td>
+      <td>26.79</td>
+      <td>1.03</td>
+      <td>3238239.84</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>233.24</td>
+      <td>18</td>
+      <td>33</td>
+      <td>70</td>
+      <td>62</td>
+      <td>69</td>
+      <td>62</td>
+      <td>0.98</td>
+      <td>0.92</td>
+      <td>1.01</td>
+      <td>-2.15</td>
+      <td>1.06</td>
+      <td>-7.07</td>
+      <td>2.06</td>
+      <td>2.06</td>
+      <td>NaN</td>
+      <td>0.25</td>
+      <td>NaN</td>
+      <td>0.80</td>
+      <td>-0.01</td>
+      <td>0.13</td>
+      <td>0.11</td>
+      <td>0.03</td>
+      <td>0.20</td>
+      <td>36.50</td>
+      <td>6.14</td>
+      <td>15.0</td>
+      <td>1.054512e+09</td>
+      <td>9.217760e+08</td>
+      <td>7.552852e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>MTRS</td>
+      <td>MTRS.ST</td>
+      <td>Munters Group AB</td>
+      <td>Industrials</td>
+      <td>Pollution &amp; Treatment Controls</td>
+      <td>0.64</td>
+      <td>94.60</td>
+      <td>431567.0</td>
+      <td>1.20</td>
+      <td>3.19</td>
+      <td>2.70</td>
+      <td>2.38</td>
+      <td>4.42</td>
+      <td>5.76</td>
+      <td>64.38</td>
+      <td>44.98</td>
+      <td>100.20</td>
+      <td>-5.59</td>
+      <td>51.20</td>
+      <td>84.77</td>
+      <td>1.22</td>
+      <td>358589.26</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>361.24</td>
+      <td>72</td>
+      <td>72</td>
+      <td>94</td>
+      <td>86</td>
+      <td>30</td>
+      <td>51</td>
+      <td>93.29</td>
+      <td>1.41</td>
+      <td>91.36</td>
+      <td>3.55</td>
+      <td>86.16</td>
+      <td>9.79</td>
+      <td>0.28</td>
+      <td>0.29</td>
+      <td>0.41</td>
+      <td>0.30</td>
+      <td>0.49</td>
+      <td>0.32</td>
+      <td>0.42</td>
+      <td>0.32</td>
+      <td>0.39</td>
+      <td>0.31</td>
+      <td>0.18</td>
+      <td>0.34</td>
+      <td>80.94</td>
+      <td>83.0</td>
+      <td>1.690361e+10</td>
+      <td>1.818570e+08</td>
+      <td>1.295366e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2017-05-19 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>TOM</td>
+      <td>TOM.OL</td>
+      <td>Tomra Systems ASA</td>
+      <td>Industrials</td>
+      <td>Waste Management</td>
+      <td>0.70</td>
+      <td>197.54</td>
+      <td>235238.0</td>
+      <td>0.47</td>
+      <td>3.69</td>
+      <td>5.89</td>
+      <td>5.48</td>
+      <td>17.93</td>
+      <td>-15.38</td>
+      <td>16.17</td>
+      <td>-67.90</td>
+      <td>638.80</td>
+      <td>-69.08</td>
+      <td>151.00</td>
+      <td>30.82</td>
+      <td>1.22</td>
+      <td>497441.16</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>467.54</td>
+      <td>94</td>
+      <td>27</td>
+      <td>39</td>
+      <td>39</td>
+      <td>25</td>
+      <td>40</td>
+      <td>192.61</td>
+      <td>2.56</td>
+      <td>186.74</td>
+      <td>5.78</td>
+      <td>177.46</td>
+      <td>11.32</td>
+      <td>-0.13</td>
+      <td>-0.13</td>
+      <td>-0.07</td>
+      <td>-0.02</td>
+      <td>0.44</td>
+      <td>0.28</td>
+      <td>0.10</td>
+      <td>0.09</td>
+      <td>0.10</td>
+      <td>0.20</td>
+      <td>0.15</td>
+      <td>0.08</td>
+      <td>85.02</td>
+      <td>321.0</td>
+      <td>5.479064e+10</td>
+      <td>2.952400e+08</td>
+      <td>2.325725e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Oslo</td>
+      <td>Norway</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>NKT</td>
+      <td>NKT.CO</td>
+      <td>NKT Holding</td>
+      <td>Industrials</td>
+      <td>Electrical Equipment &amp; Parts</td>
+      <td>1.37</td>
+      <td>384.00</td>
+      <td>81716.0</td>
+      <td>0.78</td>
+      <td>3.08</td>
+      <td>9.39</td>
+      <td>1.59</td>
+      <td>0.26</td>
+      <td>-2.19</td>
+      <td>24.19</td>
+      <td>26.32</td>
+      <td>413.40</td>
+      <td>-7.11</td>
+      <td>215.60</td>
+      <td>78.11</td>
+      <td>1.10</td>
+      <td>104351.94</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>389.47</td>
+      <td>54</td>
+      <td>53</td>
+      <td>88</td>
+      <td>13</td>
+      <td>8</td>
+      <td>44</td>
+      <td>382.15</td>
+      <td>0.48</td>
+      <td>382.19</td>
+      <td>0.47</td>
+      <td>380.33</td>
+      <td>0.96</td>
+      <td>-0.54</td>
+      <td>-0.76</td>
+      <td>-0.40</td>
+      <td>1.94</td>
+      <td>-0.04</td>
+      <td>3.13</td>
+      <td>0.16</td>
+      <td>0.29</td>
+      <td>0.16</td>
+      <td>0.31</td>
+      <td>0.15</td>
+      <td>0.17</td>
+      <td>42.48</td>
+      <td>94.0</td>
+      <td>1.699486e+10</td>
+      <td>4.293800e+07</td>
+      <td>4.064240e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Copenhagen</td>
+      <td>Denmark</td>
+      <td>2001-04-27 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>VALMT</td>
+      <td>VALMT.HE</td>
+      <td>Valmet Oyj</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>0.00</td>
+      <td>25.44</td>
+      <td>554215.0</td>
+      <td>1.26</td>
+      <td>2.38</td>
+      <td>0.51</td>
+      <td>3.75</td>
+      <td>3.25</td>
+      <td>1.23</td>
+      <td>2.33</td>
+      <td>-31.76</td>
+      <td>38.59</td>
+      <td>-34.08</td>
+      <td>19.94</td>
+      <td>27.55</td>
+      <td>1.03</td>
+      <td>438242.72</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>376.11</td>
+      <td>67</td>
+      <td>62</td>
+      <td>55</td>
+      <td>77</td>
+      <td>82</td>
+      <td>85</td>
+      <td>25.20</td>
+      <td>0.93</td>
+      <td>24.89</td>
+      <td>2.19</td>
+      <td>23.64</td>
+      <td>7.62</td>
+      <td>-0.05</td>
+      <td>-0.24</td>
+      <td>-0.04</td>
+      <td>-0.06</td>
+      <td>0.43</td>
+      <td>0.13</td>
+      <td>0.38</td>
+      <td>0.28</td>
+      <td>0.29</td>
+      <td>-0.07</td>
+      <td>0.06</td>
+      <td>13.82</td>
+      <td>43.39</td>
+      <td>257.0</td>
+      <td>4.829383e+09</td>
+      <td>1.841870e+08</td>
+      <td>1.648275e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Helsinki</td>
+      <td>Finland</td>
+      <td>2014-01-01 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>STERV</td>
+      <td>STERV.HE</td>
+      <td>Stora Enso Oyj R</td>
+      <td>Basic Materials</td>
+      <td>Paper &amp; Paper Products</td>
+      <td>0.00</td>
+      <td>14.44</td>
+      <td>1303398.0</td>
+      <td>0.93</td>
+      <td>2.37</td>
+      <td>0.31</td>
+      <td>3.29</td>
+      <td>1.26</td>
+      <td>2.09</td>
+      <td>-7.38</td>
+      <td>-8.03</td>
+      <td>20.01</td>
+      <td>-27.86</td>
+      <td>12.66</td>
+      <td>14.02</td>
+      <td>0.86</td>
+      <td>1397804.92</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>440.26</td>
+      <td>58</td>
+      <td>64</td>
+      <td>62</td>
+      <td>84</td>
+      <td>65</td>
+      <td>90</td>
+      <td>14.28</td>
+      <td>1.12</td>
+      <td>14.13</td>
+      <td>2.15</td>
+      <td>13.86</td>
+      <td>4.17</td>
+      <td>0.24</td>
+      <td>0.24</td>
+      <td>0.58</td>
+      <td>0.13</td>
+      <td>-0.44</td>
+      <td>-0.29</td>
+      <td>0.15</td>
+      <td>0.07</td>
+      <td>0.15</td>
+      <td>-0.04</td>
+      <td>-0.05</td>
+      <td>4.61</td>
+      <td>50.20</td>
+      <td>414.0</td>
+      <td>1.142094e+10</td>
+      <td>6.123810e+08</td>
+      <td>6.153917e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Helsinki</td>
+      <td>Finland</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>UPM</td>
+      <td>UPM.HE</td>
+      <td>UPM-Kymmene Oyj</td>
+      <td>Basic Materials</td>
+      <td>Paper &amp; Paper Products</td>
+      <td>0.00</td>
+      <td>35.84</td>
+      <td>1081018.0</td>
+      <td>1.05</td>
+      <td>1.96</td>
+      <td>0.62</td>
+      <td>2.49</td>
+      <td>0.79</td>
+      <td>5.04</td>
+      <td>17.09</td>
+      <td>9.04</td>
+      <td>36.61</td>
+      <td>-2.10</td>
+      <td>24.85</td>
+      <td>44.23</td>
+      <td>1.46</td>
+      <td>1027073.56</td>
+      <td>False</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>498.16</td>
+      <td>56</td>
+      <td>71</td>
+      <td>86</td>
+      <td>84</td>
+      <td>65</td>
+      <td>90</td>
+      <td>35.31</td>
+      <td>1.49</td>
+      <td>34.98</td>
+      <td>2.45</td>
+      <td>34.58</td>
+      <td>3.65</td>
+      <td>0.25</td>
+      <td>0.25</td>
+      <td>0.20</td>
+      <td>0.32</td>
+      <td>1.12</td>
+      <td>-0.01</td>
+      <td>0.36</td>
+      <td>0.30</td>
+      <td>0.20</td>
+      <td>0.33</td>
+      <td>0.06</td>
+      <td>2.44</td>
+      <td>46.72</td>
+      <td>477.0</td>
+      <td>1.825035e+10</td>
+      <td>5.333240e+08</td>
+      <td>5.116444e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Helsinki</td>
+      <td>Finland</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>CLOEb</td>
+      <td>CLA-B.ST</td>
+      <td>Cloetta AB ser. B</td>
+      <td>Consumer Defensive</td>
+      <td>Confectioners</td>
+      <td>1.59</td>
+      <td>20.46</td>
+      <td>1075333.0</td>
+      <td>2.10</td>
+      <td>1.94</td>
+      <td>0.39</td>
+      <td>-2.39</td>
+      <td>-0.29</td>
+      <td>11.26</td>
+      <td>-0.20</td>
+      <td>-18.16</td>
+      <td>26.62</td>
+      <td>-23.14</td>
+      <td>17.05</td>
+      <td>20.00</td>
+      <td>1.90</td>
+      <td>511022.40</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>361.45</td>
+      <td>51</td>
+      <td>81</td>
+      <td>69</td>
+      <td>66</td>
+      <td>1</td>
+      <td>6</td>
+      <td>20.69</td>
+      <td>-1.12</td>
+      <td>20.59</td>
+      <td>-0.64</td>
+      <td>19.54</td>
+      <td>4.71</td>
+      <td>-0.04</td>
+      <td>-0.04</td>
+      <td>0.02</td>
+      <td>0.06</td>
+      <td>-0.04</td>
+      <td>0.20</td>
+      <td>0.15</td>
+      <td>0.14</td>
+      <td>0.13</td>
+      <td>0.07</td>
+      <td>0.05</td>
+      <td>33.65</td>
+      <td>31.14</td>
+      <td>90.0</td>
+      <td>5.970203e+09</td>
+      <td>2.812930e+08</td>
+      <td>1.847116e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>COPPb</td>
+      <td>COPP-B.ST</td>
+      <td>Copperstone Resources AB</td>
+      <td>Basic Materials</td>
+      <td>Other Industrial Metals &amp; Mining</td>
+      <td>0.47</td>
+      <td>1.28</td>
+      <td>4052612.0</td>
+      <td>2.44</td>
+      <td>4.60</td>
+      <td>0.06</td>
+      <td>-1.24</td>
+      <td>4.75</td>
+      <td>21.02</td>
+      <td>22.18</td>
+      <td>3.23</td>
+      <td>1.48</td>
+      <td>-13.53</td>
+      <td>0.89</td>
+      <td>42.79</td>
+      <td>2.56</td>
+      <td>1659082.60</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>6.0</td>
+      <td>599.46</td>
+      <td>73</td>
+      <td>91</td>
+      <td>88</td>
+      <td>81</td>
+      <td>86</td>
+      <td>97</td>
+      <td>1.29</td>
+      <td>-1.19</td>
+      <td>1.29</td>
+      <td>-0.82</td>
+      <td>1.23</td>
+      <td>3.97</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>1.00</td>
+      <td>-8.00</td>
+      <td>1.17</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30.81</td>
+      <td>2.72</td>
+      <td>3.0</td>
+      <td>1.649312e+09</td>
+      <td>1.330090e+09</td>
+      <td>9.945504e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2007-12-28 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>ENTRA</td>
+      <td>ENTRA.OL</td>
+      <td>Entra ASA</td>
+      <td>Real Estate</td>
+      <td>REIT—Office</td>
+      <td>0.00</td>
+      <td>103.90</td>
+      <td>166741.0</td>
+      <td>0.92</td>
+      <td>4.20</td>
+      <td>3.57</td>
+      <td>-0.67</td>
+      <td>-1.05</td>
+      <td>-18.45</td>
+      <td>-27.85</td>
+      <td>-47.95</td>
+      <td>202.00</td>
+      <td>-48.56</td>
+      <td>87.50</td>
+      <td>18.74</td>
+      <td>0.85</td>
+      <td>180493.46</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>730.25</td>
+      <td>48</td>
+      <td>23</td>
+      <td>19</td>
+      <td>46</td>
+      <td>12</td>
+      <td>17</td>
+      <td>104.26</td>
+      <td>-0.35</td>
+      <td>103.99</td>
+      <td>-0.09</td>
+      <td>100.97</td>
+      <td>2.90</td>
+      <td>1.74</td>
+      <td>1.74</td>
+      <td>-0.12</td>
+      <td>0.34</td>
+      <td>-0.10</td>
+      <td>-0.12</td>
+      <td>0.22</td>
+      <td>0.19</td>
+      <td>0.27</td>
+      <td>0.07</td>
+      <td>0.09</td>
+      <td>70.59</td>
+      <td>17.15</td>
+      <td>113.0</td>
+      <td>2.012559e+10</td>
+      <td>1.821320e+08</td>
+      <td>1.318053e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Oslo</td>
+      <td>Norway</td>
+      <td>2014-10-17 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>TIETO</td>
+      <td>TIETO.HE</td>
+      <td>TietoEVRY Corp</td>
+      <td>Technology</td>
+      <td>Information Technology Services</td>
+      <td>0.00</td>
+      <td>27.02</td>
+      <td>275761.0</td>
+      <td>1.36</td>
+      <td>2.30</td>
+      <td>0.69</td>
+      <td>4.24</td>
+      <td>9.57</td>
+      <td>4.81</td>
+      <td>18.72</td>
+      <td>2.82</td>
+      <td>27.90</td>
+      <td>-3.15</td>
+      <td>21.06</td>
+      <td>28.30</td>
+      <td>1.30</td>
+      <td>202858.26</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>473.28</td>
+      <td>85</td>
+      <td>70</td>
+      <td>82</td>
+      <td>25</td>
+      <td>42</td>
+      <td>57</td>
+      <td>26.73</td>
+      <td>1.07</td>
+      <td>26.11</td>
+      <td>3.48</td>
+      <td>24.71</td>
+      <td>9.37</td>
+      <td>0.23</td>
+      <td>0.23</td>
+      <td>0.09</td>
+      <td>0.05</td>
+      <td>0.09</td>
+      <td>0.04</td>
+      <td>0.06</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>0.03</td>
+      <td>0.02</td>
+      <td>12.38</td>
+      <td>50.97</td>
+      <td>166.0</td>
+      <td>3.026636e+09</td>
+      <td>1.184130e+08</td>
+      <td>9.600832e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Helsinki</td>
+      <td>Finland</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>KINDsdb</td>
+      <td>KIND-SDB.ST</td>
+      <td>Kindred Group PLC</td>
+      <td>Consumer Cyclical</td>
+      <td>Gambling</td>
+      <td>0.09</td>
+      <td>112.00</td>
+      <td>435144.0</td>
+      <td>0.73</td>
+      <td>2.38</td>
+      <td>2.48</td>
+      <td>4.04</td>
+      <td>7.90</td>
+      <td>21.03</td>
+      <td>19.45</td>
+      <td>7.95</td>
+      <td>113.15</td>
+      <td>-1.02</td>
+      <td>74.30</td>
+      <td>50.74</td>
+      <td>1.96</td>
+      <td>592782.68</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>266.35</td>
+      <td>82</td>
+      <td>91</td>
+      <td>88</td>
+      <td>88</td>
+      <td>66</td>
+      <td>68</td>
+      <td>109.32</td>
+      <td>2.45</td>
+      <td>105.80</td>
+      <td>5.86</td>
+      <td>97.77</td>
+      <td>14.56</td>
+      <td>-0.04</td>
+      <td>-0.03</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.24</td>
+      <td>-0.07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>11.17</td>
+      <td>56.19</td>
+      <td>102.0</td>
+      <td>2.298536e+10</td>
+      <td>2.188040e+08</td>
+      <td>1.578864e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2004-06-08 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>STEr</td>
+      <td>STE-R.ST</td>
+      <td>Stora Enso Oyj ser. R</td>
+      <td>Basic Materials</td>
+      <td>Paper &amp; Paper Products</td>
+      <td>0.26</td>
+      <td>157.10</td>
+      <td>298119.0</td>
+      <td>1.46</td>
+      <td>2.29</td>
+      <td>3.35</td>
+      <td>2.88</td>
+      <td>1.88</td>
+      <td>3.97</td>
+      <td>-5.25</td>
+      <td>-2.36</td>
+      <td>205.40</td>
+      <td>-23.52</td>
+      <td>138.80</td>
+      <td>13.18</td>
+      <td>1.10</td>
+      <td>204000.74</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3016.62</td>
+      <td>61</td>
+      <td>69</td>
+      <td>68</td>
+      <td>84</td>
+      <td>65</td>
+      <td>90</td>
+      <td>155.47</td>
+      <td>1.05</td>
+      <td>153.92</td>
+      <td>2.07</td>
+      <td>151.16</td>
+      <td>3.93</td>
+      <td>0.24</td>
+      <td>0.24</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>28.72</td>
+      <td>23.0</td>
+      <td>1.222377e+11</td>
+      <td>0.000000e+00</td>
+      <td>6.153917e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>THULE</td>
+      <td>THULE.ST</td>
+      <td>Thule Group AB</td>
+      <td>Consumer Cyclical</td>
+      <td>Leisure</td>
+      <td>0.98</td>
+      <td>246.10</td>
+      <td>480616.0</td>
+      <td>1.75</td>
+      <td>3.60</td>
+      <td>7.22</td>
+      <td>0.57</td>
+      <td>7.19</td>
+      <td>-4.61</td>
+      <td>-16.89</td>
+      <td>-51.75</td>
+      <td>556.50</td>
+      <td>-55.78</td>
+      <td>199.60</td>
+      <td>23.30</td>
+      <td>1.10</td>
+      <td>275372.16</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>374.35</td>
+      <td>80</td>
+      <td>47</td>
+      <td>31</td>
+      <td>99</td>
+      <td>71</td>
+      <td>13</td>
+      <td>246.01</td>
+      <td>0.04</td>
+      <td>242.42</td>
+      <td>1.52</td>
+      <td>229.22</td>
+      <td>7.36</td>
+      <td>-0.73</td>
+      <td>-0.73</td>
+      <td>-0.84</td>
+      <td>-0.26</td>
+      <td>-0.30</td>
+      <td>-0.17</td>
+      <td>-0.23</td>
+      <td>-0.15</td>
+      <td>-0.04</td>
+      <td>-0.11</td>
+      <td>-0.10</td>
+      <td>0.88</td>
+      <td>79.09</td>
+      <td>232.0</td>
+      <td>2.751026e+10</td>
+      <td>1.045620e+08</td>
+      <td>1.030850e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2014-11-26 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>CHRH</td>
+      <td>CHR.CO</td>
+      <td>Chr Hansen Holding A/S</td>
+      <td>Basic Materials</td>
+      <td>Specialty Chemicals</td>
+      <td>-0.16</td>
+      <td>450.50</td>
+      <td>190115.0</td>
+      <td>0.82</td>
+      <td>2.43</td>
+      <td>9.74</td>
+      <td>3.18</td>
+      <td>5.38</td>
+      <td>6.02</td>
+      <td>-5.34</td>
+      <td>-11.42</td>
+      <td>569.40</td>
+      <td>-20.88</td>
+      <td>360.10</td>
+      <td>25.10</td>
+      <td>1.40</td>
+      <td>231547.04</td>
+      <td>False</td>
+      <td>3.0</td>
+      <td>5.0</td>
+      <td>443.24</td>
+      <td>75</td>
+      <td>72</td>
+      <td>69</td>
+      <td>95</td>
+      <td>97</td>
+      <td>70</td>
+      <td>446.26</td>
+      <td>0.95</td>
+      <td>440.57</td>
+      <td>2.25</td>
+      <td>422.61</td>
+      <td>6.60</td>
+      <td>-0.10</td>
+      <td>-0.12</td>
+      <td>0.20</td>
+      <td>0.16</td>
+      <td>-0.94</td>
+      <td>0.11</td>
+      <td>0.12</td>
+      <td>0.15</td>
+      <td>0.12</td>
+      <td>0.12</td>
+      <td>0.07</td>
+      <td>0.01</td>
+      <td>66.88</td>
+      <td>344.0</td>
+      <td>5.931315e+10</td>
+      <td>1.316020e+08</td>
+      <td>1.026300e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Copenhagen</td>
+      <td>Denmark</td>
+      <td>2010-06-03 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>OX2SE</td>
+      <td>OX2.ST</td>
+      <td>OX2 AB</td>
+      <td>Utilities</td>
+      <td>Utilities—Renewable</td>
+      <td>-0.07</td>
+      <td>74.10</td>
+      <td>478158.0</td>
+      <td>0.66</td>
+      <td>4.97</td>
+      <td>3.56</td>
+      <td>-2.76</td>
+      <td>-1.20</td>
+      <td>-24.00</td>
+      <td>5.56</td>
+      <td>24.75</td>
+      <td>110.30</td>
+      <td>-32.82</td>
+      <td>41.30</td>
+      <td>79.42</td>
+      <td>0.37</td>
+      <td>722110.26</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>107.22</td>
+      <td>47</td>
+      <td>16</td>
+      <td>71</td>
+      <td>36</td>
+      <td>28</td>
+      <td>59</td>
+      <td>75.34</td>
+      <td>-1.65</td>
+      <td>76.46</td>
+      <td>-3.08</td>
+      <td>77.28</td>
+      <td>-4.12</td>
+      <td>1.93</td>
+      <td>1.91</td>
+      <td>1.30</td>
+      <td>1.80</td>
+      <td>-0.64</td>
+      <td>-0.24</td>
+      <td>2.85</td>
+      <td>0.25</td>
+      <td>0.70</td>
+      <td>-0.26</td>
+      <td>0.34</td>
+      <td>47.91</td>
+      <td>35.33</td>
+      <td>68.0</td>
+      <td>2.141992e+10</td>
+      <td>2.725180e+08</td>
+      <td>7.742770e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2021-06-23 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>ATTE</td>
+      <td>ATT.ST</td>
+      <td>Attendo International publ AB</td>
+      <td>Healthcare</td>
+      <td>Medical Care Facilities</td>
+      <td>1.13</td>
+      <td>25.16</td>
+      <td>132091.0</td>
+      <td>0.42</td>
+      <td>3.38</td>
+      <td>0.80</td>
+      <td>-1.33</td>
+      <td>-1.56</td>
+      <td>19.70</td>
+      <td>12.83</td>
+      <td>-25.03</td>
+      <td>39.20</td>
+      <td>-35.82</td>
+      <td>17.55</td>
+      <td>43.36</td>
+      <td>1.72</td>
+      <td>317072.04</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>325.10</td>
+      <td>45</td>
+      <td>90</td>
+      <td>74</td>
+      <td>68</td>
+      <td>92</td>
+      <td>72</td>
+      <td>25.35</td>
+      <td>-0.75</td>
+      <td>25.19</td>
+      <td>-0.11</td>
+      <td>23.62</td>
+      <td>6.51</td>
+      <td>0.01</td>
+      <td>0.02</td>
+      <td>NaN</td>
+      <td>-0.92</td>
+      <td>NaN</td>
+      <td>33.00</td>
+      <td>0.13</td>
+      <td>0.10</td>
+      <td>0.12</td>
+      <td>0.07</td>
+      <td>0.10</td>
+      <td>20.05</td>
+      <td>57.42</td>
+      <td>63.0</td>
+      <td>4.319441e+09</td>
+      <td>1.609330e+08</td>
+      <td>1.030807e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2015-11-30 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>SCHB</td>
+      <td>SCHB.OL</td>
+      <td>Schibsted ASA B</td>
+      <td>Communication Services</td>
+      <td>Publishing</td>
+      <td>0.60</td>
+      <td>183.50</td>
+      <td>165729.0</td>
+      <td>0.80</td>
+      <td>4.13</td>
+      <td>6.63</td>
+      <td>1.38</td>
+      <td>17.85</td>
+      <td>6.01</td>
+      <td>29.77</td>
+      <td>-40.31</td>
+      <td>311.20</td>
+      <td>-41.03</td>
+      <td>133.60</td>
+      <td>37.35</td>
+      <td>1.19</td>
+      <td>206125.90</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>802.69</td>
+      <td>94</td>
+      <td>72</td>
+      <td>66</td>
+      <td>34</td>
+      <td>18</td>
+      <td>22</td>
+      <td>182.18</td>
+      <td>0.72</td>
+      <td>176.59</td>
+      <td>3.91</td>
+      <td>162.45</td>
+      <td>12.96</td>
+      <td>2.50</td>
+      <td>2.48</td>
+      <td>NaN</td>
+      <td>-0.52</td>
+      <td>NaN</td>
+      <td>0.76</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>0.05</td>
+      <td>0.02</td>
+      <td>0.04</td>
+      <td>2.38</td>
+      <td>78.24</td>
+      <td>150.0</td>
+      <td>4.218943e+10</td>
+      <td>1.290870e+08</td>
+      <td>1.654542e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Oslo</td>
+      <td>Norway</td>
+      <td>2015-05-29 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>SALM</td>
+      <td>SALM.OL</td>
+      <td>SalMar ASA</td>
+      <td>Consumer Defensive</td>
+      <td>Farm Products</td>
+      <td>-0.06</td>
+      <td>343.00</td>
+      <td>309625.0</td>
+      <td>0.57</td>
+      <td>3.89</td>
+      <td>12.34</td>
+      <td>-0.64</td>
+      <td>2.69</td>
+      <td>-45.51</td>
+      <td>-49.60</td>
+      <td>-42.49</td>
+      <td>785.50</td>
+      <td>-56.33</td>
+      <td>305.00</td>
+      <td>12.46</td>
+      <td>0.75</td>
+      <td>542235.20</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>104.60</td>
+      <td>65</td>
+      <td>4</td>
+      <td>8</td>
+      <td>66</td>
+      <td>1</td>
+      <td>6</td>
+      <td>342.54</td>
+      <td>0.13</td>
+      <td>342.62</td>
+      <td>0.11</td>
+      <td>338.07</td>
+      <td>1.46</td>
+      <td>1.30</td>
+      <td>1.24</td>
+      <td>0.99</td>
+      <td>0.76</td>
+      <td>0.52</td>
+      <td>-0.09</td>
+      <td>0.32</td>
+      <td>0.30</td>
+      <td>0.30</td>
+      <td>0.18</td>
+      <td>0.24</td>
+      <td>1.04</td>
+      <td>65.71</td>
+      <td>266.0</td>
+      <td>4.893548e+10</td>
+      <td>1.355490e+08</td>
+      <td>5.671849e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Oslo</td>
+      <td>Norway</td>
+      <td>2007-05-08 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>ESSITYb</td>
+      <td>ESSITY-B.ST</td>
+      <td>Essity AB B</td>
+      <td>Consumer Defensive</td>
+      <td>Household &amp; Personal Products</td>
+      <td>0.61</td>
+      <td>263.20</td>
+      <td>1075429.0</td>
+      <td>0.84</td>
+      <td>1.82</td>
+      <td>4.25</td>
+      <td>2.97</td>
+      <td>10.54</td>
+      <td>13.69</td>
+      <td>4.49</td>
+      <td>-9.34</td>
+      <td>296.80</td>
+      <td>-11.32</td>
+      <td>211.90</td>
+      <td>24.21</td>
+      <td>2.16</td>
+      <td>1273519.16</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>494.15</td>
+      <td>86</td>
+      <td>83</td>
+      <td>81</td>
+      <td>93</td>
+      <td>99</td>
+      <td>81</td>
+      <td>260.38</td>
+      <td>1.08</td>
+      <td>253.53</td>
+      <td>3.81</td>
+      <td>237.69</td>
+      <td>10.73</td>
+      <td>-0.43</td>
+      <td>-0.43</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.29</td>
+      <td>0.05</td>
+      <td>0.08</td>
+      <td>0.06</td>
+      <td>0.04</td>
+      <td>0.06</td>
+      <td>58.08</td>
+      <td>402.0</td>
+      <td>1.703543e+11</td>
+      <td>6.410540e+08</td>
+      <td>6.293059e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2017-06-15 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>GMAB</td>
+      <td>GMAB.CO</td>
+      <td>Genmab</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>-0.09</td>
+      <td>3242.00</td>
+      <td>91603.0</td>
+      <td>0.82</td>
+      <td>2.67</td>
+      <td>73.07</td>
+      <td>-0.83</td>
+      <td>8.90</td>
+      <td>16.66</td>
+      <td>64.69</td>
+      <td>28.70</td>
+      <td>3327.00</td>
+      <td>-2.55</td>
+      <td>1863.00</td>
+      <td>74.02</td>
+      <td>1.66</td>
+      <td>111141.20</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>580.82</td>
+      <td>83</td>
+      <td>87</td>
+      <td>94</td>
+      <td>58</td>
+      <td>48</td>
+      <td>26</td>
+      <td>3233.31</td>
+      <td>0.27</td>
+      <td>3155.98</td>
+      <td>2.73</td>
+      <td>2942.06</td>
+      <td>10.19</td>
+      <td>1.90</td>
+      <td>1.91</td>
+      <td>0.95</td>
+      <td>0.73</td>
+      <td>0.10</td>
+      <td>0.07</td>
+      <td>0.77</td>
+      <td>0.66</td>
+      <td>0.55</td>
+      <td>0.30</td>
+      <td>0.24</td>
+      <td>0.00</td>
+      <td>52.62</td>
+      <td>410.0</td>
+      <td>1.972246e+11</td>
+      <td>6.582930e+07</td>
+      <td>6.455297e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Copenhagen</td>
+      <td>Denmark</td>
+      <td>2000-10-20 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>HOLMb</td>
+      <td>HOLM-B.ST</td>
+      <td>Holmen AB</td>
+      <td>Basic Materials</td>
+      <td>Paper &amp; Paper Products</td>
+      <td>-0.14</td>
+      <td>430.90</td>
+      <td>131347.0</td>
+      <td>0.63</td>
+      <td>2.42</td>
+      <td>9.57</td>
+      <td>0.23</td>
+      <td>5.25</td>
+      <td>-2.51</td>
+      <td>-4.33</td>
+      <td>1.77</td>
+      <td>580.60</td>
+      <td>-25.78</td>
+      <td>391.70</td>
+      <td>10.01</td>
+      <td>1.17</td>
+      <td>209144.98</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>498.71</td>
+      <td>75</td>
+      <td>52</td>
+      <td>64</td>
+      <td>84</td>
+      <td>65</td>
+      <td>90</td>
+      <td>430.05</td>
+      <td>0.20</td>
+      <td>425.57</td>
+      <td>1.25</td>
+      <td>423.29</td>
+      <td>1.80</td>
+      <td>0.94</td>
+      <td>0.94</td>
+      <td>-0.17</td>
+      <td>0.64</td>
+      <td>-0.22</td>
+      <td>-0.36</td>
+      <td>0.19</td>
+      <td>0.17</td>
+      <td>0.20</td>
+      <td>0.15</td>
+      <td>-0.06</td>
+      <td>20.69</td>
+      <td>40.94</td>
+      <td>225.0</td>
+      <td>6.623078e+10</td>
+      <td>1.167550e+08</td>
+      <td>1.043032e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>EKTAb</td>
+      <td>EKTA-B.ST</td>
+      <td>Elekta AB ser. B</td>
+      <td>Healthcare</td>
+      <td>Medical Instruments &amp; Supplies</td>
+      <td>1.06</td>
+      <td>61.20</td>
+      <td>771884.0</td>
+      <td>0.62</td>
+      <td>3.67</td>
+      <td>2.25</td>
+      <td>-1.13</td>
+      <td>6.81</td>
+      <td>0.96</td>
+      <td>-18.18</td>
+      <td>-41.38</td>
+      <td>117.45</td>
+      <td>-47.89</td>
+      <td>53.24</td>
+      <td>14.95</td>
+      <td>1.17</td>
+      <td>1239067.18</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>289.28</td>
+      <td>79</td>
+      <td>61</td>
+      <td>42</td>
+      <td>9</td>
+      <td>21</td>
+      <td>11</td>
+      <td>61.19</td>
+      <td>0.02</td>
+      <td>60.54</td>
+      <td>1.10</td>
+      <td>59.62</td>
+      <td>2.66</td>
+      <td>-0.53</td>
+      <td>-0.52</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.16</td>
+      <td>0.11</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.05</td>
+      <td>2.10</td>
+      <td>62.21</td>
+      <td>180.0</td>
+      <td>2.237854e+10</td>
+      <td>3.671020e+08</td>
+      <td>3.584322e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>SSABBH</td>
+      <td>SSAB-B.ST</td>
+      <td>SSAB AB ser. B</td>
+      <td>Basic Materials</td>
+      <td>Steel</td>
+      <td>0.00</td>
+      <td>5.37</td>
+      <td>346754.0</td>
+      <td>0.59</td>
+      <td>2.40</td>
+      <td>0.11</td>
+      <td>0.90</td>
+      <td>2.84</td>
+      <td>13.42</td>
+      <td>17.93</td>
+      <td>27.69</td>
+      <td>6.59</td>
+      <td>-18.54</td>
+      <td>3.71</td>
+      <td>44.61</td>
+      <td>1.52</td>
+      <td>591390.68</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>1448.34</td>
+      <td>65</td>
+      <td>83</td>
+      <td>87</td>
+      <td>81</td>
+      <td>86</td>
+      <td>97</td>
+      <td>5.33</td>
+      <td>0.68</td>
+      <td>5.24</td>
+      <td>2.43</td>
+      <td>4.98</td>
+      <td>7.72</td>
+      <td>0.13</td>
+      <td>0.13</td>
+      <td>-0.28</td>
+      <td>0.29</td>
+      <td>NaN</td>
+      <td>-0.63</td>
+      <td>0.25</td>
+      <td>0.00</td>
+      <td>0.24</td>
+      <td>0.05</td>
+      <td>-0.15</td>
+      <td>15.24</td>
+      <td>34.18</td>
+      <td>160.0</td>
+      <td>5.835503e+10</td>
+      <td>7.256520e+08</td>
+      <td>8.565346e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Helsinki</td>
+      <td>Finland</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>OUT1V</td>
+      <td>OUT1V.HE</td>
+      <td>Outokumpu Oyj</td>
+      <td>Basic Materials</td>
+      <td>Steel</td>
+      <td>0.00</td>
+      <td>4.81</td>
+      <td>1367789.0</td>
+      <td>0.63</td>
+      <td>2.21</td>
+      <td>0.10</td>
+      <td>0.75</td>
+      <td>1.07</td>
+      <td>24.80</td>
+      <td>3.71</td>
+      <td>-9.60</td>
+      <td>6.54</td>
+      <td>-26.48</td>
+      <td>3.46</td>
+      <td>38.93</td>
+      <td>2.29</td>
+      <td>2188140.22</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>171.79</td>
+      <td>58</td>
+      <td>93</td>
+      <td>83</td>
+      <td>81</td>
+      <td>86</td>
+      <td>97</td>
+      <td>4.78</td>
+      <td>0.74</td>
+      <td>4.67</td>
+      <td>2.98</td>
+      <td>4.27</td>
+      <td>12.64</td>
+      <td>0.04</td>
+      <td>0.05</td>
+      <td>-0.39</td>
+      <td>0.56</td>
+      <td>-0.36</td>
+      <td>-0.72</td>
+      <td>0.27</td>
+      <td>-0.05</td>
+      <td>0.28</td>
+      <td>-0.00</td>
+      <td>-0.21</td>
+      <td>19.23</td>
+      <td>39.06</td>
+      <td>133.0</td>
+      <td>2.159879e+09</td>
+      <td>4.517630e+08</td>
+      <td>3.759030e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Helsinki</td>
+      <td>Finland</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>ELISA</td>
+      <td>ELISA.HE</td>
+      <td>Elisa Oyj</td>
+      <td>Communication Services</td>
+      <td>Telecom Services</td>
+      <td>0.00</td>
+      <td>51.10</td>
+      <td>589049.0</td>
+      <td>2.38</td>
+      <td>1.59</td>
+      <td>0.73</td>
+      <td>2.69</td>
+      <td>4.58</td>
+      <td>-0.04</td>
+      <td>-2.70</td>
+      <td>-4.70</td>
+      <td>56.90</td>
+      <td>-10.19</td>
+      <td>45.57</td>
+      <td>12.14</td>
+      <td>1.51</td>
+      <td>247919.72</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>437.66</td>
+      <td>72</td>
+      <td>58</td>
+      <td>70</td>
+      <td>67</td>
+      <td>29</td>
+      <td>52</td>
+      <td>50.78</td>
+      <td>0.62</td>
+      <td>50.19</td>
+      <td>1.81</td>
+      <td>48.66</td>
+      <td>5.02</td>
+      <td>0.04</td>
+      <td>0.05</td>
+      <td>0.06</td>
+      <td>0.07</td>
+      <td>0.09</td>
+      <td>0.04</td>
+      <td>0.08</td>
+      <td>0.04</td>
+      <td>0.06</td>
+      <td>0.04</td>
+      <td>0.03</td>
+      <td>11.53</td>
+      <td>36.45</td>
+      <td>372.0</td>
+      <td>7.867164e+09</td>
+      <td>1.602600e+08</td>
+      <td>1.085038e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Helsinki</td>
+      <td>Finland</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>SWEDa</td>
+      <td>SWED-A.ST</td>
+      <td>Swedbank AB ser A</td>
+      <td>Financial Services</td>
+      <td>Banks—Regional</td>
+      <td>1.11</td>
+      <td>168.35</td>
+      <td>4386821.0</td>
+      <td>1.57</td>
+      <td>1.59</td>
+      <td>2.75</td>
+      <td>-0.50</td>
+      <td>2.03</td>
+      <td>17.03</td>
+      <td>12.68</td>
+      <td>-7.90</td>
+      <td>188.00</td>
+      <td>-10.45</td>
+      <td>124.50</td>
+      <td>35.22</td>
+      <td>1.73</td>
+      <td>2794033.66</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>313.33</td>
+      <td>62</td>
+      <td>88</td>
+      <td>85</td>
+      <td>71</td>
+      <td>77</td>
+      <td>79</td>
+      <td>168.18</td>
+      <td>0.10</td>
+      <td>166.54</td>
+      <td>1.09</td>
+      <td>159.67</td>
+      <td>5.43</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>0.33</td>
+      <td>0.00</td>
+      <td>0.46</td>
+      <td>0.15</td>
+      <td>0.12</td>
+      <td>0.19</td>
+      <td>0.07</td>
+      <td>0.22</td>
+      <td>0.11</td>
+      <td>15.40</td>
+      <td>48.57</td>
+      <td>317.0</td>
+      <td>1.846889e+11</td>
+      <td>1.123070e+09</td>
+      <td>8.754449e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>LSG</td>
+      <td>LSG.OL</td>
+      <td>Leroy Seafood Group ASA</td>
+      <td>Consumer Defensive</td>
+      <td>Packaged Foods</td>
+      <td>-0.08</td>
+      <td>47.94</td>
+      <td>350931.0</td>
+      <td>0.33</td>
+      <td>3.32</td>
+      <td>1.47</td>
+      <td>-0.33</td>
+      <td>4.26</td>
+      <td>-25.79</td>
+      <td>-29.71</td>
+      <td>-27.63</td>
+      <td>90.20</td>
+      <td>-46.85</td>
+      <td>38.40</td>
+      <td>24.84</td>
+      <td>0.85</td>
+      <td>1048303.96</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>268.50</td>
+      <td>71</td>
+      <td>14</td>
+      <td>23</td>
+      <td>66</td>
+      <td>1</td>
+      <td>6</td>
+      <td>48.03</td>
+      <td>-0.20</td>
+      <td>47.63</td>
+      <td>0.66</td>
+      <td>45.26</td>
+      <td>5.93</td>
+      <td>0.35</td>
+      <td>0.35</td>
+      <td>0.32</td>
+      <td>0.51</td>
+      <td>0.22</td>
+      <td>-0.03</td>
+      <td>0.24</td>
+      <td>0.10</td>
+      <td>0.13</td>
+      <td>0.11</td>
+      <td>0.05</td>
+      <td>52.71</td>
+      <td>26.22</td>
+      <td>154.0</td>
+      <td>2.822556e+10</td>
+      <td>5.954760e+08</td>
+      <td>2.814696e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Oslo</td>
+      <td>Norway</td>
+      <td>2002-10-23 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>METSB</td>
+      <td>0O7A.IL</td>
+      <td>Metsa Board Oyj B</td>
+      <td>Consumer Cyclical</td>
+      <td>Packaging &amp; Containers</td>
+      <td>0.00</td>
+      <td>8.60</td>
+      <td>382536.0</td>
+      <td>0.98</td>
+      <td>2.02</td>
+      <td>0.17</td>
+      <td>1.24</td>
+      <td>7.57</td>
+      <td>3.55</td>
+      <td>2.20</td>
+      <td>-1.55</td>
+      <td>10.49</td>
+      <td>-18.02</td>
+      <td>7.09</td>
+      <td>21.30</td>
+      <td>1.22</td>
+      <td>388676.26</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>472.82</td>
+      <td>81</td>
+      <td>68</td>
+      <td>74</td>
+      <td>84</td>
+      <td>65</td>
+      <td>90</td>
+      <td>8.48</td>
+      <td>1.42</td>
+      <td>8.28</td>
+      <td>3.86</td>
+      <td>8.05</td>
+      <td>6.83</td>
+      <td>0.48</td>
+      <td>0.50</td>
+      <td>0.35</td>
+      <td>0.36</td>
+      <td>-0.27</td>
+      <td>-0.19</td>
+      <td>0.25</td>
+      <td>0.24</td>
+      <td>0.21</td>
+      <td>0.07</td>
+      <td>0.01</td>
+      <td>48.64</td>
+      <td>25.14</td>
+      <td>117.0</td>
+      <td>2.832705e+09</td>
+      <td>3.227110e+08</td>
+      <td>1.837736e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Helsinki</td>
+      <td>Finland</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>BIOGb</td>
+      <td>BIOG-B.ST</td>
+      <td>BioGaia AB ser. B</td>
+      <td>Healthcare</td>
+      <td>Drug Manufacturers—Specialty &amp; Generic</td>
+      <td>1.15</td>
+      <td>86.45</td>
+      <td>62389.0</td>
+      <td>0.59</td>
+      <td>2.67</td>
+      <td>2.15</td>
+      <td>2.07</td>
+      <td>-3.10</td>
+      <td>2.44</td>
+      <td>-6.39</td>
+      <td>-82.98</td>
+      <td>521.00</td>
+      <td>-83.41</td>
+      <td>68.88</td>
+      <td>25.51</td>
+      <td>0.96</td>
+      <td>106498.18</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>759.01</td>
+      <td>38</td>
+      <td>65</td>
+      <td>36</td>
+      <td>58</td>
+      <td>48</td>
+      <td>26</td>
+      <td>86.19</td>
+      <td>0.30</td>
+      <td>85.91</td>
+      <td>0.63</td>
+      <td>84.48</td>
+      <td>2.33</td>
+      <td>0.50</td>
+      <td>0.51</td>
+      <td>0.60</td>
+      <td>0.51</td>
+      <td>0.22</td>
+      <td>0.02</td>
+      <td>0.48</td>
+      <td>0.37</td>
+      <td>0.42</td>
+      <td>0.13</td>
+      <td>0.11</td>
+      <td>3.60</td>
+      <td>52.36</td>
+      <td>89.0</td>
+      <td>8.819761e+09</td>
+      <td>9.727900e+07</td>
+      <td>8.083331e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>RBREW</td>
+      <td>RBREW.CO</td>
+      <td>Royal Unibrew A/S</td>
+      <td>Consumer Defensive</td>
+      <td>Beverages—Brewers</td>
+      <td>1.01</td>
+      <td>490.00</td>
+      <td>85674.0</td>
+      <td>0.50</td>
+      <td>2.63</td>
+      <td>10.94</td>
+      <td>0.80</td>
+      <td>12.64</td>
+      <td>-9.86</td>
+      <td>-17.76</td>
+      <td>-28.88</td>
+      <td>820.00</td>
+      <td>-40.24</td>
+      <td>390.20</td>
+      <td>25.58</td>
+      <td>1.05</td>
+      <td>170330.78</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>248.29</td>
+      <td>89</td>
+      <td>36</td>
+      <td>38</td>
+      <td>32</td>
+      <td>39</td>
+      <td>23</td>
+      <td>488.25</td>
+      <td>0.36</td>
+      <td>480.30</td>
+      <td>2.02</td>
+      <td>467.22</td>
+      <td>4.88</td>
+      <td>-0.20</td>
+      <td>-0.21</td>
+      <td>0.40</td>
+      <td>0.09</td>
+      <td>0.36</td>
+      <td>-0.05</td>
+      <td>0.35</td>
+      <td>0.17</td>
+      <td>0.32</td>
+      <td>0.18</td>
+      <td>0.08</td>
+      <td>0.21</td>
+      <td>53.83</td>
+      <td>207.0</td>
+      <td>2.286132e+10</td>
+      <td>4.962300e+07</td>
+      <td>4.229149e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Copenhagen</td>
+      <td>Denmark</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>COLOb</td>
+      <td>COLO-B.CO</td>
+      <td>Coloplast A/S</td>
+      <td>Healthcare</td>
+      <td>Medical Instruments &amp; Supplies</td>
+      <td>1.07</td>
+      <td>854.00</td>
+      <td>147336.0</td>
+      <td>0.66</td>
+      <td>2.69</td>
+      <td>22.43</td>
+      <td>2.45</td>
+      <td>1.79</td>
+      <td>-5.93</td>
+      <td>13.93</td>
+      <td>-20.22</td>
+      <td>1175.00</td>
+      <td>-27.32</td>
+      <td>728.80</td>
+      <td>17.18</td>
+      <td>0.61</td>
+      <td>222764.92</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>587.22</td>
+      <td>61</td>
+      <td>45</td>
+      <td>62</td>
+      <td>9</td>
+      <td>21</td>
+      <td>11</td>
+      <td>859.48</td>
+      <td>-0.64</td>
+      <td>858.90</td>
+      <td>-0.57</td>
+      <td>830.34</td>
+      <td>2.85</td>
+      <td>-0.06</td>
+      <td>-0.05</td>
+      <td>0.11</td>
+      <td>0.21</td>
+      <td>0.54</td>
+      <td>0.10</td>
+      <td>0.19</td>
+      <td>0.18</td>
+      <td>0.11</td>
+      <td>0.18</td>
+      <td>0.08</td>
+      <td>35.90</td>
+      <td>25.62</td>
+      <td>508.0</td>
+      <td>1.798243e+11</td>
+      <td>1.943070e+08</td>
+      <td>1.308130e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Copenhagen</td>
+      <td>Denmark</td>
+      <td>2000-01-02 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>ORK</td>
+      <td>ORK.OL</td>
+      <td>Orkla ASA</td>
+      <td>Consumer Defensive</td>
+      <td>Packaged Foods</td>
+      <td>0.14</td>
+      <td>69.70</td>
+      <td>1961933.0</td>
+      <td>1.13</td>
+      <td>1.04</td>
+      <td>0.73</td>
+      <td>-0.37</td>
+      <td>3.23</td>
+      <td>-15.06</td>
+      <td>-4.70</td>
+      <td>-19.52</td>
+      <td>88.58</td>
+      <td>-21.31</td>
+      <td>67.06</td>
+      <td>3.94</td>
+      <td>0.65</td>
+      <td>1738238.68</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>429.30</td>
+      <td>67</td>
+      <td>28</td>
+      <td>48</td>
+      <td>66</td>
+      <td>1</td>
+      <td>6</td>
+      <td>69.49</td>
+      <td>0.31</td>
+      <td>69.64</td>
+      <td>0.09</td>
+      <td>72.26</td>
+      <td>-3.54</td>
+      <td>0.19</td>
+      <td>0.14</td>
+      <td>0.01</td>
+      <td>0.08</td>
+      <td>0.25</td>
+      <td>-0.01</td>
+      <td>0.06</td>
+      <td>0.11</td>
+      <td>0.15</td>
+      <td>0.14</td>
+      <td>0.03</td>
+      <td>5.06</td>
+      <td>59.35</td>
+      <td>342.0</td>
+      <td>6.736867e+10</td>
+      <td>9.965780e+08</td>
+      <td>7.462326e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Oslo</td>
+      <td>Norway</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>ISS</td>
+      <td>ISS.CO</td>
+      <td>ISS A/S</td>
+      <td>Industrials</td>
+      <td>Specialty Business Services</td>
+      <td>0.48</td>
+      <td>155.45</td>
+      <td>473830.0</td>
+      <td>1.00</td>
+      <td>1.91</td>
+      <td>2.50</td>
+      <td>0.84</td>
+      <td>4.68</td>
+      <td>14.39</td>
+      <td>36.30</td>
+      <td>29.33</td>
+      <td>156.35</td>
+      <td>-0.58</td>
+      <td>93.66</td>
+      <td>65.97</td>
+      <td>1.68</td>
+      <td>471948.32</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>5.0</td>
+      <td>324.54</td>
+      <td>73</td>
+      <td>85</td>
+      <td>92</td>
+      <td>39</td>
+      <td>25</td>
+      <td>40</td>
+      <td>153.43</td>
+      <td>1.32</td>
+      <td>149.40</td>
+      <td>4.05</td>
+      <td>137.68</td>
+      <td>12.90</td>
+      <td>2.60</td>
+      <td>2.63</td>
+      <td>NaN</td>
+      <td>1.62</td>
+      <td>NaN</td>
+      <td>0.17</td>
+      <td>0.06</td>
+      <td>0.02</td>
+      <td>0.06</td>
+      <td>0.02</td>
+      <td>0.04</td>
+      <td>0.00</td>
+      <td>59.28</td>
+      <td>151.0</td>
+      <td>2.693351e+10</td>
+      <td>1.847290e+08</td>
+      <td>1.531662e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Copenhagen</td>
+      <td>Denmark</td>
+      <td>2014-03-13 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>BILL</td>
+      <td>BILL.ST</td>
+      <td>BillerudKorsnas AB</td>
+      <td>Basic Materials</td>
+      <td>Paper &amp; Paper Products</td>
+      <td>0.31</td>
+      <td>145.40</td>
+      <td>235158.0</td>
+      <td>0.58</td>
+      <td>2.74</td>
+      <td>3.46</td>
+      <td>-1.05</td>
+      <td>-3.84</td>
+      <td>3.86</td>
+      <td>31.29</td>
+      <td>-21.91</td>
+      <td>190.20</td>
+      <td>-23.55</td>
+      <td>110.30</td>
+      <td>31.82</td>
+      <td>1.07</td>
+      <td>408760.42</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>546.01</td>
+      <td>36</td>
+      <td>68</td>
+      <td>81</td>
+      <td>74</td>
+      <td>99</td>
+      <td>89</td>
+      <td>145.64</td>
+      <td>-0.17</td>
+      <td>145.72</td>
+      <td>-0.22</td>
+      <td>143.45</td>
+      <td>1.36</td>
+      <td>1.82</td>
+      <td>1.35</td>
+      <td>1.39</td>
+      <td>1.63</td>
+      <td>1.19</td>
+      <td>-0.25</td>
+      <td>0.83</td>
+      <td>0.88</td>
+      <td>0.61</td>
+      <td>0.80</td>
+      <td>0.10</td>
+      <td>10.06</td>
+      <td>50.23</td>
+      <td>131.0</td>
+      <td>3.788579e+10</td>
+      <td>2.483500e+08</td>
+      <td>2.231892e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>AAK</td>
+      <td>AAK.ST</td>
+      <td>AAK AB</td>
+      <td>Consumer Defensive</td>
+      <td>Packaged Foods</td>
+      <td>0.69</td>
+      <td>175.65</td>
+      <td>178387.0</td>
+      <td>0.73</td>
+      <td>2.01</td>
+      <td>3.15</td>
+      <td>1.21</td>
+      <td>6.45</td>
+      <td>10.54</td>
+      <td>18.04</td>
+      <td>-8.06</td>
+      <td>200.10</td>
+      <td>-12.22</td>
+      <td>140.85</td>
+      <td>24.71</td>
+      <td>1.72</td>
+      <td>245909.48</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>733.29</td>
+      <td>78</td>
+      <td>80</td>
+      <td>82</td>
+      <td>66</td>
+      <td>1</td>
+      <td>6</td>
+      <td>175.89</td>
+      <td>-0.14</td>
+      <td>173.30</td>
+      <td>1.35</td>
+      <td>162.10</td>
+      <td>8.36</td>
+      <td>0.32</td>
+      <td>0.31</td>
+      <td>0.25</td>
+      <td>0.35</td>
+      <td>0.18</td>
+      <td>0.14</td>
+      <td>0.44</td>
+      <td>0.29</td>
+      <td>0.42</td>
+      <td>0.04</td>
+      <td>-0.04</td>
+      <td>30.54</td>
+      <td>46.46</td>
+      <td>155.0</td>
+      <td>4.495562e+10</td>
+      <td>2.595590e+08</td>
+      <td>1.803234e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2005-09-29 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>AZN</td>
+      <td>AZN.L</td>
+      <td>AstraZeneca PLC</td>
+      <td>Healthcare</td>
+      <td>Drug Manufacturers—General</td>
+      <td>0.42</td>
+      <td>1425.00</td>
+      <td>356132.0</td>
+      <td>0.95</td>
+      <td>1.96</td>
+      <td>21.32</td>
+      <td>0.42</td>
+      <td>7.75</td>
+      <td>10.04</td>
+      <td>17.96</td>
+      <td>44.88</td>
+      <td>1456.50</td>
+      <td>-2.16</td>
+      <td>978.10</td>
+      <td>45.69</td>
+      <td>1.44</td>
+      <td>376686.62</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>4095.05</td>
+      <td>81</td>
+      <td>79</td>
+      <td>91</td>
+      <td>30</td>
+      <td>52</td>
+      <td>54</td>
+      <td>1412.60</td>
+      <td>0.88</td>
+      <td>1385.15</td>
+      <td>2.88</td>
+      <td>1314.09</td>
+      <td>8.44</td>
+      <td>-0.34</td>
+      <td>-0.45</td>
+      <td>-0.04</td>
+      <td>0.39</td>
+      <td>-0.01</td>
+      <td>0.13</td>
+      <td>0.11</td>
+      <td>0.04</td>
+      <td>0.30</td>
+      <td>0.06</td>
+      <td>0.05</td>
+      <td>0.21</td>
+      <td>49.23</td>
+      <td>834.0</td>
+      <td>1.680610e+11</td>
+      <td>1.549520e+09</td>
+      <td>1.542551e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>1993-05-21 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>CGCBV</td>
+      <td>CGCBV.HE</td>
+      <td>Cargotec Oyj</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>0.00</td>
+      <td>40.02</td>
+      <td>91530.0</td>
+      <td>0.67</td>
+      <td>2.47</td>
+      <td>0.73</td>
+      <td>1.32</td>
+      <td>-1.38</td>
+      <td>23.59</td>
+      <td>29.94</td>
+      <td>-7.28</td>
+      <td>48.46</td>
+      <td>-17.42</td>
+      <td>24.90</td>
+      <td>60.72</td>
+      <td>1.30</td>
+      <td>136225.00</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>324.90</td>
+      <td>46</td>
+      <td>92</td>
+      <td>89</td>
+      <td>77</td>
+      <td>82</td>
+      <td>85</td>
+      <td>39.94</td>
+      <td>0.21</td>
+      <td>39.44</td>
+      <td>1.48</td>
+      <td>37.02</td>
+      <td>8.09</td>
+      <td>-0.87</td>
+      <td>-0.87</td>
+      <td>1.07</td>
+      <td>0.88</td>
+      <td>0.01</td>
+      <td>0.16</td>
+      <td>0.27</td>
+      <td>0.25</td>
+      <td>0.18</td>
+      <td>0.12</td>
+      <td>0.12</td>
+      <td>33.62</td>
+      <td>34.24</td>
+      <td>109.0</td>
+      <td>2.705719e+09</td>
+      <td>5.495720e+07</td>
+      <td>4.426007e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Helsinki</td>
+      <td>Finland</td>
+      <td>2005-06-01 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>HOFI</td>
+      <td>HOFI.ST</td>
+      <td>Hoist Finance AB</td>
+      <td>Financial Services</td>
+      <td>Mortgage Finance</td>
+      <td>0.08</td>
+      <td>25.24</td>
+      <td>194374.0</td>
+      <td>0.77</td>
+      <td>2.75</td>
+      <td>0.69</td>
+      <td>-1.94</td>
+      <td>-1.02</td>
+      <td>-21.47</td>
+      <td>-15.13</td>
+      <td>-10.37</td>
+      <td>38.88</td>
+      <td>-35.08</td>
+      <td>20.78</td>
+      <td>21.46</td>
+      <td>0.90</td>
+      <td>252771.26</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>297.15</td>
+      <td>48</td>
+      <td>18</td>
+      <td>49</td>
+      <td>33</td>
+      <td>27</td>
+      <td>66</td>
+      <td>25.56</td>
+      <td>-1.27</td>
+      <td>25.82</td>
+      <td>-2.25</td>
+      <td>26.28</td>
+      <td>-3.96</td>
+      <td>1.04</td>
+      <td>1.83</td>
+      <td>2.92</td>
+      <td>4.31</td>
+      <td>2.30</td>
+      <td>-0.55</td>
+      <td>0.22</td>
+      <td>0.06</td>
+      <td>0.26</td>
+      <td>0.02</td>
+      <td>0.11</td>
+      <td>56.84</td>
+      <td>18.61</td>
+      <td>20.0</td>
+      <td>2.268297e+09</td>
+      <td>8.930300e+07</td>
+      <td>7.511137e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2015-03-25 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>86</th>
+      <td>AXFO</td>
+      <td>AXFO.ST</td>
+      <td>Axfood AB</td>
+      <td>Consumer Defensive</td>
+      <td>Grocery Stores</td>
+      <td>0.32</td>
+      <td>284.50</td>
+      <td>180824.0</td>
+      <td>0.58</td>
+      <td>1.77</td>
+      <td>4.66</td>
+      <td>0.82</td>
+      <td>3.61</td>
+      <td>-13.37</td>
+      <td>3.76</td>
+      <td>15.70</td>
+      <td>335.60</td>
+      <td>-15.23</td>
+      <td>228.65</td>
+      <td>24.42</td>
+      <td>1.57</td>
+      <td>310994.68</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>349.53</td>
+      <td>69</td>
+      <td>30</td>
+      <td>72</td>
+      <td>69</td>
+      <td>53</td>
+      <td>72</td>
+      <td>283.33</td>
+      <td>0.41</td>
+      <td>280.17</td>
+      <td>1.55</td>
+      <td>268.45</td>
+      <td>5.98</td>
+      <td>0.20</td>
+      <td>0.16</td>
+      <td>-0.26</td>
+      <td>0.14</td>
+      <td>-0.28</td>
+      <td>0.02</td>
+      <td>0.36</td>
+      <td>0.13</td>
+      <td>0.26</td>
+      <td>0.07</td>
+      <td>0.05</td>
+      <td>51.58</td>
+      <td>24.22</td>
+      <td>179.0</td>
+      <td>5.971331e+10</td>
+      <td>2.158050e+08</td>
+      <td>1.087012e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2000-02-21 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>87</th>
+      <td>CTY1S</td>
+      <td>CTY1S.HE</td>
+      <td>Citycon Oyj</td>
+      <td>Real Estate</td>
+      <td>Real Estate—Diversified</td>
+      <td>0.00</td>
+      <td>6.48</td>
+      <td>269052.0</td>
+      <td>0.90</td>
+      <td>2.11</td>
+      <td>0.10</td>
+      <td>0.31</td>
+      <td>-0.38</td>
+      <td>-6.43</td>
+      <td>-4.09</td>
+      <td>-5.54</td>
+      <td>7.36</td>
+      <td>-11.92</td>
+      <td>5.90</td>
+      <td>9.83</td>
+      <td>1.05</td>
+      <td>298228.60</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>263.51</td>
+      <td>51</td>
+      <td>44</td>
+      <td>61</td>
+      <td>46</td>
+      <td>12</td>
+      <td>17</td>
+      <td>6.47</td>
+      <td>0.10</td>
+      <td>6.44</td>
+      <td>0.64</td>
+      <td>6.33</td>
+      <td>2.43</td>
+      <td>1.25</td>
+      <td>7.93</td>
+      <td>0.00</td>
+      <td>0.02</td>
+      <td>0.00</td>
+      <td>0.12</td>
+      <td>0.03</td>
+      <td>0.01</td>
+      <td>-0.06</td>
+      <td>0.01</td>
+      <td>0.06</td>
+      <td>54.79</td>
+      <td>25.27</td>
+      <td>89.0</td>
+      <td>1.082138e+09</td>
+      <td>1.680090e+08</td>
+      <td>7.858618e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Helsinki</td>
+      <td>Finland</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>CARLb</td>
+      <td>CARL-B.CO</td>
+      <td>Carlsberg A/S B</td>
+      <td>Consumer Defensive</td>
+      <td>Beverages—Brewers</td>
+      <td>0.04</td>
+      <td>900.20</td>
+      <td>159147.0</td>
+      <td>0.79</td>
+      <td>2.03</td>
+      <td>18.17</td>
+      <td>0.76</td>
+      <td>-2.02</td>
+      <td>-5.02</td>
+      <td>6.21</td>
+      <td>-12.64</td>
+      <td>1165.00</td>
+      <td>-22.73</td>
+      <td>769.40</td>
+      <td>17.00</td>
+      <td>0.83</td>
+      <td>200981.14</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>483.62</td>
+      <td>43</td>
+      <td>46</td>
+      <td>70</td>
+      <td>32</td>
+      <td>39</td>
+      <td>23</td>
+      <td>901.45</td>
+      <td>-0.14</td>
+      <td>903.88</td>
+      <td>-0.41</td>
+      <td>907.55</td>
+      <td>-0.81</td>
+      <td>0.20</td>
+      <td>0.22</td>
+      <td>NaN</td>
+      <td>0.14</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>0.24</td>
+      <td>-0.06</td>
+      <td>0.06</td>
+      <td>-0.06</td>
+      <td>0.05</td>
+      <td>9.07</td>
+      <td>43.16</td>
+      <td>372.0</td>
+      <td>1.333177e+11</td>
+      <td>1.047450e+08</td>
+      <td>9.719765e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Copenhagen</td>
+      <td>Denmark</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>DANSKE</td>
+      <td>DANSKE.CO</td>
+      <td>Danske Bank A/S</td>
+      <td>Financial Services</td>
+      <td>Banks—Regional</td>
+      <td>-0.16</td>
+      <td>128.40</td>
+      <td>1224245.0</td>
+      <td>0.57</td>
+      <td>1.78</td>
+      <td>2.13</td>
+      <td>0.71</td>
+      <td>3.09</td>
+      <td>25.82</td>
+      <td>17.15</td>
+      <td>13.88</td>
+      <td>133.25</td>
+      <td>-3.64</td>
+      <td>86.84</td>
+      <td>47.86</td>
+      <td>1.97</td>
+      <td>2141727.36</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>313.41</td>
+      <td>67</td>
+      <td>93</td>
+      <td>90</td>
+      <td>71</td>
+      <td>77</td>
+      <td>79</td>
+      <td>127.64</td>
+      <td>0.59</td>
+      <td>124.44</td>
+      <td>3.18</td>
+      <td>112.73</td>
+      <td>13.90</td>
+      <td>-0.39</td>
+      <td>-0.36</td>
+      <td>0.06</td>
+      <td>-1.43</td>
+      <td>0.26</td>
+      <td>3.70</td>
+      <td>-0.10</td>
+      <td>0.34</td>
+      <td>-0.05</td>
+      <td>0.27</td>
+      <td>0.14</td>
+      <td>21.03</td>
+      <td>17.70</td>
+      <td>249.0</td>
+      <td>1.043784e+11</td>
+      <td>8.506810e+08</td>
+      <td>6.712380e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Copenhagen</td>
+      <td>Denmark</td>
+      <td>2000-11-08 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>SWMA</td>
+      <td>SWMA.ST</td>
+      <td>Swedish Match AB</td>
+      <td>Consumer Defensive</td>
+      <td>Tobacco</td>
+      <td>0.00</td>
+      <td>113.50</td>
+      <td>7761977.0</td>
+      <td>1.65</td>
+      <td>0.44</td>
+      <td>0.54</td>
+      <td>-1.30</td>
+      <td>-2.11</td>
+      <td>4.61</td>
+      <td>12.38</td>
+      <td>60.31</td>
+      <td>116.20</td>
+      <td>-2.32</td>
+      <td>64.14</td>
+      <td>76.96</td>
+      <td>2.06</td>
+      <td>4693341.76</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>322.91</td>
+      <td>42</td>
+      <td>70</td>
+      <td>93</td>
+      <td>23</td>
+      <td>99</td>
+      <td>96</td>
+      <td>113.91</td>
+      <td>-0.36</td>
+      <td>114.16</td>
+      <td>-0.58</td>
+      <td>113.06</td>
+      <td>0.39</td>
+      <td>0.16</td>
+      <td>0.19</td>
+      <td>0.30</td>
+      <td>0.11</td>
+      <td>0.27</td>
+      <td>0.18</td>
+      <td>0.21</td>
+      <td>0.27</td>
+      <td>0.20</td>
+      <td>0.23</td>
+      <td>0.12</td>
+      <td>85.92</td>
+      <td>42.11</td>
+      <td>255.0</td>
+      <td>1.764027e+11</td>
+      <td>1.520710e+09</td>
+      <td>1.515529e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>KESKOB</td>
+      <td>KKOYF</td>
+      <td>Kesko Oyj</td>
+      <td>Consumer Defensive</td>
+      <td>Grocery Stores</td>
+      <td>0.00</td>
+      <td>20.96</td>
+      <td>646098.0</td>
+      <td>1.18</td>
+      <td>1.89</td>
+      <td>0.36</td>
+      <td>2.29</td>
+      <td>-1.32</td>
+      <td>-1.32</td>
+      <td>-4.29</td>
+      <td>-28.51</td>
+      <td>30.63</td>
+      <td>-31.57</td>
+      <td>17.81</td>
+      <td>17.69</td>
+      <td>1.35</td>
+      <td>545416.06</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>506.93</td>
+      <td>46</td>
+      <td>55</td>
+      <td>52</td>
+      <td>69</td>
+      <td>53</td>
+      <td>72</td>
+      <td>20.93</td>
+      <td>0.15</td>
+      <td>20.81</td>
+      <td>0.71</td>
+      <td>19.97</td>
+      <td>4.96</td>
+      <td>0.09</td>
+      <td>0.09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.34</td>
+      <td>36.81</td>
+      <td>352.0</td>
+      <td>1.101483e+10</td>
+      <td>2.705090e+08</td>
+      <td>2.764871e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Helsinki</td>
+      <td>Finland</td>
+      <td>2002-06-06 13:30:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>SAMPO</td>
+      <td>SAMPO.HE</td>
+      <td>Sampo Oyj A</td>
+      <td>Financial Services</td>
+      <td>Insurance—Diversified</td>
+      <td>0.00</td>
+      <td>48.59</td>
+      <td>1918593.0</td>
+      <td>2.02</td>
+      <td>1.55</td>
+      <td>0.68</td>
+      <td>0.10</td>
+      <td>3.67</td>
+      <td>5.84</td>
+      <td>19.68</td>
+      <td>11.06</td>
+      <td>49.30</td>
+      <td>-1.44</td>
+      <td>34.30</td>
+      <td>41.66</td>
+      <td>1.60</td>
+      <td>949191.22</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>494.71</td>
+      <td>69</td>
+      <td>72</td>
+      <td>86</td>
+      <td>89</td>
+      <td>91</td>
+      <td>88</td>
+      <td>48.38</td>
+      <td>0.44</td>
+      <td>47.82</td>
+      <td>1.62</td>
+      <td>46.35</td>
+      <td>4.83</td>
+      <td>-0.41</td>
+      <td>-0.38</td>
+      <td>-0.67</td>
+      <td>-0.39</td>
+      <td>-0.23</td>
+      <td>-0.08</td>
+      <td>-0.30</td>
+      <td>0.28</td>
+      <td>0.27</td>
+      <td>0.04</td>
+      <td>0.11</td>
+      <td>7.54</td>
+      <td>45.48</td>
+      <td>449.0</td>
+      <td>2.401687e+10</td>
+      <td>5.184270e+08</td>
+      <td>4.695717e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Helsinki</td>
+      <td>Finland</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>PDXI</td>
+      <td>PDX.ST</td>
+      <td>Paradox Interactive AB</td>
+      <td>Communication Services</td>
+      <td>Electronic Gaming &amp; Multimedia</td>
+      <td>0.38</td>
+      <td>196.70</td>
+      <td>85821.0</td>
+      <td>0.80</td>
+      <td>2.79</td>
+      <td>5.07</td>
+      <td>-0.23</td>
+      <td>0.13</td>
+      <td>14.66</td>
+      <td>11.82</td>
+      <td>25.69</td>
+      <td>210.00</td>
+      <td>-6.33</td>
+      <td>151.00</td>
+      <td>30.26</td>
+      <td>1.56</td>
+      <td>107656.28</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>536.39</td>
+      <td>53</td>
+      <td>85</td>
+      <td>87</td>
+      <td>28</td>
+      <td>44</td>
+      <td>49</td>
+      <td>197.88</td>
+      <td>-0.60</td>
+      <td>196.74</td>
+      <td>-0.02</td>
+      <td>190.47</td>
+      <td>3.27</td>
+      <td>0.93</td>
+      <td>0.92</td>
+      <td>0.39</td>
+      <td>1.86</td>
+      <td>0.50</td>
+      <td>0.05</td>
+      <td>0.58</td>
+      <td>0.41</td>
+      <td>0.36</td>
+      <td>0.53</td>
+      <td>0.17</td>
+      <td>56.22</td>
+      <td>31.79</td>
+      <td>66.0</td>
+      <td>2.103930e+10</td>
+      <td>1.056190e+08</td>
+      <td>5.774625e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2016-05-31 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>TOP</td>
+      <td>TOP.CO</td>
+      <td>Topdanmark A/S</td>
+      <td>Financial Services</td>
+      <td>Insurance—Diversified</td>
+      <td>0.27</td>
+      <td>365.80</td>
+      <td>70377.0</td>
+      <td>1.02</td>
+      <td>1.64</td>
+      <td>5.40</td>
+      <td>-1.77</td>
+      <td>2.18</td>
+      <td>-6.45</td>
+      <td>3.39</td>
+      <td>-0.60</td>
+      <td>418.20</td>
+      <td>-12.53</td>
+      <td>337.80</td>
+      <td>8.29</td>
+      <td>1.03</td>
+      <td>68938.54</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>668.28</td>
+      <td>63</td>
+      <td>44</td>
+      <td>66</td>
+      <td>89</td>
+      <td>91</td>
+      <td>88</td>
+      <td>366.67</td>
+      <td>-0.24</td>
+      <td>364.42</td>
+      <td>0.38</td>
+      <td>360.32</td>
+      <td>1.52</td>
+      <td>-0.27</td>
+      <td>-0.27</td>
+      <td>-0.38</td>
+      <td>0.04</td>
+      <td>-0.37</td>
+      <td>-0.34</td>
+      <td>-0.04</td>
+      <td>0.05</td>
+      <td>0.05</td>
+      <td>0.05</td>
+      <td>0.04</td>
+      <td>0.00</td>
+      <td>71.66</td>
+      <td>121.0</td>
+      <td>3.217444e+10</td>
+      <td>8.897800e+07</td>
+      <td>4.606996e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Copenhagen</td>
+      <td>Denmark</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>HUH1V</td>
+      <td>HUH1V.HE</td>
+      <td>Huhtamaki Oyj</td>
+      <td>Consumer Cyclical</td>
+      <td>Packaging &amp; Containers</td>
+      <td>0.00</td>
+      <td>32.76</td>
+      <td>545754.0</td>
+      <td>2.32</td>
+      <td>2.33</td>
+      <td>0.81</td>
+      <td>-6.61</td>
+      <td>-10.25</td>
+      <td>-7.12</td>
+      <td>-5.84</td>
+      <td>-13.93</td>
+      <td>39.94</td>
+      <td>-17.98</td>
+      <td>26.41</td>
+      <td>24.04</td>
+      <td>0.80</td>
+      <td>235646.44</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>324.31</td>
+      <td>19</td>
+      <td>42</td>
+      <td>62</td>
+      <td>74</td>
+      <td>99</td>
+      <td>89</td>
+      <td>33.97</td>
+      <td>-3.57</td>
+      <td>34.89</td>
+      <td>-6.10</td>
+      <td>34.84</td>
+      <td>-5.98</td>
+      <td>1.20</td>
+      <td>1.23</td>
+      <td>0.07</td>
+      <td>0.20</td>
+      <td>-0.06</td>
+      <td>0.01</td>
+      <td>0.32</td>
+      <td>0.15</td>
+      <td>0.26</td>
+      <td>0.14</td>
+      <td>0.02</td>
+      <td>4.48</td>
+      <td>54.73</td>
+      <td>208.0</td>
+      <td>3.899076e+09</td>
+      <td>1.043650e+08</td>
+      <td>7.642208e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Helsinki</td>
+      <td>Finland</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>TELIA1</td>
+      <td>TELIA.ST</td>
+      <td>Telia Company AB</td>
+      <td>Communication Services</td>
+      <td>Telecom Services</td>
+      <td>0.00</td>
+      <td>2.60</td>
+      <td>1398082.0</td>
+      <td>1.01</td>
+      <td>1.54</td>
+      <td>0.04</td>
+      <td>-0.61</td>
+      <td>-3.42</td>
+      <td>-22.58</td>
+      <td>-29.28</td>
+      <td>-23.64</td>
+      <td>4.01</td>
+      <td>-35.25</td>
+      <td>2.53</td>
+      <td>2.57</td>
+      <td>0.65</td>
+      <td>1389315.48</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1693.01</td>
+      <td>37</td>
+      <td>17</td>
+      <td>28</td>
+      <td>67</td>
+      <td>29</td>
+      <td>52</td>
+      <td>2.64</td>
+      <td>-1.47</td>
+      <td>2.67</td>
+      <td>-2.69</td>
+      <td>2.75</td>
+      <td>-5.63</td>
+      <td>0.09</td>
+      <td>0.10</td>
+      <td>-0.03</td>
+      <td>-0.04</td>
+      <td>0.74</td>
+      <td>0.09</td>
+      <td>0.06</td>
+      <td>0.04</td>
+      <td>0.03</td>
+      <td>0.04</td>
+      <td>0.02</td>
+      <td>41.13</td>
+      <td>27.42</td>
+      <td>336.0</td>
+      <td>1.154427e+11</td>
+      <td>3.934650e+09</td>
+      <td>2.352132e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Helsinki</td>
+      <td>Finland</td>
+      <td>2000-06-13 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>TELIA</td>
+      <td>TELIA.ST</td>
+      <td>Telia Company AB</td>
+      <td>Communication Services</td>
+      <td>Telecom Services</td>
+      <td>0.00</td>
+      <td>28.28</td>
+      <td>15397858.0</td>
+      <td>1.01</td>
+      <td>1.49</td>
+      <td>0.38</td>
+      <td>-1.19</td>
+      <td>-2.78</td>
+      <td>-20.85</td>
+      <td>-27.58</td>
+      <td>-19.13</td>
+      <td>41.70</td>
+      <td>-32.18</td>
+      <td>27.93</td>
+      <td>1.25</td>
+      <td>0.67</td>
+      <td>15178964.18</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>154.96</td>
+      <td>40</td>
+      <td>19</td>
+      <td>32</td>
+      <td>67</td>
+      <td>29</td>
+      <td>52</td>
+      <td>28.72</td>
+      <td>-1.53</td>
+      <td>29.08</td>
+      <td>-2.75</td>
+      <td>30.03</td>
+      <td>-5.82</td>
+      <td>0.09</td>
+      <td>0.10</td>
+      <td>-0.03</td>
+      <td>-0.04</td>
+      <td>0.74</td>
+      <td>0.09</td>
+      <td>0.06</td>
+      <td>0.04</td>
+      <td>0.03</td>
+      <td>0.04</td>
+      <td>0.02</td>
+      <td>41.13</td>
+      <td>27.42</td>
+      <td>336.0</td>
+      <td>1.154427e+11</td>
+      <td>3.934650e+09</td>
+      <td>2.352132e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Stockholm</td>
+      <td>Sweden</td>
+      <td>2000-06-13 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>ORNBV</td>
+      <td>ORNBV.HE</td>
+      <td>Orion Oyj B</td>
+      <td>Healthcare</td>
+      <td>Drug Manufacturers—General</td>
+      <td>0.00</td>
+      <td>50.64</td>
+      <td>407452.0</td>
+      <td>1.55</td>
+      <td>2.19</td>
+      <td>0.97</td>
+      <td>-0.20</td>
+      <td>6.99</td>
+      <td>12.66</td>
+      <td>38.63</td>
+      <td>45.60</td>
+      <td>51.90</td>
+      <td>-2.43</td>
+      <td>33.75</td>
+      <td>50.04</td>
+      <td>1.44</td>
+      <td>262194.72</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>489.81</td>
+      <td>79</td>
+      <td>82</td>
+      <td>92</td>
+      <td>30</td>
+      <td>52</td>
+      <td>54</td>
+      <td>50.46</td>
+      <td>0.36</td>
+      <td>49.26</td>
+      <td>2.81</td>
+      <td>46.40</td>
+      <td>9.13</td>
+      <td>3.28</td>
+      <td>3.31</td>
+      <td>0.35</td>
+      <td>0.54</td>
+      <td>0.00</td>
+      <td>-0.21</td>
+      <td>1.04</td>
+      <td>0.06</td>
+      <td>0.24</td>
+      <td>0.03</td>
+      <td>-0.08</td>
+      <td>3.45</td>
+      <td>40.91</td>
+      <td>307.0</td>
+      <td>6.544254e+09</td>
+      <td>1.059750e+08</td>
+      <td>1.284267e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Helsinki</td>
+      <td>Finland</td>
+      <td>2004-10-07 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>MSEIS</td>
+      <td>MSEIS.OL</td>
+      <td>Magseis ASA</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas Equipment &amp; Services</td>
+      <td>0.00</td>
+      <td>8.04</td>
+      <td>211284.0</td>
+      <td>2.66</td>
+      <td>0.38</td>
+      <td>0.02</td>
+      <td>-0.12</td>
+      <td>2.29</td>
+      <td>-7.59</td>
+      <td>36.27</td>
+      <td>112.70</td>
+      <td>9.20</td>
+      <td>-12.61</td>
+      <td>3.39</td>
+      <td>137.17</td>
+      <td>1.12</td>
+      <td>79355.48</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>3350.96</td>
+      <td>63</td>
+      <td>41</td>
+      <td>94</td>
+      <td>5</td>
+      <td>72</td>
+      <td>100</td>
+      <td>8.04</td>
+      <td>0.04</td>
+      <td>8.02</td>
+      <td>0.25</td>
+      <td>7.94</td>
+      <td>1.24</td>
+      <td>-0.80</td>
+      <td>-0.82</td>
+      <td>NaN</td>
+      <td>1.10</td>
+      <td>NaN</td>
+      <td>-1.00</td>
+      <td>0.18</td>
+      <td>0.26</td>
+      <td>0.48</td>
+      <td>0.26</td>
+      <td>0.01</td>
+      <td>37.20</td>
+      <td>10.38</td>
+      <td>9.0</td>
+      <td>2.184524e+09</td>
+      <td>2.717070e+08</td>
+      <td>2.659168e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Oslo</td>
+      <td>Norway</td>
+      <td>2014-06-06 07:00:00</td>
+      <td>nordic_markets</td>
+      <td>2022-12-07</td>
+      <td>Ray</td>
+      <td>RSNHBP 5D</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+            </section>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+    </div>
+</footer>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bm/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+<script>
+        $(document).ready(function () {
+            $('#data').DataTable(
+                {
+                    "scrollX": true,
+                    "dom": 'Bfrtip',
+                    "buttons": [
+                        'copy', 'csv', 'excel', 'print'
+                    ]
+
+                }
+            );
+        });
+    </script>
+    
+</body>
+
+</html>

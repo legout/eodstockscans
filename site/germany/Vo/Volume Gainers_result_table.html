@@ -1,0 +1,3203 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EOD Stock Scans</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.datatables.net/v/bm/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/sc-2.0.5/datatables.min.css" />
+
+</head >
+
+
+<body>
+    <section class="hero is-small is-dark">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+
+                    <div class="navbar-burger" @click="showNav = !showNav" :class="{ 'is-active': showNav }">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="navbar-menu" :class="{ 'is-active': showNav }">
+                    <div class="navbar-start">
+                        
+                        <a class="navbar-item" href="../../index.html">
+                            
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-home"></i>
+                                    </span>
+                                    <span>Home</span>
+                                </span>
+                            </a>
+
+                            <div class="navbar-item has-dropdown is-hoverable has-background-dark">
+                                <a class="navbar-link">
+                                    <span>Choose Market</span>
+                                </a>
+
+                                <div class="navbar-dropdown has-background-dark">
+                                    
+
+                                    
+                                    <a class="navbar-item" href="../../australia/market_monitor.html">
+                                        <span>Australia</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../belgium/market_monitor.html">
+                                        <span>Belgium</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../canada/market_monitor.html">
+                                        <span>Canada</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../france/market_monitor.html">
+                                        <span>France</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../germany/market_monitor.html">
+                                        <span>Germany</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../hong_kong/market_monitor.html">
+                                        <span>Hong Kong</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../indonesia/market_monitor.html">
+                                        <span>Indonesia</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../italy/market_monitor.html">
+                                        <span>Italy</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../japan/market_monitor.html">
+                                        <span>Japan</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../netherlands/market_monitor.html">
+                                        <span>Netherlands</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../nordic_markets/market_monitor.html">
+                                        <span>Nordic Markets</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../poland/market_monitor.html">
+                                        <span>Poland</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../singapore/market_monitor.html">
+                                        <span>Singapore</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../united_kingdom/market_monitor.html">
+                                        <span>United Kingdom</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../united_states/market_monitor.html">
+                                        <span>United States</span>
+                                        
+                                        
+                                </div>
+                            </div>
+                    </div>
+                    <!-- <div class="navbar-end"></div>
+                    <span class="navbar-item">
+                        <a class="button is-info is-light" href="https://twitter.com/LignoL23">
+                            <span class="icon">
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                            <span>Twitter</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <a class="button  is-success is-light" href="https://www.paypal.com/paypalme/volkerlorrmann/5">
+                            <span class="icon">
+                                <i class="fab fa-paypal"></i>
+                            </span>
+                            <span>paypal.me</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+                        <script
+                            type='text/javascript'>kofiwidget2.init('Support me', '#d6d6d6', 'W7W0ACJPB'); kofiwidget2.draw();</script>
+                    </span>
+                </div> -->
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="columns is-multiline is-mobile is-centered">
+                <div class="column is-1">
+                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDEwMCAxMDA7IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOm5vbmU7fQoJLnN0MXtmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO30KPC9zdHlsZT48dGl0bGUvPjxnPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MS44LDg0YzAuMSwwLjIsMC4xLDAuMywwLjEsMC41YzAsMy4zLDAuMiw2LjcsMC41LDEwYzIuNi0wLjEsNC45LTAuMSw3LjItMC4ydjBjMC4zLDAsMC43LDAsMSwwICAgYy0wLjMtNS0wLjQtMTAtMC41LTE1QzQ4LjQsODAuNCw0NS41LDgyLjEsNDEuOCw4NHoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTYuMyw5NGMtMC4yLDAuMS0wLjQsMC4xLTAuNSwwLjJjMS43LDAuMSw0LjMsMC4yLDcuNywwLjNjMS40LDAsMi43LDAuMSw0LDAuMWMtMC4xLTEuNC0wLjMtMi44LTAuNC00LjEgICBDMjIuNiw5Mi4xLDE4LjgsOTMuMiwxNi4zLDk0eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02Ni45LDQ3LjVjMy4xLTMuMyw2LjgtNy41LDEwLjgtMTIuN2MwLDAsMCwwLDAtMC4xYzAuNS0wLjYsMS40LTAuNywyLTAuMmMxLjcsMS41LDMuNiwyLjksNS42LDQuNCAgIGMxLDAuOCwyLjEsMS41LDMuMSwyLjJjMC4zLDAuMiwwLjYsMC4zLDEsMC4zYzAuNCwwLDAuOC0wLjIsMS4yLTAuNGMwLjMtMC4zLDAuNS0wLjcsMC41LTEuMWMwLjItNC45LDAuMy05LjksMC4zLTE1di0wLjcgICBjMC01LjYtMC4xLTExLTAuMy0xNi4zYzAtMC4yLDAtMC4zLTAuMS0wLjVjLTAuMy0xLjQtMS43LTIuMy0zLjItMkM3Ni42LDgsNjUuNSwxMC43LDU0LjUsMTMuN2MtMC4zLDAuMS0wLjYsMC4zLTAuOCwwLjUgICBjLTAuMiwwLjMtMC4zLDAuNi0wLjMsMC45YzAsMC41LDAuMywxLDAuNywxLjJjMC45LDAuNiwxLjgsMS4xLDIuNywxLjdjMi4yLDEuMyw0LjMsMi41LDYuMywzLjVjMC43LDAuNCwxLDEuMiwwLjYsMS45ICAgYy0zLjEsNi02LjYsMTEuNy0xMC42LDE3LjFjLTguNSwxMS40LTE4LDIwLTMwLDMwLjhDMTYuNyw3NywxMiw4MSw5LjQsODMuNWMtMC42LDAuNi0xLjIsMS4yLTEuNywxLjhjMC43LTAuMSwxLjQtMC4yLDIuMS0wLjQgICBjMS4xLTAuMywyLjQtMC43LDMuNi0xLjFjMi41LTAuOSw0LjktMS45LDYuMS0yLjRDMjguOSw3Ny42LDQ3LjEsNjguNiw2Ni45LDQ3LjV6Ii8+PHBhdGggY2xhc3M9InN0MCIgZD0iTTMxLjUsODguN2MtMC42LDAuMi0xLjIsMC41LTEuNywwLjdjMC4yLDEuNywwLjQsMy41LDAuNSw1LjJjMC43LDAsMS4zLDAsMS45LDBjMi42LDAsNSwwLDcuMy0wLjEgICBjLTAuMy0zLjEtMC40LTYuMS0wLjUtOS4yQzM2LjgsODYuNSwzNC4yLDg3LjYsMzEuNSw4OC43eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik01Mi45LDc3LjVjMCwwLjEsMCwwLjEsMCwwLjJjMC4xLDUuNSwwLjMsMTEuMSwwLjYsMTYuNmMzLjQtMC4xLDYuOS0wLjIsMTAuNC0wLjNjLTAuMy04LjEtMC41LTE2LjMtMC44LTI0LjQgICBDNTkuOCw3Mi40LDU2LjQsNzUsNTIuOSw3Ny41eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik05MS4yLDU1LjNjLTAuMS0wLjEtMC4xLTAuMS0wLjItMC4xYy0wLjEsMC0wLjItMC4xLTAuNS0wLjJjLTAuNi0wLjMtMS42LTAuNy0zLjUtMS42ICAgYy0xLjItMC42LTIuMy0xLjEtMy40LTEuNmMtMC41LTAuMi0xLTAuNC0xLjYtMC40Yy0xLjEsMC0yLjEsMC41LTIuOCwxLjRsMCwwYy0wLjIsMC4zLTAuNCwwLjUtMC42LDAuOGwyLjMsNDAuM2gwLjYgICBjMi4yLDAsMy45LDAsNS4yLTAuMmMxLTAuMSwxLjktMC4zLDIuOC0wLjdjMC41LTAuMiwwLjktMC41LDEuMi0wLjljMC41LTAuNCwwLjgtMSwxLTEuNmMwLjItMC45LDAuMy0xLjgsMC4zLTIuNyAgIGMwLTEuNy0wLjEtNC4xLTAuMS03LjVjMC0yLjEsMC4xLTQuNywwLjMtNy43bDAsMGMwLjMtNC45LDAuOC04LjgsMC44LTExLjhjMC0xLjItMC4xLTIuNC0wLjQtMy41QzkyLjIsNTYuNSw5MS44LDU1LjgsOTEuMiw1NS4zeiAgICIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02NS44LDY3LjFjMCwwLjEsMC4xLDAuMywwLjEsMC40YzAuMyw4LjgsMC42LDE3LjYsMC45LDI2LjRjMy4yLTAuMSw2LjQtMC4xLDkuNi0wLjF2MGgwLjNoMS4xICAgYzAtMC4xLDAuMS0wLjIsMC4xLTAuNGMtMC43LTEyLjItMS40LTI0LjUtMi4xLTM2LjdDNzIuNyw2MC40LDY5LjMsNjMuOCw2NS44LDY3LjF6Ii8+PHBhdGggZD0iTTIwLjYsODQuMWM5LjYtMy45LDI4LjMtMTMuMSw0OC40LTM0LjZjMi45LTMuMSw2LjMtNywxMC4xLTExLjhjMS40LDEuMiwzLDIuNCw0LjYsMy42YzEuMSwwLjgsMi4xLDEuNSwzLjIsMi4zICAgYzEuOCwxLjIsNC4xLDEuMSw1LjctMC40YzAuOS0wLjgsMS40LTIsMS41LTMuMmMwLjItNC45LDAuMy05LjksMC4zLTE1LjF2LTAuN2MwLTUuNi0wLjEtMTEuMS0wLjMtMTYuNGMtMC4xLTMtMi43LTUuNC01LjctNS4zICAgYy0wLjMsMC0wLjcsMC4xLTEsMC4xQzc2LDUuMiw2NC44LDcuOSw1My43LDEwLjljLTEsMC4zLTEuOCwwLjgtMi40LDEuNmMtMC41LDAuOC0wLjgsMS43LTAuOCwyLjZjMCwxLjUsMC44LDIuOSwyLDMuNyAgIGMwLjksMC42LDEuOCwxLjEsMi44LDEuN2MxLjgsMS4xLDMuNSwyLDUuMiwyLjljLTIuOCw1LjQtNi4xLDEwLjYtOS43LDE1LjVDNDIuNiw1MCwzMy4yLDU4LjQsMjEuMiw2OS4yQzE2LDczLjksMTEuOSw3Ny40LDksNzkuOSAgIGMtMS4yLDEtMi4zLDIuMS0zLjMsMy4zYy0wLjQsMC40LTAuNywwLjgtMSwxLjNjLTAuMywwLjUtMC41LDEtMC41LDEuNWMwLDAuNywwLjMsMS4zLDAuOSwxLjdjMC4zLDAuMiwwLjYsMC40LDEsMC40ICAgYzAuMywwLjEsMC42LDAuMSwxLDAuMWMxLjEsMCwyLjMtMC4yLDMuNC0wLjVjMi0wLjUsMy45LTEuMiw1LjgtMS45QzE4LjEsODUuMSwxOS43LDg0LjQsMjAuNiw4NC4xeiBNOS43LDg0LjkgICBjLTAuNywwLjItMS40LDAuMy0yLjEsMC40YzAuNS0wLjYsMS4xLTEuMiwxLjctMS44QzEyLDgxLDE2LjcsNzcsMjMuMSw3MS40YzEyLTEwLjgsMjEuNi0xOS40LDMwLTMwLjhjNC01LjQsNy42LTExLjEsMTAuNi0xNy4xICAgYzAuNC0wLjcsMC4xLTEuNi0wLjYtMS45Yy0yLjEtMS4xLTQuMi0yLjMtNi4zLTMuNWMtMC45LTAuNi0xLjgtMS4xLTIuNy0xLjdjLTAuNC0wLjMtMC43LTAuNy0wLjctMS4yYzAtMC4zLDAuMS0wLjYsMC4zLTAuOSAgIGMwLjItMC4zLDAuNS0wLjUsMC44LTAuNUM2NS41LDEwLjcsNzYuNiw4LDg3LjgsNS40YzEuNC0wLjMsMi44LDAuNiwzLjIsMkM5MSw3LjYsOTEsNy44LDkxLDcuOWMwLjIsNS4yLDAuMywxMC43LDAuMywxNi4zdjAuNyAgIGMwLDUuMi0wLjEsMTAuMi0wLjMsMTVjMCwwLjQtMC4yLDAuOS0wLjUsMS4xYy0wLjMsMC4zLTAuNywwLjQtMS4yLDAuNGMtMC4zLDAtMC43LTAuMS0xLTAuM2MtMS0wLjctMi0xLjQtMy4xLTIuMiAgIGMtMi0xLjUtMy45LTMtNS42LTQuNGMtMC42LTAuNS0xLjUtMC40LTIsMC4yYzAsMCwwLDAsMCwwLjFjLTQsNS4yLTcuNyw5LjUtMTAuOCwxMi43Yy0xOS43LDIxLjEtMzgsMzAuMS00Ny40LDMzLjkgICBjLTEuMiwwLjUtMy42LDEuNS02LjEsMi40QzEyLjEsODQuMiwxMC44LDg0LjYsOS43LDg0Ljl6Ii8+PGxpbmUgY2xhc3M9InN0MSIgeDE9IjQuNSIgeDI9IjQuNSIgeTE9Ijg3LjEiIHkyPSI4Ny4xIi8+PHBhdGggZD0iTTk1LjcsNjAuN2MwLTEuNS0wLjEtMy0wLjUtNC40Qzk0LjgsNTUsOTQsNTMuOSw5Mi45LDUzYy0wLjItMC4xLTAuNC0wLjMtMC42LTAuNGMtMC4zLTAuMi0wLjYtMC4zLTEuMi0wLjYgICBjLTAuNi0wLjMtMS41LTAuNy0yLjktMS4zYy0xLjItMC42LTIuMy0xLjEtMy4zLTEuNmMtMi43LTEuNC02LTAuNi03LjksMS44bDAsMGMtNy44LDkuOS0xNywxOC40LTI3LjUsMjUuNCAgIGMtNiwzLjgtMTIuNCw3LjEtMTksOS44Yy01LjMsMi4yLTEwLDMuNi0xMy40LDQuN2MtMS43LDAuNS0zLjEsMS00LjEsMS40Yy0wLjUsMC4yLTAuOSwwLjQtMS40LDAuN2MtMC4yLDAuMi0wLjQsMC40LTAuNiwwLjYgICBjLTAuMiwwLjMtMC40LDAuNy0wLjQsMS4xYzAsMC4xLDAsMC4yLDAsMC4ydjB2MGMwLDAuMiwwLjEsMC41LDAuMywwLjdjMC4yLDAuMywwLjUsMC42LDAuOCwwLjdjMC41LDAuMiwxLjEsMC40LDEuNiwwLjUgICBjMS4zLDAuMiwyLjUsMC4zLDMuOCwwLjRjMS42LDAuMSwzLjcsMC4yLDYuMiwwLjJjMy4yLDAuMSw2LjIsMC4xLDguOSwwLjFjNywwLDEyLjUtMC4yLDE3LjQtMC4zYzguOS0wLjIsMTcuOC0wLjYsMjYuNy0wLjZoMC4zICAgYzEuOCwwLDMuNCwwLDQuOCwwYzIuMywwLjEsNC42LDAsNi45LTAuNGMwLjgtMC4xLDEuNi0wLjQsMi40LTAuOGMwLjctMC40LDEuNC0wLjgsMi0xLjRjMC44LTAuOCwxLjQtMS44LDEuOC0yLjkgICBjMC4zLTEuMSwwLjQtMi4zLDAuNC0zLjVjMC0xLjktMC4xLTQuMi0wLjEtNy41YzAtMi4xLDAuMS00LjYsMC4yLTcuNUM5NS4yLDY3LjksOTUuNyw2NCw5NS43LDYwLjd6IE0yMy40LDk0LjUgICBjLTMuNC0wLjEtNi0wLjItNy43LTAuM2MwLjItMC4xLDAuNC0wLjEsMC41LTAuMmMyLjUtMC44LDYuMy0yLDEwLjctMy42YzAuMSwxLjQsMC4zLDIuOCwwLjQsNC4xQzI2LjEsOTQuNiwyNC44LDk0LjYsMjMuNCw5NC41eiAgICBNMzIuMiw5NC42Yy0wLjYsMC0xLjMsMC0xLjksMGMtMC4yLTEuNy0wLjQtMy41LTAuNS01LjJjMC42LTAuMiwxLjEtMC40LDEuNy0wLjdjMi43LTEuMSw1LjMtMi4zLDcuNS0zLjQgICBjMC4xLDMuMSwwLjIsNi4xLDAuNSw5LjJDMzcuMyw5NC42LDM0LjksOTQuNiwzMi4yLDk0LjZ6IE00OS42LDk0LjNMNDkuNiw5NC4zYy0yLjMsMC00LjcsMC4xLTcuMiwwLjJjLTAuMy0zLjMtMC41LTYuNy0wLjUtMTAgICBjMC0wLjIsMC0wLjMtMC4xLTAuNWMzLjctMS45LDYuNi0zLjYsOC4zLTQuN2MwLjEsNSwwLjMsMTAsMC41LDE1QzUwLjMsOTQuMyw0OS45LDk0LjMsNDkuNiw5NC4zeiBNNTMuNSw5NC4yICAgYy0wLjMtNS41LTAuNS0xMS0wLjYtMTYuNmMwLTAuMSwwLTAuMSwwLTAuMmMzLjUtMi40LDYuOS01LjEsMTAuMi03LjljMC4zLDguMSwwLjUsMTYuMywwLjgsMjQuNEM2MC40LDk0LDU2LjksOTQuMSw1My41LDk0LjJ6ICAgIE03Ny44LDkzLjhoLTEuMWgtMC4zdjBjLTMuMiwwLTYuNCwwLjEtOS42LDAuMWMtMC4zLTguOC0wLjYtMTcuNi0wLjktMjYuNGMwLTAuMSwwLTAuMy0wLjEtMC40YzMuNi0zLjMsNi45LTYuOCwxMC4xLTEwLjQgICBjMC43LDEyLjIsMS40LDI0LjUsMi4xLDM2LjdDNzcuOSw5My41LDc3LjgsOTMuNiw3Ny44LDkzLjh6IE05Miw3Mi41TDkyLDcyLjVjLTAuMiwzLTAuMiw1LjYtMC4yLDcuN2MwLDMuNCwwLjEsNS44LDAuMSw3LjUgICBjMCwwLjktMC4xLDEuOC0wLjMsMi43Yy0wLjIsMC42LTAuNSwxLjItMSwxLjZjLTAuNCwwLjQtMC44LDAuNy0xLjIsMC45Yy0wLjksMC40LTEuOCwwLjYtMi44LDAuN2MtMS4zLDAuMS0zLDAuMi01LjIsMC4yaC0wLjYgICBsLTIuMy00MC4zYzAuMi0wLjMsMC40LTAuNSwwLjYtMC44bDAsMGMwLjctMC45LDEuNy0xLjQsMi44LTEuNGMwLjUsMCwxLjEsMC4xLDEuNiwwLjRjMSwwLjUsMi4xLDEuMSwzLjQsMS42ICAgYzEuOSwwLjksMi45LDEuMywzLjUsMS42YzAuMywwLjEsMC40LDAuMiwwLjUsMC4yYzAuMSwwLDAuMSwwLjEsMC4yLDAuMWMwLjYsMC41LDEuMSwxLjIsMS4zLDEuOWMwLjMsMS4xLDAuNCwyLjMsMC40LDMuNSAgIEM5Mi45LDYzLjYsOTIuMyw2Ny42LDkyLDcyLjV6Ii8+PC9nPjwvc3ZnPg==" alt="Logo">
+                </div>
+                <div class="column is-4">
+                    <p class="title">
+                        EOD Stock Market Scans
+                    </p>
+                    <p class="subtitle">
+                        Fintwits most popular stockmarket scans
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+            <div class="container">
+                <ul>
+                    
+                    <li class="is-active">
+                        <a href="../Vo/Volume Gainers_result_table.html"> Results </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Vo/Volume Gainers_minicharts.html"> Minicharts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Vo/Volume Gainers_charts.html"> Charts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Vo/Volume Gainers_criteria.html"> Criteria </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+</section>
+    <div class="columns is-centered">
+        <div class="column is-2">
+            <div class="box has-background-light my-0 mx-2 p-auto">
+    <aside class="menu">
+        <p class="menu-label has-text-dark">
+            Market Monitor
+        </p>
+        <ul class="menu-list">
+            <li><a class="has-text-grey-light">New Highs/Lows</a></li>
+            <li><a class="has-text-grey-light">Breadth</a></li>
+            <li><a class="has-text-grey-light">Above/Below SMA</a></li>
+            <li><a class="has-text-grey-light">Sectors</a></li>
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Kristjan Kullamägi
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Biggest Gainers 1M_minicharts.html">
+                        Biggest Gainers 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Biggest Gainers 3M_minicharts.html">
+                        Biggest Gainers 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Biggest Gainers 6M_minicharts.html">
+                        Biggest Gainers 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Biggest Gainers 12M_minicharts.html">
+                        Biggest Gainers 12M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/EP with Growth_minicharts.html">
+                        EP with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/EP_minicharts.html">
+                        EP
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/High Trend Intensity_minicharts.html">
+                        High Trend Intensity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Small Stock Momo_minicharts.html">
+                        Small Stock Momo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Kristjan Kullamägi/Momentum_minicharts.html">
+                        Momentum
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Brad Schulz
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Brad Schulz/Pocket Pivot_minicharts.html">
+                        Pocket Pivot
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Stockbee
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Stockbee/4 PCT  Gainers_minicharts.html">
+                        4 PCT  Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Stockbee/Combo_minicharts.html">
+                        Combo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Stockbee/Ants_minicharts.html">
+                        Ants
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Stockbee/Breakout 1M Base_minicharts.html">
+                        Breakout 1M Base
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Stockbee/Breakout 3M Base_minicharts.html">
+                        Breakout 3M Base
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Leif Soreide
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Leif Soreide/HTF_minicharts.html">
+                        HTF
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Blake Davis
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Blake Davis/Strength_minicharts.html">
+                        Strength
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ben
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ben/Power of 3_minicharts.html">
+                        Power of 3
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ben/Velocity_minicharts.html">
+                        Velocity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ben/Focus_minicharts.html">
+                        Focus
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ray
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ray/RSNHBP 5D_minicharts.html">
+                        RSNHBP 5D
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ray/RSNHBP 1M_minicharts.html">
+                        RSNHBP 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ray/RSNHBP 3M_minicharts.html">
+                        RSNHBP 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ray/RSNHBP 6M_minicharts.html">
+                        RSNHBP 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Ray/RSNHBP 12M_minicharts.html">
+                        RSNHBP 12M
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Mark Minvervini
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Mark Minvervini/Trend Template_minicharts.html">
+                        Trend Template
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Vo
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Vo/Top Gainers From Open_minicharts.html">
+                        Top Gainers From Open
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Vo/Top Gainers_minicharts.html">
+                        Top Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="is-active"
+                        href="../../germany/Vo/Volume Gainers_minicharts.html">
+                        Volume Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Vo/Insiders_minicharts.html">
+                        Insiders
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Vo/Darvas Scan_minicharts.html">
+                        Darvas Scan
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Vo/Darvas Scan with Growth_minicharts.html">
+                        Darvas Scan with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Vo/52W High_minicharts.html">
+                        52W High
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Vo/Quite and Tight_minicharts.html">
+                        Quite and Tight
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../germany/Vo/Mo Scan_minicharts.html">
+                        Mo Scan
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+    </aside>
+</div>
+        </div>
+        <div class="column is-10">
+
+            
+<section class="block my-6">
+    <div class="columns ">
+        <div class="column is-5 has-text-left">
+            <h1 class="title is-4">Volume Gainers @ Germany</h1>
+            <h2 class="subtitle is-6">2022-12-07</h2>
+        </div>
+        <div class="column has-text-right mr-5">
+            <div class="media">
+
+                <div class="media-content">
+                    <p class="title is-5">Vo</p>
+                    <p class="subtitle is-6"><a class="has-text-grey-light" href="https://twitter.com/LignoL23">@LignoL23</a></p>
+                </div>
+                <div class="media-right">
+                    <figure class="image is-48x48">
+                        <img src="https://unavatar.io/twitter/LignoL23" alt="Placeholder image">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+            <section class="my-auto mr-5">
+                
+    <div class="table-container">
+        <table border="1" class="dataframe table is-striped no-wrap" id="data" style="width:100%; font-size:85%">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>symbol</th>
+      <th>yahoo_symbol</th>
+      <th>name</th>
+      <th>sector</th>
+      <th>industry</th>
+      <th>roc</th>
+      <th>close</th>
+      <th>volume</th>
+      <th>rel Volume</th>
+      <th>adr(20)</th>
+      <th>atr(14)</th>
+      <th>roc(5)</th>
+      <th>roc(21)</th>
+      <th>roc(63)</th>
+      <th>roc(126)</th>
+      <th>roc(252)</th>
+      <th>52w High</th>
+      <th>% below 52w High</th>
+      <th>52w Low</th>
+      <th>% above 52w Low</th>
+      <th>UD Ratio</th>
+      <th>50d avg Volume</th>
+      <th>Pocket Pivot</th>
+      <th>1w Pocket Pivots</th>
+      <th>1m Pocket Pivots</th>
+      <th>Rocket Ratio</th>
+      <th>1m RS</th>
+      <th>3m RS</th>
+      <th>RS</th>
+      <th>Industry 1m RS</th>
+      <th>Industry 3m RS</th>
+      <th>Industry RS</th>
+      <th>ema(9)</th>
+      <th>% from 9d ema</th>
+      <th>ema(21)</th>
+      <th>% from 21d ema</th>
+      <th>sma(50)</th>
+      <th>% from 50d sma</th>
+      <th>EPS Growth Q</th>
+      <th>EPS Growth Y</th>
+      <th>EPS Growth FQ</th>
+      <th>EPS Growth FY</th>
+      <th>EPS Growth FQ1</th>
+      <th>EPS Growth FY1</th>
+      <th>Rev Growth Q</th>
+      <th>Rev Growth FQ</th>
+      <th>Rev Growth FY</th>
+      <th>Rev Growth FQ1</th>
+      <th>Rev Growth FY1</th>
+      <th>Insiders %</th>
+      <th>Institutions %</th>
+      <th>Institutions No.</th>
+      <th>Market Cap</th>
+      <th>Shares Outstanding</th>
+      <th>Shares Float</th>
+      <th>Shares Short</th>
+      <th>Short Ratio</th>
+      <th>Net Insider Trading %</th>
+      <th>exchange</th>
+      <th>country</th>
+      <th>IPO Date</th>
+      <th>market</th>
+      <th>date</th>
+      <th>group_name</th>
+      <th>scan_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>DWSG</td>
+      <td>DWS.DE</td>
+      <td>DWS Group GmbH &amp; Co KgaA</td>
+      <td>Financial Services</td>
+      <td>Asset Management</td>
+      <td>2.72</td>
+      <td>31.00</td>
+      <td>274281.0</td>
+      <td>3.61</td>
+      <td>2.63</td>
+      <td>0.73</td>
+      <td>1.77</td>
+      <td>9.54</td>
+      <td>12.24</td>
+      <td>16.72</td>
+      <td>-10.77</td>
+      <td>39.48</td>
+      <td>-21.48</td>
+      <td>23.16</td>
+      <td>33.85</td>
+      <td>2.06</td>
+      <td>76037.26</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>539.45</td>
+      <td>81</td>
+      <td>80</td>
+      <td>72</td>
+      <td>28</td>
+      <td>36</td>
+      <td>29</td>
+      <td>30.38</td>
+      <td>2.04</td>
+      <td>29.79</td>
+      <td>4.07</td>
+      <td>27.68</td>
+      <td>12.00</td>
+      <td>-0.09</td>
+      <td>-0.09</td>
+      <td>0.09</td>
+      <td>-0.10</td>
+      <td>-0.33</td>
+      <td>-0.05</td>
+      <td>0.09</td>
+      <td>-0.22</td>
+      <td>-0.04</td>
+      <td>-0.11</td>
+      <td>-0.03</td>
+      <td>79.49</td>
+      <td>10.09</td>
+      <td>118.0</td>
+      <td>6.108000e+09</td>
+      <td>2.000000e+08</td>
+      <td>4.101800e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>2018-03-29 07:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>GS71</td>
+      <td>GSK.L</td>
+      <td>GSK plc</td>
+      <td>Healthcare</td>
+      <td>Drug Manufacturers—General</td>
+      <td>7.95</td>
+      <td>17.66</td>
+      <td>270158.0</td>
+      <td>3.34</td>
+      <td>2.37</td>
+      <td>0.47</td>
+      <td>7.42</td>
+      <td>10.24</td>
+      <td>12.30</td>
+      <td>-12.32</td>
+      <td>-7.05</td>
+      <td>22.00</td>
+      <td>-19.74</td>
+      <td>14.72</td>
+      <td>19.96</td>
+      <td>1.98</td>
+      <td>80884.08</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>48518.77</td>
+      <td>83</td>
+      <td>80</td>
+      <td>58</td>
+      <td>62</td>
+      <td>67</td>
+      <td>82</td>
+      <td>16.73</td>
+      <td>5.59</td>
+      <td>16.47</td>
+      <td>7.24</td>
+      <td>16.10</td>
+      <td>9.69</td>
+      <td>7.83</td>
+      <td>7.77</td>
+      <td>-0.15</td>
+      <td>0.02</td>
+      <td>-0.07</td>
+      <td>0.08</td>
+      <td>0.18</td>
+      <td>-0.19</td>
+      <td>-0.14</td>
+      <td>-0.34</td>
+      <td>0.01</td>
+      <td>0.71</td>
+      <td>43.39</td>
+      <td>741.0</td>
+      <td>5.723630e+10</td>
+      <td>4.067390e+09</td>
+      <td>3.924396e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>1988-07-01 07:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>VQTG</td>
+      <td>VQT.DE</td>
+      <td>va Q tec AG</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>0.12</td>
+      <td>16.04</td>
+      <td>81537.0</td>
+      <td>3.31</td>
+      <td>4.83</td>
+      <td>0.69</td>
+      <td>6.93</td>
+      <td>18.99</td>
+      <td>28.53</td>
+      <td>16.06</td>
+      <td>-39.01</td>
+      <td>27.85</td>
+      <td>-42.41</td>
+      <td>9.43</td>
+      <td>70.10</td>
+      <td>1.99</td>
+      <td>24621.34</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>5.0</td>
+      <td>405.65</td>
+      <td>94</td>
+      <td>96</td>
+      <td>66</td>
+      <td>70</td>
+      <td>96</td>
+      <td>77</td>
+      <td>15.23</td>
+      <td>5.32</td>
+      <td>14.09</td>
+      <td>13.80</td>
+      <td>12.13</td>
+      <td>32.23</td>
+      <td>0.36</td>
+      <td>0.30</td>
+      <td>NaN</td>
+      <td>0.69</td>
+      <td>NaN</td>
+      <td>1.04</td>
+      <td>0.10</td>
+      <td>0.02</td>
+      <td>0.13</td>
+      <td>-0.11</td>
+      <td>0.12</td>
+      <td>29.90</td>
+      <td>25.50</td>
+      <td>27.0</td>
+      <td>1.699298e+08</td>
+      <td>1.340140e+07</td>
+      <td>9.987687e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>2016-09-30 06:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>HXCKk</td>
+      <td>HXCK.DE</td>
+      <td>Ernst Russ AG</td>
+      <td>Industrials</td>
+      <td>Marine Shipping</td>
+      <td>3.14</td>
+      <td>4.43</td>
+      <td>52085.0</td>
+      <td>1.69</td>
+      <td>4.48</td>
+      <td>0.16</td>
+      <td>0.23</td>
+      <td>-11.04</td>
+      <td>-3.70</td>
+      <td>-8.66</td>
+      <td>-20.89</td>
+      <td>7.80</td>
+      <td>-43.21</td>
+      <td>3.51</td>
+      <td>26.39</td>
+      <td>1.37</td>
+      <td>30885.02</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>486.22</td>
+      <td>9</td>
+      <td>39</td>
+      <td>40</td>
+      <td>28</td>
+      <td>36</td>
+      <td>29</td>
+      <td>4.43</td>
+      <td>-0.03</td>
+      <td>4.54</td>
+      <td>-2.36</td>
+      <td>4.47</td>
+      <td>-0.98</td>
+      <td>3.06</td>
+      <td>3.06</td>
+      <td>NaN</td>
+      <td>1.92</td>
+      <td>NaN</td>
+      <td>-0.20</td>
+      <td>1.33</td>
+      <td>NaN</td>
+      <td>0.97</td>
+      <td>0.24</td>
+      <td>0.05</td>
+      <td>53.70</td>
+      <td>17.59</td>
+      <td>8.0</td>
+      <td>1.587644e+08</td>
+      <td>3.243400e+07</td>
+      <td>1.501696e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>2005-10-06 07:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>EUZG</td>
+      <td>EUZ.DE</td>
+      <td>Eckert &amp; Ziegler AG O.N.</td>
+      <td>Healthcare</td>
+      <td>Medical Devices</td>
+      <td>0.20</td>
+      <td>49.10</td>
+      <td>100256.0</td>
+      <td>1.50</td>
+      <td>4.98</td>
+      <td>3.01</td>
+      <td>-8.48</td>
+      <td>18.66</td>
+      <td>28.00</td>
+      <td>36.62</td>
+      <td>-47.20</td>
+      <td>98.40</td>
+      <td>-50.10</td>
+      <td>29.44</td>
+      <td>66.78</td>
+      <td>1.64</td>
+      <td>66920.98</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>8.0</td>
+      <td>212.24</td>
+      <td>93</td>
+      <td>96</td>
+      <td>75</td>
+      <td>35</td>
+      <td>12</td>
+      <td>16</td>
+      <td>52.46</td>
+      <td>-6.40</td>
+      <td>50.77</td>
+      <td>-3.28</td>
+      <td>43.71</td>
+      <td>12.33</td>
+      <td>0.12</td>
+      <td>0.12</td>
+      <td>NaN</td>
+      <td>-0.13</td>
+      <td>NaN</td>
+      <td>0.11</td>
+      <td>0.38</td>
+      <td>0.38</td>
+      <td>0.22</td>
+      <td>0.14</td>
+      <td>0.08</td>
+      <td>30.98</td>
+      <td>25.82</td>
+      <td>102.0</td>
+      <td>1.026958e+09</td>
+      <td>2.076340e+07</td>
+      <td>1.420343e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>1999-05-26 07:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>LEOGn</td>
+      <td>LEO.DE</td>
+      <td>Leoni AG</td>
+      <td>Industrials</td>
+      <td>Electrical Equipment &amp; Parts</td>
+      <td>0.33</td>
+      <td>6.17</td>
+      <td>51054.0</td>
+      <td>1.33</td>
+      <td>3.60</td>
+      <td>0.22</td>
+      <td>-1.91</td>
+      <td>-11.10</td>
+      <td>-16.17</td>
+      <td>-20.39</td>
+      <td>-39.21</td>
+      <td>11.72</td>
+      <td>-47.35</td>
+      <td>5.87</td>
+      <td>5.11</td>
+      <td>1.05</td>
+      <td>38512.22</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>678.62</td>
+      <td>8</td>
+      <td>16</td>
+      <td>18</td>
+      <td>33</td>
+      <td>45</td>
+      <td>39</td>
+      <td>6.37</td>
+      <td>-3.09</td>
+      <td>6.53</td>
+      <td>-5.52</td>
+      <td>6.70</td>
+      <td>-7.87</td>
+      <td>0.70</td>
+      <td>0.70</td>
+      <td>NaN</td>
+      <td>-0.27</td>
+      <td>NaN</td>
+      <td>0.95</td>
+      <td>-0.08</td>
+      <td>NaN</td>
+      <td>-0.12</td>
+      <td>NaN</td>
+      <td>-0.03</td>
+      <td>20.00</td>
+      <td>8.35</td>
+      <td>31.0</td>
+      <td>2.272129e+08</td>
+      <td>3.266900e+07</td>
+      <td>2.613520e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>1998-11-10 08:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>ALVG</td>
+      <td>ALV.DE</td>
+      <td>Allianz SE VNA O.N.</td>
+      <td>Financial Services</td>
+      <td>Insurance—Diversified</td>
+      <td>0.12</td>
+      <td>203.65</td>
+      <td>1213896.0</td>
+      <td>1.29</td>
+      <td>1.59</td>
+      <td>2.50</td>
+      <td>-0.34</td>
+      <td>8.12</td>
+      <td>20.77</td>
+      <td>11.86</td>
+      <td>1.22</td>
+      <td>232.50</td>
+      <td>-12.41</td>
+      <td>156.22</td>
+      <td>30.36</td>
+      <td>2.15</td>
+      <td>943014.98</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>479.46</td>
+      <td>77</td>
+      <td>91</td>
+      <td>81</td>
+      <td>59</td>
+      <td>82</td>
+      <td>93</td>
+      <td>203.43</td>
+      <td>0.11</td>
+      <td>200.06</td>
+      <td>1.79</td>
+      <td>185.58</td>
+      <td>9.74</td>
+      <td>-0.23</td>
+      <td>0.02</td>
+      <td>7.80</td>
+      <td>0.07</td>
+      <td>2.82</td>
+      <td>0.39</td>
+      <td>-0.16</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.02</td>
+      <td>0.04</td>
+      <td>0.00</td>
+      <td>38.39</td>
+      <td>861.0</td>
+      <td>8.190914e+10</td>
+      <td>4.082190e+08</td>
+      <td>4.521406e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>1996-12-16 08:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>BNRGn</td>
+      <td>BNR.DE</td>
+      <td>Brenntag AG</td>
+      <td>Basic Materials</td>
+      <td>Specialty Chemicals</td>
+      <td>0.10</td>
+      <td>60.54</td>
+      <td>457425.0</td>
+      <td>1.08</td>
+      <td>2.60</td>
+      <td>1.66</td>
+      <td>0.93</td>
+      <td>-6.14</td>
+      <td>-10.81</td>
+      <td>-14.47</td>
+      <td>-20.32</td>
+      <td>81.72</td>
+      <td>-25.92</td>
+      <td>53.58</td>
+      <td>12.99</td>
+      <td>0.92</td>
+      <td>423932.08</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>353.51</td>
+      <td>16</td>
+      <td>25</td>
+      <td>34</td>
+      <td>8</td>
+      <td>66</td>
+      <td>88</td>
+      <td>61.62</td>
+      <td>-1.75</td>
+      <td>62.85</td>
+      <td>-3.68</td>
+      <td>62.43</td>
+      <td>-3.03</td>
+      <td>1.14</td>
+      <td>1.14</td>
+      <td>0.97</td>
+      <td>1.20</td>
+      <td>0.00</td>
+      <td>-0.09</td>
+      <td>0.46</td>
+      <td>0.16</td>
+      <td>0.30</td>
+      <td>0.16</td>
+      <td>-0.02</td>
+      <td>0.00</td>
+      <td>60.74</td>
+      <td>437.0</td>
+      <td>1.057398e+10</td>
+      <td>1.545000e+08</td>
+      <td>1.498650e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>2010-03-29 07:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>FMEG</td>
+      <td>FME.DE</td>
+      <td>Fresenius Medical Care KGAA ST</td>
+      <td>Healthcare</td>
+      <td>Medical Care Facilities</td>
+      <td>1.24</td>
+      <td>30.20</td>
+      <td>934191.0</td>
+      <td>1.06</td>
+      <td>2.92</td>
+      <td>0.79</td>
+      <td>1.62</td>
+      <td>5.89</td>
+      <td>-9.55</td>
+      <td>-40.15</td>
+      <td>-44.55</td>
+      <td>63.66</td>
+      <td>-52.56</td>
+      <td>25.95</td>
+      <td>16.38</td>
+      <td>1.05</td>
+      <td>883894.14</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>303.08</td>
+      <td>72</td>
+      <td>27</td>
+      <td>13</td>
+      <td>96</td>
+      <td>47</td>
+      <td>35</td>
+      <td>30.14</td>
+      <td>0.19</td>
+      <td>29.74</td>
+      <td>1.56</td>
+      <td>28.71</td>
+      <td>5.20</td>
+      <td>-0.16</td>
+      <td>-0.16</td>
+      <td>-0.24</td>
+      <td>-0.15</td>
+      <td>-0.17</td>
+      <td>0.02</td>
+      <td>0.15</td>
+      <td>0.12</td>
+      <td>0.11</td>
+      <td>0.11</td>
+      <td>0.06</td>
+      <td>32.17</td>
+      <td>38.11</td>
+      <td>425.0</td>
+      <td>8.679157e+09</td>
+      <td>2.934130e+08</td>
+      <td>2.678894e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>1998-07-22 07:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>SY1G</td>
+      <td>SY1.DE</td>
+      <td>Symrise AG Inh. O.N.</td>
+      <td>Basic Materials</td>
+      <td>Specialty Chemicals</td>
+      <td>0.14</td>
+      <td>105.55</td>
+      <td>334445.0</td>
+      <td>1.04</td>
+      <td>2.70</td>
+      <td>2.78</td>
+      <td>-3.12</td>
+      <td>3.63</td>
+      <td>0.48</td>
+      <td>10.27</td>
+      <td>-18.21</td>
+      <td>132.30</td>
+      <td>-20.22</td>
+      <td>91.94</td>
+      <td>14.80</td>
+      <td>1.07</td>
+      <td>322052.68</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>411.44</td>
+      <td>61</td>
+      <td>51</td>
+      <td>59</td>
+      <td>57</td>
+      <td>75</td>
+      <td>54</td>
+      <td>107.59</td>
+      <td>-1.89</td>
+      <td>107.46</td>
+      <td>-1.78</td>
+      <td>103.90</td>
+      <td>1.59</td>
+      <td>0.17</td>
+      <td>0.16</td>
+      <td>NaN</td>
+      <td>0.22</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>0.18</td>
+      <td>0.16</td>
+      <td>0.19</td>
+      <td>0.16</td>
+      <td>0.07</td>
+      <td>5.02</td>
+      <td>64.04</td>
+      <td>455.0</td>
+      <td>1.546577e+10</td>
+      <td>1.397720e+08</td>
+      <td>1.325054e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>2006-12-11 08:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>QIA</td>
+      <td>QGEN</td>
+      <td>Qiagen NV</td>
+      <td>Healthcare</td>
+      <td>Diagnostics &amp; Research</td>
+      <td>0.80</td>
+      <td>46.43</td>
+      <td>515751.0</td>
+      <td>1.03</td>
+      <td>2.09</td>
+      <td>0.86</td>
+      <td>-1.88</td>
+      <td>4.95</td>
+      <td>0.02</td>
+      <td>13.72</td>
+      <td>-3.31</td>
+      <td>49.84</td>
+      <td>-6.84</td>
+      <td>37.95</td>
+      <td>22.35</td>
+      <td>1.56</td>
+      <td>501024.20</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>451.28</td>
+      <td>67</td>
+      <td>50</td>
+      <td>70</td>
+      <td>15</td>
+      <td>23</td>
+      <td>49</td>
+      <td>46.84</td>
+      <td>-0.88</td>
+      <td>46.43</td>
+      <td>0.00</td>
+      <td>44.97</td>
+      <td>3.26</td>
+      <td>-0.38</td>
+      <td>-0.37</td>
+      <td>-0.36</td>
+      <td>-0.14</td>
+      <td>-0.38</td>
+      <td>-0.06</td>
+      <td>-0.07</td>
+      <td>-0.16</td>
+      <td>-0.05</td>
+      <td>-0.22</td>
+      <td>-0.02</td>
+      <td>0.35</td>
+      <td>71.56</td>
+      <td>653.0</td>
+      <td>1.096603e+10</td>
+      <td>2.277000e+08</td>
+      <td>2.261038e+08</td>
+      <td>5190838.0</td>
+      <td>3.30</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>1996-06-28 13:30:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>BIKE</td>
+      <td>BIKE.F</td>
+      <td>Bike24 Holding AG</td>
+      <td>Consumer Cyclical</td>
+      <td>Internet Retail</td>
+      <td>2.87</td>
+      <td>4.11</td>
+      <td>52951.0</td>
+      <td>1.01</td>
+      <td>7.64</td>
+      <td>0.28</td>
+      <td>21.03</td>
+      <td>31.68</td>
+      <td>24.51</td>
+      <td>9.01</td>
+      <td>-73.05</td>
+      <td>16.91</td>
+      <td>-75.67</td>
+      <td>2.22</td>
+      <td>85.36</td>
+      <td>1.16</td>
+      <td>52200.06</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>350.10</td>
+      <td>97</td>
+      <td>94</td>
+      <td>33</td>
+      <td>66</td>
+      <td>90</td>
+      <td>33</td>
+      <td>3.81</td>
+      <td>8.11</td>
+      <td>3.52</td>
+      <td>16.98</td>
+      <td>3.07</td>
+      <td>33.96</td>
+      <td>-0.92</td>
+      <td>-0.93</td>
+      <td>NaN</td>
+      <td>-2.60</td>
+      <td>NaN</td>
+      <td>1.12</td>
+      <td>-0.04</td>
+      <td>NaN</td>
+      <td>0.03</td>
+      <td>0.07</td>
+      <td>0.06</td>
+      <td>23.14</td>
+      <td>23.19</td>
+      <td>37.0</td>
+      <td>1.360291e+08</td>
+      <td>4.416530e+07</td>
+      <td>1.827517e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>2021-06-30 06:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>PUMG</td>
+      <td>PUM.DE</td>
+      <td>Puma SE</td>
+      <td>Consumer Cyclical</td>
+      <td>Footwear &amp; Accessories</td>
+      <td>2.71</td>
+      <td>50.72</td>
+      <td>669008.0</td>
+      <td>1.00</td>
+      <td>3.59</td>
+      <td>1.60</td>
+      <td>4.15</td>
+      <td>11.28</td>
+      <td>-16.00</td>
+      <td>-23.27</td>
+      <td>-50.81</td>
+      <td>109.25</td>
+      <td>-53.57</td>
+      <td>41.31</td>
+      <td>22.78</td>
+      <td>0.86</td>
+      <td>670480.04</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>143.22</td>
+      <td>85</td>
+      <td>17</td>
+      <td>16</td>
+      <td>85</td>
+      <td>14</td>
+      <td>47</td>
+      <td>49.84</td>
+      <td>1.77</td>
+      <td>49.54</td>
+      <td>2.39</td>
+      <td>48.30</td>
+      <td>5.02</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>1.40</td>
+      <td>0.20</td>
+      <td>-0.04</td>
+      <td>0.10</td>
+      <td>0.24</td>
+      <td>0.17</td>
+      <td>0.22</td>
+      <td>0.15</td>
+      <td>0.09</td>
+      <td>4.00</td>
+      <td>69.38</td>
+      <td>414.0</td>
+      <td>7.788663e+09</td>
+      <td>1.496090e+08</td>
+      <td>9.602944e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>1998-03-17 08:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>HRPKk</td>
+      <td>HRPK.DE</td>
+      <td>7C Solarparken AG</td>
+      <td>Technology</td>
+      <td>Solar</td>
+      <td>0.11</td>
+      <td>4.49</td>
+      <td>82627.0</td>
+      <td>0.98</td>
+      <td>2.29</td>
+      <td>0.10</td>
+      <td>0.79</td>
+      <td>0.11</td>
+      <td>-16.94</td>
+      <td>-2.07</td>
+      <td>9.12</td>
+      <td>5.48</td>
+      <td>-18.19</td>
+      <td>3.67</td>
+      <td>22.28</td>
+      <td>1.24</td>
+      <td>84208.54</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>694.11</td>
+      <td>43</td>
+      <td>15</td>
+      <td>51</td>
+      <td>51</td>
+      <td>17</td>
+      <td>56</td>
+      <td>4.48</td>
+      <td>0.01</td>
+      <td>4.48</td>
+      <td>0.06</td>
+      <td>4.52</td>
+      <td>-0.76</td>
+      <td>1.34</td>
+      <td>1.07</td>
+      <td>NaN</td>
+      <td>0.64</td>
+      <td>NaN</td>
+      <td>-0.04</td>
+      <td>0.52</td>
+      <td>0.13</td>
+      <td>0.40</td>
+      <td>0.60</td>
+      <td>0.01</td>
+      <td>26.92</td>
+      <td>18.68</td>
+      <td>59.0</td>
+      <td>3.526124e+08</td>
+      <td>7.809800e+07</td>
+      <td>5.844977e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>2005-02-21 08:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>AFXG</td>
+      <td>AFX.DE</td>
+      <td>Carl Zeiss Meditec AG</td>
+      <td>Healthcare</td>
+      <td>Medical Instruments &amp; Supplies</td>
+      <td>0.72</td>
+      <td>125.85</td>
+      <td>89690.0</td>
+      <td>0.96</td>
+      <td>3.21</td>
+      <td>3.77</td>
+      <td>-2.56</td>
+      <td>2.57</td>
+      <td>-0.28</td>
+      <td>11.62</td>
+      <td>-29.02</td>
+      <td>188.50</td>
+      <td>-33.24</td>
+      <td>101.75</td>
+      <td>23.69</td>
+      <td>1.53</td>
+      <td>93454.56</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>390.59</td>
+      <td>56</td>
+      <td>48</td>
+      <td>50</td>
+      <td>35</td>
+      <td>12</td>
+      <td>16</td>
+      <td>128.79</td>
+      <td>-2.28</td>
+      <td>128.42</td>
+      <td>-2.00</td>
+      <td>122.54</td>
+      <td>2.70</td>
+      <td>-0.23</td>
+      <td>-0.24</td>
+      <td>0.47</td>
+      <td>0.10</td>
+      <td>0.23</td>
+      <td>0.12</td>
+      <td>0.11</td>
+      <td>0.13</td>
+      <td>0.12</td>
+      <td>0.15</td>
+      <td>0.09</td>
+      <td>59.10</td>
+      <td>22.72</td>
+      <td>373.0</td>
+      <td>1.198951e+10</td>
+      <td>8.944060e+07</td>
+      <td>3.650277e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>2000-03-22 08:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>MORG</td>
+      <td>MOR.DE</td>
+      <td>Morphosys AG O.N.</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>1.18</td>
+      <td>16.24</td>
+      <td>285117.0</td>
+      <td>0.93</td>
+      <td>5.17</td>
+      <td>0.63</td>
+      <td>4.34</td>
+      <td>-18.72</td>
+      <td>-12.10</td>
+      <td>-7.78</td>
+      <td>-50.74</td>
+      <td>36.02</td>
+      <td>-54.91</td>
+      <td>13.90</td>
+      <td>16.83</td>
+      <td>0.74</td>
+      <td>307778.26</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>106.56</td>
+      <td>2</td>
+      <td>22</td>
+      <td>20</td>
+      <td>18</td>
+      <td>52</td>
+      <td>70</td>
+      <td>15.81</td>
+      <td>2.71</td>
+      <td>16.33</td>
+      <td>-0.57</td>
+      <td>18.58</td>
+      <td>-12.58</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.54</td>
+      <td>0.27</td>
+      <td>0.84</td>
+      <td>0.36</td>
+      <td>0.56</td>
+      <td>0.52</td>
+      <td>0.32</td>
+      <td>0.76</td>
+      <td>0.40</td>
+      <td>0.90</td>
+      <td>44.31</td>
+      <td>104.0</td>
+      <td>7.138060e+08</td>
+      <td>3.415340e+07</td>
+      <td>3.279646e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>1999-03-10 08:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>KTN</td>
+      <td>SANT.DE</td>
+      <td>Kontron AG</td>
+      <td>Technology</td>
+      <td>Computer Hardware</td>
+      <td>0.78</td>
+      <td>16.83</td>
+      <td>61206.0</td>
+      <td>0.85</td>
+      <td>2.97</td>
+      <td>0.44</td>
+      <td>9.29</td>
+      <td>9.50</td>
+      <td>5.19</td>
+      <td>26.73</td>
+      <td>-9.03</td>
+      <td>19.30</td>
+      <td>-12.80</td>
+      <td>11.22</td>
+      <td>50.00</td>
+      <td>1.21</td>
+      <td>72275.66</td>
+      <td>True</td>
+      <td>5.0</td>
+      <td>6.0</td>
+      <td>530.02</td>
+      <td>81</td>
+      <td>65</td>
+      <td>82</td>
+      <td>82</td>
+      <td>41</td>
+      <td>25</td>
+      <td>16.15</td>
+      <td>4.23</td>
+      <td>15.69</td>
+      <td>7.27</td>
+      <td>15.06</td>
+      <td>11.79</td>
+      <td>-0.18</td>
+      <td>-0.18</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.28</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.03</td>
+      <td>39.77</td>
+      <td>50.19</td>
+      <td>110.0</td>
+      <td>1.052250e+09</td>
+      <td>6.609610e+07</td>
+      <td>3.830751e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>2000-11-20 08:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>NAFG</td>
+      <td>NDA.DE</td>
+      <td>Aurubis AG</td>
+      <td>Basic Materials</td>
+      <td>Copper</td>
+      <td>0.10</td>
+      <td>77.38</td>
+      <td>94440.0</td>
+      <td>0.84</td>
+      <td>3.15</td>
+      <td>2.08</td>
+      <td>2.06</td>
+      <td>10.80</td>
+      <td>24.09</td>
+      <td>-4.59</td>
+      <td>-10.38</td>
+      <td>119.75</td>
+      <td>-35.38</td>
+      <td>51.00</td>
+      <td>51.73</td>
+      <td>2.03</td>
+      <td>112676.86</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>7.0</td>
+      <td>269.02</td>
+      <td>84</td>
+      <td>93</td>
+      <td>62</td>
+      <td>76</td>
+      <td>88</td>
+      <td>67</td>
+      <td>76.39</td>
+      <td>1.30</td>
+      <td>74.00</td>
+      <td>4.57</td>
+      <td>66.44</td>
+      <td>16.47</td>
+      <td>-0.52</td>
+      <td>-0.53</td>
+      <td>NaN</td>
+      <td>0.66</td>
+      <td>NaN</td>
+      <td>-0.31</td>
+      <td>0.08</td>
+      <td>0.00</td>
+      <td>0.13</td>
+      <td>0.04</td>
+      <td>-0.10</td>
+      <td>34.86</td>
+      <td>41.13</td>
+      <td>220.0</td>
+      <td>3.376610e+09</td>
+      <td>4.365930e+07</td>
+      <td>3.031243e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>1998-11-09 08:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>SIXG</td>
+      <td>SIX2.F</td>
+      <td>Sixt SE</td>
+      <td>Industrials</td>
+      <td>Rental &amp; Leasing Services</td>
+      <td>1.54</td>
+      <td>92.10</td>
+      <td>26897.0</td>
+      <td>0.81</td>
+      <td>2.78</td>
+      <td>2.10</td>
+      <td>0.16</td>
+      <td>-4.21</td>
+      <td>-8.63</td>
+      <td>-19.28</td>
+      <td>-36.04</td>
+      <td>166.30</td>
+      <td>-44.62</td>
+      <td>79.90</td>
+      <td>15.27</td>
+      <td>0.97</td>
+      <td>33035.02</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>349.19</td>
+      <td>24</td>
+      <td>29</td>
+      <td>23</td>
+      <td>2</td>
+      <td>1</td>
+      <td>3</td>
+      <td>92.60</td>
+      <td>-0.54</td>
+      <td>92.88</td>
+      <td>-0.84</td>
+      <td>90.99</td>
+      <td>1.22</td>
+      <td>0.02</td>
+      <td>0.50</td>
+      <td>NaN</td>
+      <td>0.26</td>
+      <td>NaN</td>
+      <td>-0.26</td>
+      <td>0.25</td>
+      <td>-0.01</td>
+      <td>0.33</td>
+      <td>0.76</td>
+      <td>-0.04</td>
+      <td>58.29</td>
+      <td>19.00</td>
+      <td>115.0</td>
+      <td>3.984930e+09</td>
+      <td>3.036710e+07</td>
+      <td>1.153539e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>1998-11-09 08:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>NEKG</td>
+      <td>NEM.DE</td>
+      <td>Nemetschek AG O.N.</td>
+      <td>Technology</td>
+      <td>Software—Application</td>
+      <td>0.42</td>
+      <td>48.04</td>
+      <td>153499.0</td>
+      <td>0.79</td>
+      <td>4.27</td>
+      <td>2.15</td>
+      <td>3.09</td>
+      <td>5.42</td>
+      <td>-18.52</td>
+      <td>-16.39</td>
+      <td>-54.44</td>
+      <td>115.90</td>
+      <td>-58.55</td>
+      <td>42.78</td>
+      <td>12.30</td>
+      <td>1.12</td>
+      <td>195288.66</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>270.73</td>
+      <td>69</td>
+      <td>13</td>
+      <td>14</td>
+      <td>39</td>
+      <td>20</td>
+      <td>11</td>
+      <td>48.18</td>
+      <td>-0.29</td>
+      <td>47.80</td>
+      <td>0.51</td>
+      <td>47.96</td>
+      <td>0.17</td>
+      <td>0.13</td>
+      <td>0.13</td>
+      <td>0.17</td>
+      <td>0.26</td>
+      <td>0.17</td>
+      <td>0.03</td>
+      <td>0.20</td>
+      <td>0.10</td>
+      <td>0.18</td>
+      <td>0.12</td>
+      <td>0.08</td>
+      <td>51.58</td>
+      <td>34.36</td>
+      <td>323.0</td>
+      <td>5.623695e+09</td>
+      <td>1.155000e+08</td>
+      <td>5.287012e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>1999-03-11 08:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>PNEGn</td>
+      <td>PNE3.DE</td>
+      <td>PNE Wind AG</td>
+      <td>Utilities</td>
+      <td>Utilities—Renewable</td>
+      <td>1.30</td>
+      <td>23.30</td>
+      <td>94144.0</td>
+      <td>0.74</td>
+      <td>3.71</td>
+      <td>0.84</td>
+      <td>6.15</td>
+      <td>15.35</td>
+      <td>37.71</td>
+      <td>79.23</td>
+      <td>204.58</td>
+      <td>23.85</td>
+      <td>-2.31</td>
+      <td>7.63</td>
+      <td>205.37</td>
+      <td>1.30</td>
+      <td>126892.04</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>229.96</td>
+      <td>90</td>
+      <td>98</td>
+      <td>100</td>
+      <td>91</td>
+      <td>26</td>
+      <td>41</td>
+      <td>22.47</td>
+      <td>3.68</td>
+      <td>21.56</td>
+      <td>8.06</td>
+      <td>19.87</td>
+      <td>17.27</td>
+      <td>8.23</td>
+      <td>12.00</td>
+      <td>NaN</td>
+      <td>-1.27</td>
+      <td>NaN</td>
+      <td>1.11</td>
+      <td>0.82</td>
+      <td>NaN</td>
+      <td>-0.02</td>
+      <td>NaN</td>
+      <td>0.45</td>
+      <td>44.83</td>
+      <td>32.53</td>
+      <td>60.0</td>
+      <td>1.557265e+09</td>
+      <td>7.633650e+07</td>
+      <td>2.917964e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>2000-11-21 08:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>ZALG</td>
+      <td>ZAL.DE</td>
+      <td>Zalando SE</td>
+      <td>Consumer Cyclical</td>
+      <td>Internet Retail</td>
+      <td>0.90</td>
+      <td>31.39</td>
+      <td>1131869.0</td>
+      <td>0.74</td>
+      <td>5.60</td>
+      <td>1.28</td>
+      <td>5.55</td>
+      <td>18.19</td>
+      <td>36.66</td>
+      <td>13.44</td>
+      <td>-55.85</td>
+      <td>73.70</td>
+      <td>-57.41</td>
+      <td>19.18</td>
+      <td>63.66</td>
+      <td>1.56</td>
+      <td>1535239.74</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>151.07</td>
+      <td>93</td>
+      <td>98</td>
+      <td>58</td>
+      <td>66</td>
+      <td>90</td>
+      <td>33</td>
+      <td>30.64</td>
+      <td>2.44</td>
+      <td>29.60</td>
+      <td>6.05</td>
+      <td>26.06</td>
+      <td>20.45</td>
+      <td>-0.88</td>
+      <td>-0.89</td>
+      <td>-0.30</td>
+      <td>-0.78</td>
+      <td>-0.36</td>
+      <td>1.74</td>
+      <td>0.03</td>
+      <td>0.03</td>
+      <td>0.00</td>
+      <td>5.24</td>
+      <td>0.07</td>
+      <td>10.07</td>
+      <td>68.10</td>
+      <td>402.0</td>
+      <td>8.597096e+09</td>
+      <td>2.597310e+08</td>
+      <td>2.319314e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>2014-10-01 07:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>FREG</td>
+      <td>FRE.DE</td>
+      <td>Fresenius SE &amp; Co KGAA O.N.</td>
+      <td>Healthcare</td>
+      <td>Medical Care Facilities</td>
+      <td>0.92</td>
+      <td>26.44</td>
+      <td>1181028.0</td>
+      <td>0.69</td>
+      <td>2.76</td>
+      <td>0.64</td>
+      <td>-0.45</td>
+      <td>12.89</td>
+      <td>3.93</td>
+      <td>-10.77</td>
+      <td>-22.19</td>
+      <td>38.10</td>
+      <td>-30.61</td>
+      <td>19.69</td>
+      <td>34.28</td>
+      <td>1.66</td>
+      <td>1714020.46</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>241.86</td>
+      <td>87</td>
+      <td>62</td>
+      <td>45</td>
+      <td>96</td>
+      <td>47</td>
+      <td>35</td>
+      <td>26.19</td>
+      <td>0.97</td>
+      <td>25.31</td>
+      <td>4.46</td>
+      <td>23.25</td>
+      <td>13.74</td>
+      <td>-0.22</td>
+      <td>-0.23</td>
+      <td>0.04</td>
+      <td>-0.05</td>
+      <td>0.13</td>
+      <td>0.09</td>
+      <td>0.12</td>
+      <td>0.10</td>
+      <td>0.09</td>
+      <td>0.08</td>
+      <td>0.06</td>
+      <td>26.96</td>
+      <td>37.40</td>
+      <td>539.0</td>
+      <td>1.330366e+10</td>
+      <td>5.632370e+08</td>
+      <td>4.145539e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>1998-11-09 08:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>ABX</td>
+      <td>ABX.TO</td>
+      <td>Barrick Gold Corp</td>
+      <td>Basic Materials</td>
+      <td>Gold</td>
+      <td>1.34</td>
+      <td>15.99</td>
+      <td>75286.0</td>
+      <td>0.68</td>
+      <td>2.70</td>
+      <td>0.44</td>
+      <td>2.61</td>
+      <td>2.55</td>
+      <td>1.27</td>
+      <td>-14.72</td>
+      <td>0.67</td>
+      <td>23.95</td>
+      <td>-33.25</td>
+      <td>13.45</td>
+      <td>18.92</td>
+      <td>0.97</td>
+      <td>110909.28</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>15781.97</td>
+      <td>56</td>
+      <td>53</td>
+      <td>46</td>
+      <td>76</td>
+      <td>88</td>
+      <td>67</td>
+      <td>15.80</td>
+      <td>1.21</td>
+      <td>15.59</td>
+      <td>2.55</td>
+      <td>15.42</td>
+      <td>3.67</td>
+      <td>-0.30</td>
+      <td>-0.30</td>
+      <td>-0.52</td>
+      <td>-0.42</td>
+      <td>-0.32</td>
+      <td>0.00</td>
+      <td>-0.11</td>
+      <td>-0.29</td>
+      <td>-0.22</td>
+      <td>-0.22</td>
+      <td>0.05</td>
+      <td>0.59</td>
+      <td>64.25</td>
+      <td>1179.0</td>
+      <td>3.843009e+10</td>
+      <td>1.762040e+09</td>
+      <td>1.750367e+09</td>
+      <td>10343262.0</td>
+      <td>2.17</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>1995-01-12 14:30:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>B4B</td>
+      <td>B4B.DE</td>
+      <td>Metro Wholesale &amp; Food Specialist AG</td>
+      <td>Consumer Defensive</td>
+      <td>Food Distribution</td>
+      <td>1.31</td>
+      <td>8.51</td>
+      <td>137501.0</td>
+      <td>0.65</td>
+      <td>2.77</td>
+      <td>0.22</td>
+      <td>0.00</td>
+      <td>9.18</td>
+      <td>5.65</td>
+      <td>9.32</td>
+      <td>-18.61</td>
+      <td>10.42</td>
+      <td>-18.38</td>
+      <td>6.11</td>
+      <td>39.08</td>
+      <td>1.62</td>
+      <td>212856.20</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>704.90</td>
+      <td>80</td>
+      <td>66</td>
+      <td>64</td>
+      <td>46</td>
+      <td>50</td>
+      <td>45</td>
+      <td>8.50</td>
+      <td>0.11</td>
+      <td>8.32</td>
+      <td>2.18</td>
+      <td>7.59</td>
+      <td>12.13</td>
+      <td>0.97</td>
+      <td>1.00</td>
+      <td>NaN</td>
+      <td>-3.60</td>
+      <td>0.53</td>
+      <td>1.55</td>
+      <td>0.27</td>
+      <td>NaN</td>
+      <td>0.20</td>
+      <td>0.10</td>
+      <td>0.01</td>
+      <td>64.54</td>
+      <td>7.51</td>
+      <td>111.0</td>
+      <td>3.090698e+09</td>
+      <td>3.601220e+08</td>
+      <td>1.500424e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>2017-07-13 07:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>SHLG</td>
+      <td>SHL.DE</td>
+      <td>Siemens Healthineers AG</td>
+      <td>Healthcare</td>
+      <td>Medical Devices</td>
+      <td>0.14</td>
+      <td>49.32</td>
+      <td>430958.0</td>
+      <td>0.63</td>
+      <td>2.59</td>
+      <td>1.20</td>
+      <td>-2.65</td>
+      <td>4.96</td>
+      <td>-1.08</td>
+      <td>-0.88</td>
+      <td>-24.77</td>
+      <td>67.32</td>
+      <td>-26.74</td>
+      <td>40.32</td>
+      <td>22.32</td>
+      <td>1.65</td>
+      <td>689181.88</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>394.85</td>
+      <td>67</td>
+      <td>46</td>
+      <td>46</td>
+      <td>35</td>
+      <td>12</td>
+      <td>16</td>
+      <td>50.40</td>
+      <td>-2.15</td>
+      <td>50.15</td>
+      <td>-1.65</td>
+      <td>47.76</td>
+      <td>3.26</td>
+      <td>-0.07</td>
+      <td>-0.09</td>
+      <td>0.17</td>
+      <td>-0.05</td>
+      <td>0.04</td>
+      <td>0.17</td>
+      <td>0.04</td>
+      <td>0.12</td>
+      <td>0.02</td>
+      <td>0.07</td>
+      <td>0.06</td>
+      <td>75.35</td>
+      <td>12.32</td>
+      <td>475.0</td>
+      <td>5.712145e+10</td>
+      <td>1.122670e+09</td>
+      <td>2.721252e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>2018-04-12 07:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>HFGG</td>
+      <td>HFG.DE</td>
+      <td>HelloFresh SE</td>
+      <td>Consumer Cyclical</td>
+      <td>Restaurants</td>
+      <td>1.70</td>
+      <td>24.59</td>
+      <td>642726.0</td>
+      <td>0.62</td>
+      <td>6.16</td>
+      <td>1.24</td>
+      <td>5.18</td>
+      <td>7.33</td>
+      <td>-7.00</td>
+      <td>-14.97</td>
+      <td>-65.08</td>
+      <td>71.72</td>
+      <td>-65.71</td>
+      <td>19.94</td>
+      <td>23.32</td>
+      <td>1.03</td>
+      <td>1031212.34</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>156.51</td>
+      <td>75</td>
+      <td>33</td>
+      <td>18</td>
+      <td>46</td>
+      <td>50</td>
+      <td>45</td>
+      <td>24.42</td>
+      <td>0.70</td>
+      <td>24.10</td>
+      <td>2.02</td>
+      <td>22.92</td>
+      <td>7.27</td>
+      <td>-0.89</td>
+      <td>-0.88</td>
+      <td>NaN</td>
+      <td>-0.23</td>
+      <td>NaN</td>
+      <td>0.32</td>
+      <td>0.31</td>
+      <td>0.35</td>
+      <td>0.26</td>
+      <td>0.26</td>
+      <td>0.12</td>
+      <td>5.88</td>
+      <td>67.68</td>
+      <td>394.0</td>
+      <td>4.808318e+09</td>
+      <td>1.715420e+08</td>
+      <td>1.613986e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>2017-11-02 08:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>COP1n</td>
+      <td>COP.DE</td>
+      <td>CompuGroup Medical AG O.N.</td>
+      <td>Healthcare</td>
+      <td>Health Information Services</td>
+      <td>2.14</td>
+      <td>37.28</td>
+      <td>59000.0</td>
+      <td>0.62</td>
+      <td>3.54</td>
+      <td>1.21</td>
+      <td>3.96</td>
+      <td>2.14</td>
+      <td>-10.17</td>
+      <td>-2.31</td>
+      <td>-43.08</td>
+      <td>73.15</td>
+      <td>-49.04</td>
+      <td>30.56</td>
+      <td>21.99</td>
+      <td>1.05</td>
+      <td>95125.76</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>265.04</td>
+      <td>54</td>
+      <td>26</td>
+      <td>27</td>
+      <td>22</td>
+      <td>64</td>
+      <td>60</td>
+      <td>36.74</td>
+      <td>1.47</td>
+      <td>36.35</td>
+      <td>2.57</td>
+      <td>35.56</td>
+      <td>4.84</td>
+      <td>0.03</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>-0.06</td>
+      <td>NaN</td>
+      <td>0.33</td>
+      <td>0.04</td>
+      <td>0.22</td>
+      <td>0.09</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>50.30</td>
+      <td>30.01</td>
+      <td>146.0</td>
+      <td>2.040299e+09</td>
+      <td>5.223500e+07</td>
+      <td>2.521227e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>2000-02-15 08:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>VH2</td>
+      <td>VH2.F</td>
+      <td>Friedrich Vorwerk Group SE</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas Midstream</td>
+      <td>0.44</td>
+      <td>22.60</td>
+      <td>17363.0</td>
+      <td>0.61</td>
+      <td>5.30</td>
+      <td>1.10</td>
+      <td>-7.76</td>
+      <td>3.20</td>
+      <td>-14.07</td>
+      <td>-11.89</td>
+      <td>-25.66</td>
+      <td>41.70</td>
+      <td>-45.80</td>
+      <td>15.84</td>
+      <td>42.68</td>
+      <td>1.54</td>
+      <td>28260.94</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>327.78</td>
+      <td>59</td>
+      <td>20</td>
+      <td>26</td>
+      <td>3</td>
+      <td>60</td>
+      <td>98</td>
+      <td>23.82</td>
+      <td>-5.13</td>
+      <td>23.49</td>
+      <td>-3.78</td>
+      <td>20.64</td>
+      <td>9.49</td>
+      <td>-0.27</td>
+      <td>-0.31</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>54.00</td>
+      <td>36.59</td>
+      <td>55.0</td>
+      <td>4.850000e+08</td>
+      <td>2.000000e+07</td>
+      <td>9.263448e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>2021-03-26 07:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>5CV</td>
+      <td>CVAC</td>
+      <td>CureVac NV</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>0.23</td>
+      <td>7.09</td>
+      <td>29196.0</td>
+      <td>0.61</td>
+      <td>5.48</td>
+      <td>0.35</td>
+      <td>3.45</td>
+      <td>-6.92</td>
+      <td>-28.38</td>
+      <td>-45.27</td>
+      <td>-79.11</td>
+      <td>36.20</td>
+      <td>-80.43</td>
+      <td>6.63</td>
+      <td>6.91</td>
+      <td>0.89</td>
+      <td>47611.68</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>1781.38</td>
+      <td>14</td>
+      <td>6</td>
+      <td>4</td>
+      <td>18</td>
+      <td>52</td>
+      <td>70</td>
+      <td>7.16</td>
+      <td>-1.06</td>
+      <td>7.30</td>
+      <td>-2.94</td>
+      <td>7.57</td>
+      <td>-6.45</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.03</td>
+      <td>0.53</td>
+      <td>0.24</td>
+      <td>-0.02</td>
+      <td>-0.10</td>
+      <td>-0.29</td>
+      <td>-0.33</td>
+      <td>-0.45</td>
+      <td>0.69</td>
+      <td>52.47</td>
+      <td>20.69</td>
+      <td>155.0</td>
+      <td>1.377882e+09</td>
+      <td>1.874670e+08</td>
+      <td>8.481471e+07</td>
+      <td>2611905.0</td>
+      <td>10.46</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>2020-08-14 13:30:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>IMT</td>
+      <td>IMB.L</td>
+      <td>Imperial Brands PLC</td>
+      <td>Consumer Defensive</td>
+      <td>Tobacco</td>
+      <td>0.04</td>
+      <td>24.64</td>
+      <td>16155.0</td>
+      <td>0.58</td>
+      <td>1.92</td>
+      <td>0.42</td>
+      <td>-0.16</td>
+      <td>-0.52</td>
+      <td>7.79</td>
+      <td>18.01</td>
+      <td>30.51</td>
+      <td>25.48</td>
+      <td>-3.30</td>
+      <td>17.66</td>
+      <td>39.52</td>
+      <td>2.04</td>
+      <td>28090.30</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>31184.20</td>
+      <td>40</td>
+      <td>70</td>
+      <td>91</td>
+      <td>31</td>
+      <td>62</td>
+      <td>94</td>
+      <td>24.66</td>
+      <td>-0.08</td>
+      <td>24.52</td>
+      <td>0.49</td>
+      <td>23.91</td>
+      <td>3.05</td>
+      <td>-0.45</td>
+      <td>-0.45</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>-0.01</td>
+      <td>0.16</td>
+      <td>0.16</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>5.24</td>
+      <td>64.95</td>
+      <td>395.0</td>
+      <td>2.035742e+10</td>
+      <td>9.504080e+08</td>
+      <td>8.759735e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>1996-10-01 07:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>FIEG</td>
+      <td>FIE.DE</td>
+      <td>Fielmann AG</td>
+      <td>Healthcare</td>
+      <td>Medical Instruments &amp; Supplies</td>
+      <td>0.12</td>
+      <td>34.82</td>
+      <td>33987.0</td>
+      <td>0.55</td>
+      <td>3.22</td>
+      <td>1.03</td>
+      <td>0.06</td>
+      <td>2.41</td>
+      <td>-8.13</td>
+      <td>-27.12</td>
+      <td>-40.07</td>
+      <td>59.70</td>
+      <td>-41.68</td>
+      <td>27.56</td>
+      <td>26.34</td>
+      <td>0.86</td>
+      <td>61770.54</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>385.53</td>
+      <td>55</td>
+      <td>30</td>
+      <td>20</td>
+      <td>23</td>
+      <td>61</td>
+      <td>20</td>
+      <td>35.51</td>
+      <td>-1.93</td>
+      <td>35.46</td>
+      <td>-1.82</td>
+      <td>33.54</td>
+      <td>3.83</td>
+      <td>-0.25</td>
+      <td>-0.24</td>
+      <td>NaN</td>
+      <td>-0.14</td>
+      <td>NaN</td>
+      <td>0.05</td>
+      <td>0.08</td>
+      <td>0.08</td>
+      <td>0.05</td>
+      <td>0.08</td>
+      <td>0.03</td>
+      <td>71.64</td>
+      <td>9.77</td>
+      <td>144.0</td>
+      <td>3.185280e+09</td>
+      <td>8.400000e+07</td>
+      <td>2.381446e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>2000-10-06 07:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>22UAy</td>
+      <td>22UA.F</td>
+      <td>BioNTech SE</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>1.07</td>
+      <td>155.55</td>
+      <td>54678.0</td>
+      <td>0.54</td>
+      <td>3.97</td>
+      <td>5.15</td>
+      <td>-2.78</td>
+      <td>-2.66</td>
+      <td>4.57</td>
+      <td>17.40</td>
+      <td>-35.51</td>
+      <td>267.40</td>
+      <td>-41.83</td>
+      <td>109.85</td>
+      <td>41.61</td>
+      <td>1.27</td>
+      <td>102191.14</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>878.53</td>
+      <td>30</td>
+      <td>64</td>
+      <td>64</td>
+      <td>18</td>
+      <td>52</td>
+      <td>70</td>
+      <td>156.57</td>
+      <td>-0.65</td>
+      <td>154.54</td>
+      <td>0.65</td>
+      <td>146.70</td>
+      <td>6.03</td>
+      <td>-0.44</td>
+      <td>-0.44</td>
+      <td>11.80</td>
+      <td>581.71</td>
+      <td>4.34</td>
+      <td>0.08</td>
+      <td>-0.43</td>
+      <td>-0.28</td>
+      <td>32.03</td>
+      <td>11.36</td>
+      <td>0.04</td>
+      <td>62.96</td>
+      <td>15.85</td>
+      <td>495.0</td>
+      <td>3.679280e+10</td>
+      <td>2.426850e+08</td>
+      <td>8.977831e+07</td>
+      <td>2140285.0</td>
+      <td>2.81</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>2019-10-11 06:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>COKG</td>
+      <td>COK.DE</td>
+      <td>Cancom SE O.N.</td>
+      <td>Technology</td>
+      <td>Information Technology Services</td>
+      <td>0.21</td>
+      <td>29.18</td>
+      <td>51709.0</td>
+      <td>0.51</td>
+      <td>3.75</td>
+      <td>1.08</td>
+      <td>2.24</td>
+      <td>5.57</td>
+      <td>0.00</td>
+      <td>-10.98</td>
+      <td>-52.44</td>
+      <td>62.88</td>
+      <td>-53.59</td>
+      <td>23.04</td>
+      <td>26.65</td>
+      <td>1.57</td>
+      <td>101727.94</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>336.33</td>
+      <td>70</td>
+      <td>49</td>
+      <td>21</td>
+      <td>82</td>
+      <td>41</td>
+      <td>25</td>
+      <td>29.53</td>
+      <td>-1.20</td>
+      <td>28.90</td>
+      <td>0.97</td>
+      <td>27.05</td>
+      <td>7.87</td>
+      <td>-0.97</td>
+      <td>-0.97</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.12</td>
+      <td>0.10</td>
+      <td>0.54</td>
+      <td>0.02</td>
+      <td>0.50</td>
+      <td>0.07</td>
+      <td>3.26</td>
+      <td>68.36</td>
+      <td>140.0</td>
+      <td>1.086283e+09</td>
+      <td>3.854800e+07</td>
+      <td>3.421448e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>1999-09-17 07:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>VWSB</td>
+      <td>VWS.CO</td>
+      <td>Vestas Wind Systems A/S</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>0.28</td>
+      <td>24.99</td>
+      <td>24366.0</td>
+      <td>0.50</td>
+      <td>4.15</td>
+      <td>0.81</td>
+      <td>2.71</td>
+      <td>11.04</td>
+      <td>1.30</td>
+      <td>15.09</td>
+      <td>-4.71</td>
+      <td>32.00</td>
+      <td>-21.92</td>
+      <td>17.63</td>
+      <td>41.72</td>
+      <td>1.53</td>
+      <td>48345.38</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>20866.06</td>
+      <td>84</td>
+      <td>54</td>
+      <td>62</td>
+      <td>91</td>
+      <td>26</td>
+      <td>41</td>
+      <td>24.59</td>
+      <td>1.61</td>
+      <td>23.82</td>
+      <td>4.91</td>
+      <td>21.53</td>
+      <td>16.03</td>
+      <td>-0.97</td>
+      <td>-0.97</td>
+      <td>-0.58</td>
+      <td>-6.29</td>
+      <td>-0.92</td>
+      <td>1.33</td>
+      <td>-0.29</td>
+      <td>0.04</td>
+      <td>-0.04</td>
+      <td>-0.10</td>
+      <td>0.08</td>
+      <td>0.05</td>
+      <td>46.79</td>
+      <td>579.0</td>
+      <td>1.836647e+11</td>
+      <td>1.005280e+09</td>
+      <td>1.008778e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Xetra</td>
+      <td>Germany</td>
+      <td>2000-05-10 07:00:00</td>
+      <td>germany</td>
+      <td>2022-12-07</td>
+      <td>Vo</td>
+      <td>Volume Gainers</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+            </section>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+    </div>
+</footer>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bm/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+<script>
+        $(document).ready(function () {
+            $('#data').DataTable(
+                {
+                    "scrollX": true,
+                    "dom": 'Bfrtip',
+                    "buttons": [
+                        'copy', 'csv', 'excel', 'print'
+                    ]
+
+                }
+            );
+        });
+    </script>
+    
+</body>
+
+</html>

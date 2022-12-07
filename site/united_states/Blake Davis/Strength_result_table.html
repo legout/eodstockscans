@@ -1,0 +1,6875 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EOD Stock Scans</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.datatables.net/v/bm/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/sc-2.0.5/datatables.min.css" />
+
+</head >
+
+
+<body>
+    <section class="hero is-small is-dark">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+
+                    <div class="navbar-burger" @click="showNav = !showNav" :class="{ 'is-active': showNav }">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="navbar-menu" :class="{ 'is-active': showNav }">
+                    <div class="navbar-start">
+                        
+                        <a class="navbar-item" href="../../index.html">
+                            
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-home"></i>
+                                    </span>
+                                    <span>Home</span>
+                                </span>
+                            </a>
+
+                            <div class="navbar-item has-dropdown is-hoverable has-background-dark">
+                                <a class="navbar-link">
+                                    <span>Choose Market</span>
+                                </a>
+
+                                <div class="navbar-dropdown has-background-dark">
+                                    
+
+                                    
+                                    <a class="navbar-item" href="../../australia/market_monitor.html">
+                                        <span>Australia</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../belgium/market_monitor.html">
+                                        <span>Belgium</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../canada/market_monitor.html">
+                                        <span>Canada</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../france/market_monitor.html">
+                                        <span>France</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../germany/market_monitor.html">
+                                        <span>Germany</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../hong_kong/market_monitor.html">
+                                        <span>Hong Kong</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../indonesia/market_monitor.html">
+                                        <span>Indonesia</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../italy/market_monitor.html">
+                                        <span>Italy</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../japan/market_monitor.html">
+                                        <span>Japan</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../netherlands/market_monitor.html">
+                                        <span>Netherlands</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../nordic_markets/market_monitor.html">
+                                        <span>Nordic Markets</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../poland/market_monitor.html">
+                                        <span>Poland</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../singapore/market_monitor.html">
+                                        <span>Singapore</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../united_kingdom/market_monitor.html">
+                                        <span>United Kingdom</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../united_states/market_monitor.html">
+                                        <span>United States</span>
+                                        
+                                        
+                                </div>
+                            </div>
+                    </div>
+                    <!-- <div class="navbar-end"></div>
+                    <span class="navbar-item">
+                        <a class="button is-info is-light" href="https://twitter.com/LignoL23">
+                            <span class="icon">
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                            <span>Twitter</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <a class="button  is-success is-light" href="https://www.paypal.com/paypalme/volkerlorrmann/5">
+                            <span class="icon">
+                                <i class="fab fa-paypal"></i>
+                            </span>
+                            <span>paypal.me</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+                        <script
+                            type='text/javascript'>kofiwidget2.init('Support me', '#d6d6d6', 'W7W0ACJPB'); kofiwidget2.draw();</script>
+                    </span>
+                </div> -->
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="columns is-multiline is-mobile is-centered">
+                <div class="column is-1">
+                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDEwMCAxMDA7IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOm5vbmU7fQoJLnN0MXtmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO30KPC9zdHlsZT48dGl0bGUvPjxnPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MS44LDg0YzAuMSwwLjIsMC4xLDAuMywwLjEsMC41YzAsMy4zLDAuMiw2LjcsMC41LDEwYzIuNi0wLjEsNC45LTAuMSw3LjItMC4ydjBjMC4zLDAsMC43LDAsMSwwICAgYy0wLjMtNS0wLjQtMTAtMC41LTE1QzQ4LjQsODAuNCw0NS41LDgyLjEsNDEuOCw4NHoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTYuMyw5NGMtMC4yLDAuMS0wLjQsMC4xLTAuNSwwLjJjMS43LDAuMSw0LjMsMC4yLDcuNywwLjNjMS40LDAsMi43LDAuMSw0LDAuMWMtMC4xLTEuNC0wLjMtMi44LTAuNC00LjEgICBDMjIuNiw5Mi4xLDE4LjgsOTMuMiwxNi4zLDk0eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02Ni45LDQ3LjVjMy4xLTMuMyw2LjgtNy41LDEwLjgtMTIuN2MwLDAsMCwwLDAtMC4xYzAuNS0wLjYsMS40LTAuNywyLTAuMmMxLjcsMS41LDMuNiwyLjksNS42LDQuNCAgIGMxLDAuOCwyLjEsMS41LDMuMSwyLjJjMC4zLDAuMiwwLjYsMC4zLDEsMC4zYzAuNCwwLDAuOC0wLjIsMS4yLTAuNGMwLjMtMC4zLDAuNS0wLjcsMC41LTEuMWMwLjItNC45LDAuMy05LjksMC4zLTE1di0wLjcgICBjMC01LjYtMC4xLTExLTAuMy0xNi4zYzAtMC4yLDAtMC4zLTAuMS0wLjVjLTAuMy0xLjQtMS43LTIuMy0zLjItMkM3Ni42LDgsNjUuNSwxMC43LDU0LjUsMTMuN2MtMC4zLDAuMS0wLjYsMC4zLTAuOCwwLjUgICBjLTAuMiwwLjMtMC4zLDAuNi0wLjMsMC45YzAsMC41LDAuMywxLDAuNywxLjJjMC45LDAuNiwxLjgsMS4xLDIuNywxLjdjMi4yLDEuMyw0LjMsMi41LDYuMywzLjVjMC43LDAuNCwxLDEuMiwwLjYsMS45ICAgYy0zLjEsNi02LjYsMTEuNy0xMC42LDE3LjFjLTguNSwxMS40LTE4LDIwLTMwLDMwLjhDMTYuNyw3NywxMiw4MSw5LjQsODMuNWMtMC42LDAuNi0xLjIsMS4yLTEuNywxLjhjMC43LTAuMSwxLjQtMC4yLDIuMS0wLjQgICBjMS4xLTAuMywyLjQtMC43LDMuNi0xLjFjMi41LTAuOSw0LjktMS45LDYuMS0yLjRDMjguOSw3Ny42LDQ3LjEsNjguNiw2Ni45LDQ3LjV6Ii8+PHBhdGggY2xhc3M9InN0MCIgZD0iTTMxLjUsODguN2MtMC42LDAuMi0xLjIsMC41LTEuNywwLjdjMC4yLDEuNywwLjQsMy41LDAuNSw1LjJjMC43LDAsMS4zLDAsMS45LDBjMi42LDAsNSwwLDcuMy0wLjEgICBjLTAuMy0zLjEtMC40LTYuMS0wLjUtOS4yQzM2LjgsODYuNSwzNC4yLDg3LjYsMzEuNSw4OC43eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik01Mi45LDc3LjVjMCwwLjEsMCwwLjEsMCwwLjJjMC4xLDUuNSwwLjMsMTEuMSwwLjYsMTYuNmMzLjQtMC4xLDYuOS0wLjIsMTAuNC0wLjNjLTAuMy04LjEtMC41LTE2LjMtMC44LTI0LjQgICBDNTkuOCw3Mi40LDU2LjQsNzUsNTIuOSw3Ny41eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik05MS4yLDU1LjNjLTAuMS0wLjEtMC4xLTAuMS0wLjItMC4xYy0wLjEsMC0wLjItMC4xLTAuNS0wLjJjLTAuNi0wLjMtMS42LTAuNy0zLjUtMS42ICAgYy0xLjItMC42LTIuMy0xLjEtMy40LTEuNmMtMC41LTAuMi0xLTAuNC0xLjYtMC40Yy0xLjEsMC0yLjEsMC41LTIuOCwxLjRsMCwwYy0wLjIsMC4zLTAuNCwwLjUtMC42LDAuOGwyLjMsNDAuM2gwLjYgICBjMi4yLDAsMy45LDAsNS4yLTAuMmMxLTAuMSwxLjktMC4zLDIuOC0wLjdjMC41LTAuMiwwLjktMC41LDEuMi0wLjljMC41LTAuNCwwLjgtMSwxLTEuNmMwLjItMC45LDAuMy0xLjgsMC4zLTIuNyAgIGMwLTEuNy0wLjEtNC4xLTAuMS03LjVjMC0yLjEsMC4xLTQuNywwLjMtNy43bDAsMGMwLjMtNC45LDAuOC04LjgsMC44LTExLjhjMC0xLjItMC4xLTIuNC0wLjQtMy41QzkyLjIsNTYuNSw5MS44LDU1LjgsOTEuMiw1NS4zeiAgICIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02NS44LDY3LjFjMCwwLjEsMC4xLDAuMywwLjEsMC40YzAuMyw4LjgsMC42LDE3LjYsMC45LDI2LjRjMy4yLTAuMSw2LjQtMC4xLDkuNi0wLjF2MGgwLjNoMS4xICAgYzAtMC4xLDAuMS0wLjIsMC4xLTAuNGMtMC43LTEyLjItMS40LTI0LjUtMi4xLTM2LjdDNzIuNyw2MC40LDY5LjMsNjMuOCw2NS44LDY3LjF6Ii8+PHBhdGggZD0iTTIwLjYsODQuMWM5LjYtMy45LDI4LjMtMTMuMSw0OC40LTM0LjZjMi45LTMuMSw2LjMtNywxMC4xLTExLjhjMS40LDEuMiwzLDIuNCw0LjYsMy42YzEuMSwwLjgsMi4xLDEuNSwzLjIsMi4zICAgYzEuOCwxLjIsNC4xLDEuMSw1LjctMC40YzAuOS0wLjgsMS40LTIsMS41LTMuMmMwLjItNC45LDAuMy05LjksMC4zLTE1LjF2LTAuN2MwLTUuNi0wLjEtMTEuMS0wLjMtMTYuNGMtMC4xLTMtMi43LTUuNC01LjctNS4zICAgYy0wLjMsMC0wLjcsMC4xLTEsMC4xQzc2LDUuMiw2NC44LDcuOSw1My43LDEwLjljLTEsMC4zLTEuOCwwLjgtMi40LDEuNmMtMC41LDAuOC0wLjgsMS43LTAuOCwyLjZjMCwxLjUsMC44LDIuOSwyLDMuNyAgIGMwLjksMC42LDEuOCwxLjEsMi44LDEuN2MxLjgsMS4xLDMuNSwyLDUuMiwyLjljLTIuOCw1LjQtNi4xLDEwLjYtOS43LDE1LjVDNDIuNiw1MCwzMy4yLDU4LjQsMjEuMiw2OS4yQzE2LDczLjksMTEuOSw3Ny40LDksNzkuOSAgIGMtMS4yLDEtMi4zLDIuMS0zLjMsMy4zYy0wLjQsMC40LTAuNywwLjgtMSwxLjNjLTAuMywwLjUtMC41LDEtMC41LDEuNWMwLDAuNywwLjMsMS4zLDAuOSwxLjdjMC4zLDAuMiwwLjYsMC40LDEsMC40ICAgYzAuMywwLjEsMC42LDAuMSwxLDAuMWMxLjEsMCwyLjMtMC4yLDMuNC0wLjVjMi0wLjUsMy45LTEuMiw1LjgtMS45QzE4LjEsODUuMSwxOS43LDg0LjQsMjAuNiw4NC4xeiBNOS43LDg0LjkgICBjLTAuNywwLjItMS40LDAuMy0yLjEsMC40YzAuNS0wLjYsMS4xLTEuMiwxLjctMS44QzEyLDgxLDE2LjcsNzcsMjMuMSw3MS40YzEyLTEwLjgsMjEuNi0xOS40LDMwLTMwLjhjNC01LjQsNy42LTExLjEsMTAuNi0xNy4xICAgYzAuNC0wLjcsMC4xLTEuNi0wLjYtMS45Yy0yLjEtMS4xLTQuMi0yLjMtNi4zLTMuNWMtMC45LTAuNi0xLjgtMS4xLTIuNy0xLjdjLTAuNC0wLjMtMC43LTAuNy0wLjctMS4yYzAtMC4zLDAuMS0wLjYsMC4zLTAuOSAgIGMwLjItMC4zLDAuNS0wLjUsMC44LTAuNUM2NS41LDEwLjcsNzYuNiw4LDg3LjgsNS40YzEuNC0wLjMsMi44LDAuNiwzLjIsMkM5MSw3LjYsOTEsNy44LDkxLDcuOWMwLjIsNS4yLDAuMywxMC43LDAuMywxNi4zdjAuNyAgIGMwLDUuMi0wLjEsMTAuMi0wLjMsMTVjMCwwLjQtMC4yLDAuOS0wLjUsMS4xYy0wLjMsMC4zLTAuNywwLjQtMS4yLDAuNGMtMC4zLDAtMC43LTAuMS0xLTAuM2MtMS0wLjctMi0xLjQtMy4xLTIuMiAgIGMtMi0xLjUtMy45LTMtNS42LTQuNGMtMC42LTAuNS0xLjUtMC40LTIsMC4yYzAsMCwwLDAsMCwwLjFjLTQsNS4yLTcuNyw5LjUtMTAuOCwxMi43Yy0xOS43LDIxLjEtMzgsMzAuMS00Ny40LDMzLjkgICBjLTEuMiwwLjUtMy42LDEuNS02LjEsMi40QzEyLjEsODQuMiwxMC44LDg0LjYsOS43LDg0Ljl6Ii8+PGxpbmUgY2xhc3M9InN0MSIgeDE9IjQuNSIgeDI9IjQuNSIgeTE9Ijg3LjEiIHkyPSI4Ny4xIi8+PHBhdGggZD0iTTk1LjcsNjAuN2MwLTEuNS0wLjEtMy0wLjUtNC40Qzk0LjgsNTUsOTQsNTMuOSw5Mi45LDUzYy0wLjItMC4xLTAuNC0wLjMtMC42LTAuNGMtMC4zLTAuMi0wLjYtMC4zLTEuMi0wLjYgICBjLTAuNi0wLjMtMS41LTAuNy0yLjktMS4zYy0xLjItMC42LTIuMy0xLjEtMy4zLTEuNmMtMi43LTEuNC02LTAuNi03LjksMS44bDAsMGMtNy44LDkuOS0xNywxOC40LTI3LjUsMjUuNCAgIGMtNiwzLjgtMTIuNCw3LjEtMTksOS44Yy01LjMsMi4yLTEwLDMuNi0xMy40LDQuN2MtMS43LDAuNS0zLjEsMS00LjEsMS40Yy0wLjUsMC4yLTAuOSwwLjQtMS40LDAuN2MtMC4yLDAuMi0wLjQsMC40LTAuNiwwLjYgICBjLTAuMiwwLjMtMC40LDAuNy0wLjQsMS4xYzAsMC4xLDAsMC4yLDAsMC4ydjB2MGMwLDAuMiwwLjEsMC41LDAuMywwLjdjMC4yLDAuMywwLjUsMC42LDAuOCwwLjdjMC41LDAuMiwxLjEsMC40LDEuNiwwLjUgICBjMS4zLDAuMiwyLjUsMC4zLDMuOCwwLjRjMS42LDAuMSwzLjcsMC4yLDYuMiwwLjJjMy4yLDAuMSw2LjIsMC4xLDguOSwwLjFjNywwLDEyLjUtMC4yLDE3LjQtMC4zYzguOS0wLjIsMTcuOC0wLjYsMjYuNy0wLjZoMC4zICAgYzEuOCwwLDMuNCwwLDQuOCwwYzIuMywwLjEsNC42LDAsNi45LTAuNGMwLjgtMC4xLDEuNi0wLjQsMi40LTAuOGMwLjctMC40LDEuNC0wLjgsMi0xLjRjMC44LTAuOCwxLjQtMS44LDEuOC0yLjkgICBjMC4zLTEuMSwwLjQtMi4zLDAuNC0zLjVjMC0xLjktMC4xLTQuMi0wLjEtNy41YzAtMi4xLDAuMS00LjYsMC4yLTcuNUM5NS4yLDY3LjksOTUuNyw2NCw5NS43LDYwLjd6IE0yMy40LDk0LjUgICBjLTMuNC0wLjEtNi0wLjItNy43LTAuM2MwLjItMC4xLDAuNC0wLjEsMC41LTAuMmMyLjUtMC44LDYuMy0yLDEwLjctMy42YzAuMSwxLjQsMC4zLDIuOCwwLjQsNC4xQzI2LjEsOTQuNiwyNC44LDk0LjYsMjMuNCw5NC41eiAgICBNMzIuMiw5NC42Yy0wLjYsMC0xLjMsMC0xLjksMGMtMC4yLTEuNy0wLjQtMy41LTAuNS01LjJjMC42LTAuMiwxLjEtMC40LDEuNy0wLjdjMi43LTEuMSw1LjMtMi4zLDcuNS0zLjQgICBjMC4xLDMuMSwwLjIsNi4xLDAuNSw5LjJDMzcuMyw5NC42LDM0LjksOTQuNiwzMi4yLDk0LjZ6IE00OS42LDk0LjNMNDkuNiw5NC4zYy0yLjMsMC00LjcsMC4xLTcuMiwwLjJjLTAuMy0zLjMtMC41LTYuNy0wLjUtMTAgICBjMC0wLjIsMC0wLjMtMC4xLTAuNWMzLjctMS45LDYuNi0zLjYsOC4zLTQuN2MwLjEsNSwwLjMsMTAsMC41LDE1QzUwLjMsOTQuMyw0OS45LDk0LjMsNDkuNiw5NC4zeiBNNTMuNSw5NC4yICAgYy0wLjMtNS41LTAuNS0xMS0wLjYtMTYuNmMwLTAuMSwwLTAuMSwwLTAuMmMzLjUtMi40LDYuOS01LjEsMTAuMi03LjljMC4zLDguMSwwLjUsMTYuMywwLjgsMjQuNEM2MC40LDk0LDU2LjksOTQuMSw1My41LDk0LjJ6ICAgIE03Ny44LDkzLjhoLTEuMWgtMC4zdjBjLTMuMiwwLTYuNCwwLjEtOS42LDAuMWMtMC4zLTguOC0wLjYtMTcuNi0wLjktMjYuNGMwLTAuMSwwLTAuMy0wLjEtMC40YzMuNi0zLjMsNi45LTYuOCwxMC4xLTEwLjQgICBjMC43LDEyLjIsMS40LDI0LjUsMi4xLDM2LjdDNzcuOSw5My41LDc3LjgsOTMuNiw3Ny44LDkzLjh6IE05Miw3Mi41TDkyLDcyLjVjLTAuMiwzLTAuMiw1LjYtMC4yLDcuN2MwLDMuNCwwLjEsNS44LDAuMSw3LjUgICBjMCwwLjktMC4xLDEuOC0wLjMsMi43Yy0wLjIsMC42LTAuNSwxLjItMSwxLjZjLTAuNCwwLjQtMC44LDAuNy0xLjIsMC45Yy0wLjksMC40LTEuOCwwLjYtMi44LDAuN2MtMS4zLDAuMS0zLDAuMi01LjIsMC4yaC0wLjYgICBsLTIuMy00MC4zYzAuMi0wLjMsMC40LTAuNSwwLjYtMC44bDAsMGMwLjctMC45LDEuNy0xLjQsMi44LTEuNGMwLjUsMCwxLjEsMC4xLDEuNiwwLjRjMSwwLjUsMi4xLDEuMSwzLjQsMS42ICAgYzEuOSwwLjksMi45LDEuMywzLjUsMS42YzAuMywwLjEsMC40LDAuMiwwLjUsMC4yYzAuMSwwLDAuMSwwLjEsMC4yLDAuMWMwLjYsMC41LDEuMSwxLjIsMS4zLDEuOWMwLjMsMS4xLDAuNCwyLjMsMC40LDMuNSAgIEM5Mi45LDYzLjYsOTIuMyw2Ny42LDkyLDcyLjV6Ii8+PC9nPjwvc3ZnPg==" alt="Logo">
+                </div>
+                <div class="column is-4">
+                    <p class="title">
+                        EOD Stock Market Scans
+                    </p>
+                    <p class="subtitle">
+                        Fintwits most popular stockmarket scans
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+            <div class="container">
+                <ul>
+                    
+                    <li class="is-active">
+                        <a href="../Blake Davis/Strength_result_table.html"> Results </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Blake Davis/Strength_minicharts.html"> Minicharts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Blake Davis/Strength_charts.html"> Charts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Blake Davis/Strength_criteria.html"> Criteria </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+</section>
+    <div class="columns is-centered">
+        <div class="column is-2">
+            <div class="box has-background-light my-0 mx-2 p-auto">
+    <aside class="menu">
+        <p class="menu-label has-text-dark">
+            Market Monitor
+        </p>
+        <ul class="menu-list">
+            <li><a class="has-text-grey-light">New Highs/Lows</a></li>
+            <li><a class="has-text-grey-light">Breadth</a></li>
+            <li><a class="has-text-grey-light">Above/Below SMA</a></li>
+            <li><a class="has-text-grey-light">Sectors</a></li>
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Kristjan Kullamägi
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Kristjan Kullamägi/Biggest Gainers 1M_minicharts.html">
+                        Biggest Gainers 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Kristjan Kullamägi/Biggest Gainers 3M_minicharts.html">
+                        Biggest Gainers 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Kristjan Kullamägi/Biggest Gainers 6M_minicharts.html">
+                        Biggest Gainers 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Kristjan Kullamägi/Biggest Gainers 12M_minicharts.html">
+                        Biggest Gainers 12M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Kristjan Kullamägi/EP with Growth_minicharts.html">
+                        EP with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Kristjan Kullamägi/EP_minicharts.html">
+                        EP
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Kristjan Kullamägi/High Trend Intensity_minicharts.html">
+                        High Trend Intensity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Kristjan Kullamägi/Small Stock Momo_minicharts.html">
+                        Small Stock Momo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Kristjan Kullamägi/Momentum_minicharts.html">
+                        Momentum
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Brad Schulz
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Brad Schulz/Pocket Pivot_minicharts.html">
+                        Pocket Pivot
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Stockbee
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Stockbee/4 PCT  Gainers_minicharts.html">
+                        4 PCT  Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Stockbee/Combo_minicharts.html">
+                        Combo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Stockbee/Ants_minicharts.html">
+                        Ants
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Stockbee/Breakout 1M Base_minicharts.html">
+                        Breakout 1M Base
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Stockbee/Breakout 3M Base_minicharts.html">
+                        Breakout 3M Base
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Leif Soreide
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Leif Soreide/HTF_minicharts.html">
+                        HTF
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Blake Davis
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="is-active"
+                        href="../../united_states/Blake Davis/Strength_minicharts.html">
+                        Strength
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ben
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Ben/Power of 3_minicharts.html">
+                        Power of 3
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Ben/Velocity_minicharts.html">
+                        Velocity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Ben/Focus_minicharts.html">
+                        Focus
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ray
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Ray/RSNHBP 5D_minicharts.html">
+                        RSNHBP 5D
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Ray/RSNHBP 1M_minicharts.html">
+                        RSNHBP 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Ray/RSNHBP 3M_minicharts.html">
+                        RSNHBP 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Ray/RSNHBP 6M_minicharts.html">
+                        RSNHBP 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Ray/RSNHBP 12M_minicharts.html">
+                        RSNHBP 12M
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Mark Minvervini
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Mark Minvervini/Trend Template_minicharts.html">
+                        Trend Template
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Vo
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Vo/Top Gainers From Open_minicharts.html">
+                        Top Gainers From Open
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Vo/Top Gainers_minicharts.html">
+                        Top Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Vo/Volume Gainers_minicharts.html">
+                        Volume Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Vo/Insiders_minicharts.html">
+                        Insiders
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Vo/Darvas Scan_minicharts.html">
+                        Darvas Scan
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Vo/Darvas Scan with Growth_minicharts.html">
+                        Darvas Scan with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Vo/52W High_minicharts.html">
+                        52W High
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Vo/Quite and Tight_minicharts.html">
+                        Quite and Tight
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../united_states/Vo/Mo Scan_minicharts.html">
+                        Mo Scan
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+    </aside>
+</div>
+        </div>
+        <div class="column is-10">
+
+            
+<section class="block my-6">
+    <div class="columns ">
+        <div class="column is-5 has-text-left">
+            <h1 class="title is-4">Strength @ United States</h1>
+            <h2 class="subtitle is-6">2022-12-07</h2>
+        </div>
+        <div class="column has-text-right mr-5">
+            <div class="media">
+
+                <div class="media-content">
+                    <p class="title is-5">Blake Davis</p>
+                    <p class="subtitle is-6"><a class="has-text-grey-light" href="https://twitter.com/blakedavis50">@blakedavis50</a></p>
+                </div>
+                <div class="media-right">
+                    <figure class="image is-48x48">
+                        <img src="https://unavatar.io/twitter/blakedavis50" alt="Placeholder image">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+            <section class="my-auto mr-5">
+                
+    <div class="table-container">
+        <table border="1" class="dataframe table is-striped no-wrap" id="data" style="width:100%; font-size:85%">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>symbol</th>
+      <th>yahoo_symbol</th>
+      <th>name</th>
+      <th>sector</th>
+      <th>industry</th>
+      <th>roc</th>
+      <th>close</th>
+      <th>volume</th>
+      <th>rel Volume</th>
+      <th>adr(20)</th>
+      <th>atr(14)</th>
+      <th>roc(5)</th>
+      <th>roc(21)</th>
+      <th>roc(63)</th>
+      <th>roc(126)</th>
+      <th>roc(252)</th>
+      <th>52w High</th>
+      <th>% below 52w High</th>
+      <th>52w Low</th>
+      <th>% above 52w Low</th>
+      <th>UD Ratio</th>
+      <th>50d avg Volume</th>
+      <th>Pocket Pivot</th>
+      <th>1w Pocket Pivots</th>
+      <th>1m Pocket Pivots</th>
+      <th>Rocket Ratio</th>
+      <th>1m RS</th>
+      <th>3m RS</th>
+      <th>RS</th>
+      <th>Industry 1m RS</th>
+      <th>Industry 3m RS</th>
+      <th>Industry RS</th>
+      <th>ema(9)</th>
+      <th>% from 9d ema</th>
+      <th>ema(21)</th>
+      <th>% from 21d ema</th>
+      <th>sma(50)</th>
+      <th>% from 50d sma</th>
+      <th>EPS Growth Q</th>
+      <th>EPS Growth Y</th>
+      <th>EPS Growth FQ</th>
+      <th>EPS Growth FY</th>
+      <th>EPS Growth FQ1</th>
+      <th>EPS Growth FY1</th>
+      <th>Rev Growth Q</th>
+      <th>Rev Growth FQ</th>
+      <th>Rev Growth FY</th>
+      <th>Rev Growth FQ1</th>
+      <th>Rev Growth FY1</th>
+      <th>Insiders %</th>
+      <th>Institutions %</th>
+      <th>Institutions No.</th>
+      <th>Market Cap</th>
+      <th>Shares Outstanding</th>
+      <th>Shares Float</th>
+      <th>Shares Short</th>
+      <th>Short Ratio</th>
+      <th>Net Insider Trading %</th>
+      <th>exchange</th>
+      <th>country</th>
+      <th>IPO Date</th>
+      <th>market</th>
+      <th>date</th>
+      <th>group_name</th>
+      <th>scan_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>MLCO</td>
+      <td>MLCO</td>
+      <td>Melco Resorts &amp; Entertainment Ltd</td>
+      <td>Consumer Cyclical</td>
+      <td>Resorts &amp; Casinos</td>
+      <td>3.28</td>
+      <td>10.39</td>
+      <td>11395152.0</td>
+      <td>1.90</td>
+      <td>6.52</td>
+      <td>0.59</td>
+      <td>21.81</td>
+      <td>62.60</td>
+      <td>96.78</td>
+      <td>64.92</td>
+      <td>NaN</td>
+      <td>11.81</td>
+      <td>-12.02</td>
+      <td>4.06</td>
+      <td>155.91</td>
+      <td>1.56</td>
+      <td>5990642.98</td>
+      <td>True</td>
+      <td>5.0</td>
+      <td>8.0</td>
+      <td>28.31</td>
+      <td>99</td>
+      <td>99</td>
+      <td>98</td>
+      <td>75</td>
+      <td>81</td>
+      <td>77</td>
+      <td>8.98</td>
+      <td>15.72</td>
+      <td>8.00</td>
+      <td>29.89</td>
+      <td>6.94</td>
+      <td>49.82</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.46</td>
+      <td>0.52</td>
+      <td>-0.05</td>
+      <td>0.91</td>
+      <td>-0.46</td>
+      <td>1.17</td>
+      <td>0.46</td>
+      <td>0.44</td>
+      <td>0.57</td>
+      <td>0.00</td>
+      <td>42.26</td>
+      <td>259.0</td>
+      <td>3.223034e+09</td>
+      <td>4.450890e+08</td>
+      <td>1.695877e+08</td>
+      <td>12857527.0</td>
+      <td>2.02</td>
+      <td>NaN</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>2004-12-10 07:00:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AEHR</td>
+      <td>AEHR</td>
+      <td>Aehr Test Systems</td>
+      <td>Technology</td>
+      <td>Semiconductor Equipment &amp; Materials</td>
+      <td>6.66</td>
+      <td>24.17</td>
+      <td>1581024.0</td>
+      <td>0.86</td>
+      <td>8.61</td>
+      <td>2.07</td>
+      <td>-7.29</td>
+      <td>13.37</td>
+      <td>69.97</td>
+      <td>167.37</td>
+      <td>NaN</td>
+      <td>28.00</td>
+      <td>-13.68</td>
+      <td>6.71</td>
+      <td>260.21</td>
+      <td>1.59</td>
+      <td>1841609.60</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>12.72</td>
+      <td>87</td>
+      <td>99</td>
+      <td>99</td>
+      <td>95</td>
+      <td>58</td>
+      <td>57</td>
+      <td>25.01</td>
+      <td>-3.36</td>
+      <td>24.21</td>
+      <td>-0.18</td>
+      <td>20.65</td>
+      <td>17.06</td>
+      <td>-0.15</td>
+      <td>-0.31</td>
+      <td>0.60</td>
+      <td>0.29</td>
+      <td>0.14</td>
+      <td>0.63</td>
+      <td>0.89</td>
+      <td>0.33</td>
+      <td>0.33</td>
+      <td>0.24</td>
+      <td>0.50</td>
+      <td>8.21</td>
+      <td>35.10</td>
+      <td>96.0</td>
+      <td>6.761119e+08</td>
+      <td>2.749540e+07</td>
+      <td>2.343264e+07</td>
+      <td>4347998.0</td>
+      <td>1.79</td>
+      <td>39.4</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>1997-08-15 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AEO</td>
+      <td>AEO</td>
+      <td>American Eagle Outfitters Inc</td>
+      <td>Consumer Cyclical</td>
+      <td>Apparel Retail</td>
+      <td>2.57</td>
+      <td>15.99</td>
+      <td>3870106.0</td>
+      <td>0.76</td>
+      <td>5.30</td>
+      <td>0.82</td>
+      <td>1.07</td>
+      <td>38.68</td>
+      <td>51.13</td>
+      <td>24.15</td>
+      <td>NaN</td>
+      <td>28.16</td>
+      <td>-43.22</td>
+      <td>9.46</td>
+      <td>69.03</td>
+      <td>2.10</td>
+      <td>5100212.90</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>31.09</td>
+      <td>97</td>
+      <td>98</td>
+      <td>95</td>
+      <td>78</td>
+      <td>55</td>
+      <td>61</td>
+      <td>15.52</td>
+      <td>3.04</td>
+      <td>14.38</td>
+      <td>11.16</td>
+      <td>12.03</td>
+      <td>32.94</td>
+      <td>-0.67</td>
+      <td>-0.65</td>
+      <td>-0.70</td>
+      <td>-0.70</td>
+      <td>-0.29</td>
+      <td>0.42</td>
+      <td>0.00</td>
+      <td>-0.05</td>
+      <td>-0.02</td>
+      <td>-0.03</td>
+      <td>0.03</td>
+      <td>6.26</td>
+      <td>103.44</td>
+      <td>424.0</td>
+      <td>2.319195e+09</td>
+      <td>1.873340e+08</td>
+      <td>1.585687e+08</td>
+      <td>19159743.0</td>
+      <td>4.66</td>
+      <td>1.4</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1994-04-14 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>SLVM</td>
+      <td>SLVM</td>
+      <td>Sylvamo Corp</td>
+      <td>Basic Materials</td>
+      <td>Paper &amp; Paper Products</td>
+      <td>0.27</td>
+      <td>55.02</td>
+      <td>467003.0</td>
+      <td>1.06</td>
+      <td>3.78</td>
+      <td>1.64</td>
+      <td>1.72</td>
+      <td>21.97</td>
+      <td>50.74</td>
+      <td>11.20</td>
+      <td>NaN</td>
+      <td>56.89</td>
+      <td>-3.29</td>
+      <td>26.46</td>
+      <td>107.94</td>
+      <td>2.13</td>
+      <td>441332.08</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>85.05</td>
+      <td>93</td>
+      <td>98</td>
+      <td>97</td>
+      <td>54</td>
+      <td>95</td>
+      <td>90</td>
+      <td>53.95</td>
+      <td>1.99</td>
+      <td>51.47</td>
+      <td>6.91</td>
+      <td>46.09</td>
+      <td>19.39</td>
+      <td>-0.38</td>
+      <td>-0.39</td>
+      <td>0.24</td>
+      <td>-0.16</td>
+      <td>0.45</td>
+      <td>0.68</td>
+      <td>0.32</td>
+      <td>-0.03</td>
+      <td>0.05</td>
+      <td>-0.04</td>
+      <td>0.11</td>
+      <td>10.95</td>
+      <td>86.56</td>
+      <td>435.0</td>
+      <td>2.044032e+09</td>
+      <td>4.412700e+07</td>
+      <td>3.753343e+07</td>
+      <td>1360094.0</td>
+      <td>3.47</td>
+      <td>-65.6</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>2021-09-23 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>HDSN</td>
+      <td>HDSN</td>
+      <td>Hudson Technologies Inc</td>
+      <td>Basic Materials</td>
+      <td>Specialty Chemicals</td>
+      <td>1.49</td>
+      <td>11.61</td>
+      <td>595657.0</td>
+      <td>0.99</td>
+      <td>4.65</td>
+      <td>0.48</td>
+      <td>2.83</td>
+      <td>7.50</td>
+      <td>47.52</td>
+      <td>8.91</td>
+      <td>NaN</td>
+      <td>11.85</td>
+      <td>-2.03</td>
+      <td>3.11</td>
+      <td>273.31</td>
+      <td>1.91</td>
+      <td>599006.18</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>54.05</td>
+      <td>75</td>
+      <td>98</td>
+      <td>98</td>
+      <td>87</td>
+      <td>95</td>
+      <td>97</td>
+      <td>11.26</td>
+      <td>3.10</td>
+      <td>10.78</td>
+      <td>7.71</td>
+      <td>9.38</td>
+      <td>23.73</td>
+      <td>0.85</td>
+      <td>0.82</td>
+      <td>-0.54</td>
+      <td>1.93</td>
+      <td>-0.49</td>
+      <td>-0.40</td>
+      <td>0.48</td>
+      <td>-0.01</td>
+      <td>0.64</td>
+      <td>0.06</td>
+      <td>0.06</td>
+      <td>17.24</td>
+      <td>75.77</td>
+      <td>163.0</td>
+      <td>4.769030e+08</td>
+      <td>4.507590e+07</td>
+      <td>3.237893e+07</td>
+      <td>1365985.0</td>
+      <td>2.48</td>
+      <td>-0.0</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>1994-11-01 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>ANF</td>
+      <td>ANF</td>
+      <td>Abercrombie &amp; Fitch Company</td>
+      <td>Consumer Cyclical</td>
+      <td>Apparel Retail</td>
+      <td>3.62</td>
+      <td>23.73</td>
+      <td>1373601.0</td>
+      <td>0.78</td>
+      <td>5.07</td>
+      <td>1.24</td>
+      <td>-1.04</td>
+      <td>37.09</td>
+      <td>47.21</td>
+      <td>19.67</td>
+      <td>NaN</td>
+      <td>42.09</td>
+      <td>-43.62</td>
+      <td>14.02</td>
+      <td>69.26</td>
+      <td>1.98</td>
+      <td>1750221.78</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>27.55</td>
+      <td>97</td>
+      <td>98</td>
+      <td>94</td>
+      <td>78</td>
+      <td>55</td>
+      <td>61</td>
+      <td>23.12</td>
+      <td>2.62</td>
+      <td>21.63</td>
+      <td>9.69</td>
+      <td>18.57</td>
+      <td>27.79</td>
+      <td>-0.20</td>
+      <td>-0.13</td>
+      <td>-1.17</td>
+      <td>-0.72</td>
+      <td>-0.28</td>
+      <td>0.09</td>
+      <td>-0.07</td>
+      <td>-0.08</td>
+      <td>-0.05</td>
+      <td>-0.07</td>
+      <td>0.02</td>
+      <td>2.65</td>
+      <td>107.99</td>
+      <td>301.0</td>
+      <td>9.381348e+08</td>
+      <td>4.945360e+07</td>
+      <td>4.821134e+07</td>
+      <td>5122167.0</td>
+      <td>3.34</td>
+      <td>7.3</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1996-09-26 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>BKE</td>
+      <td>BKE</td>
+      <td>Buckle Inc</td>
+      <td>Consumer Cyclical</td>
+      <td>Apparel Retail</td>
+      <td>1.69</td>
+      <td>45.71</td>
+      <td>320466.0</td>
+      <td>0.80</td>
+      <td>3.32</td>
+      <td>1.45</td>
+      <td>4.00</td>
+      <td>16.19</td>
+      <td>37.47</td>
+      <td>42.67</td>
+      <td>NaN</td>
+      <td>51.55</td>
+      <td>-11.33</td>
+      <td>26.50</td>
+      <td>72.49</td>
+      <td>1.99</td>
+      <td>402978.40</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>72.05</td>
+      <td>90</td>
+      <td>97</td>
+      <td>96</td>
+      <td>78</td>
+      <td>55</td>
+      <td>61</td>
+      <td>44.33</td>
+      <td>3.11</td>
+      <td>42.58</td>
+      <td>7.34</td>
+      <td>38.53</td>
+      <td>18.64</td>
+      <td>-0.02</td>
+      <td>-0.03</td>
+      <td>-0.02</td>
+      <td>-0.01</td>
+      <td>0.02</td>
+      <td>0.07</td>
+      <td>0.02</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>0.06</td>
+      <td>0.04</td>
+      <td>39.80</td>
+      <td>56.82</td>
+      <td>333.0</td>
+      <td>2.000786e+09</td>
+      <td>5.009480e+07</td>
+      <td>2.903556e+07</td>
+      <td>2879016.0</td>
+      <td>7.03</td>
+      <td>0.0</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1992-05-08 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>VSCO</td>
+      <td>VSCO</td>
+      <td>Victoria's Secret &amp; Co</td>
+      <td>Consumer Cyclical</td>
+      <td>Apparel Retail</td>
+      <td>1.89</td>
+      <td>44.76</td>
+      <td>1515242.0</td>
+      <td>1.24</td>
+      <td>4.73</td>
+      <td>2.09</td>
+      <td>-2.70</td>
+      <td>11.93</td>
+      <td>34.70</td>
+      <td>14.77</td>
+      <td>NaN</td>
+      <td>65.20</td>
+      <td>-31.35</td>
+      <td>26.14</td>
+      <td>71.23</td>
+      <td>1.79</td>
+      <td>1220903.68</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>53.00</td>
+      <td>85</td>
+      <td>96</td>
+      <td>92</td>
+      <td>78</td>
+      <td>55</td>
+      <td>61</td>
+      <td>44.50</td>
+      <td>0.57</td>
+      <td>43.55</td>
+      <td>2.77</td>
+      <td>39.16</td>
+      <td>14.30</td>
+      <td>-0.54</td>
+      <td>-0.52</td>
+      <td>-0.73</td>
+      <td>-0.34</td>
+      <td>-0.14</td>
+      <td>0.10</td>
+      <td>-0.06</td>
+      <td>-0.08</td>
+      <td>-0.06</td>
+      <td>-0.07</td>
+      <td>0.02</td>
+      <td>10.79</td>
+      <td>93.10</td>
+      <td>378.0</td>
+      <td>3.619487e+09</td>
+      <td>8.124550e+07</td>
+      <td>6.470555e+07</td>
+      <td>5488356.0</td>
+      <td>4.52</td>
+      <td>1.8</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>2021-07-21 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>URBN</td>
+      <td>URBN</td>
+      <td>Urban Outfitters Inc</td>
+      <td>Consumer Cyclical</td>
+      <td>Apparel Retail</td>
+      <td>0.97</td>
+      <td>29.05</td>
+      <td>1281402.0</td>
+      <td>0.66</td>
+      <td>3.90</td>
+      <td>1.01</td>
+      <td>0.38</td>
+      <td>23.93</td>
+      <td>33.69</td>
+      <td>32.05</td>
+      <td>NaN</td>
+      <td>33.00</td>
+      <td>-11.97</td>
+      <td>17.81</td>
+      <td>63.11</td>
+      <td>1.98</td>
+      <td>1951990.54</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>33.05</td>
+      <td>94</td>
+      <td>96</td>
+      <td>95</td>
+      <td>78</td>
+      <td>55</td>
+      <td>61</td>
+      <td>28.52</td>
+      <td>1.87</td>
+      <td>27.19</td>
+      <td>6.86</td>
+      <td>24.36</td>
+      <td>19.25</td>
+      <td>-0.53</td>
+      <td>-0.50</td>
+      <td>-0.53</td>
+      <td>-0.44</td>
+      <td>-0.12</td>
+      <td>0.25</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>0.04</td>
+      <td>0.02</td>
+      <td>0.03</td>
+      <td>34.45</td>
+      <td>83.19</td>
+      <td>315.0</td>
+      <td>2.336624e+09</td>
+      <td>9.217450e+07</td>
+      <td>6.451753e+07</td>
+      <td>8575634.0</td>
+      <td>4.70</td>
+      <td>0.1</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>1993-11-09 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>GES</td>
+      <td>GES</td>
+      <td>Guess? Inc</td>
+      <td>Consumer Cyclical</td>
+      <td>Apparel Retail</td>
+      <td>1.52</td>
+      <td>21.35</td>
+      <td>644418.0</td>
+      <td>0.87</td>
+      <td>4.17</td>
+      <td>0.81</td>
+      <td>2.84</td>
+      <td>21.86</td>
+      <td>31.30</td>
+      <td>8.60</td>
+      <td>NaN</td>
+      <td>25.27</td>
+      <td>-15.51</td>
+      <td>14.27</td>
+      <td>49.61</td>
+      <td>1.66</td>
+      <td>742889.74</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>7.0</td>
+      <td>38.00</td>
+      <td>93</td>
+      <td>95</td>
+      <td>93</td>
+      <td>78</td>
+      <td>55</td>
+      <td>61</td>
+      <td>20.69</td>
+      <td>3.17</td>
+      <td>19.74</td>
+      <td>8.15</td>
+      <td>17.55</td>
+      <td>21.68</td>
+      <td>-0.61</td>
+      <td>-0.61</td>
+      <td>-0.11</td>
+      <td>-0.10</td>
+      <td>0.30</td>
+      <td>0.22</td>
+      <td>0.02</td>
+      <td>-0.04</td>
+      <td>0.02</td>
+      <td>-0.03</td>
+      <td>0.03</td>
+      <td>48.10</td>
+      <td>63.66</td>
+      <td>240.0</td>
+      <td>1.027245e+09</td>
+      <td>5.443800e+07</td>
+      <td>2.823207e+07</td>
+      <td>4908583.0</td>
+      <td>8.72</td>
+      <td>-0.0</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1996-08-08 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>LSCC</td>
+      <td>LSCC</td>
+      <td>Lattice Semiconductor Corporation</td>
+      <td>Technology</td>
+      <td>Semiconductors</td>
+      <td>0.81</td>
+      <td>69.43</td>
+      <td>540545.0</td>
+      <td>0.33</td>
+      <td>4.20</td>
+      <td>2.56</td>
+      <td>-4.67</td>
+      <td>30.43</td>
+      <td>30.88</td>
+      <td>34.82</td>
+      <td>NaN</td>
+      <td>81.47</td>
+      <td>-14.78</td>
+      <td>43.41</td>
+      <td>59.94</td>
+      <td>1.41</td>
+      <td>1635894.94</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>82.64</td>
+      <td>96</td>
+      <td>95</td>
+      <td>95</td>
+      <td>95</td>
+      <td>58</td>
+      <td>57</td>
+      <td>69.38</td>
+      <td>0.07</td>
+      <td>66.15</td>
+      <td>4.96</td>
+      <td>57.21</td>
+      <td>21.35</td>
+      <td>0.73</td>
+      <td>0.74</td>
+      <td>0.50</td>
+      <td>0.65</td>
+      <td>0.27</td>
+      <td>0.15</td>
+      <td>0.31</td>
+      <td>0.24</td>
+      <td>0.28</td>
+      <td>0.16</td>
+      <td>0.12</td>
+      <td>1.77</td>
+      <td>106.01</td>
+      <td>487.0</td>
+      <td>8.863606e+09</td>
+      <td>1.370590e+08</td>
+      <td>1.351858e+08</td>
+      <td>5818535.0</td>
+      <td>4.34</td>
+      <td>11.1</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>1989-11-09 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>M</td>
+      <td>M</td>
+      <td>Macy’s Inc</td>
+      <td>Consumer Cyclical</td>
+      <td>Department Stores</td>
+      <td>1.86</td>
+      <td>22.95</td>
+      <td>7983998.0</td>
+      <td>0.74</td>
+      <td>3.87</td>
+      <td>0.91</td>
+      <td>-2.34</td>
+      <td>17.21</td>
+      <td>30.55</td>
+      <td>-5.32</td>
+      <td>NaN</td>
+      <td>28.52</td>
+      <td>-19.53</td>
+      <td>15.10</td>
+      <td>51.99</td>
+      <td>1.52</td>
+      <td>10852592.54</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>24.86</td>
+      <td>91</td>
+      <td>95</td>
+      <td>86</td>
+      <td>73</td>
+      <td>82</td>
+      <td>58</td>
+      <td>22.91</td>
+      <td>0.19</td>
+      <td>22.21</td>
+      <td>3.31</td>
+      <td>20.07</td>
+      <td>14.34</td>
+      <td>-0.20</td>
+      <td>-0.08</td>
+      <td>-0.85</td>
+      <td>-0.23</td>
+      <td>-0.25</td>
+      <td>-0.02</td>
+      <td>-0.01</td>
+      <td>-0.04</td>
+      <td>0.00</td>
+      <td>-0.04</td>
+      <td>-0.00</td>
+      <td>0.30</td>
+      <td>89.68</td>
+      <td>574.0</td>
+      <td>5.693521e+09</td>
+      <td>2.709910e+08</td>
+      <td>2.698476e+08</td>
+      <td>19376348.0</td>
+      <td>1.86</td>
+      <td>32.9</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1992-02-05 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>UNVR</td>
+      <td>UNVR</td>
+      <td>Univar Inc</td>
+      <td>Basic Materials</td>
+      <td>Chemicals</td>
+      <td>2.25</td>
+      <td>33.56</td>
+      <td>2194416.0</td>
+      <td>1.39</td>
+      <td>3.24</td>
+      <td>1.18</td>
+      <td>1.30</td>
+      <td>17.96</td>
+      <td>30.23</td>
+      <td>5.60</td>
+      <td>NaN</td>
+      <td>34.53</td>
+      <td>-2.81</td>
+      <td>21.49</td>
+      <td>56.17</td>
+      <td>2.17</td>
+      <td>1578630.52</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>7.0</td>
+      <td>102.25</td>
+      <td>91</td>
+      <td>95</td>
+      <td>91</td>
+      <td>87</td>
+      <td>95</td>
+      <td>97</td>
+      <td>32.77</td>
+      <td>2.42</td>
+      <td>31.03</td>
+      <td>8.16</td>
+      <td>27.23</td>
+      <td>23.23</td>
+      <td>0.54</td>
+      <td>0.59</td>
+      <td>-0.10</td>
+      <td>0.56</td>
+      <td>-0.37</td>
+      <td>-0.12</td>
+      <td>0.20</td>
+      <td>0.06</td>
+      <td>0.21</td>
+      <td>-0.06</td>
+      <td>-0.06</td>
+      <td>0.87</td>
+      <td>106.99</td>
+      <td>419.0</td>
+      <td>4.813397e+09</td>
+      <td>1.631660e+08</td>
+      <td>1.614076e+08</td>
+      <td>4806343.0</td>
+      <td>4.15</td>
+      <td>3.2</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>2015-06-17 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>GBX</td>
+      <td>GBX</td>
+      <td>Greenbrier Companies Inc</td>
+      <td>Industrials</td>
+      <td>Railroads</td>
+      <td>2.08</td>
+      <td>36.28</td>
+      <td>245062.0</td>
+      <td>0.76</td>
+      <td>2.93</td>
+      <td>1.07</td>
+      <td>-5.50</td>
+      <td>-3.46</td>
+      <td>29.20</td>
+      <td>-15.04</td>
+      <td>NaN</td>
+      <td>53.46</td>
+      <td>-32.13</td>
+      <td>23.80</td>
+      <td>52.47</td>
+      <td>2.40</td>
+      <td>320665.32</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>98.49</td>
+      <td>33</td>
+      <td>95</td>
+      <td>77</td>
+      <td>35</td>
+      <td>53</td>
+      <td>51</td>
+      <td>37.00</td>
+      <td>-1.96</td>
+      <td>36.58</td>
+      <td>-0.83</td>
+      <td>32.31</td>
+      <td>12.30</td>
+      <td>-0.36</td>
+      <td>-0.37</td>
+      <td>0.56</td>
+      <td>0.99</td>
+      <td>0.42</td>
+      <td>0.09</td>
+      <td>0.59</td>
+      <td>0.36</td>
+      <td>0.12</td>
+      <td>0.13</td>
+      <td>-0.06</td>
+      <td>2.69</td>
+      <td>97.25</td>
+      <td>277.0</td>
+      <td>1.272952e+09</td>
+      <td>3.278270e+07</td>
+      <td>3.158335e+07</td>
+      <td>1240559.0</td>
+      <td>3.38</td>
+      <td>-23.6</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1994-07-14 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>SIG</td>
+      <td>SIG</td>
+      <td>Signet Jewelers Ltd</td>
+      <td>Consumer Cyclical</td>
+      <td>Luxury Goods</td>
+      <td>6.11</td>
+      <td>73.79</td>
+      <td>1646293.0</td>
+      <td>1.93</td>
+      <td>5.21</td>
+      <td>3.68</td>
+      <td>13.52</td>
+      <td>13.82</td>
+      <td>27.31</td>
+      <td>18.63</td>
+      <td>NaN</td>
+      <td>98.67</td>
+      <td>-25.22</td>
+      <td>48.31</td>
+      <td>52.76</td>
+      <td>1.78</td>
+      <td>854611.22</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>41.21</td>
+      <td>88</td>
+      <td>94</td>
+      <td>92</td>
+      <td>78</td>
+      <td>55</td>
+      <td>61</td>
+      <td>65.69</td>
+      <td>12.33</td>
+      <td>64.18</td>
+      <td>14.98</td>
+      <td>61.95</td>
+      <td>19.10</td>
+      <td>-0.35</td>
+      <td>-0.28</td>
+      <td>-0.82</td>
+      <td>-0.12</td>
+      <td>-0.01</td>
+      <td>-0.09</td>
+      <td>-0.02</td>
+      <td>-0.03</td>
+      <td>-0.01</td>
+      <td>-0.06</td>
+      <td>0.01</td>
+      <td>2.39</td>
+      <td>109.24</td>
+      <td>382.0</td>
+      <td>3.056814e+09</td>
+      <td>4.624530e+07</td>
+      <td>3.521445e+07</td>
+      <td>5567502.0</td>
+      <td>6.80</td>
+      <td>-0.2</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1988-07-14 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>B</td>
+      <td>B</td>
+      <td>Barnes Group Inc</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>0.97</td>
+      <td>40.53</td>
+      <td>109503.0</td>
+      <td>0.45</td>
+      <td>2.60</td>
+      <td>1.14</td>
+      <td>-4.84</td>
+      <td>6.80</td>
+      <td>26.97</td>
+      <td>11.75</td>
+      <td>NaN</td>
+      <td>48.79</td>
+      <td>-16.93</td>
+      <td>27.93</td>
+      <td>45.11</td>
+      <td>1.52</td>
+      <td>244369.06</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>197.71</td>
+      <td>73</td>
+      <td>94</td>
+      <td>88</td>
+      <td>35</td>
+      <td>53</td>
+      <td>51</td>
+      <td>40.94</td>
+      <td>-1.00</td>
+      <td>39.76</td>
+      <td>1.92</td>
+      <td>35.96</td>
+      <td>12.71</td>
+      <td>-0.39</td>
+      <td>-0.40</td>
+      <td>-0.13</td>
+      <td>0.00</td>
+      <td>0.20</td>
+      <td>0.13</td>
+      <td>-0.03</td>
+      <td>0.03</td>
+      <td>0.01</td>
+      <td>0.02</td>
+      <td>0.03</td>
+      <td>4.94</td>
+      <td>88.92</td>
+      <td>289.0</td>
+      <td>1.966621e+09</td>
+      <td>5.056880e+07</td>
+      <td>4.831397e+07</td>
+      <td>1181183.0</td>
+      <td>4.41</td>
+      <td>3.1</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1980-03-17 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>LVS</td>
+      <td>LVS</td>
+      <td>Las Vegas Sands Corp</td>
+      <td>Consumer Cyclical</td>
+      <td>Resorts &amp; Casinos</td>
+      <td>0.64</td>
+      <td>47.10</td>
+      <td>5444426.0</td>
+      <td>0.77</td>
+      <td>3.37</td>
+      <td>1.61</td>
+      <td>0.56</td>
+      <td>15.72</td>
+      <td>25.10</td>
+      <td>25.97</td>
+      <td>NaN</td>
+      <td>49.30</td>
+      <td>-4.46</td>
+      <td>28.88</td>
+      <td>63.12</td>
+      <td>1.24</td>
+      <td>7095742.04</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>46.79</td>
+      <td>89</td>
+      <td>93</td>
+      <td>94</td>
+      <td>75</td>
+      <td>81</td>
+      <td>77</td>
+      <td>46.19</td>
+      <td>1.98</td>
+      <td>44.23</td>
+      <td>6.49</td>
+      <td>40.58</td>
+      <td>16.06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.73</td>
+      <td>0.09</td>
+      <td>1.42</td>
+      <td>2.11</td>
+      <td>0.17</td>
+      <td>0.19</td>
+      <td>0.00</td>
+      <td>0.77</td>
+      <td>0.88</td>
+      <td>56.80</td>
+      <td>41.07</td>
+      <td>824.0</td>
+      <td>3.310367e+10</td>
+      <td>7.641660e+08</td>
+      <td>3.320423e+08</td>
+      <td>18567432.0</td>
+      <td>2.11</td>
+      <td>0.0</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>2004-12-15 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>CAT</td>
+      <td>CAT</td>
+      <td>Caterpillar Inc</td>
+      <td>Industrials</td>
+      <td>Farm &amp; Heavy Construction Machinery</td>
+      <td>0.22</td>
+      <td>228.79</td>
+      <td>2645865.0</td>
+      <td>0.82</td>
+      <td>2.09</td>
+      <td>4.83</td>
+      <td>-3.22</td>
+      <td>0.08</td>
+      <td>24.92</td>
+      <td>-0.44</td>
+      <td>NaN</td>
+      <td>239.85</td>
+      <td>-4.61</td>
+      <td>160.60</td>
+      <td>42.46</td>
+      <td>1.81</td>
+      <td>3239763.00</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>160.26</td>
+      <td>45</td>
+      <td>93</td>
+      <td>88</td>
+      <td>35</td>
+      <td>53</td>
+      <td>51</td>
+      <td>232.28</td>
+      <td>-1.50</td>
+      <td>229.10</td>
+      <td>-0.14</td>
+      <td>208.78</td>
+      <td>9.58</td>
+      <td>0.43</td>
+      <td>0.49</td>
+      <td>0.48</td>
+      <td>0.28</td>
+      <td>0.24</td>
+      <td>0.08</td>
+      <td>0.21</td>
+      <td>0.17</td>
+      <td>0.15</td>
+      <td>0.08</td>
+      <td>0.06</td>
+      <td>0.24</td>
+      <td>71.43</td>
+      <td>2570.0</td>
+      <td>1.230715e+11</td>
+      <td>5.204090e+08</td>
+      <td>5.192020e+08</td>
+      <td>6199217.0</td>
+      <td>1.88</td>
+      <td>16.8</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1962-01-02 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>DIOD</td>
+      <td>DIOD</td>
+      <td>Diodes Incorporated</td>
+      <td>Technology</td>
+      <td>Semiconductors</td>
+      <td>0.75</td>
+      <td>86.43</td>
+      <td>104064.0</td>
+      <td>0.39</td>
+      <td>3.56</td>
+      <td>2.92</td>
+      <td>-6.29</td>
+      <td>18.51</td>
+      <td>24.52</td>
+      <td>16.01</td>
+      <td>NaN</td>
+      <td>113.39</td>
+      <td>-23.77</td>
+      <td>58.52</td>
+      <td>47.69</td>
+      <td>0.80</td>
+      <td>266013.12</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>166.81</td>
+      <td>92</td>
+      <td>93</td>
+      <td>90</td>
+      <td>95</td>
+      <td>58</td>
+      <td>57</td>
+      <td>87.98</td>
+      <td>-1.76</td>
+      <td>85.27</td>
+      <td>1.36</td>
+      <td>76.73</td>
+      <td>12.64</td>
+      <td>0.26</td>
+      <td>0.25</td>
+      <td>0.01</td>
+      <td>0.40</td>
+      <td>-0.15</td>
+      <td>-0.10</td>
+      <td>0.11</td>
+      <td>0.02</td>
+      <td>0.11</td>
+      <td>-0.03</td>
+      <td>-0.01</td>
+      <td>1.93</td>
+      <td>101.04</td>
+      <td>420.0</td>
+      <td>3.754888e+09</td>
+      <td>4.546970e+07</td>
+      <td>4.437253e+07</td>
+      <td>1587843.0</td>
+      <td>5.39</td>
+      <td>4.2</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>1973-02-21 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>ASML</td>
+      <td>ASML</td>
+      <td>ASML Holding NV ADR</td>
+      <td>Technology</td>
+      <td>Semiconductor Equipment &amp; Materials</td>
+      <td>1.27</td>
+      <td>600.56</td>
+      <td>810386.0</td>
+      <td>0.55</td>
+      <td>3.02</td>
+      <td>16.94</td>
+      <td>-1.24</td>
+      <td>24.24</td>
+      <td>24.40</td>
+      <td>5.84</td>
+      <td>NaN</td>
+      <td>817.30</td>
+      <td>-26.52</td>
+      <td>363.15</td>
+      <td>65.38</td>
+      <td>1.77</td>
+      <td>1469701.06</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>269.50</td>
+      <td>94</td>
+      <td>93</td>
+      <td>87</td>
+      <td>95</td>
+      <td>58</td>
+      <td>57</td>
+      <td>596.15</td>
+      <td>0.74</td>
+      <td>573.37</td>
+      <td>4.74</td>
+      <td>501.54</td>
+      <td>19.74</td>
+      <td>-0.02</td>
+      <td>0.01</td>
+      <td>-0.05</td>
+      <td>-0.19</td>
+      <td>1.71</td>
+      <td>0.41</td>
+      <td>0.10</td>
+      <td>0.16</td>
+      <td>-0.03</td>
+      <td>0.79</td>
+      <td>0.23</td>
+      <td>0.00</td>
+      <td>19.77</td>
+      <td>1114.0</td>
+      <td>2.289620e+11</td>
+      <td>3.972000e+08</td>
+      <td>3.960891e+08</td>
+      <td>1358276.0</td>
+      <td>0.80</td>
+      <td>0.0</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>1995-03-15 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>APD</td>
+      <td>APD</td>
+      <td>Air Products and Chemicals Inc</td>
+      <td>Basic Materials</td>
+      <td>Specialty Chemicals</td>
+      <td>1.13</td>
+      <td>315.62</td>
+      <td>910356.0</td>
+      <td>0.81</td>
+      <td>1.95</td>
+      <td>6.11</td>
+      <td>1.76</td>
+      <td>13.68</td>
+      <td>24.34</td>
+      <td>25.06</td>
+      <td>NaN</td>
+      <td>320.62</td>
+      <td>-1.56</td>
+      <td>216.24</td>
+      <td>45.96</td>
+      <td>1.58</td>
+      <td>1124930.80</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>196.65</td>
+      <td>87</td>
+      <td>93</td>
+      <td>95</td>
+      <td>31</td>
+      <td>50</td>
+      <td>53</td>
+      <td>310.72</td>
+      <td>1.58</td>
+      <td>299.36</td>
+      <td>5.43</td>
+      <td>268.17</td>
+      <td>17.69</td>
+      <td>-0.04</td>
+      <td>-0.05</td>
+      <td>0.07</td>
+      <td>0.09</td>
+      <td>0.12</td>
+      <td>0.10</td>
+      <td>0.26</td>
+      <td>0.09</td>
+      <td>0.05</td>
+      <td>0.06</td>
+      <td>0.05</td>
+      <td>0.40</td>
+      <td>84.89</td>
+      <td>1878.0</td>
+      <td>6.398014e+10</td>
+      <td>2.217990e+08</td>
+      <td>2.212227e+08</td>
+      <td>2392518.0</td>
+      <td>2.33</td>
+      <td>0.0</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1980-03-17 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>AGCO</td>
+      <td>AGCO</td>
+      <td>AGCO Corporation</td>
+      <td>Industrials</td>
+      <td>Farm &amp; Heavy Construction Machinery</td>
+      <td>1.27</td>
+      <td>134.60</td>
+      <td>429999.0</td>
+      <td>0.72</td>
+      <td>2.81</td>
+      <td>3.89</td>
+      <td>1.42</td>
+      <td>10.22</td>
+      <td>22.42</td>
+      <td>4.16</td>
+      <td>NaN</td>
+      <td>150.28</td>
+      <td>-10.43</td>
+      <td>88.55</td>
+      <td>52.00</td>
+      <td>1.43</td>
+      <td>598318.64</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>103.30</td>
+      <td>82</td>
+      <td>92</td>
+      <td>87</td>
+      <td>35</td>
+      <td>53</td>
+      <td>51</td>
+      <td>132.00</td>
+      <td>1.97</td>
+      <td>128.30</td>
+      <td>4.91</td>
+      <td>118.51</td>
+      <td>13.58</td>
+      <td>0.31</td>
+      <td>0.32</td>
+      <td>0.26</td>
+      <td>0.14</td>
+      <td>0.03</td>
+      <td>0.08</td>
+      <td>0.14</td>
+      <td>0.18</td>
+      <td>0.12</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>17.03</td>
+      <td>83.80</td>
+      <td>623.0</td>
+      <td>9.536621e+09</td>
+      <td>7.459810e+07</td>
+      <td>6.180376e+07</td>
+      <td>1053548.0</td>
+      <td>1.76</td>
+      <td>0.3</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1992-04-16 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>LPX</td>
+      <td>LPX</td>
+      <td>Louisiana-Pacific Corporation</td>
+      <td>Industrials</td>
+      <td>Building Products &amp; Equipment</td>
+      <td>4.11</td>
+      <td>65.42</td>
+      <td>714761.0</td>
+      <td>0.77</td>
+      <td>3.17</td>
+      <td>1.89</td>
+      <td>2.54</td>
+      <td>19.25</td>
+      <td>21.98</td>
+      <td>-7.17</td>
+      <td>NaN</td>
+      <td>79.77</td>
+      <td>-17.99</td>
+      <td>48.20</td>
+      <td>35.73</td>
+      <td>1.19</td>
+      <td>931148.88</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>75.65</td>
+      <td>92</td>
+      <td>92</td>
+      <td>84</td>
+      <td>54</td>
+      <td>95</td>
+      <td>90</td>
+      <td>63.40</td>
+      <td>3.19</td>
+      <td>61.65</td>
+      <td>6.11</td>
+      <td>57.56</td>
+      <td>13.66</td>
+      <td>-0.38</td>
+      <td>-0.21</td>
+      <td>-0.70</td>
+      <td>-0.14</td>
+      <td>-0.81</td>
+      <td>-0.59</td>
+      <td>-0.16</td>
+      <td>-0.28</td>
+      <td>-0.12</td>
+      <td>-0.43</td>
+      <td>-0.22</td>
+      <td>1.83</td>
+      <td>105.91</td>
+      <td>548.0</td>
+      <td>4.300296e+09</td>
+      <td>7.169550e+07</td>
+      <td>7.043935e+07</td>
+      <td>4993088.0</td>
+      <td>5.95</td>
+      <td>1.4</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1980-03-17 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>TH</td>
+      <td>TH</td>
+      <td>Target Hospitality Corp</td>
+      <td>Industrials</td>
+      <td>Specialty Business Services</td>
+      <td>4.26</td>
+      <td>15.65</td>
+      <td>821161.0</td>
+      <td>1.20</td>
+      <td>7.51</td>
+      <td>0.88</td>
+      <td>8.23</td>
+      <td>45.99</td>
+      <td>21.32</td>
+      <td>128.47</td>
+      <td>NaN</td>
+      <td>16.05</td>
+      <td>-2.49</td>
+      <td>2.72</td>
+      <td>475.37</td>
+      <td>1.68</td>
+      <td>682346.74</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>41.91</td>
+      <td>98</td>
+      <td>92</td>
+      <td>99</td>
+      <td>75</td>
+      <td>81</td>
+      <td>77</td>
+      <td>14.75</td>
+      <td>6.07</td>
+      <td>13.97</td>
+      <td>12.06</td>
+      <td>12.77</td>
+      <td>22.52</td>
+      <td>1.85</td>
+      <td>1.84</td>
+      <td>15.00</td>
+      <td>24.80</td>
+      <td>38.00</td>
+      <td>0.59</td>
+      <td>0.79</td>
+      <td>0.88</td>
+      <td>0.73</td>
+      <td>0.81</td>
+      <td>0.22</td>
+      <td>4.79</td>
+      <td>92.51</td>
+      <td>153.0</td>
+      <td>1.314920e+09</td>
+      <td>9.725740e+07</td>
+      <td>2.859756e+07</td>
+      <td>5429589.0</td>
+      <td>9.73</td>
+      <td>9.3</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>2018-03-12 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>MTSI</td>
+      <td>MTSI</td>
+      <td>MACOM Technology Solutions Holdings Inc</td>
+      <td>Technology</td>
+      <td>Semiconductors</td>
+      <td>0.73</td>
+      <td>67.18</td>
+      <td>222406.0</td>
+      <td>0.45</td>
+      <td>3.14</td>
+      <td>1.89</td>
+      <td>-2.20</td>
+      <td>5.15</td>
+      <td>21.15</td>
+      <td>24.55</td>
+      <td>NaN</td>
+      <td>80.30</td>
+      <td>-16.34</td>
+      <td>42.85</td>
+      <td>56.78</td>
+      <td>1.26</td>
+      <td>488944.52</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>105.96</td>
+      <td>69</td>
+      <td>92</td>
+      <td>91</td>
+      <td>95</td>
+      <td>58</td>
+      <td>57</td>
+      <td>67.62</td>
+      <td>-0.65</td>
+      <td>66.62</td>
+      <td>0.84</td>
+      <td>60.96</td>
+      <td>10.20</td>
+      <td>12.97</td>
+      <td>13.07</td>
+      <td>0.22</td>
+      <td>0.08</td>
+      <td>0.12</td>
+      <td>0.09</td>
+      <td>0.15</td>
+      <td>0.13</td>
+      <td>0.07</td>
+      <td>0.10</td>
+      <td>0.08</td>
+      <td>26.91</td>
+      <td>72.93</td>
+      <td>346.0</td>
+      <td>4.972601e+09</td>
+      <td>6.999720e+07</td>
+      <td>5.181042e+07</td>
+      <td>3724398.0</td>
+      <td>8.94</td>
+      <td>-0.4</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>2012-03-15 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>UHAL</td>
+      <td>UHAL</td>
+      <td>Amerco</td>
+      <td>Industrials</td>
+      <td>Rental &amp; Leasing Services</td>
+      <td>1.30</td>
+      <td>64.50</td>
+      <td>423577.0</td>
+      <td>1.31</td>
+      <td>4.14</td>
+      <td>2.10</td>
+      <td>1.90</td>
+      <td>20.40</td>
+      <td>19.89</td>
+      <td>31.20</td>
+      <td>NaN</td>
+      <td>730.36</td>
+      <td>-91.17</td>
+      <td>44.75</td>
+      <td>44.13</td>
+      <td>3.53</td>
+      <td>322342.16</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>278.80</td>
+      <td>93</td>
+      <td>91</td>
+      <td>92</td>
+      <td>97</td>
+      <td>88</td>
+      <td>90</td>
+      <td>63.01</td>
+      <td>2.36</td>
+      <td>60.05</td>
+      <td>7.40</td>
+      <td>55.90</td>
+      <td>15.38</td>
+      <td>-0.14</td>
+      <td>-0.14</td>
+      <td>0.10</td>
+      <td>0.05</td>
+      <td>0.54</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>0.15</td>
+      <td>0.11</td>
+      <td>0.03</td>
+      <td>-0.33</td>
+      <td>54.34</td>
+      <td>37.34</td>
+      <td>473.0</td>
+      <td>1.037057e+10</td>
+      <td>1.960780e+08</td>
+      <td>8.986838e+07</td>
+      <td>2801650.0</td>
+      <td>4.90</td>
+      <td>0.0</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>1994-11-03 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>DE</td>
+      <td>DE</td>
+      <td>Deere &amp; Company</td>
+      <td>Industrials</td>
+      <td>Farm &amp; Heavy Construction Machinery</td>
+      <td>0.55</td>
+      <td>440.66</td>
+      <td>1047162.0</td>
+      <td>0.67</td>
+      <td>2.10</td>
+      <td>9.71</td>
+      <td>-0.08</td>
+      <td>10.50</td>
+      <td>19.59</td>
+      <td>24.12</td>
+      <td>NaN</td>
+      <td>448.40</td>
+      <td>-1.73</td>
+      <td>283.81</td>
+      <td>55.27</td>
+      <td>1.96</td>
+      <td>1563674.82</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>180.10</td>
+      <td>82</td>
+      <td>91</td>
+      <td>92</td>
+      <td>35</td>
+      <td>53</td>
+      <td>51</td>
+      <td>437.05</td>
+      <td>0.83</td>
+      <td>424.86</td>
+      <td>3.72</td>
+      <td>393.39</td>
+      <td>12.02</td>
+      <td>0.13</td>
+      <td>0.16</td>
+      <td>0.73</td>
+      <td>0.21</td>
+      <td>0.88</td>
+      <td>0.13</td>
+      <td>0.23</td>
+      <td>0.30</td>
+      <td>0.18</td>
+      <td>0.26</td>
+      <td>0.08</td>
+      <td>0.18</td>
+      <td>78.68</td>
+      <td>2522.0</td>
+      <td>1.225480e+11</td>
+      <td>3.018200e+08</td>
+      <td>2.816188e+08</td>
+      <td>3320303.0</td>
+      <td>2.49</td>
+      <td>3.9</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1972-06-01 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>AG</td>
+      <td>FR.TO</td>
+      <td>First Majestic Silver Corp</td>
+      <td>Basic Materials</td>
+      <td>Silver</td>
+      <td>4.50</td>
+      <td>9.28</td>
+      <td>6298957.0</td>
+      <td>0.85</td>
+      <td>4.71</td>
+      <td>0.44</td>
+      <td>-0.11</td>
+      <td>2.77</td>
+      <td>19.13</td>
+      <td>5.69</td>
+      <td>NaN</td>
+      <td>14.59</td>
+      <td>-36.39</td>
+      <td>6.31</td>
+      <td>47.07</td>
+      <td>1.62</td>
+      <td>7413225.12</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>32.33</td>
+      <td>60</td>
+      <td>90</td>
+      <td>77</td>
+      <td>92</td>
+      <td>97</td>
+      <td>81</td>
+      <td>9.20</td>
+      <td>0.89</td>
+      <td>9.11</td>
+      <td>1.85</td>
+      <td>8.66</td>
+      <td>7.10</td>
+      <td>2.93</td>
+      <td>2.36</td>
+      <td>-3.00</td>
+      <td>-6.00</td>
+      <td>5.50</td>
+      <td>3.80</td>
+      <td>0.28</td>
+      <td>-0.14</td>
+      <td>0.14</td>
+      <td>-0.13</td>
+      <td>0.25</td>
+      <td>9.66</td>
+      <td>34.00</td>
+      <td>301.0</td>
+      <td>3.331536e+09</td>
+      <td>2.654610e+08</td>
+      <td>2.396952e+08</td>
+      <td>5379604.0</td>
+      <td>7.19</td>
+      <td>0.0</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1996-08-08 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>HFWA</td>
+      <td>HFWA</td>
+      <td>Heritage Financial Corporation</td>
+      <td>Financial Services</td>
+      <td>Banks—Regional</td>
+      <td>0.81</td>
+      <td>31.29</td>
+      <td>132564.0</td>
+      <td>0.63</td>
+      <td>2.74</td>
+      <td>0.91</td>
+      <td>-4.89</td>
+      <td>-8.32</td>
+      <td>18.61</td>
+      <td>22.95</td>
+      <td>NaN</td>
+      <td>34.34</td>
+      <td>-8.88</td>
+      <td>22.51</td>
+      <td>39.00</td>
+      <td>1.22</td>
+      <td>209893.58</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>164.24</td>
+      <td>23</td>
+      <td>90</td>
+      <td>92</td>
+      <td>42</td>
+      <td>92</td>
+      <td>93</td>
+      <td>31.91</td>
+      <td>-1.94</td>
+      <td>32.16</td>
+      <td>-2.72</td>
+      <td>31.22</td>
+      <td>0.23</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>0.16</td>
+      <td>-0.15</td>
+      <td>0.14</td>
+      <td>0.16</td>
+      <td>0.03</td>
+      <td>0.34</td>
+      <td>0.14</td>
+      <td>0.19</td>
+      <td>0.17</td>
+      <td>1.72</td>
+      <td>79.04</td>
+      <td>234.0</td>
+      <td>1.153524e+09</td>
+      <td>3.510420e+07</td>
+      <td>3.447202e+07</td>
+      <td>939827.0</td>
+      <td>3.95</td>
+      <td>-3.1</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>1998-05-07 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>CRDO</td>
+      <td>CRDO</td>
+      <td>Credo Technology Group Holding Ltd</td>
+      <td>Technology</td>
+      <td>Communication Equipment</td>
+      <td>2.79</td>
+      <td>15.10</td>
+      <td>805810.0</td>
+      <td>0.78</td>
+      <td>5.07</td>
+      <td>0.72</td>
+      <td>8.40</td>
+      <td>11.27</td>
+      <td>18.34</td>
+      <td>12.52</td>
+      <td>NaN</td>
+      <td>18.00</td>
+      <td>-16.11</td>
+      <td>8.61</td>
+      <td>75.38</td>
+      <td>1.39</td>
+      <td>1033455.84</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>89.63</td>
+      <td>84</td>
+      <td>90</td>
+      <td>84</td>
+      <td>95</td>
+      <td>58</td>
+      <td>57</td>
+      <td>14.63</td>
+      <td>3.20</td>
+      <td>14.28</td>
+      <td>5.73</td>
+      <td>13.02</td>
+      <td>15.98</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.33</td>
+      <td>0.33</td>
+      <td>2.00</td>
+      <td>3.33</td>
+      <td>NaN</td>
+      <td>0.95</td>
+      <td>0.70</td>
+      <td>0.52</td>
+      <td>28.57</td>
+      <td>28.76</td>
+      <td>123.0</td>
+      <td>2.172119e+09</td>
+      <td>1.456820e+08</td>
+      <td>9.263045e+07</td>
+      <td>10918251.0</td>
+      <td>9.73</td>
+      <td>-3.9</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>2022-01-27 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>ASO</td>
+      <td>ASO</td>
+      <td>Academy Sports Outdoors Inc</td>
+      <td>Consumer Cyclical</td>
+      <td>Specialty Retail</td>
+      <td>15.38</td>
+      <td>56.88</td>
+      <td>6772700.0</td>
+      <td>4.03</td>
+      <td>4.91</td>
+      <td>2.42</td>
+      <td>12.68</td>
+      <td>31.73</td>
+      <td>17.81</td>
+      <td>48.82</td>
+      <td>NaN</td>
+      <td>57.57</td>
+      <td>-1.20</td>
+      <td>25.10</td>
+      <td>126.61</td>
+      <td>1.60</td>
+      <td>1680881.12</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>7.0</td>
+      <td>44.62</td>
+      <td>96</td>
+      <td>90</td>
+      <td>97</td>
+      <td>78</td>
+      <td>55</td>
+      <td>61</td>
+      <td>50.86</td>
+      <td>11.83</td>
+      <td>48.93</td>
+      <td>16.25</td>
+      <td>45.88</td>
+      <td>23.97</td>
+      <td>-0.01</td>
+      <td>0.12</td>
+      <td>-0.09</td>
+      <td>-0.05</td>
+      <td>-0.02</td>
+      <td>0.06</td>
+      <td>-0.06</td>
+      <td>-0.03</td>
+      <td>-0.03</td>
+      <td>0.02</td>
+      <td>0.05</td>
+      <td>2.24</td>
+      <td>105.90</td>
+      <td>418.0</td>
+      <td>3.533129e+09</td>
+      <td>7.973660e+07</td>
+      <td>7.500025e+07</td>
+      <td>12736074.0</td>
+      <td>8.61</td>
+      <td>2.2</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>2020-10-02 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>SPWH</td>
+      <td>SPWH</td>
+      <td>Sportsmans</td>
+      <td>Consumer Cyclical</td>
+      <td>Specialty Retail</td>
+      <td>2.59</td>
+      <td>10.31</td>
+      <td>790317.0</td>
+      <td>2.03</td>
+      <td>4.43</td>
+      <td>0.40</td>
+      <td>4.99</td>
+      <td>11.82</td>
+      <td>17.69</td>
+      <td>11.82</td>
+      <td>NaN</td>
+      <td>13.37</td>
+      <td>-22.89</td>
+      <td>7.75</td>
+      <td>33.03</td>
+      <td>1.27</td>
+      <td>389749.68</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>89.96</td>
+      <td>85</td>
+      <td>89</td>
+      <td>84</td>
+      <td>78</td>
+      <td>55</td>
+      <td>61</td>
+      <td>9.92</td>
+      <td>3.96</td>
+      <td>9.69</td>
+      <td>6.45</td>
+      <td>9.11</td>
+      <td>13.17</td>
+      <td>-0.18</td>
+      <td>-0.13</td>
+      <td>-0.43</td>
+      <td>-0.38</td>
+      <td>-0.18</td>
+      <td>0.25</td>
+      <td>-0.03</td>
+      <td>-0.10</td>
+      <td>-0.06</td>
+      <td>-0.04</td>
+      <td>0.08</td>
+      <td>2.24</td>
+      <td>106.32</td>
+      <td>202.0</td>
+      <td>3.746875e+08</td>
+      <td>3.886800e+07</td>
+      <td>3.506208e+07</td>
+      <td>4856245.0</td>
+      <td>13.39</td>
+      <td>7.7</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>2014-04-17 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>PLAB</td>
+      <td>PLAB</td>
+      <td>Photronics Inc</td>
+      <td>Technology</td>
+      <td>Semiconductor Equipment &amp; Materials</td>
+      <td>1.22</td>
+      <td>18.22</td>
+      <td>434141.0</td>
+      <td>0.79</td>
+      <td>3.21</td>
+      <td>0.55</td>
+      <td>-3.09</td>
+      <td>7.11</td>
+      <td>17.02</td>
+      <td>-16.99</td>
+      <td>NaN</td>
+      <td>25.81</td>
+      <td>-29.41</td>
+      <td>13.87</td>
+      <td>31.36</td>
+      <td>1.43</td>
+      <td>551052.28</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>108.53</td>
+      <td>74</td>
+      <td>89</td>
+      <td>78</td>
+      <td>95</td>
+      <td>58</td>
+      <td>57</td>
+      <td>18.42</td>
+      <td>-1.08</td>
+      <td>18.18</td>
+      <td>0.21</td>
+      <td>16.84</td>
+      <td>8.20</td>
+      <td>0.83</td>
+      <td>0.82</td>
+      <td>0.46</td>
+      <td>1.14</td>
+      <td>0.21</td>
+      <td>0.09</td>
+      <td>0.29</td>
+      <td>0.16</td>
+      <td>0.24</td>
+      <td>0.10</td>
+      <td>0.06</td>
+      <td>2.99</td>
+      <td>92.43</td>
+      <td>329.0</td>
+      <td>1.152975e+09</td>
+      <td>6.168940e+07</td>
+      <td>5.980786e+07</td>
+      <td>1871025.0</td>
+      <td>3.44</td>
+      <td>3.5</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>1987-03-10 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>BCC</td>
+      <td>BCC</td>
+      <td>Boise Cascad Llc</td>
+      <td>Basic Materials</td>
+      <td>Building Materials</td>
+      <td>3.39</td>
+      <td>71.89</td>
+      <td>145304.0</td>
+      <td>0.58</td>
+      <td>3.15</td>
+      <td>2.16</td>
+      <td>-2.90</td>
+      <td>7.11</td>
+      <td>16.57</td>
+      <td>-11.41</td>
+      <td>NaN</td>
+      <td>85.17</td>
+      <td>-15.59</td>
+      <td>55.14</td>
+      <td>30.38</td>
+      <td>1.28</td>
+      <td>249107.62</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>157.22</td>
+      <td>74</td>
+      <td>89</td>
+      <td>78</td>
+      <td>87</td>
+      <td>95</td>
+      <td>97</td>
+      <td>71.94</td>
+      <td>-0.06</td>
+      <td>71.07</td>
+      <td>1.16</td>
+      <td>66.77</td>
+      <td>7.66</td>
+      <td>1.40</td>
+      <td>1.39</td>
+      <td>-0.28</td>
+      <td>0.21</td>
+      <td>-0.65</td>
+      <td>-0.60</td>
+      <td>0.15</td>
+      <td>-0.00</td>
+      <td>0.08</td>
+      <td>-0.22</td>
+      <td>-0.15</td>
+      <td>0.67</td>
+      <td>96.21</td>
+      <td>425.0</td>
+      <td>2.891911e+09</td>
+      <td>3.944770e+07</td>
+      <td>3.916408e+07</td>
+      <td>904402.0</td>
+      <td>3.52</td>
+      <td>-1.7</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>2013-02-06 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>ESAB</td>
+      <td>ESAB</td>
+      <td>ESAB Corp</td>
+      <td>Industrials</td>
+      <td>Metal Fabrication</td>
+      <td>1.92</td>
+      <td>46.81</td>
+      <td>212149.0</td>
+      <td>0.51</td>
+      <td>4.06</td>
+      <td>1.55</td>
+      <td>-1.12</td>
+      <td>15.15</td>
+      <td>16.47</td>
+      <td>-5.24</td>
+      <td>NaN</td>
+      <td>58.08</td>
+      <td>-19.40</td>
+      <td>32.12</td>
+      <td>45.73</td>
+      <td>1.96</td>
+      <td>419527.54</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>7.0</td>
+      <td>120.85</td>
+      <td>89</td>
+      <td>89</td>
+      <td>79</td>
+      <td>35</td>
+      <td>53</td>
+      <td>51</td>
+      <td>46.39</td>
+      <td>0.91</td>
+      <td>44.63</td>
+      <td>4.89</td>
+      <td>39.45</td>
+      <td>18.65</td>
+      <td>-0.14</td>
+      <td>-0.14</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.04</td>
+      <td>0.02</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.02</td>
+      <td>5.41</td>
+      <td>85.00</td>
+      <td>300.0</td>
+      <td>2.597111e+09</td>
+      <td>6.007660e+07</td>
+      <td>5.070041e+07</td>
+      <td>806086.0</td>
+      <td>2.28</td>
+      <td>0.2</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>2022-03-29 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>YPF</td>
+      <td>YPFN.MX</td>
+      <td>YPF Sociedad Anonima</td>
+      <td>Basic Materials</td>
+      <td>Major Integrated Oil &amp; Gas</td>
+      <td>1.70</td>
+      <td>7.78</td>
+      <td>1298097.0</td>
+      <td>0.59</td>
+      <td>6.09</td>
+      <td>0.45</td>
+      <td>-7.27</td>
+      <td>-1.89</td>
+      <td>14.92</td>
+      <td>77.22</td>
+      <td>NaN</td>
+      <td>8.85</td>
+      <td>-12.09</td>
+      <td>2.82</td>
+      <td>175.89</td>
+      <td>1.21</td>
+      <td>2184496.92</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>88.20</td>
+      <td>38</td>
+      <td>87</td>
+      <td>97</td>
+      <td>2</td>
+      <td>61</td>
+      <td>86</td>
+      <td>7.95</td>
+      <td>-2.09</td>
+      <td>7.85</td>
+      <td>-0.94</td>
+      <td>7.47</td>
+      <td>4.13</td>
+      <td>3.08</td>
+      <td>3.08</td>
+      <td>0.58</td>
+      <td>42.40</td>
+      <td>0.20</td>
+      <td>-0.41</td>
+      <td>1.03</td>
+      <td>0.16</td>
+      <td>0.22</td>
+      <td>0.06</td>
+      <td>-0.01</td>
+      <td>0.00</td>
+      <td>49.18</td>
+      <td>117.0</td>
+      <td>6.371670e+10</td>
+      <td>3.933130e+08</td>
+      <td>1.926721e+08</td>
+      <td>9867382.0</td>
+      <td>4.39</td>
+      <td>NaN</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>2012-05-17 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>EVR</td>
+      <td>EVR</td>
+      <td>Evercore Partners Inc</td>
+      <td>Financial Services</td>
+      <td>Capital Markets</td>
+      <td>1.09</td>
+      <td>108.77</td>
+      <td>249410.0</td>
+      <td>0.58</td>
+      <td>2.99</td>
+      <td>3.19</td>
+      <td>-5.57</td>
+      <td>1.84</td>
+      <td>12.63</td>
+      <td>-0.91</td>
+      <td>NaN</td>
+      <td>142.18</td>
+      <td>-23.50</td>
+      <td>78.67</td>
+      <td>38.27</td>
+      <td>1.36</td>
+      <td>427855.76</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>83.46</td>
+      <td>56</td>
+      <td>85</td>
+      <td>78</td>
+      <td>65</td>
+      <td>70</td>
+      <td>69</td>
+      <td>111.56</td>
+      <td>-2.50</td>
+      <td>110.41</td>
+      <td>-1.49</td>
+      <td>101.60</td>
+      <td>7.06</td>
+      <td>-0.48</td>
+      <td>-0.46</td>
+      <td>-0.67</td>
+      <td>-0.38</td>
+      <td>-0.48</td>
+      <td>-0.04</td>
+      <td>-0.30</td>
+      <td>-0.40</td>
+      <td>-0.22</td>
+      <td>-0.23</td>
+      <td>-0.01</td>
+      <td>9.08</td>
+      <td>85.13</td>
+      <td>511.0</td>
+      <td>4.518766e+09</td>
+      <td>3.883770e+07</td>
+      <td>3.570896e+07</td>
+      <td>1466297.0</td>
+      <td>3.05</td>
+      <td>0.3</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>2006-08-14 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>KNX</td>
+      <td>KNX</td>
+      <td>Knight Transportation Inc</td>
+      <td>Industrials</td>
+      <td>Trucking</td>
+      <td>0.81</td>
+      <td>56.01</td>
+      <td>1441908.0</td>
+      <td>0.69</td>
+      <td>3.41</td>
+      <td>1.51</td>
+      <td>1.05</td>
+      <td>13.29</td>
+      <td>12.58</td>
+      <td>17.40</td>
+      <td>NaN</td>
+      <td>62.29</td>
+      <td>-10.08</td>
+      <td>42.50</td>
+      <td>31.79</td>
+      <td>1.38</td>
+      <td>2087426.66</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>71.82</td>
+      <td>87</td>
+      <td>85</td>
+      <td>86</td>
+      <td>97</td>
+      <td>88</td>
+      <td>90</td>
+      <td>55.43</td>
+      <td>1.05</td>
+      <td>54.06</td>
+      <td>3.62</td>
+      <td>50.98</td>
+      <td>9.87</td>
+      <td>-0.06</td>
+      <td>-0.02</td>
+      <td>-0.28</td>
+      <td>0.10</td>
+      <td>-0.25</td>
+      <td>-0.17</td>
+      <td>0.16</td>
+      <td>0.02</td>
+      <td>0.26</td>
+      <td>-0.06</td>
+      <td>-0.06</td>
+      <td>10.05</td>
+      <td>93.13</td>
+      <td>696.0</td>
+      <td>8.627768e+09</td>
+      <td>1.606960e+08</td>
+      <td>1.499117e+08</td>
+      <td>9920701.0</td>
+      <td>4.26</td>
+      <td>0.3</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1994-10-25 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>HIBB</td>
+      <td>HIBB</td>
+      <td>Hibbett Sports Inc</td>
+      <td>Consumer Cyclical</td>
+      <td>Apparel Retail</td>
+      <td>3.27</td>
+      <td>67.95</td>
+      <td>220943.0</td>
+      <td>0.71</td>
+      <td>5.10</td>
+      <td>3.79</td>
+      <td>1.94</td>
+      <td>9.24</td>
+      <td>12.31</td>
+      <td>37.69</td>
+      <td>NaN</td>
+      <td>75.67</td>
+      <td>-10.20</td>
+      <td>39.58</td>
+      <td>71.68</td>
+      <td>1.09</td>
+      <td>312852.42</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>37.73</td>
+      <td>80</td>
+      <td>84</td>
+      <td>94</td>
+      <td>78</td>
+      <td>55</td>
+      <td>61</td>
+      <td>65.78</td>
+      <td>3.31</td>
+      <td>64.58</td>
+      <td>5.22</td>
+      <td>60.58</td>
+      <td>12.17</td>
+      <td>-0.47</td>
+      <td>-0.35</td>
+      <td>0.46</td>
+      <td>-0.13</td>
+      <td>0.98</td>
+      <td>0.09</td>
+      <td>-0.06</td>
+      <td>0.15</td>
+      <td>0.02</td>
+      <td>0.21</td>
+      <td>0.06</td>
+      <td>7.87</td>
+      <td>108.50</td>
+      <td>290.0</td>
+      <td>8.412832e+08</td>
+      <td>1.280660e+07</td>
+      <td>1.180535e+07</td>
+      <td>1578164.0</td>
+      <td>5.54</td>
+      <td>3.5</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>1996-10-11 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>CASY</td>
+      <td>CASY</td>
+      <td>Caseys General Stores Inc</td>
+      <td>Consumer Cyclical</td>
+      <td>Specialty Retail</td>
+      <td>7.32</td>
+      <td>246.79</td>
+      <td>413925.0</td>
+      <td>1.58</td>
+      <td>2.28</td>
+      <td>5.85</td>
+      <td>1.55</td>
+      <td>6.88</td>
+      <td>12.23</td>
+      <td>24.69</td>
+      <td>NaN</td>
+      <td>248.40</td>
+      <td>-0.65</td>
+      <td>170.82</td>
+      <td>44.47</td>
+      <td>1.09</td>
+      <td>261677.08</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>141.71</td>
+      <td>74</td>
+      <td>84</td>
+      <td>92</td>
+      <td>94</td>
+      <td>80</td>
+      <td>80</td>
+      <td>237.35</td>
+      <td>3.98</td>
+      <td>235.22</td>
+      <td>4.92</td>
+      <td>223.46</td>
+      <td>10.44</td>
+      <td>0.28</td>
+      <td>0.28</td>
+      <td>0.15</td>
+      <td>0.11</td>
+      <td>-0.19</td>
+      <td>-0.02</td>
+      <td>0.40</td>
+      <td>0.22</td>
+      <td>0.22</td>
+      <td>0.19</td>
+      <td>0.02</td>
+      <td>0.42</td>
+      <td>86.39</td>
+      <td>548.0</td>
+      <td>8.678575e+09</td>
+      <td>3.725510e+07</td>
+      <td>3.708110e+07</td>
+      <td>758385.0</td>
+      <td>2.67</td>
+      <td>66.9</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>1983-10-20 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>SBS</td>
+      <td>SBS</td>
+      <td>Companhia de Saneamento Basico do Estado de Sao Paulo SABESP ADR</td>
+      <td>Utilities</td>
+      <td>Utilities—Regulated Water</td>
+      <td>2.08</td>
+      <td>11.02</td>
+      <td>1968312.0</td>
+      <td>0.51</td>
+      <td>3.27</td>
+      <td>0.40</td>
+      <td>-4.55</td>
+      <td>-1.47</td>
+      <td>11.93</td>
+      <td>22.64</td>
+      <td>NaN</td>
+      <td>12.04</td>
+      <td>-8.43</td>
+      <td>6.07</td>
+      <td>81.48</td>
+      <td>1.40</td>
+      <td>3824644.46</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>88.90</td>
+      <td>39</td>
+      <td>84</td>
+      <td>91</td>
+      <td>96</td>
+      <td>95</td>
+      <td>99</td>
+      <td>11.14</td>
+      <td>-1.02</td>
+      <td>11.06</td>
+      <td>-0.28</td>
+      <td>10.85</td>
+      <td>1.59</td>
+      <td>-0.45</td>
+      <td>-0.45</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>14.34</td>
+      <td>211.0</td>
+      <td>7.301208e+09</td>
+      <td>6.835100e+08</td>
+      <td>3.400051e+08</td>
+      <td>6016824.0</td>
+      <td>1.26</td>
+      <td>0.0</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>2002-05-10 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>STT</td>
+      <td>STT</td>
+      <td>State Street Corp</td>
+      <td>Financial Services</td>
+      <td>Asset Management</td>
+      <td>8.23</td>
+      <td>80.48</td>
+      <td>5377245.0</td>
+      <td>2.02</td>
+      <td>2.95</td>
+      <td>2.88</td>
+      <td>1.02</td>
+      <td>5.99</td>
+      <td>11.68</td>
+      <td>16.57</td>
+      <td>NaN</td>
+      <td>104.87</td>
+      <td>-23.26</td>
+      <td>58.62</td>
+      <td>37.30</td>
+      <td>1.55</td>
+      <td>2658534.22</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>130.92</td>
+      <td>71</td>
+      <td>84</td>
+      <td>83</td>
+      <td>65</td>
+      <td>70</td>
+      <td>69</td>
+      <td>77.23</td>
+      <td>4.20</td>
+      <td>76.26</td>
+      <td>5.53</td>
+      <td>71.42</td>
+      <td>12.68</td>
+      <td>-0.03</td>
+      <td>-0.08</td>
+      <td>-0.10</td>
+      <td>-0.04</td>
+      <td>0.06</td>
+      <td>0.16</td>
+      <td>-0.01</td>
+      <td>-0.03</td>
+      <td>-0.00</td>
+      <td>0.05</td>
+      <td>0.12</td>
+      <td>0.23</td>
+      <td>92.10</td>
+      <td>1172.0</td>
+      <td>2.971847e+10</td>
+      <td>3.669400e+08</td>
+      <td>3.480537e+08</td>
+      <td>3432964.0</td>
+      <td>1.36</td>
+      <td>20.2</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1980-03-17 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>BLDR</td>
+      <td>BLDR</td>
+      <td>Builders FirstSource Inc</td>
+      <td>Industrials</td>
+      <td>Building Products &amp; Equipment</td>
+      <td>5.28</td>
+      <td>65.46</td>
+      <td>2342112.0</td>
+      <td>1.16</td>
+      <td>3.99</td>
+      <td>2.34</td>
+      <td>2.39</td>
+      <td>13.04</td>
+      <td>11.55</td>
+      <td>-0.09</td>
+      <td>NaN</td>
+      <td>86.48</td>
+      <td>-24.31</td>
+      <td>48.91</td>
+      <td>33.84</td>
+      <td>1.68</td>
+      <td>2014397.14</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>9.0</td>
+      <td>71.70</td>
+      <td>87</td>
+      <td>83</td>
+      <td>75</td>
+      <td>94</td>
+      <td>83</td>
+      <td>79</td>
+      <td>62.99</td>
+      <td>3.93</td>
+      <td>62.24</td>
+      <td>5.17</td>
+      <td>61.10</td>
+      <td>7.13</td>
+      <td>0.20</td>
+      <td>0.58</td>
+      <td>-0.18</td>
+      <td>0.64</td>
+      <td>-0.66</td>
+      <td>-0.61</td>
+      <td>0.05</td>
+      <td>-0.08</td>
+      <td>0.13</td>
+      <td>-0.34</td>
+      <td>-0.29</td>
+      <td>1.67</td>
+      <td>108.78</td>
+      <td>682.0</td>
+      <td>9.695955e+09</td>
+      <td>1.471760e+08</td>
+      <td>1.444412e+08</td>
+      <td>6824134.0</td>
+      <td>3.39</td>
+      <td>-0.3</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>2005-06-28 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>GRIN</td>
+      <td>GRIN</td>
+      <td>Grindrod Shipping Holdings Ltd</td>
+      <td>Industrials</td>
+      <td>Marine Shipping</td>
+      <td>0.10</td>
+      <td>20.99</td>
+      <td>238407.0</td>
+      <td>0.51</td>
+      <td>1.06</td>
+      <td>0.27</td>
+      <td>-0.24</td>
+      <td>0.39</td>
+      <td>11.26</td>
+      <td>6.70</td>
+      <td>NaN</td>
+      <td>23.39</td>
+      <td>-10.28</td>
+      <td>10.90</td>
+      <td>92.61</td>
+      <td>1.09</td>
+      <td>470329.66</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>22.05</td>
+      <td>47</td>
+      <td>83</td>
+      <td>82</td>
+      <td>28</td>
+      <td>86</td>
+      <td>54</td>
+      <td>20.96</td>
+      <td>0.14</td>
+      <td>20.89</td>
+      <td>0.46</td>
+      <td>20.57</td>
+      <td>2.02</td>
+      <td>1.87</td>
+      <td>1.88</td>
+      <td>-0.20</td>
+      <td>0.24</td>
+      <td>-0.51</td>
+      <td>-0.25</td>
+      <td>0.47</td>
+      <td>-0.21</td>
+      <td>-0.22</td>
+      <td>-0.34</td>
+      <td>0.13</td>
+      <td>38.48</td>
+      <td>30.59</td>
+      <td>86.0</td>
+      <td>4.916294e+08</td>
+      <td>1.899650e+07</td>
+      <td>1.036943e+07</td>
+      <td>582476.0</td>
+      <td>1.16</td>
+      <td>0.0</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>2018-06-18 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>EYE</td>
+      <td>EYE</td>
+      <td>National Vision Holdings Inc</td>
+      <td>Consumer Cyclical</td>
+      <td>Specialty Retail</td>
+      <td>2.63</td>
+      <td>40.13</td>
+      <td>570051.0</td>
+      <td>0.89</td>
+      <td>3.71</td>
+      <td>1.30</td>
+      <td>-0.82</td>
+      <td>8.58</td>
+      <td>10.89</td>
+      <td>43.53</td>
+      <td>NaN</td>
+      <td>49.62</td>
+      <td>-19.13</td>
+      <td>22.59</td>
+      <td>77.64</td>
+      <td>1.30</td>
+      <td>637065.90</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>115.43</td>
+      <td>78</td>
+      <td>83</td>
+      <td>90</td>
+      <td>78</td>
+      <td>55</td>
+      <td>61</td>
+      <td>39.82</td>
+      <td>0.77</td>
+      <td>39.26</td>
+      <td>2.22</td>
+      <td>36.83</td>
+      <td>8.95</td>
+      <td>-0.72</td>
+      <td>-0.68</td>
+      <td>-0.77</td>
+      <td>-0.51</td>
+      <td>0.30</td>
+      <td>0.36</td>
+      <td>-0.04</td>
+      <td>-0.01</td>
+      <td>-0.03</td>
+      <td>0.08</td>
+      <td>0.08</td>
+      <td>1.84</td>
+      <td>129.07</td>
+      <td>280.0</td>
+      <td>3.228310e+09</td>
+      <td>7.888710e+07</td>
+      <td>7.353931e+07</td>
+      <td>7745138.0</td>
+      <td>14.10</td>
+      <td>13.2</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>2017-10-27 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>CEF</td>
+      <td>CEF.TO</td>
+      <td>Sprott Physical Gold and Silver Trust</td>
+      <td>Financial Services</td>
+      <td>Asset Management</td>
+      <td>1.69</td>
+      <td>17.44</td>
+      <td>744179.0</td>
+      <td>1.52</td>
+      <td>1.17</td>
+      <td>0.25</td>
+      <td>0.63</td>
+      <td>7.06</td>
+      <td>10.80</td>
+      <td>-2.73</td>
+      <td>NaN</td>
+      <td>20.44</td>
+      <td>-14.68</td>
+      <td>15.11</td>
+      <td>15.42</td>
+      <td>1.32</td>
+      <td>490633.88</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>74</td>
+      <td>82</td>
+      <td>71</td>
+      <td>65</td>
+      <td>70</td>
+      <td>69</td>
+      <td>17.25</td>
+      <td>1.10</td>
+      <td>16.98</td>
+      <td>2.69</td>
+      <td>16.32</td>
+      <td>6.84</td>
+      <td>-0.17</td>
+      <td>-0.17</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.17</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>23.77</td>
+      <td>295.0</td>
+      <td>4.949710e+09</td>
+      <td>2.181450e+08</td>
+      <td>NaN</td>
+      <td>16557.0</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>2018-01-18 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>SLAB</td>
+      <td>SLAB</td>
+      <td>Silicon Laboratories Inc</td>
+      <td>Technology</td>
+      <td>Semiconductors</td>
+      <td>1.48</td>
+      <td>139.56</td>
+      <td>173838.0</td>
+      <td>0.38</td>
+      <td>3.50</td>
+      <td>4.60</td>
+      <td>-4.04</td>
+      <td>12.42</td>
+      <td>10.67</td>
+      <td>-5.08</td>
+      <td>NaN</td>
+      <td>211.98</td>
+      <td>-34.16</td>
+      <td>109.44</td>
+      <td>27.52</td>
+      <td>0.85</td>
+      <td>453195.14</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>71.79</td>
+      <td>86</td>
+      <td>82</td>
+      <td>76</td>
+      <td>95</td>
+      <td>58</td>
+      <td>57</td>
+      <td>139.88</td>
+      <td>-0.23</td>
+      <td>137.32</td>
+      <td>1.63</td>
+      <td>129.15</td>
+      <td>8.06</td>
+      <td>-0.99</td>
+      <td>-0.99</td>
+      <td>0.27</td>
+      <td>1.02</td>
+      <td>-0.27</td>
+      <td>-0.17</td>
+      <td>0.46</td>
+      <td>0.20</td>
+      <td>0.41</td>
+      <td>0.03</td>
+      <td>0.03</td>
+      <td>2.38</td>
+      <td>106.53</td>
+      <td>451.0</td>
+      <td>4.700877e+09</td>
+      <td>3.328290e+07</td>
+      <td>3.253270e+07</td>
+      <td>2647170.0</td>
+      <td>5.02</td>
+      <td>6.0</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>2000-03-24 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>KLAC</td>
+      <td>KLAC</td>
+      <td>KLA Corporation</td>
+      <td>Technology</td>
+      <td>Semiconductor Equipment &amp; Materials</td>
+      <td>1.29</td>
+      <td>388.19</td>
+      <td>683815.0</td>
+      <td>0.38</td>
+      <td>3.08</td>
+      <td>10.81</td>
+      <td>-1.26</td>
+      <td>15.13</td>
+      <td>10.57</td>
+      <td>7.39</td>
+      <td>NaN</td>
+      <td>457.12</td>
+      <td>-15.08</td>
+      <td>250.20</td>
+      <td>55.15</td>
+      <td>1.40</td>
+      <td>1793590.68</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>78.85</td>
+      <td>89</td>
+      <td>82</td>
+      <td>85</td>
+      <td>95</td>
+      <td>58</td>
+      <td>57</td>
+      <td>384.55</td>
+      <td>0.95</td>
+      <td>372.09</td>
+      <td>4.33</td>
+      <td>333.92</td>
+      <td>16.25</td>
+      <td>-0.04</td>
+      <td>0.03</td>
+      <td>0.27</td>
+      <td>0.16</td>
+      <td>0.14</td>
+      <td>-0.24</td>
+      <td>0.31</td>
+      <td>0.20</td>
+      <td>0.11</td>
+      <td>0.10</td>
+      <td>-0.16</td>
+      <td>0.27</td>
+      <td>94.43</td>
+      <td>1543.0</td>
+      <td>5.388260e+10</td>
+      <td>1.417180e+08</td>
+      <td>1.414221e+08</td>
+      <td>2733163.0</td>
+      <td>1.28</td>
+      <td>16.9</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>1980-10-08 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>GMS</td>
+      <td>GMS</td>
+      <td>GMS Inc</td>
+      <td>Industrials</td>
+      <td>Building Products &amp; Equipment</td>
+      <td>3.13</td>
+      <td>49.38</td>
+      <td>192424.0</td>
+      <td>0.92</td>
+      <td>2.60</td>
+      <td>1.32</td>
+      <td>0.57</td>
+      <td>7.96</td>
+      <td>10.47</td>
+      <td>-4.04</td>
+      <td>NaN</td>
+      <td>61.79</td>
+      <td>-20.08</td>
+      <td>36.10</td>
+      <td>36.79</td>
+      <td>1.68</td>
+      <td>209321.28</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>171.13</td>
+      <td>76</td>
+      <td>82</td>
+      <td>75</td>
+      <td>87</td>
+      <td>95</td>
+      <td>97</td>
+      <td>48.95</td>
+      <td>0.88</td>
+      <td>48.47</td>
+      <td>1.87</td>
+      <td>46.02</td>
+      <td>7.29</td>
+      <td>0.46</td>
+      <td>0.49</td>
+      <td>0.17</td>
+      <td>0.08</td>
+      <td>-0.06</td>
+      <td>-0.16</td>
+      <td>0.30</td>
+      <td>0.19</td>
+      <td>0.10</td>
+      <td>0.02</td>
+      <td>-0.08</td>
+      <td>0.60</td>
+      <td>100.46</td>
+      <td>316.0</td>
+      <td>2.142816e+09</td>
+      <td>4.240680e+07</td>
+      <td>3.582104e+07</td>
+      <td>1037414.0</td>
+      <td>4.24</td>
+      <td>-218.3</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>2016-05-26 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>NOC</td>
+      <td>NOC</td>
+      <td>Northrop Grumman Corporation</td>
+      <td>Industrials</td>
+      <td>Aerospace &amp; Defense</td>
+      <td>1.58</td>
+      <td>540.23</td>
+      <td>412083.0</td>
+      <td>0.41</td>
+      <td>2.73</td>
+      <td>11.50</td>
+      <td>1.30</td>
+      <td>1.02</td>
+      <td>10.31</td>
+      <td>14.35</td>
+      <td>NaN</td>
+      <td>556.27</td>
+      <td>-2.88</td>
+      <td>360.89</td>
+      <td>49.69</td>
+      <td>1.53</td>
+      <td>1005570.40</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>152.72</td>
+      <td>52</td>
+      <td>82</td>
+      <td>87</td>
+      <td>34</td>
+      <td>78</td>
+      <td>55</td>
+      <td>533.82</td>
+      <td>1.20</td>
+      <td>527.62</td>
+      <td>2.39</td>
+      <td>514.65</td>
+      <td>4.97</td>
+      <td>-0.14</td>
+      <td>-0.11</td>
+      <td>0.10</td>
+      <td>-0.04</td>
+      <td>-0.11</td>
+      <td>-0.07</td>
+      <td>0.03</td>
+      <td>0.12</td>
+      <td>0.02</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>0.22</td>
+      <td>85.51</td>
+      <td>1683.0</td>
+      <td>7.583244e+10</td>
+      <td>1.539120e+08</td>
+      <td>1.535674e+08</td>
+      <td>2599420.0</td>
+      <td>2.38</td>
+      <td>-3.8</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1981-12-31 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>SUN</td>
+      <td>SUN</td>
+      <td>Sunoco LP</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas Refining &amp; Marketing</td>
+      <td>1.71</td>
+      <td>43.48</td>
+      <td>201993.0</td>
+      <td>0.97</td>
+      <td>1.95</td>
+      <td>0.86</td>
+      <td>1.26</td>
+      <td>2.57</td>
+      <td>9.71</td>
+      <td>1.76</td>
+      <td>NaN</td>
+      <td>46.95</td>
+      <td>-7.39</td>
+      <td>34.26</td>
+      <td>26.91</td>
+      <td>2.00</td>
+      <td>208260.10</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>263.51</td>
+      <td>59</td>
+      <td>81</td>
+      <td>80</td>
+      <td>2</td>
+      <td>61</td>
+      <td>86</td>
+      <td>42.82</td>
+      <td>1.53</td>
+      <td>42.70</td>
+      <td>1.82</td>
+      <td>41.71</td>
+      <td>4.24</td>
+      <td>-0.20</td>
+      <td>-0.25</td>
+      <td>-0.10</td>
+      <td>0.03</td>
+      <td>-0.46</td>
+      <td>-0.18</td>
+      <td>0.38</td>
+      <td>-0.00</td>
+      <td>0.41</td>
+      <td>-0.02</td>
+      <td>-0.18</td>
+      <td>34.62</td>
+      <td>20.83</td>
+      <td>184.0</td>
+      <td>3.556590e+09</td>
+      <td>8.376330e+07</td>
+      <td>5.487836e+07</td>
+      <td>702837.0</td>
+      <td>3.22</td>
+      <td>0.1</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>2012-09-20 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>TRTN</td>
+      <td>TRTN</td>
+      <td>Triton International Group Inc</td>
+      <td>Industrials</td>
+      <td>Rental &amp; Leasing Services</td>
+      <td>0.17</td>
+      <td>66.03</td>
+      <td>637536.0</td>
+      <td>1.32</td>
+      <td>2.16</td>
+      <td>1.32</td>
+      <td>-2.13</td>
+      <td>4.40</td>
+      <td>9.56</td>
+      <td>7.63</td>
+      <td>NaN</td>
+      <td>72.34</td>
+      <td>-8.72</td>
+      <td>48.64</td>
+      <td>35.75</td>
+      <td>1.68</td>
+      <td>482865.30</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>119.45</td>
+      <td>66</td>
+      <td>81</td>
+      <td>81</td>
+      <td>87</td>
+      <td>95</td>
+      <td>97</td>
+      <td>66.19</td>
+      <td>-0.25</td>
+      <td>65.11</td>
+      <td>1.41</td>
+      <td>61.18</td>
+      <td>7.92</td>
+      <td>0.41</td>
+      <td>0.57</td>
+      <td>0.01</td>
+      <td>0.23</td>
+      <td>-0.04</td>
+      <td>-0.08</td>
+      <td>0.05</td>
+      <td>0.01</td>
+      <td>0.10</td>
+      <td>-0.01</td>
+      <td>-0.02</td>
+      <td>2.17</td>
+      <td>70.24</td>
+      <td>377.0</td>
+      <td>3.812046e+09</td>
+      <td>5.881880e+07</td>
+      <td>5.767767e+07</td>
+      <td>2227555.0</td>
+      <td>4.13</td>
+      <td>0.0</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>2005-10-12 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>FNB</td>
+      <td>FNB</td>
+      <td>F.N.B. Corp</td>
+      <td>Financial Services</td>
+      <td>Banks—Regional</td>
+      <td>1.63</td>
+      <td>13.11</td>
+      <td>2012474.0</td>
+      <td>0.76</td>
+      <td>2.34</td>
+      <td>0.32</td>
+      <td>-7.02</td>
+      <td>-8.64</td>
+      <td>9.43</td>
+      <td>10.08</td>
+      <td>NaN</td>
+      <td>14.71</td>
+      <td>-10.88</td>
+      <td>10.48</td>
+      <td>25.10</td>
+      <td>0.98</td>
+      <td>2661891.86</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>130.40</td>
+      <td>22</td>
+      <td>81</td>
+      <td>82</td>
+      <td>42</td>
+      <td>92</td>
+      <td>93</td>
+      <td>13.49</td>
+      <td>-2.80</td>
+      <td>13.67</td>
+      <td>-4.11</td>
+      <td>13.45</td>
+      <td>-2.53</td>
+      <td>0.24</td>
+      <td>0.12</td>
+      <td>0.37</td>
+      <td>0.11</td>
+      <td>0.58</td>
+      <td>0.17</td>
+      <td>0.15</td>
+      <td>0.32</td>
+      <td>0.16</td>
+      <td>0.30</td>
+      <td>0.15</td>
+      <td>1.00</td>
+      <td>78.32</td>
+      <td>496.0</td>
+      <td>4.900452e+09</td>
+      <td>3.507840e+08</td>
+      <td>3.471152e+08</td>
+      <td>10716610.0</td>
+      <td>3.63</td>
+      <td>-2.1</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1986-09-02 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>ITT</td>
+      <td>ITT</td>
+      <td>ITT Inc</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>0.57</td>
+      <td>80.76</td>
+      <td>282149.0</td>
+      <td>0.70</td>
+      <td>2.20</td>
+      <td>1.91</td>
+      <td>-4.45</td>
+      <td>4.02</td>
+      <td>9.39</td>
+      <td>7.91</td>
+      <td>NaN</td>
+      <td>105.01</td>
+      <td>-23.09</td>
+      <td>63.77</td>
+      <td>26.64</td>
+      <td>0.97</td>
+      <td>404299.20</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>203.73</td>
+      <td>64</td>
+      <td>80</td>
+      <td>81</td>
+      <td>35</td>
+      <td>53</td>
+      <td>51</td>
+      <td>82.44</td>
+      <td>-2.04</td>
+      <td>81.46</td>
+      <td>-0.85</td>
+      <td>75.93</td>
+      <td>6.36</td>
+      <td>0.17</td>
+      <td>0.22</td>
+      <td>0.18</td>
+      <td>0.08</td>
+      <td>0.21</td>
+      <td>0.13</td>
+      <td>0.09</td>
+      <td>0.12</td>
+      <td>0.08</td>
+      <td>0.07</td>
+      <td>0.04</td>
+      <td>0.54</td>
+      <td>93.54</td>
+      <td>488.0</td>
+      <td>6.831020e+09</td>
+      <td>8.270000e+07</td>
+      <td>8.236837e+07</td>
+      <td>956175.0</td>
+      <td>2.57</td>
+      <td>12.1</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1995-12-15 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>INT</td>
+      <td>INT</td>
+      <td>World Fuel Services Corporation</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas Refining &amp; Marketing</td>
+      <td>1.06</td>
+      <td>26.77</td>
+      <td>180268.0</td>
+      <td>0.49</td>
+      <td>3.12</td>
+      <td>0.87</td>
+      <td>-5.91</td>
+      <td>-1.36</td>
+      <td>9.31</td>
+      <td>1.13</td>
+      <td>NaN</td>
+      <td>29.28</td>
+      <td>-8.57</td>
+      <td>19.29</td>
+      <td>38.78</td>
+      <td>1.39</td>
+      <td>366818.20</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>165.12</td>
+      <td>40</td>
+      <td>80</td>
+      <td>77</td>
+      <td>2</td>
+      <td>61</td>
+      <td>86</td>
+      <td>27.37</td>
+      <td>-2.18</td>
+      <td>27.39</td>
+      <td>-2.26</td>
+      <td>26.56</td>
+      <td>0.77</td>
+      <td>0.96</td>
+      <td>1.00</td>
+      <td>0.71</td>
+      <td>0.46</td>
+      <td>0.19</td>
+      <td>0.21</td>
+      <td>0.88</td>
+      <td>0.46</td>
+      <td>0.91</td>
+      <td>0.00</td>
+      <td>-0.16</td>
+      <td>3.38</td>
+      <td>93.83</td>
+      <td>327.0</td>
+      <td>1.716397e+09</td>
+      <td>6.191910e+07</td>
+      <td>6.056924e+07</td>
+      <td>1677783.0</td>
+      <td>5.32</td>
+      <td>3.6</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1986-08-28 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>NJR</td>
+      <td>NJR</td>
+      <td>NewJersey Resources Corporation</td>
+      <td>Utilities</td>
+      <td>Utilities—Regulated Gas</td>
+      <td>0.56</td>
+      <td>49.88</td>
+      <td>545222.0</td>
+      <td>0.86</td>
+      <td>2.66</td>
+      <td>1.40</td>
+      <td>0.26</td>
+      <td>14.96</td>
+      <td>9.29</td>
+      <td>7.41</td>
+      <td>NaN</td>
+      <td>50.15</td>
+      <td>-0.54</td>
+      <td>37.79</td>
+      <td>31.99</td>
+      <td>1.64</td>
+      <td>633793.72</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>7.0</td>
+      <td>151.09</td>
+      <td>89</td>
+      <td>80</td>
+      <td>84</td>
+      <td>86</td>
+      <td>78</td>
+      <td>84</td>
+      <td>49.01</td>
+      <td>1.77</td>
+      <td>47.70</td>
+      <td>4.57</td>
+      <td>44.11</td>
+      <td>13.07</td>
+      <td>-0.36</td>
+      <td>-0.36</td>
+      <td>5.14</td>
+      <td>0.11</td>
+      <td>0.26</td>
+      <td>0.02</td>
+      <td>0.50</td>
+      <td>-0.20</td>
+      <td>0.16</td>
+      <td>0.03</td>
+      <td>0.00</td>
+      <td>0.48</td>
+      <td>77.24</td>
+      <td>395.0</td>
+      <td>4.342788e+09</td>
+      <td>9.622840e+07</td>
+      <td>9.576071e+07</td>
+      <td>4455624.0</td>
+      <td>7.24</td>
+      <td>3.0</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1980-03-17 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>PG</td>
+      <td>PG</td>
+      <td>Procter &amp; Gamble Company</td>
+      <td>Consumer Defensive</td>
+      <td>Household &amp; Personal Products</td>
+      <td>0.66</td>
+      <td>150.26</td>
+      <td>4124738.0</td>
+      <td>0.62</td>
+      <td>1.42</td>
+      <td>1.93</td>
+      <td>0.74</td>
+      <td>10.08</td>
+      <td>8.99</td>
+      <td>3.55</td>
+      <td>NaN</td>
+      <td>165.35</td>
+      <td>-9.13</td>
+      <td>122.18</td>
+      <td>22.98</td>
+      <td>1.74</td>
+      <td>6677949.94</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>354.45</td>
+      <td>81</td>
+      <td>80</td>
+      <td>79</td>
+      <td>96</td>
+      <td>96</td>
+      <td>98</td>
+      <td>148.30</td>
+      <td>1.32</td>
+      <td>144.69</td>
+      <td>3.85</td>
+      <td>135.79</td>
+      <td>10.65</td>
+      <td>-0.04</td>
+      <td>-0.02</td>
+      <td>-0.05</td>
+      <td>0.00</td>
+      <td>0.02</td>
+      <td>0.07</td>
+      <td>0.01</td>
+      <td>-0.02</td>
+      <td>-0.01</td>
+      <td>-0.03</td>
+      <td>0.04</td>
+      <td>0.12</td>
+      <td>65.98</td>
+      <td>3992.0</td>
+      <td>3.340566e+11</td>
+      <td>2.369700e+09</td>
+      <td>2.367019e+09</td>
+      <td>13907989.0</td>
+      <td>1.98</td>
+      <td>6.9</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1962-01-02 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>MTZ</td>
+      <td>MTZ</td>
+      <td>MasTec Inc</td>
+      <td>Industrials</td>
+      <td>Engineering &amp; Construction</td>
+      <td>0.24</td>
+      <td>86.85</td>
+      <td>633620.0</td>
+      <td>0.80</td>
+      <td>2.98</td>
+      <td>2.55</td>
+      <td>-4.38</td>
+      <td>-4.31</td>
+      <td>8.88</td>
+      <td>1.05</td>
+      <td>NaN</td>
+      <td>99.00</td>
+      <td>-12.27</td>
+      <td>62.36</td>
+      <td>39.28</td>
+      <td>1.31</td>
+      <td>796722.60</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>74.60</td>
+      <td>31</td>
+      <td>80</td>
+      <td>81</td>
+      <td>47</td>
+      <td>48</td>
+      <td>52</td>
+      <td>87.99</td>
+      <td>-1.29</td>
+      <td>87.46</td>
+      <td>-0.70</td>
+      <td>79.80</td>
+      <td>8.83</td>
+      <td>-0.56</td>
+      <td>-0.57</td>
+      <td>-0.24</td>
+      <td>-0.45</td>
+      <td>18.67</td>
+      <td>0.68</td>
+      <td>0.04</td>
+      <td>0.61</td>
+      <td>0.22</td>
+      <td>0.36</td>
+      <td>0.33</td>
+      <td>23.56</td>
+      <td>76.68</td>
+      <td>478.0</td>
+      <td>7.486241e+09</td>
+      <td>7.823430e+07</td>
+      <td>5.943891e+07</td>
+      <td>2777411.0</td>
+      <td>3.58</td>
+      <td>0.0</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1973-02-21 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>QSR</td>
+      <td>QSR</td>
+      <td>Restaurant Brands International Inc</td>
+      <td>Consumer Cyclical</td>
+      <td>Restaurants</td>
+      <td>0.64</td>
+      <td>65.92</td>
+      <td>887392.0</td>
+      <td>0.51</td>
+      <td>2.06</td>
+      <td>1.31</td>
+      <td>-0.65</td>
+      <td>9.18</td>
+      <td>8.81</td>
+      <td>26.09</td>
+      <td>NaN</td>
+      <td>68.54</td>
+      <td>-3.82</td>
+      <td>46.68</td>
+      <td>41.22</td>
+      <td>1.63</td>
+      <td>1740526.28</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>158.77</td>
+      <td>80</td>
+      <td>80</td>
+      <td>88</td>
+      <td>75</td>
+      <td>81</td>
+      <td>77</td>
+      <td>65.90</td>
+      <td>0.03</td>
+      <td>64.46</td>
+      <td>2.26</td>
+      <td>59.62</td>
+      <td>10.57</td>
+      <td>0.63</td>
+      <td>0.65</td>
+      <td>-0.01</td>
+      <td>0.12</td>
+      <td>0.00</td>
+      <td>-0.04</td>
+      <td>0.16</td>
+      <td>0.07</td>
+      <td>0.13</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>1.47</td>
+      <td>84.65</td>
+      <td>607.0</td>
+      <td>2.714154e+10</td>
+      <td>3.059050e+08</td>
+      <td>2.763512e+08</td>
+      <td>8614795.0</td>
+      <td>6.38</td>
+      <td>3.0</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>2014-12-11 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>AUB</td>
+      <td>AUB</td>
+      <td>Atlantic Union Bankshares Corp</td>
+      <td>Financial Services</td>
+      <td>Banks—Regional</td>
+      <td>1.57</td>
+      <td>36.16</td>
+      <td>201956.0</td>
+      <td>0.87</td>
+      <td>2.67</td>
+      <td>1.01</td>
+      <td>1.37</td>
+      <td>4.99</td>
+      <td>8.26</td>
+      <td>5.85</td>
+      <td>NaN</td>
+      <td>42.67</td>
+      <td>-15.26</td>
+      <td>30.26</td>
+      <td>19.50</td>
+      <td>1.34</td>
+      <td>231184.42</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>318.74</td>
+      <td>68</td>
+      <td>79</td>
+      <td>76</td>
+      <td>42</td>
+      <td>92</td>
+      <td>93</td>
+      <td>35.57</td>
+      <td>1.67</td>
+      <td>35.04</td>
+      <td>3.20</td>
+      <td>33.70</td>
+      <td>7.29</td>
+      <td>-0.22</td>
+      <td>-0.21</td>
+      <td>0.39</td>
+      <td>-0.12</td>
+      <td>0.57</td>
+      <td>0.23</td>
+      <td>-0.09</td>
+      <td>0.08</td>
+      <td>0.04</td>
+      <td>0.20</td>
+      <td>0.13</td>
+      <td>2.07</td>
+      <td>72.74</td>
+      <td>314.0</td>
+      <td>2.576053e+09</td>
+      <td>7.471150e+07</td>
+      <td>7.368721e+07</td>
+      <td>1193141.0</td>
+      <td>5.27</td>
+      <td>1.9</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>1993-10-06 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>ULTA</td>
+      <td>ULTA</td>
+      <td>Ulta Beauty Inc</td>
+      <td>Consumer Cyclical</td>
+      <td>Specialty Retail</td>
+      <td>3.16</td>
+      <td>480.31</td>
+      <td>735624.0</td>
+      <td>0.97</td>
+      <td>2.58</td>
+      <td>11.08</td>
+      <td>3.33</td>
+      <td>14.54</td>
+      <td>7.85</td>
+      <td>12.91</td>
+      <td>NaN</td>
+      <td>480.57</td>
+      <td>-0.05</td>
+      <td>330.80</td>
+      <td>45.20</td>
+      <td>1.65</td>
+      <td>760160.16</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>66.40</td>
+      <td>88</td>
+      <td>78</td>
+      <td>88</td>
+      <td>78</td>
+      <td>55</td>
+      <td>61</td>
+      <td>465.10</td>
+      <td>3.27</td>
+      <td>449.91</td>
+      <td>6.76</td>
+      <td>420.35</td>
+      <td>14.26</td>
+      <td>0.18</td>
+      <td>0.25</td>
+      <td>0.04</td>
+      <td>0.19</td>
+      <td>-0.04</td>
+      <td>0.08</td>
+      <td>0.17</td>
+      <td>0.10</td>
+      <td>0.13</td>
+      <td>0.07</td>
+      <td>0.07</td>
+      <td>1.39</td>
+      <td>95.90</td>
+      <td>1302.0</td>
+      <td>2.203907e+10</td>
+      <td>5.122150e+07</td>
+      <td>5.047622e+07</td>
+      <td>1546584.0</td>
+      <td>1.98</td>
+      <td>0.3</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>2007-10-25 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>OC</td>
+      <td>OC</td>
+      <td>Owens Corning Inc</td>
+      <td>Industrials</td>
+      <td>Building Products &amp; Equipment</td>
+      <td>2.24</td>
+      <td>90.73</td>
+      <td>612720.0</td>
+      <td>0.57</td>
+      <td>2.90</td>
+      <td>2.53</td>
+      <td>2.13</td>
+      <td>6.24</td>
+      <td>7.49</td>
+      <td>-4.07</td>
+      <td>NaN</td>
+      <td>101.12</td>
+      <td>-10.27</td>
+      <td>72.97</td>
+      <td>24.34</td>
+      <td>1.10</td>
+      <td>1068011.14</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>86.78</td>
+      <td>72</td>
+      <td>78</td>
+      <td>76</td>
+      <td>94</td>
+      <td>83</td>
+      <td>79</td>
+      <td>89.81</td>
+      <td>1.03</td>
+      <td>89.12</td>
+      <td>1.80</td>
+      <td>86.47</td>
+      <td>4.93</td>
+      <td>0.81</td>
+      <td>0.94</td>
+      <td>0.10</td>
+      <td>0.36</td>
+      <td>-0.15</td>
+      <td>-0.15</td>
+      <td>0.14</td>
+      <td>0.07</td>
+      <td>0.15</td>
+      <td>-0.00</td>
+      <td>-0.04</td>
+      <td>0.75</td>
+      <td>105.24</td>
+      <td>783.0</td>
+      <td>8.697607e+09</td>
+      <td>9.345630e+07</td>
+      <td>9.268622e+07</td>
+      <td>5034065.0</td>
+      <td>4.09</td>
+      <td>2.8</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>2006-11-01 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>CWT</td>
+      <td>CWT</td>
+      <td>California Water Service Group</td>
+      <td>Utilities</td>
+      <td>Utilities—Regulated Water</td>
+      <td>0.34</td>
+      <td>62.78</td>
+      <td>131465.0</td>
+      <td>0.49</td>
+      <td>2.16</td>
+      <td>1.37</td>
+      <td>-3.31</td>
+      <td>3.84</td>
+      <td>7.22</td>
+      <td>15.94</td>
+      <td>NaN</td>
+      <td>72.08</td>
+      <td>-12.90</td>
+      <td>48.46</td>
+      <td>29.55</td>
+      <td>1.60</td>
+      <td>265641.84</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>6.0</td>
+      <td>204.44</td>
+      <td>64</td>
+      <td>77</td>
+      <td>84</td>
+      <td>96</td>
+      <td>95</td>
+      <td>99</td>
+      <td>63.56</td>
+      <td>-1.23</td>
+      <td>62.79</td>
+      <td>-0.02</td>
+      <td>59.11</td>
+      <td>6.20</td>
+      <td>-0.10</td>
+      <td>-0.14</td>
+      <td>4.43</td>
+      <td>-0.13</td>
+      <td>3.50</td>
+      <td>0.15</td>
+      <td>0.04</td>
+      <td>0.16</td>
+      <td>0.07</td>
+      <td>0.05</td>
+      <td>0.04</td>
+      <td>0.95</td>
+      <td>86.82</td>
+      <td>404.0</td>
+      <td>3.373321e+09</td>
+      <td>5.482400e+07</td>
+      <td>5.430865e+07</td>
+      <td>1160155.0</td>
+      <td>3.86</td>
+      <td>-0.5</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1973-02-21 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>HWC</td>
+      <td>HWC</td>
+      <td>Hancock Whitney Corp</td>
+      <td>Financial Services</td>
+      <td>Banks—Regional</td>
+      <td>1.77</td>
+      <td>52.46</td>
+      <td>377976.0</td>
+      <td>0.79</td>
+      <td>2.57</td>
+      <td>1.42</td>
+      <td>-4.34</td>
+      <td>-6.59</td>
+      <td>7.08</td>
+      <td>7.15</td>
+      <td>NaN</td>
+      <td>59.82</td>
+      <td>-12.30</td>
+      <td>41.62</td>
+      <td>26.05</td>
+      <td>1.34</td>
+      <td>481161.10</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>176.28</td>
+      <td>26</td>
+      <td>77</td>
+      <td>78</td>
+      <td>42</td>
+      <td>92</td>
+      <td>93</td>
+      <td>53.10</td>
+      <td>-1.20</td>
+      <td>53.44</td>
+      <td>-1.84</td>
+      <td>52.22</td>
+      <td>0.47</td>
+      <td>0.04</td>
+      <td>0.06</td>
+      <td>0.06</td>
+      <td>0.14</td>
+      <td>0.09</td>
+      <td>0.03</td>
+      <td>0.03</td>
+      <td>0.29</td>
+      <td>0.08</td>
+      <td>0.24</td>
+      <td>0.11</td>
+      <td>0.93</td>
+      <td>80.63</td>
+      <td>409.0</td>
+      <td>4.719130e+09</td>
+      <td>8.569330e+07</td>
+      <td>8.481923e+07</td>
+      <td>2261568.0</td>
+      <td>3.90</td>
+      <td>-3.5</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>1991-06-04 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>TXRH</td>
+      <td>TXRH</td>
+      <td>Texas Roadhouse Inc</td>
+      <td>Consumer Cyclical</td>
+      <td>Restaurants</td>
+      <td>1.72</td>
+      <td>97.21</td>
+      <td>591842.0</td>
+      <td>0.63</td>
+      <td>2.70</td>
+      <td>2.58</td>
+      <td>-2.12</td>
+      <td>1.22</td>
+      <td>6.82</td>
+      <td>21.22</td>
+      <td>NaN</td>
+      <td>101.75</td>
+      <td>-4.46</td>
+      <td>68.58</td>
+      <td>41.75</td>
+      <td>1.26</td>
+      <td>934743.72</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>71.16</td>
+      <td>53</td>
+      <td>77</td>
+      <td>88</td>
+      <td>75</td>
+      <td>81</td>
+      <td>77</td>
+      <td>97.63</td>
+      <td>-0.43</td>
+      <td>97.64</td>
+      <td>-0.45</td>
+      <td>95.68</td>
+      <td>1.60</td>
+      <td>0.18</td>
+      <td>0.24</td>
+      <td>0.34</td>
+      <td>0.17</td>
+      <td>0.17</td>
+      <td>0.15</td>
+      <td>0.14</td>
+      <td>0.14</td>
+      <td>0.16</td>
+      <td>0.12</td>
+      <td>0.10</td>
+      <td>0.61</td>
+      <td>102.33</td>
+      <td>465.0</td>
+      <td>6.431851e+09</td>
+      <td>6.691480e+07</td>
+      <td>6.652062e+07</td>
+      <td>4890519.0</td>
+      <td>4.65</td>
+      <td>0.4</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>2004-10-05 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>FCN</td>
+      <td>FCN</td>
+      <td>FTI Consulting Inc</td>
+      <td>Industrials</td>
+      <td>Consulting Services</td>
+      <td>2.13</td>
+      <td>168.70</td>
+      <td>146712.0</td>
+      <td>0.41</td>
+      <td>2.99</td>
+      <td>4.63</td>
+      <td>-2.38</td>
+      <td>2.40</td>
+      <td>6.49</td>
+      <td>-0.55</td>
+      <td>NaN</td>
+      <td>190.43</td>
+      <td>-11.41</td>
+      <td>132.36</td>
+      <td>27.46</td>
+      <td>1.50</td>
+      <td>357192.48</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>91.76</td>
+      <td>58</td>
+      <td>76</td>
+      <td>81</td>
+      <td>84</td>
+      <td>49</td>
+      <td>59</td>
+      <td>169.37</td>
+      <td>-0.39</td>
+      <td>168.97</td>
+      <td>-0.16</td>
+      <td>169.57</td>
+      <td>-0.51</td>
+      <td>0.11</td>
+      <td>0.10</td>
+      <td>0.18</td>
+      <td>-0.03</td>
+      <td>0.00</td>
+      <td>0.13</td>
+      <td>0.10</td>
+      <td>0.09</td>
+      <td>0.08</td>
+      <td>0.07</td>
+      <td>0.07</td>
+      <td>2.47</td>
+      <td>108.34</td>
+      <td>483.0</td>
+      <td>5.533513e+09</td>
+      <td>3.442310e+07</td>
+      <td>3.277586e+07</td>
+      <td>2082950.0</td>
+      <td>4.76</td>
+      <td>0.0</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1996-05-09 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>MLI</td>
+      <td>MLI</td>
+      <td>Mueller Industries Inc</td>
+      <td>Industrials</td>
+      <td>Metal Fabrication</td>
+      <td>1.18</td>
+      <td>66.17</td>
+      <td>118072.0</td>
+      <td>0.38</td>
+      <td>2.56</td>
+      <td>1.72</td>
+      <td>-3.78</td>
+      <td>4.95</td>
+      <td>6.40</td>
+      <td>13.73</td>
+      <td>NaN</td>
+      <td>70.43</td>
+      <td>-6.04</td>
+      <td>49.42</td>
+      <td>33.89</td>
+      <td>1.44</td>
+      <td>307746.38</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>179.06</td>
+      <td>68</td>
+      <td>76</td>
+      <td>85</td>
+      <td>35</td>
+      <td>53</td>
+      <td>51</td>
+      <td>67.27</td>
+      <td>-1.64</td>
+      <td>66.79</td>
+      <td>-0.93</td>
+      <td>64.09</td>
+      <td>3.25</td>
+      <td>-0.10</td>
+      <td>-0.09</td>
+      <td>NaN</td>
+      <td>0.33</td>
+      <td>NaN</td>
+      <td>-0.43</td>
+      <td>-0.04</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>2.99</td>
+      <td>90.44</td>
+      <td>387.0</td>
+      <td>3.716677e+09</td>
+      <td>5.686470e+07</td>
+      <td>5.510473e+07</td>
+      <td>2925034.0</td>
+      <td>7.82</td>
+      <td>17.2</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1991-02-25 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>PH</td>
+      <td>PH</td>
+      <td>Parker-Hannifin Corporation</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>0.73</td>
+      <td>292.22</td>
+      <td>548946.0</td>
+      <td>0.57</td>
+      <td>2.11</td>
+      <td>6.75</td>
+      <td>-2.25</td>
+      <td>-2.80</td>
+      <td>6.35</td>
+      <td>3.25</td>
+      <td>NaN</td>
+      <td>340.00</td>
+      <td>-14.05</td>
+      <td>230.44</td>
+      <td>26.81</td>
+      <td>1.17</td>
+      <td>963367.74</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>132.52</td>
+      <td>35</td>
+      <td>76</td>
+      <td>78</td>
+      <td>35</td>
+      <td>53</td>
+      <td>51</td>
+      <td>295.84</td>
+      <td>-1.22</td>
+      <td>296.16</td>
+      <td>-1.33</td>
+      <td>282.29</td>
+      <td>3.52</td>
+      <td>-0.14</td>
+      <td>-0.14</td>
+      <td>-0.00</td>
+      <td>0.02</td>
+      <td>-0.01</td>
+      <td>0.08</td>
+      <td>0.12</td>
+      <td>0.16</td>
+      <td>0.13</td>
+      <td>0.12</td>
+      <td>0.06</td>
+      <td>0.40</td>
+      <td>86.12</td>
+      <td>1284.0</td>
+      <td>3.962224e+10</td>
+      <td>1.284060e+08</td>
+      <td>1.276610e+08</td>
+      <td>1405187.0</td>
+      <td>1.49</td>
+      <td>-3.2</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1980-03-17 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>UFPI</td>
+      <td>UFPI</td>
+      <td>Ufp Industries Inc</td>
+      <td>Basic Materials</td>
+      <td>Lumber &amp; Wood Production</td>
+      <td>2.05</td>
+      <td>80.63</td>
+      <td>135523.0</td>
+      <td>0.51</td>
+      <td>2.72</td>
+      <td>2.36</td>
+      <td>-1.50</td>
+      <td>14.86</td>
+      <td>6.23</td>
+      <td>2.56</td>
+      <td>NaN</td>
+      <td>94.80</td>
+      <td>-14.95</td>
+      <td>64.12</td>
+      <td>25.74</td>
+      <td>1.02</td>
+      <td>267474.40</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>224.89</td>
+      <td>89</td>
+      <td>76</td>
+      <td>74</td>
+      <td>94</td>
+      <td>83</td>
+      <td>79</td>
+      <td>80.83</td>
+      <td>-0.24</td>
+      <td>79.11</td>
+      <td>1.92</td>
+      <td>74.96</td>
+      <td>7.57</td>
+      <td>0.38</td>
+      <td>0.37</td>
+      <td>-0.16</td>
+      <td>0.26</td>
+      <td>-0.34</td>
+      <td>-0.25</td>
+      <td>0.11</td>
+      <td>-0.04</td>
+      <td>0.12</td>
+      <td>-0.15</td>
+      <td>-0.09</td>
+      <td>2.83</td>
+      <td>84.67</td>
+      <td>450.0</td>
+      <td>4.934082e+09</td>
+      <td>6.163750e+07</td>
+      <td>6.015328e+07</td>
+      <td>1724660.0</td>
+      <td>5.69</td>
+      <td>-4.3</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>1993-11-10 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>FHN</td>
+      <td>FHN</td>
+      <td>First Horizon National Corporation</td>
+      <td>Financial Services</td>
+      <td>Banks—Regional</td>
+      <td>0.41</td>
+      <td>24.60</td>
+      <td>3135803.0</td>
+      <td>0.53</td>
+      <td>0.58</td>
+      <td>0.16</td>
+      <td>-1.01</td>
+      <td>1.03</td>
+      <td>5.94</td>
+      <td>7.94</td>
+      <td>NaN</td>
+      <td>24.92</td>
+      <td>-1.28</td>
+      <td>15.00</td>
+      <td>64.00</td>
+      <td>2.65</td>
+      <td>5885846.74</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>90.00</td>
+      <td>52</td>
+      <td>75</td>
+      <td>79</td>
+      <td>42</td>
+      <td>92</td>
+      <td>93</td>
+      <td>24.60</td>
+      <td>0.01</td>
+      <td>24.51</td>
+      <td>0.38</td>
+      <td>24.09</td>
+      <td>2.12</td>
+      <td>0.14</td>
+      <td>0.10</td>
+      <td>-0.02</td>
+      <td>-0.22</td>
+      <td>0.28</td>
+      <td>0.24</td>
+      <td>-0.04</td>
+      <td>0.13</td>
+      <td>0.00</td>
+      <td>0.22</td>
+      <td>0.10</td>
+      <td>1.36</td>
+      <td>79.19</td>
+      <td>707.0</td>
+      <td>1.302823e+10</td>
+      <td>5.368040e+08</td>
+      <td>5.297287e+08</td>
+      <td>29790712.0</td>
+      <td>5.95</td>
+      <td>1.6</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1980-03-17 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>LECO</td>
+      <td>LECO</td>
+      <td>Lincoln Electric Holdings Inc</td>
+      <td>Industrials</td>
+      <td>Tools &amp; Accessories</td>
+      <td>1.97</td>
+      <td>146.66</td>
+      <td>259893.0</td>
+      <td>0.81</td>
+      <td>2.09</td>
+      <td>3.09</td>
+      <td>-0.82</td>
+      <td>2.19</td>
+      <td>5.84</td>
+      <td>5.97</td>
+      <td>NaN</td>
+      <td>150.68</td>
+      <td>-2.67</td>
+      <td>118.17</td>
+      <td>24.11</td>
+      <td>1.85</td>
+      <td>319113.84</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>178.41</td>
+      <td>57</td>
+      <td>75</td>
+      <td>82</td>
+      <td>35</td>
+      <td>53</td>
+      <td>51</td>
+      <td>146.59</td>
+      <td>0.05</td>
+      <td>145.47</td>
+      <td>0.82</td>
+      <td>138.07</td>
+      <td>6.22</td>
+      <td>2.44</td>
+      <td>2.53</td>
+      <td>0.17</td>
+      <td>0.32</td>
+      <td>0.02</td>
+      <td>0.05</td>
+      <td>0.16</td>
+      <td>0.08</td>
+      <td>0.16</td>
+      <td>0.05</td>
+      <td>0.05</td>
+      <td>2.31</td>
+      <td>75.27</td>
+      <td>519.0</td>
+      <td>8.423783e+09</td>
+      <td>5.791930e+07</td>
+      <td>5.693353e+07</td>
+      <td>2049079.0</td>
+      <td>5.74</td>
+      <td>0.4</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>1994-04-07 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>WING</td>
+      <td>WING</td>
+      <td>Wingstop Inc</td>
+      <td>Consumer Cyclical</td>
+      <td>Restaurants</td>
+      <td>2.71</td>
+      <td>153.76</td>
+      <td>529961.0</td>
+      <td>0.73</td>
+      <td>4.34</td>
+      <td>7.29</td>
+      <td>-7.10</td>
+      <td>-1.29</td>
+      <td>5.79</td>
+      <td>85.99</td>
+      <td>NaN</td>
+      <td>178.68</td>
+      <td>-13.95</td>
+      <td>67.67</td>
+      <td>127.22</td>
+      <td>1.21</td>
+      <td>725382.48</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>41.01</td>
+      <td>40</td>
+      <td>75</td>
+      <td>95</td>
+      <td>75</td>
+      <td>81</td>
+      <td>77</td>
+      <td>157.12</td>
+      <td>-2.14</td>
+      <td>156.45</td>
+      <td>-1.72</td>
+      <td>145.64</td>
+      <td>5.57</td>
+      <td>0.18</td>
+      <td>0.18</td>
+      <td>0.67</td>
+      <td>0.22</td>
+      <td>0.29</td>
+      <td>0.18</td>
+      <td>0.41</td>
+      <td>0.40</td>
+      <td>0.25</td>
+      <td>0.28</td>
+      <td>0.18</td>
+      <td>0.54</td>
+      <td>121.88</td>
+      <td>389.0</td>
+      <td>4.993347e+09</td>
+      <td>2.991640e+07</td>
+      <td>2.974675e+07</td>
+      <td>3176979.0</td>
+      <td>3.04</td>
+      <td>9.4</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>2015-06-12 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>LNG</td>
+      <td>LNG</td>
+      <td>Cheniere Energy Inc</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas Midstream</td>
+      <td>2.74</td>
+      <td>168.21</td>
+      <td>1546980.0</td>
+      <td>0.65</td>
+      <td>3.24</td>
+      <td>4.99</td>
+      <td>-4.08</td>
+      <td>-1.32</td>
+      <td>5.67</td>
+      <td>18.30</td>
+      <td>NaN</td>
+      <td>182.35</td>
+      <td>-7.75</td>
+      <td>97.85</td>
+      <td>71.91</td>
+      <td>1.90</td>
+      <td>2377782.02</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>101.55</td>
+      <td>40</td>
+      <td>75</td>
+      <td>87</td>
+      <td>2</td>
+      <td>61</td>
+      <td>86</td>
+      <td>170.33</td>
+      <td>-1.25</td>
+      <td>170.40</td>
+      <td>-1.28</td>
+      <td>170.55</td>
+      <td>-1.37</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.10</td>
+      <td>2.42</td>
+      <td>2.48</td>
+      <td>0.49</td>
+      <td>1.76</td>
+      <td>0.26</td>
+      <td>0.97</td>
+      <td>-0.00</td>
+      <td>-0.14</td>
+      <td>0.79</td>
+      <td>88.21</td>
+      <td>1247.0</td>
+      <td>4.022308e+10</td>
+      <td>2.486590e+08</td>
+      <td>2.414682e+08</td>
+      <td>3489342.0</td>
+      <td>1.38</td>
+      <td>0.3</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1994-04-04 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>PEP</td>
+      <td>PEP</td>
+      <td>PepsiCo Inc</td>
+      <td>Consumer Defensive</td>
+      <td>Beverages—Non-Alcoholic</td>
+      <td>0.33</td>
+      <td>182.23</td>
+      <td>2407688.0</td>
+      <td>0.48</td>
+      <td>1.53</td>
+      <td>2.64</td>
+      <td>-1.77</td>
+      <td>1.12</td>
+      <td>5.54</td>
+      <td>9.96</td>
+      <td>NaN</td>
+      <td>186.62</td>
+      <td>-2.35</td>
+      <td>153.37</td>
+      <td>18.82</td>
+      <td>1.36</td>
+      <td>4992158.02</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>275.43</td>
+      <td>53</td>
+      <td>75</td>
+      <td>83</td>
+      <td>77</td>
+      <td>48</td>
+      <td>62</td>
+      <td>183.24</td>
+      <td>-0.55</td>
+      <td>181.96</td>
+      <td>0.15</td>
+      <td>176.42</td>
+      <td>3.29</td>
+      <td>0.22</td>
+      <td>0.22</td>
+      <td>0.07</td>
+      <td>0.08</td>
+      <td>0.08</td>
+      <td>0.08</td>
+      <td>0.09</td>
+      <td>0.05</td>
+      <td>0.07</td>
+      <td>0.03</td>
+      <td>0.03</td>
+      <td>0.15</td>
+      <td>74.14</td>
+      <td>3725.0</td>
+      <td>2.453013e+11</td>
+      <td>1.377710e+09</td>
+      <td>1.374968e+09</td>
+      <td>9424716.0</td>
+      <td>1.71</td>
+      <td>-2.0</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>1972-06-01 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>FL</td>
+      <td>FL</td>
+      <td>Foot Locker Inc</td>
+      <td>Consumer Cyclical</td>
+      <td>Apparel Retail</td>
+      <td>1.09</td>
+      <td>38.89</td>
+      <td>962628.0</td>
+      <td>0.35</td>
+      <td>4.57</td>
+      <td>1.85</td>
+      <td>-2.29</td>
+      <td>24.33</td>
+      <td>4.82</td>
+      <td>21.11</td>
+      <td>NaN</td>
+      <td>47.42</td>
+      <td>-17.99</td>
+      <td>23.85</td>
+      <td>63.06</td>
+      <td>1.53</td>
+      <td>2748394.04</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>6.0</td>
+      <td>29.35</td>
+      <td>94</td>
+      <td>74</td>
+      <td>89</td>
+      <td>78</td>
+      <td>55</td>
+      <td>61</td>
+      <td>38.56</td>
+      <td>0.85</td>
+      <td>36.80</td>
+      <td>5.67</td>
+      <td>33.63</td>
+      <td>15.65</td>
+      <td>-0.78</td>
+      <td>-0.76</td>
+      <td>-0.41</td>
+      <td>-0.45</td>
+      <td>-0.73</td>
+      <td>-0.05</td>
+      <td>-0.09</td>
+      <td>-0.04</td>
+      <td>-0.07</td>
+      <td>-0.15</td>
+      <td>-0.03</td>
+      <td>1.76</td>
+      <td>99.52</td>
+      <td>441.0</td>
+      <td>3.106010e+09</td>
+      <td>9.330160e+07</td>
+      <td>8.065274e+07</td>
+      <td>8860618.0</td>
+      <td>3.60</td>
+      <td>-42.7</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1962-01-02 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>DKS</td>
+      <td>DKS</td>
+      <td>Dick’s Sporting Goods Inc</td>
+      <td>Consumer Cyclical</td>
+      <td>Specialty Retail</td>
+      <td>1.63</td>
+      <td>118.47</td>
+      <td>1395603.0</td>
+      <td>0.78</td>
+      <td>4.30</td>
+      <td>5.08</td>
+      <td>-0.93</td>
+      <td>9.67</td>
+      <td>4.58</td>
+      <td>47.22</td>
+      <td>NaN</td>
+      <td>122.50</td>
+      <td>-3.29</td>
+      <td>63.45</td>
+      <td>86.71</td>
+      <td>1.21</td>
+      <td>1787852.30</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>26.79</td>
+      <td>81</td>
+      <td>73</td>
+      <td>89</td>
+      <td>78</td>
+      <td>55</td>
+      <td>61</td>
+      <td>116.88</td>
+      <td>1.36</td>
+      <td>114.53</td>
+      <td>3.44</td>
+      <td>111.76</td>
+      <td>6.00</td>
+      <td>-0.36</td>
+      <td>-0.28</td>
+      <td>-0.31</td>
+      <td>-0.27</td>
+      <td>-0.28</td>
+      <td>0.03</td>
+      <td>-0.05</td>
+      <td>-0.02</td>
+      <td>-0.03</td>
+      <td>0.01</td>
+      <td>0.02</td>
+      <td>4.77</td>
+      <td>111.32</td>
+      <td>625.0</td>
+      <td>8.589923e+09</td>
+      <td>5.560330e+07</td>
+      <td>4.789715e+07</td>
+      <td>12532638.0</td>
+      <td>7.72</td>
+      <td>-194.3</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>2002-10-16 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>RFP</td>
+      <td>RFP</td>
+      <td>Resolute Forest Products Inc</td>
+      <td>Basic Materials</td>
+      <td>Paper &amp; Paper Products</td>
+      <td>0.62</td>
+      <td>21.11</td>
+      <td>1533970.0</td>
+      <td>2.98</td>
+      <td>0.63</td>
+      <td>0.14</td>
+      <td>0.05</td>
+      <td>0.52</td>
+      <td>3.63</td>
+      <td>27.48</td>
+      <td>NaN</td>
+      <td>21.25</td>
+      <td>-0.66</td>
+      <td>11.00</td>
+      <td>91.91</td>
+      <td>1.58</td>
+      <td>514947.44</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>147.68</td>
+      <td>49</td>
+      <td>72</td>
+      <td>94</td>
+      <td>54</td>
+      <td>95</td>
+      <td>90</td>
+      <td>21.07</td>
+      <td>0.20</td>
+      <td>21.04</td>
+      <td>0.35</td>
+      <td>20.81</td>
+      <td>1.45</td>
+      <td>0.09</td>
+      <td>0.12</td>
+      <td>0.06</td>
+      <td>-0.10</td>
+      <td>-0.62</td>
+      <td>-0.62</td>
+      <td>0.19</td>
+      <td>0.05</td>
+      <td>0.05</td>
+      <td>0.15</td>
+      <td>-0.07</td>
+      <td>0.87</td>
+      <td>96.96</td>
+      <td>229.0</td>
+      <td>1.621497e+09</td>
+      <td>7.681180e+07</td>
+      <td>7.604830e+07</td>
+      <td>2458623.0</td>
+      <td>4.40</td>
+      <td>7.9</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>2010-12-10 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>MNRO</td>
+      <td>MNRO</td>
+      <td>Monro Muffler Brake Inc</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Parts</td>
+      <td>1.07</td>
+      <td>48.36</td>
+      <td>228593.0</td>
+      <td>0.84</td>
+      <td>3.45</td>
+      <td>1.58</td>
+      <td>6.36</td>
+      <td>2.65</td>
+      <td>3.53</td>
+      <td>8.85</td>
+      <td>NaN</td>
+      <td>60.86</td>
+      <td>-20.54</td>
+      <td>37.49</td>
+      <td>28.99</td>
+      <td>1.53</td>
+      <td>273429.82</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>112.76</td>
+      <td>59</td>
+      <td>72</td>
+      <td>79</td>
+      <td>78</td>
+      <td>55</td>
+      <td>61</td>
+      <td>46.97</td>
+      <td>2.96</td>
+      <td>46.46</td>
+      <td>4.10</td>
+      <td>46.09</td>
+      <td>4.92</td>
+      <td>-0.38</td>
+      <td>-0.35</td>
+      <td>-0.12</td>
+      <td>-0.12</td>
+      <td>0.75</td>
+      <td>0.21</td>
+      <td>-0.05</td>
+      <td>-0.03</td>
+      <td>-0.02</td>
+      <td>-0.04</td>
+      <td>0.02</td>
+      <td>1.84</td>
+      <td>117.45</td>
+      <td>301.0</td>
+      <td>1.470859e+09</td>
+      <td>3.145550e+07</td>
+      <td>3.083077e+07</td>
+      <td>3769833.0</td>
+      <td>12.77</td>
+      <td>6.6</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>1991-07-30 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>GGG</td>
+      <td>GGG</td>
+      <td>Graco Inc</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>0.53</td>
+      <td>67.79</td>
+      <td>446651.0</td>
+      <td>0.50</td>
+      <td>1.84</td>
+      <td>1.39</td>
+      <td>-3.12</td>
+      <td>-0.67</td>
+      <td>3.45</td>
+      <td>7.13</td>
+      <td>NaN</td>
+      <td>81.09</td>
+      <td>-16.40</td>
+      <td>56.48</td>
+      <td>20.02</td>
+      <td>1.03</td>
+      <td>891748.34</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>186.87</td>
+      <td>42</td>
+      <td>72</td>
+      <td>75</td>
+      <td>35</td>
+      <td>53</td>
+      <td>51</td>
+      <td>68.84</td>
+      <td>-1.53</td>
+      <td>68.73</td>
+      <td>-1.37</td>
+      <td>66.14</td>
+      <td>2.50</td>
+      <td>0.12</td>
+      <td>0.14</td>
+      <td>0.04</td>
+      <td>0.07</td>
+      <td>0.09</td>
+      <td>0.06</td>
+      <td>0.12</td>
+      <td>0.03</td>
+      <td>0.08</td>
+      <td>0.02</td>
+      <td>0.02</td>
+      <td>0.92</td>
+      <td>90.72</td>
+      <td>654.0</td>
+      <td>1.170939e+10</td>
+      <td>1.685290e+08</td>
+      <td>1.666449e+08</td>
+      <td>3108567.0</td>
+      <td>4.03</td>
+      <td>0.4</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1980-03-17 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>FIBK</td>
+      <td>FIBK</td>
+      <td>First Interstate BancSystem Inc</td>
+      <td>Financial Services</td>
+      <td>Banks—Regional</td>
+      <td>0.24</td>
+      <td>41.43</td>
+      <td>272953.0</td>
+      <td>0.57</td>
+      <td>2.35</td>
+      <td>1.00</td>
+      <td>-5.02</td>
+      <td>-8.56</td>
+      <td>2.86</td>
+      <td>9.60</td>
+      <td>NaN</td>
+      <td>46.34</td>
+      <td>-10.60</td>
+      <td>32.40</td>
+      <td>27.87</td>
+      <td>0.94</td>
+      <td>474877.94</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>150.97</td>
+      <td>22</td>
+      <td>71</td>
+      <td>79</td>
+      <td>42</td>
+      <td>92</td>
+      <td>93</td>
+      <td>42.56</td>
+      <td>-2.65</td>
+      <td>43.24</td>
+      <td>-4.18</td>
+      <td>43.31</td>
+      <td>-4.34</td>
+      <td>0.82</td>
+      <td>0.05</td>
+      <td>0.28</td>
+      <td>-0.32</td>
+      <td>4.00</td>
+      <td>1.08</td>
+      <td>0.69</td>
+      <td>1.00</td>
+      <td>0.78</td>
+      <td>0.40</td>
+      <td>0.15</td>
+      <td>1.01</td>
+      <td>82.90</td>
+      <td>327.0</td>
+      <td>4.596756e+09</td>
+      <td>1.044480e+08</td>
+      <td>7.169082e+07</td>
+      <td>2370470.0</td>
+      <td>4.24</td>
+      <td>-1.9</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>2010-03-24 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>NWBI</td>
+      <td>NWBI</td>
+      <td>Northwest Bancshares Inc</td>
+      <td>Financial Services</td>
+      <td>Banks—Regional</td>
+      <td>0.21</td>
+      <td>14.29</td>
+      <td>369869.0</td>
+      <td>0.50</td>
+      <td>1.98</td>
+      <td>0.28</td>
+      <td>-6.54</td>
+      <td>-3.97</td>
+      <td>2.44</td>
+      <td>13.59</td>
+      <td>NaN</td>
+      <td>15.35</td>
+      <td>-6.91</td>
+      <td>12.04</td>
+      <td>18.69</td>
+      <td>1.43</td>
+      <td>747131.70</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>167.88</td>
+      <td>32</td>
+      <td>70</td>
+      <td>79</td>
+      <td>42</td>
+      <td>92</td>
+      <td>93</td>
+      <td>14.70</td>
+      <td>-2.78</td>
+      <td>14.78</td>
+      <td>-3.34</td>
+      <td>14.49</td>
+      <td>-1.37</td>
+      <td>0.06</td>
+      <td>0.07</td>
+      <td>0.29</td>
+      <td>0.03</td>
+      <td>0.32</td>
+      <td>0.06</td>
+      <td>-0.00</td>
+      <td>0.20</td>
+      <td>0.07</td>
+      <td>0.26</td>
+      <td>0.09</td>
+      <td>0.99</td>
+      <td>68.51</td>
+      <td>297.0</td>
+      <td>1.885772e+09</td>
+      <td>1.269880e+08</td>
+      <td>1.254302e+08</td>
+      <td>8836906.0</td>
+      <td>9.91</td>
+      <td>11.4</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>1994-11-07 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>MUSA</td>
+      <td>MUSA</td>
+      <td>Murphy USA Inc</td>
+      <td>Consumer Cyclical</td>
+      <td>Specialty Retail</td>
+      <td>3.90</td>
+      <td>296.40</td>
+      <td>255308.0</td>
+      <td>0.80</td>
+      <td>2.92</td>
+      <td>7.28</td>
+      <td>0.20</td>
+      <td>-3.20</td>
+      <td>2.37</td>
+      <td>21.56</td>
+      <td>NaN</td>
+      <td>323.00</td>
+      <td>-8.24</td>
+      <td>164.30</td>
+      <td>80.40</td>
+      <td>0.90</td>
+      <td>320764.06</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>64.55</td>
+      <td>34</td>
+      <td>69</td>
+      <td>93</td>
+      <td>78</td>
+      <td>55</td>
+      <td>61</td>
+      <td>291.01</td>
+      <td>1.85</td>
+      <td>292.26</td>
+      <td>1.41</td>
+      <td>290.46</td>
+      <td>2.04</td>
+      <td>1.11</td>
+      <td>1.33</td>
+      <td>0.20</td>
+      <td>0.86</td>
+      <td>-0.34</td>
+      <td>-0.36</td>
+      <td>0.38</td>
+      <td>0.19</td>
+      <td>0.36</td>
+      <td>0.05</td>
+      <td>-0.02</td>
+      <td>8.80</td>
+      <td>89.59</td>
+      <td>523.0</td>
+      <td>6.564235e+09</td>
+      <td>2.259400e+07</td>
+      <td>2.070469e+07</td>
+      <td>2804311.0</td>
+      <td>7.55</td>
+      <td>-5.3</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>2013-08-19 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>CLX</td>
+      <td>CLX</td>
+      <td>Clorox Co</td>
+      <td>Consumer Defensive</td>
+      <td>Household &amp; Personal Products</td>
+      <td>1.57</td>
+      <td>149.25</td>
+      <td>627598.0</td>
+      <td>0.52</td>
+      <td>2.37</td>
+      <td>3.07</td>
+      <td>0.40</td>
+      <td>3.70</td>
+      <td>2.37</td>
+      <td>11.11</td>
+      <td>NaN</td>
+      <td>186.86</td>
+      <td>-20.13</td>
+      <td>120.50</td>
+      <td>23.86</td>
+      <td>2.10</td>
+      <td>1204614.68</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>102.19</td>
+      <td>63</td>
+      <td>69</td>
+      <td>79</td>
+      <td>96</td>
+      <td>96</td>
+      <td>98</td>
+      <td>148.59</td>
+      <td>0.44</td>
+      <td>146.80</td>
+      <td>1.67</td>
+      <td>140.27</td>
+      <td>6.40</td>
+      <td>-0.40</td>
+      <td>-0.40</td>
+      <td>-0.02</td>
+      <td>0.02</td>
+      <td>0.00</td>
+      <td>0.28</td>
+      <td>-0.04</td>
+      <td>-0.02</td>
+      <td>-0.00</td>
+      <td>0.01</td>
+      <td>0.03</td>
+      <td>0.44</td>
+      <td>82.21</td>
+      <td>1405.0</td>
+      <td>1.750957e+10</td>
+      <td>1.233850e+08</td>
+      <td>1.231010e+08</td>
+      <td>6574285.0</td>
+      <td>5.80</td>
+      <td>10.2</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>1973-02-21 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>NDSN</td>
+      <td>NDSN</td>
+      <td>Nordson Corporation</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>0.64</td>
+      <td>235.08</td>
+      <td>148976.0</td>
+      <td>0.69</td>
+      <td>1.89</td>
+      <td>4.36</td>
+      <td>-0.60</td>
+      <td>5.82</td>
+      <td>1.26</td>
+      <td>7.26</td>
+      <td>NaN</td>
+      <td>271.90</td>
+      <td>-13.54</td>
+      <td>194.89</td>
+      <td>20.62</td>
+      <td>1.18</td>
+      <td>215895.44</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>239.94</td>
+      <td>71</td>
+      <td>64</td>
+      <td>77</td>
+      <td>35</td>
+      <td>53</td>
+      <td>51</td>
+      <td>235.69</td>
+      <td>-0.26</td>
+      <td>232.93</td>
+      <td>0.92</td>
+      <td>224.84</td>
+      <td>4.56</td>
+      <td>-0.00</td>
+      <td>0.01</td>
+      <td>0.24</td>
+      <td>0.20</td>
+      <td>0.05</td>
+      <td>0.06</td>
+      <td>0.02</td>
+      <td>0.09</td>
+      <td>0.08</td>
+      <td>0.01</td>
+      <td>0.04</td>
+      <td>10.76</td>
+      <td>75.37</td>
+      <td>778.0</td>
+      <td>1.353319e+10</td>
+      <td>5.721070e+07</td>
+      <td>5.180257e+07</td>
+      <td>963433.0</td>
+      <td>4.78</td>
+      <td>0.1</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>1980-03-18 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>DG</td>
+      <td>DG</td>
+      <td>Dollar General Corporation</td>
+      <td>Consumer Defensive</td>
+      <td>Discount Stores</td>
+      <td>1.44</td>
+      <td>248.99</td>
+      <td>1375634.0</td>
+      <td>0.74</td>
+      <td>2.82</td>
+      <td>7.08</td>
+      <td>-2.62</td>
+      <td>-0.93</td>
+      <td>0.64</td>
+      <td>6.53</td>
+      <td>NaN</td>
+      <td>262.20</td>
+      <td>-5.04</td>
+      <td>183.25</td>
+      <td>35.87</td>
+      <td>0.92</td>
+      <td>1852261.04</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>120.44</td>
+      <td>41</td>
+      <td>63</td>
+      <td>81</td>
+      <td>73</td>
+      <td>82</td>
+      <td>58</td>
+      <td>248.42</td>
+      <td>0.23</td>
+      <td>249.86</td>
+      <td>-0.35</td>
+      <td>247.39</td>
+      <td>0.65</td>
+      <td>0.06</td>
+      <td>0.11</td>
+      <td>0.22</td>
+      <td>0.14</td>
+      <td>0.42</td>
+      <td>0.10</td>
+      <td>0.09</td>
+      <td>0.11</td>
+      <td>0.11</td>
+      <td>0.19</td>
+      <td>0.06</td>
+      <td>0.44</td>
+      <td>95.64</td>
+      <td>1658.0</td>
+      <td>5.619901e+10</td>
+      <td>2.255720e+08</td>
+      <td>2.230882e+08</td>
+      <td>3972309.0</td>
+      <td>2.35</td>
+      <td>-14.5</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>2009-11-13 14:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>ENPH</td>
+      <td>ENPH</td>
+      <td>Enphase Energy Inc</td>
+      <td>Technology</td>
+      <td>Solar</td>
+      <td>2.41</td>
+      <td>317.20</td>
+      <td>3327645.0</td>
+      <td>0.84</td>
+      <td>5.86</td>
+      <td>16.83</td>
+      <td>-1.06</td>
+      <td>17.99</td>
+      <td>-0.07</td>
+      <td>54.91</td>
+      <td>NaN</td>
+      <td>339.92</td>
+      <td>-6.68</td>
+      <td>113.40</td>
+      <td>179.72</td>
+      <td>1.03</td>
+      <td>3977054.58</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>33.29</td>
+      <td>91</td>
+      <td>61</td>
+      <td>96</td>
+      <td>95</td>
+      <td>58</td>
+      <td>57</td>
+      <td>318.21</td>
+      <td>-0.32</td>
+      <td>310.12</td>
+      <td>2.28</td>
+      <td>287.03</td>
+      <td>10.51</td>
+      <td>4.26</td>
+      <td>4.16</td>
+      <td>0.73</td>
+      <td>0.84</td>
+      <td>0.40</td>
+      <td>0.21</td>
+      <td>0.81</td>
+      <td>0.70</td>
+      <td>0.67</td>
+      <td>0.52</td>
+      <td>0.37</td>
+      <td>2.05</td>
+      <td>76.76</td>
+      <td>1274.0</td>
+      <td>3.969117e+10</td>
+      <td>1.359240e+08</td>
+      <td>1.324059e+08</td>
+      <td>4768089.0</td>
+      <td>1.09</td>
+      <td>-0.8</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>2012-03-30 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>86</th>
+      <td>DEN</td>
+      <td>DEN</td>
+      <td>Denbury Resources Inc</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas E&amp;P</td>
+      <td>1.70</td>
+      <td>85.40</td>
+      <td>649537.0</td>
+      <td>0.76</td>
+      <td>3.88</td>
+      <td>3.76</td>
+      <td>-4.86</td>
+      <td>-11.66</td>
+      <td>-1.68</td>
+      <td>4.35</td>
+      <td>NaN</td>
+      <td>104.05</td>
+      <td>-17.92</td>
+      <td>56.59</td>
+      <td>50.91</td>
+      <td>0.85</td>
+      <td>855110.96</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>51.34</td>
+      <td>18</td>
+      <td>56</td>
+      <td>77</td>
+      <td>2</td>
+      <td>61</td>
+      <td>86</td>
+      <td>87.44</td>
+      <td>-2.33</td>
+      <td>89.49</td>
+      <td>-4.57</td>
+      <td>91.99</td>
+      <td>-7.17</td>
+      <td>2.03</td>
+      <td>2.09</td>
+      <td>1.42</td>
+      <td>1.83</td>
+      <td>0.24</td>
+      <td>0.20</td>
+      <td>0.28</td>
+      <td>0.06</td>
+      <td>0.33</td>
+      <td>-0.04</td>
+      <td>-0.07</td>
+      <td>3.29</td>
+      <td>109.49</td>
+      <td>248.0</td>
+      <td>4.704615e+09</td>
+      <td>4.980010e+07</td>
+      <td>4.390129e+07</td>
+      <td>4790480.0</td>
+      <td>4.23</td>
+      <td>0.1</td>
+      <td>NYSE</td>
+      <td>United States</td>
+      <td>2020-09-21 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>87</th>
+      <td>ARKO</td>
+      <td>ARKO</td>
+      <td>Arko Corp</td>
+      <td>Consumer Cyclical</td>
+      <td>Specialty Retail</td>
+      <td>3.78</td>
+      <td>9.47</td>
+      <td>222643.0</td>
+      <td>0.45</td>
+      <td>3.26</td>
+      <td>0.27</td>
+      <td>0.37</td>
+      <td>-7.57</td>
+      <td>-6.66</td>
+      <td>9.93</td>
+      <td>NaN</td>
+      <td>10.81</td>
+      <td>-12.44</td>
+      <td>7.45</td>
+      <td>27.05</td>
+      <td>1.29</td>
+      <td>494942.00</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>88.75</td>
+      <td>24</td>
+      <td>44</td>
+      <td>73</td>
+      <td>78</td>
+      <td>55</td>
+      <td>61</td>
+      <td>9.23</td>
+      <td>2.52</td>
+      <td>9.27</td>
+      <td>2.14</td>
+      <td>9.40</td>
+      <td>0.68</td>
+      <td>-0.30</td>
+      <td>-0.30</td>
+      <td>0.11</td>
+      <td>0.33</td>
+      <td>6.00</td>
+      <td>0.07</td>
+      <td>0.20</td>
+      <td>0.14</td>
+      <td>0.20</td>
+      <td>0.08</td>
+      <td>0.02</td>
+      <td>39.82</td>
+      <td>58.17</td>
+      <td>146.0</td>
+      <td>1.115497e+09</td>
+      <td>1.200750e+08</td>
+      <td>4.392447e+07</td>
+      <td>3592860.0</td>
+      <td>8.29</td>
+      <td>0.0</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>2019-07-23 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>ARLP</td>
+      <td>ARLP</td>
+      <td>Alliance Resource Partners LP</td>
+      <td>Energy</td>
+      <td>Thermal Coal</td>
+      <td>0.56</td>
+      <td>21.73</td>
+      <td>401722.0</td>
+      <td>0.82</td>
+      <td>4.09</td>
+      <td>0.80</td>
+      <td>-8.35</td>
+      <td>-10.24</td>
+      <td>-12.48</td>
+      <td>5.49</td>
+      <td>NaN</td>
+      <td>27.63</td>
+      <td>-21.35</td>
+      <td>9.94</td>
+      <td>118.61</td>
+      <td>1.52</td>
+      <td>489038.32</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>178.27</td>
+      <td>20</td>
+      <td>35</td>
+      <td>80</td>
+      <td>2</td>
+      <td>61</td>
+      <td>86</td>
+      <td>22.33</td>
+      <td>-2.67</td>
+      <td>22.57</td>
+      <td>-3.72</td>
+      <td>23.07</td>
+      <td>-5.80</td>
+      <td>1.86</td>
+      <td>1.85</td>
+      <td>2.42</td>
+      <td>1.88</td>
+      <td>4.75</td>
+      <td>0.63</td>
+      <td>0.51</td>
+      <td>0.44</td>
+      <td>0.52</td>
+      <td>0.39</td>
+      <td>0.19</td>
+      <td>29.34</td>
+      <td>27.45</td>
+      <td>140.0</td>
+      <td>2.693990e+09</td>
+      <td>1.271950e+08</td>
+      <td>8.718088e+07</td>
+      <td>3527722.0</td>
+      <td>7.51</td>
+      <td>0.0</td>
+      <td>NASDAQ</td>
+      <td>United States</td>
+      <td>1999-08-17 13:30:00</td>
+      <td>united_states</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+            </section>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+    </div>
+</footer>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bm/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+<script>
+        $(document).ready(function () {
+            $('#data').DataTable(
+                {
+                    "scrollX": true,
+                    "dom": 'Bfrtip',
+                    "buttons": [
+                        'copy', 'csv', 'excel', 'print'
+                    ]
+
+                }
+            );
+        });
+    </script>
+    
+</body>
+
+</html>

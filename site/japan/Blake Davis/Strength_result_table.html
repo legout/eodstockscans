@@ -1,0 +1,7555 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EOD Stock Scans</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.datatables.net/v/bm/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/sc-2.0.5/datatables.min.css" />
+
+</head >
+
+
+<body>
+    <section class="hero is-small is-dark">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+
+                    <div class="navbar-burger" @click="showNav = !showNav" :class="{ 'is-active': showNav }">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="navbar-menu" :class="{ 'is-active': showNav }">
+                    <div class="navbar-start">
+                        
+                        <a class="navbar-item" href="../../index.html">
+                            
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-home"></i>
+                                    </span>
+                                    <span>Home</span>
+                                </span>
+                            </a>
+
+                            <div class="navbar-item has-dropdown is-hoverable has-background-dark">
+                                <a class="navbar-link">
+                                    <span>Choose Market</span>
+                                </a>
+
+                                <div class="navbar-dropdown has-background-dark">
+                                    
+
+                                    
+                                    <a class="navbar-item" href="../../australia/market_monitor.html">
+                                        <span>Australia</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../belgium/market_monitor.html">
+                                        <span>Belgium</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../canada/market_monitor.html">
+                                        <span>Canada</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../france/market_monitor.html">
+                                        <span>France</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../germany/market_monitor.html">
+                                        <span>Germany</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../hong_kong/market_monitor.html">
+                                        <span>Hong Kong</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../indonesia/market_monitor.html">
+                                        <span>Indonesia</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../italy/market_monitor.html">
+                                        <span>Italy</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../japan/market_monitor.html">
+                                        <span>Japan</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../netherlands/market_monitor.html">
+                                        <span>Netherlands</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../nordic_markets/market_monitor.html">
+                                        <span>Nordic Markets</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../poland/market_monitor.html">
+                                        <span>Poland</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../singapore/market_monitor.html">
+                                        <span>Singapore</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../united_kingdom/market_monitor.html">
+                                        <span>United Kingdom</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../united_states/market_monitor.html">
+                                        <span>United States</span>
+                                        
+                                        
+                                </div>
+                            </div>
+                    </div>
+                    <!-- <div class="navbar-end"></div>
+                    <span class="navbar-item">
+                        <a class="button is-info is-light" href="https://twitter.com/LignoL23">
+                            <span class="icon">
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                            <span>Twitter</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <a class="button  is-success is-light" href="https://www.paypal.com/paypalme/volkerlorrmann/5">
+                            <span class="icon">
+                                <i class="fab fa-paypal"></i>
+                            </span>
+                            <span>paypal.me</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+                        <script
+                            type='text/javascript'>kofiwidget2.init('Support me', '#d6d6d6', 'W7W0ACJPB'); kofiwidget2.draw();</script>
+                    </span>
+                </div> -->
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="columns is-multiline is-mobile is-centered">
+                <div class="column is-1">
+                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDEwMCAxMDA7IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOm5vbmU7fQoJLnN0MXtmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO30KPC9zdHlsZT48dGl0bGUvPjxnPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MS44LDg0YzAuMSwwLjIsMC4xLDAuMywwLjEsMC41YzAsMy4zLDAuMiw2LjcsMC41LDEwYzIuNi0wLjEsNC45LTAuMSw3LjItMC4ydjBjMC4zLDAsMC43LDAsMSwwICAgYy0wLjMtNS0wLjQtMTAtMC41LTE1QzQ4LjQsODAuNCw0NS41LDgyLjEsNDEuOCw4NHoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTYuMyw5NGMtMC4yLDAuMS0wLjQsMC4xLTAuNSwwLjJjMS43LDAuMSw0LjMsMC4yLDcuNywwLjNjMS40LDAsMi43LDAuMSw0LDAuMWMtMC4xLTEuNC0wLjMtMi44LTAuNC00LjEgICBDMjIuNiw5Mi4xLDE4LjgsOTMuMiwxNi4zLDk0eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02Ni45LDQ3LjVjMy4xLTMuMyw2LjgtNy41LDEwLjgtMTIuN2MwLDAsMCwwLDAtMC4xYzAuNS0wLjYsMS40LTAuNywyLTAuMmMxLjcsMS41LDMuNiwyLjksNS42LDQuNCAgIGMxLDAuOCwyLjEsMS41LDMuMSwyLjJjMC4zLDAuMiwwLjYsMC4zLDEsMC4zYzAuNCwwLDAuOC0wLjIsMS4yLTAuNGMwLjMtMC4zLDAuNS0wLjcsMC41LTEuMWMwLjItNC45LDAuMy05LjksMC4zLTE1di0wLjcgICBjMC01LjYtMC4xLTExLTAuMy0xNi4zYzAtMC4yLDAtMC4zLTAuMS0wLjVjLTAuMy0xLjQtMS43LTIuMy0zLjItMkM3Ni42LDgsNjUuNSwxMC43LDU0LjUsMTMuN2MtMC4zLDAuMS0wLjYsMC4zLTAuOCwwLjUgICBjLTAuMiwwLjMtMC4zLDAuNi0wLjMsMC45YzAsMC41LDAuMywxLDAuNywxLjJjMC45LDAuNiwxLjgsMS4xLDIuNywxLjdjMi4yLDEuMyw0LjMsMi41LDYuMywzLjVjMC43LDAuNCwxLDEuMiwwLjYsMS45ICAgYy0zLjEsNi02LjYsMTEuNy0xMC42LDE3LjFjLTguNSwxMS40LTE4LDIwLTMwLDMwLjhDMTYuNyw3NywxMiw4MSw5LjQsODMuNWMtMC42LDAuNi0xLjIsMS4yLTEuNywxLjhjMC43LTAuMSwxLjQtMC4yLDIuMS0wLjQgICBjMS4xLTAuMywyLjQtMC43LDMuNi0xLjFjMi41LTAuOSw0LjktMS45LDYuMS0yLjRDMjguOSw3Ny42LDQ3LjEsNjguNiw2Ni45LDQ3LjV6Ii8+PHBhdGggY2xhc3M9InN0MCIgZD0iTTMxLjUsODguN2MtMC42LDAuMi0xLjIsMC41LTEuNywwLjdjMC4yLDEuNywwLjQsMy41LDAuNSw1LjJjMC43LDAsMS4zLDAsMS45LDBjMi42LDAsNSwwLDcuMy0wLjEgICBjLTAuMy0zLjEtMC40LTYuMS0wLjUtOS4yQzM2LjgsODYuNSwzNC4yLDg3LjYsMzEuNSw4OC43eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik01Mi45LDc3LjVjMCwwLjEsMCwwLjEsMCwwLjJjMC4xLDUuNSwwLjMsMTEuMSwwLjYsMTYuNmMzLjQtMC4xLDYuOS0wLjIsMTAuNC0wLjNjLTAuMy04LjEtMC41LTE2LjMtMC44LTI0LjQgICBDNTkuOCw3Mi40LDU2LjQsNzUsNTIuOSw3Ny41eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik05MS4yLDU1LjNjLTAuMS0wLjEtMC4xLTAuMS0wLjItMC4xYy0wLjEsMC0wLjItMC4xLTAuNS0wLjJjLTAuNi0wLjMtMS42LTAuNy0zLjUtMS42ICAgYy0xLjItMC42LTIuMy0xLjEtMy40LTEuNmMtMC41LTAuMi0xLTAuNC0xLjYtMC40Yy0xLjEsMC0yLjEsMC41LTIuOCwxLjRsMCwwYy0wLjIsMC4zLTAuNCwwLjUtMC42LDAuOGwyLjMsNDAuM2gwLjYgICBjMi4yLDAsMy45LDAsNS4yLTAuMmMxLTAuMSwxLjktMC4zLDIuOC0wLjdjMC41LTAuMiwwLjktMC41LDEuMi0wLjljMC41LTAuNCwwLjgtMSwxLTEuNmMwLjItMC45LDAuMy0xLjgsMC4zLTIuNyAgIGMwLTEuNy0wLjEtNC4xLTAuMS03LjVjMC0yLjEsMC4xLTQuNywwLjMtNy43bDAsMGMwLjMtNC45LDAuOC04LjgsMC44LTExLjhjMC0xLjItMC4xLTIuNC0wLjQtMy41QzkyLjIsNTYuNSw5MS44LDU1LjgsOTEuMiw1NS4zeiAgICIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02NS44LDY3LjFjMCwwLjEsMC4xLDAuMywwLjEsMC40YzAuMyw4LjgsMC42LDE3LjYsMC45LDI2LjRjMy4yLTAuMSw2LjQtMC4xLDkuNi0wLjF2MGgwLjNoMS4xICAgYzAtMC4xLDAuMS0wLjIsMC4xLTAuNGMtMC43LTEyLjItMS40LTI0LjUtMi4xLTM2LjdDNzIuNyw2MC40LDY5LjMsNjMuOCw2NS44LDY3LjF6Ii8+PHBhdGggZD0iTTIwLjYsODQuMWM5LjYtMy45LDI4LjMtMTMuMSw0OC40LTM0LjZjMi45LTMuMSw2LjMtNywxMC4xLTExLjhjMS40LDEuMiwzLDIuNCw0LjYsMy42YzEuMSwwLjgsMi4xLDEuNSwzLjIsMi4zICAgYzEuOCwxLjIsNC4xLDEuMSw1LjctMC40YzAuOS0wLjgsMS40LTIsMS41LTMuMmMwLjItNC45LDAuMy05LjksMC4zLTE1LjF2LTAuN2MwLTUuNi0wLjEtMTEuMS0wLjMtMTYuNGMtMC4xLTMtMi43LTUuNC01LjctNS4zICAgYy0wLjMsMC0wLjcsMC4xLTEsMC4xQzc2LDUuMiw2NC44LDcuOSw1My43LDEwLjljLTEsMC4zLTEuOCwwLjgtMi40LDEuNmMtMC41LDAuOC0wLjgsMS43LTAuOCwyLjZjMCwxLjUsMC44LDIuOSwyLDMuNyAgIGMwLjksMC42LDEuOCwxLjEsMi44LDEuN2MxLjgsMS4xLDMuNSwyLDUuMiwyLjljLTIuOCw1LjQtNi4xLDEwLjYtOS43LDE1LjVDNDIuNiw1MCwzMy4yLDU4LjQsMjEuMiw2OS4yQzE2LDczLjksMTEuOSw3Ny40LDksNzkuOSAgIGMtMS4yLDEtMi4zLDIuMS0zLjMsMy4zYy0wLjQsMC40LTAuNywwLjgtMSwxLjNjLTAuMywwLjUtMC41LDEtMC41LDEuNWMwLDAuNywwLjMsMS4zLDAuOSwxLjdjMC4zLDAuMiwwLjYsMC40LDEsMC40ICAgYzAuMywwLjEsMC42LDAuMSwxLDAuMWMxLjEsMCwyLjMtMC4yLDMuNC0wLjVjMi0wLjUsMy45LTEuMiw1LjgtMS45QzE4LjEsODUuMSwxOS43LDg0LjQsMjAuNiw4NC4xeiBNOS43LDg0LjkgICBjLTAuNywwLjItMS40LDAuMy0yLjEsMC40YzAuNS0wLjYsMS4xLTEuMiwxLjctMS44QzEyLDgxLDE2LjcsNzcsMjMuMSw3MS40YzEyLTEwLjgsMjEuNi0xOS40LDMwLTMwLjhjNC01LjQsNy42LTExLjEsMTAuNi0xNy4xICAgYzAuNC0wLjcsMC4xLTEuNi0wLjYtMS45Yy0yLjEtMS4xLTQuMi0yLjMtNi4zLTMuNWMtMC45LTAuNi0xLjgtMS4xLTIuNy0xLjdjLTAuNC0wLjMtMC43LTAuNy0wLjctMS4yYzAtMC4zLDAuMS0wLjYsMC4zLTAuOSAgIGMwLjItMC4zLDAuNS0wLjUsMC44LTAuNUM2NS41LDEwLjcsNzYuNiw4LDg3LjgsNS40YzEuNC0wLjMsMi44LDAuNiwzLjIsMkM5MSw3LjYsOTEsNy44LDkxLDcuOWMwLjIsNS4yLDAuMywxMC43LDAuMywxNi4zdjAuNyAgIGMwLDUuMi0wLjEsMTAuMi0wLjMsMTVjMCwwLjQtMC4yLDAuOS0wLjUsMS4xYy0wLjMsMC4zLTAuNywwLjQtMS4yLDAuNGMtMC4zLDAtMC43LTAuMS0xLTAuM2MtMS0wLjctMi0xLjQtMy4xLTIuMiAgIGMtMi0xLjUtMy45LTMtNS42LTQuNGMtMC42LTAuNS0xLjUtMC40LTIsMC4yYzAsMCwwLDAsMCwwLjFjLTQsNS4yLTcuNyw5LjUtMTAuOCwxMi43Yy0xOS43LDIxLjEtMzgsMzAuMS00Ny40LDMzLjkgICBjLTEuMiwwLjUtMy42LDEuNS02LjEsMi40QzEyLjEsODQuMiwxMC44LDg0LjYsOS43LDg0Ljl6Ii8+PGxpbmUgY2xhc3M9InN0MSIgeDE9IjQuNSIgeDI9IjQuNSIgeTE9Ijg3LjEiIHkyPSI4Ny4xIi8+PHBhdGggZD0iTTk1LjcsNjAuN2MwLTEuNS0wLjEtMy0wLjUtNC40Qzk0LjgsNTUsOTQsNTMuOSw5Mi45LDUzYy0wLjItMC4xLTAuNC0wLjMtMC42LTAuNGMtMC4zLTAuMi0wLjYtMC4zLTEuMi0wLjYgICBjLTAuNi0wLjMtMS41LTAuNy0yLjktMS4zYy0xLjItMC42LTIuMy0xLjEtMy4zLTEuNmMtMi43LTEuNC02LTAuNi03LjksMS44bDAsMGMtNy44LDkuOS0xNywxOC40LTI3LjUsMjUuNCAgIGMtNiwzLjgtMTIuNCw3LjEtMTksOS44Yy01LjMsMi4yLTEwLDMuNi0xMy40LDQuN2MtMS43LDAuNS0zLjEsMS00LjEsMS40Yy0wLjUsMC4yLTAuOSwwLjQtMS40LDAuN2MtMC4yLDAuMi0wLjQsMC40LTAuNiwwLjYgICBjLTAuMiwwLjMtMC40LDAuNy0wLjQsMS4xYzAsMC4xLDAsMC4yLDAsMC4ydjB2MGMwLDAuMiwwLjEsMC41LDAuMywwLjdjMC4yLDAuMywwLjUsMC42LDAuOCwwLjdjMC41LDAuMiwxLjEsMC40LDEuNiwwLjUgICBjMS4zLDAuMiwyLjUsMC4zLDMuOCwwLjRjMS42LDAuMSwzLjcsMC4yLDYuMiwwLjJjMy4yLDAuMSw2LjIsMC4xLDguOSwwLjFjNywwLDEyLjUtMC4yLDE3LjQtMC4zYzguOS0wLjIsMTcuOC0wLjYsMjYuNy0wLjZoMC4zICAgYzEuOCwwLDMuNCwwLDQuOCwwYzIuMywwLjEsNC42LDAsNi45LTAuNGMwLjgtMC4xLDEuNi0wLjQsMi40LTAuOGMwLjctMC40LDEuNC0wLjgsMi0xLjRjMC44LTAuOCwxLjQtMS44LDEuOC0yLjkgICBjMC4zLTEuMSwwLjQtMi4zLDAuNC0zLjVjMC0xLjktMC4xLTQuMi0wLjEtNy41YzAtMi4xLDAuMS00LjYsMC4yLTcuNUM5NS4yLDY3LjksOTUuNyw2NCw5NS43LDYwLjd6IE0yMy40LDk0LjUgICBjLTMuNC0wLjEtNi0wLjItNy43LTAuM2MwLjItMC4xLDAuNC0wLjEsMC41LTAuMmMyLjUtMC44LDYuMy0yLDEwLjctMy42YzAuMSwxLjQsMC4zLDIuOCwwLjQsNC4xQzI2LjEsOTQuNiwyNC44LDk0LjYsMjMuNCw5NC41eiAgICBNMzIuMiw5NC42Yy0wLjYsMC0xLjMsMC0xLjksMGMtMC4yLTEuNy0wLjQtMy41LTAuNS01LjJjMC42LTAuMiwxLjEtMC40LDEuNy0wLjdjMi43LTEuMSw1LjMtMi4zLDcuNS0zLjQgICBjMC4xLDMuMSwwLjIsNi4xLDAuNSw5LjJDMzcuMyw5NC42LDM0LjksOTQuNiwzMi4yLDk0LjZ6IE00OS42LDk0LjNMNDkuNiw5NC4zYy0yLjMsMC00LjcsMC4xLTcuMiwwLjJjLTAuMy0zLjMtMC41LTYuNy0wLjUtMTAgICBjMC0wLjIsMC0wLjMtMC4xLTAuNWMzLjctMS45LDYuNi0zLjYsOC4zLTQuN2MwLjEsNSwwLjMsMTAsMC41LDE1QzUwLjMsOTQuMyw0OS45LDk0LjMsNDkuNiw5NC4zeiBNNTMuNSw5NC4yICAgYy0wLjMtNS41LTAuNS0xMS0wLjYtMTYuNmMwLTAuMSwwLTAuMSwwLTAuMmMzLjUtMi40LDYuOS01LjEsMTAuMi03LjljMC4zLDguMSwwLjUsMTYuMywwLjgsMjQuNEM2MC40LDk0LDU2LjksOTQuMSw1My41LDk0LjJ6ICAgIE03Ny44LDkzLjhoLTEuMWgtMC4zdjBjLTMuMiwwLTYuNCwwLjEtOS42LDAuMWMtMC4zLTguOC0wLjYtMTcuNi0wLjktMjYuNGMwLTAuMSwwLTAuMy0wLjEtMC40YzMuNi0zLjMsNi45LTYuOCwxMC4xLTEwLjQgICBjMC43LDEyLjIsMS40LDI0LjUsMi4xLDM2LjdDNzcuOSw5My41LDc3LjgsOTMuNiw3Ny44LDkzLjh6IE05Miw3Mi41TDkyLDcyLjVjLTAuMiwzLTAuMiw1LjYtMC4yLDcuN2MwLDMuNCwwLjEsNS44LDAuMSw3LjUgICBjMCwwLjktMC4xLDEuOC0wLjMsMi43Yy0wLjIsMC42LTAuNSwxLjItMSwxLjZjLTAuNCwwLjQtMC44LDAuNy0xLjIsMC45Yy0wLjksMC40LTEuOCwwLjYtMi44LDAuN2MtMS4zLDAuMS0zLDAuMi01LjIsMC4yaC0wLjYgICBsLTIuMy00MC4zYzAuMi0wLjMsMC40LTAuNSwwLjYtMC44bDAsMGMwLjctMC45LDEuNy0xLjQsMi44LTEuNGMwLjUsMCwxLjEsMC4xLDEuNiwwLjRjMSwwLjUsMi4xLDEuMSwzLjQsMS42ICAgYzEuOSwwLjksMi45LDEuMywzLjUsMS42YzAuMywwLjEsMC40LDAuMiwwLjUsMC4yYzAuMSwwLDAuMSwwLjEsMC4yLDAuMWMwLjYsMC41LDEuMSwxLjIsMS4zLDEuOWMwLjMsMS4xLDAuNCwyLjMsMC40LDMuNSAgIEM5Mi45LDYzLjYsOTIuMyw2Ny42LDkyLDcyLjV6Ii8+PC9nPjwvc3ZnPg==" alt="Logo">
+                </div>
+                <div class="column is-4">
+                    <p class="title">
+                        EOD Stock Market Scans
+                    </p>
+                    <p class="subtitle">
+                        Fintwits most popular stockmarket scans
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+            <div class="container">
+                <ul>
+                    
+                    <li class="is-active">
+                        <a href="../Blake Davis/Strength_result_table.html"> Results </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Blake Davis/Strength_minicharts.html"> Minicharts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Blake Davis/Strength_charts.html"> Charts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Blake Davis/Strength_criteria.html"> Criteria </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+</section>
+    <div class="columns is-centered">
+        <div class="column is-2">
+            <div class="box has-background-light my-0 mx-2 p-auto">
+    <aside class="menu">
+        <p class="menu-label has-text-dark">
+            Market Monitor
+        </p>
+        <ul class="menu-list">
+            <li><a class="has-text-grey-light">New Highs/Lows</a></li>
+            <li><a class="has-text-grey-light">Breadth</a></li>
+            <li><a class="has-text-grey-light">Above/Below SMA</a></li>
+            <li><a class="has-text-grey-light">Sectors</a></li>
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Kristjan Kullamägi
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Kristjan Kullamägi/Biggest Gainers 1M_minicharts.html">
+                        Biggest Gainers 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Kristjan Kullamägi/Biggest Gainers 3M_minicharts.html">
+                        Biggest Gainers 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Kristjan Kullamägi/Biggest Gainers 6M_minicharts.html">
+                        Biggest Gainers 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Kristjan Kullamägi/Biggest Gainers 12M_minicharts.html">
+                        Biggest Gainers 12M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Kristjan Kullamägi/EP with Growth_minicharts.html">
+                        EP with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Kristjan Kullamägi/EP_minicharts.html">
+                        EP
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Kristjan Kullamägi/High Trend Intensity_minicharts.html">
+                        High Trend Intensity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Kristjan Kullamägi/Small Stock Momo_minicharts.html">
+                        Small Stock Momo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Kristjan Kullamägi/Momentum_minicharts.html">
+                        Momentum
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Brad Schulz
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Brad Schulz/Pocket Pivot_minicharts.html">
+                        Pocket Pivot
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Stockbee
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Stockbee/4 PCT  Gainers_minicharts.html">
+                        4 PCT  Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Stockbee/Combo_minicharts.html">
+                        Combo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Stockbee/Ants_minicharts.html">
+                        Ants
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Stockbee/Breakout 1M Base_minicharts.html">
+                        Breakout 1M Base
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Stockbee/Breakout 3M Base_minicharts.html">
+                        Breakout 3M Base
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Leif Soreide
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Leif Soreide/HTF_minicharts.html">
+                        HTF
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Blake Davis
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="is-active"
+                        href="../../japan/Blake Davis/Strength_minicharts.html">
+                        Strength
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ben
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Ben/Power of 3_minicharts.html">
+                        Power of 3
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Ben/Velocity_minicharts.html">
+                        Velocity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Ben/Focus_minicharts.html">
+                        Focus
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ray
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Ray/RSNHBP 5D_minicharts.html">
+                        RSNHBP 5D
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Ray/RSNHBP 1M_minicharts.html">
+                        RSNHBP 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Ray/RSNHBP 3M_minicharts.html">
+                        RSNHBP 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Ray/RSNHBP 6M_minicharts.html">
+                        RSNHBP 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Ray/RSNHBP 12M_minicharts.html">
+                        RSNHBP 12M
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Mark Minvervini
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Mark Minvervini/Trend Template_minicharts.html">
+                        Trend Template
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Vo
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Vo/Top Gainers From Open_minicharts.html">
+                        Top Gainers From Open
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Vo/Top Gainers_minicharts.html">
+                        Top Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Vo/Volume Gainers_minicharts.html">
+                        Volume Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Vo/Insiders_minicharts.html">
+                        Insiders
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Vo/Darvas Scan_minicharts.html">
+                        Darvas Scan
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Vo/Darvas Scan with Growth_minicharts.html">
+                        Darvas Scan with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Vo/52W High_minicharts.html">
+                        52W High
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Vo/Quite and Tight_minicharts.html">
+                        Quite and Tight
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../japan/Vo/Mo Scan_minicharts.html">
+                        Mo Scan
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+    </aside>
+</div>
+        </div>
+        <div class="column is-10">
+
+            
+<section class="block my-6">
+    <div class="columns ">
+        <div class="column is-5 has-text-left">
+            <h1 class="title is-4">Strength @ Japan</h1>
+            <h2 class="subtitle is-6">2022-12-07</h2>
+        </div>
+        <div class="column has-text-right mr-5">
+            <div class="media">
+
+                <div class="media-content">
+                    <p class="title is-5">Blake Davis</p>
+                    <p class="subtitle is-6"><a class="has-text-grey-light" href="https://twitter.com/blakedavis50">@blakedavis50</a></p>
+                </div>
+                <div class="media-right">
+                    <figure class="image is-48x48">
+                        <img src="https://unavatar.io/twitter/blakedavis50" alt="Placeholder image">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+            <section class="my-auto mr-5">
+                
+    <div class="table-container">
+        <table border="1" class="dataframe table is-striped no-wrap" id="data" style="width:100%; font-size:85%">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>symbol</th>
+      <th>yahoo_symbol</th>
+      <th>name</th>
+      <th>sector</th>
+      <th>industry</th>
+      <th>roc</th>
+      <th>close</th>
+      <th>volume</th>
+      <th>rel Volume</th>
+      <th>adr(20)</th>
+      <th>atr(14)</th>
+      <th>roc(5)</th>
+      <th>roc(21)</th>
+      <th>roc(63)</th>
+      <th>roc(126)</th>
+      <th>roc(252)</th>
+      <th>52w High</th>
+      <th>% below 52w High</th>
+      <th>52w Low</th>
+      <th>% above 52w Low</th>
+      <th>UD Ratio</th>
+      <th>50d avg Volume</th>
+      <th>Pocket Pivot</th>
+      <th>1w Pocket Pivots</th>
+      <th>1m Pocket Pivots</th>
+      <th>Rocket Ratio</th>
+      <th>1m RS</th>
+      <th>3m RS</th>
+      <th>RS</th>
+      <th>Industry 1m RS</th>
+      <th>Industry 3m RS</th>
+      <th>Industry RS</th>
+      <th>ema(9)</th>
+      <th>% from 9d ema</th>
+      <th>ema(21)</th>
+      <th>% from 21d ema</th>
+      <th>sma(50)</th>
+      <th>% from 50d sma</th>
+      <th>EPS Growth Q</th>
+      <th>EPS Growth Y</th>
+      <th>EPS Growth FQ</th>
+      <th>EPS Growth FY</th>
+      <th>EPS Growth FQ1</th>
+      <th>EPS Growth FY1</th>
+      <th>Rev Growth Q</th>
+      <th>Rev Growth FQ</th>
+      <th>Rev Growth FY</th>
+      <th>Rev Growth FQ1</th>
+      <th>Rev Growth FY1</th>
+      <th>Insiders %</th>
+      <th>Institutions %</th>
+      <th>Institutions No.</th>
+      <th>Market Cap</th>
+      <th>Shares Outstanding</th>
+      <th>Shares Float</th>
+      <th>Shares Short</th>
+      <th>Short Ratio</th>
+      <th>Net Insider Trading %</th>
+      <th>exchange</th>
+      <th>country</th>
+      <th>IPO Date</th>
+      <th>market</th>
+      <th>date</th>
+      <th>group_name</th>
+      <th>scan_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4575</td>
+      <td>4575.T</td>
+      <td>CanBas Co Ltd</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>11.91</td>
+      <td>1344.0</td>
+      <td>7397600.0</td>
+      <td>2.14</td>
+      <td>9.84</td>
+      <td>119.93</td>
+      <td>26.08</td>
+      <td>78.49</td>
+      <td>144.81</td>
+      <td>348.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.96</td>
+      <td>3458292.0</td>
+      <td>True</td>
+      <td>4.0</td>
+      <td>9.0</td>
+      <td>3.51</td>
+      <td>99</td>
+      <td>99</td>
+      <td>99</td>
+      <td>97</td>
+      <td>60</td>
+      <td>78</td>
+      <td>1136.71</td>
+      <td>18.24</td>
+      <td>997.48</td>
+      <td>34.74</td>
+      <td>815.64</td>
+      <td>64.78</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.06</td>
+      <td>2.86</td>
+      <td>4.0</td>
+      <td>9.577184e+09</td>
+      <td>1.335730e+07</td>
+      <td>1.212935e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2009-09-17</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2138</td>
+      <td>2138.T</td>
+      <td>Crooz Inc</td>
+      <td>Technology</td>
+      <td>Software—Application</td>
+      <td>6.90</td>
+      <td>1564.0</td>
+      <td>1112800.0</td>
+      <td>0.93</td>
+      <td>8.09</td>
+      <td>113.50</td>
+      <td>17.95</td>
+      <td>55.93</td>
+      <td>95.01</td>
+      <td>109.93</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.30</td>
+      <td>1200232.0</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>2.38</td>
+      <td>99</td>
+      <td>99</td>
+      <td>99</td>
+      <td>55</td>
+      <td>32</td>
+      <td>63</td>
+      <td>1398.41</td>
+      <td>11.84</td>
+      <td>1278.15</td>
+      <td>22.36</td>
+      <td>1157.42</td>
+      <td>35.13</td>
+      <td>-0.18</td>
+      <td>-0.08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.14</td>
+      <td>-0.12</td>
+      <td>3.77</td>
+      <td>0.02</td>
+      <td>0.22</td>
+      <td>52.73</td>
+      <td>38.11</td>
+      <td>8.0</td>
+      <td>1.077770e+10</td>
+      <td>1.112250e+07</td>
+      <td>2.861812e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2007-02-14</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4937</td>
+      <td>4937.T</td>
+      <td>Waqoo Inc</td>
+      <td>Consumer Cyclical</td>
+      <td>Internet Retail</td>
+      <td>4.06</td>
+      <td>1357.0</td>
+      <td>150000.0</td>
+      <td>0.76</td>
+      <td>10.52</td>
+      <td>197.14</td>
+      <td>-4.44</td>
+      <td>42.84</td>
+      <td>86.91</td>
+      <td>107.81</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.47</td>
+      <td>197240.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>4.51</td>
+      <td>99</td>
+      <td>99</td>
+      <td>99</td>
+      <td>92</td>
+      <td>95</td>
+      <td>94</td>
+      <td>1317.22</td>
+      <td>3.02</td>
+      <td>1204.07</td>
+      <td>12.70</td>
+      <td>994.42</td>
+      <td>36.46</td>
+      <td>-0.81</td>
+      <td>-0.81</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.46</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>66.06</td>
+      <td>3.95</td>
+      <td>2.0</td>
+      <td>2.834828e+09</td>
+      <td>3.006180e+06</td>
+      <td>8.887940e+05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2021-06-29</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4417</td>
+      <td>4417.T</td>
+      <td>Global Security Experts Inc</td>
+      <td>Technology</td>
+      <td>Software—Infrastructure</td>
+      <td>1.68</td>
+      <td>4855.0</td>
+      <td>89900.0</td>
+      <td>0.75</td>
+      <td>7.05</td>
+      <td>334.64</td>
+      <td>-2.02</td>
+      <td>26.27</td>
+      <td>86.37</td>
+      <td>137.99</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.42</td>
+      <td>119114.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>5.59</td>
+      <td>97</td>
+      <td>99</td>
+      <td>99</td>
+      <td>86</td>
+      <td>71</td>
+      <td>53</td>
+      <td>4862.06</td>
+      <td>-0.15</td>
+      <td>4670.45</td>
+      <td>3.95</td>
+      <td>4148.60</td>
+      <td>17.03</td>
+      <td>1.15</td>
+      <td>0.82</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.46</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>79.08</td>
+      <td>0.41</td>
+      <td>2.0</td>
+      <td>2.750566e+10</td>
+      <td>6.604000e+06</td>
+      <td>6.659920e+05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2021-12-20</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4375</td>
+      <td>4375.T</td>
+      <td>Safie Inc</td>
+      <td>Technology</td>
+      <td>Software—Application</td>
+      <td>0.21</td>
+      <td>959.0</td>
+      <td>152500.0</td>
+      <td>0.40</td>
+      <td>6.49</td>
+      <td>57.71</td>
+      <td>-0.21</td>
+      <td>25.85</td>
+      <td>80.60</td>
+      <td>42.71</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.15</td>
+      <td>385978.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>40.92</td>
+      <td>97</td>
+      <td>99</td>
+      <td>96</td>
+      <td>66</td>
+      <td>83</td>
+      <td>60</td>
+      <td>951.15</td>
+      <td>0.83</td>
+      <td>911.55</td>
+      <td>5.21</td>
+      <td>758.68</td>
+      <td>26.40</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-6.89</td>
+      <td>NaN</td>
+      <td>0.40</td>
+      <td>0.10</td>
+      <td>0.01</td>
+      <td>0.09</td>
+      <td>0.08</td>
+      <td>0.28</td>
+      <td>61.82</td>
+      <td>12.37</td>
+      <td>19.0</td>
+      <td>4.256866e+10</td>
+      <td>5.314440e+07</td>
+      <td>1.579561e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2021-09-29</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2767</td>
+      <td>2767.T</td>
+      <td>Fields Corp</td>
+      <td>Consumer Cyclical</td>
+      <td>Gambling</td>
+      <td>1.39</td>
+      <td>2408.0</td>
+      <td>443900.0</td>
+      <td>0.67</td>
+      <td>6.63</td>
+      <td>139.50</td>
+      <td>1.52</td>
+      <td>11.79</td>
+      <td>79.17</td>
+      <td>125.68</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.17</td>
+      <td>667392.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>23.21</td>
+      <td>90</td>
+      <td>99</td>
+      <td>99</td>
+      <td>96</td>
+      <td>99</td>
+      <td>99</td>
+      <td>2323.52</td>
+      <td>3.64</td>
+      <td>2226.86</td>
+      <td>8.13</td>
+      <td>1995.88</td>
+      <td>20.65</td>
+      <td>0.18</td>
+      <td>0.18</td>
+      <td>NaN</td>
+      <td>1.34</td>
+      <td>NaN</td>
+      <td>0.37</td>
+      <td>1.36</td>
+      <td>0.09</td>
+      <td>0.09</td>
+      <td>-0.63</td>
+      <td>0.25</td>
+      <td>44.94</td>
+      <td>17.55</td>
+      <td>31.0</td>
+      <td>6.456640e+10</td>
+      <td>3.233170e+07</td>
+      <td>1.549042e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2003-03-19</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7794</td>
+      <td>7794.T</td>
+      <td>EDP Corp</td>
+      <td>Consumer Cyclical</td>
+      <td>Luxury Goods</td>
+      <td>3.56</td>
+      <td>23850.0</td>
+      <td>101200.0</td>
+      <td>0.52</td>
+      <td>7.03</td>
+      <td>1507.14</td>
+      <td>-7.23</td>
+      <td>42.30</td>
+      <td>75.50</td>
+      <td>164.71</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.37</td>
+      <td>192854.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>6.0</td>
+      <td>6.41</td>
+      <td>98</td>
+      <td>99</td>
+      <td>99</td>
+      <td>99</td>
+      <td>98</td>
+      <td>96</td>
+      <td>24613.20</td>
+      <td>-3.10</td>
+      <td>23312.69</td>
+      <td>2.30</td>
+      <td>18701.00</td>
+      <td>27.53</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.49</td>
+      <td>NaN</td>
+      <td>0.41</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.74</td>
+      <td>0.29</td>
+      <td>0.36</td>
+      <td>36.70</td>
+      <td>17.36</td>
+      <td>4.0</td>
+      <td>4.793835e+10</td>
+      <td>2.609600e+06</td>
+      <td>1.236115e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2022-06-27</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>4776</td>
+      <td>4776.T</td>
+      <td>Cybozu Inc</td>
+      <td>Technology</td>
+      <td>Software—Application</td>
+      <td>1.05</td>
+      <td>2307.0</td>
+      <td>350700.0</td>
+      <td>0.69</td>
+      <td>5.70</td>
+      <td>138.86</td>
+      <td>3.97</td>
+      <td>19.97</td>
+      <td>74.64</td>
+      <td>118.26</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.69</td>
+      <td>507492.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>44.65</td>
+      <td>95</td>
+      <td>99</td>
+      <td>99</td>
+      <td>66</td>
+      <td>83</td>
+      <td>60</td>
+      <td>2277.95</td>
+      <td>1.28</td>
+      <td>2182.01</td>
+      <td>5.73</td>
+      <td>1891.90</td>
+      <td>21.94</td>
+      <td>-0.65</td>
+      <td>-0.65</td>
+      <td>NaN</td>
+      <td>-1.18</td>
+      <td>NaN</td>
+      <td>49.54</td>
+      <td>0.19</td>
+      <td>0.18</td>
+      <td>0.18</td>
+      <td>0.10</td>
+      <td>0.16</td>
+      <td>43.53</td>
+      <td>11.27</td>
+      <td>61.0</td>
+      <td>9.827132e+10</td>
+      <td>4.587830e+07</td>
+      <td>2.265792e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-04</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>4936</td>
+      <td>4936.T</td>
+      <td>Axxzia Inc</td>
+      <td>Consumer Defensive</td>
+      <td>Household &amp; Personal Products</td>
+      <td>4.89</td>
+      <td>1395.0</td>
+      <td>161100.0</td>
+      <td>0.92</td>
+      <td>3.85</td>
+      <td>57.00</td>
+      <td>1.09</td>
+      <td>12.59</td>
+      <td>65.48</td>
+      <td>47.62</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.99</td>
+      <td>175920.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>26.09</td>
+      <td>91</td>
+      <td>99</td>
+      <td>97</td>
+      <td>92</td>
+      <td>95</td>
+      <td>94</td>
+      <td>1350.70</td>
+      <td>3.28</td>
+      <td>1326.39</td>
+      <td>5.17</td>
+      <td>1292.44</td>
+      <td>7.94</td>
+      <td>0.49</td>
+      <td>0.50</td>
+      <td>NaN</td>
+      <td>0.58</td>
+      <td>NaN</td>
+      <td>0.35</td>
+      <td>0.49</td>
+      <td>0.40</td>
+      <td>0.40</td>
+      <td>NaN</td>
+      <td>0.24</td>
+      <td>66.32</td>
+      <td>6.84</td>
+      <td>5.0</td>
+      <td>3.222420e+10</td>
+      <td>2.580000e+07</td>
+      <td>4.590078e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2021-02-18</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>6425</td>
+      <td>6425.T</td>
+      <td>Universal Entertainment Corp</td>
+      <td>Consumer Cyclical</td>
+      <td>Leisure</td>
+      <td>0.47</td>
+      <td>2566.0</td>
+      <td>211400.0</td>
+      <td>0.74</td>
+      <td>3.46</td>
+      <td>77.64</td>
+      <td>6.21</td>
+      <td>21.27</td>
+      <td>64.59</td>
+      <td>44.24</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.14</td>
+      <td>286432.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>254.99</td>
+      <td>96</td>
+      <td>98</td>
+      <td>96</td>
+      <td>96</td>
+      <td>99</td>
+      <td>99</td>
+      <td>2462.14</td>
+      <td>4.22</td>
+      <td>2342.37</td>
+      <td>9.55</td>
+      <td>2118.84</td>
+      <td>21.10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.43</td>
+      <td>NaN</td>
+      <td>-0.71</td>
+      <td>0.89</td>
+      <td>0.57</td>
+      <td>0.42</td>
+      <td>NaN</td>
+      <td>0.22</td>
+      <td>71.34</td>
+      <td>4.26</td>
+      <td>33.0</td>
+      <td>1.613992e+11</td>
+      <td>7.748400e+07</td>
+      <td>7.303642e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2000-01-04</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>3856</td>
+      <td>3856.T</td>
+      <td>Abalance Corp</td>
+      <td>Technology</td>
+      <td>Software—Application</td>
+      <td>5.28</td>
+      <td>2970.0</td>
+      <td>426100.0</td>
+      <td>0.65</td>
+      <td>6.26</td>
+      <td>182.64</td>
+      <td>-0.37</td>
+      <td>41.36</td>
+      <td>64.18</td>
+      <td>170.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.83</td>
+      <td>656478.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>10.39</td>
+      <td>98</td>
+      <td>98</td>
+      <td>99</td>
+      <td>95</td>
+      <td>77</td>
+      <td>93</td>
+      <td>2906.50</td>
+      <td>2.18</td>
+      <td>2767.41</td>
+      <td>7.32</td>
+      <td>2342.90</td>
+      <td>26.77</td>
+      <td>3.45</td>
+      <td>3.28</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>52.91</td>
+      <td>4.32</td>
+      <td>6.0</td>
+      <td>3.619771e+10</td>
+      <td>1.661970e+07</td>
+      <td>6.822019e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2007-09-19</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>8938</td>
+      <td>8938.T</td>
+      <td>Glome Holdings Inc</td>
+      <td>Real Estate</td>
+      <td>Real Estate Services</td>
+      <td>0.60</td>
+      <td>1333.0</td>
+      <td>163500.0</td>
+      <td>1.47</td>
+      <td>7.22</td>
+      <td>92.14</td>
+      <td>15.31</td>
+      <td>37.28</td>
+      <td>62.56</td>
+      <td>41.21</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.71</td>
+      <td>111436.0</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>24.73</td>
+      <td>98</td>
+      <td>98</td>
+      <td>97</td>
+      <td>62</td>
+      <td>67</td>
+      <td>86</td>
+      <td>1227.12</td>
+      <td>8.63</td>
+      <td>1112.74</td>
+      <td>19.79</td>
+      <td>975.00</td>
+      <td>36.72</td>
+      <td>1.80</td>
+      <td>1.80</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.28</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>71.13</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>8.797018e+09</td>
+      <td>9.050430e+06</td>
+      <td>2.755765e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2005-03-03</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>6418</td>
+      <td>6418.T</td>
+      <td>Japan Cash Machine Co Ltd</td>
+      <td>Industrials</td>
+      <td>Business Equipment &amp; Supplies</td>
+      <td>1.14</td>
+      <td>1062.0</td>
+      <td>349200.0</td>
+      <td>1.81</td>
+      <td>4.54</td>
+      <td>51.07</td>
+      <td>4.73</td>
+      <td>48.32</td>
+      <td>61.89</td>
+      <td>53.47</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.39</td>
+      <td>193152.0</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>13.0</td>
+      <td>100.27</td>
+      <td>99</td>
+      <td>98</td>
+      <td>98</td>
+      <td>75</td>
+      <td>63</td>
+      <td>68</td>
+      <td>1015.45</td>
+      <td>4.58</td>
+      <td>927.79</td>
+      <td>14.47</td>
+      <td>778.36</td>
+      <td>36.44</td>
+      <td>1.19</td>
+      <td>1.19</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.28</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>-0.05</td>
+      <td>33.24</td>
+      <td>11.22</td>
+      <td>27.0</td>
+      <td>2.337279e+10</td>
+      <td>2.966090e+07</td>
+      <td>1.936786e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-04</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>9218</td>
+      <td>9218.T</td>
+      <td>Mental Health Technologies Co Ltd</td>
+      <td>Healthcare</td>
+      <td>Medical Care Facilities</td>
+      <td>4.65</td>
+      <td>1667.0</td>
+      <td>117000.0</td>
+      <td>0.39</td>
+      <td>7.86</td>
+      <td>115.50</td>
+      <td>-5.34</td>
+      <td>-7.18</td>
+      <td>58.76</td>
+      <td>79.44</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.78</td>
+      <td>298714.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>14.15</td>
+      <td>8</td>
+      <td>98</td>
+      <td>98</td>
+      <td>96</td>
+      <td>96</td>
+      <td>96</td>
+      <td>1686.65</td>
+      <td>-1.17</td>
+      <td>1670.42</td>
+      <td>-0.20</td>
+      <td>1566.24</td>
+      <td>6.43</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>38.85</td>
+      <td>26.88</td>
+      <td>7.0</td>
+      <td>1.555628e+10</td>
+      <td>9.833300e+06</td>
+      <td>4.227626e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2022-03-28</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>2980</td>
+      <td>2980.T</td>
+      <td>Sre Holdings Corporation</td>
+      <td>Real Estate</td>
+      <td>Real Estate Services</td>
+      <td>3.12</td>
+      <td>4290.0</td>
+      <td>385300.0</td>
+      <td>0.92</td>
+      <td>4.72</td>
+      <td>192.50</td>
+      <td>-6.23</td>
+      <td>0.35</td>
+      <td>52.51</td>
+      <td>116.01</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.34</td>
+      <td>418756.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>22.64</td>
+      <td>46</td>
+      <td>98</td>
+      <td>97</td>
+      <td>62</td>
+      <td>67</td>
+      <td>86</td>
+      <td>4414.39</td>
+      <td>-2.82</td>
+      <td>4365.25</td>
+      <td>-1.72</td>
+      <td>3895.20</td>
+      <td>10.14</td>
+      <td>5.55</td>
+      <td>5.45</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>0.22</td>
+      <td>1.21</td>
+      <td>-0.13</td>
+      <td>0.22</td>
+      <td>0.13</td>
+      <td>0.17</td>
+      <td>39.49</td>
+      <td>42.19</td>
+      <td>57.0</td>
+      <td>7.035241e+10</td>
+      <td>1.615440e+07</td>
+      <td>9.479254e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2019-12-19</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>4192</td>
+      <td>4192.T</td>
+      <td>SpiderPlus &amp; Co</td>
+      <td>Technology</td>
+      <td>Software—Application</td>
+      <td>11.28</td>
+      <td>858.0</td>
+      <td>2609300.0</td>
+      <td>2.71</td>
+      <td>5.15</td>
+      <td>42.79</td>
+      <td>11.28</td>
+      <td>18.18</td>
+      <td>48.19</td>
+      <td>90.67</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.40</td>
+      <td>964402.0</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>7.88</td>
+      <td>94</td>
+      <td>98</td>
+      <td>96</td>
+      <td>66</td>
+      <td>83</td>
+      <td>60</td>
+      <td>772.16</td>
+      <td>11.12</td>
+      <td>748.31</td>
+      <td>14.66</td>
+      <td>733.94</td>
+      <td>16.90</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.21</td>
+      <td>0.01</td>
+      <td>0.43</td>
+      <td>0.01</td>
+      <td>0.59</td>
+      <td>62.07</td>
+      <td>28.92</td>
+      <td>15.0</td>
+      <td>2.393916e+10</td>
+      <td>3.386020e+07</td>
+      <td>7.596086e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2021-03-30</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>4165</td>
+      <td>4165.T</td>
+      <td>Plaid Inc</td>
+      <td>Technology</td>
+      <td>Software—Application</td>
+      <td>1.16</td>
+      <td>956.0</td>
+      <td>4161300.0</td>
+      <td>0.42</td>
+      <td>9.71</td>
+      <td>80.43</td>
+      <td>-2.45</td>
+      <td>35.60</td>
+      <td>42.69</td>
+      <td>79.03</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.29</td>
+      <td>9822262.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>7.0</td>
+      <td>1.94</td>
+      <td>98</td>
+      <td>97</td>
+      <td>94</td>
+      <td>66</td>
+      <td>83</td>
+      <td>60</td>
+      <td>958.07</td>
+      <td>-0.22</td>
+      <td>903.21</td>
+      <td>5.84</td>
+      <td>753.66</td>
+      <td>26.85</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.39</td>
+      <td>-0.08</td>
+      <td>-1.01</td>
+      <td>0.41</td>
+      <td>0.24</td>
+      <td>0.10</td>
+      <td>0.14</td>
+      <td>0.09</td>
+      <td>0.17</td>
+      <td>50.39</td>
+      <td>16.94</td>
+      <td>48.0</td>
+      <td>2.948727e+10</td>
+      <td>3.859590e+07</td>
+      <td>1.903461e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2020-12-18</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>4395</td>
+      <td>4395.T</td>
+      <td>Accrete Inc</td>
+      <td>Communication Services</td>
+      <td>Telecom Services</td>
+      <td>6.89</td>
+      <td>3335.0</td>
+      <td>262300.0</td>
+      <td>0.76</td>
+      <td>7.79</td>
+      <td>268.36</td>
+      <td>1.52</td>
+      <td>39.42</td>
+      <td>42.10</td>
+      <td>103.35</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.57</td>
+      <td>346184.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>6.33</td>
+      <td>98</td>
+      <td>97</td>
+      <td>99</td>
+      <td>83</td>
+      <td>96</td>
+      <td>98</td>
+      <td>3234.11</td>
+      <td>3.12</td>
+      <td>3041.13</td>
+      <td>9.66</td>
+      <td>2677.86</td>
+      <td>24.54</td>
+      <td>0.00</td>
+      <td>-0.02</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.55</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>28.28</td>
+      <td>0.79</td>
+      <td>3.0</td>
+      <td>1.429580e+10</td>
+      <td>5.612800e+06</td>
+      <td>2.190055e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2018-07-26</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>5726</td>
+      <td>5726.T</td>
+      <td>Osaka Titanium Tech Co Ltd</td>
+      <td>Basic Materials</td>
+      <td>Other Industrial Metals &amp; Mining</td>
+      <td>4.57</td>
+      <td>4235.0</td>
+      <td>4525700.0</td>
+      <td>1.22</td>
+      <td>5.77</td>
+      <td>214.64</td>
+      <td>0.95</td>
+      <td>-5.04</td>
+      <td>41.31</td>
+      <td>80.52</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.35</td>
+      <td>3699026.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>7.68</td>
+      <td>14</td>
+      <td>97</td>
+      <td>99</td>
+      <td>48</td>
+      <td>79</td>
+      <td>72</td>
+      <td>4086.08</td>
+      <td>3.64</td>
+      <td>4014.69</td>
+      <td>5.49</td>
+      <td>3634.98</td>
+      <td>16.51</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.03</td>
+      <td>NaN</td>
+      <td>1.64</td>
+      <td>1.00</td>
+      <td>0.27</td>
+      <td>0.78</td>
+      <td>0.01</td>
+      <td>0.21</td>
+      <td>24.54</td>
+      <td>37.15</td>
+      <td>50.0</td>
+      <td>1.608103e+11</td>
+      <td>3.679870e+07</td>
+      <td>2.840315e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2002-03-08</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>3093</td>
+      <td>3093.T</td>
+      <td>Treasure Factory Co Ltd</td>
+      <td>Consumer Cyclical</td>
+      <td>Specialty Retail</td>
+      <td>1.52</td>
+      <td>2336.0</td>
+      <td>81900.0</td>
+      <td>0.16</td>
+      <td>4.08</td>
+      <td>89.07</td>
+      <td>-2.50</td>
+      <td>6.42</td>
+      <td>37.41</td>
+      <td>122.26</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.96</td>
+      <td>506626.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>10.66</td>
+      <td>81</td>
+      <td>96</td>
+      <td>99</td>
+      <td>4</td>
+      <td>95</td>
+      <td>98</td>
+      <td>2315.80</td>
+      <td>0.87</td>
+      <td>2255.39</td>
+      <td>3.57</td>
+      <td>2105.06</td>
+      <td>10.97</td>
+      <td>1.17</td>
+      <td>1.19</td>
+      <td>NaN</td>
+      <td>0.84</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>0.20</td>
+      <td>0.14</td>
+      <td>0.15</td>
+      <td>0.10</td>
+      <td>0.11</td>
+      <td>45.96</td>
+      <td>18.33</td>
+      <td>20.0</td>
+      <td>2.389721e+10</td>
+      <td>1.102270e+07</td>
+      <td>5.401038e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2007-12-27</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>3561</td>
+      <td>3561.T</td>
+      <td>Chikaranomoto Holdings Co Ltd</td>
+      <td>Consumer Cyclical</td>
+      <td>Restaurants</td>
+      <td>0.66</td>
+      <td>916.0</td>
+      <td>145600.0</td>
+      <td>0.58</td>
+      <td>4.72</td>
+      <td>38.43</td>
+      <td>0.77</td>
+      <td>18.19</td>
+      <td>37.13</td>
+      <td>26.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.74</td>
+      <td>250110.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>7.0</td>
+      <td>38.10</td>
+      <td>94</td>
+      <td>96</td>
+      <td>95</td>
+      <td>52</td>
+      <td>89</td>
+      <td>81</td>
+      <td>908.48</td>
+      <td>0.83</td>
+      <td>886.15</td>
+      <td>3.37</td>
+      <td>831.40</td>
+      <td>10.18</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.31</td>
+      <td>0.12</td>
+      <td>0.12</td>
+      <td>0.12</td>
+      <td>0.12</td>
+      <td>66.95</td>
+      <td>3.76</td>
+      <td>13.0</td>
+      <td>2.123603e+10</td>
+      <td>2.786880e+07</td>
+      <td>9.530015e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2017-03-22</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>2157</td>
+      <td>2157.T</td>
+      <td>Koshidaka Holdings Co Ltd</td>
+      <td>Consumer Cyclical</td>
+      <td>Restaurants</td>
+      <td>1.08</td>
+      <td>1127.0</td>
+      <td>426400.0</td>
+      <td>0.46</td>
+      <td>2.98</td>
+      <td>33.79</td>
+      <td>-1.74</td>
+      <td>0.54</td>
+      <td>35.62</td>
+      <td>46.94</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.27</td>
+      <td>918106.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>48.80</td>
+      <td>47</td>
+      <td>96</td>
+      <td>97</td>
+      <td>52</td>
+      <td>89</td>
+      <td>81</td>
+      <td>1116.75</td>
+      <td>0.92</td>
+      <td>1104.40</td>
+      <td>2.05</td>
+      <td>1063.58</td>
+      <td>5.96</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.18</td>
+      <td>NaN</td>
+      <td>0.21</td>
+      <td>1.76</td>
+      <td>0.39</td>
+      <td>0.39</td>
+      <td>NaN</td>
+      <td>0.14</td>
+      <td>38.47</td>
+      <td>18.93</td>
+      <td>48.0</td>
+      <td>8.960444e+10</td>
+      <td>8.153270e+07</td>
+      <td>4.479978e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2007-06-27</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>4263</td>
+      <td>4263.T</td>
+      <td>Susmed Inc</td>
+      <td>Healthcare</td>
+      <td>Health Information Services</td>
+      <td>10.28</td>
+      <td>1470.0</td>
+      <td>3155500.0</td>
+      <td>13.53</td>
+      <td>6.21</td>
+      <td>80.00</td>
+      <td>10.11</td>
+      <td>37.00</td>
+      <td>35.23</td>
+      <td>68.77</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.05</td>
+      <td>233302.0</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>6.0</td>
+      <td>26.80</td>
+      <td>98</td>
+      <td>96</td>
+      <td>95</td>
+      <td>96</td>
+      <td>96</td>
+      <td>96</td>
+      <td>1349.15</td>
+      <td>8.96</td>
+      <td>1298.18</td>
+      <td>13.24</td>
+      <td>1138.74</td>
+      <td>29.09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.81</td>
+      <td>NaN</td>
+      <td>0.87</td>
+      <td>NaN</td>
+      <td>-0.86</td>
+      <td>0.67</td>
+      <td>10.32</td>
+      <td>1.00</td>
+      <td>51.22</td>
+      <td>30.28</td>
+      <td>11.0</td>
+      <td>1.962608e+10</td>
+      <td>1.628720e+07</td>
+      <td>6.252137e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2021-12-24</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>5727</td>
+      <td>5727.T</td>
+      <td>Toho Titanium Co Ltd</td>
+      <td>Basic Materials</td>
+      <td>Other Industrial Metals &amp; Mining</td>
+      <td>6.51</td>
+      <td>2864.0</td>
+      <td>7124400.0</td>
+      <td>1.68</td>
+      <td>6.00</td>
+      <td>140.00</td>
+      <td>4.22</td>
+      <td>1.96</td>
+      <td>35.22</td>
+      <td>17.91</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.42</td>
+      <td>4245242.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>7.23</td>
+      <td>60</td>
+      <td>96</td>
+      <td>97</td>
+      <td>48</td>
+      <td>79</td>
+      <td>72</td>
+      <td>2726.41</td>
+      <td>5.05</td>
+      <td>2695.30</td>
+      <td>6.26</td>
+      <td>2519.82</td>
+      <td>13.66</td>
+      <td>1.32</td>
+      <td>1.32</td>
+      <td>NaN</td>
+      <td>0.69</td>
+      <td>NaN</td>
+      <td>0.42</td>
+      <td>0.30</td>
+      <td>0.49</td>
+      <td>0.40</td>
+      <td>0.50</td>
+      <td>0.08</td>
+      <td>55.45</td>
+      <td>11.07</td>
+      <td>65.0</td>
+      <td>2.170764e+11</td>
+      <td>7.117260e+07</td>
+      <td>3.069029e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-01</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>3962</td>
+      <td>3962.T</td>
+      <td>Change Inc</td>
+      <td>Technology</td>
+      <td>Information Technology Services</td>
+      <td>2.31</td>
+      <td>2347.0</td>
+      <td>770400.0</td>
+      <td>1.06</td>
+      <td>4.92</td>
+      <td>110.00</td>
+      <td>7.61</td>
+      <td>26.80</td>
+      <td>33.96</td>
+      <td>32.75</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.16</td>
+      <td>724582.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>72.77</td>
+      <td>97</td>
+      <td>96</td>
+      <td>93</td>
+      <td>86</td>
+      <td>71</td>
+      <td>53</td>
+      <td>2239.74</td>
+      <td>4.79</td>
+      <td>2145.06</td>
+      <td>9.41</td>
+      <td>2012.26</td>
+      <td>16.64</td>
+      <td>-0.83</td>
+      <td>-0.83</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.36</td>
+      <td>0.06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.10</td>
+      <td>0.94</td>
+      <td>52.11</td>
+      <td>17.02</td>
+      <td>73.0</td>
+      <td>1.439493e+11</td>
+      <td>7.233630e+07</td>
+      <td>5.272450e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2016-09-28</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>3694</td>
+      <td>3694.T</td>
+      <td>OPTiM Corp</td>
+      <td>Technology</td>
+      <td>Software—Infrastructure</td>
+      <td>0.36</td>
+      <td>1124.0</td>
+      <td>99900.0</td>
+      <td>0.68</td>
+      <td>4.29</td>
+      <td>48.00</td>
+      <td>-3.27</td>
+      <td>25.87</td>
+      <td>33.49</td>
+      <td>33.02</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.51</td>
+      <td>147172.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>95.94</td>
+      <td>97</td>
+      <td>96</td>
+      <td>91</td>
+      <td>66</td>
+      <td>83</td>
+      <td>60</td>
+      <td>1155.43</td>
+      <td>-2.72</td>
+      <td>1112.28</td>
+      <td>1.05</td>
+      <td>966.20</td>
+      <td>16.33</td>
+      <td>-0.50</td>
+      <td>-0.50</td>
+      <td>NaN</td>
+      <td>-0.06</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>0.16</td>
+      <td>0.09</td>
+      <td>0.15</td>
+      <td>0.10</td>
+      <td>0.11</td>
+      <td>73.55</td>
+      <td>7.82</td>
+      <td>37.0</td>
+      <td>5.362036e+10</td>
+      <td>5.505170e+07</td>
+      <td>1.412005e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2014-10-23</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>7047</td>
+      <td>7047.T</td>
+      <td>Port Inc</td>
+      <td>Communication Services</td>
+      <td>Advertising Agencies</td>
+      <td>1.60</td>
+      <td>1210.0</td>
+      <td>105200.0</td>
+      <td>0.25</td>
+      <td>5.43</td>
+      <td>66.00</td>
+      <td>-1.39</td>
+      <td>7.94</td>
+      <td>33.11</td>
+      <td>64.18</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.71</td>
+      <td>416166.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>13.19</td>
+      <td>84</td>
+      <td>96</td>
+      <td>96</td>
+      <td>38</td>
+      <td>75</td>
+      <td>77</td>
+      <td>1206.78</td>
+      <td>0.27</td>
+      <td>1175.12</td>
+      <td>2.97</td>
+      <td>1061.96</td>
+      <td>13.94</td>
+      <td>114.50</td>
+      <td>112.07</td>
+      <td>NaN</td>
+      <td>0.34</td>
+      <td>NaN</td>
+      <td>0.18</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>0.22</td>
+      <td>0.75</td>
+      <td>0.14</td>
+      <td>45.62</td>
+      <td>6.50</td>
+      <td>5.0</td>
+      <td>1.217189e+10</td>
+      <td>1.105530e+07</td>
+      <td>5.487961e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2018-12-25</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>4180</td>
+      <td>4180.T</td>
+      <td>Appier Group Inc</td>
+      <td>Technology</td>
+      <td>Software—Infrastructure</td>
+      <td>0.65</td>
+      <td>1537.0</td>
+      <td>932000.0</td>
+      <td>0.90</td>
+      <td>4.30</td>
+      <td>72.43</td>
+      <td>-5.30</td>
+      <td>10.81</td>
+      <td>32.50</td>
+      <td>81.25</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.45</td>
+      <td>1040532.0</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>46.61</td>
+      <td>89</td>
+      <td>95</td>
+      <td>96</td>
+      <td>66</td>
+      <td>83</td>
+      <td>60</td>
+      <td>1607.42</td>
+      <td>-4.38</td>
+      <td>1579.06</td>
+      <td>-2.66</td>
+      <td>1431.12</td>
+      <td>7.40</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.58</td>
+      <td>0.86</td>
+      <td>1.36</td>
+      <td>3.06</td>
+      <td>0.56</td>
+      <td>0.52</td>
+      <td>0.50</td>
+      <td>0.42</td>
+      <td>0.31</td>
+      <td>37.06</td>
+      <td>23.55</td>
+      <td>46.0</td>
+      <td>1.445265e+11</td>
+      <td>1.013510e+08</td>
+      <td>4.849960e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2021-03-30</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>7157</td>
+      <td>7157.T</td>
+      <td>Lifenet Insurance Co</td>
+      <td>Financial Services</td>
+      <td>Insurance—Life</td>
+      <td>3.27</td>
+      <td>1169.0</td>
+      <td>434400.0</td>
+      <td>1.24</td>
+      <td>4.22</td>
+      <td>41.50</td>
+      <td>7.74</td>
+      <td>15.29</td>
+      <td>31.35</td>
+      <td>80.12</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.16</td>
+      <td>351128.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>99.78</td>
+      <td>93</td>
+      <td>95</td>
+      <td>98</td>
+      <td>98</td>
+      <td>97</td>
+      <td>98</td>
+      <td>1100.62</td>
+      <td>6.21</td>
+      <td>1059.80</td>
+      <td>10.30</td>
+      <td>999.86</td>
+      <td>16.92</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>0.08</td>
+      <td>0.08</td>
+      <td>0.08</td>
+      <td>0.09</td>
+      <td>23.94</td>
+      <td>52.09</td>
+      <td>28.0</td>
+      <td>6.764422e+10</td>
+      <td>6.973630e+07</td>
+      <td>3.503472e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2012-03-15</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>8511</td>
+      <td>8511.T</td>
+      <td>Japan Securities Finance Co Ltd</td>
+      <td>Financial Services</td>
+      <td>Credit Services</td>
+      <td>4.82</td>
+      <td>1066.0</td>
+      <td>306800.0</td>
+      <td>1.39</td>
+      <td>2.37</td>
+      <td>27.93</td>
+      <td>3.90</td>
+      <td>18.31</td>
+      <td>28.90</td>
+      <td>21.41</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.43</td>
+      <td>221404.0</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>351.75</td>
+      <td>94</td>
+      <td>95</td>
+      <td>90</td>
+      <td>78</td>
+      <td>76</td>
+      <td>95</td>
+      <td>1030.17</td>
+      <td>3.48</td>
+      <td>996.64</td>
+      <td>6.96</td>
+      <td>911.18</td>
+      <td>16.99</td>
+      <td>1.12</td>
+      <td>1.18</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.31</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7.30</td>
+      <td>55.26</td>
+      <td>64.0</td>
+      <td>8.469259e+10</td>
+      <td>8.877630e+07</td>
+      <td>7.787948e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-01</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>4813</td>
+      <td>4813.T</td>
+      <td>Access Co Ltd</td>
+      <td>Technology</td>
+      <td>Information Technology Services</td>
+      <td>2.00</td>
+      <td>917.0</td>
+      <td>248400.0</td>
+      <td>1.40</td>
+      <td>2.66</td>
+      <td>34.71</td>
+      <td>22.59</td>
+      <td>16.37</td>
+      <td>28.25</td>
+      <td>39.36</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.51</td>
+      <td>177474.0</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>83.37</td>
+      <td>94</td>
+      <td>94</td>
+      <td>95</td>
+      <td>66</td>
+      <td>83</td>
+      <td>60</td>
+      <td>865.30</td>
+      <td>5.98</td>
+      <td>833.47</td>
+      <td>10.02</td>
+      <td>796.00</td>
+      <td>15.20</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>0.03</td>
+      <td>0.03</td>
+      <td>0.03</td>
+      <td>0.10</td>
+      <td>11.85</td>
+      <td>67.30</td>
+      <td>24.0</td>
+      <td>3.052612e+10</td>
+      <td>3.806250e+07</td>
+      <td>1.479648e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-02-26</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>9274</td>
+      <td>9274.T</td>
+      <td>KPP Group Holdings Co Ltd</td>
+      <td>Basic Materials</td>
+      <td>Paper &amp; Paper Products</td>
+      <td>0.68</td>
+      <td>882.0</td>
+      <td>893300.0</td>
+      <td>0.59</td>
+      <td>5.54</td>
+      <td>56.93</td>
+      <td>-9.26</td>
+      <td>8.09</td>
+      <td>25.46</td>
+      <td>108.51</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.14</td>
+      <td>1515620.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>25.84</td>
+      <td>85</td>
+      <td>93</td>
+      <td>98</td>
+      <td>79</td>
+      <td>55</td>
+      <td>57</td>
+      <td>911.39</td>
+      <td>-3.22</td>
+      <td>911.66</td>
+      <td>-3.25</td>
+      <td>847.42</td>
+      <td>4.08</td>
+      <td>1.72</td>
+      <td>1.72</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.19</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>36.30</td>
+      <td>22.56</td>
+      <td>30.0</td>
+      <td>6.249515e+10</td>
+      <td>7.183350e+07</td>
+      <td>3.916091e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2018-06-27</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>4911</td>
+      <td>4911.T</td>
+      <td>Shiseido Co., Ltd., Japan</td>
+      <td>Consumer Defensive</td>
+      <td>Household &amp; Personal Products</td>
+      <td>2.09</td>
+      <td>6362.0</td>
+      <td>2162100.0</td>
+      <td>0.86</td>
+      <td>2.13</td>
+      <td>133.86</td>
+      <td>9.71</td>
+      <td>24.70</td>
+      <td>24.57</td>
+      <td>14.38</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.41</td>
+      <td>2512304.0</td>
+      <td>False</td>
+      <td>3.0</td>
+      <td>5.0</td>
+      <td>159.02</td>
+      <td>97</td>
+      <td>93</td>
+      <td>84</td>
+      <td>92</td>
+      <td>95</td>
+      <td>94</td>
+      <td>6085.82</td>
+      <td>4.54</td>
+      <td>5847.37</td>
+      <td>8.80</td>
+      <td>5409.24</td>
+      <td>17.61</td>
+      <td>-0.76</td>
+      <td>-0.76</td>
+      <td>0.24</td>
+      <td>-0.27</td>
+      <td>0.75</td>
+      <td>0.86</td>
+      <td>0.13</td>
+      <td>0.05</td>
+      <td>0.02</td>
+      <td>0.05</td>
+      <td>0.03</td>
+      <td>2.32</td>
+      <td>59.79</td>
+      <td>339.0</td>
+      <td>2.172767e+12</td>
+      <td>3.994940e+08</td>
+      <td>3.995053e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>NaN</td>
+      <td>2000-01-04</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>4927</td>
+      <td>4927.T</td>
+      <td>Pola Orbis Holdings Inc</td>
+      <td>Consumer Defensive</td>
+      <td>Household &amp; Personal Products</td>
+      <td>1.97</td>
+      <td>1859.0</td>
+      <td>564800.0</td>
+      <td>0.87</td>
+      <td>1.72</td>
+      <td>31.07</td>
+      <td>4.09</td>
+      <td>12.67</td>
+      <td>22.46</td>
+      <td>16.62</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.55</td>
+      <td>646592.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>127.26</td>
+      <td>91</td>
+      <td>92</td>
+      <td>85</td>
+      <td>92</td>
+      <td>95</td>
+      <td>94</td>
+      <td>1818.69</td>
+      <td>2.22</td>
+      <td>1777.61</td>
+      <td>4.58</td>
+      <td>1694.92</td>
+      <td>9.68</td>
+      <td>0.35</td>
+      <td>0.35</td>
+      <td>-0.37</td>
+      <td>0.22</td>
+      <td>-0.65</td>
+      <td>-0.18</td>
+      <td>-0.03</td>
+      <td>0.00</td>
+      <td>-0.05</td>
+      <td>0.02</td>
+      <td>0.07</td>
+      <td>60.50</td>
+      <td>12.58</td>
+      <td>152.0</td>
+      <td>3.705586e+11</td>
+      <td>2.212290e+08</td>
+      <td>8.228490e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2010-12-10</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>5831</td>
+      <td>8355.T</td>
+      <td>Shizuoka Financial Group Inc</td>
+      <td>Financial Services</td>
+      <td>Banks—Regional</td>
+      <td>1.89</td>
+      <td>968.0</td>
+      <td>2588200.0</td>
+      <td>0.95</td>
+      <td>2.80</td>
+      <td>28.36</td>
+      <td>-3.68</td>
+      <td>3.64</td>
+      <td>20.10</td>
+      <td>23.94</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.58</td>
+      <td>2727138.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>206.85</td>
+      <td>70</td>
+      <td>91</td>
+      <td>88</td>
+      <td>93</td>
+      <td>86</td>
+      <td>65</td>
+      <td>959.92</td>
+      <td>0.84</td>
+      <td>950.86</td>
+      <td>1.80</td>
+      <td>924.70</td>
+      <td>4.68</td>
+      <td>0.02</td>
+      <td>0.04</td>
+      <td>NaN</td>
+      <td>0.47</td>
+      <td>NaN</td>
+      <td>-0.01</td>
+      <td>0.25</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>NaN</td>
+      <td>0.03</td>
+      <td>11.47</td>
+      <td>46.13</td>
+      <td>207.0</td>
+      <td>5.015285e+11</td>
+      <td>5.641490e+08</td>
+      <td>5.641201e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2000-01-04</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>4475</td>
+      <td>4475.T</td>
+      <td>Hennge Kk</td>
+      <td>Technology</td>
+      <td>Software—Infrastructure</td>
+      <td>4.54</td>
+      <td>1151.0</td>
+      <td>1628200.0</td>
+      <td>1.25</td>
+      <td>5.86</td>
+      <td>65.14</td>
+      <td>12.51</td>
+      <td>10.35</td>
+      <td>20.02</td>
+      <td>13.29</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.12</td>
+      <td>1299166.0</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>12.07</td>
+      <td>88</td>
+      <td>91</td>
+      <td>86</td>
+      <td>86</td>
+      <td>71</td>
+      <td>53</td>
+      <td>1095.74</td>
+      <td>5.04</td>
+      <td>1069.22</td>
+      <td>7.65</td>
+      <td>1003.92</td>
+      <td>14.65</td>
+      <td>-0.50</td>
+      <td>-0.49</td>
+      <td>NaN</td>
+      <td>0.47</td>
+      <td>NaN</td>
+      <td>1.00</td>
+      <td>0.18</td>
+      <td>0.17</td>
+      <td>0.17</td>
+      <td>0.17</td>
+      <td>0.24</td>
+      <td>52.80</td>
+      <td>29.06</td>
+      <td>35.0</td>
+      <td>3.756584e+10</td>
+      <td>3.249640e+07</td>
+      <td>1.567982e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2019-10-08</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>8136</td>
+      <td>8136.T</td>
+      <td>Sanrio Co Ltd</td>
+      <td>Consumer Cyclical</td>
+      <td>Specialty Retail</td>
+      <td>3.12</td>
+      <td>4290.0</td>
+      <td>339700.0</td>
+      <td>0.92</td>
+      <td>2.99</td>
+      <td>127.50</td>
+      <td>-5.19</td>
+      <td>-3.81</td>
+      <td>19.17</td>
+      <td>66.67</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.37</td>
+      <td>369968.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>155.11</td>
+      <td>18</td>
+      <td>91</td>
+      <td>96</td>
+      <td>23</td>
+      <td>58</td>
+      <td>74</td>
+      <td>4303.55</td>
+      <td>-0.31</td>
+      <td>4271.14</td>
+      <td>0.44</td>
+      <td>4046.40</td>
+      <td>6.02</td>
+      <td>-0.68</td>
+      <td>-0.68</td>
+      <td>NaN</td>
+      <td>0.43</td>
+      <td>4.09</td>
+      <td>0.51</td>
+      <td>0.29</td>
+      <td>0.12</td>
+      <td>0.63</td>
+      <td>0.09</td>
+      <td>0.11</td>
+      <td>23.89</td>
+      <td>24.48</td>
+      <td>86.0</td>
+      <td>3.444004e+11</td>
+      <td>8.056150e+07</td>
+      <td>5.738644e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-01</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>3048</td>
+      <td>3048.T</td>
+      <td>BIC Camera Inc</td>
+      <td>Consumer Cyclical</td>
+      <td>Specialty Retail</td>
+      <td>1.99</td>
+      <td>1283.0</td>
+      <td>553000.0</td>
+      <td>0.81</td>
+      <td>1.78</td>
+      <td>23.93</td>
+      <td>1.42</td>
+      <td>11.57</td>
+      <td>18.47</td>
+      <td>14.04</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.87</td>
+      <td>679214.0</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>132.15</td>
+      <td>90</td>
+      <td>90</td>
+      <td>88</td>
+      <td>23</td>
+      <td>58</td>
+      <td>74</td>
+      <td>1248.07</td>
+      <td>2.80</td>
+      <td>1221.11</td>
+      <td>5.07</td>
+      <td>1201.98</td>
+      <td>6.74</td>
+      <td>0.09</td>
+      <td>0.12</td>
+      <td>-0.84</td>
+      <td>0.83</td>
+      <td>-0.34</td>
+      <td>0.09</td>
+      <td>-0.01</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>0.03</td>
+      <td>44.42</td>
+      <td>11.20</td>
+      <td>79.0</td>
+      <td>1.956393e+11</td>
+      <td>1.711630e+08</td>
+      <td>8.975711e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-02-21</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>7581</td>
+      <td>7581.T</td>
+      <td>Saizeriya Co Ltd</td>
+      <td>Consumer Cyclical</td>
+      <td>Restaurants</td>
+      <td>2.04</td>
+      <td>2948.0</td>
+      <td>232400.0</td>
+      <td>0.93</td>
+      <td>1.90</td>
+      <td>58.43</td>
+      <td>4.80</td>
+      <td>2.65</td>
+      <td>18.06</td>
+      <td>13.82</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.06</td>
+      <td>251122.0</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>106.94</td>
+      <td>65</td>
+      <td>90</td>
+      <td>82</td>
+      <td>52</td>
+      <td>89</td>
+      <td>81</td>
+      <td>2879.57</td>
+      <td>2.38</td>
+      <td>2852.11</td>
+      <td>3.36</td>
+      <td>2784.30</td>
+      <td>5.88</td>
+      <td>-0.20</td>
+      <td>-0.20</td>
+      <td>-0.84</td>
+      <td>-0.18</td>
+      <td>-0.55</td>
+      <td>0.27</td>
+      <td>0.18</td>
+      <td>0.15</td>
+      <td>0.17</td>
+      <td>0.17</td>
+      <td>0.05</td>
+      <td>40.68</td>
+      <td>13.99</td>
+      <td>72.0</td>
+      <td>1.366208e+11</td>
+      <td>4.875830e+07</td>
+      <td>2.685541e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-04</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>9697</td>
+      <td>9697.T</td>
+      <td>Capcom Co Ltd</td>
+      <td>Communication Services</td>
+      <td>Electronic Gaming &amp; Multimedia</td>
+      <td>2.15</td>
+      <td>4285.0</td>
+      <td>1115100.0</td>
+      <td>1.13</td>
+      <td>2.30</td>
+      <td>102.86</td>
+      <td>2.63</td>
+      <td>1.42</td>
+      <td>17.72</td>
+      <td>25.48</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.26</td>
+      <td>990474.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>148.08</td>
+      <td>55</td>
+      <td>90</td>
+      <td>92</td>
+      <td>2</td>
+      <td>53</td>
+      <td>88</td>
+      <td>4249.42</td>
+      <td>0.84</td>
+      <td>4238.19</td>
+      <td>1.10</td>
+      <td>4029.40</td>
+      <td>6.34</td>
+      <td>0.46</td>
+      <td>0.49</td>
+      <td>1.12</td>
+      <td>0.21</td>
+      <td>1.13</td>
+      <td>0.10</td>
+      <td>0.10</td>
+      <td>0.75</td>
+      <td>0.10</td>
+      <td>0.94</td>
+      <td>0.10</td>
+      <td>17.21</td>
+      <td>31.26</td>
+      <td>283.0</td>
+      <td>9.408895e+11</td>
+      <td>2.131120e+08</td>
+      <td>1.466667e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-04</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>4425</td>
+      <td>4425.T</td>
+      <td>Kudan Inc</td>
+      <td>Technology</td>
+      <td>Software—Application</td>
+      <td>1.04</td>
+      <td>2928.0</td>
+      <td>66000.0</td>
+      <td>0.30</td>
+      <td>4.90</td>
+      <td>138.71</td>
+      <td>-0.78</td>
+      <td>-10.46</td>
+      <td>17.59</td>
+      <td>38.24</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.09</td>
+      <td>218844.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>14.95</td>
+      <td>4</td>
+      <td>90</td>
+      <td>92</td>
+      <td>66</td>
+      <td>83</td>
+      <td>60</td>
+      <td>2970.91</td>
+      <td>-1.44</td>
+      <td>2991.67</td>
+      <td>-2.13</td>
+      <td>2831.22</td>
+      <td>3.42</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.12</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>60.35</td>
+      <td>1.76</td>
+      <td>4.0</td>
+      <td>2.662615e+10</td>
+      <td>8.230650e+06</td>
+      <td>3.272671e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2018-12-20</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>7078</td>
+      <td>7078.T</td>
+      <td>Inclusive Inc</td>
+      <td>Communication Services</td>
+      <td>Advertising Agencies</td>
+      <td>4.70</td>
+      <td>1136.0</td>
+      <td>1415700.0</td>
+      <td>2.07</td>
+      <td>5.63</td>
+      <td>65.07</td>
+      <td>11.37</td>
+      <td>1.43</td>
+      <td>16.99</td>
+      <td>24.70</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.04</td>
+      <td>682780.0</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>5.29</td>
+      <td>55</td>
+      <td>89</td>
+      <td>86</td>
+      <td>86</td>
+      <td>71</td>
+      <td>53</td>
+      <td>1076.60</td>
+      <td>5.52</td>
+      <td>1074.39</td>
+      <td>5.73</td>
+      <td>1108.96</td>
+      <td>2.44</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.08</td>
+      <td>NaN</td>
+      <td>5.31</td>
+      <td>0.91</td>
+      <td>0.91</td>
+      <td>2.18</td>
+      <td>0.76</td>
+      <td>0.07</td>
+      <td>61.44</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>1.094970e+10</td>
+      <td>9.681430e+06</td>
+      <td>3.614176e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2019-12-20</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>6532</td>
+      <td>6532.T</td>
+      <td>BayCurrent Consulting Inc</td>
+      <td>Industrials</td>
+      <td>Consulting Services</td>
+      <td>1.65</td>
+      <td>4620.0</td>
+      <td>821600.0</td>
+      <td>0.51</td>
+      <td>3.41</td>
+      <td>156.79</td>
+      <td>3.47</td>
+      <td>16.37</td>
+      <td>16.67</td>
+      <td>22.22</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.46</td>
+      <td>1609054.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>8.16</td>
+      <td>94</td>
+      <td>89</td>
+      <td>81</td>
+      <td>46</td>
+      <td>93</td>
+      <td>91</td>
+      <td>4563.26</td>
+      <td>1.24</td>
+      <td>4453.98</td>
+      <td>3.73</td>
+      <td>4156.10</td>
+      <td>11.16</td>
+      <td>0.36</td>
+      <td>0.36</td>
+      <td>0.28</td>
+      <td>0.27</td>
+      <td>0.30</td>
+      <td>0.28</td>
+      <td>0.33</td>
+      <td>NaN</td>
+      <td>0.29</td>
+      <td>NaN</td>
+      <td>0.26</td>
+      <td>11.89</td>
+      <td>56.04</td>
+      <td>161.0</td>
+      <td>7.039840e+11</td>
+      <td>1.530400e+08</td>
+      <td>1.313291e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2016-09-02</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>4922</td>
+      <td>4922.T</td>
+      <td>Kose Corp</td>
+      <td>Consumer Defensive</td>
+      <td>Household &amp; Personal Products</td>
+      <td>0.79</td>
+      <td>15240.0</td>
+      <td>208300.0</td>
+      <td>0.71</td>
+      <td>2.35</td>
+      <td>367.86</td>
+      <td>5.18</td>
+      <td>2.08</td>
+      <td>16.16</td>
+      <td>25.33</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.25</td>
+      <td>292778.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>107.60</td>
+      <td>61</td>
+      <td>89</td>
+      <td>87</td>
+      <td>92</td>
+      <td>95</td>
+      <td>94</td>
+      <td>14993.22</td>
+      <td>1.65</td>
+      <td>14870.76</td>
+      <td>2.48</td>
+      <td>14898.80</td>
+      <td>2.29</td>
+      <td>0.41</td>
+      <td>0.41</td>
+      <td>0.38</td>
+      <td>0.33</td>
+      <td>-0.44</td>
+      <td>0.21</td>
+      <td>0.38</td>
+      <td>0.08</td>
+      <td>0.30</td>
+      <td>-0.09</td>
+      <td>0.09</td>
+      <td>39.18</td>
+      <td>26.26</td>
+      <td>195.0</td>
+      <td>8.871353e+11</td>
+      <td>5.705050e+07</td>
+      <td>3.150286e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-04</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>7187</td>
+      <td>7187.T</td>
+      <td>J-Lease Co Ltd</td>
+      <td>Real Estate</td>
+      <td>Real Estate Services</td>
+      <td>0.34</td>
+      <td>2945.0</td>
+      <td>56600.0</td>
+      <td>0.20</td>
+      <td>4.89</td>
+      <td>106.14</td>
+      <td>-5.15</td>
+      <td>15.31</td>
+      <td>15.72</td>
+      <td>71.02</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.52</td>
+      <td>279064.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>20.16</td>
+      <td>93</td>
+      <td>89</td>
+      <td>96</td>
+      <td>78</td>
+      <td>76</td>
+      <td>95</td>
+      <td>2982.51</td>
+      <td>-1.26</td>
+      <td>2920.67</td>
+      <td>0.83</td>
+      <td>2665.74</td>
+      <td>10.48</td>
+      <td>0.51</td>
+      <td>0.52</td>
+      <td>NaN</td>
+      <td>0.19</td>
+      <td>NaN</td>
+      <td>0.12</td>
+      <td>0.19</td>
+      <td>0.11</td>
+      <td>0.20</td>
+      <td>0.07</td>
+      <td>0.09</td>
+      <td>31.42</td>
+      <td>17.19</td>
+      <td>26.0</td>
+      <td>2.649908e+10</td>
+      <td>8.922250e+06</td>
+      <td>5.627243e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2016-06-22</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>6298</td>
+      <td>6298.T</td>
+      <td>Y.A.C. Co Ltd</td>
+      <td>Technology</td>
+      <td>Electronic Components</td>
+      <td>2.21</td>
+      <td>1569.0</td>
+      <td>344800.0</td>
+      <td>1.95</td>
+      <td>4.36</td>
+      <td>68.07</td>
+      <td>7.03</td>
+      <td>17.79</td>
+      <td>15.28</td>
+      <td>-8.41</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.80</td>
+      <td>177034.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>6.0</td>
+      <td>41.63</td>
+      <td>94</td>
+      <td>88</td>
+      <td>84</td>
+      <td>99</td>
+      <td>98</td>
+      <td>96</td>
+      <td>1506.27</td>
+      <td>4.16</td>
+      <td>1442.53</td>
+      <td>8.77</td>
+      <td>1334.02</td>
+      <td>17.61</td>
+      <td>1.44</td>
+      <td>1.43</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.03</td>
+      <td>0.03</td>
+      <td>0.14</td>
+      <td>0.14</td>
+      <td>0.06</td>
+      <td>18.23</td>
+      <td>10.05</td>
+      <td>22.0</td>
+      <td>1.274541e+10</td>
+      <td>9.129950e+06</td>
+      <td>7.369111e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2006-10-31</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>3193</td>
+      <td>3193.T</td>
+      <td>Torikizoku Co Ltd</td>
+      <td>Consumer Cyclical</td>
+      <td>Restaurants</td>
+      <td>1.74</td>
+      <td>2520.0</td>
+      <td>115900.0</td>
+      <td>1.00</td>
+      <td>2.77</td>
+      <td>67.14</td>
+      <td>3.07</td>
+      <td>16.94</td>
+      <td>15.17</td>
+      <td>30.23</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.98</td>
+      <td>115736.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>57.27</td>
+      <td>94</td>
+      <td>88</td>
+      <td>91</td>
+      <td>52</td>
+      <td>89</td>
+      <td>81</td>
+      <td>2442.91</td>
+      <td>3.16</td>
+      <td>2359.42</td>
+      <td>6.81</td>
+      <td>2262.54</td>
+      <td>11.38</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.18</td>
+      <td>NaN</td>
+      <td>1.31</td>
+      <td>4.22</td>
+      <td>0.29</td>
+      <td>5.89</td>
+      <td>0.37</td>
+      <td>0.06</td>
+      <td>38.85</td>
+      <td>14.18</td>
+      <td>22.0</td>
+      <td>2.471614e+10</td>
+      <td>1.158750e+07</td>
+      <td>6.627946e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2014-07-10</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>2681</td>
+      <td>2681.T</td>
+      <td>Geo Holdings Corp</td>
+      <td>Consumer Cyclical</td>
+      <td>Specialty Retail</td>
+      <td>0.65</td>
+      <td>1855.0</td>
+      <td>239000.0</td>
+      <td>0.55</td>
+      <td>3.91</td>
+      <td>70.29</td>
+      <td>-5.41</td>
+      <td>-9.60</td>
+      <td>15.07</td>
+      <td>48.40</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.21</td>
+      <td>434030.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>43.96</td>
+      <td>5</td>
+      <td>88</td>
+      <td>91</td>
+      <td>23</td>
+      <td>58</td>
+      <td>74</td>
+      <td>1865.97</td>
+      <td>-0.59</td>
+      <td>1860.67</td>
+      <td>-0.30</td>
+      <td>1872.94</td>
+      <td>-0.96</td>
+      <td>6.49</td>
+      <td>6.48</td>
+      <td>NaN</td>
+      <td>1.77</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>0.20</td>
+      <td>0.07</td>
+      <td>28.88</td>
+      <td>NaN</td>
+      <td>0.03</td>
+      <td>46.95</td>
+      <td>18.83</td>
+      <td>56.0</td>
+      <td>8.366703e+10</td>
+      <td>4.240600e+07</td>
+      <td>1.908014e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2004-01-13</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>7189</td>
+      <td>7189.T</td>
+      <td>Nishi-Nippon Financial Holdings Inc</td>
+      <td>Financial Services</td>
+      <td>Banks—Regional</td>
+      <td>2.05</td>
+      <td>846.0</td>
+      <td>720500.0</td>
+      <td>1.32</td>
+      <td>2.49</td>
+      <td>22.64</td>
+      <td>-3.20</td>
+      <td>14.02</td>
+      <td>14.95</td>
+      <td>10.01</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.12</td>
+      <td>547490.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>204.18</td>
+      <td>92</td>
+      <td>88</td>
+      <td>79</td>
+      <td>93</td>
+      <td>86</td>
+      <td>65</td>
+      <td>841.23</td>
+      <td>0.57</td>
+      <td>826.45</td>
+      <td>2.37</td>
+      <td>785.76</td>
+      <td>7.67</td>
+      <td>-0.13</td>
+      <td>-0.10</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>NaN</td>
+      <td>0.01</td>
+      <td>0.06</td>
+      <td>0.11</td>
+      <td>0.03</td>
+      <td>0.14</td>
+      <td>0.08</td>
+      <td>11.17</td>
+      <td>33.31</td>
+      <td>106.0</td>
+      <td>1.163130e+11</td>
+      <td>1.443090e+08</td>
+      <td>1.117885e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-01</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>8242</td>
+      <td>8242.T</td>
+      <td>H2O Retailing Corp</td>
+      <td>Consumer Cyclical</td>
+      <td>Department Stores</td>
+      <td>2.54</td>
+      <td>1170.0</td>
+      <td>399900.0</td>
+      <td>0.52</td>
+      <td>2.59</td>
+      <td>29.21</td>
+      <td>-4.10</td>
+      <td>-7.95</td>
+      <td>14.15</td>
+      <td>12.50</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.15</td>
+      <td>768282.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>100.88</td>
+      <td>7</td>
+      <td>87</td>
+      <td>88</td>
+      <td>4</td>
+      <td>95</td>
+      <td>98</td>
+      <td>1172.53</td>
+      <td>-0.22</td>
+      <td>1187.89</td>
+      <td>-1.51</td>
+      <td>1198.72</td>
+      <td>-2.40</td>
+      <td>0.18</td>
+      <td>0.19</td>
+      <td>NaN</td>
+      <td>0.16</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>0.26</td>
+      <td>0.28</td>
+      <td>0.23</td>
+      <td>0.12</td>
+      <td>0.02</td>
+      <td>31.48</td>
+      <td>16.89</td>
+      <td>78.0</td>
+      <td>1.484705e+11</td>
+      <td>1.232120e+08</td>
+      <td>7.750297e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-01</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>3099</td>
+      <td>3099.T</td>
+      <td>Isetan Mitsukoshi Holdings Ltd.</td>
+      <td>Consumer Cyclical</td>
+      <td>Department Stores</td>
+      <td>3.54</td>
+      <td>1287.0</td>
+      <td>2198600.0</td>
+      <td>0.66</td>
+      <td>3.16</td>
+      <td>37.29</td>
+      <td>-2.79</td>
+      <td>-1.98</td>
+      <td>14.10</td>
+      <td>17.43</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.23</td>
+      <td>3321138.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>95.18</td>
+      <td>26</td>
+      <td>87</td>
+      <td>89</td>
+      <td>4</td>
+      <td>95</td>
+      <td>98</td>
+      <td>1269.46</td>
+      <td>1.38</td>
+      <td>1267.47</td>
+      <td>1.54</td>
+      <td>1274.14</td>
+      <td>1.01</td>
+      <td>3.47</td>
+      <td>3.42</td>
+      <td>6.16</td>
+      <td>0.82</td>
+      <td>-0.26</td>
+      <td>0.05</td>
+      <td>0.15</td>
+      <td>0.32</td>
+      <td>20.92</td>
+      <td>0.15</td>
+      <td>0.05</td>
+      <td>8.16</td>
+      <td>29.95</td>
+      <td>133.0</td>
+      <td>4.689483e+11</td>
+      <td>3.815690e+08</td>
+      <td>3.161178e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-01</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>3773</td>
+      <td>3773.T</td>
+      <td>Advanced Media Inc</td>
+      <td>Technology</td>
+      <td>Communication Equipment</td>
+      <td>2.01</td>
+      <td>1169.0</td>
+      <td>94400.0</td>
+      <td>0.60</td>
+      <td>4.35</td>
+      <td>45.86</td>
+      <td>1.39</td>
+      <td>22.54</td>
+      <td>14.05</td>
+      <td>90.70</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.63</td>
+      <td>158040.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>83.16</td>
+      <td>96</td>
+      <td>87</td>
+      <td>97</td>
+      <td>66</td>
+      <td>83</td>
+      <td>60</td>
+      <td>1170.79</td>
+      <td>-0.15</td>
+      <td>1138.27</td>
+      <td>2.70</td>
+      <td>1030.98</td>
+      <td>13.39</td>
+      <td>3.73</td>
+      <td>3.71</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.22</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>16.06</td>
+      <td>6.96</td>
+      <td>9.0</td>
+      <td>1.767777e+10</td>
+      <td>1.545260e+07</td>
+      <td>1.314303e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2005-06-28</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>6561</td>
+      <td>6561.T</td>
+      <td>Hanatour Japan Co Ltd</td>
+      <td>Consumer Cyclical</td>
+      <td>Travel Services</td>
+      <td>5.72</td>
+      <td>1590.0</td>
+      <td>67300.0</td>
+      <td>0.49</td>
+      <td>4.74</td>
+      <td>79.36</td>
+      <td>-3.99</td>
+      <td>-1.18</td>
+      <td>11.89</td>
+      <td>-5.86</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.36</td>
+      <td>138222.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>20.08</td>
+      <td>31</td>
+      <td>85</td>
+      <td>92</td>
+      <td>52</td>
+      <td>89</td>
+      <td>81</td>
+      <td>1570.40</td>
+      <td>1.25</td>
+      <td>1597.19</td>
+      <td>-0.45</td>
+      <td>1680.24</td>
+      <td>-5.37</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.24</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>76.68</td>
+      <td>4.42</td>
+      <td>3.0</td>
+      <td>2.032574e+10</td>
+      <td>1.255450e+07</td>
+      <td>2.776187e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2017-12-15</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>8179</td>
+      <td>8179.T</td>
+      <td>Royal Holdings Co Ltd</td>
+      <td>Consumer Cyclical</td>
+      <td>Restaurants</td>
+      <td>2.22</td>
+      <td>2390.0</td>
+      <td>196200.0</td>
+      <td>0.92</td>
+      <td>2.74</td>
+      <td>56.14</td>
+      <td>-0.29</td>
+      <td>0.34</td>
+      <td>11.89</td>
+      <td>5.57</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.47</td>
+      <td>214078.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>156.23</td>
+      <td>46</td>
+      <td>85</td>
+      <td>82</td>
+      <td>52</td>
+      <td>89</td>
+      <td>81</td>
+      <td>2370.88</td>
+      <td>0.81</td>
+      <td>2360.69</td>
+      <td>1.24</td>
+      <td>2316.40</td>
+      <td>3.18</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.07</td>
+      <td>NaN</td>
+      <td>9.79</td>
+      <td>0.34</td>
+      <td>0.16</td>
+      <td>0.21</td>
+      <td>0.05</td>
+      <td>0.09</td>
+      <td>35.61</td>
+      <td>12.50</td>
+      <td>49.0</td>
+      <td>1.044239e+11</td>
+      <td>4.691100e+07</td>
+      <td>3.344536e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-01</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>3491</td>
+      <td>3491.T</td>
+      <td>GA Technologies Co Ltd</td>
+      <td>Communication Services</td>
+      <td>Internet Content &amp; Information</td>
+      <td>4.87</td>
+      <td>1744.0</td>
+      <td>291900.0</td>
+      <td>1.55</td>
+      <td>3.74</td>
+      <td>60.79</td>
+      <td>6.93</td>
+      <td>27.77</td>
+      <td>11.87</td>
+      <td>93.78</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.06</td>
+      <td>188520.0</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>7.0</td>
+      <td>268.08</td>
+      <td>98</td>
+      <td>85</td>
+      <td>97</td>
+      <td>38</td>
+      <td>75</td>
+      <td>77</td>
+      <td>1649.85</td>
+      <td>5.71</td>
+      <td>1571.76</td>
+      <td>10.96</td>
+      <td>1505.70</td>
+      <td>15.83</td>
+      <td>0.45</td>
+      <td>0.36</td>
+      <td>NaN</td>
+      <td>1.70</td>
+      <td>NaN</td>
+      <td>4.99</td>
+      <td>0.59</td>
+      <td>-0.05</td>
+      <td>0.47</td>
+      <td>0.32</td>
+      <td>0.30</td>
+      <td>53.84</td>
+      <td>27.58</td>
+      <td>18.0</td>
+      <td>5.180754e+10</td>
+      <td>3.661310e+07</td>
+      <td>5.053930e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2018-07-25</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>8331</td>
+      <td>8331.T</td>
+      <td>Chiba Bank Ltd</td>
+      <td>Financial Services</td>
+      <td>Banks—Regional</td>
+      <td>2.86</td>
+      <td>828.0</td>
+      <td>4808400.0</td>
+      <td>1.36</td>
+      <td>2.50</td>
+      <td>22.29</td>
+      <td>-0.72</td>
+      <td>2.73</td>
+      <td>11.44</td>
+      <td>19.48</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.67</td>
+      <td>3532606.0</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>174.41</td>
+      <td>65</td>
+      <td>84</td>
+      <td>84</td>
+      <td>93</td>
+      <td>86</td>
+      <td>65</td>
+      <td>815.35</td>
+      <td>1.55</td>
+      <td>813.57</td>
+      <td>1.77</td>
+      <td>807.48</td>
+      <td>2.54</td>
+      <td>0.11</td>
+      <td>0.12</td>
+      <td>NaN</td>
+      <td>0.16</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>9.52</td>
+      <td>44.14</td>
+      <td>221.0</td>
+      <td>5.823304e+11</td>
+      <td>7.279130e+08</td>
+      <td>6.161172e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2000-01-04</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>5711</td>
+      <td>5711.T</td>
+      <td>Mitsubishi Materials Corp.</td>
+      <td>Basic Materials</td>
+      <td>Other Industrial Metals &amp; Mining</td>
+      <td>2.53</td>
+      <td>2228.0</td>
+      <td>1076200.0</td>
+      <td>1.60</td>
+      <td>1.97</td>
+      <td>41.64</td>
+      <td>1.87</td>
+      <td>10.35</td>
+      <td>11.34</td>
+      <td>8.31</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.37</td>
+      <td>672332.0</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>191.39</td>
+      <td>88</td>
+      <td>84</td>
+      <td>77</td>
+      <td>48</td>
+      <td>79</td>
+      <td>72</td>
+      <td>2175.55</td>
+      <td>2.41</td>
+      <td>2136.27</td>
+      <td>4.29</td>
+      <td>2048.32</td>
+      <td>8.77</td>
+      <td>0.43</td>
+      <td>0.43</td>
+      <td>-0.50</td>
+      <td>-0.53</td>
+      <td>-0.56</td>
+      <td>0.44</td>
+      <td>-0.05</td>
+      <td>-0.12</td>
+      <td>-0.11</td>
+      <td>-0.21</td>
+      <td>-0.09</td>
+      <td>3.90</td>
+      <td>47.00</td>
+      <td>133.0</td>
+      <td>2.742155e+11</td>
+      <td>1.306410e+08</td>
+      <td>1.286802e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2000-01-04</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>8316</td>
+      <td>8316.T</td>
+      <td>Sumitomo Mitsui Financial</td>
+      <td>Financial Services</td>
+      <td>Banks—Diversified</td>
+      <td>1.63</td>
+      <td>4671.0</td>
+      <td>7329100.0</td>
+      <td>1.02</td>
+      <td>1.55</td>
+      <td>81.29</td>
+      <td>-0.04</td>
+      <td>9.75</td>
+      <td>11.00</td>
+      <td>16.83</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.35</td>
+      <td>7181048.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>7.0</td>
+      <td>173.12</td>
+      <td>87</td>
+      <td>84</td>
+      <td>82</td>
+      <td>93</td>
+      <td>86</td>
+      <td>65</td>
+      <td>4621.64</td>
+      <td>1.07</td>
+      <td>4545.32</td>
+      <td>2.77</td>
+      <td>4320.54</td>
+      <td>8.11</td>
+      <td>0.24</td>
+      <td>0.24</td>
+      <td>-0.33</td>
+      <td>0.92</td>
+      <td>0.18</td>
+      <td>0.04</td>
+      <td>0.15</td>
+      <td>-0.19</td>
+      <td>-0.03</td>
+      <td>-0.15</td>
+      <td>0.03</td>
+      <td>6.94</td>
+      <td>41.24</td>
+      <td>452.0</td>
+      <td>5.960737e+12</td>
+      <td>1.371230e+09</td>
+      <td>1.243180e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2000-01-04</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>9202</td>
+      <td>9202.T</td>
+      <td>ANA Holdings Inc</td>
+      <td>Industrials</td>
+      <td>Airlines</td>
+      <td>1.27</td>
+      <td>2920.5</td>
+      <td>2368000.0</td>
+      <td>0.57</td>
+      <td>1.85</td>
+      <td>48.07</td>
+      <td>-0.82</td>
+      <td>-1.93</td>
+      <td>10.69</td>
+      <td>15.92</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.29</td>
+      <td>4165584.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>100.01</td>
+      <td>27</td>
+      <td>83</td>
+      <td>83</td>
+      <td>3</td>
+      <td>96</td>
+      <td>95</td>
+      <td>2901.11</td>
+      <td>0.67</td>
+      <td>2891.68</td>
+      <td>1.00</td>
+      <td>2862.87</td>
+      <td>2.01</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.56</td>
+      <td>1.24</td>
+      <td>1.06</td>
+      <td>1.44</td>
+      <td>0.90</td>
+      <td>0.54</td>
+      <td>0.67</td>
+      <td>0.58</td>
+      <td>0.15</td>
+      <td>5.58</td>
+      <td>22.38</td>
+      <td>217.0</td>
+      <td>1.336230e+12</td>
+      <td>4.703380e+08</td>
+      <td>4.166085e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2000-01-04</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>5803</td>
+      <td>5803.T</td>
+      <td>Fujikura Ltd.</td>
+      <td>Industrials</td>
+      <td>Electrical Equipment &amp; Parts</td>
+      <td>3.68</td>
+      <td>1070.0</td>
+      <td>2722200.0</td>
+      <td>1.21</td>
+      <td>3.46</td>
+      <td>33.36</td>
+      <td>-4.21</td>
+      <td>18.76</td>
+      <td>10.54</td>
+      <td>33.42</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.68</td>
+      <td>2247340.0</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>111.34</td>
+      <td>95</td>
+      <td>83</td>
+      <td>94</td>
+      <td>95</td>
+      <td>77</td>
+      <td>93</td>
+      <td>1072.11</td>
+      <td>-0.20</td>
+      <td>1056.36</td>
+      <td>1.29</td>
+      <td>967.86</td>
+      <td>10.55</td>
+      <td>1.22</td>
+      <td>1.22</td>
+      <td>NaN</td>
+      <td>-0.07</td>
+      <td>NaN</td>
+      <td>0.03</td>
+      <td>0.32</td>
+      <td>0.15</td>
+      <td>1.33</td>
+      <td>0.07</td>
+      <td>0.02</td>
+      <td>5.99</td>
+      <td>44.25</td>
+      <td>118.0</td>
+      <td>3.060225e+11</td>
+      <td>2.756960e+08</td>
+      <td>2.502271e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2000-01-04</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>4819</td>
+      <td>4819.T</td>
+      <td>Digital Garage Inc</td>
+      <td>Technology</td>
+      <td>Information Technology Services</td>
+      <td>0.36</td>
+      <td>4170.0</td>
+      <td>122300.0</td>
+      <td>0.89</td>
+      <td>2.51</td>
+      <td>106.07</td>
+      <td>4.12</td>
+      <td>15.19</td>
+      <td>10.46</td>
+      <td>3.99</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.37</td>
+      <td>137118.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>218.07</td>
+      <td>93</td>
+      <td>83</td>
+      <td>72</td>
+      <td>86</td>
+      <td>71</td>
+      <td>53</td>
+      <td>4098.01</td>
+      <td>1.76</td>
+      <td>3980.03</td>
+      <td>4.77</td>
+      <td>3704.60</td>
+      <td>12.56</td>
+      <td>1.23</td>
+      <td>1.18</td>
+      <td>NaN</td>
+      <td>-0.54</td>
+      <td>NaN</td>
+      <td>-0.22</td>
+      <td>0.37</td>
+      <td>0.40</td>
+      <td>-0.26</td>
+      <td>-0.26</td>
+      <td>-0.04</td>
+      <td>29.64</td>
+      <td>52.24</td>
+      <td>110.0</td>
+      <td>1.807917e+11</td>
+      <td>4.720410e+07</td>
+      <td>2.990180e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2000-12-14</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>8233</td>
+      <td>8233.T</td>
+      <td>Takashimaya Co., Ltd., Japan</td>
+      <td>Consumer Cyclical</td>
+      <td>Department Stores</td>
+      <td>2.56</td>
+      <td>1721.0</td>
+      <td>992800.0</td>
+      <td>0.52</td>
+      <td>2.83</td>
+      <td>46.36</td>
+      <td>-3.64</td>
+      <td>-6.11</td>
+      <td>10.32</td>
+      <td>31.88</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.50</td>
+      <td>1906546.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>78.01</td>
+      <td>11</td>
+      <td>83</td>
+      <td>91</td>
+      <td>4</td>
+      <td>95</td>
+      <td>98</td>
+      <td>1708.63</td>
+      <td>0.72</td>
+      <td>1723.69</td>
+      <td>-0.16</td>
+      <td>1760.28</td>
+      <td>-2.23</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.19</td>
+      <td>NaN</td>
+      <td>0.12</td>
+      <td>-0.41</td>
+      <td>-0.44</td>
+      <td>-0.50</td>
+      <td>-0.41</td>
+      <td>0.02</td>
+      <td>14.16</td>
+      <td>35.95</td>
+      <td>114.0</td>
+      <td>2.849450e+11</td>
+      <td>1.667320e+08</td>
+      <td>1.487318e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>NaN</td>
+      <td>2000-01-04</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>8766</td>
+      <td>8766.T</td>
+      <td>Tokio Marine Holdings, Inc., Japan</td>
+      <td>Financial Services</td>
+      <td>Insurance—Property &amp; Casualty</td>
+      <td>1.03</td>
+      <td>2805.0</td>
+      <td>6510400.0</td>
+      <td>0.94</td>
+      <td>2.18</td>
+      <td>73.14</td>
+      <td>-0.78</td>
+      <td>2.28</td>
+      <td>9.99</td>
+      <td>12.35</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.23</td>
+      <td>6953256.6</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>268.82</td>
+      <td>62</td>
+      <td>82</td>
+      <td>84</td>
+      <td>98</td>
+      <td>97</td>
+      <td>98</td>
+      <td>2798.90</td>
+      <td>0.22</td>
+      <td>2784.18</td>
+      <td>0.75</td>
+      <td>2699.96</td>
+      <td>3.89</td>
+      <td>-0.22</td>
+      <td>-0.20</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>0.08</td>
+      <td>0.08</td>
+      <td>-0.02</td>
+      <td>0.14</td>
+      <td>0.02</td>
+      <td>4.34</td>
+      <td>46.84</td>
+      <td>471.0</td>
+      <td>5.665457e+12</td>
+      <td>2.010810e+09</td>
+      <td>1.869183e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>NaN</td>
+      <td>2000-01-04</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>7433</td>
+      <td>7433.T</td>
+      <td>Hakuto Co Ltd</td>
+      <td>Technology</td>
+      <td>Electronic Components</td>
+      <td>1.79</td>
+      <td>3700.0</td>
+      <td>112000.0</td>
+      <td>0.61</td>
+      <td>2.57</td>
+      <td>89.64</td>
+      <td>-0.94</td>
+      <td>6.63</td>
+      <td>9.31</td>
+      <td>30.47</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.87</td>
+      <td>183732.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>76.99</td>
+      <td>82</td>
+      <td>81</td>
+      <td>91</td>
+      <td>75</td>
+      <td>63</td>
+      <td>68</td>
+      <td>3674.89</td>
+      <td>0.68</td>
+      <td>3634.31</td>
+      <td>1.81</td>
+      <td>3516.10</td>
+      <td>5.23</td>
+      <td>0.70</td>
+      <td>0.81</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.26</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>38.90</td>
+      <td>10.37</td>
+      <td>40.0</td>
+      <td>6.649723e+10</td>
+      <td>1.910840e+07</td>
+      <td>1.414629e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-01</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>9201</td>
+      <td>9201.T</td>
+      <td>Japan Airlines Co Ltd</td>
+      <td>Industrials</td>
+      <td>Airlines</td>
+      <td>2.23</td>
+      <td>2747.0</td>
+      <td>3892000.0</td>
+      <td>0.70</td>
+      <td>2.06</td>
+      <td>47.71</td>
+      <td>0.51</td>
+      <td>-2.93</td>
+      <td>8.79</td>
+      <td>18.10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.31</td>
+      <td>5544420.0</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>76.79</td>
+      <td>21</td>
+      <td>81</td>
+      <td>83</td>
+      <td>3</td>
+      <td>96</td>
+      <td>95</td>
+      <td>2708.43</td>
+      <td>1.42</td>
+      <td>2706.72</td>
+      <td>1.49</td>
+      <td>2715.24</td>
+      <td>1.17</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.04</td>
+      <td>1.24</td>
+      <td>1.25</td>
+      <td>1.01</td>
+      <td>1.22</td>
+      <td>0.72</td>
+      <td>0.96</td>
+      <td>0.94</td>
+      <td>0.14</td>
+      <td>5.10</td>
+      <td>20.17</td>
+      <td>205.0</td>
+      <td>1.176423e+12</td>
+      <td>4.370070e+08</td>
+      <td>4.257805e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2000-01-04</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>9984</td>
+      <td>9984.T</td>
+      <td>Softbank Group Corp.</td>
+      <td>Communication Services</td>
+      <td>Telecom Services</td>
+      <td>0.85</td>
+      <td>5967.0</td>
+      <td>10901400.0</td>
+      <td>0.54</td>
+      <td>2.90</td>
+      <td>149.00</td>
+      <td>0.25</td>
+      <td>-9.60</td>
+      <td>8.63</td>
+      <td>10.13</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.41</td>
+      <td>20165510.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>50.07</td>
+      <td>5</td>
+      <td>80</td>
+      <td>79</td>
+      <td>83</td>
+      <td>96</td>
+      <td>98</td>
+      <td>6026.35</td>
+      <td>-0.98</td>
+      <td>6093.78</td>
+      <td>-2.08</td>
+      <td>5912.00</td>
+      <td>0.93</td>
+      <td>-0.98</td>
+      <td>-0.98</td>
+      <td>-0.74</td>
+      <td>1.72</td>
+      <td>1.55</td>
+      <td>-0.52</td>
+      <td>0.07</td>
+      <td>0.05</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>30.17</td>
+      <td>32.76</td>
+      <td>410.0</td>
+      <td>1.037450e+13</td>
+      <td>1.492090e+09</td>
+      <td>1.009597e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2000-01-04</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>8354</td>
+      <td>8354.T</td>
+      <td>Fukuoka Financial Group, Inc., Japan</td>
+      <td>Financial Services</td>
+      <td>Banks—Regional</td>
+      <td>3.17</td>
+      <td>2671.0</td>
+      <td>1173100.0</td>
+      <td>1.48</td>
+      <td>2.78</td>
+      <td>79.07</td>
+      <td>-0.74</td>
+      <td>5.45</td>
+      <td>8.58</td>
+      <td>14.39</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.98</td>
+      <td>790692.0</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>208.71</td>
+      <td>78</td>
+      <td>80</td>
+      <td>81</td>
+      <td>93</td>
+      <td>86</td>
+      <td>65</td>
+      <td>2619.47</td>
+      <td>1.97</td>
+      <td>2596.93</td>
+      <td>2.85</td>
+      <td>2577.56</td>
+      <td>3.63</td>
+      <td>0.12</td>
+      <td>0.12</td>
+      <td>NaN</td>
+      <td>0.07</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>0.06</td>
+      <td>NaN</td>
+      <td>-0.00</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>4.41</td>
+      <td>47.25</td>
+      <td>182.0</td>
+      <td>4.646865e+11</td>
+      <td>1.879800e+08</td>
+      <td>1.650215e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>NaN</td>
+      <td>2001-01-01</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>4681</td>
+      <td>4681.T</td>
+      <td>Resorttrust Inc</td>
+      <td>Consumer Cyclical</td>
+      <td>Resorts &amp; Casinos</td>
+      <td>1.92</td>
+      <td>2388.0</td>
+      <td>409600.0</td>
+      <td>0.95</td>
+      <td>2.41</td>
+      <td>52.64</td>
+      <td>-1.93</td>
+      <td>1.88</td>
+      <td>8.15</td>
+      <td>10.86</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.23</td>
+      <td>432678.0</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>170.71</td>
+      <td>59</td>
+      <td>80</td>
+      <td>81</td>
+      <td>52</td>
+      <td>89</td>
+      <td>81</td>
+      <td>2359.54</td>
+      <td>1.21</td>
+      <td>2346.04</td>
+      <td>1.79</td>
+      <td>2331.88</td>
+      <td>2.41</td>
+      <td>0.35</td>
+      <td>0.46</td>
+      <td>-0.20</td>
+      <td>2.13</td>
+      <td>-0.20</td>
+      <td>0.04</td>
+      <td>0.12</td>
+      <td>0.12</td>
+      <td>0.55</td>
+      <td>-0.05</td>
+      <td>0.16</td>
+      <td>26.98</td>
+      <td>25.55</td>
+      <td>120.0</td>
+      <td>2.460174e+11</td>
+      <td>1.061570e+08</td>
+      <td>7.386287e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-04</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>4449</td>
+      <td>4449.T</td>
+      <td>Giftee Inc</td>
+      <td>Consumer Cyclical</td>
+      <td>Internet Retail</td>
+      <td>3.39</td>
+      <td>2259.0</td>
+      <td>469700.0</td>
+      <td>0.55</td>
+      <td>5.66</td>
+      <td>115.79</td>
+      <td>-0.09</td>
+      <td>0.71</td>
+      <td>8.09</td>
+      <td>122.34</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.23</td>
+      <td>855158.0</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>19.55</td>
+      <td>49</td>
+      <td>80</td>
+      <td>98</td>
+      <td>38</td>
+      <td>75</td>
+      <td>77</td>
+      <td>2251.22</td>
+      <td>0.35</td>
+      <td>2237.39</td>
+      <td>0.97</td>
+      <td>2195.94</td>
+      <td>2.87</td>
+      <td>-0.79</td>
+      <td>-0.81</td>
+      <td>NaN</td>
+      <td>1.35</td>
+      <td>NaN</td>
+      <td>0.66</td>
+      <td>0.60</td>
+      <td>0.22</td>
+      <td>0.33</td>
+      <td>0.55</td>
+      <td>0.29</td>
+      <td>38.71</td>
+      <td>64.50</td>
+      <td>52.0</td>
+      <td>6.621102e+10</td>
+      <td>2.882500e+07</td>
+      <td>1.671819e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2019-09-20</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>3003</td>
+      <td>3003.T</td>
+      <td>Hulic Co Ltd</td>
+      <td>Real Estate</td>
+      <td>Real Estate Services</td>
+      <td>0.88</td>
+      <td>1142.0</td>
+      <td>1970600.0</td>
+      <td>1.10</td>
+      <td>1.33</td>
+      <td>17.14</td>
+      <td>-0.95</td>
+      <td>5.74</td>
+      <td>7.84</td>
+      <td>6.04</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.14</td>
+      <td>1789258.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>261.16</td>
+      <td>79</td>
+      <td>79</td>
+      <td>75</td>
+      <td>62</td>
+      <td>67</td>
+      <td>86</td>
+      <td>1136.95</td>
+      <td>0.44</td>
+      <td>1127.87</td>
+      <td>1.25</td>
+      <td>1095.68</td>
+      <td>4.23</td>
+      <td>1.58</td>
+      <td>1.27</td>
+      <td>-0.32</td>
+      <td>0.03</td>
+      <td>1.08</td>
+      <td>0.08</td>
+      <td>2.34</td>
+      <td>NaN</td>
+      <td>0.12</td>
+      <td>NaN</td>
+      <td>0.01</td>
+      <td>34.41</td>
+      <td>39.23</td>
+      <td>249.0</td>
+      <td>8.505092e+11</td>
+      <td>7.621050e+08</td>
+      <td>4.672791e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-05</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>8050</td>
+      <td>8050.T</td>
+      <td>Seiko Holdings Corp</td>
+      <td>Consumer Cyclical</td>
+      <td>Footwear &amp; Accessories</td>
+      <td>1.33</td>
+      <td>3040.0</td>
+      <td>99800.0</td>
+      <td>0.53</td>
+      <td>3.04</td>
+      <td>94.86</td>
+      <td>-3.95</td>
+      <td>-6.75</td>
+      <td>7.65</td>
+      <td>11.56</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.88</td>
+      <td>189148.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>136.34</td>
+      <td>9</td>
+      <td>79</td>
+      <td>83</td>
+      <td>69</td>
+      <td>80</td>
+      <td>84</td>
+      <td>3051.10</td>
+      <td>-0.36</td>
+      <td>3080.50</td>
+      <td>-1.31</td>
+      <td>3124.68</td>
+      <td>-2.71</td>
+      <td>2.14</td>
+      <td>2.14</td>
+      <td>-0.42</td>
+      <td>1.59</td>
+      <td>0.40</td>
+      <td>0.12</td>
+      <td>0.22</td>
+      <td>0.07</td>
+      <td>20.18</td>
+      <td>-0.05</td>
+      <td>0.05</td>
+      <td>33.33</td>
+      <td>22.49</td>
+      <td>74.0</td>
+      <td>1.251764e+11</td>
+      <td>4.124430e+07</td>
+      <td>2.578890e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-01</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>3543</td>
+      <td>3543.T</td>
+      <td>Komeda Holdings Co Ltd</td>
+      <td>Consumer Cyclical</td>
+      <td>Restaurants</td>
+      <td>0.71</td>
+      <td>2395.0</td>
+      <td>92400.0</td>
+      <td>0.47</td>
+      <td>1.11</td>
+      <td>26.64</td>
+      <td>-0.70</td>
+      <td>-2.24</td>
+      <td>7.40</td>
+      <td>3.06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.98</td>
+      <td>198388.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>231.27</td>
+      <td>25</td>
+      <td>78</td>
+      <td>75</td>
+      <td>52</td>
+      <td>89</td>
+      <td>81</td>
+      <td>2396.93</td>
+      <td>-0.08</td>
+      <td>2408.49</td>
+      <td>-0.56</td>
+      <td>2409.02</td>
+      <td>-0.58</td>
+      <td>0.07</td>
+      <td>0.07</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>0.12</td>
+      <td>0.10</td>
+      <td>0.10</td>
+      <td>0.19</td>
+      <td>0.07</td>
+      <td>0.22</td>
+      <td>31.28</td>
+      <td>81.0</td>
+      <td>1.115584e+11</td>
+      <td>4.609850e+07</td>
+      <td>4.588134e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2016-06-29</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>8341</td>
+      <td>8341.T</td>
+      <td>The 77 Bank Ltd</td>
+      <td>Financial Services</td>
+      <td>Banks—Regional</td>
+      <td>2.38</td>
+      <td>1889.0</td>
+      <td>271400.0</td>
+      <td>1.37</td>
+      <td>2.30</td>
+      <td>53.93</td>
+      <td>-3.03</td>
+      <td>7.39</td>
+      <td>6.90</td>
+      <td>7.76</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.09</td>
+      <td>197464.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>308.06</td>
+      <td>83</td>
+      <td>77</td>
+      <td>80</td>
+      <td>93</td>
+      <td>86</td>
+      <td>65</td>
+      <td>1881.26</td>
+      <td>0.41</td>
+      <td>1859.52</td>
+      <td>1.59</td>
+      <td>1811.62</td>
+      <td>4.27</td>
+      <td>0.09</td>
+      <td>0.08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>NaN</td>
+      <td>0.18</td>
+      <td>0.03</td>
+      <td>-0.03</td>
+      <td>6.82</td>
+      <td>43.38</td>
+      <td>82.0</td>
+      <td>1.278124e+11</td>
+      <td>7.392270e+07</td>
+      <td>6.083064e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-01</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>2121</td>
+      <td>2121.T</td>
+      <td>Mixi Inc</td>
+      <td>Communication Services</td>
+      <td>Electronic Gaming &amp; Multimedia</td>
+      <td>1.24</td>
+      <td>2445.0</td>
+      <td>129300.0</td>
+      <td>0.51</td>
+      <td>1.95</td>
+      <td>41.64</td>
+      <td>-0.77</td>
+      <td>2.43</td>
+      <td>6.35</td>
+      <td>12.36</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.30</td>
+      <td>251572.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>148.13</td>
+      <td>63</td>
+      <td>76</td>
+      <td>75</td>
+      <td>2</td>
+      <td>53</td>
+      <td>88</td>
+      <td>2439.07</td>
+      <td>0.24</td>
+      <td>2415.91</td>
+      <td>1.20</td>
+      <td>2358.08</td>
+      <td>3.69</td>
+      <td>-0.13</td>
+      <td>-0.10</td>
+      <td>NaN</td>
+      <td>0.37</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>0.50</td>
+      <td>0.03</td>
+      <td>0.23</td>
+      <td>-0.09</td>
+      <td>-0.03</td>
+      <td>43.72</td>
+      <td>21.56</td>
+      <td>94.0</td>
+      <td>1.700656e+11</td>
+      <td>7.255360e+07</td>
+      <td>3.726641e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2006-09-14</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>8381</td>
+      <td>8381.T</td>
+      <td>San-in Godo Bank Ltd</td>
+      <td>Financial Services</td>
+      <td>Banks—Regional</td>
+      <td>0.98</td>
+      <td>721.0</td>
+      <td>445800.0</td>
+      <td>1.27</td>
+      <td>2.28</td>
+      <td>18.14</td>
+      <td>-4.50</td>
+      <td>4.04</td>
+      <td>5.72</td>
+      <td>9.24</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.02</td>
+      <td>349702.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>363.32</td>
+      <td>72</td>
+      <td>75</td>
+      <td>73</td>
+      <td>93</td>
+      <td>86</td>
+      <td>65</td>
+      <td>722.54</td>
+      <td>-0.21</td>
+      <td>718.10</td>
+      <td>0.40</td>
+      <td>708.50</td>
+      <td>1.76</td>
+      <td>-0.20</td>
+      <td>-0.20</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.62</td>
+      <td>28.58</td>
+      <td>75.0</td>
+      <td>1.105955e+11</td>
+      <td>1.559880e+08</td>
+      <td>1.270530e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-01</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>1878</td>
+      <td>1878.T</td>
+      <td>Daito Trust Construction</td>
+      <td>Real Estate</td>
+      <td>Real Estate—Diversified</td>
+      <td>0.69</td>
+      <td>14490.0</td>
+      <td>247100.0</td>
+      <td>0.95</td>
+      <td>1.91</td>
+      <td>340.00</td>
+      <td>-5.42</td>
+      <td>-2.49</td>
+      <td>5.69</td>
+      <td>26.99</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.12</td>
+      <td>259400.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>230.01</td>
+      <td>23</td>
+      <td>75</td>
+      <td>82</td>
+      <td>62</td>
+      <td>67</td>
+      <td>86</td>
+      <td>14808.56</td>
+      <td>-2.15</td>
+      <td>14890.65</td>
+      <td>-2.69</td>
+      <td>14574.80</td>
+      <td>-0.58</td>
+      <td>-0.29</td>
+      <td>-0.29</td>
+      <td>-0.07</td>
+      <td>0.69</td>
+      <td>1.47</td>
+      <td>0.22</td>
+      <td>0.01</td>
+      <td>0.05</td>
+      <td>2.76</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>12.79</td>
+      <td>44.76</td>
+      <td>278.0</td>
+      <td>1.011261e+12</td>
+      <td>6.819020e+07</td>
+      <td>5.966425e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-01</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>9616</td>
+      <td>9616.T</td>
+      <td>Kyoritsu Maintenance Co Ltd</td>
+      <td>Consumer Cyclical</td>
+      <td>Lodging</td>
+      <td>2.46</td>
+      <td>5840.0</td>
+      <td>589500.0</td>
+      <td>1.46</td>
+      <td>3.58</td>
+      <td>185.71</td>
+      <td>-4.26</td>
+      <td>-6.71</td>
+      <td>5.61</td>
+      <td>17.74</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.76</td>
+      <td>402490.0</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>79.88</td>
+      <td>9</td>
+      <td>75</td>
+      <td>85</td>
+      <td>52</td>
+      <td>89</td>
+      <td>81</td>
+      <td>5814.57</td>
+      <td>0.44</td>
+      <td>5850.65</td>
+      <td>-0.18</td>
+      <td>6002.20</td>
+      <td>-2.70</td>
+      <td>-0.28</td>
+      <td>-0.28</td>
+      <td>3.48</td>
+      <td>1.60</td>
+      <td>-0.97</td>
+      <td>2.30</td>
+      <td>0.15</td>
+      <td>0.06</td>
+      <td>0.24</td>
+      <td>-0.44</td>
+      <td>0.12</td>
+      <td>21.72</td>
+      <td>42.42</td>
+      <td>103.0</td>
+      <td>2.218480e+11</td>
+      <td>3.898910e+07</td>
+      <td>3.215086e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-01</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>8411</td>
+      <td>8411.T</td>
+      <td>Mizuho Financial Group Inc</td>
+      <td>Financial Services</td>
+      <td>Banks—Regional</td>
+      <td>1.17</td>
+      <td>1681.0</td>
+      <td>9920400.0</td>
+      <td>1.07</td>
+      <td>1.48</td>
+      <td>28.50</td>
+      <td>-2.10</td>
+      <td>4.09</td>
+      <td>5.13</td>
+      <td>9.65</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.11</td>
+      <td>9266404.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>243.18</td>
+      <td>73</td>
+      <td>73</td>
+      <td>74</td>
+      <td>93</td>
+      <td>86</td>
+      <td>65</td>
+      <td>1672.37</td>
+      <td>0.52</td>
+      <td>1659.85</td>
+      <td>1.27</td>
+      <td>1628.79</td>
+      <td>3.21</td>
+      <td>-0.36</td>
+      <td>-0.36</td>
+      <td>0.09</td>
+      <td>0.38</td>
+      <td>0.48</td>
+      <td>0.05</td>
+      <td>-0.01</td>
+      <td>-0.09</td>
+      <td>-0.11</td>
+      <td>-0.04</td>
+      <td>-0.02</td>
+      <td>3.45</td>
+      <td>26.12</td>
+      <td>343.0</td>
+      <td>4.129752e+12</td>
+      <td>2.533590e+09</td>
+      <td>2.253405e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2003-03-12</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>8078</td>
+      <td>8078.T</td>
+      <td>Hanwa Co Ltd</td>
+      <td>Industrials</td>
+      <td>Conglomerates</td>
+      <td>0.84</td>
+      <td>3595.0</td>
+      <td>174000.0</td>
+      <td>1.47</td>
+      <td>2.12</td>
+      <td>72.86</td>
+      <td>0.42</td>
+      <td>-5.27</td>
+      <td>4.96</td>
+      <td>19.63</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.97</td>
+      <td>118350.0</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>257.25</td>
+      <td>13</td>
+      <td>73</td>
+      <td>77</td>
+      <td>79</td>
+      <td>55</td>
+      <td>57</td>
+      <td>3588.83</td>
+      <td>0.17</td>
+      <td>3620.09</td>
+      <td>-0.69</td>
+      <td>3629.50</td>
+      <td>-0.95</td>
+      <td>0.15</td>
+      <td>0.15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.28</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.18</td>
+      <td>17.42</td>
+      <td>33.92</td>
+      <td>100.0</td>
+      <td>1.507644e+11</td>
+      <td>4.063730e+07</td>
+      <td>3.044498e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-01</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>3591</td>
+      <td>3591.T</td>
+      <td>Wacoal Holdings Corp</td>
+      <td>Consumer Cyclical</td>
+      <td>Apparel Manufacturing</td>
+      <td>0.48</td>
+      <td>2307.0</td>
+      <td>88900.0</td>
+      <td>0.39</td>
+      <td>1.34</td>
+      <td>30.79</td>
+      <td>-0.94</td>
+      <td>-4.23</td>
+      <td>4.29</td>
+      <td>8.67</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.68</td>
+      <td>228420.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>258.21</td>
+      <td>16</td>
+      <td>71</td>
+      <td>76</td>
+      <td>69</td>
+      <td>80</td>
+      <td>84</td>
+      <td>2317.89</td>
+      <td>-0.47</td>
+      <td>2343.95</td>
+      <td>-1.58</td>
+      <td>2338.90</td>
+      <td>-1.36</td>
+      <td>-0.28</td>
+      <td>-0.26</td>
+      <td>NaN</td>
+      <td>1.15</td>
+      <td>NaN</td>
+      <td>0.30</td>
+      <td>0.08</td>
+      <td>0.17</td>
+      <td>46.15</td>
+      <td>0.20</td>
+      <td>0.04</td>
+      <td>12.05</td>
+      <td>36.47</td>
+      <td>89.0</td>
+      <td>1.444843e+11</td>
+      <td>5.931210e+07</td>
+      <td>5.898070e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-01</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>3244</td>
+      <td>3244.T</td>
+      <td>Samty Co Ltd</td>
+      <td>Real Estate</td>
+      <td>Real Estate—Diversified</td>
+      <td>1.48</td>
+      <td>2268.0</td>
+      <td>159400.0</td>
+      <td>0.49</td>
+      <td>1.57</td>
+      <td>44.21</td>
+      <td>-0.26</td>
+      <td>-2.79</td>
+      <td>3.61</td>
+      <td>11.45</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.04</td>
+      <td>324902.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>68.70</td>
+      <td>22</td>
+      <td>69</td>
+      <td>71</td>
+      <td>62</td>
+      <td>67</td>
+      <td>86</td>
+      <td>2266.69</td>
+      <td>0.06</td>
+      <td>2296.68</td>
+      <td>-1.25</td>
+      <td>2304.14</td>
+      <td>-1.57</td>
+      <td>3.08</td>
+      <td>2.76</td>
+      <td>NaN</td>
+      <td>-0.10</td>
+      <td>NaN</td>
+      <td>0.42</td>
+      <td>-0.14</td>
+      <td>-0.22</td>
+      <td>0.36</td>
+      <td>-0.18</td>
+      <td>0.38</td>
+      <td>48.17</td>
+      <td>13.11</td>
+      <td>53.0</td>
+      <td>1.091418e+11</td>
+      <td>4.652250e+07</td>
+      <td>2.232232e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2007-07-31</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>8923</td>
+      <td>8923.T</td>
+      <td>Tosei Corp</td>
+      <td>Real Estate</td>
+      <td>Real Estate—Diversified</td>
+      <td>2.12</td>
+      <td>1395.0</td>
+      <td>208200.0</td>
+      <td>0.82</td>
+      <td>2.22</td>
+      <td>36.71</td>
+      <td>-0.50</td>
+      <td>-0.64</td>
+      <td>1.90</td>
+      <td>18.02</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.76</td>
+      <td>253270.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>101.86</td>
+      <td>36</td>
+      <td>63</td>
+      <td>81</td>
+      <td>62</td>
+      <td>67</td>
+      <td>86</td>
+      <td>1396.56</td>
+      <td>-0.11</td>
+      <td>1411.44</td>
+      <td>-1.16</td>
+      <td>1401.88</td>
+      <td>-0.49</td>
+      <td>0.12</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>0.22</td>
+      <td>NaN</td>
+      <td>0.17</td>
+      <td>0.00</td>
+      <td>1.80</td>
+      <td>0.26</td>
+      <td>1.80</td>
+      <td>0.22</td>
+      <td>40.91</td>
+      <td>27.38</td>
+      <td>68.0</td>
+      <td>6.642663e+10</td>
+      <td>4.717800e+07</td>
+      <td>2.579815e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2006-11-22</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>7860</td>
+      <td>7860.T</td>
+      <td>Avex Group Holdings Inc</td>
+      <td>Communication Services</td>
+      <td>Entertainment</td>
+      <td>3.46</td>
+      <td>1614.0</td>
+      <td>247500.0</td>
+      <td>1.25</td>
+      <td>2.53</td>
+      <td>35.86</td>
+      <td>5.56</td>
+      <td>-1.28</td>
+      <td>1.25</td>
+      <td>32.19</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.96</td>
+      <td>198044.0</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>136.45</td>
+      <td>30</td>
+      <td>61</td>
+      <td>82</td>
+      <td>2</td>
+      <td>53</td>
+      <td>88</td>
+      <td>1567.28</td>
+      <td>2.98</td>
+      <td>1572.89</td>
+      <td>2.61</td>
+      <td>1591.46</td>
+      <td>1.42</td>
+      <td>-0.04</td>
+      <td>-0.04</td>
+      <td>NaN</td>
+      <td>1.43</td>
+      <td>NaN</td>
+      <td>0.58</td>
+      <td>-0.05</td>
+      <td>0.06</td>
+      <td>12.14</td>
+      <td>0.02</td>
+      <td>0.10</td>
+      <td>26.97</td>
+      <td>24.91</td>
+      <td>70.0</td>
+      <td>7.119243e+10</td>
+      <td>4.503000e+07</td>
+      <td>2.702244e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-04</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>3086</td>
+      <td>3086.T</td>
+      <td>J.Front Retailing Co., Ltd., Japan</td>
+      <td>Consumer Cyclical</td>
+      <td>Department Stores</td>
+      <td>2.05</td>
+      <td>1146.0</td>
+      <td>1290000.0</td>
+      <td>0.61</td>
+      <td>2.27</td>
+      <td>25.00</td>
+      <td>-1.12</td>
+      <td>-3.05</td>
+      <td>0.61</td>
+      <td>6.01</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.84</td>
+      <td>2105782.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>119.00</td>
+      <td>21</td>
+      <td>58</td>
+      <td>73</td>
+      <td>4</td>
+      <td>95</td>
+      <td>98</td>
+      <td>1133.98</td>
+      <td>1.06</td>
+      <td>1140.87</td>
+      <td>0.45</td>
+      <td>1166.30</td>
+      <td>-1.74</td>
+      <td>2.92</td>
+      <td>2.91</td>
+      <td>2.84</td>
+      <td>2.73</td>
+      <td>0.01</td>
+      <td>0.29</td>
+      <td>0.05</td>
+      <td>0.11</td>
+      <td>0.08</td>
+      <td>0.04</td>
+      <td>0.06</td>
+      <td>7.21</td>
+      <td>48.96</td>
+      <td>132.0</td>
+      <td>2.992477e+11</td>
+      <td>2.618090e+08</td>
+      <td>2.505917e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>NaN</td>
+      <td>2000-01-04</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>8253</td>
+      <td>8253.T</td>
+      <td>Credit Saison Co., Ltd., Japan</td>
+      <td>Financial Services</td>
+      <td>Credit Services</td>
+      <td>0.29</td>
+      <td>1720.0</td>
+      <td>435000.0</td>
+      <td>0.47</td>
+      <td>1.81</td>
+      <td>30.64</td>
+      <td>-2.11</td>
+      <td>9.90</td>
+      <td>-0.64</td>
+      <td>13.31</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.84</td>
+      <td>917606.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>148.89</td>
+      <td>87</td>
+      <td>51</td>
+      <td>80</td>
+      <td>50</td>
+      <td>40</td>
+      <td>95</td>
+      <td>1724.70</td>
+      <td>-0.27</td>
+      <td>1704.86</td>
+      <td>0.89</td>
+      <td>1678.56</td>
+      <td>2.47</td>
+      <td>0.19</td>
+      <td>0.19</td>
+      <td>0.03</td>
+      <td>0.70</td>
+      <td>-0.70</td>
+      <td>0.05</td>
+      <td>-0.01</td>
+      <td>0.06</td>
+      <td>0.17</td>
+      <td>-0.18</td>
+      <td>0.04</td>
+      <td>11.83</td>
+      <td>48.47</td>
+      <td>133.0</td>
+      <td>2.561691e+11</td>
+      <td>1.562960e+08</td>
+      <td>1.366181e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>NaN</td>
+      <td>2000-01-04</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>6807</td>
+      <td>6807.T</td>
+      <td>Japan Aviation Electronics Ltd</td>
+      <td>Technology</td>
+      <td>Electronic Components</td>
+      <td>0.93</td>
+      <td>2271.0</td>
+      <td>253100.0</td>
+      <td>0.83</td>
+      <td>1.90</td>
+      <td>54.29</td>
+      <td>-3.24</td>
+      <td>-1.35</td>
+      <td>-1.35</td>
+      <td>9.98</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.67</td>
+      <td>304688.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>187.02</td>
+      <td>30</td>
+      <td>47</td>
+      <td>75</td>
+      <td>75</td>
+      <td>63</td>
+      <td>68</td>
+      <td>2315.75</td>
+      <td>-1.93</td>
+      <td>2323.83</td>
+      <td>-2.27</td>
+      <td>2236.82</td>
+      <td>1.53</td>
+      <td>0.19</td>
+      <td>0.18</td>
+      <td>0.10</td>
+      <td>0.91</td>
+      <td>-0.24</td>
+      <td>-0.02</td>
+      <td>0.10</td>
+      <td>0.17</td>
+      <td>0.32</td>
+      <td>0.15</td>
+      <td>0.05</td>
+      <td>35.70</td>
+      <td>15.77</td>
+      <td>95.0</td>
+      <td>2.107391e+11</td>
+      <td>9.099270e+07</td>
+      <td>5.698205e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-01</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>86</th>
+      <td>8570</td>
+      <td>8570.T</td>
+      <td>Aeon Financial Service Co Ltd</td>
+      <td>Financial Services</td>
+      <td>Credit Services</td>
+      <td>0.79</td>
+      <td>1401.0</td>
+      <td>211700.0</td>
+      <td>0.46</td>
+      <td>1.65</td>
+      <td>26.79</td>
+      <td>-4.63</td>
+      <td>-2.16</td>
+      <td>-3.58</td>
+      <td>15.02</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.92</td>
+      <td>464634.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>235.42</td>
+      <td>25</td>
+      <td>37</td>
+      <td>72</td>
+      <td>50</td>
+      <td>40</td>
+      <td>95</td>
+      <td>1418.01</td>
+      <td>-1.20</td>
+      <td>1431.04</td>
+      <td>-2.10</td>
+      <td>1436.26</td>
+      <td>-2.45</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.69</td>
+      <td>0.01</td>
+      <td>-0.13</td>
+      <td>0.16</td>
+      <td>-0.08</td>
+      <td>0.05</td>
+      <td>-0.04</td>
+      <td>-0.05</td>
+      <td>0.05</td>
+      <td>51.04</td>
+      <td>22.10</td>
+      <td>107.0</td>
+      <td>3.125666e+11</td>
+      <td>2.158370e+08</td>
+      <td>1.093818e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-01</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>87</th>
+      <td>3482</td>
+      <td>3482.T</td>
+      <td>Loadstar Capital KK</td>
+      <td>Real Estate</td>
+      <td>Real Estate Services</td>
+      <td>2.12</td>
+      <td>1735.0</td>
+      <td>133700.0</td>
+      <td>0.42</td>
+      <td>2.79</td>
+      <td>49.50</td>
+      <td>-0.29</td>
+      <td>10.44</td>
+      <td>-4.14</td>
+      <td>22.01</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.58</td>
+      <td>316542.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>25.23</td>
+      <td>88</td>
+      <td>34</td>
+      <td>71</td>
+      <td>62</td>
+      <td>67</td>
+      <td>86</td>
+      <td>1738.80</td>
+      <td>-0.22</td>
+      <td>1715.29</td>
+      <td>1.15</td>
+      <td>1666.24</td>
+      <td>4.13</td>
+      <td>-0.58</td>
+      <td>-0.57</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.33</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>36.44</td>
+      <td>3.91</td>
+      <td>15.0</td>
+      <td>2.580463e+10</td>
+      <td>1.597810e+07</td>
+      <td>7.986348e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2017-09-28</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>7532</td>
+      <td>7532.T</td>
+      <td>Pan Pacific International Holdings Corp</td>
+      <td>Consumer Defensive</td>
+      <td>Discount Stores</td>
+      <td>0.76</td>
+      <td>2392.0</td>
+      <td>1635000.0</td>
+      <td>0.75</td>
+      <td>2.71</td>
+      <td>64.50</td>
+      <td>0.34</td>
+      <td>-3.20</td>
+      <td>-5.12</td>
+      <td>18.71</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.72</td>
+      <td>2169842.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>179.24</td>
+      <td>20</td>
+      <td>30</td>
+      <td>77</td>
+      <td>4</td>
+      <td>95</td>
+      <td>98</td>
+      <td>2381.14</td>
+      <td>0.46</td>
+      <td>2404.43</td>
+      <td>-0.52</td>
+      <td>2482.14</td>
+      <td>-3.63</td>
+      <td>0.48</td>
+      <td>0.56</td>
+      <td>0.01</td>
+      <td>1.71</td>
+      <td>-0.19</td>
+      <td>0.11</td>
+      <td>0.06</td>
+      <td>0.04</td>
+      <td>40.59</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>12.72</td>
+      <td>27.52</td>
+      <td>265.0</td>
+      <td>1.482509e+12</td>
+      <td>6.343640e+08</td>
+      <td>3.889227e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-01</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>1518</td>
+      <td>1518.T</td>
+      <td>Mitsui Matsushima Co Ltd</td>
+      <td>Energy</td>
+      <td>Thermal Coal</td>
+      <td>3.96</td>
+      <td>3280.0</td>
+      <td>859400.0</td>
+      <td>0.57</td>
+      <td>4.60</td>
+      <td>128.79</td>
+      <td>1.71</td>
+      <td>24.95</td>
+      <td>-6.42</td>
+      <td>15.33</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.26</td>
+      <td>1520994.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>7.18</td>
+      <td>97</td>
+      <td>25</td>
+      <td>90</td>
+      <td>79</td>
+      <td>55</td>
+      <td>57</td>
+      <td>3185.44</td>
+      <td>2.97</td>
+      <td>3087.28</td>
+      <td>6.24</td>
+      <td>2993.44</td>
+      <td>9.57</td>
+      <td>5.22</td>
+      <td>5.22</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.78</td>
+      <td>0.21</td>
+      <td>0.21</td>
+      <td>0.21</td>
+      <td>0.02</td>
+      <td>20.89</td>
+      <td>35.82</td>
+      <td>44.0</td>
+      <td>3.524273e+10</td>
+      <td>1.300950e+07</td>
+      <td>1.091433e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-01</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>2150</td>
+      <td>2150.T</td>
+      <td>CareNet Inc</td>
+      <td>Healthcare</td>
+      <td>Health Information Services</td>
+      <td>2.05</td>
+      <td>1143.0</td>
+      <td>484900.0</td>
+      <td>0.71</td>
+      <td>4.64</td>
+      <td>60.43</td>
+      <td>-1.89</td>
+      <td>-4.35</td>
+      <td>-6.46</td>
+      <td>31.99</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.02</td>
+      <td>682026.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>36.50</td>
+      <td>16</td>
+      <td>24</td>
+      <td>81</td>
+      <td>96</td>
+      <td>96</td>
+      <td>96</td>
+      <td>1187.28</td>
+      <td>-3.73</td>
+      <td>1236.49</td>
+      <td>-7.56</td>
+      <td>1274.10</td>
+      <td>-10.29</td>
+      <td>0.24</td>
+      <td>0.17</td>
+      <td>NaN</td>
+      <td>0.12</td>
+      <td>NaN</td>
+      <td>0.26</td>
+      <td>0.19</td>
+      <td>0.23</td>
+      <td>0.16</td>
+      <td>0.14</td>
+      <td>0.20</td>
+      <td>57.64</td>
+      <td>23.92</td>
+      <td>23.0</td>
+      <td>5.569720e+10</td>
+      <td>4.427440e+07</td>
+      <td>2.489683e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2007-04-20</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>3793</td>
+      <td>3793.T</td>
+      <td>Drecom Co Ltd</td>
+      <td>Communication Services</td>
+      <td>Electronic Gaming &amp; Multimedia</td>
+      <td>0.27</td>
+      <td>751.0</td>
+      <td>709000.0</td>
+      <td>0.95</td>
+      <td>3.74</td>
+      <td>29.79</td>
+      <td>-2.97</td>
+      <td>-5.30</td>
+      <td>-7.28</td>
+      <td>38.82</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.70</td>
+      <td>749934.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>15.20</td>
+      <td>13</td>
+      <td>22</td>
+      <td>90</td>
+      <td>2</td>
+      <td>53</td>
+      <td>88</td>
+      <td>767.72</td>
+      <td>-2.18</td>
+      <td>785.77</td>
+      <td>-4.42</td>
+      <td>823.24</td>
+      <td>-8.78</td>
+      <td>0.72</td>
+      <td>0.72</td>
+      <td>NaN</td>
+      <td>0.76</td>
+      <td>NaN</td>
+      <td>-0.03</td>
+      <td>0.14</td>
+      <td>0.18</td>
+      <td>0.21</td>
+      <td>0.49</td>
+      <td>-0.01</td>
+      <td>60.27</td>
+      <td>0.90</td>
+      <td>10.0</td>
+      <td>2.172457e+10</td>
+      <td>2.843530e+07</td>
+      <td>1.140246e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2006-02-09</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>6651</td>
+      <td>6651.T</td>
+      <td>Nitto Kogyo Corp</td>
+      <td>Industrials</td>
+      <td>Electrical Equipment &amp; Parts</td>
+      <td>2.64</td>
+      <td>2336.0</td>
+      <td>260400.0</td>
+      <td>1.67</td>
+      <td>1.78</td>
+      <td>36.93</td>
+      <td>0.21</td>
+      <td>-3.91</td>
+      <td>-8.96</td>
+      <td>2.86</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.63</td>
+      <td>155576.0</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>147.68</td>
+      <td>17</td>
+      <td>17</td>
+      <td>75</td>
+      <td>95</td>
+      <td>77</td>
+      <td>93</td>
+      <td>2297.22</td>
+      <td>1.69</td>
+      <td>2308.55</td>
+      <td>1.19</td>
+      <td>2385.42</td>
+      <td>-2.07</td>
+      <td>-0.11</td>
+      <td>-0.05</td>
+      <td>NaN</td>
+      <td>0.28</td>
+      <td>NaN</td>
+      <td>0.32</td>
+      <td>0.12</td>
+      <td>0.06</td>
+      <td>1.01</td>
+      <td>0.08</td>
+      <td>0.06</td>
+      <td>33.22</td>
+      <td>21.45</td>
+      <td>72.0</td>
+      <td>8.394219e+10</td>
+      <td>3.793140e+07</td>
+      <td>2.297516e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-01</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>7381</td>
+      <td>7381.T</td>
+      <td>Hokkoku Financial Holdings Inc</td>
+      <td>Financial Services</td>
+      <td>Banks—Regional</td>
+      <td>3.50</td>
+      <td>4435.0</td>
+      <td>122000.0</td>
+      <td>0.89</td>
+      <td>3.23</td>
+      <td>138.93</td>
+      <td>-0.45</td>
+      <td>5.85</td>
+      <td>-9.03</td>
+      <td>6.35</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.73</td>
+      <td>136988.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>143.14</td>
+      <td>79</td>
+      <td>16</td>
+      <td>77</td>
+      <td>93</td>
+      <td>86</td>
+      <td>65</td>
+      <td>4365.61</td>
+      <td>1.59</td>
+      <td>4394.27</td>
+      <td>0.93</td>
+      <td>4552.80</td>
+      <td>-2.59</td>
+      <td>1.75</td>
+      <td>1.77</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.01</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>15.79</td>
+      <td>21.31</td>
+      <td>57.0</td>
+      <td>1.105173e+11</td>
+      <td>2.582180e+07</td>
+      <td>1.960843e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2021-10-01</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>9519</td>
+      <td>9519.T</td>
+      <td>Renova Inc</td>
+      <td>Utilities</td>
+      <td>Utilities—Renewable</td>
+      <td>0.15</td>
+      <td>2599.0</td>
+      <td>807500.0</td>
+      <td>0.34</td>
+      <td>3.11</td>
+      <td>76.29</td>
+      <td>-4.83</td>
+      <td>-18.78</td>
+      <td>-10.90</td>
+      <td>33.90</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.75</td>
+      <td>2394134.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>14.70</td>
+      <td>1</td>
+      <td>13</td>
+      <td>88</td>
+      <td>1</td>
+      <td>18</td>
+      <td>79</td>
+      <td>2663.10</td>
+      <td>-2.41</td>
+      <td>2782.99</td>
+      <td>-6.61</td>
+      <td>3153.06</td>
+      <td>-17.57</td>
+      <td>-0.97</td>
+      <td>-0.97</td>
+      <td>-0.94</td>
+      <td>1.23</td>
+      <td>-2.75</td>
+      <td>1.22</td>
+      <td>0.22</td>
+      <td>0.39</td>
+      <td>0.23</td>
+      <td>0.40</td>
+      <td>0.97</td>
+      <td>52.64</td>
+      <td>23.18</td>
+      <td>111.0</td>
+      <td>2.194503e+11</td>
+      <td>7.854340e+07</td>
+      <td>3.518882e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2017-02-24</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>7148</td>
+      <td>7148.T</td>
+      <td>Financial Products Group Co Ltd</td>
+      <td>Financial Services</td>
+      <td>Financial Conglomerates</td>
+      <td>0.17</td>
+      <td>1150.0</td>
+      <td>337900.0</td>
+      <td>0.47</td>
+      <td>2.50</td>
+      <td>31.64</td>
+      <td>-1.29</td>
+      <td>7.88</td>
+      <td>-10.92</td>
+      <td>23.39</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.53</td>
+      <td>721854.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>81.52</td>
+      <td>84</td>
+      <td>13</td>
+      <td>78</td>
+      <td>78</td>
+      <td>76</td>
+      <td>95</td>
+      <td>1138.18</td>
+      <td>1.04</td>
+      <td>1123.20</td>
+      <td>2.39</td>
+      <td>1136.32</td>
+      <td>1.20</td>
+      <td>1.25</td>
+      <td>1.25</td>
+      <td>NaN</td>
+      <td>-0.08</td>
+      <td>NaN</td>
+      <td>0.14</td>
+      <td>5.20</td>
+      <td>-0.05</td>
+      <td>-0.05</td>
+      <td>7.30</td>
+      <td>0.12</td>
+      <td>29.75</td>
+      <td>11.64</td>
+      <td>70.0</td>
+      <td>8.925219e+10</td>
+      <td>8.540880e+07</td>
+      <td>5.884431e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2010-09-07</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>4371</td>
+      <td>4371.T</td>
+      <td>Core Concept Technologies Inc</td>
+      <td>Technology</td>
+      <td>Information Technology Services</td>
+      <td>4.56</td>
+      <td>3095.0</td>
+      <td>59700.0</td>
+      <td>0.50</td>
+      <td>5.89</td>
+      <td>164.64</td>
+      <td>-7.06</td>
+      <td>-1.75</td>
+      <td>-13.31</td>
+      <td>15.49</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.70</td>
+      <td>120402.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>10.89</td>
+      <td>28</td>
+      <td>8</td>
+      <td>85</td>
+      <td>86</td>
+      <td>71</td>
+      <td>53</td>
+      <td>3204.40</td>
+      <td>-3.41</td>
+      <td>3239.73</td>
+      <td>-4.47</td>
+      <td>3270.20</td>
+      <td>-5.36</td>
+      <td>0.32</td>
+      <td>-0.47</td>
+      <td>NaN</td>
+      <td>0.88</td>
+      <td>NaN</td>
+      <td>0.46</td>
+      <td>0.54</td>
+      <td>NaN</td>
+      <td>0.54</td>
+      <td>NaN</td>
+      <td>0.33</td>
+      <td>73.94</td>
+      <td>0.50</td>
+      <td>6.0</td>
+      <td>5.904114e+10</td>
+      <td>1.644600e+07</td>
+      <td>1.311725e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2021-09-22</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>3319</td>
+      <td>3319.T</td>
+      <td>Golf Digest Online Inc</td>
+      <td>Consumer Cyclical</td>
+      <td>Internet Retail</td>
+      <td>0.89</td>
+      <td>1697.0</td>
+      <td>88400.0</td>
+      <td>0.57</td>
+      <td>4.21</td>
+      <td>72.29</td>
+      <td>-2.53</td>
+      <td>20.78</td>
+      <td>-14.94</td>
+      <td>35.54</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.02</td>
+      <td>155442.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>60.10</td>
+      <td>95</td>
+      <td>6</td>
+      <td>87</td>
+      <td>55</td>
+      <td>32</td>
+      <td>63</td>
+      <td>1686.25</td>
+      <td>0.64</td>
+      <td>1624.70</td>
+      <td>4.45</td>
+      <td>1503.68</td>
+      <td>12.86</td>
+      <td>-0.70</td>
+      <td>-0.70</td>
+      <td>NaN</td>
+      <td>0.26</td>
+      <td>NaN</td>
+      <td>0.23</td>
+      <td>0.17</td>
+      <td>0.27</td>
+      <td>0.18</td>
+      <td>0.27</td>
+      <td>0.22</td>
+      <td>49.77</td>
+      <td>25.20</td>
+      <td>27.0</td>
+      <td>2.554649e+10</td>
+      <td>1.827360e+07</td>
+      <td>9.342319e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2004-04-01</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>7906</td>
+      <td>7906.T</td>
+      <td>Yonex Co Ltd</td>
+      <td>Consumer Cyclical</td>
+      <td>Leisure</td>
+      <td>2.72</td>
+      <td>1320.0</td>
+      <td>176600.0</td>
+      <td>0.77</td>
+      <td>3.46</td>
+      <td>41.00</td>
+      <td>-4.35</td>
+      <td>-7.76</td>
+      <td>-15.00</td>
+      <td>23.48</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.02</td>
+      <td>230660.0</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>256.32</td>
+      <td>7</td>
+      <td>6</td>
+      <td>77</td>
+      <td>96</td>
+      <td>99</td>
+      <td>99</td>
+      <td>1320.49</td>
+      <td>-0.04</td>
+      <td>1341.26</td>
+      <td>-1.58</td>
+      <td>1383.12</td>
+      <td>-4.56</td>
+      <td>0.07</td>
+      <td>0.08</td>
+      <td>NaN</td>
+      <td>0.90</td>
+      <td>NaN</td>
+      <td>0.13</td>
+      <td>0.42</td>
+      <td>0.15</td>
+      <td>0.08</td>
+      <td>0.16</td>
+      <td>0.08</td>
+      <td>31.82</td>
+      <td>19.78</td>
+      <td>54.0</td>
+      <td>1.177000e+11</td>
+      <td>8.724980e+07</td>
+      <td>5.912375e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>2001-01-04</td>
+      <td>japan</td>
+      <td>2022-12-07</td>
+      <td>Blake Davis</td>
+      <td>Strength</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+            </section>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+    </div>
+</footer>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bm/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+<script>
+        $(document).ready(function () {
+            $('#data').DataTable(
+                {
+                    "scrollX": true,
+                    "dom": 'Bfrtip',
+                    "buttons": [
+                        'copy', 'csv', 'excel', 'print'
+                    ]
+
+                }
+            );
+        });
+    </script>
+    
+</body>
+
+</html>

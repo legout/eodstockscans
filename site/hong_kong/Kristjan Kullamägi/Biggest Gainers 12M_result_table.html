@@ -1,0 +1,7079 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EOD Stock Scans</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.datatables.net/v/bm/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/sc-2.0.5/datatables.min.css" />
+
+</head >
+
+
+<body>
+    <section class="hero is-small is-dark">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+
+                    <div class="navbar-burger" @click="showNav = !showNav" :class="{ 'is-active': showNav }">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="navbar-menu" :class="{ 'is-active': showNav }">
+                    <div class="navbar-start">
+                        
+                        <a class="navbar-item" href="../../index.html">
+                            
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-home"></i>
+                                    </span>
+                                    <span>Home</span>
+                                </span>
+                            </a>
+
+                            <div class="navbar-item has-dropdown is-hoverable has-background-dark">
+                                <a class="navbar-link">
+                                    <span>Choose Market</span>
+                                </a>
+
+                                <div class="navbar-dropdown has-background-dark">
+                                    
+
+                                    
+                                    <a class="navbar-item" href="../../australia/market_monitor.html">
+                                        <span>Australia</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../belgium/market_monitor.html">
+                                        <span>Belgium</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../canada/market_monitor.html">
+                                        <span>Canada</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../france/market_monitor.html">
+                                        <span>France</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../germany/market_monitor.html">
+                                        <span>Germany</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../hong_kong/market_monitor.html">
+                                        <span>Hong Kong</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../indonesia/market_monitor.html">
+                                        <span>Indonesia</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../italy/market_monitor.html">
+                                        <span>Italy</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../japan/market_monitor.html">
+                                        <span>Japan</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../netherlands/market_monitor.html">
+                                        <span>Netherlands</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../nordic_markets/market_monitor.html">
+                                        <span>Nordic Markets</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../poland/market_monitor.html">
+                                        <span>Poland</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../singapore/market_monitor.html">
+                                        <span>Singapore</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../united_kingdom/market_monitor.html">
+                                        <span>United Kingdom</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../united_states/market_monitor.html">
+                                        <span>United States</span>
+                                        
+                                        
+                                </div>
+                            </div>
+                    </div>
+                    <!-- <div class="navbar-end"></div>
+                    <span class="navbar-item">
+                        <a class="button is-info is-light" href="https://twitter.com/LignoL23">
+                            <span class="icon">
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                            <span>Twitter</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <a class="button  is-success is-light" href="https://www.paypal.com/paypalme/volkerlorrmann/5">
+                            <span class="icon">
+                                <i class="fab fa-paypal"></i>
+                            </span>
+                            <span>paypal.me</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+                        <script
+                            type='text/javascript'>kofiwidget2.init('Support me', '#d6d6d6', 'W7W0ACJPB'); kofiwidget2.draw();</script>
+                    </span>
+                </div> -->
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="columns is-multiline is-mobile is-centered">
+                <div class="column is-1">
+                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDEwMCAxMDA7IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOm5vbmU7fQoJLnN0MXtmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO30KPC9zdHlsZT48dGl0bGUvPjxnPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MS44LDg0YzAuMSwwLjIsMC4xLDAuMywwLjEsMC41YzAsMy4zLDAuMiw2LjcsMC41LDEwYzIuNi0wLjEsNC45LTAuMSw3LjItMC4ydjBjMC4zLDAsMC43LDAsMSwwICAgYy0wLjMtNS0wLjQtMTAtMC41LTE1QzQ4LjQsODAuNCw0NS41LDgyLjEsNDEuOCw4NHoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTYuMyw5NGMtMC4yLDAuMS0wLjQsMC4xLTAuNSwwLjJjMS43LDAuMSw0LjMsMC4yLDcuNywwLjNjMS40LDAsMi43LDAuMSw0LDAuMWMtMC4xLTEuNC0wLjMtMi44LTAuNC00LjEgICBDMjIuNiw5Mi4xLDE4LjgsOTMuMiwxNi4zLDk0eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02Ni45LDQ3LjVjMy4xLTMuMyw2LjgtNy41LDEwLjgtMTIuN2MwLDAsMCwwLDAtMC4xYzAuNS0wLjYsMS40LTAuNywyLTAuMmMxLjcsMS41LDMuNiwyLjksNS42LDQuNCAgIGMxLDAuOCwyLjEsMS41LDMuMSwyLjJjMC4zLDAuMiwwLjYsMC4zLDEsMC4zYzAuNCwwLDAuOC0wLjIsMS4yLTAuNGMwLjMtMC4zLDAuNS0wLjcsMC41LTEuMWMwLjItNC45LDAuMy05LjksMC4zLTE1di0wLjcgICBjMC01LjYtMC4xLTExLTAuMy0xNi4zYzAtMC4yLDAtMC4zLTAuMS0wLjVjLTAuMy0xLjQtMS43LTIuMy0zLjItMkM3Ni42LDgsNjUuNSwxMC43LDU0LjUsMTMuN2MtMC4zLDAuMS0wLjYsMC4zLTAuOCwwLjUgICBjLTAuMiwwLjMtMC4zLDAuNi0wLjMsMC45YzAsMC41LDAuMywxLDAuNywxLjJjMC45LDAuNiwxLjgsMS4xLDIuNywxLjdjMi4yLDEuMyw0LjMsMi41LDYuMywzLjVjMC43LDAuNCwxLDEuMiwwLjYsMS45ICAgYy0zLjEsNi02LjYsMTEuNy0xMC42LDE3LjFjLTguNSwxMS40LTE4LDIwLTMwLDMwLjhDMTYuNyw3NywxMiw4MSw5LjQsODMuNWMtMC42LDAuNi0xLjIsMS4yLTEuNywxLjhjMC43LTAuMSwxLjQtMC4yLDIuMS0wLjQgICBjMS4xLTAuMywyLjQtMC43LDMuNi0xLjFjMi41LTAuOSw0LjktMS45LDYuMS0yLjRDMjguOSw3Ny42LDQ3LjEsNjguNiw2Ni45LDQ3LjV6Ii8+PHBhdGggY2xhc3M9InN0MCIgZD0iTTMxLjUsODguN2MtMC42LDAuMi0xLjIsMC41LTEuNywwLjdjMC4yLDEuNywwLjQsMy41LDAuNSw1LjJjMC43LDAsMS4zLDAsMS45LDBjMi42LDAsNSwwLDcuMy0wLjEgICBjLTAuMy0zLjEtMC40LTYuMS0wLjUtOS4yQzM2LjgsODYuNSwzNC4yLDg3LjYsMzEuNSw4OC43eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik01Mi45LDc3LjVjMCwwLjEsMCwwLjEsMCwwLjJjMC4xLDUuNSwwLjMsMTEuMSwwLjYsMTYuNmMzLjQtMC4xLDYuOS0wLjIsMTAuNC0wLjNjLTAuMy04LjEtMC41LTE2LjMtMC44LTI0LjQgICBDNTkuOCw3Mi40LDU2LjQsNzUsNTIuOSw3Ny41eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik05MS4yLDU1LjNjLTAuMS0wLjEtMC4xLTAuMS0wLjItMC4xYy0wLjEsMC0wLjItMC4xLTAuNS0wLjJjLTAuNi0wLjMtMS42LTAuNy0zLjUtMS42ICAgYy0xLjItMC42LTIuMy0xLjEtMy40LTEuNmMtMC41LTAuMi0xLTAuNC0xLjYtMC40Yy0xLjEsMC0yLjEsMC41LTIuOCwxLjRsMCwwYy0wLjIsMC4zLTAuNCwwLjUtMC42LDAuOGwyLjMsNDAuM2gwLjYgICBjMi4yLDAsMy45LDAsNS4yLTAuMmMxLTAuMSwxLjktMC4zLDIuOC0wLjdjMC41LTAuMiwwLjktMC41LDEuMi0wLjljMC41LTAuNCwwLjgtMSwxLTEuNmMwLjItMC45LDAuMy0xLjgsMC4zLTIuNyAgIGMwLTEuNy0wLjEtNC4xLTAuMS03LjVjMC0yLjEsMC4xLTQuNywwLjMtNy43bDAsMGMwLjMtNC45LDAuOC04LjgsMC44LTExLjhjMC0xLjItMC4xLTIuNC0wLjQtMy41QzkyLjIsNTYuNSw5MS44LDU1LjgsOTEuMiw1NS4zeiAgICIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02NS44LDY3LjFjMCwwLjEsMC4xLDAuMywwLjEsMC40YzAuMyw4LjgsMC42LDE3LjYsMC45LDI2LjRjMy4yLTAuMSw2LjQtMC4xLDkuNi0wLjF2MGgwLjNoMS4xICAgYzAtMC4xLDAuMS0wLjIsMC4xLTAuNGMtMC43LTEyLjItMS40LTI0LjUtMi4xLTM2LjdDNzIuNyw2MC40LDY5LjMsNjMuOCw2NS44LDY3LjF6Ii8+PHBhdGggZD0iTTIwLjYsODQuMWM5LjYtMy45LDI4LjMtMTMuMSw0OC40LTM0LjZjMi45LTMuMSw2LjMtNywxMC4xLTExLjhjMS40LDEuMiwzLDIuNCw0LjYsMy42YzEuMSwwLjgsMi4xLDEuNSwzLjIsMi4zICAgYzEuOCwxLjIsNC4xLDEuMSw1LjctMC40YzAuOS0wLjgsMS40LTIsMS41LTMuMmMwLjItNC45LDAuMy05LjksMC4zLTE1LjF2LTAuN2MwLTUuNi0wLjEtMTEuMS0wLjMtMTYuNGMtMC4xLTMtMi43LTUuNC01LjctNS4zICAgYy0wLjMsMC0wLjcsMC4xLTEsMC4xQzc2LDUuMiw2NC44LDcuOSw1My43LDEwLjljLTEsMC4zLTEuOCwwLjgtMi40LDEuNmMtMC41LDAuOC0wLjgsMS43LTAuOCwyLjZjMCwxLjUsMC44LDIuOSwyLDMuNyAgIGMwLjksMC42LDEuOCwxLjEsMi44LDEuN2MxLjgsMS4xLDMuNSwyLDUuMiwyLjljLTIuOCw1LjQtNi4xLDEwLjYtOS43LDE1LjVDNDIuNiw1MCwzMy4yLDU4LjQsMjEuMiw2OS4yQzE2LDczLjksMTEuOSw3Ny40LDksNzkuOSAgIGMtMS4yLDEtMi4zLDIuMS0zLjMsMy4zYy0wLjQsMC40LTAuNywwLjgtMSwxLjNjLTAuMywwLjUtMC41LDEtMC41LDEuNWMwLDAuNywwLjMsMS4zLDAuOSwxLjdjMC4zLDAuMiwwLjYsMC40LDEsMC40ICAgYzAuMywwLjEsMC42LDAuMSwxLDAuMWMxLjEsMCwyLjMtMC4yLDMuNC0wLjVjMi0wLjUsMy45LTEuMiw1LjgtMS45QzE4LjEsODUuMSwxOS43LDg0LjQsMjAuNiw4NC4xeiBNOS43LDg0LjkgICBjLTAuNywwLjItMS40LDAuMy0yLjEsMC40YzAuNS0wLjYsMS4xLTEuMiwxLjctMS44QzEyLDgxLDE2LjcsNzcsMjMuMSw3MS40YzEyLTEwLjgsMjEuNi0xOS40LDMwLTMwLjhjNC01LjQsNy42LTExLjEsMTAuNi0xNy4xICAgYzAuNC0wLjcsMC4xLTEuNi0wLjYtMS45Yy0yLjEtMS4xLTQuMi0yLjMtNi4zLTMuNWMtMC45LTAuNi0xLjgtMS4xLTIuNy0xLjdjLTAuNC0wLjMtMC43LTAuNy0wLjctMS4yYzAtMC4zLDAuMS0wLjYsMC4zLTAuOSAgIGMwLjItMC4zLDAuNS0wLjUsMC44LTAuNUM2NS41LDEwLjcsNzYuNiw4LDg3LjgsNS40YzEuNC0wLjMsMi44LDAuNiwzLjIsMkM5MSw3LjYsOTEsNy44LDkxLDcuOWMwLjIsNS4yLDAuMywxMC43LDAuMywxNi4zdjAuNyAgIGMwLDUuMi0wLjEsMTAuMi0wLjMsMTVjMCwwLjQtMC4yLDAuOS0wLjUsMS4xYy0wLjMsMC4zLTAuNywwLjQtMS4yLDAuNGMtMC4zLDAtMC43LTAuMS0xLTAuM2MtMS0wLjctMi0xLjQtMy4xLTIuMiAgIGMtMi0xLjUtMy45LTMtNS42LTQuNGMtMC42LTAuNS0xLjUtMC40LTIsMC4yYzAsMCwwLDAsMCwwLjFjLTQsNS4yLTcuNyw5LjUtMTAuOCwxMi43Yy0xOS43LDIxLjEtMzgsMzAuMS00Ny40LDMzLjkgICBjLTEuMiwwLjUtMy42LDEuNS02LjEsMi40QzEyLjEsODQuMiwxMC44LDg0LjYsOS43LDg0Ljl6Ii8+PGxpbmUgY2xhc3M9InN0MSIgeDE9IjQuNSIgeDI9IjQuNSIgeTE9Ijg3LjEiIHkyPSI4Ny4xIi8+PHBhdGggZD0iTTk1LjcsNjAuN2MwLTEuNS0wLjEtMy0wLjUtNC40Qzk0LjgsNTUsOTQsNTMuOSw5Mi45LDUzYy0wLjItMC4xLTAuNC0wLjMtMC42LTAuNGMtMC4zLTAuMi0wLjYtMC4zLTEuMi0wLjYgICBjLTAuNi0wLjMtMS41LTAuNy0yLjktMS4zYy0xLjItMC42LTIuMy0xLjEtMy4zLTEuNmMtMi43LTEuNC02LTAuNi03LjksMS44bDAsMGMtNy44LDkuOS0xNywxOC40LTI3LjUsMjUuNCAgIGMtNiwzLjgtMTIuNCw3LjEtMTksOS44Yy01LjMsMi4yLTEwLDMuNi0xMy40LDQuN2MtMS43LDAuNS0zLjEsMS00LjEsMS40Yy0wLjUsMC4yLTAuOSwwLjQtMS40LDAuN2MtMC4yLDAuMi0wLjQsMC40LTAuNiwwLjYgICBjLTAuMiwwLjMtMC40LDAuNy0wLjQsMS4xYzAsMC4xLDAsMC4yLDAsMC4ydjB2MGMwLDAuMiwwLjEsMC41LDAuMywwLjdjMC4yLDAuMywwLjUsMC42LDAuOCwwLjdjMC41LDAuMiwxLjEsMC40LDEuNiwwLjUgICBjMS4zLDAuMiwyLjUsMC4zLDMuOCwwLjRjMS42LDAuMSwzLjcsMC4yLDYuMiwwLjJjMy4yLDAuMSw2LjIsMC4xLDguOSwwLjFjNywwLDEyLjUtMC4yLDE3LjQtMC4zYzguOS0wLjIsMTcuOC0wLjYsMjYuNy0wLjZoMC4zICAgYzEuOCwwLDMuNCwwLDQuOCwwYzIuMywwLjEsNC42LDAsNi45LTAuNGMwLjgtMC4xLDEuNi0wLjQsMi40LTAuOGMwLjctMC40LDEuNC0wLjgsMi0xLjRjMC44LTAuOCwxLjQtMS44LDEuOC0yLjkgICBjMC4zLTEuMSwwLjQtMi4zLDAuNC0zLjVjMC0xLjktMC4xLTQuMi0wLjEtNy41YzAtMi4xLDAuMS00LjYsMC4yLTcuNUM5NS4yLDY3LjksOTUuNyw2NCw5NS43LDYwLjd6IE0yMy40LDk0LjUgICBjLTMuNC0wLjEtNi0wLjItNy43LTAuM2MwLjItMC4xLDAuNC0wLjEsMC41LTAuMmMyLjUtMC44LDYuMy0yLDEwLjctMy42YzAuMSwxLjQsMC4zLDIuOCwwLjQsNC4xQzI2LjEsOTQuNiwyNC44LDk0LjYsMjMuNCw5NC41eiAgICBNMzIuMiw5NC42Yy0wLjYsMC0xLjMsMC0xLjksMGMtMC4yLTEuNy0wLjQtMy41LTAuNS01LjJjMC42LTAuMiwxLjEtMC40LDEuNy0wLjdjMi43LTEuMSw1LjMtMi4zLDcuNS0zLjQgICBjMC4xLDMuMSwwLjIsNi4xLDAuNSw5LjJDMzcuMyw5NC42LDM0LjksOTQuNiwzMi4yLDk0LjZ6IE00OS42LDk0LjNMNDkuNiw5NC4zYy0yLjMsMC00LjcsMC4xLTcuMiwwLjJjLTAuMy0zLjMtMC41LTYuNy0wLjUtMTAgICBjMC0wLjIsMC0wLjMtMC4xLTAuNWMzLjctMS45LDYuNi0zLjYsOC4zLTQuN2MwLjEsNSwwLjMsMTAsMC41LDE1QzUwLjMsOTQuMyw0OS45LDk0LjMsNDkuNiw5NC4zeiBNNTMuNSw5NC4yICAgYy0wLjMtNS41LTAuNS0xMS0wLjYtMTYuNmMwLTAuMSwwLTAuMSwwLTAuMmMzLjUtMi40LDYuOS01LjEsMTAuMi03LjljMC4zLDguMSwwLjUsMTYuMywwLjgsMjQuNEM2MC40LDk0LDU2LjksOTQuMSw1My41LDk0LjJ6ICAgIE03Ny44LDkzLjhoLTEuMWgtMC4zdjBjLTMuMiwwLTYuNCwwLjEtOS42LDAuMWMtMC4zLTguOC0wLjYtMTcuNi0wLjktMjYuNGMwLTAuMSwwLTAuMy0wLjEtMC40YzMuNi0zLjMsNi45LTYuOCwxMC4xLTEwLjQgICBjMC43LDEyLjIsMS40LDI0LjUsMi4xLDM2LjdDNzcuOSw5My41LDc3LjgsOTMuNiw3Ny44LDkzLjh6IE05Miw3Mi41TDkyLDcyLjVjLTAuMiwzLTAuMiw1LjYtMC4yLDcuN2MwLDMuNCwwLjEsNS44LDAuMSw3LjUgICBjMCwwLjktMC4xLDEuOC0wLjMsMi43Yy0wLjIsMC42LTAuNSwxLjItMSwxLjZjLTAuNCwwLjQtMC44LDAuNy0xLjIsMC45Yy0wLjksMC40LTEuOCwwLjYtMi44LDAuN2MtMS4zLDAuMS0zLDAuMi01LjIsMC4yaC0wLjYgICBsLTIuMy00MC4zYzAuMi0wLjMsMC40LTAuNSwwLjYtMC44bDAsMGMwLjctMC45LDEuNy0xLjQsMi44LTEuNGMwLjUsMCwxLjEsMC4xLDEuNiwwLjRjMSwwLjUsMi4xLDEuMSwzLjQsMS42ICAgYzEuOSwwLjksMi45LDEuMywzLjUsMS42YzAuMywwLjEsMC40LDAuMiwwLjUsMC4yYzAuMSwwLDAuMSwwLjEsMC4yLDAuMWMwLjYsMC41LDEuMSwxLjIsMS4zLDEuOWMwLjMsMS4xLDAuNCwyLjMsMC40LDMuNSAgIEM5Mi45LDYzLjYsOTIuMyw2Ny42LDkyLDcyLjV6Ii8+PC9nPjwvc3ZnPg==" alt="Logo">
+                </div>
+                <div class="column is-4">
+                    <p class="title">
+                        EOD Stock Market Scans
+                    </p>
+                    <p class="subtitle">
+                        Fintwits most popular stockmarket scans
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+            <div class="container">
+                <ul>
+                    
+                    <li class="is-active">
+                        <a href="../Kristjan Kullamägi/Biggest Gainers 12M_result_table.html"> Results </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Kristjan Kullamägi/Biggest Gainers 12M_minicharts.html"> Minicharts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Kristjan Kullamägi/Biggest Gainers 12M_charts.html"> Charts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Kristjan Kullamägi/Biggest Gainers 12M_criteria.html"> Criteria </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+</section>
+    <div class="columns is-centered">
+        <div class="column is-2">
+            <div class="box has-background-light my-0 mx-2 p-auto">
+    <aside class="menu">
+        <p class="menu-label has-text-dark">
+            Market Monitor
+        </p>
+        <ul class="menu-list">
+            <li><a class="has-text-grey-light">New Highs/Lows</a></li>
+            <li><a class="has-text-grey-light">Breadth</a></li>
+            <li><a class="has-text-grey-light">Above/Below SMA</a></li>
+            <li><a class="has-text-grey-light">Sectors</a></li>
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Kristjan Kullamägi
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Kristjan Kullamägi/Biggest Gainers 1M_minicharts.html">
+                        Biggest Gainers 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Kristjan Kullamägi/Biggest Gainers 3M_minicharts.html">
+                        Biggest Gainers 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Kristjan Kullamägi/Biggest Gainers 6M_minicharts.html">
+                        Biggest Gainers 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="is-active"
+                        href="../../hong_kong/Kristjan Kullamägi/Biggest Gainers 12M_minicharts.html">
+                        Biggest Gainers 12M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Kristjan Kullamägi/EP with Growth_minicharts.html">
+                        EP with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Kristjan Kullamägi/EP_minicharts.html">
+                        EP
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Kristjan Kullamägi/High Trend Intensity_minicharts.html">
+                        High Trend Intensity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Kristjan Kullamägi/Small Stock Momo_minicharts.html">
+                        Small Stock Momo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Kristjan Kullamägi/Momentum_minicharts.html">
+                        Momentum
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Brad Schulz
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Brad Schulz/Pocket Pivot_minicharts.html">
+                        Pocket Pivot
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Stockbee
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Stockbee/4 PCT  Gainers_minicharts.html">
+                        4 PCT  Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Stockbee/Combo_minicharts.html">
+                        Combo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Stockbee/Ants_minicharts.html">
+                        Ants
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Stockbee/Breakout 1M Base_minicharts.html">
+                        Breakout 1M Base
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Stockbee/Breakout 3M Base_minicharts.html">
+                        Breakout 3M Base
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Leif Soreide
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Leif Soreide/HTF_minicharts.html">
+                        HTF
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Blake Davis
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Blake Davis/Strength_minicharts.html">
+                        Strength
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ben
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Ben/Power of 3_minicharts.html">
+                        Power of 3
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Ben/Velocity_minicharts.html">
+                        Velocity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Ben/Focus_minicharts.html">
+                        Focus
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ray
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Ray/RSNHBP 5D_minicharts.html">
+                        RSNHBP 5D
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Ray/RSNHBP 1M_minicharts.html">
+                        RSNHBP 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Ray/RSNHBP 3M_minicharts.html">
+                        RSNHBP 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Ray/RSNHBP 6M_minicharts.html">
+                        RSNHBP 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Ray/RSNHBP 12M_minicharts.html">
+                        RSNHBP 12M
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Mark Minvervini
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Mark Minvervini/Trend Template_minicharts.html">
+                        Trend Template
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Vo
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Vo/Top Gainers From Open_minicharts.html">
+                        Top Gainers From Open
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Vo/Top Gainers_minicharts.html">
+                        Top Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Vo/Volume Gainers_minicharts.html">
+                        Volume Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Vo/Insiders_minicharts.html">
+                        Insiders
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Vo/Darvas Scan_minicharts.html">
+                        Darvas Scan
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Vo/Darvas Scan with Growth_minicharts.html">
+                        Darvas Scan with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Vo/52W High_minicharts.html">
+                        52W High
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Vo/Quite and Tight_minicharts.html">
+                        Quite and Tight
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../hong_kong/Vo/Mo Scan_minicharts.html">
+                        Mo Scan
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+    </aside>
+</div>
+        </div>
+        <div class="column is-10">
+
+            
+<section class="block my-6">
+    <div class="columns ">
+        <div class="column is-5 has-text-left">
+            <h1 class="title is-4">Biggest Gainers 12M @ Hong Kong</h1>
+            <h2 class="subtitle is-6">2022-12-07</h2>
+        </div>
+        <div class="column has-text-right mr-5">
+            <div class="media">
+
+                <div class="media-content">
+                    <p class="title is-5">Kristjan Kullamägi</p>
+                    <p class="subtitle is-6"><a class="has-text-grey-light" href="https://twitter.com/Qullamaggie">@Qullamaggie</a></p>
+                </div>
+                <div class="media-right">
+                    <figure class="image is-48x48">
+                        <img src="https://unavatar.io/twitter/Qullamaggie" alt="Placeholder image">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+            <section class="my-auto mr-5">
+                
+    <div class="table-container">
+        <table border="1" class="dataframe table is-striped no-wrap" id="data" style="width:100%; font-size:85%">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>symbol</th>
+      <th>yahoo_symbol</th>
+      <th>name</th>
+      <th>sector</th>
+      <th>industry</th>
+      <th>roc</th>
+      <th>close</th>
+      <th>volume</th>
+      <th>rel Volume</th>
+      <th>adr(20)</th>
+      <th>atr(14)</th>
+      <th>roc(5)</th>
+      <th>roc(21)</th>
+      <th>roc(63)</th>
+      <th>roc(126)</th>
+      <th>roc(252)</th>
+      <th>52w High</th>
+      <th>% below 52w High</th>
+      <th>52w Low</th>
+      <th>% above 52w Low</th>
+      <th>UD Ratio</th>
+      <th>50d avg Volume</th>
+      <th>Pocket Pivot</th>
+      <th>1w Pocket Pivots</th>
+      <th>1m Pocket Pivots</th>
+      <th>Rocket Ratio</th>
+      <th>1m RS</th>
+      <th>3m RS</th>
+      <th>RS</th>
+      <th>Industry 1m RS</th>
+      <th>Industry 3m RS</th>
+      <th>Industry RS</th>
+      <th>ema(9)</th>
+      <th>% from 9d ema</th>
+      <th>ema(21)</th>
+      <th>% from 21d ema</th>
+      <th>sma(50)</th>
+      <th>% from 50d sma</th>
+      <th>EPS Growth Q</th>
+      <th>EPS Growth Y</th>
+      <th>EPS Growth FQ</th>
+      <th>EPS Growth FY</th>
+      <th>EPS Growth FQ1</th>
+      <th>EPS Growth FY1</th>
+      <th>Rev Growth Q</th>
+      <th>Rev Growth FQ</th>
+      <th>Rev Growth FY</th>
+      <th>Rev Growth FQ1</th>
+      <th>Rev Growth FY1</th>
+      <th>Insiders %</th>
+      <th>Institutions %</th>
+      <th>Institutions No.</th>
+      <th>Market Cap</th>
+      <th>Shares Outstanding</th>
+      <th>Shares Float</th>
+      <th>Shares Short</th>
+      <th>Short Ratio</th>
+      <th>Net Insider Trading %</th>
+      <th>exchange</th>
+      <th>country</th>
+      <th>IPO Date</th>
+      <th>market</th>
+      <th>date</th>
+      <th>group_name</th>
+      <th>scan_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0291</td>
+      <td>0291.HK</td>
+      <td>China Resources Beer Holdings Co Ltd</td>
+      <td>Consumer Defensive</td>
+      <td>Beverages—Brewers</td>
+      <td>-2.64</td>
+      <td>53.40</td>
+      <td>9312380.0</td>
+      <td>0.72</td>
+      <td>5.17</td>
+      <td>2.61</td>
+      <td>-0.28</td>
+      <td>16.09</td>
+      <td>3.89</td>
+      <td>6.91</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.79</td>
+      <td>12910406.80</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>120.72</td>
+      <td>70</td>
+      <td>71</td>
+      <td>72</td>
+      <td>48</td>
+      <td>31</td>
+      <td>53</td>
+      <td>52.64</td>
+      <td>1.45</td>
+      <td>50.53</td>
+      <td>5.68</td>
+      <td>49.11</td>
+      <td>8.75</td>
+      <td>-0.11</td>
+      <td>-0.11</td>
+      <td>NaN</td>
+      <td>-0.13</td>
+      <td>NaN</td>
+      <td>0.22</td>
+      <td>0.07</td>
+      <td>0.07</td>
+      <td>0.01</td>
+      <td>0.11</td>
+      <td>0.08</td>
+      <td>51.96</td>
+      <td>21.30</td>
+      <td>317.0</td>
+      <td>1.583072e+11</td>
+      <td>3.244000e+09</td>
+      <td>1.558580e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2000-01-04 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0388</td>
+      <td>0388.HK</td>
+      <td>Hong Kong Exchange and Clearing Ltd</td>
+      <td>Financial Services</td>
+      <td>Financial Data &amp; Stock Exchanges</td>
+      <td>-2.67</td>
+      <td>321.20</td>
+      <td>11112022.0</td>
+      <td>1.42</td>
+      <td>4.29</td>
+      <td>14.04</td>
+      <td>4.97</td>
+      <td>22.78</td>
+      <td>5.52</td>
+      <td>-9.62</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.04</td>
+      <td>7845127.24</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>151.55</td>
+      <td>80</td>
+      <td>74</td>
+      <td>68</td>
+      <td>88</td>
+      <td>93</td>
+      <td>94</td>
+      <td>313.31</td>
+      <td>2.52</td>
+      <td>297.77</td>
+      <td>7.87</td>
+      <td>271.30</td>
+      <td>18.39</td>
+      <td>-0.30</td>
+      <td>-0.30</td>
+      <td>-0.05</td>
+      <td>-0.21</td>
+      <td>0.21</td>
+      <td>0.22</td>
+      <td>-0.19</td>
+      <td>-0.01</td>
+      <td>-0.15</td>
+      <td>0.11</td>
+      <td>0.16</td>
+      <td>5.92</td>
+      <td>33.48</td>
+      <td>582.0</td>
+      <td>3.608273e+11</td>
+      <td>1.267840e+09</td>
+      <td>1.188922e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2000-06-27 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2318</td>
+      <td>2318.HK</td>
+      <td>Ping An Insurance</td>
+      <td>Financial Services</td>
+      <td>Insurance—Life</td>
+      <td>-4.94</td>
+      <td>49.10</td>
+      <td>69557280.0</td>
+      <td>1.56</td>
+      <td>4.64</td>
+      <td>2.57</td>
+      <td>2.83</td>
+      <td>36.01</td>
+      <td>7.68</td>
+      <td>0.61</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.30</td>
+      <td>44688416.34</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>7.0</td>
+      <td>349.28</td>
+      <td>90</td>
+      <td>77</td>
+      <td>72</td>
+      <td>80</td>
+      <td>70</td>
+      <td>56</td>
+      <td>47.95</td>
+      <td>2.41</td>
+      <td>44.63</td>
+      <td>10.01</td>
+      <td>39.64</td>
+      <td>23.87</td>
+      <td>-0.32</td>
+      <td>-0.31</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>16.00</td>
+      <td>39.83</td>
+      <td>554.0</td>
+      <td>7.701311e+11</td>
+      <td>7.447580e+09</td>
+      <td>1.560897e+10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2004-06-24 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1211</td>
+      <td>1211.HK</td>
+      <td>BYD Co Ltd-H</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Manufacturers</td>
+      <td>0.25</td>
+      <td>200.20</td>
+      <td>25535016.0</td>
+      <td>2.56</td>
+      <td>4.76</td>
+      <td>8.91</td>
+      <td>4.54</td>
+      <td>2.09</td>
+      <td>-10.22</td>
+      <td>-33.27</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.08</td>
+      <td>9985082.82</td>
+      <td>True</td>
+      <td>4.0</td>
+      <td>6.0</td>
+      <td>187.46</td>
+      <td>35</td>
+      <td>37</td>
+      <td>38</td>
+      <td>66</td>
+      <td>41</td>
+      <td>42</td>
+      <td>192.15</td>
+      <td>4.19</td>
+      <td>189.21</td>
+      <td>5.81</td>
+      <td>190.15</td>
+      <td>5.28</td>
+      <td>3.50</td>
+      <td>3.51</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.16</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>18.06</td>
+      <td>23.89</td>
+      <td>491.0</td>
+      <td>7.437274e+11</td>
+      <td>1.098000e+09</td>
+      <td>1.871837e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2002-07-31 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2319</td>
+      <td>2319.HK</td>
+      <td>China Mengniu Dairy Co</td>
+      <td>Consumer Defensive</td>
+      <td>Packaged Foods</td>
+      <td>-2.18</td>
+      <td>33.70</td>
+      <td>17473900.0</td>
+      <td>1.28</td>
+      <td>4.51</td>
+      <td>1.46</td>
+      <td>-3.16</td>
+      <td>11.22</td>
+      <td>3.85</td>
+      <td>-13.48</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.81</td>
+      <td>13691534.00</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>221.99</td>
+      <td>59</td>
+      <td>71</td>
+      <td>53</td>
+      <td>51</td>
+      <td>86</td>
+      <td>83</td>
+      <td>33.76</td>
+      <td>-0.17</td>
+      <td>32.68</td>
+      <td>3.12</td>
+      <td>30.85</td>
+      <td>9.24</td>
+      <td>0.27</td>
+      <td>0.27</td>
+      <td>NaN</td>
+      <td>0.12</td>
+      <td>NaN</td>
+      <td>0.13</td>
+      <td>0.04</td>
+      <td>0.10</td>
+      <td>0.02</td>
+      <td>0.16</td>
+      <td>0.12</td>
+      <td>23.19</td>
+      <td>48.93</td>
+      <td>387.0</td>
+      <td>1.223977e+11</td>
+      <td>3.954690e+09</td>
+      <td>3.039341e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2004-06-10 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1109</td>
+      <td>1109.HK</td>
+      <td>China Resources Land Ltd</td>
+      <td>Real Estate</td>
+      <td>Real Estate—Development</td>
+      <td>-5.32</td>
+      <td>32.05</td>
+      <td>13092959.0</td>
+      <td>0.85</td>
+      <td>4.59</td>
+      <td>1.64</td>
+      <td>-10.97</td>
+      <td>16.76</td>
+      <td>-1.69</td>
+      <td>-6.97</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.93</td>
+      <td>15452536.80</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>186.65</td>
+      <td>72</td>
+      <td>58</td>
+      <td>59</td>
+      <td>100</td>
+      <td>57</td>
+      <td>28</td>
+      <td>33.42</td>
+      <td>-4.09</td>
+      <td>32.62</td>
+      <td>-1.76</td>
+      <td>30.83</td>
+      <td>3.94</td>
+      <td>-0.19</td>
+      <td>-0.19</td>
+      <td>NaN</td>
+      <td>-0.01</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>-0.01</td>
+      <td>0.22</td>
+      <td>-0.00</td>
+      <td>0.22</td>
+      <td>0.09</td>
+      <td>59.55</td>
+      <td>21.39</td>
+      <td>367.0</td>
+      <td>2.174937e+11</td>
+      <td>7.130940e+09</td>
+      <td>2.884251e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2000-01-04 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>3968</td>
+      <td>3968.HK</td>
+      <td>China Merchants Bank Co Ltd Class H</td>
+      <td>Financial Services</td>
+      <td>Banks—Regional</td>
+      <td>-4.28</td>
+      <td>39.15</td>
+      <td>24117436.0</td>
+      <td>0.82</td>
+      <td>4.66</td>
+      <td>1.85</td>
+      <td>-0.13</td>
+      <td>29.64</td>
+      <td>2.09</td>
+      <td>-21.31</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.94</td>
+      <td>29412029.06</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>468.12</td>
+      <td>86</td>
+      <td>67</td>
+      <td>41</td>
+      <td>49</td>
+      <td>48</td>
+      <td>49</td>
+      <td>38.77</td>
+      <td>0.98</td>
+      <td>36.59</td>
+      <td>7.00</td>
+      <td>33.41</td>
+      <td>17.17</td>
+      <td>0.16</td>
+      <td>0.16</td>
+      <td>0.02</td>
+      <td>0.01</td>
+      <td>0.14</td>
+      <td>0.14</td>
+      <td>0.13</td>
+      <td>3.45</td>
+      <td>-0.06</td>
+      <td>3.45</td>
+      <td>0.08</td>
+      <td>17.57</td>
+      <td>41.40</td>
+      <td>437.0</td>
+      <td>8.561963e+11</td>
+      <td>4.590900e+09</td>
+      <td>1.376827e+10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2006-09-22 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1171</td>
+      <td>1171.HK</td>
+      <td>Yankuang Energy Group Co Ltd HK</td>
+      <td>Energy</td>
+      <td>Thermal Coal</td>
+      <td>-0.40</td>
+      <td>24.90</td>
+      <td>16549377.0</td>
+      <td>1.21</td>
+      <td>5.88</td>
+      <td>1.30</td>
+      <td>-3.68</td>
+      <td>1.22</td>
+      <td>-28.96</td>
+      <td>-14.14</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.83</td>
+      <td>13664443.50</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>162.78</td>
+      <td>33</td>
+      <td>9</td>
+      <td>36</td>
+      <td>31</td>
+      <td>64</td>
+      <td>88</td>
+      <td>24.50</td>
+      <td>1.61</td>
+      <td>24.37</td>
+      <td>2.17</td>
+      <td>25.21</td>
+      <td>-1.23</td>
+      <td>0.66</td>
+      <td>0.63</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.29</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>23.95</td>
+      <td>29.38</td>
+      <td>174.0</td>
+      <td>1.921719e+11</td>
+      <td>1.900000e+09</td>
+      <td>2.224343e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2000-01-04 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0914</td>
+      <td>0914.HK</td>
+      <td>Anhui Conch Cement</td>
+      <td>Basic Materials</td>
+      <td>Building Materials</td>
+      <td>-4.20</td>
+      <td>27.40</td>
+      <td>7174612.0</td>
+      <td>0.86</td>
+      <td>4.49</td>
+      <td>1.17</td>
+      <td>-3.01</td>
+      <td>18.36</td>
+      <td>-6.00</td>
+      <td>-19.17</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.08</td>
+      <td>8364661.98</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>386.16</td>
+      <td>75</td>
+      <td>48</td>
+      <td>35</td>
+      <td>44</td>
+      <td>30</td>
+      <td>16</td>
+      <td>27.71</td>
+      <td>-1.14</td>
+      <td>26.78</td>
+      <td>2.30</td>
+      <td>25.10</td>
+      <td>9.17</td>
+      <td>-0.65</td>
+      <td>-0.66</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>9.01</td>
+      <td>37.68</td>
+      <td>272.0</td>
+      <td>1.495169e+11</td>
+      <td>1.299600e+09</td>
+      <td>3.230137e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2000-01-04 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0168</td>
+      <td>0168.HK</td>
+      <td>Tsingtao Brew</td>
+      <td>Consumer Defensive</td>
+      <td>Beverages—Brewers</td>
+      <td>-3.88</td>
+      <td>74.35</td>
+      <td>4587870.0</td>
+      <td>1.27</td>
+      <td>4.99</td>
+      <td>3.42</td>
+      <td>1.99</td>
+      <td>12.14</td>
+      <td>5.39</td>
+      <td>7.52</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.04</td>
+      <td>3624206.92</td>
+      <td>False</td>
+      <td>4.0</td>
+      <td>7.0</td>
+      <td>253.81</td>
+      <td>62</td>
+      <td>74</td>
+      <td>78</td>
+      <td>48</td>
+      <td>31</td>
+      <td>53</td>
+      <td>73.07</td>
+      <td>1.75</td>
+      <td>70.46</td>
+      <td>5.51</td>
+      <td>68.68</td>
+      <td>8.25</td>
+      <td>0.18</td>
+      <td>0.18</td>
+      <td>NaN</td>
+      <td>-0.03</td>
+      <td>NaN</td>
+      <td>0.15</td>
+      <td>0.16</td>
+      <td>NaN</td>
+      <td>-0.00</td>
+      <td>NaN</td>
+      <td>0.07</td>
+      <td>5.85</td>
+      <td>53.69</td>
+      <td>233.0</td>
+      <td>1.228474e+11</td>
+      <td>6.550690e+08</td>
+      <td>9.198480e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2000-01-04 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1928</td>
+      <td>1928.HK</td>
+      <td>Sands China Ltd</td>
+      <td>Consumer Cyclical</td>
+      <td>Resorts &amp; Casinos</td>
+      <td>-4.86</td>
+      <td>23.50</td>
+      <td>94412520.0</td>
+      <td>2.58</td>
+      <td>7.35</td>
+      <td>1.67</td>
+      <td>11.90</td>
+      <td>33.07</td>
+      <td>39.05</td>
+      <td>46.14</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.11</td>
+      <td>36523432.60</td>
+      <td>False</td>
+      <td>3.0</td>
+      <td>7.0</td>
+      <td>66.67</td>
+      <td>88</td>
+      <td>94</td>
+      <td>94</td>
+      <td>84</td>
+      <td>82</td>
+      <td>74</td>
+      <td>21.95</td>
+      <td>7.07</td>
+      <td>20.17</td>
+      <td>16.53</td>
+      <td>18.17</td>
+      <td>29.33</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.33</td>
+      <td>NaN</td>
+      <td>1.34</td>
+      <td>-0.44</td>
+      <td>-0.59</td>
+      <td>-0.35</td>
+      <td>0.33</td>
+      <td>1.83</td>
+      <td>69.98</td>
+      <td>13.08</td>
+      <td>315.0</td>
+      <td>1.516664e+11</td>
+      <td>8.093190e+09</td>
+      <td>2.434998e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2009-11-30 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>0027</td>
+      <td>0027.HK</td>
+      <td>Galaxy Entertainment Group Ltd</td>
+      <td>Consumer Cyclical</td>
+      <td>Resorts &amp; Casinos</td>
+      <td>-3.58</td>
+      <td>49.80</td>
+      <td>22726260.0</td>
+      <td>1.61</td>
+      <td>4.65</td>
+      <td>2.37</td>
+      <td>6.64</td>
+      <td>14.22</td>
+      <td>20.29</td>
+      <td>13.18</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.52</td>
+      <td>14106974.80</td>
+      <td>False</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>183.53</td>
+      <td>66</td>
+      <td>88</td>
+      <td>89</td>
+      <td>84</td>
+      <td>82</td>
+      <td>74</td>
+      <td>48.33</td>
+      <td>3.04</td>
+      <td>46.20</td>
+      <td>7.80</td>
+      <td>43.81</td>
+      <td>13.68</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-1.71</td>
+      <td>NaN</td>
+      <td>7.12</td>
+      <td>-0.39</td>
+      <td>0.27</td>
+      <td>-0.29</td>
+      <td>0.17</td>
+      <td>1.51</td>
+      <td>50.78</td>
+      <td>23.68</td>
+      <td>315.0</td>
+      <td>1.997463e+11</td>
+      <td>4.366040e+09</td>
+      <td>2.589081e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2000-01-04 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>0316</td>
+      <td>0316.HK</td>
+      <td>Orient Overseas International Ltd</td>
+      <td>Industrials</td>
+      <td>Marine Shipping</td>
+      <td>-0.30</td>
+      <td>134.00</td>
+      <td>1221309.0</td>
+      <td>0.95</td>
+      <td>4.80</td>
+      <td>6.93</td>
+      <td>-8.34</td>
+      <td>4.20</td>
+      <td>-8.53</td>
+      <td>-44.90</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.03</td>
+      <td>1280746.70</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>101.96</td>
+      <td>40</td>
+      <td>41</td>
+      <td>17</td>
+      <td>15</td>
+      <td>51</td>
+      <td>22</td>
+      <td>136.38</td>
+      <td>-1.74</td>
+      <td>134.04</td>
+      <td>-0.03</td>
+      <td>130.47</td>
+      <td>2.70</td>
+      <td>1.01</td>
+      <td>0.94</td>
+      <td>NaN</td>
+      <td>0.38</td>
+      <td>NaN</td>
+      <td>-0.43</td>
+      <td>0.58</td>
+      <td>0.22</td>
+      <td>0.24</td>
+      <td>0.08</td>
+      <td>-0.25</td>
+      <td>80.14</td>
+      <td>4.56</td>
+      <td>188.0</td>
+      <td>8.525416e+10</td>
+      <td>6.603730e+08</td>
+      <td>1.305822e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2004-04-15 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>0960</td>
+      <td>0960.HK</td>
+      <td>Longfor Properties Co Ltd</td>
+      <td>Real Estate</td>
+      <td>Real Estate—Development</td>
+      <td>-12.07</td>
+      <td>22.95</td>
+      <td>38170664.0</td>
+      <td>0.95</td>
+      <td>9.52</td>
+      <td>2.13</td>
+      <td>-2.55</td>
+      <td>71.27</td>
+      <td>-13.72</td>
+      <td>-37.12</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.35</td>
+      <td>39996366.72</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>35.84</td>
+      <td>96</td>
+      <td>29</td>
+      <td>16</td>
+      <td>100</td>
+      <td>57</td>
+      <td>28</td>
+      <td>23.21</td>
+      <td>-1.12</td>
+      <td>21.29</td>
+      <td>7.77</td>
+      <td>19.15</td>
+      <td>19.86</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>NaN</td>
+      <td>-0.04</td>
+      <td>NaN</td>
+      <td>0.05</td>
+      <td>0.56</td>
+      <td>0.12</td>
+      <td>0.07</td>
+      <td>0.39</td>
+      <td>0.06</td>
+      <td>74.19</td>
+      <td>11.96</td>
+      <td>305.0</td>
+      <td>1.143180e+11</td>
+      <td>6.281210e+09</td>
+      <td>1.433445e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2009-11-19 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>1193</td>
+      <td>1193.HK</td>
+      <td>China Resources Gas Group Ltd</td>
+      <td>Utilities</td>
+      <td>Utilities—Regulated Gas</td>
+      <td>-2.24</td>
+      <td>28.40</td>
+      <td>4524014.0</td>
+      <td>1.28</td>
+      <td>5.08</td>
+      <td>1.40</td>
+      <td>3.27</td>
+      <td>22.15</td>
+      <td>-3.73</td>
+      <td>-18.04</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.79</td>
+      <td>3532819.30</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>252.14</td>
+      <td>79</td>
+      <td>53</td>
+      <td>53</td>
+      <td>67</td>
+      <td>26</td>
+      <td>34</td>
+      <td>27.39</td>
+      <td>3.67</td>
+      <td>26.37</td>
+      <td>7.71</td>
+      <td>24.57</td>
+      <td>15.58</td>
+      <td>-0.06</td>
+      <td>-0.06</td>
+      <td>NaN</td>
+      <td>-0.02</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>0.38</td>
+      <td>0.15</td>
+      <td>0.21</td>
+      <td>0.22</td>
+      <td>0.08</td>
+      <td>61.50</td>
+      <td>22.02</td>
+      <td>242.0</td>
+      <td>5.542054e+10</td>
+      <td>2.314010e+09</td>
+      <td>8.907793e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2001-02-05 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>2313</td>
+      <td>2313.HK</td>
+      <td>Shenzhou International Group Holdings Ltd</td>
+      <td>Consumer Cyclical</td>
+      <td>Textile Manufacturing</td>
+      <td>0.00</td>
+      <td>77.30</td>
+      <td>11006899.0</td>
+      <td>1.79</td>
+      <td>5.98</td>
+      <td>4.07</td>
+      <td>10.98</td>
+      <td>26.72</td>
+      <td>9.26</td>
+      <td>-28.29</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.25</td>
+      <td>6137940.72</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>6.0</td>
+      <td>129.07</td>
+      <td>84</td>
+      <td>79</td>
+      <td>50</td>
+      <td>37</td>
+      <td>67</td>
+      <td>80</td>
+      <td>72.90</td>
+      <td>6.04</td>
+      <td>69.06</td>
+      <td>11.93</td>
+      <td>63.82</td>
+      <td>21.13</td>
+      <td>0.06</td>
+      <td>0.06</td>
+      <td>NaN</td>
+      <td>0.27</td>
+      <td>NaN</td>
+      <td>0.23</td>
+      <td>0.20</td>
+      <td>0.16</td>
+      <td>0.08</td>
+      <td>0.17</td>
+      <td>0.14</td>
+      <td>47.30</td>
+      <td>27.07</td>
+      <td>401.0</td>
+      <td>1.001896e+11</td>
+      <td>1.503220e+09</td>
+      <td>7.922132e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2005-11-24 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>2688</td>
+      <td>2688.HK</td>
+      <td>ENN Energy Holdings Ltd</td>
+      <td>Utilities</td>
+      <td>Utilities—Regulated Gas</td>
+      <td>-0.84</td>
+      <td>106.30</td>
+      <td>3530781.0</td>
+      <td>1.15</td>
+      <td>4.14</td>
+      <td>4.39</td>
+      <td>-2.92</td>
+      <td>23.68</td>
+      <td>-6.67</td>
+      <td>-11.64</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.19</td>
+      <td>3066425.02</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>247.40</td>
+      <td>81</td>
+      <td>46</td>
+      <td>60</td>
+      <td>67</td>
+      <td>26</td>
+      <td>34</td>
+      <td>104.97</td>
+      <td>1.27</td>
+      <td>101.77</td>
+      <td>4.45</td>
+      <td>97.26</td>
+      <td>9.29</td>
+      <td>-0.18</td>
+      <td>-0.17</td>
+      <td>NaN</td>
+      <td>-0.05</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>0.42</td>
+      <td>0.15</td>
+      <td>0.10</td>
+      <td>0.24</td>
+      <td>0.12</td>
+      <td>32.66</td>
+      <td>44.76</td>
+      <td>329.0</td>
+      <td>1.008433e+11</td>
+      <td>1.130530e+09</td>
+      <td>7.586363e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2001-05-10 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>0425</td>
+      <td>0425.HK</td>
+      <td>Minth Group Ltd</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Parts</td>
+      <td>-0.99</td>
+      <td>20.10</td>
+      <td>1667304.0</td>
+      <td>0.90</td>
+      <td>5.38</td>
+      <td>1.13</td>
+      <td>-4.06</td>
+      <td>13.18</td>
+      <td>-8.43</td>
+      <td>2.55</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.81</td>
+      <td>1862741.84</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>382.11</td>
+      <td>64</td>
+      <td>41</td>
+      <td>53</td>
+      <td>29</td>
+      <td>42</td>
+      <td>63</td>
+      <td>19.96</td>
+      <td>0.71</td>
+      <td>19.27</td>
+      <td>4.31</td>
+      <td>17.83</td>
+      <td>12.72</td>
+      <td>-0.27</td>
+      <td>-0.27</td>
+      <td>NaN</td>
+      <td>-0.03</td>
+      <td>NaN</td>
+      <td>0.28</td>
+      <td>0.09</td>
+      <td>0.18</td>
+      <td>0.13</td>
+      <td>0.15</td>
+      <td>0.21</td>
+      <td>38.74</td>
+      <td>36.93</td>
+      <td>186.0</td>
+      <td>2.091312e+10</td>
+      <td>1.161840e+09</td>
+      <td>7.117638e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2005-12-01 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>0881</td>
+      <td>0881.HK</td>
+      <td>Zhongsheng Group Holdings Ltd</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto &amp; Truck Dealerships</td>
+      <td>-3.58</td>
+      <td>40.45</td>
+      <td>5142079.0</td>
+      <td>1.02</td>
+      <td>6.24</td>
+      <td>2.46</td>
+      <td>1.63</td>
+      <td>13.62</td>
+      <td>17.42</td>
+      <td>-32.81</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.56</td>
+      <td>5058274.00</td>
+      <td>False</td>
+      <td>3.0</td>
+      <td>5.0</td>
+      <td>137.97</td>
+      <td>65</td>
+      <td>86</td>
+      <td>62</td>
+      <td>71</td>
+      <td>39</td>
+      <td>51</td>
+      <td>40.51</td>
+      <td>-0.14</td>
+      <td>38.65</td>
+      <td>4.65</td>
+      <td>35.26</td>
+      <td>14.73</td>
+      <td>-0.07</td>
+      <td>-0.12</td>
+      <td>NaN</td>
+      <td>-0.04</td>
+      <td>NaN</td>
+      <td>0.23</td>
+      <td>-0.02</td>
+      <td>0.19</td>
+      <td>0.04</td>
+      <td>0.21</td>
+      <td>0.15</td>
+      <td>70.80</td>
+      <td>18.12</td>
+      <td>277.0</td>
+      <td>8.774454e+10</td>
+      <td>2.403960e+09</td>
+      <td>6.978803e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2010-03-26 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>2331</td>
+      <td>2331.HK</td>
+      <td>Li Ning Co Ltd</td>
+      <td>Consumer Cyclical</td>
+      <td>Leisure</td>
+      <td>-1.37</td>
+      <td>61.25</td>
+      <td>30541868.0</td>
+      <td>1.23</td>
+      <td>6.78</td>
+      <td>3.67</td>
+      <td>0.00</td>
+      <td>17.68</td>
+      <td>-8.03</td>
+      <td>-3.09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.94</td>
+      <td>24793536.10</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>6.0</td>
+      <td>94.25</td>
+      <td>73</td>
+      <td>42</td>
+      <td>53</td>
+      <td>37</td>
+      <td>67</td>
+      <td>80</td>
+      <td>60.15</td>
+      <td>1.84</td>
+      <td>57.70</td>
+      <td>6.15</td>
+      <td>55.42</td>
+      <td>10.51</td>
+      <td>0.12</td>
+      <td>0.06</td>
+      <td>NaN</td>
+      <td>0.07</td>
+      <td>NaN</td>
+      <td>0.24</td>
+      <td>0.22</td>
+      <td>0.18</td>
+      <td>0.13</td>
+      <td>0.17</td>
+      <td>0.20</td>
+      <td>10.57</td>
+      <td>49.69</td>
+      <td>453.0</td>
+      <td>1.493702e+11</td>
+      <td>2.620530e+09</td>
+      <td>2.336707e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2004-06-28 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>0285</td>
+      <td>0285.HK</td>
+      <td>BYD Electronic International Co Ltd</td>
+      <td>Technology</td>
+      <td>Electronic Components</td>
+      <td>-6.53</td>
+      <td>25.05</td>
+      <td>12474633.0</td>
+      <td>1.13</td>
+      <td>6.27</td>
+      <td>1.43</td>
+      <td>-1.38</td>
+      <td>7.05</td>
+      <td>2.87</td>
+      <td>36.29</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.16</td>
+      <td>11007390.14</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>59.13</td>
+      <td>48</td>
+      <td>69</td>
+      <td>89</td>
+      <td>40</td>
+      <td>16</td>
+      <td>55</td>
+      <td>25.07</td>
+      <td>-0.07</td>
+      <td>24.13</td>
+      <td>3.79</td>
+      <td>21.86</td>
+      <td>14.61</td>
+      <td>-0.61</td>
+      <td>-0.61</td>
+      <td>NaN</td>
+      <td>-0.19</td>
+      <td>NaN</td>
+      <td>0.55</td>
+      <td>-0.02</td>
+      <td>0.19</td>
+      <td>0.06</td>
+      <td>0.06</td>
+      <td>0.20</td>
+      <td>66.14</td>
+      <td>8.37</td>
+      <td>196.0</td>
+      <td>5.531605e+10</td>
+      <td>2.253200e+09</td>
+      <td>6.508381e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2007-12-20 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>1882</td>
+      <td>1882.HK</td>
+      <td>Haitian International Holdings Ltd</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>-4.29</td>
+      <td>20.10</td>
+      <td>1300920.0</td>
+      <td>0.94</td>
+      <td>6.38</td>
+      <td>1.20</td>
+      <td>0.00</td>
+      <td>19.93</td>
+      <td>12.92</td>
+      <td>-5.41</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.63</td>
+      <td>1382498.26</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>451.34</td>
+      <td>77</td>
+      <td>83</td>
+      <td>81</td>
+      <td>34</td>
+      <td>50</td>
+      <td>61</td>
+      <td>19.94</td>
+      <td>0.79</td>
+      <td>18.94</td>
+      <td>6.12</td>
+      <td>16.84</td>
+      <td>19.34</td>
+      <td>-0.26</td>
+      <td>-0.26</td>
+      <td>NaN</td>
+      <td>-0.25</td>
+      <td>NaN</td>
+      <td>0.12</td>
+      <td>-0.21</td>
+      <td>-0.04</td>
+      <td>-0.20</td>
+      <td>0.13</td>
+      <td>0.08</td>
+      <td>60.90</td>
+      <td>20.93</td>
+      <td>186.0</td>
+      <td>2.793000e+10</td>
+      <td>1.596000e+09</td>
+      <td>6.239722e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2006-12-22 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>2020</td>
+      <td>2020.HK</td>
+      <td>ANTA Sports Products Ltd</td>
+      <td>Consumer Cyclical</td>
+      <td>Leisure</td>
+      <td>-2.23</td>
+      <td>94.35</td>
+      <td>8467381.0</td>
+      <td>1.01</td>
+      <td>4.84</td>
+      <td>4.59</td>
+      <td>3.80</td>
+      <td>18.38</td>
+      <td>5.42</td>
+      <td>4.49</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.17</td>
+      <td>8351741.62</td>
+      <td>False</td>
+      <td>3.0</td>
+      <td>8.0</td>
+      <td>146.58</td>
+      <td>75</td>
+      <td>74</td>
+      <td>71</td>
+      <td>37</td>
+      <td>67</td>
+      <td>80</td>
+      <td>91.98</td>
+      <td>2.57</td>
+      <td>87.92</td>
+      <td>7.32</td>
+      <td>82.86</td>
+      <td>13.87</td>
+      <td>-0.07</td>
+      <td>-0.07</td>
+      <td>NaN</td>
+      <td>-0.01</td>
+      <td>NaN</td>
+      <td>0.24</td>
+      <td>0.14</td>
+      <td>0.12</td>
+      <td>0.07</td>
+      <td>0.35</td>
+      <td>0.17</td>
+      <td>54.50</td>
+      <td>15.95</td>
+      <td>419.0</td>
+      <td>2.252305e+11</td>
+      <td>2.713620e+09</td>
+      <td>1.224170e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2007-07-10 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>3888</td>
+      <td>3888.HK</td>
+      <td>Kingsoft Corp Ltd</td>
+      <td>Communication Services</td>
+      <td>Electronic Gaming &amp; Multimedia</td>
+      <td>-4.99</td>
+      <td>24.75</td>
+      <td>5905880.0</td>
+      <td>0.73</td>
+      <td>5.88</td>
+      <td>1.35</td>
+      <td>1.02</td>
+      <td>0.00</td>
+      <td>5.10</td>
+      <td>-13.46</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.34</td>
+      <td>8063293.68</td>
+      <td>False</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>117.04</td>
+      <td>29</td>
+      <td>73</td>
+      <td>70</td>
+      <td>69</td>
+      <td>17</td>
+      <td>20</td>
+      <td>25.14</td>
+      <td>-1.56</td>
+      <td>24.72</td>
+      <td>0.14</td>
+      <td>23.08</td>
+      <td>7.22</td>
+      <td>-0.15</td>
+      <td>-0.25</td>
+      <td>-3.74</td>
+      <td>-4.00</td>
+      <td>1.54</td>
+      <td>1.48</td>
+      <td>0.24</td>
+      <td>0.09</td>
+      <td>0.11</td>
+      <td>0.05</td>
+      <td>0.20</td>
+      <td>32.65</td>
+      <td>37.23</td>
+      <td>247.0</td>
+      <td>3.414389e+10</td>
+      <td>1.357610e+09</td>
+      <td>9.437200e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2007-10-09 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>3898</td>
+      <td>3898.HK</td>
+      <td>Zhuzhou CRRC Times Electric Co Ltd</td>
+      <td>Industrials</td>
+      <td>Railroads</td>
+      <td>-2.94</td>
+      <td>36.35</td>
+      <td>5625291.0</td>
+      <td>1.72</td>
+      <td>4.11</td>
+      <td>1.31</td>
+      <td>1.25</td>
+      <td>3.71</td>
+      <td>-3.84</td>
+      <td>8.18</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.30</td>
+      <td>3279700.58</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>217.72</td>
+      <td>39</td>
+      <td>53</td>
+      <td>74</td>
+      <td>42</td>
+      <td>20</td>
+      <td>47</td>
+      <td>36.39</td>
+      <td>-0.12</td>
+      <td>35.83</td>
+      <td>1.44</td>
+      <td>34.47</td>
+      <td>5.44</td>
+      <td>0.36</td>
+      <td>0.14</td>
+      <td>NaN</td>
+      <td>-0.05</td>
+      <td>NaN</td>
+      <td>0.18</td>
+      <td>0.35</td>
+      <td>0.08</td>
+      <td>0.08</td>
+      <td>0.07</td>
+      <td>0.17</td>
+      <td>11.88</td>
+      <td>55.73</td>
+      <td>201.0</td>
+      <td>7.480421e+10</td>
+      <td>5.473290e+08</td>
+      <td>7.140667e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2006-12-20 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>0700</td>
+      <td>0700.HK</td>
+      <td>Tencent Holdings Ltd</td>
+      <td>Communication Services</td>
+      <td>Internet Content &amp; Information</td>
+      <td>-3.72</td>
+      <td>300.20</td>
+      <td>41107600.0</td>
+      <td>1.11</td>
+      <td>4.92</td>
+      <td>13.27</td>
+      <td>4.53</td>
+      <td>22.13</td>
+      <td>-3.66</td>
+      <td>-23.96</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.24</td>
+      <td>36928114.08</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>163.84</td>
+      <td>79</td>
+      <td>54</td>
+      <td>40</td>
+      <td>91</td>
+      <td>27</td>
+      <td>4</td>
+      <td>295.97</td>
+      <td>1.43</td>
+      <td>282.17</td>
+      <td>6.39</td>
+      <td>258.76</td>
+      <td>16.01</td>
+      <td>-0.56</td>
+      <td>-0.56</td>
+      <td>-0.18</td>
+      <td>-0.14</td>
+      <td>0.09</td>
+      <td>0.24</td>
+      <td>-0.03</td>
+      <td>-0.11</td>
+      <td>-0.06</td>
+      <td>-0.04</td>
+      <td>0.12</td>
+      <td>36.85</td>
+      <td>22.26</td>
+      <td>989.0</td>
+      <td>2.475012e+12</td>
+      <td>9.578220e+09</td>
+      <td>6.050340e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2004-06-16 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>1913</td>
+      <td>1913.HK</td>
+      <td>Prada SpA</td>
+      <td>Consumer Cyclical</td>
+      <td>Luxury Goods</td>
+      <td>-2.95</td>
+      <td>42.70</td>
+      <td>381137.0</td>
+      <td>0.68</td>
+      <td>5.24</td>
+      <td>1.97</td>
+      <td>-0.12</td>
+      <td>9.77</td>
+      <td>-1.16</td>
+      <td>-8.17</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.45</td>
+      <td>564197.64</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>907.97</td>
+      <td>56</td>
+      <td>60</td>
+      <td>68</td>
+      <td>37</td>
+      <td>67</td>
+      <td>80</td>
+      <td>42.62</td>
+      <td>0.19</td>
+      <td>41.45</td>
+      <td>3.02</td>
+      <td>39.18</td>
+      <td>8.98</td>
+      <td>0.94</td>
+      <td>0.94</td>
+      <td>NaN</td>
+      <td>0.51</td>
+      <td>NaN</td>
+      <td>0.19</td>
+      <td>0.27</td>
+      <td>NaN</td>
+      <td>0.16</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>79.98</td>
+      <td>13.71</td>
+      <td>117.0</td>
+      <td>1.041440e+11</td>
+      <td>2.558820e+09</td>
+      <td>5.122766e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2007-10-30 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>1513</td>
+      <td>1513.HK</td>
+      <td>Livzon Pharmaceutical Group Inc</td>
+      <td>Healthcare</td>
+      <td>Drug Manufacturers—Specialty &amp; Generic</td>
+      <td>0.61</td>
+      <td>24.90</td>
+      <td>1116800.0</td>
+      <td>1.20</td>
+      <td>5.35</td>
+      <td>1.41</td>
+      <td>-8.46</td>
+      <td>5.96</td>
+      <td>12.67</td>
+      <td>-1.39</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.93</td>
+      <td>927627.06</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>540.12</td>
+      <td>45</td>
+      <td>82</td>
+      <td>76</td>
+      <td>77</td>
+      <td>97</td>
+      <td>85</td>
+      <td>25.70</td>
+      <td>-3.12</td>
+      <td>25.30</td>
+      <td>-1.59</td>
+      <td>23.06</td>
+      <td>7.98</td>
+      <td>0.25</td>
+      <td>0.27</td>
+      <td>0.15</td>
+      <td>-0.01</td>
+      <td>0.10</td>
+      <td>0.15</td>
+      <td>0.02</td>
+      <td>0.04</td>
+      <td>-0.01</td>
+      <td>0.10</td>
+      <td>0.13</td>
+      <td>52.73</td>
+      <td>15.05</td>
+      <td>79.0</td>
+      <td>3.212626e+10</td>
+      <td>3.098310e+08</td>
+      <td>5.010339e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2014-01-16 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>2196</td>
+      <td>2196.HK</td>
+      <td>Shanghai Fosun Pharmaceutical Group Co Ltd</td>
+      <td>Healthcare</td>
+      <td>Drug Manufacturers—Specialty &amp; Generic</td>
+      <td>-1.46</td>
+      <td>23.65</td>
+      <td>7516715.0</td>
+      <td>0.99</td>
+      <td>5.63</td>
+      <td>1.46</td>
+      <td>-8.33</td>
+      <td>2.16</td>
+      <td>8.24</td>
+      <td>-24.20</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.44</td>
+      <td>7590663.76</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>224.84</td>
+      <td>36</td>
+      <td>78</td>
+      <td>55</td>
+      <td>77</td>
+      <td>97</td>
+      <td>85</td>
+      <td>24.45</td>
+      <td>-3.26</td>
+      <td>24.08</td>
+      <td>-1.80</td>
+      <td>21.77</td>
+      <td>8.62</td>
+      <td>-0.16</td>
+      <td>-0.18</td>
+      <td>-0.20</td>
+      <td>-0.21</td>
+      <td>0.17</td>
+      <td>0.31</td>
+      <td>0.02</td>
+      <td>-0.11</td>
+      <td>0.07</td>
+      <td>-0.01</td>
+      <td>0.11</td>
+      <td>0.08</td>
+      <td>36.46</td>
+      <td>203.0</td>
+      <td>9.291946e+10</td>
+      <td>5.519400e+08</td>
+      <td>1.706657e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2012-10-30 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>2382</td>
+      <td>2382.HK</td>
+      <td>Sunny Optical Technology Group Co Ltd</td>
+      <td>Technology</td>
+      <td>Electronic Components</td>
+      <td>-6.34</td>
+      <td>94.50</td>
+      <td>7284273.0</td>
+      <td>1.05</td>
+      <td>6.84</td>
+      <td>5.75</td>
+      <td>3.96</td>
+      <td>9.25</td>
+      <td>-7.08</td>
+      <td>-19.09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.02</td>
+      <td>6940131.26</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>95.98</td>
+      <td>55</td>
+      <td>44</td>
+      <td>30</td>
+      <td>17</td>
+      <td>23</td>
+      <td>36</td>
+      <td>94.84</td>
+      <td>-0.36</td>
+      <td>90.99</td>
+      <td>3.85</td>
+      <td>82.06</td>
+      <td>15.16</td>
+      <td>-0.50</td>
+      <td>-0.50</td>
+      <td>NaN</td>
+      <td>-0.41</td>
+      <td>NaN</td>
+      <td>0.41</td>
+      <td>-0.14</td>
+      <td>0.00</td>
+      <td>-0.16</td>
+      <td>0.27</td>
+      <td>0.16</td>
+      <td>38.50</td>
+      <td>32.08</td>
+      <td>393.0</td>
+      <td>9.860682e+10</td>
+      <td>1.096850e+09</td>
+      <td>6.661352e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2007-06-15 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>0874</td>
+      <td>0874.HK</td>
+      <td>Guangzhou Baiyunshan Pharma</td>
+      <td>Healthcare</td>
+      <td>Drug Manufacturers—Specialty &amp; Generic</td>
+      <td>4.14</td>
+      <td>23.90</td>
+      <td>3826000.0</td>
+      <td>2.94</td>
+      <td>4.57</td>
+      <td>1.12</td>
+      <td>14.63</td>
+      <td>23.71</td>
+      <td>28.63</td>
+      <td>6.22</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.01</td>
+      <td>1299416.10</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>6.0</td>
+      <td>644.85</td>
+      <td>81</td>
+      <td>91</td>
+      <td>90</td>
+      <td>63</td>
+      <td>72</td>
+      <td>68</td>
+      <td>22.31</td>
+      <td>7.15</td>
+      <td>21.14</td>
+      <td>13.07</td>
+      <td>19.18</td>
+      <td>24.61</td>
+      <td>0.09</td>
+      <td>0.09</td>
+      <td>0.24</td>
+      <td>-0.05</td>
+      <td>-0.47</td>
+      <td>0.04</td>
+      <td>0.01</td>
+      <td>NaN</td>
+      <td>-0.03</td>
+      <td>NaN</td>
+      <td>0.07</td>
+      <td>0.00</td>
+      <td>35.27</td>
+      <td>68.0</td>
+      <td>4.836130e+10</td>
+      <td>2.199000e+08</td>
+      <td>8.379327e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2000-01-04 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>1347</td>
+      <td>1347.HK</td>
+      <td>Hua Hong Semiconductor Ltd</td>
+      <td>Technology</td>
+      <td>Semiconductors</td>
+      <td>-5.62</td>
+      <td>25.20</td>
+      <td>13702240.0</td>
+      <td>1.10</td>
+      <td>6.04</td>
+      <td>1.35</td>
+      <td>-6.32</td>
+      <td>13.00</td>
+      <td>12.25</td>
+      <td>-12.20</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.24</td>
+      <td>12435083.36</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>47.22</td>
+      <td>64</td>
+      <td>82</td>
+      <td>61</td>
+      <td>25</td>
+      <td>13</td>
+      <td>3</td>
+      <td>26.24</td>
+      <td>-3.96</td>
+      <td>25.40</td>
+      <td>-0.79</td>
+      <td>21.63</td>
+      <td>16.51</td>
+      <td>1.04</td>
+      <td>1.08</td>
+      <td>0.26</td>
+      <td>0.81</td>
+      <td>-0.30</td>
+      <td>-0.04</td>
+      <td>0.40</td>
+      <td>0.18</td>
+      <td>0.53</td>
+      <td>0.18</td>
+      <td>0.06</td>
+      <td>41.28</td>
+      <td>29.97</td>
+      <td>208.0</td>
+      <td>3.159559e+10</td>
+      <td>1.300230e+09</td>
+      <td>5.872382e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2014-10-15 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>3606</td>
+      <td>3606.HK</td>
+      <td>Fuyao Glass Industry Group</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Parts</td>
+      <td>-2.39</td>
+      <td>32.70</td>
+      <td>3668039.0</td>
+      <td>1.65</td>
+      <td>4.33</td>
+      <td>1.29</td>
+      <td>-4.11</td>
+      <td>-0.76</td>
+      <td>-14.95</td>
+      <td>-17.32</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.85</td>
+      <td>2226714.78</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>869.28</td>
+      <td>27</td>
+      <td>27</td>
+      <td>45</td>
+      <td>29</td>
+      <td>42</td>
+      <td>63</td>
+      <td>33.24</td>
+      <td>-1.63</td>
+      <td>32.91</td>
+      <td>-0.64</td>
+      <td>31.93</td>
+      <td>2.41</td>
+      <td>0.84</td>
+      <td>0.81</td>
+      <td>1.16</td>
+      <td>0.35</td>
+      <td>0.26</td>
+      <td>0.10</td>
+      <td>0.34</td>
+      <td>0.10</td>
+      <td>0.10</td>
+      <td>0.06</td>
+      <td>0.14</td>
+      <td>0.00</td>
+      <td>69.81</td>
+      <td>213.0</td>
+      <td>1.011761e+11</td>
+      <td>6.067570e+08</td>
+      <td>1.935647e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2015-03-31 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>1579</td>
+      <td>1579.HK</td>
+      <td>Yihai International Holding Ltd</td>
+      <td>Consumer Defensive</td>
+      <td>Packaged Foods</td>
+      <td>-7.69</td>
+      <td>24.60</td>
+      <td>17748576.0</td>
+      <td>3.45</td>
+      <td>10.47</td>
+      <td>2.41</td>
+      <td>1.65</td>
+      <td>35.02</td>
+      <td>40.09</td>
+      <td>-0.20</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.32</td>
+      <td>5146699.70</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>7.0</td>
+      <td>101.70</td>
+      <td>89</td>
+      <td>94</td>
+      <td>87</td>
+      <td>51</td>
+      <td>86</td>
+      <td>83</td>
+      <td>23.92</td>
+      <td>2.86</td>
+      <td>21.66</td>
+      <td>13.57</td>
+      <td>17.88</td>
+      <td>37.62</td>
+      <td>-0.25</td>
+      <td>-0.24</td>
+      <td>NaN</td>
+      <td>-0.21</td>
+      <td>NaN</td>
+      <td>0.20</td>
+      <td>0.02</td>
+      <td>0.10</td>
+      <td>-0.01</td>
+      <td>0.53</td>
+      <td>0.15</td>
+      <td>59.04</td>
+      <td>20.57</td>
+      <td>188.0</td>
+      <td>2.033080e+10</td>
+      <td>1.046900e+09</td>
+      <td>5.233993e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2016-07-13 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>0357</td>
+      <td>0357.HK</td>
+      <td>Hainan Meilan International Airport Co Ltd</td>
+      <td>Industrials</td>
+      <td>Airports &amp; Air Services</td>
+      <td>3.57</td>
+      <td>23.20</td>
+      <td>10000523.0</td>
+      <td>3.96</td>
+      <td>8.85</td>
+      <td>1.66</td>
+      <td>9.18</td>
+      <td>57.39</td>
+      <td>30.63</td>
+      <td>36.79</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.87</td>
+      <td>2528034.22</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>76.79</td>
+      <td>94</td>
+      <td>92</td>
+      <td>92</td>
+      <td>79</td>
+      <td>99</td>
+      <td>100</td>
+      <td>21.22</td>
+      <td>9.31</td>
+      <td>19.29</td>
+      <td>20.30</td>
+      <td>16.82</td>
+      <td>37.94</td>
+      <td>3.34</td>
+      <td>3.34</td>
+      <td>NaN</td>
+      <td>-0.95</td>
+      <td>NaN</td>
+      <td>11.90</td>
+      <td>-0.30</td>
+      <td>0.10</td>
+      <td>-0.14</td>
+      <td>0.21</td>
+      <td>0.58</td>
+      <td>0.00</td>
+      <td>54.22</td>
+      <td>51.0</td>
+      <td>7.798550e+09</td>
+      <td>2.269130e+08</td>
+      <td>1.941262e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2002-11-18 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>0973</td>
+      <td>0973.HK</td>
+      <td>L’Occitane International SA</td>
+      <td>Consumer Defensive</td>
+      <td>Household &amp; Personal Products</td>
+      <td>-0.82</td>
+      <td>24.20</td>
+      <td>1222953.0</td>
+      <td>2.21</td>
+      <td>4.34</td>
+      <td>1.03</td>
+      <td>11.26</td>
+      <td>15.24</td>
+      <td>-2.02</td>
+      <td>1.26</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.07</td>
+      <td>553990.02</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>721.65</td>
+      <td>68</td>
+      <td>58</td>
+      <td>70</td>
+      <td>33</td>
+      <td>32</td>
+      <td>46</td>
+      <td>22.83</td>
+      <td>6.01</td>
+      <td>22.11</td>
+      <td>9.44</td>
+      <td>21.62</td>
+      <td>11.93</td>
+      <td>0.34</td>
+      <td>0.33</td>
+      <td>NaN</td>
+      <td>0.05</td>
+      <td>NaN</td>
+      <td>0.16</td>
+      <td>0.18</td>
+      <td>0.18</td>
+      <td>0.18</td>
+      <td>0.09</td>
+      <td>0.13</td>
+      <td>72.85</td>
+      <td>21.61</td>
+      <td>106.0</td>
+      <td>3.057891e+10</td>
+      <td>1.470140e+09</td>
+      <td>3.997887e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2010-05-07 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>1385</td>
+      <td>1385.HK</td>
+      <td>Shanghai Fudan Microelectronics Group Co Ltd</td>
+      <td>Technology</td>
+      <td>Semiconductors</td>
+      <td>-5.29</td>
+      <td>33.10</td>
+      <td>4073856.0</td>
+      <td>0.89</td>
+      <td>6.24</td>
+      <td>2.42</td>
+      <td>-9.19</td>
+      <td>-9.81</td>
+      <td>-11.85</td>
+      <td>27.55</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.36</td>
+      <td>4586628.96</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>6.0</td>
+      <td>97.01</td>
+      <td>10</td>
+      <td>33</td>
+      <td>87</td>
+      <td>25</td>
+      <td>13</td>
+      <td>3</td>
+      <td>35.34</td>
+      <td>-6.34</td>
+      <td>36.18</td>
+      <td>-8.52</td>
+      <td>36.13</td>
+      <td>-8.39</td>
+      <td>0.70</td>
+      <td>0.58</td>
+      <td>NaN</td>
+      <td>0.62</td>
+      <td>NaN</td>
+      <td>0.25</td>
+      <td>0.42</td>
+      <td>0.29</td>
+      <td>0.29</td>
+      <td>0.39</td>
+      <td>0.19</td>
+      <td>0.09</td>
+      <td>39.06</td>
+      <td>58.0</td>
+      <td>5.920863e+10</td>
+      <td>2.843300e+08</td>
+      <td>4.449544e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2000-08-04 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>1548</td>
+      <td>1548.HK</td>
+      <td>Genscript Biotech Corp</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>0.72</td>
+      <td>21.00</td>
+      <td>17675480.0</td>
+      <td>1.65</td>
+      <td>7.27</td>
+      <td>1.40</td>
+      <td>6.28</td>
+      <td>-9.87</td>
+      <td>-9.29</td>
+      <td>-21.35</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.41</td>
+      <td>10683973.38</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>106.35</td>
+      <td>10</td>
+      <td>39</td>
+      <td>33</td>
+      <td>67</td>
+      <td>32</td>
+      <td>13</td>
+      <td>20.11</td>
+      <td>4.41</td>
+      <td>20.11</td>
+      <td>4.43</td>
+      <td>19.35</td>
+      <td>8.52</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.14</td>
+      <td>NaN</td>
+      <td>1.44</td>
+      <td>0.33</td>
+      <td>0.50</td>
+      <td>0.37</td>
+      <td>0.41</td>
+      <td>0.52</td>
+      <td>38.34</td>
+      <td>24.19</td>
+      <td>194.0</td>
+      <td>4.774099e+10</td>
+      <td>2.107770e+09</td>
+      <td>1.136291e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2015-12-30 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>2099</td>
+      <td>CGG.TO</td>
+      <td>China Gold International Resources</td>
+      <td>Basic Materials</td>
+      <td>Other Precious Metals &amp; Mining</td>
+      <td>-3.04</td>
+      <td>22.30</td>
+      <td>630600.0</td>
+      <td>0.73</td>
+      <td>4.97</td>
+      <td>1.05</td>
+      <td>1.83</td>
+      <td>8.52</td>
+      <td>1.36</td>
+      <td>-9.90</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.16</td>
+      <td>863291.30</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>275.31</td>
+      <td>53</td>
+      <td>66</td>
+      <td>69</td>
+      <td>56</td>
+      <td>34</td>
+      <td>39</td>
+      <td>22.24</td>
+      <td>0.26</td>
+      <td>21.53</td>
+      <td>3.58</td>
+      <td>20.06</td>
+      <td>11.14</td>
+      <td>-0.19</td>
+      <td>-0.19</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>-0.04</td>
+      <td>0.11</td>
+      <td>0.11</td>
+      <td>0.11</td>
+      <td>0.06</td>
+      <td>40.04</td>
+      <td>4.47</td>
+      <td>22.0</td>
+      <td>1.454839e+09</td>
+      <td>3.964140e+08</td>
+      <td>2.376738e+08</td>
+      <td>40288.0</td>
+      <td>4.44</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2003-10-09 13:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>6060</td>
+      <td>6060.HK</td>
+      <td>ZhongAn Online P &amp; C Insurance Co Ltd</td>
+      <td>Financial Services</td>
+      <td>Insurance—Property &amp; Casualty</td>
+      <td>-4.54</td>
+      <td>21.05</td>
+      <td>4200389.0</td>
+      <td>1.00</td>
+      <td>6.14</td>
+      <td>1.24</td>
+      <td>4.73</td>
+      <td>22.53</td>
+      <td>-5.18</td>
+      <td>-22.61</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.06</td>
+      <td>4207624.34</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>7.0</td>
+      <td>199.98</td>
+      <td>80</td>
+      <td>50</td>
+      <td>43</td>
+      <td>80</td>
+      <td>70</td>
+      <td>56</td>
+      <td>20.53</td>
+      <td>2.52</td>
+      <td>19.33</td>
+      <td>8.91</td>
+      <td>17.86</td>
+      <td>17.85</td>
+      <td>5.47</td>
+      <td>5.47</td>
+      <td>NaN</td>
+      <td>-0.89</td>
+      <td>NaN</td>
+      <td>7.70</td>
+      <td>0.15</td>
+      <td>0.14</td>
+      <td>0.04</td>
+      <td>0.75</td>
+      <td>0.16</td>
+      <td>51.30</td>
+      <td>10.11</td>
+      <td>157.0</td>
+      <td>2.619202e+10</td>
+      <td>1.419810e+09</td>
+      <td>8.414238e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2017-09-28 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>0772</td>
+      <td>0772.HK</td>
+      <td>China Literature Ltd</td>
+      <td>Communication Services</td>
+      <td>Internet Content &amp; Information</td>
+      <td>-4.98</td>
+      <td>26.70</td>
+      <td>5327342.0</td>
+      <td>1.07</td>
+      <td>6.50</td>
+      <td>1.76</td>
+      <td>-4.13</td>
+      <td>14.10</td>
+      <td>-7.93</td>
+      <td>-26.95</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.99</td>
+      <td>4973993.06</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>79.96</td>
+      <td>66</td>
+      <td>43</td>
+      <td>29</td>
+      <td>11</td>
+      <td>28</td>
+      <td>18</td>
+      <td>27.32</td>
+      <td>-2.28</td>
+      <td>26.35</td>
+      <td>1.33</td>
+      <td>23.68</td>
+      <td>12.76</td>
+      <td>-0.79</td>
+      <td>-0.79</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>-0.06</td>
+      <td>NaN</td>
+      <td>0.02</td>
+      <td>NaN</td>
+      <td>-0.08</td>
+      <td>60.99</td>
+      <td>14.73</td>
+      <td>183.0</td>
+      <td>2.480358e+10</td>
+      <td>1.016540e+09</td>
+      <td>3.977248e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2017-11-08 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>1833</td>
+      <td>1833.HK</td>
+      <td>Ping An Healthcare and Technology Company Ltd</td>
+      <td>Healthcare</td>
+      <td>Health Information Services</td>
+      <td>-3.47</td>
+      <td>27.85</td>
+      <td>55252544.0</td>
+      <td>4.58</td>
+      <td>10.02</td>
+      <td>2.49</td>
+      <td>43.11</td>
+      <td>66.97</td>
+      <td>33.57</td>
+      <td>27.17</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.27</td>
+      <td>12059482.16</td>
+      <td>False</td>
+      <td>3.0</td>
+      <td>7.0</td>
+      <td>39.56</td>
+      <td>96</td>
+      <td>92</td>
+      <td>93</td>
+      <td>93</td>
+      <td>95</td>
+      <td>77</td>
+      <td>24.21</td>
+      <td>15.03</td>
+      <td>21.09</td>
+      <td>32.03</td>
+      <td>17.08</td>
+      <td>63.10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.30</td>
+      <td>NaN</td>
+      <td>0.34</td>
+      <td>-0.26</td>
+      <td>-0.02</td>
+      <td>-0.15</td>
+      <td>NaN</td>
+      <td>0.18</td>
+      <td>56.27</td>
+      <td>13.37</td>
+      <td>187.0</td>
+      <td>1.854987e+10</td>
+      <td>1.118810e+09</td>
+      <td>4.770954e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2018-05-04 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>6160</td>
+      <td>6160.HK</td>
+      <td>Beigene Ltd</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>-6.22</td>
+      <td>108.60</td>
+      <td>1738292.0</td>
+      <td>1.38</td>
+      <td>5.24</td>
+      <td>6.49</td>
+      <td>-5.81</td>
+      <td>-5.24</td>
+      <td>9.64</td>
+      <td>10.59</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.26</td>
+      <td>1261660.60</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>43.88</td>
+      <td>17</td>
+      <td>80</td>
+      <td>82</td>
+      <td>27</td>
+      <td>90</td>
+      <td>66</td>
+      <td>114.55</td>
+      <td>-5.19</td>
+      <td>113.31</td>
+      <td>-4.16</td>
+      <td>103.64</td>
+      <td>4.78</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.12</td>
+      <td>NaN</td>
+      <td>0.28</td>
+      <td>0.66</td>
+      <td>NaN</td>
+      <td>0.80</td>
+      <td>NaN</td>
+      <td>-0.02</td>
+      <td>25.32</td>
+      <td>28.59</td>
+      <td>124.0</td>
+      <td>1.610121e+11</td>
+      <td>1.349640e+09</td>
+      <td>5.536078e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2018-08-08 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>6098</td>
+      <td>6098.HK</td>
+      <td>Country Garden Services Holdings Co Ltd</td>
+      <td>Real Estate</td>
+      <td>Real Estate Services</td>
+      <td>-10.48</td>
+      <td>20.50</td>
+      <td>88172096.0</td>
+      <td>1.43</td>
+      <td>12.70</td>
+      <td>2.14</td>
+      <td>7.22</td>
+      <td>97.88</td>
+      <td>37.03</td>
+      <td>-34.71</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.49</td>
+      <td>61531873.34</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>30.91</td>
+      <td>98</td>
+      <td>93</td>
+      <td>64</td>
+      <td>100</td>
+      <td>57</td>
+      <td>28</td>
+      <td>19.88</td>
+      <td>3.14</td>
+      <td>17.54</td>
+      <td>16.88</td>
+      <td>13.06</td>
+      <td>57.02</td>
+      <td>0.22</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.32</td>
+      <td>0.74</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.36</td>
+      <td>43.49</td>
+      <td>20.91</td>
+      <td>325.0</td>
+      <td>4.445785e+10</td>
+      <td>3.373130e+09</td>
+      <td>1.902120e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2018-06-19 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>3690</td>
+      <td>3690.HK</td>
+      <td>Meituan</td>
+      <td>Consumer Cyclical</td>
+      <td>Internet Retail</td>
+      <td>-3.62</td>
+      <td>167.50</td>
+      <td>47537000.0</td>
+      <td>1.17</td>
+      <td>6.91</td>
+      <td>11.68</td>
+      <td>2.38</td>
+      <td>12.57</td>
+      <td>-2.67</td>
+      <td>-17.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.01</td>
+      <td>40570200.16</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>107.91</td>
+      <td>63</td>
+      <td>56</td>
+      <td>62</td>
+      <td>93</td>
+      <td>95</td>
+      <td>77</td>
+      <td>163.21</td>
+      <td>2.63</td>
+      <td>156.64</td>
+      <td>6.93</td>
+      <td>151.34</td>
+      <td>10.68</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.10</td>
+      <td>0.86</td>
+      <td>1.01</td>
+      <td>5.81</td>
+      <td>0.16</td>
+      <td>0.13</td>
+      <td>0.15</td>
+      <td>0.16</td>
+      <td>0.28</td>
+      <td>20.13</td>
+      <td>39.58</td>
+      <td>641.0</td>
+      <td>9.877294e+11</td>
+      <td>5.510530e+09</td>
+      <td>4.377958e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2018-09-20 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>1772</td>
+      <td>1772.HK</td>
+      <td>Ganfeng Lithium Co Ltd</td>
+      <td>Basic Materials</td>
+      <td>Chemicals</td>
+      <td>-2.31</td>
+      <td>67.65</td>
+      <td>5835269.0</td>
+      <td>1.19</td>
+      <td>4.07</td>
+      <td>2.45</td>
+      <td>-0.22</td>
+      <td>2.58</td>
+      <td>2.81</td>
+      <td>-13.11</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.32</td>
+      <td>4910989.38</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>294.66</td>
+      <td>37</td>
+      <td>69</td>
+      <td>57</td>
+      <td>56</td>
+      <td>34</td>
+      <td>39</td>
+      <td>67.24</td>
+      <td>0.61</td>
+      <td>65.05</td>
+      <td>4.00</td>
+      <td>59.46</td>
+      <td>13.77</td>
+      <td>6.14</td>
+      <td>6.19</td>
+      <td>3.82</td>
+      <td>2.45</td>
+      <td>1.22</td>
+      <td>-0.02</td>
+      <td>3.40</td>
+      <td>3.09</td>
+      <td>2.49</td>
+      <td>NaN</td>
+      <td>0.27</td>
+      <td>0.01</td>
+      <td>41.94</td>
+      <td>307.0</td>
+      <td>1.818246e+11</td>
+      <td>4.035740e+08</td>
+      <td>1.447067e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2018-10-11 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>6862</td>
+      <td>6862.HK</td>
+      <td>Haidilao International Holding Ltd</td>
+      <td>Consumer Cyclical</td>
+      <td>Restaurants</td>
+      <td>-3.91</td>
+      <td>20.90</td>
+      <td>70414544.0</td>
+      <td>2.91</td>
+      <td>9.26</td>
+      <td>1.81</td>
+      <td>9.31</td>
+      <td>37.32</td>
+      <td>27.75</td>
+      <td>31.61</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.05</td>
+      <td>24180193.02</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>6.0</td>
+      <td>62.23</td>
+      <td>90</td>
+      <td>91</td>
+      <td>92</td>
+      <td>84</td>
+      <td>82</td>
+      <td>74</td>
+      <td>19.31</td>
+      <td>8.22</td>
+      <td>17.48</td>
+      <td>19.58</td>
+      <td>15.40</td>
+      <td>35.75</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.12</td>
+      <td>NaN</td>
+      <td>3.36</td>
+      <td>-0.17</td>
+      <td>0.06</td>
+      <td>-0.10</td>
+      <td>NaN</td>
+      <td>0.23</td>
+      <td>72.91</td>
+      <td>6.74</td>
+      <td>185.0</td>
+      <td>8.561664e+10</td>
+      <td>5.574000e+09</td>
+      <td>1.504813e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2018-09-26 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>1801</td>
+      <td>1801.HK</td>
+      <td>Innovent Biologics Inc</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>-2.65</td>
+      <td>27.60</td>
+      <td>16560126.0</td>
+      <td>1.22</td>
+      <td>7.05</td>
+      <td>2.20</td>
+      <td>-9.95</td>
+      <td>-17.24</td>
+      <td>-4.66</td>
+      <td>-1.25</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.17</td>
+      <td>13563644.16</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>93.40</td>
+      <td>5</td>
+      <td>51</td>
+      <td>59</td>
+      <td>27</td>
+      <td>90</td>
+      <td>66</td>
+      <td>28.76</td>
+      <td>-4.04</td>
+      <td>29.52</td>
+      <td>-6.50</td>
+      <td>28.58</td>
+      <td>-3.43</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.01</td>
+      <td>NaN</td>
+      <td>0.29</td>
+      <td>0.15</td>
+      <td>0.26</td>
+      <td>0.09</td>
+      <td>NaN</td>
+      <td>0.40</td>
+      <td>7.16</td>
+      <td>48.40</td>
+      <td>258.0</td>
+      <td>4.820573e+10</td>
+      <td>1.467450e+09</td>
+      <td>1.266832e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2018-10-31 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>3668</td>
+      <td>YAL.AX</td>
+      <td>Yancoal Australia Ltd</td>
+      <td>Energy</td>
+      <td>Thermal Coal</td>
+      <td>3.45</td>
+      <td>29.95</td>
+      <td>2083684.0</td>
+      <td>0.75</td>
+      <td>4.43</td>
+      <td>1.37</td>
+      <td>1.01</td>
+      <td>14.97</td>
+      <td>-17.27</td>
+      <td>-11.13</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.74</td>
+      <td>2772426.68</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>83.21</td>
+      <td>68</td>
+      <td>22</td>
+      <td>41</td>
+      <td>31</td>
+      <td>64</td>
+      <td>88</td>
+      <td>28.69</td>
+      <td>4.38</td>
+      <td>27.87</td>
+      <td>7.46</td>
+      <td>27.61</td>
+      <td>8.49</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>1.69</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.20</td>
+      <td>82.21</td>
+      <td>0.20</td>
+      <td>10.0</td>
+      <td>6.575792e+09</td>
+      <td>1.320440e+09</td>
+      <td>2.306812e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2012-06-28 00:00:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>2359</td>
+      <td>2359.HK</td>
+      <td>WuXi AppTec Co Ltd H</td>
+      <td>Healthcare</td>
+      <td>Diagnostics &amp; Research</td>
+      <td>-2.87</td>
+      <td>74.50</td>
+      <td>2452340.0</td>
+      <td>0.72</td>
+      <td>4.86</td>
+      <td>4.05</td>
+      <td>-2.99</td>
+      <td>-0.47</td>
+      <td>-8.02</td>
+      <td>-30.44</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.73</td>
+      <td>3399051.40</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>617.46</td>
+      <td>27</td>
+      <td>42</td>
+      <td>28</td>
+      <td>67</td>
+      <td>32</td>
+      <td>13</td>
+      <td>76.42</td>
+      <td>-2.51</td>
+      <td>76.32</td>
+      <td>-2.39</td>
+      <td>71.41</td>
+      <td>4.33</td>
+      <td>2.09</td>
+      <td>1.72</td>
+      <td>NaN</td>
+      <td>0.55</td>
+      <td>1.02</td>
+      <td>0.14</td>
+      <td>0.78</td>
+      <td>NaN</td>
+      <td>0.51</td>
+      <td>0.49</td>
+      <td>0.19</td>
+      <td>0.01</td>
+      <td>66.74</td>
+      <td>324.0</td>
+      <td>2.707670e+11</td>
+      <td>3.952650e+08</td>
+      <td>2.098789e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2018-12-13 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>1877</td>
+      <td>1877.HK</td>
+      <td>Shanghai Junshi Biosciences Co Ltd</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>-0.82</td>
+      <td>30.20</td>
+      <td>3528200.0</td>
+      <td>0.80</td>
+      <td>9.25</td>
+      <td>2.63</td>
+      <td>-12.46</td>
+      <td>-8.07</td>
+      <td>8.44</td>
+      <td>-33.11</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.32</td>
+      <td>4424736.98</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>134.57</td>
+      <td>12</td>
+      <td>78</td>
+      <td>37</td>
+      <td>27</td>
+      <td>90</td>
+      <td>66</td>
+      <td>31.65</td>
+      <td>-4.59</td>
+      <td>31.93</td>
+      <td>-5.41</td>
+      <td>29.32</td>
+      <td>2.99</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.55</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.53</td>
+      <td>34.88</td>
+      <td>67.0</td>
+      <td>5.582708e+10</td>
+      <td>2.192960e+08</td>
+      <td>5.954362e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2018-12-24 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>1797</td>
+      <td>1797.HK</td>
+      <td>Koolearn Technology Holding Limited</td>
+      <td>Consumer Defensive</td>
+      <td>Education &amp; Training Services</td>
+      <td>-1.40</td>
+      <td>42.30</td>
+      <td>11352200.0</td>
+      <td>0.66</td>
+      <td>6.91</td>
+      <td>2.74</td>
+      <td>3.17</td>
+      <td>-0.47</td>
+      <td>24.59</td>
+      <td>846.31</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.52</td>
+      <td>17315640.00</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>23.00</td>
+      <td>27</td>
+      <td>90</td>
+      <td>99</td>
+      <td>23</td>
+      <td>74</td>
+      <td>97</td>
+      <td>40.85</td>
+      <td>3.56</td>
+      <td>39.79</td>
+      <td>6.31</td>
+      <td>37.01</td>
+      <td>14.28</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.25</td>
+      <td>NaN</td>
+      <td>0.41</td>
+      <td>-0.15</td>
+      <td>2.58</td>
+      <td>2.58</td>
+      <td>NaN</td>
+      <td>0.38</td>
+      <td>60.20</td>
+      <td>5.54</td>
+      <td>47.0</td>
+      <td>4.002880e+10</td>
+      <td>1.000720e+09</td>
+      <td>3.983082e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2019-03-28 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>6185</td>
+      <td>6185.HK</td>
+      <td>Cansino Biologics Inc.</td>
+      <td>Healthcare</td>
+      <td>Drug Manufacturers—Specialty &amp; Generic</td>
+      <td>0.24</td>
+      <td>83.00</td>
+      <td>6411816.0</td>
+      <td>1.14</td>
+      <td>12.58</td>
+      <td>10.43</td>
+      <td>-16.54</td>
+      <td>-26.68</td>
+      <td>57.79</td>
+      <td>0.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.32</td>
+      <td>5624774.16</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>22.46</td>
+      <td>1</td>
+      <td>97</td>
+      <td>90</td>
+      <td>77</td>
+      <td>97</td>
+      <td>85</td>
+      <td>91.40</td>
+      <td>-9.19</td>
+      <td>94.85</td>
+      <td>-12.49</td>
+      <td>79.44</td>
+      <td>4.48</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.65</td>
+      <td>-0.82</td>
+      <td>-0.30</td>
+      <td>-0.92</td>
+      <td>-0.02</td>
+      <td>-0.57</td>
+      <td>-0.64</td>
+      <td>0.08</td>
+      <td>26.73</td>
+      <td>39.17</td>
+      <td>168.0</td>
+      <td>3.935056e+10</td>
+      <td>1.147790e+08</td>
+      <td>1.263346e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2019-03-28 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>1876</td>
+      <td>1876.HK</td>
+      <td>Budweiser Brewing Company</td>
+      <td>Consumer Defensive</td>
+      <td>Beverages—Brewers</td>
+      <td>-2.85</td>
+      <td>23.90</td>
+      <td>10952075.0</td>
+      <td>1.10</td>
+      <td>4.80</td>
+      <td>1.13</td>
+      <td>6.70</td>
+      <td>26.05</td>
+      <td>13.00</td>
+      <td>10.90</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.18</td>
+      <td>9982051.52</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>167.20</td>
+      <td>83</td>
+      <td>83</td>
+      <td>83</td>
+      <td>48</td>
+      <td>31</td>
+      <td>53</td>
+      <td>23.05</td>
+      <td>3.68</td>
+      <td>21.78</td>
+      <td>9.71</td>
+      <td>20.09</td>
+      <td>18.98</td>
+      <td>-0.14</td>
+      <td>-0.14</td>
+      <td>0.00</td>
+      <td>0.03</td>
+      <td>-0.11</td>
+      <td>0.17</td>
+      <td>-0.01</td>
+      <td>-0.05</td>
+      <td>-0.00</td>
+      <td>0.05</td>
+      <td>0.09</td>
+      <td>87.22</td>
+      <td>7.08</td>
+      <td>280.0</td>
+      <td>2.648600e+11</td>
+      <td>1.324300e+10</td>
+      <td>1.669014e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2019-09-30 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>6855</td>
+      <td>6855.HK</td>
+      <td>Ascentage Pharma Grp International</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>4.53</td>
+      <td>21.90</td>
+      <td>3189067.0</td>
+      <td>2.31</td>
+      <td>8.46</td>
+      <td>1.70</td>
+      <td>-0.23</td>
+      <td>18.38</td>
+      <td>43.51</td>
+      <td>27.33</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.99</td>
+      <td>1378363.28</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>127.66</td>
+      <td>75</td>
+      <td>95</td>
+      <td>94</td>
+      <td>27</td>
+      <td>90</td>
+      <td>66</td>
+      <td>20.70</td>
+      <td>5.79</td>
+      <td>19.35</td>
+      <td>13.15</td>
+      <td>16.38</td>
+      <td>33.73</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.08</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>6.39</td>
+      <td>6.37</td>
+      <td>6.27</td>
+      <td>NaN</td>
+      <td>1.17</td>
+      <td>30.84</td>
+      <td>12.36</td>
+      <td>32.0</td>
+      <td>4.730294e+09</td>
+      <td>2.636730e+08</td>
+      <td>1.759618e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2019-10-28 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>3759</td>
+      <td>3759.HK</td>
+      <td>Pharmaron Beijing Co Ltd</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>-5.85</td>
+      <td>44.25</td>
+      <td>2071850.0</td>
+      <td>0.81</td>
+      <td>7.39</td>
+      <td>3.16</td>
+      <td>-0.34</td>
+      <td>16.14</td>
+      <td>-8.39</td>
+      <td>-39.71</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.68</td>
+      <td>2548827.68</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>6.0</td>
+      <td>283.18</td>
+      <td>71</td>
+      <td>41</td>
+      <td>25</td>
+      <td>67</td>
+      <td>32</td>
+      <td>13</td>
+      <td>45.13</td>
+      <td>-1.95</td>
+      <td>43.09</td>
+      <td>2.70</td>
+      <td>37.84</td>
+      <td>16.93</td>
+      <td>-0.21</td>
+      <td>-0.20</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.37</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>82.44</td>
+      <td>226.0</td>
+      <td>7.971122e+10</td>
+      <td>2.010250e+08</td>
+      <td>7.217870e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2019-11-28 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>9988</td>
+      <td>9988.HK</td>
+      <td>Alibaba Group Holding Ltd</td>
+      <td>Consumer Cyclical</td>
+      <td>Internet Retail</td>
+      <td>-5.34</td>
+      <td>85.05</td>
+      <td>83595456.0</td>
+      <td>1.15</td>
+      <td>5.68</td>
+      <td>4.86</td>
+      <td>6.45</td>
+      <td>26.75</td>
+      <td>-2.69</td>
+      <td>-23.58</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.05</td>
+      <td>72863723.28</td>
+      <td>False</td>
+      <td>3.0</td>
+      <td>7.0</td>
+      <td>25.66</td>
+      <td>84</td>
+      <td>56</td>
+      <td>48</td>
+      <td>93</td>
+      <td>95</td>
+      <td>77</td>
+      <td>83.68</td>
+      <td>1.64</td>
+      <td>79.13</td>
+      <td>7.48</td>
+      <td>73.99</td>
+      <td>14.94</td>
+      <td>-0.50</td>
+      <td>-0.48</td>
+      <td>-0.18</td>
+      <td>-0.08</td>
+      <td>-0.12</td>
+      <td>0.13</td>
+      <td>-0.00</td>
+      <td>NaN</td>
+      <td>-0.00</td>
+      <td>NaN</td>
+      <td>0.11</td>
+      <td>29.97</td>
+      <td>20.73</td>
+      <td>722.0</td>
+      <td>1.499565e+12</td>
+      <td>2.118030e+10</td>
+      <td>1.869840e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2019-11-26 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>6049</td>
+      <td>6049.HK</td>
+      <td>Poly Property Development Co Ltd</td>
+      <td>Real Estate</td>
+      <td>Real Estate Services</td>
+      <td>-7.71</td>
+      <td>44.30</td>
+      <td>2487800.0</td>
+      <td>0.87</td>
+      <td>7.81</td>
+      <td>3.28</td>
+      <td>-3.70</td>
+      <td>29.53</td>
+      <td>-5.34</td>
+      <td>-14.89</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.62</td>
+      <td>2848848.12</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>9.0</td>
+      <td>53.41</td>
+      <td>86</td>
+      <td>49</td>
+      <td>47</td>
+      <td>100</td>
+      <td>57</td>
+      <td>28</td>
+      <td>45.21</td>
+      <td>-2.00</td>
+      <td>42.93</td>
+      <td>3.20</td>
+      <td>39.23</td>
+      <td>12.93</td>
+      <td>0.28</td>
+      <td>0.28</td>
+      <td>NaN</td>
+      <td>0.20</td>
+      <td>NaN</td>
+      <td>0.26</td>
+      <td>0.25</td>
+      <td>0.27</td>
+      <td>0.21</td>
+      <td>NaN</td>
+      <td>0.26</td>
+      <td>4.36</td>
+      <td>53.71</td>
+      <td>92.0</td>
+      <td>2.146932e+10</td>
+      <td>1.533330e+08</td>
+      <td>1.521484e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2019-12-19 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>9926</td>
+      <td>9926.HK</td>
+      <td>Akeso Inc</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>18.78</td>
+      <td>37.00</td>
+      <td>58256684.0</td>
+      <td>5.26</td>
+      <td>7.95</td>
+      <td>2.84</td>
+      <td>10.45</td>
+      <td>21.31</td>
+      <td>43.97</td>
+      <td>89.74</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.79</td>
+      <td>11073495.68</td>
+      <td>True</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>39.97</td>
+      <td>78</td>
+      <td>95</td>
+      <td>97</td>
+      <td>27</td>
+      <td>90</td>
+      <td>66</td>
+      <td>33.19</td>
+      <td>11.48</td>
+      <td>32.47</td>
+      <td>13.97</td>
+      <td>29.79</td>
+      <td>24.21</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.12</td>
+      <td>0.27</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.82</td>
+      <td>38.42</td>
+      <td>17.25</td>
+      <td>122.0</td>
+      <td>2.434860e+10</td>
+      <td>8.410570e+08</td>
+      <td>4.426162e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2020-04-24 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>9923</td>
+      <td>9923.HK</td>
+      <td>Yeahka Ltd</td>
+      <td>Technology</td>
+      <td>Software—Infrastructure</td>
+      <td>-3.56</td>
+      <td>21.65</td>
+      <td>1449375.0</td>
+      <td>1.14</td>
+      <td>7.23</td>
+      <td>1.37</td>
+      <td>11.25</td>
+      <td>-4.20</td>
+      <td>17.41</td>
+      <td>-2.91</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.00</td>
+      <td>1268632.46</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>93.15</td>
+      <td>19</td>
+      <td>86</td>
+      <td>83</td>
+      <td>54</td>
+      <td>44</td>
+      <td>54</td>
+      <td>20.74</td>
+      <td>4.39</td>
+      <td>20.18</td>
+      <td>7.28</td>
+      <td>19.46</td>
+      <td>11.26</td>
+      <td>-0.75</td>
+      <td>-0.74</td>
+      <td>NaN</td>
+      <td>-0.45</td>
+      <td>NaN</td>
+      <td>0.70</td>
+      <td>0.17</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>NaN</td>
+      <td>0.30</td>
+      <td>63.10</td>
+      <td>11.34</td>
+      <td>52.0</td>
+      <td>9.627786e+09</td>
+      <td>4.478040e+08</td>
+      <td>1.181769e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2020-06-01 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>9999</td>
+      <td>9999.HK</td>
+      <td>NetEase Inc</td>
+      <td>Communication Services</td>
+      <td>Electronic Gaming &amp; Multimedia</td>
+      <td>-3.35</td>
+      <td>103.90</td>
+      <td>10051020.0</td>
+      <td>1.12</td>
+      <td>5.55</td>
+      <td>5.80</td>
+      <td>-4.94</td>
+      <td>6.02</td>
+      <td>-23.99</td>
+      <td>-37.93</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.64</td>
+      <td>8953557.92</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>38.92</td>
+      <td>45</td>
+      <td>13</td>
+      <td>16</td>
+      <td>69</td>
+      <td>17</td>
+      <td>20</td>
+      <td>106.98</td>
+      <td>-2.88</td>
+      <td>105.51</td>
+      <td>-1.52</td>
+      <td>105.24</td>
+      <td>-1.28</td>
+      <td>0.49</td>
+      <td>0.52</td>
+      <td>0.19</td>
+      <td>-0.05</td>
+      <td>-0.17</td>
+      <td>0.15</td>
+      <td>0.13</td>
+      <td>-0.01</td>
+      <td>0.01</td>
+      <td>-0.05</td>
+      <td>0.11</td>
+      <td>42.81</td>
+      <td>20.29</td>
+      <td>429.0</td>
+      <td>3.275780e+11</td>
+      <td>3.283990e+09</td>
+      <td>3.484603e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2020-06-11 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>9618</td>
+      <td>9618.HK</td>
+      <td>Jd Com Inc</td>
+      <td>Consumer Cyclical</td>
+      <td>Internet Retail</td>
+      <td>-5.94</td>
+      <td>221.80</td>
+      <td>10434201.0</td>
+      <td>0.94</td>
+      <td>6.02</td>
+      <td>14.34</td>
+      <td>1.37</td>
+      <td>24.47</td>
+      <td>-5.13</td>
+      <td>-10.92</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.02</td>
+      <td>11121780.10</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>104.96</td>
+      <td>82</td>
+      <td>50</td>
+      <td>53</td>
+      <td>93</td>
+      <td>95</td>
+      <td>77</td>
+      <td>220.02</td>
+      <td>0.81</td>
+      <td>207.90</td>
+      <td>6.69</td>
+      <td>188.11</td>
+      <td>17.91</td>
+      <td>4.51</td>
+      <td>4.48</td>
+      <td>1.40</td>
+      <td>0.49</td>
+      <td>1.85</td>
+      <td>0.32</td>
+      <td>0.05</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>0.18</td>
+      <td>8.00</td>
+      <td>25.68</td>
+      <td>671.0</td>
+      <td>6.012737e+11</td>
+      <td>2.695610e+09</td>
+      <td>1.167299e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2020-06-18 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>6078</td>
+      <td>6078.HK</td>
+      <td>Hygeia Healthcare Holdings Co Ltd</td>
+      <td>Healthcare</td>
+      <td>Medical Care Facilities</td>
+      <td>-1.07</td>
+      <td>46.10</td>
+      <td>4396016.0</td>
+      <td>1.17</td>
+      <td>6.30</td>
+      <td>3.03</td>
+      <td>-5.63</td>
+      <td>7.96</td>
+      <td>4.42</td>
+      <td>2.67</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.85</td>
+      <td>3763126.72</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>7.0</td>
+      <td>89.09</td>
+      <td>51</td>
+      <td>72</td>
+      <td>80</td>
+      <td>63</td>
+      <td>72</td>
+      <td>68</td>
+      <td>46.56</td>
+      <td>-0.99</td>
+      <td>45.44</td>
+      <td>1.46</td>
+      <td>43.34</td>
+      <td>6.37</td>
+      <td>0.14</td>
+      <td>0.13</td>
+      <td>NaN</td>
+      <td>0.25</td>
+      <td>NaN</td>
+      <td>0.30</td>
+      <td>0.64</td>
+      <td>NaN</td>
+      <td>0.32</td>
+      <td>NaN</td>
+      <td>0.27</td>
+      <td>45.47</td>
+      <td>30.28</td>
+      <td>173.0</td>
+      <td>2.784509e+10</td>
+      <td>6.167240e+08</td>
+      <td>3.352698e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2020-06-29 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>3347</td>
+      <td>3347.HK</td>
+      <td>Hangzhou Tigermed Consulting Co Ltd</td>
+      <td>Healthcare</td>
+      <td>Diagnostics &amp; Research</td>
+      <td>-4.26</td>
+      <td>69.65</td>
+      <td>715917.0</td>
+      <td>0.62</td>
+      <td>5.77</td>
+      <td>3.96</td>
+      <td>-5.50</td>
+      <td>3.88</td>
+      <td>-5.04</td>
+      <td>-14.28</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.42</td>
+      <td>1145684.78</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>7.0</td>
+      <td>538.41</td>
+      <td>40</td>
+      <td>50</td>
+      <td>50</td>
+      <td>67</td>
+      <td>32</td>
+      <td>13</td>
+      <td>72.21</td>
+      <td>-3.54</td>
+      <td>70.80</td>
+      <td>-1.62</td>
+      <td>64.88</td>
+      <td>7.35</td>
+      <td>-0.22</td>
+      <td>-0.20</td>
+      <td>NaN</td>
+      <td>-0.16</td>
+      <td>NaN</td>
+      <td>0.24</td>
+      <td>0.35</td>
+      <td>0.53</td>
+      <td>0.29</td>
+      <td>-0.17</td>
+      <td>0.26</td>
+      <td>0.00</td>
+      <td>71.76</td>
+      <td>208.0</td>
+      <td>8.602193e+10</td>
+      <td>1.231250e+08</td>
+      <td>6.168474e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2020-08-07 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>9987</td>
+      <td>YUMC</td>
+      <td>Yum China Holdings Inc</td>
+      <td>Consumer Cyclical</td>
+      <td>Restaurants</td>
+      <td>-1.05</td>
+      <td>434.60</td>
+      <td>731602.0</td>
+      <td>1.47</td>
+      <td>5.25</td>
+      <td>21.34</td>
+      <td>0.74</td>
+      <td>11.09</td>
+      <td>13.95</td>
+      <td>19.46</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.23</td>
+      <td>498587.26</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>837.84</td>
+      <td>59</td>
+      <td>84</td>
+      <td>86</td>
+      <td>84</td>
+      <td>82</td>
+      <td>74</td>
+      <td>428.66</td>
+      <td>1.38</td>
+      <td>415.18</td>
+      <td>4.68</td>
+      <td>385.48</td>
+      <td>12.74</td>
+      <td>0.98</td>
+      <td>1.04</td>
+      <td>NaN</td>
+      <td>-0.07</td>
+      <td>NaN</td>
+      <td>0.59</td>
+      <td>0.05</td>
+      <td>0.14</td>
+      <td>0.01</td>
+      <td>NaN</td>
+      <td>0.14</td>
+      <td>0.18</td>
+      <td>84.36</td>
+      <td>997.0</td>
+      <td>2.262724e+10</td>
+      <td>4.184030e+08</td>
+      <td>4.177388e+08</td>
+      <td>11719908.0</td>
+      <td>5.50</td>
+      <td>-89.1</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2016-10-17 13:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>1179</td>
+      <td>1179.HK</td>
+      <td>Huazhu Group Ltd</td>
+      <td>Consumer Cyclical</td>
+      <td>Lodging</td>
+      <td>-3.56</td>
+      <td>32.55</td>
+      <td>3788400.0</td>
+      <td>1.81</td>
+      <td>6.68</td>
+      <td>2.14</td>
+      <td>5.17</td>
+      <td>20.78</td>
+      <td>23.30</td>
+      <td>20.56</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.96</td>
+      <td>2094239.60</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>84.33</td>
+      <td>78</td>
+      <td>90</td>
+      <td>88</td>
+      <td>84</td>
+      <td>82</td>
+      <td>74</td>
+      <td>30.98</td>
+      <td>5.06</td>
+      <td>29.31</td>
+      <td>11.07</td>
+      <td>26.82</td>
+      <td>21.39</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>14.00</td>
+      <td>-0.67</td>
+      <td>-0.12</td>
+      <td>6.73</td>
+      <td>-0.06</td>
+      <td>0.12</td>
+      <td>0.05</td>
+      <td>0.17</td>
+      <td>0.30</td>
+      <td>42.40</td>
+      <td>18.27</td>
+      <td>74.0</td>
+      <td>9.348842e+10</td>
+      <td>3.218190e+09</td>
+      <td>1.766049e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2020-09-22 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>2057</td>
+      <td>2057.HK</td>
+      <td>Zto Express Cayman Inc</td>
+      <td>Industrials</td>
+      <td>Integrated Freight &amp; Logistics</td>
+      <td>-0.95</td>
+      <td>197.40</td>
+      <td>360104.0</td>
+      <td>1.04</td>
+      <td>4.56</td>
+      <td>8.69</td>
+      <td>1.91</td>
+      <td>30.90</td>
+      <td>-3.89</td>
+      <td>-8.61</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.68</td>
+      <td>345255.86</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>1195.76</td>
+      <td>87</td>
+      <td>53</td>
+      <td>58</td>
+      <td>75</td>
+      <td>37</td>
+      <td>43</td>
+      <td>192.39</td>
+      <td>2.60</td>
+      <td>182.22</td>
+      <td>8.33</td>
+      <td>172.55</td>
+      <td>14.40</td>
+      <td>0.40</td>
+      <td>0.43</td>
+      <td>0.33</td>
+      <td>0.24</td>
+      <td>0.07</td>
+      <td>0.29</td>
+      <td>0.18</td>
+      <td>0.00</td>
+      <td>0.13</td>
+      <td>-0.02</td>
+      <td>0.17</td>
+      <td>27.12</td>
+      <td>3.54</td>
+      <td>74.0</td>
+      <td>1.288285e+11</td>
+      <td>6.036330e+08</td>
+      <td>4.128424e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2020-09-29 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>9688</td>
+      <td>9688.HK</td>
+      <td>Zai Lab Ltd</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>-6.25</td>
+      <td>25.50</td>
+      <td>2052900.0</td>
+      <td>1.17</td>
+      <td>6.31</td>
+      <td>1.82</td>
+      <td>-6.25</td>
+      <td>3.45</td>
+      <td>-34.36</td>
+      <td>12.33</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.25</td>
+      <td>1749190.20</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>47.33</td>
+      <td>39</td>
+      <td>6</td>
+      <td>29</td>
+      <td>27</td>
+      <td>90</td>
+      <td>66</td>
+      <td>27.05</td>
+      <td>-5.72</td>
+      <td>26.34</td>
+      <td>-3.18</td>
+      <td>24.65</td>
+      <td>3.45</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-9.82</td>
+      <td>-0.65</td>
+      <td>-3.95</td>
+      <td>0.12</td>
+      <td>0.34</td>
+      <td>0.49</td>
+      <td>0.56</td>
+      <td>0.49</td>
+      <td>0.86</td>
+      <td>1.77</td>
+      <td>40.31</td>
+      <td>74.0</td>
+      <td>2.388972e+10</td>
+      <td>9.790870e+08</td>
+      <td>8.278683e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2020-09-28 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>9995</td>
+      <td>9995.HK</td>
+      <td>Remegen Co Ltd</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>0.74</td>
+      <td>47.35</td>
+      <td>4926000.0</td>
+      <td>1.80</td>
+      <td>7.43</td>
+      <td>3.37</td>
+      <td>-4.25</td>
+      <td>-9.20</td>
+      <td>23.63</td>
+      <td>32.26</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.40</td>
+      <td>2732935.12</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>100.42</td>
+      <td>11</td>
+      <td>90</td>
+      <td>86</td>
+      <td>27</td>
+      <td>90</td>
+      <td>66</td>
+      <td>48.73</td>
+      <td>-2.84</td>
+      <td>49.38</td>
+      <td>-4.11</td>
+      <td>46.46</td>
+      <td>1.92</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-3.72</td>
+      <td>NaN</td>
+      <td>0.47</td>
+      <td>1.59</td>
+      <td>-0.42</td>
+      <td>-0.42</td>
+      <td>NaN</td>
+      <td>0.94</td>
+      <td>36.12</td>
+      <td>27.92</td>
+      <td>96.0</td>
+      <td>4.444883e+10</td>
+      <td>4.898370e+08</td>
+      <td>2.744502e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2020-11-09 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>9901</td>
+      <td>9901.HK</td>
+      <td>New Oriental Education And Tech Inc</td>
+      <td>Consumer Defensive</td>
+      <td>Education &amp; Training Services</td>
+      <td>-3.89</td>
+      <td>22.25</td>
+      <td>4079460.0</td>
+      <td>1.12</td>
+      <td>6.11</td>
+      <td>1.42</td>
+      <td>-0.67</td>
+      <td>-5.32</td>
+      <td>7.23</td>
+      <td>70.89</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.48</td>
+      <td>3640338.50</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>40.32</td>
+      <td>17</td>
+      <td>76</td>
+      <td>96</td>
+      <td>23</td>
+      <td>74</td>
+      <td>97</td>
+      <td>22.07</td>
+      <td>0.82</td>
+      <td>21.44</td>
+      <td>3.77</td>
+      <td>20.23</td>
+      <td>9.97</td>
+      <td>0.09</td>
+      <td>0.09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.43</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>9.97</td>
+      <td>8.92</td>
+      <td>105.0</td>
+      <td>3.764127e+10</td>
+      <td>1.699380e+09</td>
+      <td>1.467697e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2020-11-09 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>1209</td>
+      <td>1209.HK</td>
+      <td>China Resources Mixc Lifestyle Serv</td>
+      <td>Real Estate</td>
+      <td>Real Estate Services</td>
+      <td>-2.21</td>
+      <td>37.55</td>
+      <td>4225919.0</td>
+      <td>1.11</td>
+      <td>5.29</td>
+      <td>1.70</td>
+      <td>1.62</td>
+      <td>29.93</td>
+      <td>7.90</td>
+      <td>-5.53</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.14</td>
+      <td>3798554.56</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>157.64</td>
+      <td>87</td>
+      <td>77</td>
+      <td>74</td>
+      <td>100</td>
+      <td>57</td>
+      <td>28</td>
+      <td>36.72</td>
+      <td>2.25</td>
+      <td>34.75</td>
+      <td>8.05</td>
+      <td>31.18</td>
+      <td>20.43</td>
+      <td>0.28</td>
+      <td>0.28</td>
+      <td>NaN</td>
+      <td>0.19</td>
+      <td>NaN</td>
+      <td>0.31</td>
+      <td>0.32</td>
+      <td>NaN</td>
+      <td>0.30</td>
+      <td>NaN</td>
+      <td>0.33</td>
+      <td>73.77</td>
+      <td>13.28</td>
+      <td>189.0</td>
+      <td>7.338238e+10</td>
+      <td>2.282500e+09</td>
+      <td>5.988139e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2020-12-09 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>6618</td>
+      <td>6618.HK</td>
+      <td>Jd Health International Inc</td>
+      <td>Healthcare</td>
+      <td>Medical Care Facilities</td>
+      <td>-3.81</td>
+      <td>79.60</td>
+      <td>25062316.0</td>
+      <td>2.56</td>
+      <td>7.49</td>
+      <td>5.59</td>
+      <td>16.89</td>
+      <td>47.13</td>
+      <td>56.39</td>
+      <td>52.34</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.60</td>
+      <td>9787362.92</td>
+      <td>False</td>
+      <td>3.0</td>
+      <td>7.0</td>
+      <td>102.41</td>
+      <td>93</td>
+      <td>96</td>
+      <td>96</td>
+      <td>93</td>
+      <td>95</td>
+      <td>77</td>
+      <td>73.52</td>
+      <td>8.27</td>
+      <td>66.81</td>
+      <td>19.15</td>
+      <td>54.54</td>
+      <td>45.95</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.11</td>
+      <td>NaN</td>
+      <td>0.41</td>
+      <td>0.48</td>
+      <td>0.38</td>
+      <td>0.31</td>
+      <td>NaN</td>
+      <td>0.34</td>
+      <td>68.18</td>
+      <td>9.83</td>
+      <td>260.0</td>
+      <td>1.806408e+11</td>
+      <td>3.171920e+09</td>
+      <td>1.002372e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2020-12-08 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>2269</td>
+      <td>2269.HK</td>
+      <td>WuXi Biologics</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>-4.33</td>
+      <td>50.80</td>
+      <td>36898900.0</td>
+      <td>1.03</td>
+      <td>6.40</td>
+      <td>3.10</td>
+      <td>1.30</td>
+      <td>8.55</td>
+      <td>-19.75</td>
+      <td>-28.55</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.89</td>
+      <td>35944388.08</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>98.19</td>
+      <td>53</td>
+      <td>18</td>
+      <td>24</td>
+      <td>67</td>
+      <td>32</td>
+      <td>13</td>
+      <td>51.23</td>
+      <td>-0.84</td>
+      <td>49.78</td>
+      <td>2.05</td>
+      <td>47.04</td>
+      <td>7.99</td>
+      <td>0.38</td>
+      <td>0.38</td>
+      <td>NaN</td>
+      <td>0.40</td>
+      <td>NaN</td>
+      <td>0.35</td>
+      <td>0.64</td>
+      <td>0.45</td>
+      <td>0.38</td>
+      <td>0.55</td>
+      <td>0.38</td>
+      <td>15.62</td>
+      <td>48.12</td>
+      <td>512.0</td>
+      <td>2.149871e+11</td>
+      <td>4.219570e+09</td>
+      <td>3.529538e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2017-06-13 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>6690</td>
+      <td>6690.HK</td>
+      <td>Haier Smart Home Co Ltd</td>
+      <td>Consumer Cyclical</td>
+      <td>Furnishings, Fixtures &amp; Appliances</td>
+      <td>-4.21</td>
+      <td>25.05</td>
+      <td>13049527.0</td>
+      <td>1.04</td>
+      <td>4.10</td>
+      <td>1.02</td>
+      <td>-2.15</td>
+      <td>14.38</td>
+      <td>-0.79</td>
+      <td>-2.91</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.68</td>
+      <td>12598979.28</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>483.59</td>
+      <td>67</td>
+      <td>61</td>
+      <td>67</td>
+      <td>59</td>
+      <td>36</td>
+      <td>90</td>
+      <td>25.33</td>
+      <td>-1.10</td>
+      <td>24.61</td>
+      <td>1.78</td>
+      <td>23.59</td>
+      <td>6.19</td>
+      <td>0.20</td>
+      <td>0.18</td>
+      <td>0.08</td>
+      <td>0.08</td>
+      <td>0.04</td>
+      <td>0.16</td>
+      <td>0.09</td>
+      <td>3.61</td>
+      <td>0.01</td>
+      <td>3.61</td>
+      <td>0.08</td>
+      <td>18.92</td>
+      <td>38.38</td>
+      <td>317.0</td>
+      <td>2.334766e+11</td>
+      <td>2.866970e+09</td>
+      <td>6.092782e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2020-12-23 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>1024</td>
+      <td>1024.HK</td>
+      <td>Kuaishou Technology</td>
+      <td>Communication Services</td>
+      <td>Internet Content &amp; Information</td>
+      <td>-2.83</td>
+      <td>61.85</td>
+      <td>46482108.0</td>
+      <td>1.34</td>
+      <td>8.07</td>
+      <td>4.26</td>
+      <td>9.37</td>
+      <td>35.19</td>
+      <td>-1.43</td>
+      <td>-29.19</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.35</td>
+      <td>34583354.82</td>
+      <td>False</td>
+      <td>3.0</td>
+      <td>8.0</td>
+      <td>70.37</td>
+      <td>89</td>
+      <td>59</td>
+      <td>43</td>
+      <td>91</td>
+      <td>27</td>
+      <td>4</td>
+      <td>58.88</td>
+      <td>5.04</td>
+      <td>54.48</td>
+      <td>13.53</td>
+      <td>48.64</td>
+      <td>27.16</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.77</td>
+      <td>0.67</td>
+      <td>0.92</td>
+      <td>1.01</td>
+      <td>0.13</td>
+      <td>0.03</td>
+      <td>0.06</td>
+      <td>0.04</td>
+      <td>0.19</td>
+      <td>28.15</td>
+      <td>37.24</td>
+      <td>318.0</td>
+      <td>2.056055e+11</td>
+      <td>3.526150e+09</td>
+      <td>2.433656e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2021-02-05 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>6127</td>
+      <td>6127.HK</td>
+      <td>Joinn Laboratories China Co Ltd</td>
+      <td>Healthcare</td>
+      <td>Diagnostics &amp; Research</td>
+      <td>-0.65</td>
+      <td>38.35</td>
+      <td>925620.0</td>
+      <td>0.97</td>
+      <td>7.38</td>
+      <td>2.57</td>
+      <td>6.09</td>
+      <td>13.13</td>
+      <td>-0.13</td>
+      <td>-24.80</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.21</td>
+      <td>950586.44</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>315.08</td>
+      <td>64</td>
+      <td>62</td>
+      <td>51</td>
+      <td>67</td>
+      <td>32</td>
+      <td>13</td>
+      <td>37.77</td>
+      <td>1.54</td>
+      <td>36.11</td>
+      <td>6.21</td>
+      <td>32.09</td>
+      <td>19.52</td>
+      <td>1.77</td>
+      <td>1.74</td>
+      <td>NaN</td>
+      <td>0.49</td>
+      <td>NaN</td>
+      <td>0.15</td>
+      <td>0.55</td>
+      <td>NaN</td>
+      <td>0.44</td>
+      <td>NaN</td>
+      <td>0.38</td>
+      <td>0.00</td>
+      <td>55.58</td>
+      <td>79.0</td>
+      <td>3.562911e+10</td>
+      <td>8.499660e+07</td>
+      <td>2.995104e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2021-02-26 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>9888</td>
+      <td>9888.HK</td>
+      <td>Baidu Inc</td>
+      <td>Communication Services</td>
+      <td>Internet Content &amp; Information</td>
+      <td>-3.64</td>
+      <td>111.30</td>
+      <td>12033447.0</td>
+      <td>1.51</td>
+      <td>5.14</td>
+      <td>6.17</td>
+      <td>9.55</td>
+      <td>33.05</td>
+      <td>-15.94</td>
+      <td>-25.70</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.95</td>
+      <td>7963424.92</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>7.0</td>
+      <td>34.57</td>
+      <td>88</td>
+      <td>24</td>
+      <td>26</td>
+      <td>91</td>
+      <td>27</td>
+      <td>4</td>
+      <td>106.45</td>
+      <td>4.56</td>
+      <td>99.81</td>
+      <td>11.51</td>
+      <td>96.53</td>
+      <td>15.29</td>
+      <td>-0.67</td>
+      <td>-0.73</td>
+      <td>0.02</td>
+      <td>-0.04</td>
+      <td>0.35</td>
+      <td>0.12</td>
+      <td>-0.05</td>
+      <td>NaN</td>
+      <td>-0.08</td>
+      <td>-0.04</td>
+      <td>0.12</td>
+      <td>0.00</td>
+      <td>19.04</td>
+      <td>339.0</td>
+      <td>2.362180e+11</td>
+      <td>2.205100e+09</td>
+      <td>2.752721e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2021-03-23 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>9626</td>
+      <td>9626.HK</td>
+      <td>Bilibili Inc</td>
+      <td>Communication Services</td>
+      <td>Electronic Gaming &amp; Multimedia</td>
+      <td>-3.19</td>
+      <td>154.90</td>
+      <td>8535392.0</td>
+      <td>1.82</td>
+      <td>9.14</td>
+      <td>13.24</td>
+      <td>22.16</td>
+      <td>71.92</td>
+      <td>-12.14</td>
+      <td>-33.58</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.39</td>
+      <td>4702612.54</td>
+      <td>False</td>
+      <td>3.0</td>
+      <td>9.0</td>
+      <td>49.57</td>
+      <td>97</td>
+      <td>33</td>
+      <td>26</td>
+      <td>69</td>
+      <td>17</td>
+      <td>20</td>
+      <td>138.58</td>
+      <td>11.78</td>
+      <td>121.92</td>
+      <td>27.06</td>
+      <td>104.14</td>
+      <td>48.74</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.02</td>
+      <td>-0.19</td>
+      <td>0.05</td>
+      <td>0.34</td>
+      <td>0.09</td>
+      <td>-0.02</td>
+      <td>0.05</td>
+      <td>-0.04</td>
+      <td>0.26</td>
+      <td>30.72</td>
+      <td>18.72</td>
+      <td>148.0</td>
+      <td>3.782632e+10</td>
+      <td>3.101040e+08</td>
+      <td>2.331232e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2021-03-29 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>9961</td>
+      <td>9961.HK</td>
+      <td>Trip.com Group Ltd</td>
+      <td>Consumer Cyclical</td>
+      <td>Travel Services</td>
+      <td>-4.97</td>
+      <td>248.40</td>
+      <td>2016096.0</td>
+      <td>1.14</td>
+      <td>5.75</td>
+      <td>13.81</td>
+      <td>5.43</td>
+      <td>16.84</td>
+      <td>25.45</td>
+      <td>30.05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.98</td>
+      <td>1766466.20</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>297.32</td>
+      <td>72</td>
+      <td>90</td>
+      <td>92</td>
+      <td>84</td>
+      <td>82</td>
+      <td>74</td>
+      <td>242.76</td>
+      <td>2.32</td>
+      <td>229.68</td>
+      <td>8.15</td>
+      <td>211.40</td>
+      <td>17.50</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.27</td>
+      <td>-0.38</td>
+      <td>0.14</td>
+      <td>4.25</td>
+      <td>-0.32</td>
+      <td>0.08</td>
+      <td>-0.07</td>
+      <td>-0.00</td>
+      <td>0.51</td>
+      <td>14.00</td>
+      <td>20.68</td>
+      <td>151.0</td>
+      <td>1.506838e+11</td>
+      <td>6.417540e+08</td>
+      <td>5.252120e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2021-04-19 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>6699</td>
+      <td>6699.HK</td>
+      <td>Angelalign Technology Inc</td>
+      <td>Healthcare</td>
+      <td>Medical Instruments &amp; Supplies</td>
+      <td>-1.50</td>
+      <td>118.20</td>
+      <td>1523600.0</td>
+      <td>1.88</td>
+      <td>8.92</td>
+      <td>8.88</td>
+      <td>22.30</td>
+      <td>36.88</td>
+      <td>-2.88</td>
+      <td>-17.34</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.23</td>
+      <td>809226.90</td>
+      <td>False</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>43.65</td>
+      <td>90</td>
+      <td>56</td>
+      <td>42</td>
+      <td>61</td>
+      <td>76</td>
+      <td>71</td>
+      <td>107.01</td>
+      <td>10.45</td>
+      <td>98.93</td>
+      <td>19.48</td>
+      <td>86.01</td>
+      <td>37.42</td>
+      <td>-0.23</td>
+      <td>-0.31</td>
+      <td>NaN</td>
+      <td>-0.47</td>
+      <td>NaN</td>
+      <td>0.29</td>
+      <td>-0.00</td>
+      <td>NaN</td>
+      <td>-0.09</td>
+      <td>NaN</td>
+      <td>0.21</td>
+      <td>26.96</td>
+      <td>69.84</td>
+      <td>65.0</td>
+      <td>1.562727e+10</td>
+      <td>1.687610e+08</td>
+      <td>3.532666e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2021-06-16 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>9868</td>
+      <td>9868.HK</td>
+      <td>Xpeng Inc</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Manufacturers</td>
+      <td>-5.91</td>
+      <td>43.80</td>
+      <td>38699308.0</td>
+      <td>1.52</td>
+      <td>9.98</td>
+      <td>4.09</td>
+      <td>30.16</td>
+      <td>40.61</td>
+      <td>-29.92</td>
+      <td>-58.44</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.94</td>
+      <td>25399090.50</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>6.0</td>
+      <td>19.24</td>
+      <td>91</td>
+      <td>8</td>
+      <td>4</td>
+      <td>66</td>
+      <td>41</td>
+      <td>42</td>
+      <td>39.44</td>
+      <td>11.06</td>
+      <td>35.71</td>
+      <td>22.66</td>
+      <td>34.37</td>
+      <td>27.45</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.69</td>
+      <td>0.75</td>
+      <td>0.32</td>
+      <td>0.98</td>
+      <td>NaN</td>
+      <td>0.53</td>
+      <td>-0.03</td>
+      <td>0.84</td>
+      <td>17.36</td>
+      <td>23.15</td>
+      <td>180.0</td>
+      <td>5.212797e+10</td>
+      <td>1.302080e+09</td>
+      <td>4.886147e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2021-07-07 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>2162</td>
+      <td>2162.HK</td>
+      <td>Keymed Biosciences Inc</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>-0.65</td>
+      <td>45.60</td>
+      <td>639500.0</td>
+      <td>0.68</td>
+      <td>7.01</td>
+      <td>3.39</td>
+      <td>-9.79</td>
+      <td>-5.49</td>
+      <td>28.27</td>
+      <td>55.63</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.45</td>
+      <td>936524.66</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>169.24</td>
+      <td>16</td>
+      <td>91</td>
+      <td>95</td>
+      <td>27</td>
+      <td>90</td>
+      <td>66</td>
+      <td>49.02</td>
+      <td>-6.98</td>
+      <td>49.60</td>
+      <td>-8.07</td>
+      <td>44.84</td>
+      <td>1.70</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.94</td>
+      <td>NaN</td>
+      <td>-0.36</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.05</td>
+      <td>NaN</td>
+      <td>-0.30</td>
+      <td>28.38</td>
+      <td>20.39</td>
+      <td>28.0</td>
+      <td>1.510574e+10</td>
+      <td>2.797360e+08</td>
+      <td>1.585003e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2021-07-08 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>0013</td>
+      <td>HCM.L</td>
+      <td>HUTCHMED China Ltd</td>
+      <td>Healthcare</td>
+      <td>Drug Manufacturers—Specialty &amp; Generic</td>
+      <td>-5.94</td>
+      <td>20.60</td>
+      <td>5995000.0</td>
+      <td>1.30</td>
+      <td>8.96</td>
+      <td>1.59</td>
+      <td>-3.96</td>
+      <td>32.39</td>
+      <td>8.31</td>
+      <td>13.31</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.90</td>
+      <td>4617542.90</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>95.36</td>
+      <td>88</td>
+      <td>78</td>
+      <td>67</td>
+      <td>77</td>
+      <td>97</td>
+      <td>85</td>
+      <td>20.51</td>
+      <td>0.43</td>
+      <td>18.76</td>
+      <td>9.78</td>
+      <td>15.55</td>
+      <td>32.44</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.28</td>
+      <td>NaN</td>
+      <td>-0.20</td>
+      <td>0.33</td>
+      <td>0.20</td>
+      <td>0.25</td>
+      <td>-0.33</td>
+      <td>0.12</td>
+      <td>44.53</td>
+      <td>56.66</td>
+      <td>78.0</td>
+      <td>1.419960e+09</td>
+      <td>8.647750e+08</td>
+      <td>4.403485e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2006-05-19 07:00:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>2015</td>
+      <td>2015.HK</td>
+      <td>Li Auto Inc</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Manufacturers</td>
+      <td>-1.68</td>
+      <td>87.80</td>
+      <td>12420801.0</td>
+      <td>1.08</td>
+      <td>7.38</td>
+      <td>6.17</td>
+      <td>12.49</td>
+      <td>25.52</td>
+      <td>-16.30</td>
+      <td>-25.09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.85</td>
+      <td>11503100.74</td>
+      <td>False</td>
+      <td>3.0</td>
+      <td>6.0</td>
+      <td>42.23</td>
+      <td>82</td>
+      <td>24</td>
+      <td>30</td>
+      <td>66</td>
+      <td>41</td>
+      <td>42</td>
+      <td>81.39</td>
+      <td>7.87</td>
+      <td>76.19</td>
+      <td>15.23</td>
+      <td>73.86</td>
+      <td>18.88</td>
+      <td>1.75</td>
+      <td>1.38</td>
+      <td>-41.00</td>
+      <td>-1.15</td>
+      <td>-0.85</td>
+      <td>2.91</td>
+      <td>0.73</td>
+      <td>0.71</td>
+      <td>0.60</td>
+      <td>0.69</td>
+      <td>1.03</td>
+      <td>35.55</td>
+      <td>5.30</td>
+      <td>151.0</td>
+      <td>1.399225e+11</td>
+      <td>1.595690e+09</td>
+      <td>4.857264e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2021-08-12 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>2252</td>
+      <td>2252.HK</td>
+      <td>Shanghai MicroPort MedBot Group Co Ltd</td>
+      <td>Healthcare</td>
+      <td>Medical Devices</td>
+      <td>-4.09</td>
+      <td>34.00</td>
+      <td>6157512.0</td>
+      <td>2.61</td>
+      <td>8.81</td>
+      <td>2.64</td>
+      <td>13.71</td>
+      <td>19.72</td>
+      <td>20.35</td>
+      <td>21.43</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.74</td>
+      <td>2356714.86</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>99.12</td>
+      <td>76</td>
+      <td>88</td>
+      <td>84</td>
+      <td>61</td>
+      <td>76</td>
+      <td>71</td>
+      <td>31.87</td>
+      <td>6.67</td>
+      <td>30.15</td>
+      <td>12.78</td>
+      <td>26.48</td>
+      <td>28.38</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>37.12</td>
+      <td>NaN</td>
+      <td>4.83</td>
+      <td>97.20</td>
+      <td>0.34</td>
+      <td>33.0</td>
+      <td>2.549860e+10</td>
+      <td>9.519940e+08</td>
+      <td>2.336094e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2021-11-02 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>2273</td>
+      <td>2273.HK</td>
+      <td>Gushengtang Holdings Ltd</td>
+      <td>Healthcare</td>
+      <td>Medical Care Facilities</td>
+      <td>-1.77</td>
+      <td>47.15</td>
+      <td>1930900.0</td>
+      <td>1.17</td>
+      <td>6.70</td>
+      <td>2.93</td>
+      <td>11.60</td>
+      <td>22.47</td>
+      <td>43.75</td>
+      <td>52.34</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.25</td>
+      <td>1645947.80</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>78.36</td>
+      <td>79</td>
+      <td>95</td>
+      <td>95</td>
+      <td>63</td>
+      <td>72</td>
+      <td>68</td>
+      <td>44.53</td>
+      <td>5.89</td>
+      <td>41.48</td>
+      <td>13.67</td>
+      <td>35.87</td>
+      <td>31.44</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.18</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>40.52</td>
+      <td>24.12</td>
+      <td>33.0</td>
+      <td>8.985444e+09</td>
+      <td>2.303960e+08</td>
+      <td>1.289759e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2021-12-10 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>86</th>
+      <td>6821</td>
+      <td>6821.HK</td>
+      <td>Asymchem Laboratories Tianjin Co Ltd</td>
+      <td>Healthcare</td>
+      <td>Biotechnology</td>
+      <td>-2.72</td>
+      <td>93.00</td>
+      <td>259300.0</td>
+      <td>1.26</td>
+      <td>5.03</td>
+      <td>4.31</td>
+      <td>-1.59</td>
+      <td>-5.97</td>
+      <td>-10.23</td>
+      <td>-24.87</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.02</td>
+      <td>205287.10</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>1071.97</td>
+      <td>15</td>
+      <td>37</td>
+      <td>21</td>
+      <td>77</td>
+      <td>97</td>
+      <td>85</td>
+      <td>95.14</td>
+      <td>-2.25</td>
+      <td>95.80</td>
+      <td>-2.93</td>
+      <td>94.02</td>
+      <td>-1.08</td>
+      <td>2.69</td>
+      <td>2.42</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.38</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.70</td>
+      <td>65.37</td>
+      <td>53.0</td>
+      <td>6.067590e+10</td>
+      <td>2.755330e+07</td>
+      <td>2.200619e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2021-12-10 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>87</th>
+      <td>2285</td>
+      <td>2285.HK</td>
+      <td>Chervon Holdings Ltd</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>-3.53</td>
+      <td>41.00</td>
+      <td>600853.0</td>
+      <td>1.35</td>
+      <td>7.87</td>
+      <td>2.86</td>
+      <td>-7.87</td>
+      <td>43.36</td>
+      <td>19.71</td>
+      <td>-16.67</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.09</td>
+      <td>443704.50</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>234.48</td>
+      <td>92</td>
+      <td>88</td>
+      <td>66</td>
+      <td>59</td>
+      <td>36</td>
+      <td>90</td>
+      <td>40.60</td>
+      <td>0.98</td>
+      <td>37.74</td>
+      <td>8.64</td>
+      <td>32.64</td>
+      <td>25.63</td>
+      <td>-0.26</td>
+      <td>-0.38</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>82.41</td>
+      <td>12.34</td>
+      <td>30.0</td>
+      <td>1.553994e+10</td>
+      <td>4.902190e+08</td>
+      <td>1.040391e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2021-12-30 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>6680</td>
+      <td>6680.HK</td>
+      <td>Jl Mag Rare Earth Co Ltd</td>
+      <td>Industrials</td>
+      <td>Metal Fabrication</td>
+      <td>0.22</td>
+      <td>22.85</td>
+      <td>461000.0</td>
+      <td>1.38</td>
+      <td>4.92</td>
+      <td>1.12</td>
+      <td>-4.19</td>
+      <td>-19.26</td>
+      <td>-26.17</td>
+      <td>2.93</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.81</td>
+      <td>333603.88</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1190.09</td>
+      <td>4</td>
+      <td>11</td>
+      <td>33</td>
+      <td>42</td>
+      <td>20</td>
+      <td>47</td>
+      <td>23.43</td>
+      <td>-2.47</td>
+      <td>24.12</td>
+      <td>-5.25</td>
+      <td>24.47</td>
+      <td>-6.63</td>
+      <td>0.70</td>
+      <td>0.52</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.32</td>
+      <td>0.72</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.27</td>
+      <td>40.06</td>
+      <td>33.12</td>
+      <td>13.0</td>
+      <td>2.878483e+10</td>
+      <td>1.254660e+08</td>
+      <td>3.970202e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2022-01-14 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>9866</td>
+      <td>9866.HK</td>
+      <td>NIO Inc</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Manufacturers</td>
+      <td>-4.58</td>
+      <td>98.85</td>
+      <td>1182105.0</td>
+      <td>0.85</td>
+      <td>6.80</td>
+      <td>6.75</td>
+      <td>13.49</td>
+      <td>15.95</td>
+      <td>-28.06</td>
+      <td>-38.10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.74</td>
+      <td>1387892.98</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>944.83</td>
+      <td>70</td>
+      <td>10</td>
+      <td>10</td>
+      <td>66</td>
+      <td>41</td>
+      <td>42</td>
+      <td>94.62</td>
+      <td>4.47</td>
+      <td>90.48</td>
+      <td>9.25</td>
+      <td>92.89</td>
+      <td>6.41</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.27</td>
+      <td>0.98</td>
+      <td>0.48</td>
+      <td>0.33</td>
+      <td>NaN</td>
+      <td>0.41</td>
+      <td>1.57</td>
+      <td>0.83</td>
+      <td>3.43</td>
+      <td>0.97</td>
+      <td>66.0</td>
+      <td>1.414939e+11</td>
+      <td>1.522030e+09</td>
+      <td>1.311329e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2022-03-10 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>2423</td>
+      <td>2423.HK</td>
+      <td>Ke Holdings Inc</td>
+      <td>Real Estate</td>
+      <td>Real Estate Services</td>
+      <td>-7.33</td>
+      <td>41.70</td>
+      <td>699300.0</td>
+      <td>0.99</td>
+      <td>8.03</td>
+      <td>3.84</td>
+      <td>4.77</td>
+      <td>37.62</td>
+      <td>-7.54</td>
+      <td>-1.42</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.82</td>
+      <td>706872.72</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>996.59</td>
+      <td>90</td>
+      <td>43</td>
+      <td>79</td>
+      <td>100</td>
+      <td>57</td>
+      <td>28</td>
+      <td>42.46</td>
+      <td>-1.79</td>
+      <td>39.47</td>
+      <td>5.66</td>
+      <td>36.23</td>
+      <td>15.10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.35</td>
+      <td>-0.43</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.25</td>
+      <td>41.19</td>
+      <td>0.50</td>
+      <td>23.0</td>
+      <td>1.221417e+11</td>
+      <td>3.635330e+09</td>
+      <td>7.044643e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2022-05-11 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>9696</td>
+      <td>9696.HK</td>
+      <td>Tianqi Lithium Corp</td>
+      <td>Basic Materials</td>
+      <td>Other Industrial Metals &amp; Mining</td>
+      <td>-2.74</td>
+      <td>63.90</td>
+      <td>2261680.0</td>
+      <td>1.07</td>
+      <td>5.19</td>
+      <td>3.03</td>
+      <td>-1.69</td>
+      <td>-15.92</td>
+      <td>-21.74</td>
+      <td>-22.07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.09</td>
+      <td>2110355.40</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>309.57</td>
+      <td>5</td>
+      <td>16</td>
+      <td>23</td>
+      <td>1</td>
+      <td>14</td>
+      <td>44</td>
+      <td>65.23</td>
+      <td>-2.03</td>
+      <td>66.03</td>
+      <td>-3.22</td>
+      <td>66.27</td>
+      <td>-3.58</td>
+      <td>11.73</td>
+      <td>11.22</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.80</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>28.84</td>
+      <td>24.50</td>
+      <td>26.0</td>
+      <td>1.206297e+11</td>
+      <td>1.641220e+08</td>
+      <td>6.533009e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Hong Kong</td>
+      <td>Hong Kong</td>
+      <td>2022-07-13 01:30:00</td>
+      <td>hong_kong</td>
+      <td>2022-12-07</td>
+      <td>Kristjan Kullamägi</td>
+      <td>Biggest Gainers 12M</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+            </section>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+    </div>
+</footer>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bm/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+<script>
+        $(document).ready(function () {
+            $('#data').DataTable(
+                {
+                    "scrollX": true,
+                    "dom": 'Bfrtip',
+                    "buttons": [
+                        'copy', 'csv', 'excel', 'print'
+                    ]
+
+                }
+            );
+        });
+    </script>
+    
+</body>
+
+</html>

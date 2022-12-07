@@ -1,0 +1,2251 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EOD Stock Scans</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.datatables.net/v/bm/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/sc-2.0.5/datatables.min.css" />
+
+</head >
+
+
+<body>
+    <section class="hero is-small is-dark">
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+
+                    <div class="navbar-burger" @click="showNav = !showNav" :class="{ 'is-active': showNav }">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="navbar-menu" :class="{ 'is-active': showNav }">
+                    <div class="navbar-start">
+                        
+                        <a class="navbar-item" href="../../index.html">
+                            
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-home"></i>
+                                    </span>
+                                    <span>Home</span>
+                                </span>
+                            </a>
+
+                            <div class="navbar-item has-dropdown is-hoverable has-background-dark">
+                                <a class="navbar-link">
+                                    <span>Choose Market</span>
+                                </a>
+
+                                <div class="navbar-dropdown has-background-dark">
+                                    
+
+                                    
+                                    <a class="navbar-item" href="../../australia/market_monitor.html">
+                                        <span>Australia</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../belgium/market_monitor.html">
+                                        <span>Belgium</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../canada/market_monitor.html">
+                                        <span>Canada</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../france/market_monitor.html">
+                                        <span>France</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../germany/market_monitor.html">
+                                        <span>Germany</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../hong_kong/market_monitor.html">
+                                        <span>Hong Kong</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../indonesia/market_monitor.html">
+                                        <span>Indonesia</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../italy/market_monitor.html">
+                                        <span>Italy</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../japan/market_monitor.html">
+                                        <span>Japan</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../netherlands/market_monitor.html">
+                                        <span>Netherlands</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../nordic_markets/market_monitor.html">
+                                        <span>Nordic Markets</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../poland/market_monitor.html">
+                                        <span>Poland</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../singapore/market_monitor.html">
+                                        <span>Singapore</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../united_kingdom/market_monitor.html">
+                                        <span>United Kingdom</span>
+                                        
+                                        
+
+                                    
+                                    <a class="navbar-item" href="../../united_states/market_monitor.html">
+                                        <span>United States</span>
+                                        
+                                        
+                                </div>
+                            </div>
+                    </div>
+                    <!-- <div class="navbar-end"></div>
+                    <span class="navbar-item">
+                        <a class="button is-info is-light" href="https://twitter.com/LignoL23">
+                            <span class="icon">
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                            <span>Twitter</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <a class="button  is-success is-light" href="https://www.paypal.com/paypalme/volkerlorrmann/5">
+                            <span class="icon">
+                                <i class="fab fa-paypal"></i>
+                            </span>
+                            <span>paypal.me</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
+                        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+                        <script
+                            type='text/javascript'>kofiwidget2.init('Support me', '#d6d6d6', 'W7W0ACJPB'); kofiwidget2.draw();</script>
+                    </span>
+                </div> -->
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="columns is-multiline is-mobile is-centered">
+                <div class="column is-1">
+                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDEwMCAxMDA7IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOm5vbmU7fQoJLnN0MXtmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO30KPC9zdHlsZT48dGl0bGUvPjxnPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MS44LDg0YzAuMSwwLjIsMC4xLDAuMywwLjEsMC41YzAsMy4zLDAuMiw2LjcsMC41LDEwYzIuNi0wLjEsNC45LTAuMSw3LjItMC4ydjBjMC4zLDAsMC43LDAsMSwwICAgYy0wLjMtNS0wLjQtMTAtMC41LTE1QzQ4LjQsODAuNCw0NS41LDgyLjEsNDEuOCw4NHoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTYuMyw5NGMtMC4yLDAuMS0wLjQsMC4xLTAuNSwwLjJjMS43LDAuMSw0LjMsMC4yLDcuNywwLjNjMS40LDAsMi43LDAuMSw0LDAuMWMtMC4xLTEuNC0wLjMtMi44LTAuNC00LjEgICBDMjIuNiw5Mi4xLDE4LjgsOTMuMiwxNi4zLDk0eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02Ni45LDQ3LjVjMy4xLTMuMyw2LjgtNy41LDEwLjgtMTIuN2MwLDAsMCwwLDAtMC4xYzAuNS0wLjYsMS40LTAuNywyLTAuMmMxLjcsMS41LDMuNiwyLjksNS42LDQuNCAgIGMxLDAuOCwyLjEsMS41LDMuMSwyLjJjMC4zLDAuMiwwLjYsMC4zLDEsMC4zYzAuNCwwLDAuOC0wLjIsMS4yLTAuNGMwLjMtMC4zLDAuNS0wLjcsMC41LTEuMWMwLjItNC45LDAuMy05LjksMC4zLTE1di0wLjcgICBjMC01LjYtMC4xLTExLTAuMy0xNi4zYzAtMC4yLDAtMC4zLTAuMS0wLjVjLTAuMy0xLjQtMS43LTIuMy0zLjItMkM3Ni42LDgsNjUuNSwxMC43LDU0LjUsMTMuN2MtMC4zLDAuMS0wLjYsMC4zLTAuOCwwLjUgICBjLTAuMiwwLjMtMC4zLDAuNi0wLjMsMC45YzAsMC41LDAuMywxLDAuNywxLjJjMC45LDAuNiwxLjgsMS4xLDIuNywxLjdjMi4yLDEuMyw0LjMsMi41LDYuMywzLjVjMC43LDAuNCwxLDEuMiwwLjYsMS45ICAgYy0zLjEsNi02LjYsMTEuNy0xMC42LDE3LjFjLTguNSwxMS40LTE4LDIwLTMwLDMwLjhDMTYuNyw3NywxMiw4MSw5LjQsODMuNWMtMC42LDAuNi0xLjIsMS4yLTEuNywxLjhjMC43LTAuMSwxLjQtMC4yLDIuMS0wLjQgICBjMS4xLTAuMywyLjQtMC43LDMuNi0xLjFjMi41LTAuOSw0LjktMS45LDYuMS0yLjRDMjguOSw3Ny42LDQ3LjEsNjguNiw2Ni45LDQ3LjV6Ii8+PHBhdGggY2xhc3M9InN0MCIgZD0iTTMxLjUsODguN2MtMC42LDAuMi0xLjIsMC41LTEuNywwLjdjMC4yLDEuNywwLjQsMy41LDAuNSw1LjJjMC43LDAsMS4zLDAsMS45LDBjMi42LDAsNSwwLDcuMy0wLjEgICBjLTAuMy0zLjEtMC40LTYuMS0wLjUtOS4yQzM2LjgsODYuNSwzNC4yLDg3LjYsMzEuNSw4OC43eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik01Mi45LDc3LjVjMCwwLjEsMCwwLjEsMCwwLjJjMC4xLDUuNSwwLjMsMTEuMSwwLjYsMTYuNmMzLjQtMC4xLDYuOS0wLjIsMTAuNC0wLjNjLTAuMy04LjEtMC41LTE2LjMtMC44LTI0LjQgICBDNTkuOCw3Mi40LDU2LjQsNzUsNTIuOSw3Ny41eiIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik05MS4yLDU1LjNjLTAuMS0wLjEtMC4xLTAuMS0wLjItMC4xYy0wLjEsMC0wLjItMC4xLTAuNS0wLjJjLTAuNi0wLjMtMS42LTAuNy0zLjUtMS42ICAgYy0xLjItMC42LTIuMy0xLjEtMy40LTEuNmMtMC41LTAuMi0xLTAuNC0xLjYtMC40Yy0xLjEsMC0yLjEsMC41LTIuOCwxLjRsMCwwYy0wLjIsMC4zLTAuNCwwLjUtMC42LDAuOGwyLjMsNDAuM2gwLjYgICBjMi4yLDAsMy45LDAsNS4yLTAuMmMxLTAuMSwxLjktMC4zLDIuOC0wLjdjMC41LTAuMiwwLjktMC41LDEuMi0wLjljMC41LTAuNCwwLjgtMSwxLTEuNmMwLjItMC45LDAuMy0xLjgsMC4zLTIuNyAgIGMwLTEuNy0wLjEtNC4xLTAuMS03LjVjMC0yLjEsMC4xLTQuNywwLjMtNy43bDAsMGMwLjMtNC45LDAuOC04LjgsMC44LTExLjhjMC0xLjItMC4xLTIuNC0wLjQtMy41QzkyLjIsNTYuNSw5MS44LDU1LjgsOTEuMiw1NS4zeiAgICIvPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik02NS44LDY3LjFjMCwwLjEsMC4xLDAuMywwLjEsMC40YzAuMyw4LjgsMC42LDE3LjYsMC45LDI2LjRjMy4yLTAuMSw2LjQtMC4xLDkuNi0wLjF2MGgwLjNoMS4xICAgYzAtMC4xLDAuMS0wLjIsMC4xLTAuNGMtMC43LTEyLjItMS40LTI0LjUtMi4xLTM2LjdDNzIuNyw2MC40LDY5LjMsNjMuOCw2NS44LDY3LjF6Ii8+PHBhdGggZD0iTTIwLjYsODQuMWM5LjYtMy45LDI4LjMtMTMuMSw0OC40LTM0LjZjMi45LTMuMSw2LjMtNywxMC4xLTExLjhjMS40LDEuMiwzLDIuNCw0LjYsMy42YzEuMSwwLjgsMi4xLDEuNSwzLjIsMi4zICAgYzEuOCwxLjIsNC4xLDEuMSw1LjctMC40YzAuOS0wLjgsMS40LTIsMS41LTMuMmMwLjItNC45LDAuMy05LjksMC4zLTE1LjF2LTAuN2MwLTUuNi0wLjEtMTEuMS0wLjMtMTYuNGMtMC4xLTMtMi43LTUuNC01LjctNS4zICAgYy0wLjMsMC0wLjcsMC4xLTEsMC4xQzc2LDUuMiw2NC44LDcuOSw1My43LDEwLjljLTEsMC4zLTEuOCwwLjgtMi40LDEuNmMtMC41LDAuOC0wLjgsMS43LTAuOCwyLjZjMCwxLjUsMC44LDIuOSwyLDMuNyAgIGMwLjksMC42LDEuOCwxLjEsMi44LDEuN2MxLjgsMS4xLDMuNSwyLDUuMiwyLjljLTIuOCw1LjQtNi4xLDEwLjYtOS43LDE1LjVDNDIuNiw1MCwzMy4yLDU4LjQsMjEuMiw2OS4yQzE2LDczLjksMTEuOSw3Ny40LDksNzkuOSAgIGMtMS4yLDEtMi4zLDIuMS0zLjMsMy4zYy0wLjQsMC40LTAuNywwLjgtMSwxLjNjLTAuMywwLjUtMC41LDEtMC41LDEuNWMwLDAuNywwLjMsMS4zLDAuOSwxLjdjMC4zLDAuMiwwLjYsMC40LDEsMC40ICAgYzAuMywwLjEsMC42LDAuMSwxLDAuMWMxLjEsMCwyLjMtMC4yLDMuNC0wLjVjMi0wLjUsMy45LTEuMiw1LjgtMS45QzE4LjEsODUuMSwxOS43LDg0LjQsMjAuNiw4NC4xeiBNOS43LDg0LjkgICBjLTAuNywwLjItMS40LDAuMy0yLjEsMC40YzAuNS0wLjYsMS4xLTEuMiwxLjctMS44QzEyLDgxLDE2LjcsNzcsMjMuMSw3MS40YzEyLTEwLjgsMjEuNi0xOS40LDMwLTMwLjhjNC01LjQsNy42LTExLjEsMTAuNi0xNy4xICAgYzAuNC0wLjcsMC4xLTEuNi0wLjYtMS45Yy0yLjEtMS4xLTQuMi0yLjMtNi4zLTMuNWMtMC45LTAuNi0xLjgtMS4xLTIuNy0xLjdjLTAuNC0wLjMtMC43LTAuNy0wLjctMS4yYzAtMC4zLDAuMS0wLjYsMC4zLTAuOSAgIGMwLjItMC4zLDAuNS0wLjUsMC44LTAuNUM2NS41LDEwLjcsNzYuNiw4LDg3LjgsNS40YzEuNC0wLjMsMi44LDAuNiwzLjIsMkM5MSw3LjYsOTEsNy44LDkxLDcuOWMwLjIsNS4yLDAuMywxMC43LDAuMywxNi4zdjAuNyAgIGMwLDUuMi0wLjEsMTAuMi0wLjMsMTVjMCwwLjQtMC4yLDAuOS0wLjUsMS4xYy0wLjMsMC4zLTAuNywwLjQtMS4yLDAuNGMtMC4zLDAtMC43LTAuMS0xLTAuM2MtMS0wLjctMi0xLjQtMy4xLTIuMiAgIGMtMi0xLjUtMy45LTMtNS42LTQuNGMtMC42LTAuNS0xLjUtMC40LTIsMC4yYzAsMCwwLDAsMCwwLjFjLTQsNS4yLTcuNyw5LjUtMTAuOCwxMi43Yy0xOS43LDIxLjEtMzgsMzAuMS00Ny40LDMzLjkgICBjLTEuMiwwLjUtMy42LDEuNS02LjEsMi40QzEyLjEsODQuMiwxMC44LDg0LjYsOS43LDg0Ljl6Ii8+PGxpbmUgY2xhc3M9InN0MSIgeDE9IjQuNSIgeDI9IjQuNSIgeTE9Ijg3LjEiIHkyPSI4Ny4xIi8+PHBhdGggZD0iTTk1LjcsNjAuN2MwLTEuNS0wLjEtMy0wLjUtNC40Qzk0LjgsNTUsOTQsNTMuOSw5Mi45LDUzYy0wLjItMC4xLTAuNC0wLjMtMC42LTAuNGMtMC4zLTAuMi0wLjYtMC4zLTEuMi0wLjYgICBjLTAuNi0wLjMtMS41LTAuNy0yLjktMS4zYy0xLjItMC42LTIuMy0xLjEtMy4zLTEuNmMtMi43LTEuNC02LTAuNi03LjksMS44bDAsMGMtNy44LDkuOS0xNywxOC40LTI3LjUsMjUuNCAgIGMtNiwzLjgtMTIuNCw3LjEtMTksOS44Yy01LjMsMi4yLTEwLDMuNi0xMy40LDQuN2MtMS43LDAuNS0zLjEsMS00LjEsMS40Yy0wLjUsMC4yLTAuOSwwLjQtMS40LDAuN2MtMC4yLDAuMi0wLjQsMC40LTAuNiwwLjYgICBjLTAuMiwwLjMtMC40LDAuNy0wLjQsMS4xYzAsMC4xLDAsMC4yLDAsMC4ydjB2MGMwLDAuMiwwLjEsMC41LDAuMywwLjdjMC4yLDAuMywwLjUsMC42LDAuOCwwLjdjMC41LDAuMiwxLjEsMC40LDEuNiwwLjUgICBjMS4zLDAuMiwyLjUsMC4zLDMuOCwwLjRjMS42LDAuMSwzLjcsMC4yLDYuMiwwLjJjMy4yLDAuMSw2LjIsMC4xLDguOSwwLjFjNywwLDEyLjUtMC4yLDE3LjQtMC4zYzguOS0wLjIsMTcuOC0wLjYsMjYuNy0wLjZoMC4zICAgYzEuOCwwLDMuNCwwLDQuOCwwYzIuMywwLjEsNC42LDAsNi45LTAuNGMwLjgtMC4xLDEuNi0wLjQsMi40LTAuOGMwLjctMC40LDEuNC0wLjgsMi0xLjRjMC44LTAuOCwxLjQtMS44LDEuOC0yLjkgICBjMC4zLTEuMSwwLjQtMi4zLDAuNC0zLjVjMC0xLjktMC4xLTQuMi0wLjEtNy41YzAtMi4xLDAuMS00LjYsMC4yLTcuNUM5NS4yLDY3LjksOTUuNyw2NCw5NS43LDYwLjd6IE0yMy40LDk0LjUgICBjLTMuNC0wLjEtNi0wLjItNy43LTAuM2MwLjItMC4xLDAuNC0wLjEsMC41LTAuMmMyLjUtMC44LDYuMy0yLDEwLjctMy42YzAuMSwxLjQsMC4zLDIuOCwwLjQsNC4xQzI2LjEsOTQuNiwyNC44LDk0LjYsMjMuNCw5NC41eiAgICBNMzIuMiw5NC42Yy0wLjYsMC0xLjMsMC0xLjksMGMtMC4yLTEuNy0wLjQtMy41LTAuNS01LjJjMC42LTAuMiwxLjEtMC40LDEuNy0wLjdjMi43LTEuMSw1LjMtMi4zLDcuNS0zLjQgICBjMC4xLDMuMSwwLjIsNi4xLDAuNSw5LjJDMzcuMyw5NC42LDM0LjksOTQuNiwzMi4yLDk0LjZ6IE00OS42LDk0LjNMNDkuNiw5NC4zYy0yLjMsMC00LjcsMC4xLTcuMiwwLjJjLTAuMy0zLjMtMC41LTYuNy0wLjUtMTAgICBjMC0wLjIsMC0wLjMtMC4xLTAuNWMzLjctMS45LDYuNi0zLjYsOC4zLTQuN2MwLjEsNSwwLjMsMTAsMC41LDE1QzUwLjMsOTQuMyw0OS45LDk0LjMsNDkuNiw5NC4zeiBNNTMuNSw5NC4yICAgYy0wLjMtNS41LTAuNS0xMS0wLjYtMTYuNmMwLTAuMSwwLTAuMSwwLTAuMmMzLjUtMi40LDYuOS01LjEsMTAuMi03LjljMC4zLDguMSwwLjUsMTYuMywwLjgsMjQuNEM2MC40LDk0LDU2LjksOTQuMSw1My41LDk0LjJ6ICAgIE03Ny44LDkzLjhoLTEuMWgtMC4zdjBjLTMuMiwwLTYuNCwwLjEtOS42LDAuMWMtMC4zLTguOC0wLjYtMTcuNi0wLjktMjYuNGMwLTAuMSwwLTAuMy0wLjEtMC40YzMuNi0zLjMsNi45LTYuOCwxMC4xLTEwLjQgICBjMC43LDEyLjIsMS40LDI0LjUsMi4xLDM2LjdDNzcuOSw5My41LDc3LjgsOTMuNiw3Ny44LDkzLjh6IE05Miw3Mi41TDkyLDcyLjVjLTAuMiwzLTAuMiw1LjYtMC4yLDcuN2MwLDMuNCwwLjEsNS44LDAuMSw3LjUgICBjMCwwLjktMC4xLDEuOC0wLjMsMi43Yy0wLjIsMC42LTAuNSwxLjItMSwxLjZjLTAuNCwwLjQtMC44LDAuNy0xLjIsMC45Yy0wLjksMC40LTEuOCwwLjYtMi44LDAuN2MtMS4zLDAuMS0zLDAuMi01LjIsMC4yaC0wLjYgICBsLTIuMy00MC4zYzAuMi0wLjMsMC40LTAuNSwwLjYtMC44bDAsMGMwLjctMC45LDEuNy0xLjQsMi44LTEuNGMwLjUsMCwxLjEsMC4xLDEuNiwwLjRjMSwwLjUsMi4xLDEuMSwzLjQsMS42ICAgYzEuOSwwLjksMi45LDEuMywzLjUsMS42YzAuMywwLjEsMC40LDAuMiwwLjUsMC4yYzAuMSwwLDAuMSwwLjEsMC4yLDAuMWMwLjYsMC41LDEuMSwxLjIsMS4zLDEuOWMwLjMsMS4xLDAuNCwyLjMsMC40LDMuNSAgIEM5Mi45LDYzLjYsOTIuMyw2Ny42LDkyLDcyLjV6Ii8+PC9nPjwvc3ZnPg==" alt="Logo">
+                </div>
+                <div class="column is-4">
+                    <p class="title">
+                        EOD Stock Market Scans
+                    </p>
+                    <p class="subtitle">
+                        Fintwits most popular stockmarket scans
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+            <div class="container">
+                <ul>
+                    
+                    <li class="is-active">
+                        <a href="../Mark Minvervini/Trend Template_result_table.html"> Results </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Mark Minvervini/Trend Template_minicharts.html"> Minicharts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Mark Minvervini/Trend Template_charts.html"> Charts </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="../Mark Minvervini/Trend Template_criteria.html"> Criteria </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+</section>
+    <div class="columns is-centered">
+        <div class="column is-2">
+            <div class="box has-background-light my-0 mx-2 p-auto">
+    <aside class="menu">
+        <p class="menu-label has-text-dark">
+            Market Monitor
+        </p>
+        <ul class="menu-list">
+            <li><a class="has-text-grey-light">New Highs/Lows</a></li>
+            <li><a class="has-text-grey-light">Breadth</a></li>
+            <li><a class="has-text-grey-light">Above/Below SMA</a></li>
+            <li><a class="has-text-grey-light">Sectors</a></li>
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Kristjan Kullamägi
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Kristjan Kullamägi/Biggest Gainers 1M_minicharts.html">
+                        Biggest Gainers 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Kristjan Kullamägi/Biggest Gainers 3M_minicharts.html">
+                        Biggest Gainers 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Kristjan Kullamägi/Biggest Gainers 6M_minicharts.html">
+                        Biggest Gainers 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Kristjan Kullamägi/Biggest Gainers 12M_minicharts.html">
+                        Biggest Gainers 12M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Kristjan Kullamägi/EP with Growth_minicharts.html">
+                        EP with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Kristjan Kullamägi/EP_minicharts.html">
+                        EP
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Kristjan Kullamägi/High Trend Intensity_minicharts.html">
+                        High Trend Intensity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Kristjan Kullamägi/Small Stock Momo_minicharts.html">
+                        Small Stock Momo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Kristjan Kullamägi/Momentum_minicharts.html">
+                        Momentum
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Brad Schulz
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Brad Schulz/Pocket Pivot_minicharts.html">
+                        Pocket Pivot
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Stockbee
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Stockbee/4 PCT  Gainers_minicharts.html">
+                        4 PCT  Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Stockbee/Combo_minicharts.html">
+                        Combo
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Stockbee/Ants_minicharts.html">
+                        Ants
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Stockbee/Breakout 1M Base_minicharts.html">
+                        Breakout 1M Base
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Stockbee/Breakout 3M Base_minicharts.html">
+                        Breakout 3M Base
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Leif Soreide
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Leif Soreide/HTF_minicharts.html">
+                        HTF
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Blake Davis
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Blake Davis/Strength_minicharts.html">
+                        Strength
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ben
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Ben/Power of 3_minicharts.html">
+                        Power of 3
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Ben/Velocity_minicharts.html">
+                        Velocity
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Ben/Focus_minicharts.html">
+                        Focus
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Ray
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Ray/RSNHBP 5D_minicharts.html">
+                        RSNHBP 5D
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Ray/RSNHBP 1M_minicharts.html">
+                        RSNHBP 1M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Ray/RSNHBP 3M_minicharts.html">
+                        RSNHBP 3M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Ray/RSNHBP 6M_minicharts.html">
+                        RSNHBP 6M
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Ray/RSNHBP 12M_minicharts.html">
+                        RSNHBP 12M
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Mark Minvervini
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="is-active"
+                        href="../../italy/Mark Minvervini/Trend Template_minicharts.html">
+                        Trend Template
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+        <p class="menu-label has-text-dark">
+            Vo
+        </p>
+        <ul class="menu-list">
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Vo/Top Gainers From Open_minicharts.html">
+                        Top Gainers From Open
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Vo/Top Gainers_minicharts.html">
+                        Top Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Vo/Volume Gainers_minicharts.html">
+                        Volume Gainers
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Vo/Insiders_minicharts.html">
+                        Insiders
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Vo/Darvas Scan_minicharts.html">
+                        Darvas Scan
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Vo/Darvas Scan with Growth_minicharts.html">
+                        Darvas Scan with Growth
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Vo/52W High_minicharts.html">
+                        52W High
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Vo/Quite and Tight_minicharts.html">
+                        Quite and Tight
+                    </a>
+                    
+                
+            </li>
+            
+            <li>
+                
+                    
+                    <a class="has-text-grey-light"
+                        href="../../italy/Vo/Mo Scan_minicharts.html">
+                        Mo Scan
+                    </a>
+                    
+                
+            </li>
+            
+        </ul>
+        
+    </aside>
+</div>
+        </div>
+        <div class="column is-10">
+
+            
+<section class="block my-6">
+    <div class="columns ">
+        <div class="column is-5 has-text-left">
+            <h1 class="title is-4">Trend Template @ Italy</h1>
+            <h2 class="subtitle is-6">2022-12-07</h2>
+        </div>
+        <div class="column has-text-right mr-5">
+            <div class="media">
+
+                <div class="media-content">
+                    <p class="title is-5">Mark Minvervini</p>
+                    <p class="subtitle is-6"><a class="has-text-grey-light" href="https://twitter.com/markminervini">@markminervini</a></p>
+                </div>
+                <div class="media-right">
+                    <figure class="image is-48x48">
+                        <img src="https://unavatar.io/twitter/markminervini" alt="Placeholder image">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+            <section class="my-auto mr-5">
+                
+    <div class="table-container">
+        <table border="1" class="dataframe table is-striped no-wrap" id="data" style="width:100%; font-size:85%">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>symbol</th>
+      <th>yahoo_symbol</th>
+      <th>name</th>
+      <th>sector</th>
+      <th>industry</th>
+      <th>roc</th>
+      <th>close</th>
+      <th>volume</th>
+      <th>rel Volume</th>
+      <th>adr(20)</th>
+      <th>atr(14)</th>
+      <th>roc(5)</th>
+      <th>roc(21)</th>
+      <th>roc(63)</th>
+      <th>roc(126)</th>
+      <th>roc(252)</th>
+      <th>52w High</th>
+      <th>% below 52w High</th>
+      <th>52w Low</th>
+      <th>% above 52w Low</th>
+      <th>UD Ratio</th>
+      <th>50d avg Volume</th>
+      <th>Pocket Pivot</th>
+      <th>1w Pocket Pivots</th>
+      <th>1m Pocket Pivots</th>
+      <th>Rocket Ratio</th>
+      <th>1m RS</th>
+      <th>3m RS</th>
+      <th>RS</th>
+      <th>Industry 1m RS</th>
+      <th>Industry 3m RS</th>
+      <th>Industry RS</th>
+      <th>ema(9)</th>
+      <th>% from 9d ema</th>
+      <th>ema(21)</th>
+      <th>% from 21d ema</th>
+      <th>sma(50)</th>
+      <th>% from 50d sma</th>
+      <th>EPS Growth Q</th>
+      <th>EPS Growth Y</th>
+      <th>EPS Growth FQ</th>
+      <th>EPS Growth FY</th>
+      <th>EPS Growth FQ1</th>
+      <th>EPS Growth FY1</th>
+      <th>Rev Growth Q</th>
+      <th>Rev Growth FQ</th>
+      <th>Rev Growth FY</th>
+      <th>Rev Growth FQ1</th>
+      <th>Rev Growth FY1</th>
+      <th>Insiders %</th>
+      <th>Institutions %</th>
+      <th>Institutions No.</th>
+      <th>Market Cap</th>
+      <th>Shares Outstanding</th>
+      <th>Shares Float</th>
+      <th>Shares Short</th>
+      <th>Short Ratio</th>
+      <th>Net Insider Trading %</th>
+      <th>exchange</th>
+      <th>country</th>
+      <th>IPO Date</th>
+      <th>market</th>
+      <th>date</th>
+      <th>group_name</th>
+      <th>scan_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>B7C</td>
+      <td>DIS.MI</td>
+      <td>D'Amico International Shipping</td>
+      <td>Industrials</td>
+      <td>Marine Shipping</td>
+      <td>-0.83</td>
+      <td>0.36</td>
+      <td>3246746.0</td>
+      <td>0.78</td>
+      <td>4.88</td>
+      <td>0.02</td>
+      <td>-3.26</td>
+      <td>5.79</td>
+      <td>52.68</td>
+      <td>83.57</td>
+      <td>283.33</td>
+      <td>0.40</td>
+      <td>-10.20</td>
+      <td>0.09</td>
+      <td>314.05</td>
+      <td>1.33</td>
+      <td>4169010.30</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>74</td>
+      <td>99</td>
+      <td>99</td>
+      <td>13</td>
+      <td>92</td>
+      <td>97</td>
+      <td>0.36</td>
+      <td>-2.29</td>
+      <td>0.36</td>
+      <td>0.15</td>
+      <td>0.31</td>
+      <td>14.79</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.91</td>
+      <td>65.65</td>
+      <td>6.55</td>
+      <td>20.0</td>
+      <td>4.352954e+08</td>
+      <td>1.222740e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Milan</td>
+      <td>Italy</td>
+      <td>2007-05-03 07:00:00</td>
+      <td>italy</td>
+      <td>2022-12-07</td>
+      <td>Mark Minvervini</td>
+      <td>Trend Template</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>FNL</td>
+      <td>FNL.MI</td>
+      <td>Finlogic SpA</td>
+      <td>Industrials</td>
+      <td>Business Equipment &amp; Supplies</td>
+      <td>61.52</td>
+      <td>11.50</td>
+      <td>233045.0</td>
+      <td>24.42</td>
+      <td>2.62</td>
+      <td>0.55</td>
+      <td>69.12</td>
+      <td>52.52</td>
+      <td>78.02</td>
+      <td>95.58</td>
+      <td>89.14</td>
+      <td>11.80</td>
+      <td>-2.54</td>
+      <td>5.40</td>
+      <td>112.96</td>
+      <td>4.09</td>
+      <td>9543.02</td>
+      <td>True</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>194.35</td>
+      <td>99</td>
+      <td>100</td>
+      <td>99</td>
+      <td>76</td>
+      <td>95</td>
+      <td>94</td>
+      <td>7.88</td>
+      <td>45.92</td>
+      <td>7.54</td>
+      <td>52.61</td>
+      <td>7.18</td>
+      <td>60.18</td>
+      <td>0.37</td>
+      <td>0.37</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.22</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>74.74</td>
+      <td>8.57</td>
+      <td>11.0</td>
+      <td>5.816155e+07</td>
+      <td>7.343630e+06</td>
+      <td>1.854708e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Milan</td>
+      <td>Italy</td>
+      <td>2017-06-09 07:00:00</td>
+      <td>italy</td>
+      <td>2022-12-07</td>
+      <td>Mark Minvervini</td>
+      <td>Trend Template</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>BCU</td>
+      <td>BC.MI</td>
+      <td>Brunello Cucinelli</td>
+      <td>Consumer Cyclical</td>
+      <td>Luxury Goods</td>
+      <td>9.84</td>
+      <td>69.20</td>
+      <td>211382.0</td>
+      <td>3.49</td>
+      <td>3.51</td>
+      <td>2.20</td>
+      <td>10.02</td>
+      <td>21.08</td>
+      <td>30.94</td>
+      <td>64.45</td>
+      <td>25.14</td>
+      <td>69.85</td>
+      <td>-0.93</td>
+      <td>39.14</td>
+      <td>76.80</td>
+      <td>2.00</td>
+      <td>60625.12</td>
+      <td>True</td>
+      <td>3.0</td>
+      <td>7.0</td>
+      <td>560.26</td>
+      <td>98</td>
+      <td>98</td>
+      <td>98</td>
+      <td>86</td>
+      <td>74</td>
+      <td>71</td>
+      <td>64.14</td>
+      <td>7.88</td>
+      <td>62.04</td>
+      <td>11.54</td>
+      <td>57.52</td>
+      <td>20.31</td>
+      <td>1.29</td>
+      <td>1.29</td>
+      <td>NaN</td>
+      <td>0.47</td>
+      <td>NaN</td>
+      <td>0.10</td>
+      <td>0.32</td>
+      <td>0.08</td>
+      <td>0.24</td>
+      <td>0.08</td>
+      <td>0.10</td>
+      <td>50.05</td>
+      <td>32.60</td>
+      <td>106.0</td>
+      <td>4.246600e+09</td>
+      <td>6.800000e+07</td>
+      <td>3.396600e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Milan</td>
+      <td>Italy</td>
+      <td>2012-04-27 07:00:00</td>
+      <td>italy</td>
+      <td>2022-12-07</td>
+      <td>Mark Minvervini</td>
+      <td>Trend Template</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>GGILD</td>
+      <td>GILD</td>
+      <td>Gilead Sciences Inc</td>
+      <td>Healthcare</td>
+      <td>Drug Manufacturers—General</td>
+      <td>0.02</td>
+      <td>83.97</td>
+      <td>77.0</td>
+      <td>0.09</td>
+      <td>1.30</td>
+      <td>1.19</td>
+      <td>1.51</td>
+      <td>1.33</td>
+      <td>28.49</td>
+      <td>47.89</td>
+      <td>35.13</td>
+      <td>84.20</td>
+      <td>-0.27</td>
+      <td>52.25</td>
+      <td>60.71</td>
+      <td>3.01</td>
+      <td>848.48</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>1476731.40</td>
+      <td>47</td>
+      <td>97</td>
+      <td>98</td>
+      <td>22</td>
+      <td>93</td>
+      <td>96</td>
+      <td>83.23</td>
+      <td>0.89</td>
+      <td>81.60</td>
+      <td>2.91</td>
+      <td>75.52</td>
+      <td>11.19</td>
+      <td>-0.31</td>
+      <td>-0.31</td>
+      <td>1.16</td>
+      <td>-0.02</td>
+      <td>-0.22</td>
+      <td>-0.05</td>
+      <td>-0.05</td>
+      <td>-0.08</td>
+      <td>-0.03</td>
+      <td>-0.08</td>
+      <td>-0.04</td>
+      <td>0.10</td>
+      <td>82.47</td>
+      <td>2215.0</td>
+      <td>1.026219e+11</td>
+      <td>1.254240e+09</td>
+      <td>1.252977e+09</td>
+      <td>19071317.0</td>
+      <td>2.23</td>
+      <td>2.3</td>
+      <td>Milan</td>
+      <td>Italy</td>
+      <td>1992-01-22 14:30:00</td>
+      <td>italy</td>
+      <td>2022-12-07</td>
+      <td>Mark Minvervini</td>
+      <td>Trend Template</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>PRII</td>
+      <td>PRI.MI</td>
+      <td>Prima Industrie</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>0.61</td>
+      <td>24.90</td>
+      <td>21220.0</td>
+      <td>1.24</td>
+      <td>0.34</td>
+      <td>0.09</td>
+      <td>0.61</td>
+      <td>0.81</td>
+      <td>1.84</td>
+      <td>87.22</td>
+      <td>35.47</td>
+      <td>24.90</td>
+      <td>0.00</td>
+      <td>11.50</td>
+      <td>116.52</td>
+      <td>1.24</td>
+      <td>17100.38</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>263.96</td>
+      <td>44</td>
+      <td>52</td>
+      <td>98</td>
+      <td>55</td>
+      <td>54</td>
+      <td>57</td>
+      <td>24.78</td>
+      <td>0.49</td>
+      <td>24.73</td>
+      <td>0.67</td>
+      <td>24.62</td>
+      <td>1.13</td>
+      <td>3.09</td>
+      <td>3.10</td>
+      <td>NaN</td>
+      <td>1.11</td>
+      <td>NaN</td>
+      <td>0.65</td>
+      <td>0.19</td>
+      <td>-0.04</td>
+      <td>0.11</td>
+      <td>-0.04</td>
+      <td>0.10</td>
+      <td>52.34</td>
+      <td>12.77</td>
+      <td>25.0</td>
+      <td>2.552424e+08</td>
+      <td>1.031280e+07</td>
+      <td>4.513821e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Milan</td>
+      <td>Italy</td>
+      <td>1999-10-27 07:00:00</td>
+      <td>italy</td>
+      <td>2022-12-07</td>
+      <td>Mark Minvervini</td>
+      <td>Trend Template</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>COV</td>
+      <td>COV.MI</td>
+      <td>Cover 50 SpA</td>
+      <td>Consumer Cyclical</td>
+      <td>Apparel Manufacturing</td>
+      <td>0.00</td>
+      <td>10.70</td>
+      <td>400.0</td>
+      <td>0.13</td>
+      <td>3.19</td>
+      <td>0.33</td>
+      <td>-3.60</td>
+      <td>9.18</td>
+      <td>20.22</td>
+      <td>29.70</td>
+      <td>39.87</td>
+      <td>11.80</td>
+      <td>-9.32</td>
+      <td>6.75</td>
+      <td>58.52</td>
+      <td>1.47</td>
+      <td>3074.00</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>366.99</td>
+      <td>86</td>
+      <td>91</td>
+      <td>97</td>
+      <td>86</td>
+      <td>74</td>
+      <td>71</td>
+      <td>10.90</td>
+      <td>-1.80</td>
+      <td>10.71</td>
+      <td>-0.14</td>
+      <td>9.87</td>
+      <td>8.42</td>
+      <td>1.38</td>
+      <td>1.38</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.28</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>74.36</td>
+      <td>12.14</td>
+      <td>7.0</td>
+      <td>4.488000e+07</td>
+      <td>4.400000e+06</td>
+      <td>1.128116e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Milan</td>
+      <td>Italy</td>
+      <td>2015-06-26 07:00:00</td>
+      <td>italy</td>
+      <td>2022-12-07</td>
+      <td>Mark Minvervini</td>
+      <td>Trend Template</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>ILP</td>
+      <td>ILP.MI</td>
+      <td>ILPRA SpA</td>
+      <td>Industrials</td>
+      <td>Specialty Industrial Machinery</td>
+      <td>0.20</td>
+      <td>4.91</td>
+      <td>23400.0</td>
+      <td>2.10</td>
+      <td>5.04</td>
+      <td>0.20</td>
+      <td>3.15</td>
+      <td>18.89</td>
+      <td>23.99</td>
+      <td>35.26</td>
+      <td>10.59</td>
+      <td>5.30</td>
+      <td>-7.36</td>
+      <td>2.74</td>
+      <td>79.20</td>
+      <td>2.63</td>
+      <td>11148.00</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>98</td>
+      <td>94</td>
+      <td>96</td>
+      <td>55</td>
+      <td>54</td>
+      <td>57</td>
+      <td>4.83</td>
+      <td>1.61</td>
+      <td>4.68</td>
+      <td>5.02</td>
+      <td>4.23</td>
+      <td>15.96</td>
+      <td>-0.04</td>
+      <td>-0.04</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>2.62</td>
+      <td>3.0</td>
+      <td>5.240167e+07</td>
+      <td>1.193660e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Milan</td>
+      <td>Italy</td>
+      <td>2019-02-15 08:00:00</td>
+      <td>italy</td>
+      <td>2022-12-07</td>
+      <td>Mark Minvervini</td>
+      <td>Trend Template</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>TXTS</td>
+      <td>TXT.MI</td>
+      <td>TXT</td>
+      <td>Technology</td>
+      <td>Software—Application</td>
+      <td>-1.11</td>
+      <td>12.48</td>
+      <td>11614.0</td>
+      <td>0.55</td>
+      <td>3.12</td>
+      <td>0.32</td>
+      <td>-1.73</td>
+      <td>-3.11</td>
+      <td>12.43</td>
+      <td>31.65</td>
+      <td>31.37</td>
+      <td>13.60</td>
+      <td>-8.24</td>
+      <td>7.74</td>
+      <td>61.24</td>
+      <td>1.18</td>
+      <td>21004.76</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>385.34</td>
+      <td>23</td>
+      <td>80</td>
+      <td>96</td>
+      <td>93</td>
+      <td>69</td>
+      <td>45</td>
+      <td>12.68</td>
+      <td>-1.61</td>
+      <td>12.68</td>
+      <td>-1.61</td>
+      <td>12.21</td>
+      <td>2.24</td>
+      <td>0.72</td>
+      <td>0.72</td>
+      <td>NaN</td>
+      <td>0.13</td>
+      <td>NaN</td>
+      <td>0.25</td>
+      <td>0.44</td>
+      <td>0.08</td>
+      <td>0.50</td>
+      <td>0.08</td>
+      <td>0.43</td>
+      <td>30.20</td>
+      <td>11.54</td>
+      <td>17.0</td>
+      <td>1.542853e+08</td>
+      <td>1.186810e+07</td>
+      <td>8.094069e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Milan</td>
+      <td>Italy</td>
+      <td>2000-07-12 07:00:00</td>
+      <td>italy</td>
+      <td>2022-12-07</td>
+      <td>Mark Minvervini</td>
+      <td>Trend Template</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>AAMGN</td>
+      <td>AMGN</td>
+      <td>Amgen Inc</td>
+      <td>Healthcare</td>
+      <td>Drug Manufacturers—General</td>
+      <td>0.00</td>
+      <td>270.00</td>
+      <td>30.0</td>
+      <td>0.63</td>
+      <td>0.44</td>
+      <td>1.99</td>
+      <td>0.13</td>
+      <td>-7.60</td>
+      <td>8.78</td>
+      <td>19.84</td>
+      <td>44.63</td>
+      <td>294.40</td>
+      <td>-8.29</td>
+      <td>186.40</td>
+      <td>44.85</td>
+      <td>0.75</td>
+      <td>47.86</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>11125895.72</td>
+      <td>11</td>
+      <td>71</td>
+      <td>94</td>
+      <td>22</td>
+      <td>93</td>
+      <td>96</td>
+      <td>271.22</td>
+      <td>-0.45</td>
+      <td>271.17</td>
+      <td>-0.43</td>
+      <td>263.63</td>
+      <td>2.42</td>
+      <td>0.14</td>
+      <td>0.20</td>
+      <td>-0.06</td>
+      <td>0.03</td>
+      <td>0.05</td>
+      <td>0.05</td>
+      <td>-0.01</td>
+      <td>-0.01</td>
+      <td>0.01</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>0.21</td>
+      <td>80.11</td>
+      <td>2986.0</td>
+      <td>1.520807e+11</td>
+      <td>5.335790e+08</td>
+      <td>5.324854e+08</td>
+      <td>11772512.0</td>
+      <td>4.43</td>
+      <td>2.3</td>
+      <td>Milan</td>
+      <td>Italy</td>
+      <td>1983-06-17 13:30:00</td>
+      <td>italy</td>
+      <td>2022-12-07</td>
+      <td>Mark Minvervini</td>
+      <td>Trend Template</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>CULT</td>
+      <td>CULT.MI</td>
+      <td>Culti Milano SpA</td>
+      <td>Consumer Cyclical</td>
+      <td>Luxury Goods</td>
+      <td>0.32</td>
+      <td>15.80</td>
+      <td>250.0</td>
+      <td>0.07</td>
+      <td>1.66</td>
+      <td>0.25</td>
+      <td>-3.36</td>
+      <td>0.32</td>
+      <td>14.49</td>
+      <td>11.66</td>
+      <td>36.21</td>
+      <td>16.75</td>
+      <td>-5.67</td>
+      <td>9.15</td>
+      <td>72.68</td>
+      <td>1.64</td>
+      <td>3507.50</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>41</td>
+      <td>84</td>
+      <td>93</td>
+      <td>10</td>
+      <td>63</td>
+      <td>82</td>
+      <td>16.13</td>
+      <td>-2.06</td>
+      <td>16.04</td>
+      <td>-1.53</td>
+      <td>15.08</td>
+      <td>4.80</td>
+      <td>0.22</td>
+      <td>0.22</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.19</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>3.77</td>
+      <td>3.0</td>
+      <td>5.152785e+07</td>
+      <td>3.085500e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Milan</td>
+      <td>Italy</td>
+      <td>2017-07-18 07:00:00</td>
+      <td>italy</td>
+      <td>2022-12-07</td>
+      <td>Mark Minvervini</td>
+      <td>Trend Template</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>SSBUX</td>
+      <td>SBUX</td>
+      <td>Starbucks Corporation</td>
+      <td>Consumer Cyclical</td>
+      <td>Restaurants</td>
+      <td>-1.41</td>
+      <td>97.04</td>
+      <td>359.0</td>
+      <td>1.56</td>
+      <td>1.26</td>
+      <td>1.39</td>
+      <td>1.11</td>
+      <td>4.96</td>
+      <td>9.00</td>
+      <td>39.87</td>
+      <td>-5.60</td>
+      <td>103.64</td>
+      <td>-6.37</td>
+      <td>66.36</td>
+      <td>46.23</td>
+      <td>1.38</td>
+      <td>229.50</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>4897206.49</td>
+      <td>68</td>
+      <td>72</td>
+      <td>92</td>
+      <td>12</td>
+      <td>33</td>
+      <td>65</td>
+      <td>97.08</td>
+      <td>-0.04</td>
+      <td>95.36</td>
+      <td>1.76</td>
+      <td>91.64</td>
+      <td>5.89</td>
+      <td>-0.50</td>
+      <td>-0.49</td>
+      <td>0.06</td>
+      <td>0.15</td>
+      <td>0.15</td>
+      <td>0.18</td>
+      <td>0.03</td>
+      <td>0.09</td>
+      <td>0.11</td>
+      <td>0.11</td>
+      <td>0.11</td>
+      <td>0.19</td>
+      <td>71.28</td>
+      <td>2747.0</td>
+      <td>1.117825e+11</td>
+      <td>1.147900e+09</td>
+      <td>1.123909e+09</td>
+      <td>13092385.0</td>
+      <td>1.74</td>
+      <td>9.1</td>
+      <td>Milan</td>
+      <td>Italy</td>
+      <td>1992-06-26 13:30:00</td>
+      <td>italy</td>
+      <td>2022-12-07</td>
+      <td>Mark Minvervini</td>
+      <td>Trend Template</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>LUVE</td>
+      <td>LUVE.MI</td>
+      <td>LU-VE SpA</td>
+      <td>Industrials</td>
+      <td>Building Products &amp; Equipment</td>
+      <td>1.01</td>
+      <td>25.10</td>
+      <td>1221.0</td>
+      <td>0.26</td>
+      <td>3.67</td>
+      <td>0.66</td>
+      <td>4.80</td>
+      <td>17.02</td>
+      <td>8.19</td>
+      <td>22.44</td>
+      <td>6.81</td>
+      <td>25.90</td>
+      <td>-3.09</td>
+      <td>14.95</td>
+      <td>67.89</td>
+      <td>1.66</td>
+      <td>4767.66</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>1630.29</td>
+      <td>96</td>
+      <td>70</td>
+      <td>91</td>
+      <td>90</td>
+      <td>90</td>
+      <td>78</td>
+      <td>24.51</td>
+      <td>2.39</td>
+      <td>23.74</td>
+      <td>5.74</td>
+      <td>22.00</td>
+      <td>14.08</td>
+      <td>2.52</td>
+      <td>2.51</td>
+      <td>NaN</td>
+      <td>0.45</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>0.40</td>
+      <td>0.14</td>
+      <td>0.20</td>
+      <td>NaN</td>
+      <td>0.04</td>
+      <td>61.82</td>
+      <td>22.58</td>
+      <td>47.0</td>
+      <td>4.985315e+08</td>
+      <td>2.220630e+07</td>
+      <td>7.772663e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Milan</td>
+      <td>Italy</td>
+      <td>2015-07-09 07:00:00</td>
+      <td>italy</td>
+      <td>2022-12-07</td>
+      <td>Mark Minvervini</td>
+      <td>Trend Template</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>ENGIE</td>
+      <td>ENGI.PA</td>
+      <td>Engie SA</td>
+      <td>Utilities</td>
+      <td>Utilities—Diversified</td>
+      <td>-0.37</td>
+      <td>14.40</td>
+      <td>100.0</td>
+      <td>0.05</td>
+      <td>0.80</td>
+      <td>0.16</td>
+      <td>-0.39</td>
+      <td>7.88</td>
+      <td>12.37</td>
+      <td>19.75</td>
+      <td>10.80</td>
+      <td>14.65</td>
+      <td>-1.71</td>
+      <td>9.85</td>
+      <td>46.20</td>
+      <td>2.54</td>
+      <td>2163.42</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>817192.69</td>
+      <td>82</td>
+      <td>80</td>
+      <td>91</td>
+      <td>97</td>
+      <td>91</td>
+      <td>63</td>
+      <td>14.39</td>
+      <td>0.06</td>
+      <td>14.18</td>
+      <td>1.61</td>
+      <td>13.25</td>
+      <td>8.69</td>
+      <td>1.14</td>
+      <td>1.17</td>
+      <td>NaN</td>
+      <td>0.38</td>
+      <td>NaN</td>
+      <td>-0.10</td>
+      <td>0.72</td>
+      <td>-0.03</td>
+      <td>0.11</td>
+      <td>-0.03</td>
+      <td>0.02</td>
+      <td>26.80</td>
+      <td>36.35</td>
+      <td>503.0</td>
+      <td>3.370093e+10</td>
+      <td>2.408930e+09</td>
+      <td>1.767931e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Milan</td>
+      <td>Italy</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>italy</td>
+      <td>2022-12-07</td>
+      <td>Mark Minvervini</td>
+      <td>Trend Template</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>REP</td>
+      <td>REP.MC</td>
+      <td>Repsol</td>
+      <td>Energy</td>
+      <td>Oil &amp; Gas Integrated</td>
+      <td>-0.24</td>
+      <td>14.29</td>
+      <td>400.0</td>
+      <td>0.69</td>
+      <td>0.45</td>
+      <td>0.27</td>
+      <td>-2.76</td>
+      <td>0.49</td>
+      <td>9.25</td>
+      <td>-5.05</td>
+      <td>40.98</td>
+      <td>16.15</td>
+      <td>-11.52</td>
+      <td>9.61</td>
+      <td>48.62</td>
+      <td>1.30</td>
+      <td>579.84</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>2426321.53</td>
+      <td>42</td>
+      <td>73</td>
+      <td>90</td>
+      <td>13</td>
+      <td>92</td>
+      <td>97</td>
+      <td>14.47</td>
+      <td>-1.22</td>
+      <td>14.27</td>
+      <td>0.15</td>
+      <td>13.57</td>
+      <td>5.30</td>
+      <td>-0.03</td>
+      <td>0.02</td>
+      <td>0.97</td>
+      <td>1.54</td>
+      <td>0.68</td>
+      <td>-0.22</td>
+      <td>0.56</td>
+      <td>0.30</td>
+      <td>0.46</td>
+      <td>0.22</td>
+      <td>-0.14</td>
+      <td>6.11</td>
+      <td>37.94</td>
+      <td>487.0</td>
+      <td>1.925120e+10</td>
+      <td>1.399070e+09</td>
+      <td>1.406878e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Milan</td>
+      <td>Italy</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>italy</td>
+      <td>2022-12-07</td>
+      <td>Mark Minvervini</td>
+      <td>Trend Template</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>AUMI</td>
+      <td>AUTME.MI</td>
+      <td>Autostrade Meridionali</td>
+      <td>Industrials</td>
+      <td>Engineering &amp; Construction</td>
+      <td>0.53</td>
+      <td>37.90</td>
+      <td>9167.0</td>
+      <td>1.14</td>
+      <td>1.44</td>
+      <td>0.59</td>
+      <td>0.26</td>
+      <td>0.80</td>
+      <td>1.61</td>
+      <td>1.88</td>
+      <td>45.77</td>
+      <td>40.50</td>
+      <td>-6.42</td>
+      <td>25.50</td>
+      <td>48.63</td>
+      <td>0.52</td>
+      <td>8019.30</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>223.77</td>
+      <td>43</td>
+      <td>51</td>
+      <td>90</td>
+      <td>95</td>
+      <td>67</td>
+      <td>84</td>
+      <td>37.80</td>
+      <td>0.27</td>
+      <td>37.66</td>
+      <td>0.63</td>
+      <td>37.26</td>
+      <td>1.72</td>
+      <td>1.01</td>
+      <td>1.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.79</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>78.16</td>
+      <td>8.0</td>
+      <td>1.640625e+08</td>
+      <td>4.375000e+06</td>
+      <td>1.794494e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Milan</td>
+      <td>Italy</td>
+      <td>1995-09-06 07:00:00</td>
+      <td>italy</td>
+      <td>2022-12-07</td>
+      <td>Mark Minvervini</td>
+      <td>Trend Template</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>LVMH</td>
+      <td>MC.PA</td>
+      <td>LVMH Moet Hennessy Louis Vuitton SE</td>
+      <td>Consumer Cyclical</td>
+      <td>Luxury Goods</td>
+      <td>0.35</td>
+      <td>715.00</td>
+      <td>87.0</td>
+      <td>0.28</td>
+      <td>1.73</td>
+      <td>11.74</td>
+      <td>-1.89</td>
+      <td>8.48</td>
+      <td>9.75</td>
+      <td>28.92</td>
+      <td>1.03</td>
+      <td>758.00</td>
+      <td>-5.67</td>
+      <td>536.50</td>
+      <td>33.27</td>
+      <td>1.11</td>
+      <td>313.32</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>1563207.06</td>
+      <td>84</td>
+      <td>75</td>
+      <td>89</td>
+      <td>86</td>
+      <td>74</td>
+      <td>71</td>
+      <td>711.01</td>
+      <td>0.56</td>
+      <td>698.40</td>
+      <td>2.38</td>
+      <td>662.55</td>
+      <td>7.92</td>
+      <td>0.23</td>
+      <td>0.24</td>
+      <td>NaN</td>
+      <td>0.21</td>
+      <td>NaN</td>
+      <td>0.09</td>
+      <td>0.28</td>
+      <td>0.16</td>
+      <td>0.23</td>
+      <td>0.10</td>
+      <td>0.08</td>
+      <td>48.23</td>
+      <td>21.34</td>
+      <td>1096.0</td>
+      <td>3.538683e+11</td>
+      <td>5.010880e+08</td>
+      <td>4.897840e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Milan</td>
+      <td>Italy</td>
+      <td>2000-01-03 08:00:00</td>
+      <td>italy</td>
+      <td>2022-12-07</td>
+      <td>Mark Minvervini</td>
+      <td>Trend Template</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>MFTC</td>
+      <td>MFT.MI</td>
+      <td>Matica Fintec Spa</td>
+      <td>Technology</td>
+      <td>Computer Hardware</td>
+      <td>0.00</td>
+      <td>2.54</td>
+      <td>11700.0</td>
+      <td>0.59</td>
+      <td>3.85</td>
+      <td>0.12</td>
+      <td>-1.93</td>
+      <td>3.67</td>
+      <td>14.93</td>
+      <td>7.17</td>
+      <td>-2.31</td>
+      <td>3.00</td>
+      <td>-15.33</td>
+      <td>1.71</td>
+      <td>48.97</td>
+      <td>1.16</td>
+      <td>19872.00</td>
+      <td>False</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>61</td>
+      <td>85</td>
+      <td>87</td>
+      <td>14</td>
+      <td>66</td>
+      <td>42</td>
+      <td>2.53</td>
+      <td>0.20</td>
+      <td>2.51</td>
+      <td>1.32</td>
+      <td>2.38</td>
+      <td>6.53</td>
+      <td>0.99</td>
+      <td>1.05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.18</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>60.51</td>
+      <td>8.11</td>
+      <td>6.0</td>
+      <td>2.510711e+07</td>
+      <td>1.016480e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Milan</td>
+      <td>Italy</td>
+      <td>2019-11-11 08:00:00</td>
+      <td>italy</td>
+      <td>2022-12-07</td>
+      <td>Mark Minvervini</td>
+      <td>Trend Template</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>PRY</td>
+      <td>PRY.MI</td>
+      <td>Prysmian SpA</td>
+      <td>Industrials</td>
+      <td>Electrical Equipment &amp; Parts</td>
+      <td>1.74</td>
+      <td>34.44</td>
+      <td>875401.0</td>
+      <td>1.18</td>
+      <td>2.38</td>
+      <td>0.61</td>
+      <td>3.11</td>
+      <td>7.46</td>
+      <td>5.68</td>
+      <td>23.22</td>
+      <td>6.20</td>
+      <td>34.59</td>
+      <td>-0.43</td>
+      <td>25.26</td>
+      <td>36.34</td>
+      <td>1.53</td>
+      <td>741735.06</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>355.24</td>
+      <td>81</td>
+      <td>62</td>
+      <td>86</td>
+      <td>24</td>
+      <td>19</td>
+      <td>32</td>
+      <td>33.75</td>
+      <td>2.05</td>
+      <td>33.34</td>
+      <td>3.28</td>
+      <td>32.42</td>
+      <td>6.25</td>
+      <td>0.85</td>
+      <td>0.85</td>
+      <td>1.30</td>
+      <td>0.98</td>
+      <td>-0.19</td>
+      <td>-0.12</td>
+      <td>0.25</td>
+      <td>0.06</td>
+      <td>0.21</td>
+      <td>0.03</td>
+      <td>-0.01</td>
+      <td>1.33</td>
+      <td>76.34</td>
+      <td>402.0</td>
+      <td>8.998350e+09</td>
+      <td>2.634950e+08</td>
+      <td>2.634947e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Milan</td>
+      <td>Italy</td>
+      <td>2007-05-03 07:00:00</td>
+      <td>italy</td>
+      <td>2022-12-07</td>
+      <td>Mark Minvervini</td>
+      <td>Trend Template</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>RACE</td>
+      <td>RACE</td>
+      <td>Ferrari NV</td>
+      <td>Consumer Cyclical</td>
+      <td>Auto Manufacturers</td>
+      <td>-0.10</td>
+      <td>209.90</td>
+      <td>235957.0</td>
+      <td>0.81</td>
+      <td>1.92</td>
+      <td>3.79</td>
+      <td>-0.94</td>
+      <td>2.74</td>
+      <td>7.34</td>
+      <td>26.29</td>
+      <td>-8.46</td>
+      <td>238.70</td>
+      <td>-12.07</td>
+      <td>161.40</td>
+      <td>30.05</td>
+      <td>1.30</td>
+      <td>292441.96</td>
+      <td>False</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>399.87</td>
+      <td>56</td>
+      <td>67</td>
+      <td>85</td>
+      <td>66</td>
+      <td>81</td>
+      <td>75</td>
+      <td>211.54</td>
+      <td>-0.78</td>
+      <td>209.01</td>
+      <td>0.42</td>
+      <td>200.72</td>
+      <td>4.57</td>
+      <td>0.10</td>
+      <td>0.11</td>
+      <td>-0.08</td>
+      <td>0.10</td>
+      <td>0.18</td>
+      <td>0.19</td>
+      <td>0.19</td>
+      <td>0.11</td>
+      <td>0.19</td>
+      <td>0.12</td>
+      <td>0.10</td>
+      <td>33.80</td>
+      <td>43.61</td>
+      <td>840.0</td>
+      <td>3.955895e+10</td>
+      <td>1.824170e+08</td>
+      <td>1.169401e+08</td>
+      <td>1955784.0</td>
+      <td>5.79</td>
+      <td>0.0</td>
+      <td>Milan</td>
+      <td>Italy</td>
+      <td>2015-10-21 13:30:00</td>
+      <td>italy</td>
+      <td>2022-12-07</td>
+      <td>Mark Minvervini</td>
+      <td>Trend Template</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>DTE</td>
+      <td>DTE.DE</td>
+      <td>Deutsche Telekom AG Na</td>
+      <td>Communication Services</td>
+      <td>Telecom Services</td>
+      <td>0.29</td>
+      <td>19.46</td>
+      <td>146.0</td>
+      <td>0.09</td>
+      <td>0.88</td>
+      <td>0.22</td>
+      <td>1.58</td>
+      <td>-1.04</td>
+      <td>-0.52</td>
+      <td>7.85</td>
+      <td>21.68</td>
+      <td>19.81</td>
+      <td>-1.75</td>
+      <td>14.55</td>
+      <td>33.72</td>
+      <td>1.39</td>
+      <td>1703.36</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2514050.27</td>
+      <td>32</td>
+      <td>45</td>
+      <td>83</td>
+      <td>17</td>
+      <td>36</td>
+      <td>100</td>
+      <td>19.50</td>
+      <td>-0.19</td>
+      <td>19.40</td>
+      <td>0.34</td>
+      <td>18.82</td>
+      <td>3.39</td>
+      <td>0.78</td>
+      <td>-0.26</td>
+      <td>0.04</td>
+      <td>0.26</td>
+      <td>0.00</td>
+      <td>0.09</td>
+      <td>0.09</td>
+      <td>0.05</td>
+      <td>0.07</td>
+      <td>0.05</td>
+      <td>0.04</td>
+      <td>18.34</td>
+      <td>46.06</td>
+      <td>792.0</td>
+      <td>9.377078e+10</td>
+      <td>4.971940e+09</td>
+      <td>4.282333e+09</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Milan</td>
+      <td>Italy</td>
+      <td>1996-11-18 08:00:00</td>
+      <td>italy</td>
+      <td>2022-12-07</td>
+      <td>Mark Minvervini</td>
+      <td>Trend Template</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>BESTE</td>
+      <td>BEST.MI</td>
+      <td>Be Shaping the Future SpA</td>
+      <td>Technology</td>
+      <td>Information Technology Services</td>
+      <td>0.14</td>
+      <td>3.45</td>
+      <td>346775.0</td>
+      <td>0.36</td>
+      <td>0.32</td>
+      <td>0.01</td>
+      <td>-0.86</td>
+      <td>0.73</td>
+      <td>1.62</td>
+      <td>10.56</td>
+      <td>22.95</td>
+      <td>3.48</td>
+      <td>-0.86</td>
+      <td>2.39</td>
+      <td>44.26</td>
+      <td>5.25</td>
+      <td>955374.82</td>
+      <td>False</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>49.53</td>
+      <td>43</td>
+      <td>51</td>
+      <td>82</td>
+      <td>27</td>
+      <td>21</td>
+      <td>13</td>
+      <td>3.45</td>
+      <td>0.11</td>
+      <td>3.45</td>
+      <td>0.25</td>
+      <td>3.44</td>
+      <td>0.52</td>
+      <td>-0.76</td>
+      <td>-0.76</td>
+      <td>NaN</td>
+      <td>-0.22</td>
+      <td>NaN</td>
+      <td>1.14</td>
+      <td>0.11</td>
+      <td>0.08</td>
+      <td>0.08</td>
+      <td>0.23</td>
+      <td>0.07</td>
+      <td>53.36</td>
+      <td>18.71</td>
+      <td>36.0</td>
+      <td>4.394256e+08</td>
+      <td>1.277400e+08</td>
+      <td>4.732121e+07</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>Milan</td>
+      <td>Italy</td>
+      <td>2000-10-18 07:00:00</td>
+      <td>italy</td>
+      <td>2022-12-07</td>
+      <td>Mark Minvervini</td>
+      <td>Trend Template</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+            </section>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+    </div>
+</footer>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bm/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+<script>
+        $(document).ready(function () {
+            $('#data').DataTable(
+                {
+                    "scrollX": true,
+                    "dom": 'Bfrtip',
+                    "buttons": [
+                        'copy', 'csv', 'excel', 'print'
+                    ]
+
+                }
+            );
+        });
+    </script>
+    
+</body>
+
+</html>

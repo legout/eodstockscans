@@ -1,6 +1,6 @@
-from fintwit_stockmarket_scans.src.gen_site import Site
-from fintwit_stockmarket_scans.src.run_scans import Scans
-from fintwit_stockmarket_scans.src.scans import EOD
+from eodstockscans.src.gen_site import Site
+from eodstockscans.src.run_scans import Scans
+from eodstockscans.src.scans import EOD
 
 # from fintwit_stockmarket_scans.src.config import MARKETS,CHART_PARAMS,EOD
 from pathlib import Path
