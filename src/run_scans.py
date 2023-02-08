@@ -129,7 +129,9 @@ class Scans:
 
     def gen_charts(self, chart_params: dict):
         self._screener("close>0", "close", 1000000)
-        summary = self._screener.summary.loc[list(self._all_symbol_ids)]
+        summary_idx = self._screener.summary.index
+        summary_idx = [sid for sid in self._all_symbol_ids if sid in summary_idx]
+        summary = self._screener.summary.loc[summary_idx]
         history = self._history.loc[list(self._all_symbol_ids)]
         sc = Chart(history=history, summary=summary)
 
